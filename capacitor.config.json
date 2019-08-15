@@ -1,0 +1,8 @@
+{
+  "appId": "io.ionic.starter",
+  "appName": "AmoApp",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}
+

@@ -1,0 +1,7 @@
+{
+  "name": "AnhmoMobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
