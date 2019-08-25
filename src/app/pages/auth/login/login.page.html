@@ -4,6 +4,7 @@
     <ion-title>Login</ion-title>
   </ion-toolbar>
 </ion-header>
+
 <ion-content padding>
   <form #form="ngForm" (ngSubmit)="login(form)" method="post">
     <ion-item>
@@ -20,6 +21,20 @@
   
     <ion-button type="submit" expand="full" color="primary">Login</ion-button>
   </form>
+  
+
+  <!-- <p text-center>OR</p>
+  <ion-button expand="full">
+    <ion-icon name="logo-google"></ion-icon>
+  </ion-button>
+  <ion-button expand="full">
+    <ion-icon name="logo-facebook"></ion-icon>
+  </ion-button>
+  <ion-button expand="full">
+    <ion-icon name="logo-twitter"></ion-icon>
+  </ion-button> -->
+
   <p text-center>Don't have a account?</p>
   <ion-button expand="full" color="danger" (click)="registerModal()">Register</ion-button>
+
 </ion-content>

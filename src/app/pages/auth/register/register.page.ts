@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, NavController } from '@ionic/angular';
+import { ModalController, ToastController, NavController } from '@ionic/angular';
 import { LoginPage } from '../login/login.page';
-import { AuthService } from 'src/app/services/auth.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 import { NgForm } from '@angular/forms';
-import { AlertService } from 'src/app/services/alert.service';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { AlertService } from 'src/app/services/alert/alert.service';
+
 @Component({
   selector: 'app-register',
   templateUrl: './register.page.html',
@@ -12,15 +14,19 @@ import { AlertService } from 'src/app/services/alert.service';
 export class RegisterPage implements OnInit {
   constructor(private modalController: ModalController,
               private authService: AuthService,
+              private toastController: ToastController,
               private navCtrl: NavController,
               private alertService: AlertService
   ) { }
+
   ngOnInit() {
   }
+
   // Dismiss Register Modal
   dismissRegister() {
     this.modalController.dismiss();
   }
+
   // On Login button tap, dismiss Register modal and open login Modal
   async loginModal() {
     this.dismissRegister();
@@ -29,13 +35,13 @@ export class RegisterPage implements OnInit {
     });
     return await loginModal.present();
   }
+
   register(form: NgForm) {
     this.authService.register(form.value.fName, form.value.lName, form.value.email, form.value.password).subscribe(
       data => {
         this.authService.login(form.value.email, form.value.password).subscribe(
-          // tslint:disable-next-line:no-shadowed-variable
-          data => {
-            console.log(data);
+          dataLogin => {
+            console.log(dataLogin);
           },
           error => {
             console.log(error);
@@ -45,7 +51,7 @@ export class RegisterPage implements OnInit {
             this.navCtrl.navigateRoot('/dashboard');
           }
         );
-        this.alertService.presentToast(data.message);
+        this.alertService.presentToast(data);
       },
       error => {
         console.log(error);

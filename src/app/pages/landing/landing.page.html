@@ -1,0 +1,14 @@
+
+
+<ion-img class="image-page" src="/assets/shapes.svg"></ion-img>
+<ion-label class="label-text">Enter the phone number you registered</ion-label>
+<ion-input class="phone-input phone-input-text" clearInput type="number" placeholder="Phone number ..."></ion-input>
+
+<ion-button expand="full" class="button-next" [disabled]="checkIsEnabled()">
+  <ion-label class="button-next-label">Send</ion-label>
+</ion-button>
+
+<ion-button expand="full" class="button-skip clear-background">
+    <ion-label class="button-skip-label">Skip, trial</ion-label>
+    <ion-icon class="button-skip-label" name="arrow-round-forward"></ion-icon>
+</ion-button>

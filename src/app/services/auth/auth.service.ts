@@ -2,25 +2,30 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
-import { EnvService } from './env.service';
-import { User } from '../models/user';
+import { EnvService } from '../env/env.service';
+import { Router } from '@angular/router';
+import { User } from '../../models/user';
+import { ToastController } from '@ionic/angular';
+
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
   isLoggedIn = false;
   token: any;
+
   constructor(
     private http: HttpClient,
     private storage: NativeStorage,
     private env: EnvService,
+    private router: Router,
+    private toastController: ToastController
   ) { }
+
   login(email: string, password: string) {
     return this.http.post(this.env.API_URL + 'auth/login',
-        {
-            email,
-            password
-        }
+      {email, password}
     ).pipe(
       tap(token => {
         this.storage.setItem('token', token)
@@ -36,20 +41,18 @@ export class AuthService {
       }),
     );
   }
+
   register(fName: string, lName: string, email: string, password: string) {
     return this.http.post(this.env.API_URL + 'auth/register',
-        {
-            fName,
-            lName,
-            email,
-            password
-        }
+      {fName, lName, email, password}
     );
   }
+
   logout() {
     const headers = new HttpHeaders({
       Authorization: this.token.token_type + ' ' + this.token.access_token
     });
+
     return this.http.get(this.env.API_URL + 'auth/logout', { headers })
     .pipe(
       tap(data => {
@@ -60,10 +63,12 @@ export class AuthService {
       })
     );
   }
+
   user() {
     const headers = new HttpHeaders({
       Authorization: this.token.token_type + ' ' + this.token.access_token
     });
+
     return this.http.get<User>(this.env.API_URL + 'auth/user', { headers })
     .pipe(
       tap(user => {
@@ -71,10 +76,12 @@ export class AuthService {
       })
     );
   }
+
   getToken() {
     return this.storage.getItem('token').then(
       data => {
         this.token = data;
+
         if (this.token != null) {
           this.isLoggedIn = true;
         } else {

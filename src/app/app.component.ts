@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+
 import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { AuthService } from './services/auth.service';
-import { AlertService } from './services/alert.service';
+import { AuthService } from './services/auth/auth.service';
+import { AlertService } from './services/alert/alert.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html'
@@ -26,6 +28,7 @@ export class AppComponent {
       icon: 'list'
     },
   ];
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -36,19 +39,18 @@ export class AppComponent {
   ) {
     this.initializeApp();
   }
+
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
-      // Commenting splashScreen Hide, so it won't hide splashScreen before auth check
-      // this.splashScreen.hide();
       this.authService.getToken();
     });
   }
-  // When Logout Button is pressed
+
   logout() {
     this.authService.logout().subscribe(
       data => {
-        this.alertService.presentToast(data.message);
+        this.alertService.presentToast(data);
       },
       error => {
         console.log(error);

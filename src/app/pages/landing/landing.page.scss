@@ -1,0 +1,103 @@
+.image-page {
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 55.02%;
+
+    background: #FA7268;
+    mix-blend-mode: normal;
+    opacity: 0.3;
+}
+
+.label-text {
+    position: absolute;
+    height: 19px;
+    left: 4.27%;
+    right: 30.4%;
+    top: calc(50% - 19px/2 - 8px);
+
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+    color: #556080;
+}
+
+.phone-input {
+    position: absolute;
+    left: 4.27%;
+    width: 91.46%;
+    top: 52.62%;
+    bottom: 40.78%;
+    mix-blend-mode: normal;
+    // opacity: 0.15;
+    border: 1px solid  rgba(85, 96, 128, 0.15);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 20px rgba(23, 21, 48, 0.102546);
+    border-radius: 8px;
+}
+
+.phone-input-text {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+
+    --padding-start: 10px;
+    color: #556080;
+}
+
+.button-next {
+    position: absolute;
+    left: 4.27%;
+    width: 91.46%;
+    top: 85.76%;
+    bottom: 7.65%;
+
+    --background: #556080;
+    mix-blend-mode: normal;
+    opacity: 0.1;
+    border-radius: 5px;
+}
+
+.button-next-label {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    /* identical to box height */
+
+    text-align: center;
+
+    color: #FFFFFF;
+}
+
+.button-skip {
+    position: absolute;
+    height: 19px;
+    left: 30%;
+    width: 40%;
+    top: calc(85.76% + 19px + 45px);
+    border: 0px;
+}
+
+.button-skip-label {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+    color: #556080;
+}
+
+.clear-background {
+    --background: transparent;
+    --background-activated: transparent;
+}
