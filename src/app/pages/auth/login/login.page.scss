@@ -1,0 +1,61 @@
+.text-note{
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+}
+
+.phone-input{
+    position: absolute;
+    left: 4.27%;
+    width: 84.46%;
+    top: 17.24%;
+
+    mix-blend-mode: normal;
+    opacity: 0.15;
+    border: 1px solid #556080;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 20px rgba(23, 21, 48, 0.102546);
+    border-radius: 8px;
+}
+
+.pass-input{
+    position: absolute;
+    left: 4.27%;
+    width: 84.46%;
+    top: 26.24%;
+
+    mix-blend-mode: normal;
+    opacity: 0.15;
+    border: 1px solid #556080;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 20px rgba(23, 21, 48, 0.102546);
+    border-radius: 8px;
+}
+
+.login-button{
+    position: absolute;
+    left: 4.27%;
+    right: 4.27%;
+    top: 46.93%;
+    bottom: 46.48%;
+}
+
+.forgot-pass{
+    position: absolute;
+    height: 19px;
+    // left: 30.67%;
+    // right: 30.93%;
+    top: calc(50% - 19px/2 + 49px);
+
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+
+
+    color: #556080;
+}

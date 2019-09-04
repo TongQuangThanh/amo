@@ -2,10 +2,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
 import { NativeStorage } from '@ionic-native/native-storage/ngx';
-import { EnvService } from '../env/env.service';
-import { Router } from '@angular/router';
+import { EnvService } from '../env.service';
+// import { Router } from '@angular/router';
 import { User } from '../../models/user';
-import { ToastController } from '@ionic/angular';
+// import { ToastController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
@@ -18,14 +18,13 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private storage: NativeStorage,
-    private env: EnvService,
-    private router: Router,
-    private toastController: ToastController
+    // private router: Router,
+    // private toastController: ToastController
   ) { }
 
-  login(email: string, password: string) {
-    return this.http.post(this.env.API_URL + 'auth/login',
-      {email, password}
+  login(phone: string, password: string) {
+    return this.http.post(EnvService.login,
+      {phone, password}
     ).pipe(
       tap(token => {
         this.storage.setItem('token', token)
@@ -43,7 +42,7 @@ export class AuthService {
   }
 
   register(fName: string, lName: string, email: string, password: string) {
-    return this.http.post(this.env.API_URL + 'auth/register',
+    return this.http.post(EnvService.register,
       {fName, lName, email, password}
     );
   }
@@ -53,7 +52,7 @@ export class AuthService {
       Authorization: this.token.token_type + ' ' + this.token.access_token
     });
 
-    return this.http.get(this.env.API_URL + 'auth/logout', { headers })
+    return this.http.get(EnvService.logout, { headers })
     .pipe(
       tap(data => {
         this.storage.remove('token');
@@ -69,7 +68,7 @@ export class AuthService {
       Authorization: this.token.token_type + ' ' + this.token.access_token
     });
 
-    return this.http.get<User>(this.env.API_URL + 'auth/user', { headers })
+    return this.http.get<User>(EnvService.apartmentUser, { headers })
     .pipe(
       tap(user => {
         return user;

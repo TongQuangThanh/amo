@@ -1,7 +1,8 @@
 {
   "name": "AnhmoMobile",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }

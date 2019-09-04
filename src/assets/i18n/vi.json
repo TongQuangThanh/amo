@@ -2,5 +2,13 @@
     "LANDING": {
         "title": "vn Ionic 4 Multi Language Translation",
         "text": "vn This is random text to show translation in application"
+    },
+    "LOGIN":{
+        "title": "Login",
+        "note_string" : "Enter the password to login",
+        "placeholder_phone": "Phone number",
+        "placeholder_pass": "Password",
+        "button_login_label": "Login",
+        "forgot_pass_label": "Forgot your password?"
     }
 }

@@ -6,8 +6,8 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { LandingPage } from './landing.page';
-import { LoginPage } from '../auth/login/login.page';
-import { RegisterPage } from '../auth/register/register.page';
+// import { LoginPage } from '../auth/login/login.page';
+// import { RegisterPage } from '../auth/register/register.page';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
 const routes: Routes = [
@@ -25,7 +25,7 @@ const routes: Routes = [
     TranslateModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [LandingPage, LoginPage, RegisterPage],
-  entryComponents: [LoginPage, RegisterPage]
+  declarations: [LandingPage],
+  // entryComponents: [LoginPage, RegisterPage]
 })
 export class LandingPageModule {}

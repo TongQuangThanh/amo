@@ -3,7 +3,11 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  base: 'https://api.amoapp.net',
+  baseDomain: 'api.amoapp.net',
+  static: 'https://static.amoapp.net/',
+  message: 'https://messenger.amoapp.net',
 };
 
 /*
