@@ -9,11 +9,13 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { NativeStorage } from '@ionic-native/native-storage/ngx';
+import { HTTP_INTERCEPTORS, HttpClientModule, HttpClient } from '@angular/common/http';
+// import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateConfigService } from './translate-config.service';
+import { TokenInterceptor } from './inteceptors/inteceptors.service';
+import { NativePageTransitions } from '@ionic-native/native-page-transitions/ngx';
 
 export function LanguageLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -38,9 +40,17 @@ export function LanguageLoader(http: HttpClient) {
   providers: [
     StatusBar,
     SplashScreen,
+    NativePageTransitions,
     TranslateConfigService,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    NativeStorage
+    {
+      provide: RouteReuseStrategy,
+      useClass: IonicRouteStrategy },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenInterceptor,
+      multi: true
+    },
+    // NativeStorage
   ],
   bootstrap: [AppComponent]
 })

@@ -14,6 +14,7 @@ export const EnvService = {
   addApartment: environment.base + '/account/apartments',
   notification: environment.base + '/account/notification',
   articleCategory: environment.base + '/article-category',
+  articles: environment.base + '/article?',
 
   apartmentUser: '',
 };

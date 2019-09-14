@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { AlertService } from 'src/app/services/alert/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +14,6 @@ export class LoginPage implements OnInit {
   constructor(
     private authService: AuthService,
     private navCtrl: NavController,
-    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -33,7 +31,7 @@ export class LoginPage implements OnInit {
   login() {
     this.authService.login(this.phone, this.password).subscribe(
       data => {
-        this.alertService.presentToast('Logged In');
+        console.log('Logged In');
       },
       error => {
         console.log(error);

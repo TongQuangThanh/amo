@@ -1,11 +1,10 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs/operators';
-import { NativeStorage } from '@ionic-native/native-storage/ngx';
+// import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { EnvService } from '../env.service';
-// import { Router } from '@angular/router';
 import { User } from '../../models/user';
-// import { ToastController } from '@ionic/angular';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -17,25 +16,19 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private storage: NativeStorage,
-    // private router: Router,
-    // private toastController: ToastController
+    // private storage: NativeStorage,
   ) { }
 
   login(phone: string, password: string) {
+    const self = this;
     return this.http.post(EnvService.login,
       {phone, password}
     ).pipe(
-      tap(token => {
-        this.storage.setItem('token', token)
-        .then(
-          () => {
-            console.log('Token Stored');
-          },
-          error => console.error('Error storing item', error)
-        );
-        this.token = token;
-        this.isLoggedIn = true;
+      tap(async (token) => {
+        // await self.storage.setItem('token', token);
+        localStorage.setItem('token', token['token']);
+        self.token = token;
+        self.isLoggedIn = true;
         return token;
       }),
     );
@@ -55,7 +48,7 @@ export class AuthService {
     return this.http.get(EnvService.logout, { headers })
     .pipe(
       tap(data => {
-        this.storage.remove('token');
+        // this.storage.remove('token');
         this.isLoggedIn = false;
         delete this.token;
         return data;
@@ -77,20 +70,32 @@ export class AuthService {
   }
 
   getToken() {
-    return this.storage.getItem('token').then(
-      data => {
-        this.token = data;
+    this.token = localStorage.getItem('token');
+    // return this.storage.getItem('token').then(data => {
+    //   this.token = data;
+    if (this.token != null) {
+      this.isLoggedIn = true;
+    } else {
+      this.isLoggedIn = false;
+      this.token = null;
+    }
+    return this.token;
+    // });
+  }
 
-        if (this.token != null) {
-          this.isLoggedIn = true;
-        } else {
-          this.isLoggedIn = false;
-        }
-      },
-      error => {
-        this.token = null;
-        this.isLoggedIn = false;
-      }
+  getListArticle() {
+    const params = new HttpParams().
+      set('page', '1').
+      set('limit', '10').
+      set('category', '').
+      set('search', '').
+      set('_v', (new Date()).getTime().toString());
+    return this.http.get(EnvService.articles, {
+      params
+    }).pipe(
+      map(results => {
+        console.log(results);
+      })
     );
   }
 }

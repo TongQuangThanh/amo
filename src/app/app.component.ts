@@ -37,13 +37,14 @@ export class AppComponent {
     private navCtrl: NavController,
     private alertService: AlertService
   ) {
+    splashScreen.hide();
     this.initializeApp();
   }
 
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
-      this.authService.getToken();
+      // this.authService.getToken();
     });
   }
 

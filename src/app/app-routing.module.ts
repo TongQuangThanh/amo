@@ -12,14 +12,13 @@ const routes: Routes = [
   { path: 'login', loadChildren: './pages/auth/login/login.module#LoginPageModule' },
   { path: 'register', loadChildren: './pages/auth/register/register.module#RegisterPageModule' },
 
-  { path: 'dashboard', loadChildren: './pages/dashboard/dashboard.module#DashboardPageModule'},
-  { path: 'payment', loadChildren: './pages/payment/payment.module#PaymentPageModule' },
-  // { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' },
-  // { path: 'notification', loadChildren: './pages/notification/notification.module#NotificationPageModule' },
-  // { path: 'services', loadChildren: './pages/services/services.module#ServicesPageModule' },
-  // { path: 'requests', loadChildren: './pages/requests/requests.module#RequestsPageModule' },
-  // { path: 'home', loadChildren: './home/home.module#HomePageModule', canActivate: [AuthGuard] },
-  // { path: 'list', loadChildren: './list/list.module#ListPageModule', canActivate: [AuthGuard] },
+  { path: 'dashboard', loadChildren: './pages/dashboard/dashboard.module#DashboardPageModule', canActivate: [AuthGuard]},
+  { path: 'payment', loadChildren: './pages/payment/payment.module#PaymentPageModule', canActivate: [AuthGuard]},
+  { path:
+    'notificationDetail/:id',
+    loadChildren: './pages/notification-detail/notification-detail.module#NotificationDetailPageModule',
+    canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({

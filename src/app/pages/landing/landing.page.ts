@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, MenuController, Platform, NavController, ToastController } from '@ionic/angular';
+import { MenuController, NavController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { TranslateConfigService } from '../../translate-config.service';
 
 const PHONE_LENGTH_VN = 10;
@@ -19,8 +18,6 @@ export class LandingPage implements OnInit {
     private menu: MenuController,
     private authService: AuthService,
     private navCtrl: NavController,
-    private storage: NativeStorage,
-    private platform: Platform,
     private translateConfigService: TranslateConfigService
   ) {
     this.phoneNumber = '';
@@ -30,11 +27,15 @@ export class LandingPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.authService.getToken().then((data) => {
-      if (this.authService.isLoggedIn) {
-        this.navCtrl.navigateRoot('/dashboard');
-      }
-    });
+    // this.authService.getToken().then((data) => {
+    //   if (this.authService.isLoggedIn) {
+    //     this.navCtrl.navigateRoot('/dashboard/home');
+    //   }
+    // });
+    this.authService.getToken();
+    if (this.authService.isLoggedIn) {
+      this.navCtrl.navigateRoot('/dashboard/home');
+    }
   }
 
   ngOnInit() {

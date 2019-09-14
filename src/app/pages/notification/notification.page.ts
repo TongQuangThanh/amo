@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../services/api/api.service';
+import { NavController } from '@ionic/angular';
+import * as moment from 'moment';
+import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
 
 @Component({
   selector: 'app-notification',
@@ -6,10 +10,48 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./notification.page.scss'],
 })
 export class NotificationPage implements OnInit {
-
-  constructor() { }
-
+  listArticles: any;
+  currentPage: number;
+  numberRecordOnPage: number;
+  constructor(
+    private apiService: ApiService,
+    private navCtrl: NavController,
+    private nativePageTransitions: NativePageTransitions) { }
   ngOnInit() {
+    this.listArticles  = [];
+    this.currentPage = 1;
+    this.numberRecordOnPage = 10;
+    this.getArticles(this.currentPage, this.numberRecordOnPage, '', '', null);
+  }
+
+  getArticles(page: number, limit: number, category: string, search: string, event: any) {
+    this.apiService.getListArticle(page, limit, category, search)
+      .subscribe(result => {
+        this.listArticles = this.listArticles.concat(result.articles);
+        if (event) {
+          event.target.complete();
+        }
+    });
+  }
+
+  loadData(event) {
+    this.currentPage++;
+    this.getArticles(this.currentPage, this.numberRecordOnPage, '', '', event);
+  }
+
+  detailPage(event) {
+    console.log(event.currentTarget.id);
+    const options: NativeTransitionOptions = {
+      direction: 'up',
+      duration: 600
+     };
+
+    this.nativePageTransitions.slide(options);
+    this.navCtrl.navigateForward('/notificationDetail/' + event.currentTarget.id);
+  }
+
+  formatString(stringDate: string) {
+    return moment(stringDate).format('DD-MM-YYYY');
   }
 
 }

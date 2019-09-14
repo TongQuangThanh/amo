@@ -1,0 +1,32 @@
+.subContentText {
+    max-height: 3.6em;
+    line-height: 1.8em;
+    height: 75%;
+    white-space: normal;
+}
+
+.row-height-note {
+    height: 2.5em;
+}
+
+.panding-15-right{
+    padding-right: 15px;
+}
+
+.content-two-line{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-height: 24px;
+    max-height: 50px;
+    -webkit-box-orient: vertical
+}
+
+.title-text-header {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 33px;
+    padding-left: 10px;
+}
