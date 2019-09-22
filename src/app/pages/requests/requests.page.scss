@@ -1,0 +1,89 @@
+.list-request-all-item {
+    margin: 16px;
+    --background: #FFFFFF;
+    box-shadow: 0px 0px 20px rgba(23, 21, 48, 0.102546);
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+.list-view-custom {
+    margin-bottom: 5px;
+}
+
+.title-request-all-item {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    height: 44px;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: block;
+    display: -webkit-box;
+
+    color: #556080;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.node-request-all-item {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    display: block;
+    color: #BBBFCC;
+}
+
+.avatar-done {
+    width: 50px;
+    margin-left: -7px;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 14px;
+    /* identical to box height */
+
+    text-align: center;
+
+    color: #01BCC4;
+}
+
+.avatar-out-of-date {
+    width: 50px;
+    margin-left: -7px;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 14px;
+    /* identical to box height */
+
+    text-align: center;
+
+    color: #FA7268;
+}
+
+.avatar-paying {
+    width: 50px;
+    margin-left: -7px;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 14px;
+    /* identical to box height */
+
+    text-align: center;
+
+    color: #FAC440;
+}
+
+.custom-infinite-scroll {
+    min-height: 5px;
+}

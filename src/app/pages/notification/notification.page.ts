@@ -3,6 +3,7 @@ import { ApiService } from '../../services/api/api.service';
 import { NavController } from '@ionic/angular';
 import * as moment from 'moment';
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
+import { LoadingController } from '@ionic/angular';
 
 @Component({
   selector: 'app-notification',
@@ -13,7 +14,10 @@ export class NotificationPage implements OnInit {
   listArticles: any;
   currentPage: number;
   numberRecordOnPage: number;
+  loaderToShow: any;
+
   constructor(
+    public loadingController: LoadingController,
     private apiService: ApiService,
     private navCtrl: NavController,
     private nativePageTransitions: NativePageTransitions) { }
@@ -21,6 +25,7 @@ export class NotificationPage implements OnInit {
     this.listArticles  = [];
     this.currentPage = 1;
     this.numberRecordOnPage = 10;
+    this.showLoader();
     this.getArticles(this.currentPage, this.numberRecordOnPage, '', '', null);
   }
 
@@ -31,6 +36,7 @@ export class NotificationPage implements OnInit {
         if (event) {
           event.target.complete();
         }
+        this.loadingController.dismiss();
     });
   }
 
@@ -48,6 +54,14 @@ export class NotificationPage implements OnInit {
 
     this.nativePageTransitions.slide(options);
     this.navCtrl.navigateForward('/notificationDetail/' + event.currentTarget.id);
+  }
+
+  showLoader() {
+    this.loaderToShow = this.loadingController.create({
+      message: 'Loading content'
+    }).then((res) => {
+      res.present();
+    });
   }
 
   formatString(stringDate: string) {

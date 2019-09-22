@@ -1,0 +1,206 @@
+.balance-content{
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    top: 30px;
+    height: 140px;
+
+    --background: #FFFFFF;
+    box-shadow: 0px 0px 20px rgba(23, 21, 48, 0.102546);
+    border-radius: 8px;
+}
+
+.title-blance-content {
+    position: absolute;
+    height: 22px;
+    left: 16px;
+    display: flex;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+
+    color: #556080;
+}
+
+.total-cash-blance-content {
+    position: absolute;
+    height: 22px;
+    right: 16px;
+    display: flex;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    color: #556080;
+}
+.total-cash-blance-content-unit {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 28px;
+    color: #556080;
+    margin-left: 5px;
+}
+
+.list-payment-content {
+    top: 186px;
+    overflow: auto;
+    position: absolute;
+}
+
+.list-payment-item {
+    margin: 16px;
+    --background: #FFFFFF;
+    box-shadow: 0px 0px 20px rgba(23, 21, 48, 0.102546);
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
+}
+
+.button-pay-now {
+    background: #FA7268;
+    border-radius: 5px;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    text-align: center;
+    color: #FFFFFF;
+    width: 5.2em;
+    height: 1.6em;
+}
+
+.title-payment-item {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+
+
+    color: #556080;
+}
+
+.total-payment-item {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+    
+    
+    color: #556080;
+}
+
+.node-payment-item {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    display: block;
+    color: #BBBFCC;
+}
+
+.custom-infinite-scroll {
+    min-height: 5px;
+}
+
+.list-view-custom {
+    margin-bottom: 5px;
+}
+
+.avatar-done {
+    width: 50px;
+    margin-left: -7px;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 14px;
+    /* identical to box height */
+
+    text-align: center;
+
+    color: #01BCC4;
+}
+
+.avatar-out-of-date {
+    width: 50px;
+    margin-left: -7px;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 14px;
+    /* identical to box height */
+
+    text-align: center;
+
+    color: #FA7268;
+}
+
+.avatar-paying {
+    width: 50px;
+    margin-left: -7px;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 10px;
+    line-height: 14px;
+    /* identical to box height */
+
+    text-align: center;
+
+    color: #FAC440;
+}
+
+.function-content-button {
+    position: absolute;
+    top:50%;
+    width:100%;
+}
+
+.div-avatar-content-big {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 33%;
+    height: 100%;
+}
+
+.image-caption-big {
+    /* Make the caption a block so it occupies its own line. */
+    display: block;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    margin-top: 5px;
+    font-size: 0.8em;
+    line-height: 1.0em;
+    text-align: center;
+    color: #556080;
+}
+
+.img-avatar-big {
+    height: 35px;
+}
+
+.clear-balance-rect {
+    height: 2px;
+    width: 80%;
+    background: #F5F5F5;
+    border-radius: 10px;
+    position: absolute;
+    top: 40%;
+    left: 10%;
+}

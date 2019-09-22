@@ -1,9 +1,29 @@
-<ion-header>
+<ion-header no-border>
   <ion-toolbar>
-    <ion-title>requests</ion-title>
+    <ion-title>Requests</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-list class="list-view-custom">
+      <ion-item class="list-request-all-item" lines="none" *ngFor="let item of listRequestAll" (click)="detailPage($event)" id="{{item._id}}">
+        <ion-avatar slot="start">
+          <img src="https://ionicframework.com/docs/demos/api/list/avatar-finn.png">
+          <ion-label class="avatar-done">Done</ion-label>
+        </ion-avatar>
+        <ion-label>
+          <ion-label class="title-request-all-item ion-text-wrap">{{item.title}}</ion-label>
+          <ion-label class="node-request-all-item">
+            <p class="ion-float-left">{{formatString(item.updatedAt)}}</p>
+          </ion-label>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll threshold="50px" (ionInfinite)="loadData($event)">
+      <ion-infinite-scroll-content class="custom-infinite-scroll"
+        loadingSpinner="bubbles"
+        loadingText="Loading more data...">
+      </ion-infinite-scroll-content>
+    </ion-infinite-scroll>
 </ion-content>
+

@@ -10,9 +10,9 @@
 .amountPay-content{
     position: absolute;
     left: 4.27%;
-    width: 95.73%;
+    width: 91.46%;
     top: 9.13%;
-    height: 23.33%;
+    height: 19.33%;
 
     background: #FFFFFF;
     box-shadow: 0px 0px 20px rgba(23, 21, 48, 0.102546);
@@ -22,11 +22,199 @@
 .function-content{
     position: absolute;
     left: 4.27%;
-    width: 95.73%;
-    top: 26.98%;
-    height: 35.09%;
-
+    width: 91.46%;
+    top: calc(28.46% + 16px);
+    height: 8.11%;
+    padding-top: 4px;
     background: #FFFFFF;
     box-shadow: 0px 0px 20px rgba(23, 21, 48, 0.102546);
     border-radius: 8px;
+}
+
+.new-content {
+    position: absolute;
+    left: 4.27%;
+    width: 91.46%;
+    top: calc(36.51% + 32px);
+}
+
+.title-top-new {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    color: #556080;
+}
+
+
+.subContentText {
+    max-height: 3.6em;
+    line-height: 1.8em;
+    height: 75%;
+    white-space: normal;
+}
+
+.row-height-note {
+    height: 2.5em;
+}
+
+.panding-15-right{
+    padding-right: 15px;
+}
+
+.content-two-line{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-height: 1.1em;
+    max-height: 2.2em;
+    -webkit-box-orient: vertical
+}
+
+.title-text-header {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 33px;
+    padding-left: 10px;
+}
+
+.card-content-custom {
+    -webkit-margin-start: 0px;
+    margin-inline-start: 0px;
+    -webkit-margin-end: 0px;
+    margin-inline-end: 0px;
+}
+
+.list-home-content {
+    --offset-top: -16px !important;
+}
+
+.list-view-custom {
+    padding-top: 0px;
+}
+
+.div-avatar-content {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 24%;
+    height: 100%;
+}
+
+.img-avatar {
+    width: 30px;
+    height: 64%;
+}
+
+.img-avatar-big {
+    height: 40px;
+}
+
+.image-caption {
+    /* Make the caption a block so it occupies its own line. */
+    display: block;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 0.6em;
+    line-height: 1.2em;
+    text-align: center;
+    color: #556080;
+}
+
+.clear-avatar-rect {
+    width: 1px;
+    height: 100%;
+    background: #F5F5F5;
+    box-shadow: 0px 0px 20px rgba(23, 21, 48, 0.102546);
+    border-radius: 8px;
+}
+
+.function-content-button {
+    position: absolute;
+    top:50%;
+    width:100%;
+}
+
+.div-avatar-content-big {
+    vertical-align: top;
+    display: inline-block;
+    text-align: center;
+    width: 50%;
+    height: 100%;
+}
+
+.image-caption-big {
+    /* Make the caption a block so it occupies its own line. */
+    display: block;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    margin-top: 5px;
+    font-size: 0.8em;
+    line-height: 1.0em;
+    text-align: center;
+    color: #556080;
+}
+
+
+.balance-content{
+    position: absolute;
+    left: 16px;
+    right: 16px;
+    top: 30px;
+    height: 140px;
+
+    --background: #FFFFFF;
+    box-shadow: 0px 0px 20px rgba(23, 21, 48, 0.102546);
+    border-radius: 8px;
+}
+
+.title-blance-content {
+    position: absolute;
+    height: 22px;
+    left: 16px;
+    display: flex;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+
+    color: #556080;
+}
+
+.total-cash-blance-content {
+    position: absolute;
+    height: 22px;
+    right: 16px;
+    display: flex;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    color: #556080;
+}
+.total-cash-blance-content-unit {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 28px;
+    color: #556080;
+    margin-left: 5px;
+}
+
+.clear-balance-rect {
+    height: 2px;
+    width: 80%;
+    background: #F5F5F5;
+    border-radius: 10px;
+    position: absolute;
+    top: 36%;
+    left: 10%;
 }

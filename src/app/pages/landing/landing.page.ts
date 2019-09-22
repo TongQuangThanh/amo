@@ -33,6 +33,7 @@ export class LandingPage implements OnInit {
     //   }
     // });
     this.authService.getToken();
+    console.log(1111);
     if (this.authService.isLoggedIn) {
       this.navCtrl.navigateRoot('/dashboard/home');
     }

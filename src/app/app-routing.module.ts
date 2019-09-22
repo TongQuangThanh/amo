@@ -13,12 +13,12 @@ const routes: Routes = [
   { path: 'register', loadChildren: './pages/auth/register/register.module#RegisterPageModule' },
 
   { path: 'dashboard', loadChildren: './pages/dashboard/dashboard.module#DashboardPageModule', canActivate: [AuthGuard]},
-  { path: 'payment', loadChildren: './pages/payment/payment.module#PaymentPageModule', canActivate: [AuthGuard]},
+  // { path: 'payment', loadChildren: './pages/payment/payment.module#PaymentPageModule', canActivate: [AuthGuard]},
   { path:
     'notificationDetail/:id',
     loadChildren: './pages/notification-detail/notification-detail.module#NotificationDetailPageModule',
     canActivate: [AuthGuard]
-  },
+  }
 ];
 
 @NgModule({
