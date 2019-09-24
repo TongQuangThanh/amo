@@ -9,8 +9,8 @@
 
 <ion-content padding>
   <p class="text-note">{{ 'LOGIN.note_string' | translate:params }}</p>
-    <ion-input class="phone-input" [(ngModel)]="phone" type="tel" name="phone"></ion-input>
-    <ion-input class="pass-input" [(ngModel)]="password" type="password" name="password"></ion-input>
+    <ion-input class="phone-input phone-input-text" [(ngModel)]="phone" type="tel" name="phone"></ion-input>
+    <ion-input class="pass-input pass-input-text" [(ngModel)]="password" type="password" name="password"></ion-input>
     <ion-button (click)="login()" class="button-common login-button" expand="full" [ngClass]="!checkIsEnabled() ? 'button-common login-button' : 'button-common login-button button-common-active'" [disabled]="!checkIsEnabled()">{{ 'LOGIN.button_login_label' | translate:params }}</ion-button>
   <p text-center class="forgot-pass">{{ 'LOGIN.forgot_pass_label' | translate:params }}</p>
 </ion-content>

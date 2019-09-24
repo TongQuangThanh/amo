@@ -16,6 +16,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateConfigService } from './translate-config.service';
 import { TokenInterceptor } from './inteceptors/inteceptors.service';
 import { NativePageTransitions } from '@ionic-native/native-page-transitions/ngx';
+import { OneSignal } from '@ionic-native/onesignal/ngx';
 
 export function LanguageLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -42,6 +43,7 @@ export function LanguageLoader(http: HttpClient) {
     SplashScreen,
     NativePageTransitions,
     TranslateConfigService,
+    OneSignal,
     {
       provide: RouteReuseStrategy,
       useClass: IonicRouteStrategy },

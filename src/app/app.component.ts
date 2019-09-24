@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthService } from './services/auth/auth.service';
 import { AlertService } from './services/alert/alert.service';
+import { OneSignal } from '@ionic-native/onesignal/ngx';
 
 @Component({
   selector: 'app-root',
@@ -35,7 +36,8 @@ export class AppComponent {
     private statusBar: StatusBar,
     private authService: AuthService,
     private navCtrl: NavController,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private oneSignal: OneSignal
   ) {
     splashScreen.hide();
     this.initializeApp();
@@ -44,8 +46,28 @@ export class AppComponent {
   initializeApp() {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
+      this.splashScreen.hide();
+      // if (this.platform.is('cordova')) {
+      this.setupPushOneSign();
+      //
       // this.authService.getToken();
     });
+  }
+
+  setupPushOneSign() {
+    this.oneSignal.startInit('712abf97-1cbe-442b-8c16-d10e29e292a4');
+
+    this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+
+    this.oneSignal.handleNotificationReceived().subscribe(() => {
+    // do something when notification is received
+    });
+
+    this.oneSignal.handleNotificationOpened().subscribe(() => {
+      // do something when a notification is opened
+    });
+
+    this.oneSignal.endInit();
   }
 
   logout() {

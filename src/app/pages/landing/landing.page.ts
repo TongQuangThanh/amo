@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuController, NavController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { TranslateConfigService } from '../../translate-config.service';
+import { NavigationExtras } from '@angular/router';
 
 const PHONE_LENGTH_VN = 10;
 
@@ -32,11 +33,10 @@ export class LandingPage implements OnInit {
     //     this.navCtrl.navigateRoot('/dashboard/home');
     //   }
     // });
-    this.authService.getToken();
-    console.log(1111);
-    if (this.authService.isLoggedIn) {
-      this.navCtrl.navigateRoot('/dashboard/home');
-    }
+    // this.authService.getToken();
+    // if (this.authService.isLoggedIn) {
+    //   this.navCtrl.navigateRoot('/dashboard/home');
+    // }
   }
 
   ngOnInit() {
@@ -51,7 +51,12 @@ export class LandingPage implements OnInit {
   }
 
   ChangeLogin() {
-    this.navCtrl.navigateForward('/login');
+    const navigationExtras: NavigationExtras = {
+        queryParams: {
+          phoneNumber : this.phoneNumber
+        }
+    };
+    this.navCtrl.navigateForward(['/login'], navigationExtras);
   }
 
   languageChanged() {

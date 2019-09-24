@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">AmoApp</string>
     <string name="title_activity_main">AmoApp</string>
-    <string name="package_name">io.ionic.starter</string>
-    <string name="fileprovider_authority">io.ionic.starter.fileprovider</string>
-    <string name="custom_url_scheme">io.ionic.starter</string>
+    <string name="package_name">vn.amtechcom.anhmo</string>
+    <string name="fileprovider_authority">vn.amtechcom.anhmo.fileprovider</string>
+    <string name="custom_url_scheme">vn.amtechcom.anhmo</string>
 </resources>
