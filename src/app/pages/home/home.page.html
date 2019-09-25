@@ -171,6 +171,14 @@
     <div class="new-content">
         <ion-label class="title-top-new">Top news</ion-label>
         <ion-content class="list-home-content" [style.height.px]="heightScreen">
+            <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+                <ion-refresher-content
+                pullingIcon="arrow-dropdown"
+                pullingText="Pull to refresh"
+                refreshingSpinner="circles"
+                refreshingText="Refreshing...">
+                </ion-refresher-content>
+            </ion-refresher>
             <ion-list class="list-view-custom">
                 <ion-card button class="card-content-custom" *ngFor="let item of listNews" (click)="detailPage($event)" id="{{item._id}}">
                     <ion-img src="{{item.thumbnail}}"></ion-img>

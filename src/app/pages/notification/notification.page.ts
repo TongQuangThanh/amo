@@ -68,4 +68,13 @@ export class NotificationPage implements OnInit {
     return moment(stringDate).format('DD-MM-YYYY');
   }
 
+  doRefresh(event) {
+    console.log('Begin async operation');
+
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      event.target.complete();
+    }, 2000);
+  }
+
 }

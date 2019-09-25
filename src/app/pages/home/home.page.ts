@@ -35,23 +35,36 @@ export class HomePage implements OnInit {
     this.currentPage = 1;
     this.numberRecordOnPage = 10;
     this.showLoader();
-    this.getNews(this.currentPage, this.numberRecordOnPage, '', '', null);
+    this.getNews(this.currentPage, this.numberRecordOnPage, '', '', null, false);
   }
 
-  getNews(page: number, limit: number, category: string, search: string, event: any) {
+  getNews(page: number, limit: number, category: string, search: string, event: any, isRefresh: boolean) {
     this.apiService.getPosts(page, limit, category, search)
       .subscribe(result => {
-        this.listNews = this.listNews.concat(result.posts);
+        if (isRefresh) {
+          this.listNews = result.posts;
+        } else {
+          this.listNews = this.listNews.concat(result.posts);
+        }
         if (event) {
           event.target.complete();
         }
-        this.loadingController.dismiss();
+
+        if (!isRefresh) {
+          this.loadingController.dismiss();
+        }
     });
   }
 
   loadData(event) {
     this.currentPage++;
-    this.getNews(this.currentPage, this.numberRecordOnPage, '', '', event);
+    this.getNews(this.currentPage, this.numberRecordOnPage, '', '', event, false);
+  }
+
+  doRefresh(event) {
+    this.currentPage = 1;
+    this.numberRecordOnPage = 10;
+    this.getNews(this.currentPage, this.numberRecordOnPage, '', '', event, true);
   }
 
   detailPage(event) {
