@@ -33,10 +33,10 @@ export class LandingPage implements OnInit {
     //     this.navCtrl.navigateRoot('/dashboard/home');
     //   }
     // });
-    // this.authService.getToken();
-    // if (this.authService.isLoggedIn) {
-    //   this.navCtrl.navigateRoot('/dashboard/home');
-    // }
+    this.authService.getToken();
+    if (this.authService.isLoggedIn) {
+      this.navCtrl.navigateRoot('/dashboard/home');
+    }
   }
 
   ngOnInit() {

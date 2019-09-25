@@ -7,11 +7,12 @@
 }
 
 .phone-input{
-    position: absolute;
-    left: 4.27%;
-    width: 84.46%;
-    top: 17.24%;
+    // position: absolute;
+    // left: 4.27%;
+    // width: 84.46%;
+    // top: 17.24%;
     height: 3.5em;
+    // height : 40px;
     mix-blend-mode: normal;
     // opacity: 0.15;
     border: 1px solid  rgba(85, 96, 128, 0.15);
@@ -28,15 +29,15 @@
     line-height: 19px;
     /* identical to box height */
 
-    --padding-start: 10px;
+    --padding-start: 10px !important;
     color: #556080;
 }
 
 .pass-input{
-    position: absolute;
-    left: 4.27%;
-    width: 84.46%;
-    top: calc(17.24% + 3.5em + 16px);
+    // position: absolute;
+    // left: 4.27%;
+    // width: 84.46%;
+    // top: calc(17.24% + 3.5em + 16px);
     font-size: 14px;
     height: 3.5em;
     mix-blend-mode: normal;
@@ -54,25 +55,23 @@
     font-size: 14px;
     line-height: 19px;
     /* identical to box height */
-    --padding-start: 10px;
+    --padding-start: 10px !important;
 
     color: #CCCFD8;
 }
 
 .login-button{
-    position: absolute;
-    left: 4.27%;
-    right: 4.27%;
-    top: 46.93%;
-    // bottom: 46.48%;
+    height: 3.5em;
+    margin: 0px 10px;
+    width: 100%;
 }
 
 .forgot-pass{
-    position: absolute;
+    // position: absolute;
     height: 19px;
     // left: 30.67%;
     // right: 30.93%;
-    top: calc(50% - 19px/2 + 49px);
+    // top: calc(50% - 19px/2 + 49px);
 
     font-family: Nunito Sans;
     font-style: normal;
@@ -83,4 +82,12 @@
 
 
     color: #556080;
+}
+
+.padding-content {
+    padding-top: 50px;
+}
+
+.padding-10 {
+    padding: 10px;
 }

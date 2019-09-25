@@ -12,7 +12,6 @@
 		0C1D8E43233A85AF00F65AF6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C1D8E42233A85AF00F65AF6 /* UIKit.framework */; };
 		0C1D8E47233A860700F65AF6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C1D8E46233A860700F65AF6 /* SystemConfiguration.framework */; };
 		0C1D8E4C233A87D300F65AF6 /* OneSignal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C1D8E44233A85F700F65AF6 /* OneSignal.framework */; };
-		0C1D8E4D233A87D300F65AF6 /* OneSignal.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0C1D8E44233A85F700F65AF6 /* OneSignal.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		0C1D8E50233A881600F65AF6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0C1D8E4F233A881600F65AF6 /* WebKit.framework */; };
 		2FAD9763203C412B000D30F8 /* config.xml in Resources */ = {isa = PBXBuildFile; fileRef = 2FAD9762203C412B000D30F8 /* config.xml */; };
 		50379B232058CBB4000EE86E /* capacitor.config.json in Resources */ = {isa = PBXBuildFile; fileRef = 50379B222058CBB4000EE86E /* capacitor.config.json */; };
@@ -44,17 +43,6 @@
 				0C1D8E3D233A846D00F65AF6 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		0C1D8E4E233A87D300F65AF6 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				0C1D8E4D233A87D300F65AF6 /* OneSignal.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -181,7 +169,6 @@
 				0C1D8E32233A846D00F65AF6 /* Sources */,
 				0C1D8E33233A846D00F65AF6 /* Frameworks */,
 				0C1D8E34233A846D00F65AF6 /* Resources */,
-				0C1D8E4E233A87D300F65AF6 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

@@ -1,4 +1,4 @@
-<ion-header translucent>
+<ion-header translucent no-border>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
@@ -8,9 +8,21 @@
 </ion-header>
 
 <ion-content padding>
-  <p class="text-note">{{ 'LOGIN.note_string' | translate:params }}</p>
-    <ion-input class="phone-input phone-input-text" [(ngModel)]="phone" type="tel" name="phone"></ion-input>
-    <ion-input class="pass-input pass-input-text" [(ngModel)]="password" type="password" name="password"></ion-input>
-    <ion-button (click)="login()" class="button-common login-button" expand="full" [ngClass]="!checkIsEnabled() ? 'button-common login-button' : 'button-common login-button button-common-active'" [disabled]="!checkIsEnabled()">{{ 'LOGIN.button_login_label' | translate:params }}</ion-button>
-  <p text-center class="forgot-pass">{{ 'LOGIN.forgot_pass_label' | translate:params }}</p>
+  <ion-list>
+    <ion-item lines="none" class="padding-10">
+      <p class="text-note">{{ 'LOGIN.note_string' | translate:params }}</p>
+    </ion-item>
+    <ion-item lines="none" class="padding-10">
+      <ion-input class="phone-input phone-input-text" [(ngModel)]="phone" type="tel" name="phone"></ion-input>
+    </ion-item>
+    <ion-item lines="none" class="padding-10">
+      <ion-input class="pass-input pass-input-text" [(ngModel)]="password" type="password" name="password"></ion-input>
+    </ion-item>
+    <ion-item lines="none" class="padding-content">
+      <ion-button (click)="login()" class="button-common login-button" expand="full" [ngClass]="!checkIsEnabled() ? 'button-common login-button' : 'button-common login-button button-common-active'" [disabled]="!checkIsEnabled()">{{ 'LOGIN.button_login_label' | translate:params }}</ion-button>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label text-center class="forgot-pass">{{ 'LOGIN.forgot_pass_label' | translate:params }}</ion-label>
+    </ion-item>
+  </ion-list>
 </ion-content>
