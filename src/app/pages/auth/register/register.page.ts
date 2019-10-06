@@ -3,7 +3,7 @@ import { ModalController, ToastController, NavController } from '@ionic/angular'
 import { LoginPage } from '../login/login.page';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { NgForm } from '@angular/forms';
-import { NativeStorage } from '@ionic-native/native-storage/ngx';
+// import { NativeStorage } from '@ionic-native/native-storage/ngx';
 import { AlertService } from 'src/app/services/alert/alert.service';
 
 @Component({
