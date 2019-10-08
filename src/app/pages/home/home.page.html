@@ -183,10 +183,10 @@
                 <ion-card button class="card-content-custom" *ngFor="let item of listNews" (click)="detailPage($event)" id="{{item._id}}">
                     <ion-img src="{{item.thumbnail}}"></ion-img>
                     <ion-item lines="none" style="margin-top: 10px;">
-                        <ion-card-title class="ion-text-wrap content-two-line">{{item.title}}</ion-card-title>
+                        <ion-card-title class="ion-text-wrap content-two-line content-title">{{item.title}}</ion-card-title>
                     </ion-item>
                     <ion-item lines="none">
-                        <ion-label class="ion-text-wrap content-two-line">{{item.excerpt}}</ion-label>
+                        <ion-label class="ion-text-wrap content-two-line content-sub">{{item.excerpt}}</ion-label>
                     </ion-item>
                     
                 </ion-card>

@@ -22,7 +22,7 @@ export class LoginPage implements OnInit {
     this.route.queryParams.subscribe(params => {
       console.log(params);
       this.phone = params.phoneNumber;
-  });
+    });
   }
 
   checkIsEnabled() {

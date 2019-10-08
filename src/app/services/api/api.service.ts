@@ -25,6 +25,12 @@ export class ApiService {
     );
   }
 
+  getArticleDetail(articleID: string): Observable<any> {
+    return this.http.get(EnvService.articlesDetail + articleID).pipe(
+      map(results => results)
+    );
+  }
+
   getListPaymentLog(page: number, limit: number, category: string, search: string): Observable<any> {
     const params = new HttpParams().
       set('page', page.toString()).

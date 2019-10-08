@@ -46,3 +46,26 @@
 ion-refresher { 
     z-index: 0;
 }
+
+.text-node {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+
+    color: #BBBFCC;
+}
+
+.padding-none {
+    padding: 0;
+}
+
+.margin-none {
+    margin: 0;
+}
+
+.padding-left-right-card {
+    padding: 0px 16px 0px 16px;
+    display: inline-block;
+}
