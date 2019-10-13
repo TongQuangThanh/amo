@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api/api.service';
 import { NavController } from '@ionic/angular';
-import * as moment from 'moment';
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
 import { LoadingController } from '@ionic/angular';
+import { ConstService } from '../../utils/const.service'
+import { UtilsService } from '../../utils/utils.service'
 
 @Component({
   selector: 'app-notification',
@@ -24,12 +25,12 @@ export class NotificationPage implements OnInit {
   ngOnInit() {
     this.listArticles  = [];
     this.currentPage = 1;
-    this.numberRecordOnPage = 10;
-    this.showLoader();
+    this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
     this.getArticles(this.currentPage, this.numberRecordOnPage, '', '', null);
   }
 
   getArticles(page: number, limit: number, category: string, search: string, event: any) {
+    this.showLoader();
     this.apiService.getListArticle(page, limit, category, search)
       .subscribe(result => {
         this.listArticles = this.listArticles.concat(result.articles);
@@ -46,13 +47,7 @@ export class NotificationPage implements OnInit {
   }
 
   detailPage(event) {
-    console.log(event.currentTarget.id);
-    const options: NativeTransitionOptions = {
-      direction: 'up',
-      duration: 600
-     };
-
-    this.nativePageTransitions.slide(options);
+    this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
     this.navCtrl.navigateForward('/notificationDetail/' + event.currentTarget.id);
   }
 
@@ -65,16 +60,13 @@ export class NotificationPage implements OnInit {
   }
 
   formatString(stringDate: string) {
-    return moment(stringDate).format('DD-MM-YYYY');
+    return UtilsService.formatString(stringDate);
   }
 
   doRefresh(event) {
-    console.log('Begin async operation');
-
-    setTimeout(() => {
-      console.log('Async operation has ended');
-      event.target.complete();
-    }, 2000);
+    this.currentPage = 1;
+    this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
+    this.getArticles(this.currentPage, this.numberRecordOnPage, '', '', event);
   }
 
 }

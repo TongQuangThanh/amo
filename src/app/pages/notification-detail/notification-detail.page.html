@@ -1,15 +1,11 @@
-<!-- <ion-header translucent no-border>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/" text="back1" color="danger"></ion-back-button>
-    </ion-buttons>
-    <ion-title>awdawdawd</ion-title>
-  </ion-toolbar>
-</ion-header> -->
-
 <ion-content>
-  <ion-img src="https://anhmo.s3.ap-southeast-1.amazonaws.com/posts/40470bba5527eef902877b9638504c1f"></ion-img>
-  <ion-card button (click)="detailPage($event)" class="custom-card margin-none">
+  <div class="btn-back-custom" (click)="backScreen($event)">
+    <svg width="21" height="18" viewBox="0 0 14 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M13.1828 5.19512C13.4124 5.19512 13.6089 5.28049 13.7721 5.45122C13.9353 5.62195 14.0108 5.82317 13.9987 6.05488C13.9867 6.2622 13.902 6.43902 13.7449 6.58537C13.5877 6.73171 13.4064 6.80488 13.2009 6.80488H2.81063L6.72738 10.6098C6.88453 10.7683 6.96613 10.9573 6.97218 11.1768C6.97822 11.3963 6.90267 11.5854 6.74551 11.7439C6.58836 11.9146 6.39494 12 6.16525 12C5.95974 12 5.77841 11.9268 5.62126 11.7805L0.253863 6.56707C0.0846203 6.40854 0 6.21646 0 5.99085C0 5.76524 0.0846203 5.57317 0.253863 5.41463L5.58499 0.219512C5.75424 0.07317 5.94765 0 6.16525 0C6.38285 0 6.5672 0.0823162 6.71831 0.246951C6.86942 0.411586 6.94498 0.603657 6.94498 0.823171C6.94498 1.04268 6.86035 1.23171 6.69111 1.39024L2.77436 5.19512H13.1828Z" fill="#556080"/>
+    </svg>
+</div>
+  <ion-img src="{{thumbnail}}"></ion-img>
+  <ion-card button class="custom-card margin-none">
       <ion-item lines="none" style="margin-top: 10px;">
           <ion-card-title class="ion-text-wrap content-two-line">{{articleTitle}}</ion-card-title>
       </ion-item>
@@ -23,8 +19,8 @@
                 <ion-label>Luke Hayes</ion-label>
             </ion-col>
             <ion-col class="ion-float-right padding-none">
-              <ion-label class="ion-float-right"><ion-icon name="share"></ion-icon> aw</ion-label>
-              <ion-label class="ion-float-right panding-15-right"><ion-icon name="chatboxes"></ion-icon> awd</ion-label>
+              <ion-label class="ion-float-right panding-15-right margin-left-10"><ion-icon name="share"></ion-icon> {{sharesCount}}</ion-label>
+              <ion-label class="ion-float-right"><ion-icon name="eye"></ion-icon> {{readsCount}}</ion-label>
             </ion-col>
           </ion-row>
         </ion-grid>

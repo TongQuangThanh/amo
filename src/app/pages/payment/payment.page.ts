@@ -3,7 +3,8 @@ import { Platform, NavController } from '@ionic/angular';
 import { ApiService } from '../../services/api/api.service';
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
 import { LoadingController } from '@ionic/angular';
-import * as moment from 'moment';
+import { ConstService } from '../../utils/const.service'
+import { UtilsService } from '../../utils/utils.service'
 
 @Component({
   selector: 'app-payment',
@@ -33,12 +34,12 @@ export class PaymentPage implements OnInit {
   ngOnInit() {
     this.listPaymentBills  = [];
     this.currentPage = 1;
-    this.numberRecordOnPage = 10;
-    this.showLoader();
-    this.getPaymentLogs(this.currentPage, this.numberRecordOnPage, '', '', null);
+    this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
+    this.getPaymentLogs(this.currentPage, this.numberRecordOnPage, '', '', null, false);
   }
 
-  getPaymentLogs(page: number, limit: number, category: string, search: string, event: any) {
+  getPaymentLogs(page: number, limit: number, category: string, search: string, event: any, isRefresh: boolean) {
+    this.showLoader();
     this.apiService.getListPaymentLog(page, limit, category, search)
       .subscribe(result => {
         this.listPaymentBills = this.listPaymentBills.concat(result.paymentBills);
@@ -51,7 +52,7 @@ export class PaymentPage implements OnInit {
 
   loadData(event) {
     this.currentPage++;
-    this.getPaymentLogs(this.currentPage, this.numberRecordOnPage, '', '', event);
+    this.getPaymentLogs(this.currentPage, this.numberRecordOnPage, '', '', event, false);
   }
 
   detailPage(event) {
@@ -71,7 +72,13 @@ export class PaymentPage implements OnInit {
     });
   }
 
+  doRefresh(event) {
+    this.currentPage = 1;
+    this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
+    this.getPaymentLogs(this.currentPage, this.numberRecordOnPage, '', '', event, true);
+  }
+
   formatString(stringDate: string) {
-    return moment(stringDate).format('DD-MM-YYYY');
+    return UtilsService.formatString(stringDate);
   }
 }

@@ -59,6 +59,58 @@ export class ApiService {
     );
   }
 
+  getListServiceGroup(): Observable<any> {
+    const params = new HttpParams().
+      set('_v', (new Date()).getTime().toString());
+    return this.http.get(EnvService.serviceGroup, {
+      params
+    }).pipe(
+      map(results => results)
+    );
+  }
+
+  getListServiceCategory(servicegroupID: string): Observable<any> {
+    const params = new HttpParams().
+    set('group', servicegroupID).
+    set('_v', (new Date()).getTime().toString());
+    return this.http.get(EnvService.serviceCategory, {
+      params
+    }).pipe(
+      map(results => results)
+    );
+  }
+
+  getListServiceByGroup(servicesGroupID: string): Observable<any> {
+    const params = new HttpParams().
+    set('category', servicesGroupID).
+    set('_v', (new Date()).getTime().toString());
+    return this.http.get(EnvService.services, {
+      params
+    }).pipe(
+      map(results => results)
+    );
+  }
+
+  getListServiceLogs(): Observable<any> {
+    const params = new HttpParams().
+      set('_v', (new Date()).getTime().toString());
+    return this.http.get(EnvService.serviceLog, {
+      params
+    }).pipe(
+      map(results => results)
+    );
+  }
+
+  getServiceDetail(serviceID: string): Observable<any> {
+    const params = new HttpParams().
+      set('_v', (new Date()).getTime().toString());
+    return this.http.get(EnvService.serviceDetail + serviceID, {
+      params
+    }).pipe(
+      map(results => results)
+    );
+  }
+
   getPosts(page: number, limit: number, category: string, search: string): Observable<any> {
     const params = new HttpParams().
       set('page', page.toString()).
@@ -68,6 +120,12 @@ export class ApiService {
     return this.http.get(EnvService.getPost, {
       params
     }).pipe(
+      map(results => results)
+    );
+  }
+
+  getPosteDetail(postID: string): Observable<any> {
+    return this.http.get(EnvService.postDetail + postID).pipe(
       map(results => results)
     );
   }

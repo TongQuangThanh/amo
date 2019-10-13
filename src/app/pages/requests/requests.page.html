@@ -5,25 +5,75 @@
 </ion-header>
 
 <ion-content>
-  <ion-list class="list-view-custom">
-      <ion-item class="list-request-all-item" lines="none" *ngFor="let item of listRequestAll" (click)="detailPage($event)" id="{{item._id}}">
-        <ion-avatar slot="start">
-          <img src="https://ionicframework.com/docs/demos/api/list/avatar-finn.png">
-          <ion-label class="avatar-done">Done</ion-label>
-        </ion-avatar>
-        <ion-label>
-          <ion-label class="title-request-all-item ion-text-wrap">{{item.title}}</ion-label>
-          <ion-label class="node-request-all-item">
-            <p class="ion-float-left">{{formatString(item.updatedAt)}}</p>
-          </ion-label>
-        </ion-label>
-      </ion-item>
-    </ion-list>
-    <ion-infinite-scroll threshold="50px" (ionInfinite)="loadData($event)">
-      <ion-infinite-scroll-content class="custom-infinite-scroll"
-        loadingSpinner="bubbles"
-        loadingText="Loading more data...">
-      </ion-infinite-scroll-content>
-    </ion-infinite-scroll>
+  <ion-segment [(ngModel)]="modeService">
+    <ion-segment-button checked class="button-tab-custom" value="All">
+      <ion-label class="margin-none">All</ion-label>
+    </ion-segment-button>
+    <ion-segment-button class="button-tab-custom" value="Registration">
+      <ion-label class="margin-none">Registration</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <section class="custom-tab" [style.height.px]="heightScreen">
+    <div [ngSwitch]="modeService" class="width-100">
+      <div *ngSwitchCase="'All'" class="width-100">
+      <ion-content class="list-request-content" [style.height.px]="heightScreenSub">
+        <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+            <ion-refresher-content
+            pullingIcon="arrow-dropdown"
+            pullingText="Pull to refresh"
+            refreshingSpinner="circles"
+            refreshingText="Refreshing...">
+            </ion-refresher-content>
+        </ion-refresher>
+        <ion-list class="list-view-custom">
+          <ion-item class="list-request-all-item" lines="none" *ngFor="let item of listRequestAll" (click)="detailPage($event)" id="{{item._id}}">
+            <ion-avatar slot="start">
+              <img src="https://ionicframework.com/docs/demos/api/list/avatar-finn.png">
+              <ion-label class="avatar-done">Done</ion-label>
+            </ion-avatar>
+            <ion-label>
+              <ion-label class="title-request-all-item ion-text-wrap">{{item.title}}</ion-label>
+              <ion-label class="node-request-all-item">
+                <p class="ion-float-left">{{formatString(item.updatedAt)}}</p>
+              </ion-label>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+        <ion-infinite-scroll threshold="50px" (ionInfinite)="loadData($event)">
+          <ion-infinite-scroll-content class="custom-infinite-scroll"
+            loadingSpinner="bubbles"
+            loadingText="Loading more data...">
+          </ion-infinite-scroll-content>
+        </ion-infinite-scroll>
+      </ion-content>
+      <section class="full-width function-section">
+          <ion-button expand="full" class="amo-button-custom">Add New Request</ion-button>
+        </section>
+    </div>
+    <div *ngSwitchCase="'Registration'" class="width-100">
+      <ion-list class="list-view-custom">
+          <ion-item class="list-request-all-item" lines="none" *ngFor="let itemServiceLog of listRequestRegistion">
+            <ion-card class="custom-card-avatar">
+              <img class="service-image-custom-avatar" src="https://ionicframework.com/docs/demos/api/list/avatar-finn.png"/>
+              <ion-row class="ion-no-padding">
+                <ion-col text-center class="service-text-avatart-custom avatar-done" >
+                  Done
+                </ion-col>
+              </ion-row>
+            </ion-card>
+            <ion-label class="item-content-custom">
+              <ion-label class="title-request-all-item ion-text-wrap">{{itemServiceLog.service.title}}</ion-label>
+              <ion-label class="node-request-all-item">
+                <p class="ion-float-left">{{itemServiceLog.createdAt}}</p>
+              </ion-label>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+        <section class="full-width function-section">
+            <ion-button expand="full" class="amo-button-custom">Add New Registration</ion-button>
+          </section>
+      </div>
+    </div>
+  </section>
 </ion-content>
 

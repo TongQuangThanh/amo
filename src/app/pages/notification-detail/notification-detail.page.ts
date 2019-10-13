@@ -5,6 +5,7 @@ import * as moment from 'moment';
 import { ActivatedRoute } from '@angular/router';
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
 import { LoadingController } from '@ionic/angular';
+import { ConstService } from '../../utils/const.service'
 
 @Component({
   selector: 'app-notification-detail',
@@ -16,6 +17,9 @@ export class NotificationDetailPage implements OnInit {
   articleTitle: string;
   articleContent: string;
   loaderToShow: any;
+  thumbnail: string;
+  readsCount: number;
+  sharesCount: number;
 
   constructor(
     public loadingController: LoadingController,
@@ -27,16 +31,21 @@ export class NotificationDetailPage implements OnInit {
     const articleID = this.route.snapshot.paramMap.get('id');
     this.articleTitle = "";
     this.articleContent = "";
-    this.showLoader();
+    this.thumbnail = "../../../assets/common/no-thumbnail.png";
+    
     this.getArticleDetail(articleID);
   }
 
   getArticleDetail(articleID) {
     let self = this;
+    this.showLoader();
     this.apiService.getArticleDetail(articleID)
       .subscribe(result => {
         self.articleTitle = result.article.title;
         self.articleContent = result.article.content;
+        self.thumbnail = result.article.thumbnail;
+        self.readsCount = result.article.readsCount;
+        self.sharesCount = result.article.sharesCount;
         self.loadingController.dismiss();
     });
   }
@@ -51,5 +60,12 @@ export class NotificationDetailPage implements OnInit {
 
   formatString(stringDate: string) {
     return moment(stringDate).format('DD-MM-YYYY');
+  }
+
+  backScreen(event){
+    this.navCtrl.back({
+      animated: true,
+      animationDirection: 'back'
+  })
   }
 }

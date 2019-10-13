@@ -2,7 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Platform, NavController } from '@ionic/angular';
 import { ApiService } from '../../services/api/api.service';
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
-import { LoadingController } from '@ionic/angular';
+import { ConstService } from '../../utils/const.service';
+import { UtilsService } from '../../utils/utils.service';
+import { LoadingService } from '../../services/loading/loading.service';
 
 @Component({
   selector: 'app-home',
@@ -17,10 +19,11 @@ export class HomePage implements OnInit {
   currentPage: number;
   numberRecordOnPage: number;
   loaderToShow: any;
+  isLoading = false;
 
   constructor(
-    public loadingController: LoadingController,
-    platform: Platform,
+    private loading: LoadingService,
+    private platform: Platform,
     private apiService: ApiService,
     private navCtrl: NavController,
     private nativePageTransitions: NativePageTransitions) {
@@ -33,26 +36,27 @@ export class HomePage implements OnInit {
   ngOnInit() {
     this.listNews  = [];
     this.currentPage = 1;
-    this.numberRecordOnPage = 10;
-    this.showLoader();
+    this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
     this.getNews(this.currentPage, this.numberRecordOnPage, '', '', null, false);
   }
 
   getNews(page: number, limit: number, category: string, search: string, event: any, isRefresh: boolean) {
+    const self = this;
+    this.loading.present();
     this.apiService.getPosts(page, limit, category, search)
       .subscribe(result => {
         if (isRefresh) {
-          this.listNews = result.posts;
+          self.listNews = result.posts;
         } else {
-          this.listNews = this.listNews.concat(result.posts);
+          self.listNews = self.listNews.concat(result.posts);
         }
         if (event) {
           event.target.complete();
         }
-
-        if (!isRefresh) {
-          this.loadingController.dismiss();
-        }
+        self.loading.dismiss();
+    },
+    error => {
+      self.loading.dismiss();
     });
   }
 
@@ -63,25 +67,12 @@ export class HomePage implements OnInit {
 
   doRefresh(event) {
     this.currentPage = 1;
-    this.numberRecordOnPage = 10;
+    this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
     this.getNews(this.currentPage, this.numberRecordOnPage, '', '', event, true);
   }
 
   detailPage(event) {
-    console.log(event);
+    this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
+    this.navCtrl.navigateForward('/new-detail/' + event.currentTarget.id);
   }
-
-  newClick(event) {
-    console.log(event);
-    event.stopPropagation();
-  }
-
-  showLoader() {
-    this.loaderToShow = this.loadingController.create({
-      message: 'Loading content'
-    }).then((res) => {
-      res.present();
-    });
-  }
-
 }

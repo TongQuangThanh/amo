@@ -26,13 +26,20 @@ export const EnvService = {
   payments: environment.base + '/payment-bill?',
   paymentCommentPost: environment.base + '/payment-comment',
   paymentCategory: environment.base + '/payment-category',
+
   serviceGroup: environment.base + '/service-group',
+  serviceCategory: environment.base + '/service-category',
   serviceLog: environment.base + '/service-log',
+  services: environment.base + '/service?',
+  serviceDetail: environment.base + '/service/',
+  
   // getVersion: Platform.OS === 'ios' ? '/public/app-version/ios' : '/public/app-version/android',
   feedback_addFile: environment.base + '/media',
   getBanner: environment.base + '/banner',
   getPost: environment.base + '/post',
+  postDetail: environment.base + '/post/',
 
-  feedbacks: environment.base + '/feedback?'
+  feedbacks: environment.base + '/feedback?',
+
 };
 

@@ -3,6 +3,7 @@ import { NavController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { AlertService } from '../../../services/alert/alert.service';
 
 @Component({
   selector: 'app-login',
@@ -15,19 +16,17 @@ export class LoginPage implements OnInit {
   constructor(
     private authService: AuthService,
     private navCtrl: NavController,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alertService: AlertService,
   ) { }
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      console.log(params);
       this.phone = params.phoneNumber;
     });
   }
 
   checkIsEnabled() {
-    console.log(this.phone);
-    console.log(this.password);
     if (this.phone && this.phone.length >= 8 && this.password && this.password.length >= 8) {
       return true;
     }
@@ -40,7 +39,7 @@ export class LoginPage implements OnInit {
         console.log('Logged In');
       },
       error => {
-        console.log(error);
+        this.alertService.presentToast(JSON.stringify(error));
       },
       () => {
         this.navCtrl.navigateRoot('/dashboard/home');

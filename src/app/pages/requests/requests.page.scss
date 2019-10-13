@@ -87,3 +87,98 @@
 .custom-infinite-scroll {
     min-height: 5px;
 }
+
+.button-tab-custom {
+    --background: rgba(255,255,255,0.1);
+    mix-blend-mode: normal;
+    border-radius: 15px;
+
+    --color: rgba(33,38,50,0.5);
+
+    mix-blend-mode: normal;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+
+    width: 40%;
+}
+
+.button-tab-custom-left {
+    position: absolute;
+    top: 0px;
+    left: 16px;
+}
+
+.button-tab-custom-right {
+    position: absolute;
+    top: 0px;
+    right: 16px;
+}
+
+.custom-tab {
+    display: flex;
+    height: 40px;
+}
+
+.activated {
+    --background-activated: rgba(33,38,50,0.1);
+    --background: rgba(33,38,50,0.1);
+    --color: rgba(33,38,50,1);
+    --color-activated: rgba(33,38,50,1);
+    --color-focused: rgba(33,38,50,1);
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.function-section {
+    margin-top: 10px;
+    position: absolute;
+    width: 100%;
+    bottom: 10px;
+}
+
+.button-tab-custom {
+    --background-checked: rgba(255,255,255,0.1);
+    mix-blend-mode: normal;
+    border-radius: 15px;
+
+    color: rgba(33,38,50,0.5);
+
+    mix-blend-mode: normal;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+
+    width: 40%;
+    border-width: 0px;
+    margin-left: 10px;
+    margin-right: 10px;
+    min-height: 24px;
+}
+
+.margin-none {
+    margin: 0;
+}
+
+.segment-button-checked {
+    --background-checked: rgba(33,38,50,0.1);
+    color: rgba(33,38,50,1);
+    --color-checked:auto;
+}
+
+ion-card {
+    -webkit-margin-start: 5px;
+    margin-inline-start: 5px;
+    -webkit-margin-end: 5px;
+    margin-inline-end: 5px;
+    margin-bottom: 10px;
+    margin-top: 0px;
+}

@@ -14,11 +14,35 @@ const routes: Routes = [
 
   { path: 'dashboard', loadChildren: './pages/dashboard/dashboard.module#DashboardPageModule', canActivate: [AuthGuard]},
   // { path: 'payment', loadChildren: './pages/payment/payment.module#PaymentPageModule', canActivate: [AuthGuard]},
-  { path:
-    'notificationDetail/:id',
+  { 
+    path: 'notificationDetail/:id',
     loadChildren: './pages/notification-detail/notification-detail.module#NotificationDetailPageModule',
     canActivate: [AuthGuard]
-  }
+  },
+  { 
+    path: 'service-list-by-category/:id',
+    loadChildren: './pages/service-list-by-category/service-list-by-category.module#ServiceListByCategoryPageModule',
+    canActivate: [AuthGuard] 
+  },
+  { 
+    path: 'new-detail/:id',
+    loadChildren: './pages/new-detail/new-detail.module#NewDetailPageModule',
+    canActivate: [AuthGuard]
+  },
+  { 
+    path: 'payment-infor/:id',
+    loadChildren: './pages/payment-infor/payment-infor.module#PaymentInforPageModule',
+    canActivate: [AuthGuard]},
+  { 
+    path: 'request-detail/:id',
+    loadChildren: './pages/request-detail/request-detail.module#RequestDetailPageModule',
+    canActivate: [AuthGuard]
+  },
+  { 
+    path: 'service-detail/:id',
+    loadChildren: './pages/service-detail/service-detail.module#ServiceDetailPageModule',
+    canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({

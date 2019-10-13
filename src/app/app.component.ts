@@ -77,7 +77,7 @@ export class AppComponent {
         this.alertService.presentToast(data);
       },
       error => {
-        console.log(error);
+        this.alertService.presentToast(JSON.stringify(error));
       },
       () => {
         this.navCtrl.navigateRoot('/landing');

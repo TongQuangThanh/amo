@@ -1,9 +1,51 @@
 <ion-header translucent no-border>
   <ion-toolbar>
-    <ion-title>services</ion-title>
+    <ion-title>Services</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <!-- Disabled Segment -->
+  <ion-segment [(ngModel)]="modeService">
+    <ion-segment-button checked class="button-tab-custom" value="All">
+      <ion-label class="margin-none">All</ion-label>
+    </ion-segment-button>
+    <ion-segment-button class="button-tab-custom" value="History">
+      <ion-label class="margin-none">History</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+  <section class="custom-tab" [style.height.px]="heightScreen">
+    <div [ngSwitch]="modeService">
+    <ion-grid *ngSwitchCase="'All'">
+      <ion-row *ngFor="let arrayServiceGroup of listServiceCategory">
+        <ion-col *ngFor="let item of arrayServiceGroup">
+         <ion-card (click)="detailPage($event)" id="{{item._id}}">
+          <img class="service-image-custom" src="{{item.thumbnail}}"/>
+          <ion-row class="ion-no-padding">
+            <ion-col text-center class="service-text-custom" >
+              {{item.title}}
+            </ion-col>
+          </ion-row>
+         </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-list class="list-view-custom" *ngSwitchCase="'History'">
+      <ion-item class="list-request-all-item" lines="none" *ngFor="let itemServiceLog of listServiceLog">
+        <ion-card class="custom-card-avatar">
+          <img class="service-image-custom-avatar" src="https://ionicframework.com/docs/demos/api/list/avatar-finn.png"/>
+        </ion-card>
+        <ion-label class="item-content-custom">
+          <ion-label class="title-request-all-item ion-text-wrap">{{itemServiceLog.service.title}}</ion-label>
+          <ion-label class="node-request-all-item">
+            <p class="ion-float-left">{{itemServiceLog.createdAt}}</p>
+          </ion-label>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+    </div>
+  </section>
+  <section class="full-width function-section">
+    <ion-button expand="full" class="amo-button-custom">Add New Services</ion-button>
+  </section>
 </ion-content>

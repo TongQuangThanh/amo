@@ -1,0 +1,20 @@
+{
+    "android": {
+        "debug": {
+            "keystore": "/Volumes/namcd_storage/anhmo-mobile-new/platforms/android/anhmo.jks",
+            "storePassword": "thuannguyen",
+            "alias": "AnhMo",
+            "password" : "thuannguyen",
+            "keystoreType": "",
+            "packageType": "apk"
+        },
+        "release": {
+            "keystore": "/Volumes/namcd_storage/anhmo-mobile-new/platforms/android/anhmo.jks",
+            "storePassword": "thuannguyen",
+            "alias": "AnhMo",
+            "password" : "thuannguyen",
+            "keystoreType": "",
+            "packageType": "apk"
+        }
+    }
+}
