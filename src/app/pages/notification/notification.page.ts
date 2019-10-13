@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api/api.service';
 import { NavController } from '@ionic/angular';
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
-import { LoadingController } from '@ionic/angular';
+import { LoadingService } from '../../services/loading/loading.service';
 import { ConstService } from '../../utils/const.service'
 import { UtilsService } from '../../utils/utils.service'
 
@@ -15,10 +15,9 @@ export class NotificationPage implements OnInit {
   listArticles: any;
   currentPage: number;
   numberRecordOnPage: number;
-  loaderToShow: any;
 
   constructor(
-    public loadingController: LoadingController,
+    private loading: LoadingService,
     private apiService: ApiService,
     private navCtrl: NavController,
     private nativePageTransitions: NativePageTransitions) { }
@@ -30,14 +29,18 @@ export class NotificationPage implements OnInit {
   }
 
   getArticles(page: number, limit: number, category: string, search: string, event: any) {
-    this.showLoader();
+    this.loading.present();
+    const self = this;
     this.apiService.getListArticle(page, limit, category, search)
       .subscribe(result => {
-        this.listArticles = this.listArticles.concat(result.articles);
+        self.listArticles = self.listArticles.concat(result.articles);
         if (event) {
           event.target.complete();
         }
-        this.loadingController.dismiss();
+        self.loading.dismiss();
+    },
+    error => {
+      self.loading.dismiss();
     });
   }
 
@@ -49,14 +52,6 @@ export class NotificationPage implements OnInit {
   detailPage(event) {
     this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
     this.navCtrl.navigateForward('/notificationDetail/' + event.currentTarget.id);
-  }
-
-  showLoader() {
-    this.loaderToShow = this.loadingController.create({
-      message: 'Loading content'
-    }).then((res) => {
-      res.present();
-    });
   }
 
   formatString(stringDate: string) {

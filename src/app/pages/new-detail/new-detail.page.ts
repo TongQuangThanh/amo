@@ -3,7 +3,7 @@ import { ApiService } from '../../services/api/api.service';
 import { NavController, NavParams } from '@ionic/angular';
 import * as moment from 'moment';
 import { ActivatedRoute } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
+import { LoadingService } from '../../services/loading/loading.service';
 import { ConstService } from '../../utils/const.service'
 
 @Component({
@@ -17,12 +17,11 @@ export class NewDetailPage implements OnInit {
   newContent: string;
   createAt: string;
   createdBy : string;
-  loaderToShow: any;
   thumbnail: string;
   totalViewers : number;
 
   constructor(
-    public loadingController: LoadingController,
+    private loading: LoadingService,
     private apiService: ApiService,
     private navCtrl: NavController,
     private route: ActivatedRoute
@@ -37,8 +36,8 @@ export class NewDetailPage implements OnInit {
   }
 
   getNewDetail(newID) {
-    let self = this;
-    this.showLoader();
+    this.loading.present();
+    const self = this;
     this.apiService.getPosteDetail(newID)
       .subscribe(result => {
         self.newTitle = result.post.title;
@@ -47,15 +46,10 @@ export class NewDetailPage implements OnInit {
         self.createAt = result.post.createAt;
         self.createdBy = result.post.createdBy.displayName;
         self.totalViewers = result.post.totalViewers;
-        self.loadingController.dismiss();
-    });
-  }
-
-  showLoader() {
-    this.loaderToShow = this.loadingController.create({
-      message: 'Loading content'
-    }).then((res) => {
-      res.present();
+        self.loading.dismiss();
+    },
+    error => {
+      self.loading.dismiss();
     });
   }
 

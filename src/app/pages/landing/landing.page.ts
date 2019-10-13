@@ -33,6 +33,7 @@ export class LandingPage implements OnInit {
     //     this.navCtrl.navigateRoot('/dashboard/home');
     //   }
     // });
+    // this.sendDeviceManager();
     this.authService.getToken();
     if (this.authService.isLoggedIn) {
       this.navCtrl.navigateRoot('/dashboard/home');
@@ -41,6 +42,10 @@ export class LandingPage implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  sendDeviceManager(){
+    alert(localStorage.getItem('playID'));
   }
 
   checkIsEnabled() {

@@ -1,0 +1,41 @@
+ion-toolbar {
+    --background: transparent;
+    --ion-color-base: transparent !important;
+}
+
+.payment-bank-infor-text {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+
+    --min-height: 22px;
+    color: #556080;
+}
+
+.payment-bank-infor-text-detail {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+
+    --min-height: 22px;
+}
+.payment-bank-text-title{
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 19px;
+    /* identical to box height */
+
+    --min-height: 24px;
+    color: #556080;
+}
+
+.icon-color {
+    color: #3880ff;
+}

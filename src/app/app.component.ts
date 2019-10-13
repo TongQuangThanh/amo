@@ -69,6 +69,9 @@ export class AppComponent {
     });
 
     this.oneSignal.endInit();
+    this.oneSignal.getIds().then((id) => {
+      localStorage.setItem('playID', JSON.stringify(id));
+    });
   }
 
   logout() {

@@ -28,10 +28,11 @@
     margin-inline-end: 0px;
 }
 
-.btn-back-custom {
-    position: absolute;
-    left: 4.27%;
-    right: 92%;
-    top: 6.3%;
-    bottom: 91.9%;
+ion-header {
+    position: fixed;
+}
+
+ion-toolbar {
+    --background: transparent;
+    --ion-color-base: transparent !important;
 }

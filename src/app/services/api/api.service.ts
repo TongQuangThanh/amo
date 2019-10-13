@@ -31,7 +31,7 @@ export class ApiService {
     );
   }
 
-  getListPaymentLog(page: number, limit: number, category: string, search: string): Observable<any> {
+  getListPayment(page: number, limit: number, category: string, search: string): Observable<any> {
     const params = new HttpParams().
       set('page', page.toString()).
       set('limit', limit.toString()).
@@ -41,6 +41,12 @@ export class ApiService {
     return this.http.get(EnvService.payments, {
       params
     }).pipe(
+      map(results => results)
+    );
+  }
+
+  getPaymentDetail(paymentID: string): Observable<any> {
+    return this.http.get(EnvService.paymentDetail + paymentID).pipe(
       map(results => results)
     );
   }
@@ -55,6 +61,12 @@ export class ApiService {
     return this.http.get(EnvService.feedbacks, {
       params
     }).pipe(
+      map(results => results)
+    );
+  }
+
+  getRequestDetail(requestID: string): Observable<any> {
+    return this.http.get(EnvService.feedbacksDetail + requestID).pipe(
       map(results => results)
     );
   }

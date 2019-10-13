@@ -4,7 +4,7 @@ import { ApiService } from '../../services/api/api.service';
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
 import { ConstService } from '../../utils/const.service'
 import { UtilsService } from '../../utils/utils.service'
-import { LoadingController } from '@ionic/angular';
+import { LoadingService } from '../../services/loading/loading.service';
 
 @Component({
   selector: 'app-requests',
@@ -18,12 +18,11 @@ export class RequestsPage implements OnInit {
   listRequestRegistion: any;
   currentPage: number;
   numberRecordOnPage: number;
-  loaderToShow: any;
   heightScreen: number;
   heightScreenSub: number;
 
   constructor(
-    public loadingController: LoadingController,
+    private loading: LoadingService,
     private apiService: ApiService,
     private navCtrl: NavController,
     private platform: Platform,
@@ -44,15 +43,19 @@ export class RequestsPage implements OnInit {
   }
 
   getRequestAll(page: number, limit: number, category: string, search: string, event: any, isRefresh: boolean) {
-    this.showLoader();
+    this.loading.present();
+    const self = this;
     this.apiService.getListRequest(page, limit, category, search)
       .subscribe(result => {
-        this.listRequestAll = this.listRequestAll.concat(result.feedbacks);
+        self.listRequestAll = self.listRequestAll.concat(result.feedbacks);
         if (event) {
           event.target.complete();
         }
 
-        this.loadingController.dismiss();
+        self.loading.dismiss();
+    },
+    error => {
+      self.loading.dismiss();
     });
   }
 
@@ -62,19 +65,12 @@ export class RequestsPage implements OnInit {
   }
 
   detailPage(event) {
-    console.log(event);
+    this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
+    this.navCtrl.navigateForward('/request-detail/' + event.currentTarget.id);
   }
 
   formatString(stringDate: string) {
     return UtilsService.formatString(stringDate);
-  }
-
-  showLoader() {
-    this.loaderToShow = this.loadingController.create({
-      message: 'Loading content'
-    }).then((res) => {
-      res.present();
-    });
   }
 
   doRefresh(event) {

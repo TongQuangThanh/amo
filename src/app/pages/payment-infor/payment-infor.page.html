@@ -1,9 +1,81 @@
-<ion-header>
+<ion-header translucent no-border>
   <ion-toolbar>
-    <ion-title>paymentInfor</ion-title>
+    <ion-title>{{titlePage}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <section>
+    <ion-grid >
+      <ion-row class="payment-bank-text-title">
+        <ion-col>
+            <ion-label>Payment date:</ion-label>
+        </ion-col>
+        <ion-col>
+            <ion-label>{{formatString(paymentStartAt)}} - {{formatString(paymentEndAt)}}</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row class="payment-bank-text-title">
+        <ion-col>
+            <ion-label>Total:</ion-label>
+        </ion-col>
+        <ion-col>
+            <ion-label>{{formatMoney(totalCash)}} vnd</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
+  <ion-card *ngIf="paymentCategoryTranfer != null">
+    <ion-card-content>
+      <ion-item lines="none" class="payment-bank-infor-text">
+        {{paymentCategoryTranfer.description}}
+      </ion-item>
+      <ion-item lines="none" class="payment-bank-infor-text">
+        Bank Name: {{paymentCategoryTranfer.bankName}}
+      </ion-item>
+      <ion-item lines="none" class="payment-bank-infor-text">
+        Bank Account Holder: {{paymentCategoryTranfer.bankAccountHolder}}
+      </ion-item>
+      <ion-item lines="none" class="payment-bank-infor-text">
+        Bank Account Number: {{paymentCategoryTranfer.bankAccountNumber}}
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-card  *ngFor="let item of listPaymentContent">
+    <ion-item lines="none" class="payment-bank-infor-text">
+      <ion-icon name="wallet" slot="start" class="icon-color"></ion-icon>
+      <ion-label>{{item.type.title}}</ion-label>
+    </ion-item>
+    <ion-card-content>
+      <ion-grid >
+        <ion-row class="payment-bank-infor-text-detail">
+          <ion-col>
+              <ion-label>Description:</ion-label>
+          </ion-col>
+          <ion-col>
+              <ion-label>{{item.description}}</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row class="payment-bank-infor-text-detail">
+          <ion-col>
+              <ion-label>Amount:</ion-label>
+          </ion-col>
+          <ion-col>
+              <ion-label>{{formatMoney(item.amount)}} vnd</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row class="payment-bank-infor-text-detail">
+            <ion-col>
+                <ion-label>Note:</ion-label>
+            </ion-col>
+            <ion-col>
+                <ion-label>{{item.type.description}}</ion-label>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

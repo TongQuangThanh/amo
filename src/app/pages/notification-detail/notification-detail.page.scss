@@ -39,3 +39,12 @@
 .margin-left-10 {
     margin-left: 10px;
 }
+
+ion-header {
+    position: fixed;
+}
+
+ion-toolbar {
+    --background: transparent;
+    --ion-color-base: transparent !important;
+}

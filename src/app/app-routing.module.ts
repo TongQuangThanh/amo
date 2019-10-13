@@ -43,6 +43,21 @@ const routes: Routes = [
     loadChildren: './pages/service-detail/service-detail.module#ServiceDetailPageModule',
     canActivate: [AuthGuard]
   },
+  { 
+    path: 'order-service/:id',
+    loadChildren: './pages/order-service/order-service.module#OrderServicePageModule',
+    canActivate: [AuthGuard]
+  },
+  { 
+    path: 'add-request',
+    loadChildren: './pages/add-request/add-request.module#AddRequestPageModule',
+    canActivate: [AuthGuard]
+  },
+  { 
+    path: 'bill-payment/:id',
+    loadChildren: './pages/bill-payment/bill-payment.module#BillPaymentPageModule',
+    canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({

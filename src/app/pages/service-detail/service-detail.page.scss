@@ -41,3 +41,12 @@
     width: 100%;
     bottom: 10px;
 }
+
+ion-header {
+    position: fixed;
+}
+
+ion-toolbar {
+    --background: transparent;
+    --ion-color-base: transparent !important;
+}

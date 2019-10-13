@@ -3,7 +3,6 @@ import { ApiService } from '../../services/api/api.service';
 import { NavController, NavParams } from '@ionic/angular';
 import * as moment from 'moment';
 import { ActivatedRoute } from '@angular/router';
-import { LoadingController } from '@ionic/angular';
 import { ConstService } from '../../utils/const.service'
 import { LoadingService } from '../../services/loading/loading.service';
 
@@ -18,7 +17,6 @@ export class ServiceDetailPage implements OnInit {
   serviceContent: string;
   createAt: string;
   createdBy : string;
-  loaderToShow: any;
   thumbnail: string;
   totalViewers : number;
 

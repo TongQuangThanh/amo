@@ -4,7 +4,8 @@ import { ApiService } from '../../services/api/api.service';
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
 import { ConstService } from '../../utils/const.service'
 import { UtilsService } from '../../utils/utils.service'
-import { LoadingController } from '@ionic/angular';
+import { LoadingService } from '../../services/loading/loading.service';
+import { AlertService } from '../../services/alert/alert.service'
 
 @Component({
   selector: 'app-services',
@@ -16,13 +17,13 @@ export class ServicesPage implements OnInit {
   modeService: string = "All";
   listServiceCategory: any[];
   listServiceLog: any;
-  loaderToShow: any;
   heightScreen: number;
 
   constructor(
-    public loadingController: LoadingController,
+    private loading: LoadingService,
     private apiService: ApiService,
     private navCtrl: NavController,
+    private alertService: AlertService,
     private platform: Platform,
     private nativePageTransitions: NativePageTransitions) {
       platform.ready().then((readySource) => {
@@ -37,8 +38,8 @@ export class ServicesPage implements OnInit {
   }
 
   getRequestAll() {
-    this.showLoader();
-    var self = this;
+    const self = this;
+    this.loading.present();
     this.apiService.getListServiceGroup()
       .subscribe(result => {
         for(let i=0;i<result.serviceGroup.length;i+=3){
@@ -56,6 +57,9 @@ export class ServicesPage implements OnInit {
           self.listServiceCategory.push(arrayServiceGroupTmp);
         }
         self.getAllServiceLog();
+    },
+    error => {
+      self.loading.dismiss();
     });
   }
 
@@ -64,7 +68,10 @@ export class ServicesPage implements OnInit {
     this.apiService.getListServiceLogs()
       .subscribe(result => {
         self.listServiceLog = result.serviceLogs;
-        self.loadingController.dismiss();
+        self.loading.dismiss();
+    },
+    error => {
+      self.loading.dismiss();
     });
   }
 
@@ -73,11 +80,10 @@ export class ServicesPage implements OnInit {
     this.navCtrl.navigateForward('/service-list-by-category/' + event.currentTarget.id);
   }
 
-  showLoader() {
-    this.loaderToShow = this.loadingController.create({
-      message: 'Loading content'
-    }).then((res) => {
-      res.present();
-    });
+  addNewRequest(event){
+    if (event && event.stopPropagation) {
+      event.stopPropagation();
+    }
+    this.alertService.presentToast("Functional maintenance");
   }
 }

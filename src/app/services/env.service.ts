@@ -24,6 +24,7 @@ export const EnvService = {
   paymentBank: environment.base + '/payment-bank',
   paymentLog: environment.base + '/payment-log',
   payments: environment.base + '/payment-bill?',
+  paymentDetail: environment.base + '/payment-bill/',
   paymentCommentPost: environment.base + '/payment-comment',
   paymentCategory: environment.base + '/payment-category',
 
@@ -40,6 +41,7 @@ export const EnvService = {
   postDetail: environment.base + '/post/',
 
   feedbacks: environment.base + '/feedback?',
+  feedbacksDetail: environment.base + '/feedback/',
 
 };
 

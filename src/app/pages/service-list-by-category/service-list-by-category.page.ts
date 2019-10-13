@@ -2,10 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api/api.service';
 import { NavController } from '@ionic/angular';
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
-import { LoadingController } from '@ionic/angular';
 import { ConstService } from '../../utils/const.service'
 import { UtilsService } from '../../utils/utils.service'
 import { ActivatedRoute } from '@angular/router';
+import { LoadingService } from '../../services/loading/loading.service';
+import { AlertService } from '../../services/alert/alert.service'
 
 @Component({
   selector: 'app-service-list-by-category',
@@ -14,15 +15,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ServiceListByCategoryPage implements OnInit {
   listServicesByGroup: any;
-  loaderToShow: any;
   categoryID: string;
   titlePage: string;
 
   constructor(
-    public loadingController: LoadingController,
+    private loading: LoadingService,
     private apiService: ApiService,
     private navCtrl: NavController,
     private route: ActivatedRoute,
+    private alertService: AlertService,
     private nativePageTransitions: NativePageTransitions) { }
   ngOnInit() {
     this.titlePage = "";
@@ -32,8 +33,8 @@ export class ServiceListByCategoryPage implements OnInit {
   }
 
   getServicesByCategory(category: string, event: any) {
-    this.showLoader();
     const self = this;
+    this.loading.present();
     this.apiService.getListServiceCategory(category).subscribe(resultServiceCategory => {
       if(resultServiceCategory.serviceCategories.length > 0){
         self.titlePage = resultServiceCategory.serviceCategories[0].title;
@@ -43,11 +44,14 @@ export class ServiceListByCategoryPage implements OnInit {
             if (event) {
               event.target.complete();
             }
-            self.loadingController.dismiss();
+            self.loading.dismiss();
         });
       }else{
-        self.loadingController.dismiss();
+        self.loading.dismiss();
       }
+    },
+    error => {
+      self.loading.dismiss();
     });
   }
 
@@ -60,14 +64,6 @@ export class ServiceListByCategoryPage implements OnInit {
     if (event && event.stopPropagation) {
       event.stopPropagation();
     }
-    console.log("orderService")
-  }
-
-  showLoader() {
-    this.loaderToShow = this.loadingController.create({
-      message: 'Loading content'
-    }).then((res) => {
-      res.present();
-    });
+    this.alertService.presentToast("Functional maintenance");
   }
 }

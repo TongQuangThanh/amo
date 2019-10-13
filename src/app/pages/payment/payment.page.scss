@@ -64,8 +64,6 @@
 }
 
 .button-pay-now {
-    background: #FA7268;
-    border-radius: 5px;
     font-family: Nunito Sans;
     font-style: normal;
     font-weight: bold;
@@ -74,7 +72,9 @@
     text-align: center;
     color: #FFFFFF;
     width: 5.2em;
-    height: 1.6em;
+    height: 2.0em;
+    text-transform: none;
+    --box-shadow: none;
 }
 
 .title-payment-item {

@@ -11,7 +11,7 @@
         <p>Amount to pay</p>
       </div>
       <div class="total-cash-blance-content">
-        <p>345.000</p>
+        <p>0</p>
         <p class="total-cash-blance-content-unit">vnd</p>
       </div>
       <div class="clear-balance-rect">
@@ -185,36 +185,29 @@
       <ion-list class="list-view-custom">
         <ion-item class="list-payment-item" lines="none" *ngFor="let item of listPaymentBills"
           (click)="detailPage($event)" id="{{item._id}}">
-          <ion-avatar slot="start">
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <mask id="mask0" mask-type="alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="32" height="32">
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M0 0H32V31.9999H0V0Z" fill="white" />
-              </mask>
-              <g mask="url(#mask0)">
-                <path fill-rule="evenodd" clip-rule="evenodd"
-                  d="M32 16C32 24.837 24.836 32 16 32C7.164 32 0 24.837 0 16C0 7.163 7.164 0 16 0C24.836 0 32 7.163 32 16Z"
-                  fill="#01BCC4" />
-              </g>
-              <path fill-rule="evenodd" clip-rule="evenodd"
-                d="M12.5406 10.0081C12.4926 10.0361 12.4536 10.0811 12.4346 10.1391C11.7876 12.0221 10.6206 13.4481 8.76258 14.6291C8.65558 14.6971 8.61958 14.8371 8.68158 14.9481L9.02458 15.5681C11.0166 19.1731 13.2726 23.2611 19.4646 22.1651C19.4926 22.1601 19.5196 22.1511 19.5426 22.1371C19.5676 22.1231 19.5886 22.1051 19.6066 22.0831C23.6526 17.2681 21.2406 13.2691 19.1126 9.74109L18.7496 9.13709C18.6846 9.02709 18.5446 8.98709 18.4326 9.04609C16.4806 10.0661 14.6616 10.3621 12.7076 9.98109C12.6476 9.96909 12.5896 9.98009 12.5406 10.0081ZM19.8796 22.7201C19.8486 22.7381 19.8166 22.7501 19.7846 22.7561C12.9846 24.0641 10.3726 19.3321 8.46358 15.8771C8.25458 15.4971 8.05758 15.1391 7.85858 14.7941C7.77058 14.6421 7.82258 14.4461 7.97558 14.3581C10.1066 13.1271 11.3776 11.5741 11.9726 9.46909C11.9956 9.39009 12.0476 9.32109 12.1206 9.28009C12.1926 9.23809 12.2776 9.22609 12.3596 9.24709C14.4786 9.78309 16.4586 9.46009 18.5906 8.22909C18.7436 8.14109 18.9396 8.19409 19.0276 8.34609C19.2146 8.66909 19.4146 9.00009 19.6236 9.34909C21.7006 12.7911 24.4926 17.4201 19.9616 22.6531C19.9386 22.6801 19.9116 22.7021 19.8796 22.7201Z"
-                fill="white" />
-              <path fill-rule="evenodd" clip-rule="evenodd"
-                d="M16.2936 18.0571C16.2056 18.1081 16.1036 18.121 16.0056 18.094L13.8896 17.528C13.6876 17.4741 13.5666 17.2651 13.6216 17.0641C13.6466 16.9651 13.7096 16.8841 13.7976 16.8321C13.8866 16.7821 13.9886 16.7681 14.0866 16.7951L15.6616 17.2171C15.7086 17.2291 15.7566 17.2231 15.7986 17.199C15.8396 17.175 15.8696 17.1351 15.8826 17.0881L16.8716 13.3971C16.8976 13.2991 16.9606 13.2171 17.0486 13.1661C17.1376 13.1161 17.2396 13.1021 17.3366 13.1281C17.5396 13.1821 17.6596 13.3911 17.6056 13.5931L16.4706 17.8261C16.4446 17.9241 16.3816 18.0051 16.2936 18.0571Z"
-                fill="white" />
-            </svg>
-
+          <ion-avatar slot="start" *ngIf="item.status == 'publish'">
+            <img src="../../../assets/request/Wait.png">
+            <ion-label class="avatar-done">New</ion-label>
+          </ion-avatar>
+          <ion-avatar slot="start" *ngIf="item.status == 'pending'">
+            <img src="../../../assets/request/Processing.png">
+            <ion-label class="avatar-done">Pending</ion-label>
+          </ion-avatar>
+          <ion-avatar slot="start" *ngIf="item.status == 'completed'">
+            <img src="../../../assets/request/Done.png">
             <ion-label class="avatar-done">Done</ion-label>
           </ion-avatar>
           <ion-label>
             <ion-label class="title-payment-item">{{item.payment == null ? "N/A" : item.payment.title}}</ion-label>
-            <ion-label class="total-payment-item">{{item.total}} vnd</ion-label>
+            <ion-label class="total-payment-item">{{formatMoney(item.total)}} vnd</ion-label>
             <ion-label class="node-payment-item">
               <p class="ion-float-left">{{formatString(item.updatedAt)}}</p>
               <p style="margin-left:16px;max-width: calc(100% - 150px);" class="ion-float-left">{{item.apartment.title}}
                 - {{item.campaign.title}}</p>
-              <p slot="end" class="button-pay-now ion-float-right" (click)="paymentClick($event)">
+              <!-- <p slot="end" class="button-pay-now ion-float-right" (click)="paymentClick($event)" *ngIf="item.status != 'completed'">
                 Pay now
-              </p>
+              </p> -->
+              <ion-button shape="round" slot="end" class="amo-button-custom button-pay-now ion-float-right" (click)="paymentClick($event)" id="{{item._id}}" *ngIf="item.status != 'completed'">Pay now</ion-button>
             </ion-label>
           </ion-label>
         </ion-item>

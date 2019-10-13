@@ -27,9 +27,21 @@
         </ion-refresher>
         <ion-list class="list-view-custom">
           <ion-item class="list-request-all-item" lines="none" *ngFor="let item of listRequestAll" (click)="detailPage($event)" id="{{item._id}}">
-            <ion-avatar slot="start">
-              <img src="https://ionicframework.com/docs/demos/api/list/avatar-finn.png">
-              <ion-label class="avatar-done">Done</ion-label>
+            <ion-avatar slot="start" *ngIf="item.status == 'new'" class="margin-less">
+              <img src="../../../assets/request/Wait.png">
+              <ion-label class="avatar-done">new</ion-label>
+            </ion-avatar>
+            <ion-avatar slot="start" *ngIf="item.status == 'cancelled'" class="margin-less">
+              <img src="../../../assets/request/Cancel.png">
+              <ion-label class="avatar-done">Cancelled</ion-label>
+            </ion-avatar>
+            <ion-avatar slot="start" *ngIf="item.status == 'processing'" class="margin-less">
+                <img src="../../../assets/request/Processing.png">
+                <ion-label class="avatar-done">Processing</ion-label>
+            </ion-avatar>
+            <ion-avatar slot="start" *ngIf="item.status == 'completed'" class="margin-less">
+                <img src="../../../assets/request/Done.png">
+                <ion-label class="avatar-done">Done</ion-label>
             </ion-avatar>
             <ion-label>
               <ion-label class="title-request-all-item ion-text-wrap">{{item.title}}</ion-label>
@@ -47,14 +59,14 @@
         </ion-infinite-scroll>
       </ion-content>
       <section class="full-width function-section">
-          <ion-button expand="full" class="amo-button-custom">Add New Request</ion-button>
+          <ion-button expand="full" shape="round" class="amo-button-custom">Add New Request</ion-button>
         </section>
     </div>
     <div *ngSwitchCase="'Registration'" class="width-100">
       <ion-list class="list-view-custom">
           <ion-item class="list-request-all-item" lines="none" *ngFor="let itemServiceLog of listRequestRegistion">
             <ion-card class="custom-card-avatar">
-              <img class="service-image-custom-avatar" src="https://ionicframework.com/docs/demos/api/list/avatar-finn.png"/>
+              <img class="service-image-custom-avatar" src="../../../assets/request/Registion.png"/>
               <ion-row class="ion-no-padding">
                 <ion-col text-center class="service-text-avatart-custom avatar-done" >
                   Done
@@ -70,7 +82,7 @@
           </ion-item>
         </ion-list>
         <section class="full-width function-section">
-            <ion-button expand="full" class="amo-button-custom">Add New Registration</ion-button>
+            <ion-button expand="full" shape="round" class="amo-button-custom">Add New Registration</ion-button>
           </section>
       </div>
     </div>

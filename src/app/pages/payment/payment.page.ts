@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Platform, NavController } from '@ionic/angular';
 import { ApiService } from '../../services/api/api.service';
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
-import { LoadingController } from '@ionic/angular';
-import { ConstService } from '../../utils/const.service'
-import { UtilsService } from '../../utils/utils.service'
+import { LoadingService } from '../../services/loading/loading.service';
+import { ConstService } from '../../utils/const.service';
+import { UtilsService } from '../../utils/utils.service';
+import { AlertService } from '../../services/alert/alert.service'
 
 @Component({
   selector: 'app-payment',
@@ -17,11 +18,11 @@ export class PaymentPage implements OnInit {
   listPaymentBills: any;
   currentPage: number;
   numberRecordOnPage: number;
-  loaderToShow: any;
 
   constructor(
-    public loadingController: LoadingController,
-    platform: Platform,
+    private loading: LoadingService,
+    private platform: Platform,
+    private alertService: AlertService,
     private apiService: ApiService,
     private navCtrl: NavController,
     private nativePageTransitions: NativePageTransitions) {
@@ -39,14 +40,18 @@ export class PaymentPage implements OnInit {
   }
 
   getPaymentLogs(page: number, limit: number, category: string, search: string, event: any, isRefresh: boolean) {
-    this.showLoader();
-    this.apiService.getListPaymentLog(page, limit, category, search)
+    this.loading.present();
+    const self = this;
+    this.apiService.getListPayment(page, limit, category, search)
       .subscribe(result => {
-        this.listPaymentBills = this.listPaymentBills.concat(result.paymentBills);
+        self.listPaymentBills = self.listPaymentBills.concat(result.paymentBills);
         if (event) {
           event.target.complete();
         }
-        this.loadingController.dismiss();
+        self.loading.dismiss();
+    },
+    error => {
+      self.loading.dismiss();
     });
   }
 
@@ -56,20 +61,15 @@ export class PaymentPage implements OnInit {
   }
 
   detailPage(event) {
-    console.log(event);
+    this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
+    this.navCtrl.navigateForward('/payment-infor/' + event.currentTarget.id);
   }
 
   paymentClick(event) {
-    console.log(event);
-    event.stopPropagation();
-  }
-
-  showLoader() {
-    this.loaderToShow = this.loadingController.create({
-      message: 'Loading content'
-    }).then((res) => {
-      res.present();
-    });
+    if (event && event.stopPropagation) {
+      event.stopPropagation();
+    }
+    this.alertService.presentToast("Functional maintenance");
   }
 
   doRefresh(event) {
@@ -80,5 +80,12 @@ export class PaymentPage implements OnInit {
 
   formatString(stringDate: string) {
     return UtilsService.formatString(stringDate);
+  }
+
+  formatMoney(stringValue) {
+    let n = parseInt(stringValue);
+    return n.toFixed(0).replace(/./g, function(c, i, a) {
+      return i > 0 && c !== "," && (a.length - i) % 3 === 0 ? "." + c : c;
+    });
   }
 }

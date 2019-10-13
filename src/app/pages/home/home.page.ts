@@ -18,8 +18,6 @@ export class HomePage implements OnInit {
   listNews: any;
   currentPage: number;
   numberRecordOnPage: number;
-  loaderToShow: any;
-  isLoading = false;
 
   constructor(
     private loading: LoadingService,

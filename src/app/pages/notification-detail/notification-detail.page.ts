@@ -4,7 +4,7 @@ import { NavController, NavParams } from '@ionic/angular';
 import * as moment from 'moment';
 import { ActivatedRoute } from '@angular/router';
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
-import { LoadingController } from '@ionic/angular';
+import { LoadingService } from '../../services/loading/loading.service';
 import { ConstService } from '../../utils/const.service'
 
 @Component({
@@ -16,13 +16,14 @@ export class NotificationDetailPage implements OnInit {
 
   articleTitle: string;
   articleContent: string;
-  loaderToShow: any;
   thumbnail: string;
   readsCount: number;
   sharesCount: number;
+  createdAt: string;
+  createBy: string;
 
   constructor(
-    public loadingController: LoadingController,
+    private loading: LoadingService,
     private apiService: ApiService,
     private navCtrl: NavController,
     private route: ActivatedRoute,
@@ -37,8 +38,8 @@ export class NotificationDetailPage implements OnInit {
   }
 
   getArticleDetail(articleID) {
-    let self = this;
-    this.showLoader();
+    this.loading.present();
+    const self = this;
     this.apiService.getArticleDetail(articleID)
       .subscribe(result => {
         self.articleTitle = result.article.title;
@@ -46,15 +47,12 @@ export class NotificationDetailPage implements OnInit {
         self.thumbnail = result.article.thumbnail;
         self.readsCount = result.article.readsCount;
         self.sharesCount = result.article.sharesCount;
-        self.loadingController.dismiss();
-    });
-  }
-
-  showLoader() {
-    this.loaderToShow = this.loadingController.create({
-      message: 'Loading content'
-    }).then((res) => {
-      res.present();
+        self.createdAt = result.article.createdAt;
+        self.createBy = result.article.createdBy != null ? result.article.createdBy.displayName : "";
+        self.loading.dismiss();
+    },
+    error => {
+      self.loading.dismiss();
     });
   }
 
@@ -66,6 +64,6 @@ export class NotificationDetailPage implements OnInit {
     this.navCtrl.back({
       animated: true,
       animationDirection: 'back'
-  })
+    })
   }
 }
