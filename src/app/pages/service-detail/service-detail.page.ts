@@ -19,7 +19,7 @@ export class ServiceDetailPage implements OnInit {
   createdBy : string;
   thumbnail: string;
   totalViewers : number;
-
+  serviceID : string;
   constructor(
     private loading: LoadingService,
     private apiService: ApiService,
@@ -27,12 +27,12 @@ export class ServiceDetailPage implements OnInit {
     private route: ActivatedRoute
   ) { }
   ngOnInit() {
-    const serviceID = this.route.snapshot.paramMap.get('id');
+    this.serviceID = this.route.snapshot.paramMap.get('id');
     this.serviceTitle = "";
     this.serviceContent = "";
     this.thumbnail = "../../../assets/common/no-thumbnail.png";
     
-    this.getNewDetail(serviceID);
+    this.getNewDetail(this.serviceID);
   }
 
   getNewDetail(serviceID: string) {
@@ -62,6 +62,13 @@ export class ServiceDetailPage implements OnInit {
       animated: true,
       animationDirection: 'back'
     });
+  }
+
+  orderService(event) {
+    if (event && event.stopPropagation) {
+      event.stopPropagation();
+    }
+    this.navCtrl.navigateForward('/order-service/' + event.currentTarget.id);
   }
 
 }

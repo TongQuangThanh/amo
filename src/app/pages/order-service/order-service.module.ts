@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { OrderServicePage } from './order-service.page';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
+  providers: [Geolocation],
   declarations: [OrderServicePage]
 })
 export class OrderServicePageModule {}

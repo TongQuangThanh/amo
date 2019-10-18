@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api/api.service';
 import { NavController } from '@ionic/angular';
-import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
-import { ConstService } from '../../utils/const.service'
-import { UtilsService } from '../../utils/utils.service'
+// import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
+import { ConstService } from '../../utils/const.service';
+import { UtilsService } from '../../utils/utils.service';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingService } from '../../services/loading/loading.service';
-import { AlertService } from '../../services/alert/alert.service'
 
 @Component({
   selector: 'app-service-list-by-category',
@@ -23,8 +22,8 @@ export class ServiceListByCategoryPage implements OnInit {
     private apiService: ApiService,
     private navCtrl: NavController,
     private route: ActivatedRoute,
-    private alertService: AlertService,
-    private nativePageTransitions: NativePageTransitions) { }
+    //private nativePageTransitions: NativePageTransitions
+  ) { }
   ngOnInit() {
     this.titlePage = "";
     this.categoryID = this.route.snapshot.paramMap.get('id');
@@ -56,7 +55,7 @@ export class ServiceListByCategoryPage implements OnInit {
   }
 
   detailPage(event) {
-    this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
+    // this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
     this.navCtrl.navigateForward('/service-detail/' + event.currentTarget.id);
   }
 
@@ -64,6 +63,6 @@ export class ServiceListByCategoryPage implements OnInit {
     if (event && event.stopPropagation) {
       event.stopPropagation();
     }
-    this.alertService.presentToast("Functional maintenance");
+    this.navCtrl.navigateForward('/order-service/' + event.currentTarget.id);
   }
 }

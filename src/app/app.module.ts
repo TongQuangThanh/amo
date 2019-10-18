@@ -18,6 +18,8 @@ import { TokenInterceptor } from './inteceptors/inteceptors.service';
 import { NativePageTransitions } from '@ionic-native/native-page-transitions/ngx';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 
+import { OrderServicePageModule } from './pages/order-service/order-service.module';
+
 export function LanguageLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
@@ -29,6 +31,7 @@ export function LanguageLoader(http: HttpClient) {
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    OrderServicePageModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

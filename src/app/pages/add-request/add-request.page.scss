@@ -1,0 +1,51 @@
+div[scrollX=true] {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    &::-webkit-scrollbar {
+       display: none;
+    }
+     .scroll-item {
+       flex: 0 0 auto;
+    }
+
+    ion-avatar{
+        margin-left: 10px;
+    }
+  }
+
+
+.file-input-container {
+
+    text-align: right;
+
+    input[type="file"] {
+        display: none;
+    }
+}
+
+.label-upload {
+    mix-blend-mode: normal;
+    box-sizing: border-box;
+    box-shadow: 0px 0px 20px rgba(23, 21, 48, 0.102546);
+    border-radius: 8px;
+    border: 1px solid #c3c3c3;
+    padding: 6px 12px;
+    width: 120px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.custom-upload-list{
+    width: calc(100% - 30px);;
+    max-height: 150px;
+    overflow: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.button-trash{
+    position: absolute;
+    bottom: 7px;
+    right: 0px;
+}

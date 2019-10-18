@@ -21,6 +21,7 @@ export class LoginPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    localStorage.removeItem('token');
     this.route.queryParams.subscribe(params => {
       this.phone = params.phoneNumber;
     });

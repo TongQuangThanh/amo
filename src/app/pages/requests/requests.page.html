@@ -59,7 +59,7 @@
         </ion-infinite-scroll>
       </ion-content>
       <section class="full-width function-section">
-          <ion-button expand="full" shape="round" class="amo-button-custom">Add New Request</ion-button>
+          <ion-button expand="block" class="amo-button-custom" (click)="addRequest()">Add New Request</ion-button>
         </section>
     </div>
     <div *ngSwitchCase="'Registration'" class="width-100">
@@ -82,7 +82,7 @@
           </ion-item>
         </ion-list>
         <section class="full-width function-section">
-            <ion-button expand="full" shape="round" class="amo-button-custom">Add New Registration</ion-button>
+            <ion-button eexpand="block" class="amo-button-custom">Add New Registration</ion-button>
           </section>
       </div>
     </div>

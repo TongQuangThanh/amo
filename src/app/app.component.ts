@@ -13,23 +13,6 @@ import { OneSignal } from '@ionic-native/onesignal/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-  public appPages = [
-    {
-      title: 'Dashboard',
-      url: '/dashboard',
-      icon: 'home'
-    },
-    {
-      title: 'Home',
-      url: '/home',
-      icon: 'home'
-    },
-    {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
-    },
-  ];
 
   constructor(
     private platform: Platform,
@@ -70,6 +53,7 @@ export class AppComponent {
 
     this.oneSignal.endInit();
     this.oneSignal.getIds().then((id) => {
+      //alert(JSON.stringify(id));
       localStorage.setItem('playID', JSON.stringify(id));
     });
   }

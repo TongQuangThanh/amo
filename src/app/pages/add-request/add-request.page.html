@@ -1,9 +1,80 @@
-<ion-header>
+<ion-header translucent no-border>
   <ion-toolbar>
-    <ion-title>addRequest</ion-title>
+    <ion-title>Add request</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <form (ngSubmit)="addRequest($event)">
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item>
+        <ion-label position="stacked">Department</ion-label>
+        <ion-select placeholder="Department" interface="action-sheet" (ionChange)="changeValueDepartment($event)" name="departmentID" [(ngModel)]="departmentID">
+          <ion-select-option *ngFor="let item of listDepartment" value="{{item.apartment._id}}">{{item.apartment.title + ' - ' + item.campaign.title}}</ion-select-option>
+        </ion-select>
+      </ion-item>
 
+      <ion-item>
+        <ion-label position="stacked">Chu de</ion-label>
+        <ion-select placeholder="Department" interface="action-sheet" (ionChange)="changeValueTopic($event)" name="topicID" [(ngModel)]="topicID">
+          <ion-select-option *ngFor="let item of listTopic" value="{{item.apartment._id}}">{{item.apartment.title + ' - ' + item.campaign.title}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item class="file-input-container">
+        <ion-grid>
+          <ion-row>
+            <label class="label-upload">
+              <input type="file" ng2FileSelect [uploader]="uploader" multiple />
+              Add Files
+            </label>
+          </ion-row>
+          <ion-row>
+            <ion-list class="custom-upload-list">
+              <ion-item *ngFor="let item of uploader.queue" text-wrap>
+                <ion-button slot="start" fill="clear">
+                  <ion-icon slot="icon-only" name="trash"></ion-icon>
+                </ion-button>
+                <ion-label>
+                  {{ item?.file?.name }}
+                </ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+      <ion-item>
+        <ion-grid>
+          <ion-row>
+            <label (click)="selectImage()" class="label-upload">
+                add Image
+            </label>
+          </ion-row>
+          <ion-row>
+            <div scrollX="true" scroll-avatar>
+                <ion-avatar>
+                  <img src="../../../assets/request/Registion.png" class="scroll-item"/>
+                </ion-avatar>
+            </div>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Title</ion-label>
+        <ion-input value="{{title}}" name="title"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Message</ion-label>
+        <ion-textarea [(ngModel)]="message" rows="4" name="message"></ion-textarea>
+      </ion-item>
+    </ion-list>
+
+    <div class="ion-padding">
+      <ion-button expand="block" type="submit" class="amo-button-custom">Submit</ion-button>
+    </div>
+  </form>
 </ion-content>

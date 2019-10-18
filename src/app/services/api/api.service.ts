@@ -113,6 +113,12 @@ export class ApiService {
     );
   }
 
+  addServiceLog(params:any): Observable<any> {
+    return this.http.post(EnvService.serviceLog, params).pipe(
+      map(results => results)
+    );
+  }
+
   getServiceDetail(serviceID: string): Observable<any> {
     const params = new HttpParams().
       set('_v', (new Date()).getTime().toString());
@@ -141,4 +147,11 @@ export class ApiService {
       map(results => results)
     );
   }
+
+  getUserApartment(): Observable<any> {
+    return this.http.get(EnvService.apartment).pipe(
+      map(results => results)
+    );
+  }
+
 }

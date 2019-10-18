@@ -5,6 +5,7 @@ import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/na
 import { ConstService } from '../../utils/const.service';
 import { UtilsService } from '../../utils/utils.service';
 import { LoadingService } from '../../services/loading/loading.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-home',
@@ -18,17 +19,24 @@ export class HomePage implements OnInit {
   listNews: any;
   currentPage: number;
   numberRecordOnPage: number;
+  userName: string;
 
   constructor(
     private loading: LoadingService,
     private platform: Platform,
     private apiService: ApiService,
     private navCtrl: NavController,
+    private authService: AuthService,
     private nativePageTransitions: NativePageTransitions) {
     this.imageDefault = 'assets/common/no-thumbnail.png';
     platform.ready().then((readySource) => {
       this.heightScreen = platform.height() * 0.55 - 32;
     });
+
+    const profile = this.authService.getProfile();
+    if(profile){
+      this.userName = profile.displayName;
+    }
   }
 
   ngOnInit() {

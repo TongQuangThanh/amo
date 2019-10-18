@@ -27,6 +27,8 @@ export class AuthService {
       tap(async (token) => {
         // await self.storage.setItem('token', token);
         localStorage.setItem('token', token['token']);
+        localStorage.setItem('profile', JSON.stringify(token['profile']));
+        
         self.token = token;
         self.isLoggedIn = true;
         return token;
@@ -48,7 +50,8 @@ export class AuthService {
     return this.http.get(EnvService.logout, { headers })
     .pipe(
       tap(data => {
-        // this.storage.remove('token');
+        localStorage.removeItem('token');
+        localStorage.removeItem('profile');
         this.isLoggedIn = false;
         delete this.token;
         return data;
@@ -67,6 +70,14 @@ export class AuthService {
         return user;
       })
     );
+  }
+
+  getProfile() {
+    if(localStorage.getItem('token')){
+      const profile = JSON.parse(localStorage.getItem('profile'));
+      return profile;
+    }
+    return null;
   }
 
   getToken() {

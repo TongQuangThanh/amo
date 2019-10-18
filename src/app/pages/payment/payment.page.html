@@ -200,14 +200,11 @@
           <ion-label>
             <ion-label class="title-payment-item">{{item.payment == null ? "N/A" : item.payment.title}}</ion-label>
             <ion-label class="total-payment-item">{{formatMoney(item.total)}} vnd</ion-label>
+            <ion-label class="total-payment-item">{{item.apartment.title}}
+                - {{item.campaign.title}}</ion-label>
             <ion-label class="node-payment-item">
               <p class="ion-float-left">{{formatString(item.updatedAt)}}</p>
-              <p style="margin-left:16px;max-width: calc(100% - 150px);" class="ion-float-left">{{item.apartment.title}}
-                - {{item.campaign.title}}</p>
-              <!-- <p slot="end" class="button-pay-now ion-float-right" (click)="paymentClick($event)" *ngIf="item.status != 'completed'">
-                Pay now
-              </p> -->
-              <ion-button shape="round" slot="end" class="amo-button-custom button-pay-now ion-float-right" (click)="paymentClick($event)" id="{{item._id}}" *ngIf="item.status != 'completed'">Pay now</ion-button>
+              <ion-button slot="end" class="amo-button-custom button-pay-now ion-float-right" (click)="paymentClick($event)" id="{{item._id}}" *ngIf="item.status != 'completed'">Pay now</ion-button>
             </ion-label>
           </ion-label>
         </ion-item>

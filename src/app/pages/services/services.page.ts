@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Platform, NavController } from '@ionic/angular';
 import { ApiService } from '../../services/api/api.service';
-import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
 import { ConstService } from '../../utils/const.service'
 import { UtilsService } from '../../utils/utils.service'
 import { LoadingService } from '../../services/loading/loading.service';
@@ -25,7 +24,7 @@ export class ServicesPage implements OnInit {
     private navCtrl: NavController,
     private alertService: AlertService,
     private platform: Platform,
-    private nativePageTransitions: NativePageTransitions) {
+  ) {
       platform.ready().then((readySource) => {
         this.heightScreen = platform.height() - 120 - 90;
       });
@@ -76,7 +75,6 @@ export class ServicesPage implements OnInit {
   }
 
   detailPage(event) {
-    this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
     this.navCtrl.navigateForward('/service-list-by-category/' + event.currentTarget.id);
   }
 

@@ -11,7 +11,7 @@ export const EnvService = {
   updateProfile: environment.base + '/account/profile',
   resendActiveCode: environment.base + '/account/resendActive',
   updateAvatar: environment.base + '/account/update-avatar',
-  addApartment: environment.base + '/account/apartments',
+  // addApartment: environment.base + '/account/apartments',
   notification: environment.base + '/account/notification',
   articleCategory: environment.base + '/article-category',
   articles: environment.base + '/article?',
