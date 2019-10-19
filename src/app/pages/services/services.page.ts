@@ -48,13 +48,26 @@ export class ServicesPage implements OnInit {
           }
           if(i + 1 < result.serviceGroup.length){
             arrayServiceGroupTmp.push(result.serviceGroup[i + 1]);
+          }else{
+            arrayServiceGroupTmp.push({
+              _id: "",
+              title: "",
+              thumbnail: ""
+            })
           }
           if(i + 2 < result.serviceGroup.length){
             arrayServiceGroupTmp.push(result.serviceGroup[i + 2]);
+          }else{
+            arrayServiceGroupTmp.push({
+              _id: "",
+              title: "",
+              thumbnail: ""
+            })
           }
 
           self.listServiceCategory.push(arrayServiceGroupTmp);
         }
+
         self.getAllServiceLog();
     },
     error => {

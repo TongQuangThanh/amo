@@ -1,0 +1,41 @@
+<ion-header translucent no-border>
+    <ion-toolbar>
+      <ion-title>{{titlePage}}</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+
+<ion-content>
+    <form (ngSubmit)="orderSericeForm($event)">
+      <ion-list lines="full" class="ion-no-margin ion-no-padding">
+        <ion-item>
+            <ion-input class="phone-input phone-input-text" aria-placeholder="userName" [(ngModel)]="userName" type="text" name="userName"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input class="phone-input phone-input-text" aria-placeholder="phone" [(ngModel)]="phone" type="tel" name="phone"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-input class="phone-input phone-input-text" [(ngModel)]="email" type="email" name="email"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-datetime 
+            name="timeOrder" [(ngModel)]="timeOrder"
+            displayFormat="YYYY/MM/DD"
+            min="1900"
+            max="2030"
+          ></ion-datetime>
+        </ion-item>
+        <ion-item>
+            <ion-select placeholder="Sex" interface="action-sheet" name="sex" [(ngModel)]="sex">
+              <ion-select-option value="male">Male</ion-select-option>
+              <ion-select-option value="female">Female</ion-select-option>
+              <ion-select-option value="other">Other</ion-select-option>
+            </ion-select>
+        </ion-item>
+        
+      </ion-list>
+    </form>
+</ion-content>

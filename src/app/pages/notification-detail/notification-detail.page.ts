@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
 import { LoadingService } from '../../services/loading/loading.service';
 import { ConstService } from '../../utils/const.service'
+import { UtilsService } from '../../utils/utils.service';
 
 @Component({
   selector: 'app-notification-detail',
@@ -57,7 +58,7 @@ export class NotificationDetailPage implements OnInit {
   }
 
   formatString(stringDate: string) {
-    return moment(stringDate).format('DD-MM-YYYY');
+    return UtilsService.formatString(stringDate);
   }
 
   backScreen(event){

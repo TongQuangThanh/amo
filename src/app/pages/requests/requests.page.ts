@@ -65,12 +65,12 @@ export class RequestsPage implements OnInit {
   }
 
   detailPage(event) {
-    //this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
+    //// this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
     this.navCtrl.navigateForward('/request-detail/' + event.currentTarget.id);
   }
 
   addRequest(){
-    //this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
+    //// this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
     this.navCtrl.navigateForward('/add-request');
   }
 

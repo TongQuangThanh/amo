@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api/api.service';
 import { NavController, NavParams } from '@ionic/angular';
-import * as moment from 'moment';
 import { ActivatedRoute } from '@angular/router';
 import { ConstService } from '../../utils/const.service'
 import { LoadingService } from '../../services/loading/loading.service';
 import { SelectorFlags } from '@angular/compiler/src/core';
+import { UtilsService } from '../../utils/utils.service';
 
 @Component({
   selector: 'app-payment-infor',
@@ -54,7 +54,7 @@ export class PaymentInforPage implements OnInit {
   }
 
   formatString(stringDate: string) {
-    return moment(stringDate).format('DD-MM-YYYY');
+    return UtilsService.formatString(stringDate);
   }
 
   formatMoney(stringValue) {

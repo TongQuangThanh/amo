@@ -78,7 +78,15 @@ export class HomePage implements OnInit {
   }
 
   detailPage(event) {
-    this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
+    // this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
     this.navCtrl.navigateForward('/new-detail/' + event.currentTarget.id);
+  }
+
+  goToMyHome(){
+    this.navCtrl.navigateForward('/my-home');
+  }
+
+  goToMyAccount(){
+    this.navCtrl.navigateForward('/my-account');
   }
 }

@@ -50,7 +50,7 @@ export class NotificationPage implements OnInit {
   }
 
   detailPage(event) {
-    this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
+    // this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
     this.navCtrl.navigateForward('/notificationDetail/' + event.currentTarget.id);
   }
 

@@ -59,7 +59,7 @@ export class OrderServicePage implements OnInit {
   getUserApar(){
     var self = this;
     this.loading.present();
-    this.apiService.getUserApartment()
+    this.apiService.getListUserApartment()
       .subscribe(result => {
         self.listDepartment = result.userApartments;
         self.loading.dismiss()

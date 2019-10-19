@@ -1,0 +1,114 @@
+<ion-header translucent no-border>
+    <ion-toolbar>
+      <ion-title>{{apartmentTitle}}</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+
+<ion-content>
+    <ion-grid *ngIf="apartment != null">
+      <ion-row>
+        <ion-col>
+            <ion-label class="ion-text-wrap home-infor">Active Code:</ion-label>
+        </ion-col>
+        <ion-col>
+            <ion-label class="ion-text-wrap home-infor">{{apartment.apartment.activeCode}}</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col>
+              <ion-label class="ion-text-wrap home-infor">Room:</ion-label>
+          </ion-col>
+          <ion-col>
+              <ion-label class="ion-text-wrap home-infor">{{apartment.apartment.title}}</ion-label>
+          </ion-col>
+        </ion-row>
+      <ion-row>
+        <ion-col>
+            <ion-label class="ion-text-wrap home-infor">User category:</ion-label>
+        </ion-col>
+        <ion-col>
+            <ion-label class="ion-text-wrap home-infor">{{apartment.userCategory.title}}</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+            <ion-label class="ion-text-wrap home-infor">Area:</ion-label>
+        </ion-col>
+        <ion-col>
+            <ion-label class="ion-text-wrap home-infor">{{apartment.apartment.area}} m2</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+            <ion-label class="ion-text-wrap home-infor">Address:</ion-label>
+        </ion-col>
+        <ion-col>
+            <ion-label class="ion-text-wrap home-infor">{{apartment.campaign.address}}</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-list>
+      <div>
+        <ion-item (click)="toggleGroupVehicle()">
+          <ion-icon slot="end" name="remove-circle-outline" *ngIf="isGroupVehicleShown()"></ion-icon>
+          <ion-icon slot="end" name="add-circle-outline" *ngIf="!isGroupVehicleShown()"></ion-icon>
+          <ion-label>Vehicles</ion-label>
+        </ion-item>
+        <ion-card
+          *ngFor="let item of listVehicle"
+          [ngClass]="isGroupVehicleShown() ? 'item-accordion-vehicle' : 'item-accordion-vehicle item-accordion-inactive'">
+          <ion-item lines="none">
+            <ion-label class="ion-text-wrap">Type:</ion-label>
+            <ion-label class="ion-text-wrap">{{item.type}}</ion-label>
+          </ion-item>
+          <ion-item lines="none">
+              <ion-label class="ion-text-wrap">Model:</ion-label>
+              <ion-label class="ion-text-wrap">{{item.model}}</ion-label>
+          </ion-item>
+          <ion-item lines="none">
+              <ion-label class="ion-text-wrap">Place number:</ion-label>
+              <ion-label class="ion-text-wrap">{{item.identity}}</ion-label>
+          </ion-item>
+        </ion-card>
+      </div>
+      <div>
+          <ion-item (click)="toggleGroupMember()">
+            <ion-icon slot="end" name="remove-circle-outline" *ngIf="isGroupVehicleMember()"></ion-icon>
+            <ion-icon slot="end" name="add-circle-outline" *ngIf="!isGroupVehicleMember()"></ion-icon>
+            <ion-label>Members</ion-label>
+          </ion-item>
+          <ion-card
+            *ngFor="let item of listMembers"
+            [ngClass]="isGroupVehicleMember() ? 'item-accordion-member' : 'item-accordion-member item-accordion-inactive'">
+            <ion-item lines="none">
+              <ion-label class="ion-text-wrap">Name:</ion-label>
+              <ion-label class="ion-text-wrap">{{item.name}}</ion-label>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label class="ion-text-wrap">Sex:</ion-label>
+                <ion-label class="ion-text-wrap">{{item.gender}}</ion-label>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label class="ion-text-wrap">DOB:</ion-label>
+                <ion-label class="ion-text-wrap">{{formatString(item.dateOfBirth)}}</ion-label>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label class="ion-text-wrap">Phone:</ion-label>
+                <ion-label class="ion-text-wrap">{{item.phone}}</ion-label>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label class="ion-text-wrap">Personal license:</ion-label>
+                <ion-label class="ion-text-wrap">{{item.personalLicense}}</ion-label>
+            </ion-item>
+            <ion-item lines="none">
+                <ion-label class="ion-text-wrap">Nationality:</ion-label>
+                <ion-label class="ion-text-wrap">{{item.nationality}}</ion-label>
+            </ion-item>
+          </ion-card>
+        </div>
+    </ion-list>
+</ion-content>

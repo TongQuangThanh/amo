@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api/api.service';
 import { NavController, NavParams } from '@ionic/angular';
-import * as moment from 'moment';
 import { ActivatedRoute } from '@angular/router';
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
 import { LoadingService } from '../../services/loading/loading.service';
 import { ConstService } from '../../utils/const.service'
+import { UtilsService } from '../../utils/utils.service';
 
 @Component({
   selector: 'app-request-detail',
@@ -51,7 +51,7 @@ export class RequestDetailPage implements OnInit {
   }
 
   formatString(stringDate: string) {
-    return moment(stringDate).format('DD-MM-YYYY');
+    return UtilsService.formatString(stringDate);
   }
 
   backScreen(event){

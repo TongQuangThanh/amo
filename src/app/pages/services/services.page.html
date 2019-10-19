@@ -19,7 +19,7 @@
     <ion-grid *ngSwitchCase="'All'">
       <ion-row *ngFor="let arrayServiceGroup of listServiceCategory">
         <ion-col *ngFor="let item of arrayServiceGroup">
-         <ion-card (click)="detailPage($event)" id="{{item._id}}">
+         <ion-card *ngIf="item._id != ''" (click)="detailPage($event)" id="{{item._id}}">
           <img class="service-image-custom" src="{{item.thumbnail}}"/>
           <ion-row class="ion-no-padding">
             <ion-col text-center class="service-text-custom" >

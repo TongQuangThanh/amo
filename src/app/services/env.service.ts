@@ -11,13 +11,14 @@ export const EnvService = {
   updateProfile: environment.base + '/account/profile',
   resendActiveCode: environment.base + '/account/resendActive',
   updateAvatar: environment.base + '/account/update-avatar',
-  // addApartment: environment.base + '/account/apartments',
+
   notification: environment.base + '/account/notification',
   articleCategory: environment.base + '/article-category',
   articles: environment.base + '/article?',
   articlesDetail: environment.base + '/article/',
 
   apartment: environment.base + '/account/apartments',
+  apartmentDetail: environment.base + '/account/apartments/',
   apartmentUser: environment.base + '/apartment/user',
   feedback_addnew: environment.base + '/feedback',
   language: environment.base + '/category/language',
@@ -42,6 +43,7 @@ export const EnvService = {
 
   feedbacks: environment.base + '/feedback?',
   feedbacksDetail: environment.base + '/feedback/',
+  feedbacksCategory: environment.base + '/feedback-category/',
 
 };
 

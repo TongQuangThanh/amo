@@ -11,7 +11,7 @@
     position: absolute;
     left: 4.27%;
     top: 40px;
-    width: 100%;
+    width: 91.46%;
 }
 
 .avatar-content-title {
@@ -23,22 +23,19 @@
     /* identical to box height */
     vertical-align: super;
     color: #FFFFFF;
+}
+
+.myhome-content-title {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    /* identical to box height */
+    vertical-align: super;
+    color: #FFFFFF;
     margin-left: 10px;
 }
-
-.avatar-content-icon-right {
-    position: absolute;
-    right: calc(8.27% + 68px);
-    top: 4.8%;
-}
-
-.content-right {
-    position: absolute;
-    height: 19px;
-    right: 8.27%;
-    top: 20%
-}
-
 
 .amountPay-content{
     position: absolute;
@@ -277,4 +274,21 @@
 
 ion-content {
     --overflow: hidden;
+}
+
+.button-my-home {
+    position: absolute;
+    right: 0px;
+    --background: transparent;
+}
+
+.button-avatar {
+    position: absolute;
+    left: 0px;
+    --background: transparent;
+}
+
+.avatar-custom{
+    width: 30px;
+    height: 30px;
 }

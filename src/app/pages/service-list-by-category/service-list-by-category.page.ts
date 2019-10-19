@@ -55,7 +55,7 @@ export class ServiceListByCategoryPage implements OnInit {
   }
 
   detailPage(event) {
-    // this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
+    // // this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
     this.navCtrl.navigateForward('/service-detail/' + event.currentTarget.id);
   }
 

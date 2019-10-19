@@ -71,6 +71,15 @@ export class ApiService {
     );
   }
 
+  getFeedbackCategory(apartmentID:string): Observable<any> {
+    const params = new HttpParams().
+      set('apartment', apartmentID).
+      set('_v', (new Date()).getTime().toString());
+    return this.http.get(EnvService.feedbacksCategory, {params}).pipe(
+      map(results => results)
+    );
+  }
+
   getListServiceGroup(): Observable<any> {
     const params = new HttpParams().
       set('_v', (new Date()).getTime().toString());
@@ -148,8 +157,14 @@ export class ApiService {
     );
   }
 
-  getUserApartment(): Observable<any> {
+  getListUserApartment(): Observable<any> {
     return this.http.get(EnvService.apartment).pipe(
+      map(results => results)
+    );
+  }
+
+  getUserApartment(apartmentID): Observable<any> {
+    return this.http.get(EnvService.apartmentDetail + apartmentID).pipe(
       map(results => results)
     );
   }

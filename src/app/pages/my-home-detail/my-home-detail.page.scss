@@ -1,0 +1,19 @@
+.item-accordion-vehicle {
+    height: 132px;
+    padding-top: 0;
+    padding-bottom: 0;
+    transition: height 0.09s all linear;
+}
+
+.item-accordion-member {
+    height: 264px;
+    padding-top: 0;
+    padding-bottom: 0;
+    transition: 0.09s all linear;
+}
+
+.item-accordion-inactive {
+    height: 0px;
+    margin: 0;
+}
+

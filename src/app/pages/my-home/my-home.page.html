@@ -1,0 +1,65 @@
+<ion-header translucent no-border>
+  <ion-toolbar>
+    <ion-title>My Home</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-card *ngFor="let item of listDepartment" (click)="detailPage($event)" id="{{item._id}}">
+      <div class="custom-row">
+          <div class="custom-col-9">
+            <ion-item lines="none">
+                <ion-card-title class="ion-text-wrap home-title content-two-line">{{item.apartment.title + ' - ' + item.campaign.title}}</ion-card-title>
+              </ion-item>
+              <ion-item lines="none">
+                <!-- <ion-label class="ion-text-wrap home-infor">123123</ion-label> -->
+                <ion-grid>
+                  <ion-row>
+                    <ion-col>
+                        <ion-label class="ion-text-wrap home-infor">activeCode</ion-label>
+                    </ion-col>
+                    <ion-col>
+                        <ion-label class="ion-text-wrap home-infor">{{item.apartment.activeCode}}</ion-label>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                        <ion-label class="ion-text-wrap home-infor">User category</ion-label>
+                    </ion-col>
+                    <ion-col>
+                        <ion-label class="ion-text-wrap home-infor">{{item.userCategory.title}}</ion-label>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                        <ion-label class="ion-text-wrap home-infor">Area</ion-label>
+                    </ion-col>
+                    <ion-col>
+                        <ion-label class="ion-text-wrap home-infor">{{item.apartment.area}} m2</ion-label>
+                    </ion-col>
+                  </ion-row>
+                  <ion-row>
+                    <ion-col>
+                        <ion-label class="ion-text-wrap home-infor">Address</ion-label>
+                    </ion-col>
+                    <ion-col>
+                        <ion-label class="ion-text-wrap home-infor">{{item.campaign.address}}</ion-label>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-item>
+          </div>
+          <div class="custom-col-3">
+            <ion-segment-button expand="full" class="button-call pading-margin-none" (click)="callEmergency($event)">
+              <ion-icon name="call" class="button-call-icon"></ion-icon>
+              <ion-label class="ion-text-wrap button-call-text">Emergency</ion-label>
+            </ion-segment-button>
+          </div>
+      </div>
+    </ion-card>
+  </ion-list>
+</ion-content>

@@ -44,17 +44,34 @@ export class AddRequestPage implements OnInit {
     this.getUserApar();
   }
 
-  getUserApar(){
+  getFeedbackCategory(apartmentID: string) {
     var self = this;
     this.loading.present();
-    this.apiService.getUserApartment()
+    this.apiService.getFeedbackCategory(apartmentID)
       .subscribe(result => {
-        self.listDepartment = result.userApartments;
-        self.loading.dismiss()
+        self.listTopic = result.feedbackCategories;
+        self.loading.dismiss();
     },
     error => {
       self.loading.dismiss();
     });
+  }
+
+  getUserApar() {
+    var self = this;
+    this.loading.present();
+    this.apiService.getListUserApartment()
+      .subscribe(result => {
+        self.listDepartment = result.userApartments;
+        self.loading.dismiss();
+    },
+    error => {
+      self.loading.dismiss();
+    });
+  }
+
+  changeValueDepartment(event){
+    this.getFeedbackCategory(event.detail.value);
   }
 
   pickImage(sourceType) {

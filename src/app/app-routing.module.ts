@@ -58,6 +58,26 @@ const routes: Routes = [
     loadChildren: './pages/bill-payment/bill-payment.module#BillPaymentPageModule',
     canActivate: [AuthGuard]
   },
+  { 
+    path: 'my-home',
+    loadChildren: './pages/my-home/my-home.module#MyHomePageModule',
+    canActivate: [AuthGuard]
+  },
+  { 
+    path: 'my-home-detail/:id',
+    loadChildren: './pages/my-home-detail/my-home-detail.module#MyHomeDetailPageModule',
+    canActivate: [AuthGuard]
+  },
+  { 
+    path: 'my-account',
+    loadChildren: './pages/my-account/my-account.module#MyAccountPageModule',
+    canActivate: [AuthGuard]
+  },
+  { 
+    path: 'setting',
+    loadChildren: './pages/setting/setting.module#SettingPageModule',
+    canActivate: [AuthGuard]
+  },
 ];
 
 @NgModule({
