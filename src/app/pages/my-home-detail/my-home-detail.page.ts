@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-// import { AuthService } from 'src/app/services/auth/auth.service';
 import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../services/api/api.service';
 import { LoadingService } from '../../services/loading/loading.service';

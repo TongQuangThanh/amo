@@ -17,8 +17,8 @@ import { TranslateConfigService } from './translate-config.service';
 import { TokenInterceptor } from './inteceptors/inteceptors.service';
 import { NativePageTransitions } from '@ionic-native/native-page-transitions/ngx';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
-
 import { OrderServicePageModule } from './pages/order-service/order-service.module';
+import { CodePush } from '@ionic-native/code-push/ngx';
 
 export function LanguageLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -46,7 +46,8 @@ export function LanguageLoader(http: HttpClient) {
     SplashScreen,
     NativePageTransitions,
     TranslateConfigService,
-    OneSignal,
+    OneSignal,  
+    CodePush,
     {
       provide: RouteReuseStrategy,
       useClass: IonicRouteStrategy },
@@ -55,6 +56,7 @@ export function LanguageLoader(http: HttpClient) {
       useClass: TokenInterceptor,
       multi: true
     },
+    
     // NativeStorage
   ],
   bootstrap: [AppComponent]

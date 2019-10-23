@@ -22,6 +22,13 @@ export class NotificationPage implements OnInit {
     private navCtrl: NavController,
     private nativePageTransitions: NativePageTransitions) { }
   ngOnInit() {
+    // this.listArticles  = [];
+    // this.currentPage = 1;
+    // this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
+    // this.getArticles(this.currentPage, this.numberRecordOnPage, '', '', null);
+  }
+
+  ionViewWillEnter(){
     this.listArticles  = [];
     this.currentPage = 1;
     this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;

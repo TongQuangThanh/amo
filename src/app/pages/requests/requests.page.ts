@@ -35,6 +35,15 @@ export class RequestsPage implements OnInit {
   }
 
   ngOnInit() {
+    // this.listRequestAll  = [];
+    // this.listRequestRegistion = [];
+    // this.currentPage = 1;
+    // this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
+    // this.getRequestAll(this.currentPage, this.numberRecordOnPage, '', '', null, false);
+  }
+
+  ionViewWillEnter(){
+    this.modeService = "All";
     this.listRequestAll  = [];
     this.listRequestRegistion = [];
     this.currentPage = 1;

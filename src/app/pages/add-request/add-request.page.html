@@ -1,4 +1,4 @@
-<ion-header translucent no-border>
+<ion-header no-border>
   <ion-toolbar>
     <ion-title>Add request</ion-title>
     <ion-buttons slot="start">
@@ -10,30 +10,45 @@
 <ion-content>
   <form (ngSubmit)="addRequest($event)">
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
-      <ion-item>
+      <ion-item lines="none">
         <ion-label position="stacked">Department</ion-label>
-        <ion-select placeholder="Department" interface="action-sheet" name="departmentID" (ionChange)="changeValueDepartment($event)" [(ngModel)]="departmentID">
+        <ion-select 
+          class="custom-common-input custom-common-input-text height-auto" 
+          placeholder="Department"
+          interface="action-sheet"
+          name="departmentID" (ionChange)="changeValueDepartment($event)" [(ngModel)]="departmentID">
           <ion-select-option *ngFor="let item of listDepartment" value="{{item.apartment._id}}">{{item.apartment.title + ' - ' + item.campaign.title}}</ion-select-option>
         </ion-select>
       </ion-item>
 
-      <ion-item>
+      <ion-item lines="none">
         <ion-label position="stacked">Category</ion-label>
-        <ion-select placeholder="Category" interface="action-sheet" name="topicID" [(ngModel)]="topicID">
+        <ion-select 
+          class="custom-common-input custom-common-input-text height-auto"
+          placeholder="Category"
+          interface="action-sheet"
+          name="topicID" [(ngModel)]="topicID">
           <ion-select-option *ngFor="let item of listTopic" value="{{item._id}}">{{item.title}}</ion-select-option>
         </ion-select>
       </ion-item>
-      <ion-item class="file-input-container">
+      <!-- <ion-item lines="none" class="file-input-container">
         <ion-grid>
-          <ion-row>
-            <label class="label-upload">
-              <input type="file" ng2FileSelect [uploader]="uploader" multiple />
-              Add Files
-            </label>
+          <ion-row class="height-item-button">
+            <ion-col>
+              <label class="label-upload">
+                <input type="file" ng2FileSelect [uploader]="uploader" disabled multiple />
+                Add Files
+              </label>
+            </ion-col>
+            <ion-col>
+              <label (click)="selectImage()" class="label-upload">
+                Add Image
+              </label>
+            </ion-col>
           </ion-row>
           <ion-row>
             <ion-list class="custom-upload-list">
-              <ion-item *ngFor="let item of uploader.queue" text-wrap>
+              <ion-item *ngFor="let item of uploader.queue" class="ion-text-wrap">
                 <ion-button slot="start" fill="clear">
                   <ion-icon slot="icon-only" name="trash"></ion-icon>
                 </ion-button>
@@ -44,32 +59,16 @@
             </ion-list>
           </ion-row>
         </ion-grid>
-      </ion-item>
-      <ion-item>
-        <ion-grid>
-          <ion-row>
-            <label (click)="selectImage()" class="label-upload">
-                add Image
-            </label>
-          </ion-row>
-          <ion-row>
-            <div scrollX="true" scroll-avatar>
-                <ion-avatar>
-                  <img src="../../../assets/request/Registion.png" class="scroll-item"/>
-                </ion-avatar>
-            </div>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
+      </ion-item> -->
 
-      <ion-item>
+      <ion-item lines="none"> 
         <ion-label position="stacked">Title</ion-label>
-        <ion-input value="{{title}}" name="title"></ion-input>
+        <ion-input class="custom-common-input custom-common-input-text" value="{{title}}" [(ngModel)]="title" name="title"></ion-input>
       </ion-item>
 
-      <ion-item>
+      <ion-item lines="none">
         <ion-label position="stacked">Message</ion-label>
-        <ion-textarea [(ngModel)]="message" rows="4" name="message"></ion-textarea>
+        <ion-textarea class="custom-common-input custom-common-input-text height-auto" [(ngModel)]="message" rows="4" name="message"></ion-textarea>
       </ion-item>
     </ion-list>
 

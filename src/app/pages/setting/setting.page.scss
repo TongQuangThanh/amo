@@ -1,0 +1,64 @@
+.function-section{
+    position: absolute;
+    bottom: 16px;
+}
+
+.logout-item{
+    --inner-padding-end: 0;
+    --padding-start: 0;
+    margin-top: 16px;
+}
+
+.logout-text{
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+    /* identical to box height */
+
+    text-align: center;
+
+    color: #FA7268;
+}
+.version-text {
+    text-align: right;
+}
+
+.language-button-active {
+    width: 90px;
+    height: 36px;
+    --background: #FA7268;
+    --background-activated: rgba(250, 114, 104,0.5);
+    border-radius: 5px;
+    --border-radius: 5px;
+    .button-native {
+        border-radius: 5px;
+        --border-radius: 5px;
+    }
+}
+
+.language-button-inactive {
+    width: 90px;
+    height: 36px;
+    --background: #556080;
+    --background-activated: rgba(33, 38, 50,0.5);
+    border-radius: 5px;
+    --border-radius: 5px;
+    .button-native {
+        border-radius: 5px;
+        --border-radius: 5px;
+    }
+}
+
+.language-label{
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 36px;
+    /* identical to box height */
+
+
+    color: #556080;
+}

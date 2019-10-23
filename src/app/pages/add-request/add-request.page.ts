@@ -6,6 +6,8 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { ApiService } from '../../services/api/api.service';
 import { LoadingService } from '../../services/loading/loading.service';
 import { FileUploader, FileLikeObject } from 'ng2-file-upload';
+import { AlertService } from '../../services/alert/alert.service';
+import { Platform, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-request',
@@ -34,9 +36,11 @@ export class AddRequestPage implements OnInit {
     private camera: Camera,
     public actionSheetController: ActionSheetController,
     private file: File,
+    private navCtrl: NavController,
     private apiService: ApiService,
     private loading: LoadingService,
-    private authService: AuthService) { 
+    private authService: AuthService,
+    private alertService: AlertService) { 
     
   }
 
@@ -127,7 +131,24 @@ export class AddRequestPage implements OnInit {
   }
 
   addRequest(event){
-
+    const params = {
+      category: this.topicID,
+      title: this.title,
+      content: this.message,
+      attachments: [],
+      apartment: this.departmentID
+    };
+    this.loading.present();
+    const self = this;
+    this.apiService.addFeedback(params)
+      .subscribe(result => {
+        self.loading.dismiss();
+        self.alertService.presentToast("add request success");
+        self.navCtrl.back();
+    },
+    error => {
+      self.loading.dismiss();
+    });
   }
 
 }

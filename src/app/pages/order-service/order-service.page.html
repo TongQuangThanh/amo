@@ -1,4 +1,4 @@
-<ion-header translucent no-border>
+<ion-header no-border>
     <ion-toolbar>
       <ion-title>Order service</ion-title>
       <ion-buttons slot="start">
@@ -9,31 +9,32 @@
 <ion-content>
   <form (ngSubmit)="orderSericeForm($event)">
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
-      <ion-item>
+      <ion-item lines="none">
         <ion-label position="stacked">Department</ion-label>
-        <ion-select placeholder="Department" interface="action-sheet" (ionChange)="changeValueDepartment($event)" name="departmentID" [(ngModel)]="departmentID">
+        <ion-select class="custom-common-input custom-common-input-text height-auto" placeholder="Department" interface="action-sheet" (ionChange)="changeValueDepartment($event)" name="departmentID" [(ngModel)]="departmentID">
           <ion-select-option *ngFor="let item of listDepartment" value="{{item.apartment._id}}">{{item.apartment.title + ' - ' + item.campaign.title}}</ion-select-option>
         </ion-select>
       </ion-item>
 
-      <ion-item>
+      <ion-item lines="none">
         <ion-label position="stacked">User name</ion-label>
-        <ion-input value="{{userName}}" name="userName" readonly></ion-input>
+        <ion-input class="custom-common-input custom-common-input-text" value="{{userName}}" name="userName" readonly></ion-input>
       </ion-item>
 
-      <ion-item>
+      <ion-item lines="none">
         <ion-label position="stacked">Phone</ion-label>
-        <ion-input value="{{phone}}" name="phone" readonly></ion-input>
+        <ion-input class="custom-common-input custom-common-input-text" value="{{phone}}" name="phone" readonly></ion-input>
       </ion-item>
 
-      <ion-item>
+      <ion-item lines="none">
         <ion-label position="stacked">Address</ion-label>
-        <ion-input required type="text" [(ngModel)]="address" name="address"></ion-input>
+        <ion-input class="custom-common-input custom-common-input-text" required type="text" [(ngModel)]="address" name="address"></ion-input>
       </ion-item>
 
-      <ion-item>
+      <ion-item lines="none">
         <ion-label position="stacked">Time</ion-label>
         <ion-datetime 
+          class="custom-common-input custom-common-input-text height-auto"
           name="timeOrder" [(ngModel)]="timeOrder"
           displayFormat="YYYY/MM/DD H:mm"
           min="2019"
@@ -42,9 +43,9 @@
         ></ion-datetime>
       </ion-item>
 
-      <ion-item>
+      <ion-item lines="none">
         <ion-label position="stacked">Message</ion-label>
-        <ion-textarea [(ngModel)]="message" rows="4" name="message"></ion-textarea>
+        <ion-textarea class="custom-common-input custom-common-input-text height-auto" [(ngModel)]="message" rows="4" name="message"></ion-textarea>
       </ion-item>
     </ion-list>
 

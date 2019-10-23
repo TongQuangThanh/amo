@@ -5,7 +5,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { ApiService } from '../../services/api/api.service';
 import { LoadingService } from '../../services/loading/loading.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-import { AlertService } from '../../services/alert/alert.service'
+import { AlertService } from '../../services/alert/alert.service';
 import * as moment from 'moment';
 
 @Component({
@@ -94,11 +94,11 @@ export class OrderServicePage implements OnInit {
     };
     this.apiService.addServiceLog(params).subscribe(result => {
       self.loading.dismiss();
-      this.alertService.presentToast("add order request success");
-      this.navCtrl.back();
+      self.alertService.presentToast("add order request success");
+      self.navCtrl.back();
     },
     error => {
-      this.alertService.presentToast(JSON.stringify(error));
+      self.alertService.presentToast(JSON.stringify(error));
       self.loading.dismiss();
     });
   }

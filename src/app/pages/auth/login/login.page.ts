@@ -3,7 +3,7 @@ import { NavController } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { AlertService } from '../../../services/alert/alert.service';
+import { LoadingService } from '../../../services/loading/loading.service';
 
 @Component({
   selector: 'app-login',
@@ -11,14 +11,18 @@ import { AlertService } from '../../../services/alert/alert.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+
   phone: string;
   password: string;
+  errorMessage:string;
+
   constructor(
     private authService: AuthService,
     private navCtrl: NavController,
     private route: ActivatedRoute,
-    private alertService: AlertService,
-  ) { }
+    private loading: LoadingService,
+  ) { 
+  }
 
   ngOnInit() {
     localStorage.removeItem('token');
@@ -35,14 +39,18 @@ export class LoginPage implements OnInit {
   }
 
   login() {
+    var self = this;
+    this.loading.present();
     this.authService.login(this.phone, this.password).subscribe(
       data => {
         console.log('Logged In');
       },
-      error => {
-        this.alertService.presentToast(JSON.stringify(error));
+      (error:any) => {
+        self.errorMessage = error.error.message;
+        self.loading.dismiss();
       },
       () => {
+        self.loading.dismiss();
         this.navCtrl.navigateRoot('/dashboard/home');
       }
     );

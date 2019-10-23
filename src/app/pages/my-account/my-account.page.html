@@ -1,41 +1,72 @@
-<ion-header translucent no-border>
+<ion-header no-border>
     <ion-toolbar>
-      <ion-title>{{titlePage}}</ion-title>
       <ion-buttons slot="start">
         <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-buttons slot="end" class="white-color" (click)="updateAccount()">
+        <ion-label>Save</ion-label>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
   
 
 <ion-content>
-    <form (ngSubmit)="orderSericeForm($event)">
+    <div class="header-infor">
+        <ion-avatar class="center-avatar">
+            <img src="{{avatar}}"/>
+        </ion-avatar>
+    </div>
+    <form class="form-margin">
       <ion-list lines="full" class="ion-no-margin ion-no-padding">
-        <ion-item>
-            <ion-input class="phone-input phone-input-text" aria-placeholder="userName" [(ngModel)]="userName" type="text" name="userName"></ion-input>
+        <ion-item lines="none" class="margin-top-10">
+            <ion-input class="custom-common-input custom-common-input-text" placeholder="displayName" [(ngModel)]="displayName" type="text" name="displayName"></ion-input>
         </ion-item>
-        <ion-item>
-            <ion-input class="phone-input phone-input-text" aria-placeholder="phone" [(ngModel)]="phone" type="tel" name="phone"></ion-input>
+        <ion-item lines="none" class="margin-top-10">
+            <ion-input class="custom-common-input custom-common-input-text" placeholder="email" [(ngModel)]="email" type="email" name="email"></ion-input>
         </ion-item>
-        <ion-item>
-            <ion-input class="phone-input phone-input-text" [(ngModel)]="email" type="email" name="email"></ion-input>
+        <ion-item lines="none" class="margin-top-10">
+          <ion-grid class="padding-none">
+              <ion-row class="padding-none">
+                <ion-col class="padding-none">
+                  <ion-item lines="none" class="custom-common-input padding-none height-auto DOB-custom">
+                    <ion-datetime placeholder="YYYY/MM/DD"
+                      class="padding-none custom-common-input-text"
+                      name="dateOfBirth" [(ngModel)]="dateOfBirth"
+                      displayFormat="YYYY/MM/DD"
+                      min="1900"
+                      max="2030"></ion-datetime>
+                  </ion-item>
+                </ion-col>
+                <ion-col class="padding-none">
+                  <ion-item lines="none" class="custom-common-input padding-none height-auto sex-custom">
+                    <ion-select class="padding-none custom-common-input-text selection-width-85" placeholder="Sex" interface="action-sheet" name="sex" [(ngModel)]="sex">
+                      <ion-select-option value="male">Male</ion-select-option>
+                      <ion-select-option value="female">Female</ion-select-option>
+                      <ion-select-option value="other">Other</ion-select-option>
+                    </ion-select>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
         </ion-item>
-        <ion-item>
-            <ion-datetime 
-            name="timeOrder" [(ngModel)]="timeOrder"
-            displayFormat="YYYY/MM/DD"
-            min="1900"
-            max="2030"
-          ></ion-datetime>
+        <ion-item lines="none" class="margin-top-10">
+          <ion-input class="custom-common-input custom-common-input-text" placeholder="Personal Liscence" [(ngModel)]="personalLiscence" type="number" name="personalLiscence"></ion-input>
         </ion-item>
-        <ion-item>
-            <ion-select placeholder="Sex" interface="action-sheet" name="sex" [(ngModel)]="sex">
-              <ion-select-option value="male">Male</ion-select-option>
-              <ion-select-option value="female">Female</ion-select-option>
-              <ion-select-option value="other">Other</ion-select-option>
+        <!-- <ion-item lines="none" class="margin-top-10">
+          <ion-select class="padding-none" placeholder="Nationality" interface="action-sheet" name="nationality" [(ngModel)]="nationality">
+              <ion-select-option *ngFor="let item of listCountries" value="{{item.alpha2}}">{{item.name}}</ion-select-option>
             </ion-select>
-        </ion-item>
-        
+        </ion-item> -->
       </ion-list>
+      <section class="full-width function-section">
+          <ion-item (click)="changeToSetting()">
+            <ion-icon slot="end" name="arrow-dropright"></ion-icon>
+            <ion-label>Settings</ion-label>
+          </ion-item>
+          <ion-item (click)="callHelpCenter()">
+              <ion-icon slot="end" name="arrow-dropright"></ion-icon>
+              <ion-label>Help center</ion-label>
+            </ion-item>
+      </section>
     </form>
 </ion-content>

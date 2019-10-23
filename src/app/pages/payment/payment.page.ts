@@ -33,6 +33,13 @@ export class PaymentPage implements OnInit {
   }
 
   ngOnInit() {
+    // this.listPaymentBills  = [];
+    // this.currentPage = 1;
+    // this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
+    // this.getPaymentLogs(this.currentPage, this.numberRecordOnPage, '', '', null, false);
+  }
+
+  ionViewWillEnter(){
     this.listPaymentBills  = [];
     this.currentPage = 1;
     this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;

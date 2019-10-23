@@ -1,14 +1,89 @@
 {
     "LANDING": {
-        "title": "vn Ionic 4 Multi Language Translation",
-        "text": "vn This is random text to show translation in application"
+        "content_text": "Xin hãy nhập số điện thoại đã đăng kí",
+        "phone_place_holder": "Phone number ...",
+        "send": "Send",
+        "skip": "Skip, trial"
     },
     "LOGIN":{
         "title": "Login",
         "note_string" : "Enter the password to login",
-        "placeholder_phone": "Phone number",
-        "placeholder_pass": "Password",
-        "button_login_label": "Login",
-        "forgot_pass_label": "Forgot your password?"
+        "placeholder_phone": "Số điện thoại",
+        "placeholder_pass": "Mật khẩu",
+        "button_login_label": "Đăng nhập",
+        "forgot_pass_label": "Quên mật khẩu?",
+        "login_error": "Số điện thoại hoặc mật khẩu không đúng"
+    },
+    "REGISTER" : {
+
+    },
+    "ADD_REQUEST": {
+
+    },
+    "BILL_PAYMENT": {
+
+    },
+    "CHANGE_PASSWORD": {
+
+    },
+    "DASHBOARD": {
+
+    },
+    "FORGOT_PASSWORD":{
+
+    },
+    "HOME":{
+
+    },
+    "MY_ACCOUNT":{
+
+    },
+    "MY_HOME":{
+
+    },
+    "MY_HOME_DETAIL":{
+
+    },
+    "NEW_DETAIL":{
+
+    },
+    "NEW_PASSWORD":{
+
+    },
+    "NOTIFICATION":{
+
+    },
+    "NOTIFICATION_DETAIL":{
+
+    },
+    "ORDER_SERVICE":{
+
+    },
+    "PAYMENT":{
+
+    },
+    "PAYMENT_INFOR":{
+
+    },
+    "PINCODE_PASSWORD":{
+
+    },
+    "REQUEST_DETAIL":{
+
+    },
+    "REQUEST":{
+
+    },
+    "SERVICE_DETAIL":{
+
+    },
+    "SERVICE_LIST_BY_CATEGORY":{
+
+    },
+    "SERVICE":{
+
+    },
+    "SETTING":{
+
     }
 }

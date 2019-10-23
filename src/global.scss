@@ -57,17 +57,17 @@ ion-refresher {
     color: #BBBFCC;
 }
 
-.padding-none {
-    padding: 0;
-}
-
-.margin-none {
-    margin: 0;
-}
-
 .padding-left-right-card {
     padding: 0px 16px 0px 16px;
     display: inline-block;
+}
+
+.full-width {
+    width: 100%;
+}
+
+.full-height {
+    height: 100%;
 }
 
 .amo-button-custom {
@@ -84,4 +84,47 @@ ion-refresher {
 
 .width-100{
     width: 100%;
+}
+
+.custom-common-input{
+    // position: absolute;
+    // left: 4.27%;
+    // width: 84.46%;
+    // top: 17.24%;
+    height: 3.5em;
+    // height : 40px;
+    mix-blend-mode: normal;
+    // opacity: 0.15;
+    border: 1px solid  rgba(85, 96, 128, 0.15);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 20px rgba(23, 21, 48, 0.102546);
+    border-radius: 8px;
+}
+
+.custom-common-input-text {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+
+    --padding-start: 10px !important;
+    color: #556080;
+}
+
+.margin-top-10 {
+    margin-top: 10px;
+}
+
+.height-auto{
+    height: auto;
+}
+
+.padding-none {
+    padding: 0;
+}
+
+.margin-none {
+    margin: 0;
 }

@@ -20,6 +20,7 @@ export class HomePage implements OnInit {
   currentPage: number;
   numberRecordOnPage: number;
   userName: string;
+  avatar: string;
 
   constructor(
     private loading: LoadingService,
@@ -32,14 +33,37 @@ export class HomePage implements OnInit {
     platform.ready().then((readySource) => {
       this.heightScreen = platform.height() * 0.55 - 32;
     });
+  }
 
+  ngAfterViewChecked(){
     const profile = this.authService.getProfile();
-    if(profile){
+    if(profile && this.userName != profile.displayName){
       this.userName = profile.displayName;
+      
+    }
+    if(profile && profile.avatar != "" && this.avatar != profile.avatar){
+      this.avatar = profile.avatar;
     }
   }
 
   ngOnInit() {
+    // this.listNews  = [];
+    // this.currentPage = 1;
+    // this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
+    // this.getNews(this.currentPage, this.numberRecordOnPage, '', '', null, false);
+    const params = {
+      playerId: localStorage.getItem('playID')
+    };
+    this.apiService.settingNotification(params)
+      .subscribe(result => {
+        console.log(result)
+    },
+    error => {
+      console.log(error)
+    });
+  }
+
+  ionViewWillEnter(){
     this.listNews  = [];
     this.currentPage = 1;
     this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;

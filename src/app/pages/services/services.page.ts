@@ -31,6 +31,12 @@ export class ServicesPage implements OnInit {
   }
 
   ngOnInit() {
+    // this.listServiceCategory = [];
+    // this.listServiceLog = [];
+    // this.getRequestAll();
+  }
+
+  ionViewWillEnter(){
     this.listServiceCategory = [];
     this.listServiceLog = [];
     this.getRequestAll();
@@ -91,7 +97,7 @@ export class ServicesPage implements OnInit {
     this.navCtrl.navigateForward('/service-list-by-category/' + event.currentTarget.id);
   }
 
-  addNewRequest(event){
+  addNewService(event){
     if (event && event.stopPropagation) {
       event.stopPropagation();
     }

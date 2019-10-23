@@ -1,7 +1,9 @@
 {
     "LANDING": {
-        "title": "Ionic 4 Multi Language Translation",
-        "text": "This is random text to show translation in application"
+        "content_text": "Enter the phone number you registered",
+        "phone_place_holder": "Phone number ...",
+        "send": "Send",
+        "skip": "Skip, trial"
     },
     "LOGIN":{
         "title": "Login",
@@ -9,6 +11,175 @@
         "placeholder_phone": "Phone number",
         "placeholder_pass": "Password",
         "button_login_label": "Login",
-        "forgot_pass_label": "Forgot your password?"
+        "forgot_pass_label": "Forgot your password?",
+        "login_error": "Phone number or password not correct"
+    },
+    "REGISTER" : {
+        
+    },
+    "ADD_REQUEST": {
+        "title": "Add request",
+        "department" : "Department",
+        "category" : "Category",
+        "title_request": "Title",
+        "message_request": "Message",
+        "btn_submit": "Submit"
+    },
+    "BILL_PAYMENT": {
+
+    },
+    "CHANGE_PASSWORD": {
+        "title": "Change password",
+        "place_holder_old_password": "Old password",
+        "place_holder_new_password": "New password",
+        "place_holder_confirm_password": "Confirm password",
+        "btn_change_pass": "Change Password"
+    },
+    "DASHBOARD": {
+
+    },
+    "FORGOT_PASSWORD":{
+        "title": "forgotPassword"
+    },
+    "HOME":{
+        "title": "Home",
+        "my_home": "My home",
+        "amount_to_pay": "Amount to pay",
+        "vnd": "vnd",
+        "pay_now": "Pay Now",
+        "create_request": "Create request",
+        "booking": "Booking",
+        "order_food": "Order food",
+        "coffee": "Coffee",
+        "other": "Other",
+        "top_news": "Top news",
+        "pull_to_refresh": "Pull to refresh",
+        "loadding_more": "Loading more data..."
+    },
+    "MY_ACCOUNT":{
+        "title": "my account",
+        "btn_save": "Save",
+        "male": "Male",
+        "female": "Female",
+        "other": "Other",
+        "placeholder_sex": "Sex",
+        "placeholder_displayName": "displayName",
+        "placeholder_email": "email",
+        "placeholder_liscense": "Personal Liscence",
+        "setting": "Settings",
+        "help_center": "Help center"
+    },
+    "MY_HOME":{
+        "title": "My Home",
+        "activeCode": "activeCode",
+        "user_category": "User category",
+        "area": "Area",
+        "address": "Address",
+        "emergency": "Emergency"
+    },
+    "MY_HOME_DETAIL":{
+        "title": "my home detail",
+        "active_code": "Active Code",
+        "room": "Room",
+        "user_category": "User category",
+        "area": "Area",
+        "address": "Address",
+        "vehicles": "Vehicles",
+        "members": "Members",
+        "name": "Name",
+        "sex": "Sex",
+        "DOB": "DOB",
+        "phone": "Phone",
+        "personal_license": "Personal license",
+        "nationality": "Nationality"
+    },
+    "NEW_DETAIL":{
+
+    },
+    "NEW_PASSWORD":{
+
+    },
+    "NOTIFICATION":{
+        "title": "Notification",
+        "pull_to_refresh": "Pull to refresh",
+        "loadding_more": "Loading more data..."
+    },
+    "NOTIFICATION_DETAIL":{
+
+    },
+    "ORDER_SERVICE":{
+        "title": "Order service",
+        "department": "Department",
+        "placeholder_department": "Department",
+        "user_name": "User name",
+        "phone": "Phone",
+        "address": "Address",
+        "time_order": "Time",
+        "message": "Message",
+        "btn_order": "Order"
+    },
+    "PAYMENT":{
+        "title": "Payment",
+        "amount_to_pay": "Amount to pay",
+        "vnd": "vnd",
+        "pay_now": "Pay Now",
+        "complain": "Complain",
+        "status_new": "New",
+        "status_pending": "Pending",
+        "status_done": "Done",
+        "pull_to_refresh": "Pull to refresh",
+        "loadding_more": "Loading more data..."
+    },
+    "PAYMENT_INFOR":{
+        "title": "Payment information",
+        "payment_date": "Payment date",
+        "total": "Total",
+        "bank_name": "Bank Name",
+        "bank_account_holder": "Bank Account Holder",
+        "bank_account_number": "Bank Account Number",
+        "description": "Description",
+        "amount": "Amount",
+        "note": "Note"
+    },
+    "PINCODE_PASSWORD":{
+
+    },
+    "REQUEST_DETAIL":{
+        "title": "Request Detail"
+    },
+    "REQUEST":{
+        "title": "Requests",
+        "tab_all": "All",
+        "tab_registration": "Registration",
+        "status_new": "New",
+        "status_cancelled": "Cancelled",
+        "status_processing": "Processing",
+        "status_done": "Done",
+        "pull_to_refresh": "Pull to refresh",
+        "loadding_more": "Loading more data...",
+        "btn_add_request": "Add New Request",
+        "btn_add_new_registration": "Add New Registration"
+    },
+    "SERVICE_DETAIL":{
+
+    },
+    "SERVICE_LIST_BY_CATEGORY":{
+        "title": "service by category"
+    },
+    "SERVICE":{
+        "title": "Services",
+        "tab_all": "All",
+        "tab_history": "History",
+        "btn_add_new_services": "Add New Services"
+    },
+    "SETTING":{
+        "title": "Settings",
+        "language": "Language",
+        "vn": "Viet Nam",
+        "en": "English",
+        "change_password": "Change password",
+        "app _version": "App version",
+        "subversion": "Sub-version",
+        "btn_log_out": "Log out"
     }
 }

@@ -1,4 +1,4 @@
-<ion-header translucent no-border>
+<ion-header no-border>
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/"></ion-back-button>
@@ -13,10 +13,13 @@
       <p class="text-note">{{ 'LOGIN.note_string' | translate }}</p>
     </ion-item>
     <ion-item lines="none" class="padding-10">
-      <ion-input class="phone-input phone-input-text" [(ngModel)]="phone" type="tel" name="phone"></ion-input>
+      <ion-input class="phone-input phone-input-text" placeholder="{{ 'LOGIN.placeholder_phone' | translate }}" [(ngModel)]="phone" type="tel" name="phone"></ion-input>
     </ion-item>
     <ion-item lines="none" class="padding-10">
-      <ion-input class="pass-input pass-input-text" [(ngModel)]="password" type="password" name="password"></ion-input>
+      <ion-input class="pass-input pass-input-text" placeholder="{{ 'LOGIN.placeholder_pass' | translate }}" [(ngModel)]="password" type="password" name="password"></ion-input>
+    </ion-item>
+    <ion-item lines="none" class="padding-10" *ngIf="errorMessage != ''">
+      <ion-label color="danger" class="ion-text-wrap">{{errorMessage}}</ion-label>
     </ion-item>
     <ion-item lines="none" class="padding-content">
       <ion-button (click)="login()" class="button-common login-button" expand="full" [ngClass]="!checkIsEnabled() ? 'button-common login-button' : 'button-common login-button button-common-active'" [disabled]="!checkIsEnabled()">{{ 'LOGIN.button_login_label' | translate }}</ion-button>

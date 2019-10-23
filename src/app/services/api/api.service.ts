@@ -65,17 +65,23 @@ export class ApiService {
     );
   }
 
-  getRequestDetail(requestID: string): Observable<any> {
-    return this.http.get(EnvService.feedbacksDetail + requestID).pipe(
-      map(results => results)
-    );
-  }
-
   getFeedbackCategory(apartmentID:string): Observable<any> {
     const params = new HttpParams().
       set('apartment', apartmentID).
       set('_v', (new Date()).getTime().toString());
     return this.http.get(EnvService.feedbacksCategory, {params}).pipe(
+      map(results => results)
+    );
+  }
+
+  addFeedback(params: any): Observable<any> {
+    return this.http.post(EnvService.feedback_addnew, params).pipe(
+      map(results => results)
+    );
+  }
+
+  getRequestDetail(requestID: string): Observable<any> {
+    return this.http.get(EnvService.feedbacksDetail + requestID).pipe(
       map(results => results)
     );
   }
@@ -165,6 +171,30 @@ export class ApiService {
 
   getUserApartment(apartmentID): Observable<any> {
     return this.http.get(EnvService.apartmentDetail + apartmentID).pipe(
+      map(results => results)
+    );
+  }
+
+  getUserProfile(): Observable<any> {
+    return this.http.get(EnvService.updateProfile).pipe(
+      map(results => results)
+    );
+  }
+
+  updateUserProfile(params:any): Observable<any> {
+    return this.http.put(EnvService.updateProfile, params).pipe(
+      map(results => results)
+    );
+  }
+
+  changePassword(params:any): Observable<any> {
+    return this.http.put(EnvService.changePassword, params).pipe(
+      map(results => results)
+    );
+  }
+
+  settingNotification(params:any): Observable<any> {
+    return this.http.post(EnvService.notification, params).pipe(
       map(results => results)
     );
   }

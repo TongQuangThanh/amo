@@ -3,6 +3,8 @@ import { MenuController, NavController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { TranslateConfigService } from '../../translate-config.service';
 import { NavigationExtras } from '@angular/router';
+import { ApiService } from '../../services/api/api.service';
+import { LoadingService } from '../../services/loading/loading.service';
 
 const PHONE_LENGTH_VN = 10;
 
@@ -17,9 +19,11 @@ export class LandingPage implements OnInit {
 
   constructor(
     private menu: MenuController,
+    private loading: LoadingService,
     private authService: AuthService,
     private navCtrl: NavController,
-    private translateConfigService: TranslateConfigService
+    private translateConfigService: TranslateConfigService,
+    private apiService: ApiService
   ) {
     this.phoneNumber = '';
     this.selectedLanguage = this.translateConfigService.getDefaultLanguage();
@@ -28,24 +32,25 @@ export class LandingPage implements OnInit {
   }
 
   ionViewWillEnter() {
-    // this.authService.getToken().then((data) => {
-    //   if (this.authService.isLoggedIn) {
-    //     this.navCtrl.navigateRoot('/dashboard/home');
-    //   }
-    // });
-    // this.sendDeviceManager();
+    var self = this;
     this.authService.getToken();
     if (this.authService.isLoggedIn) {
-      this.navCtrl.navigateRoot('/dashboard/home');
+      this.loading.present();
+      this.apiService.getUserProfile()
+        .subscribe(result => {
+          localStorage.setItem('profile', JSON.stringify(result.profile));
+          self.loading.dismiss()
+          self.navCtrl.navigateRoot('/dashboard/home');
+      },
+      error => {
+        self.loading.dismiss();
+        self.authService.logout();
+      });
     }
   }
 
   ngOnInit() {
 
-  }
-
-  sendDeviceManager(){
-    alert(localStorage.getItem('playID'));
   }
 
   checkIsEnabled() {
