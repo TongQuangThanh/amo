@@ -27,13 +27,13 @@
       </ion-item>
 
       <ion-item lines="none">
-        <ion-label position="stacked">{{ 'ORDER_SERVICE.address' | translate }}</ion-label>
-        <ion-input class="custom-common-input custom-common-input-text" required type="text" [(ngModel)]="address" name="address"></ion-input>
+        <ion-label position="stacked">{{ 'ORDER_SERVICE.address' | translate }}<ion-text color="danger">*</ion-text></ion-label>
+        <ion-input class="custom-common-input custom-common-input-text" placeholder="{{ 'ORDER_SERVICE.address' | translate }}" [ngClass]="!isErrorAddress ? '' : 'error-input'" required type="text" [(ngModel)]="address" name="address"></ion-input>
       </ion-item>
 
       <ion-item lines="none">
-        <ion-label position="stacked">{{ 'ORDER_SERVICE.time_order' | translate }}</ion-label>
-        <ion-datetime 
+        <ion-label position="stacked">{{ 'ORDER_SERVICE.time_order' | translate }}<ion-text color="danger">*</ion-text></ion-label>
+        <ion-datetime [ngClass]="!isErrorTime ? '' : 'error-input'" placeholder="{{ 'ORDER_SERVICE.time_order' | translate }}"
           class="custom-common-input custom-common-input-text height-auto"
           name="timeOrder" [(ngModel)]="timeOrder"
           displayFormat="YYYY/MM/DD H:mm"
@@ -44,8 +44,8 @@
       </ion-item>
 
       <ion-item lines="none">
-        <ion-label position="stacked">{{ 'ORDER_SERVICE.message' | translate }}</ion-label>
-        <ion-textarea class="custom-common-input custom-common-input-text height-auto" [(ngModel)]="message" rows="4" name="message"></ion-textarea>
+        <ion-label position="stacked">{{ 'ORDER_SERVICE.message' | translate }}<ion-text color="danger">*</ion-text></ion-label>
+        <ion-textarea class="custom-common-input custom-common-input-text height-auto" placeholder="{{ 'ORDER_SERVICE.message' | translate }}" [ngClass]="!isErrorMessage ? '' : 'error-input'" [(ngModel)]="message" required rows="4" name="message"></ion-textarea>
       </ion-item>
     </ion-list>
 

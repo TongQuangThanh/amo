@@ -22,8 +22,11 @@ export class OrderServicePage implements OnInit {
   listDepartment: any;
   message: string;
   timeOrder: any;
-  latitude: any;
-  longitude: any;
+  isErrorAddress:boolean=false;
+  isErrorTime:boolean=false;
+  isErrorMessage:boolean=false;
+  // latitude: any;
+  // longitude: any;
   serviceID: string;
   constructor(
     private route: ActivatedRoute,
@@ -43,17 +46,7 @@ export class OrderServicePage implements OnInit {
   }
 
   ngOnInit() {
-    var self = this;
-    this.geolocation.getCurrentPosition().then((resp) => {
-      self.latitude = resp.coords.latitude;
-      self.longitude = resp.coords.longitude;
-      self.getUserApar();
-     }).catch((error) => {
-      self.latitude = "";
-      self.longitude = "";
-      self.getUserApar();
-     });
-    
+    this.getUserApar()
   }
 
   getUserApar(){
@@ -81,16 +74,46 @@ export class OrderServicePage implements OnInit {
 
   orderSericeForm(event){
     const self = this;
+    if(this.address && this.address.length > 0){
+      this.isErrorAddress = false;
+    }else{
+      this.isErrorAddress = true;
+    }
+
+    if(this.timeOrder && this.timeOrder.length > 0){
+      this.isErrorTime = false;
+    }else{
+      this.isErrorTime = true;
+    }
+
+    if(this.message && this.message.length > 0){
+      this.isErrorMessage = false;
+    }else{
+      this.isErrorMessage = true;
+    }
+
+    if(this.isErrorMessage || this.isErrorAddress || this.isErrorTime){
+      return;
+    }
     this.loading.present();
+    this.geolocation.getCurrentPosition().then((resp) => {
+      self.requestOrder(resp.coords.latitude, resp.coords.longitude);
+     }).catch((error) => {
+      self.requestOrder("", "");
+     });
+  }
+
+  requestOrder(latitude:any, longitude:any){
+    const self = this;
     const params = {
       service: this.serviceID,
       appointAt: moment(this.timeOrder),
       phone: this.phone,
       address: this.address,
-      latitude: this.latitude,
-      longitude: this.longitude,
+      latitude: latitude,
+      longitude: longitude,
       name: this.userName,
-      message: this.address
+      message: this.message
     };
     this.apiService.addServiceLog(params).subscribe(result => {
       self.loading.dismiss();

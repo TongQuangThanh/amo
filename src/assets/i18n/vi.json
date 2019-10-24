@@ -1,50 +1,50 @@
 {
     "LANDING": {
-        "content_text": "Nhập số điện thoại để đăng nhập",
-        "phone_place_holder": "Số điện thoại",
-        "continue": "Tiếp tục",
-        "skip": "Bỏ qua"
+        "content_text": "Nhập số điện thoại để đăng nhập",
+        "phone_place_holder": "Số điện thoại",
+        "continue": "Tiếp tục",
+        "skip": "Bỏ qua"
     },
     "LOGIN":{
         "title": "Đăng nhập",
-        "note_string" : "Nhập mật khẩu của bạn", 
-        "placeholder_phone": "Số điện thoại",
-        "placeholder_pass": "Mật khẩu",
+        "note_string" : "Nhập mật khẩu của bạn", 
+        "placeholder_phone": "Số điện thoại",
+        "placeholder_pass": "Mật khẩu",
         "button_login_label": "Đăng nhập",
-        "forgot_pass_label": "Quên mật khẩu?",
-        "login_error": "Số điện thoại hoặc mật khẩu không đúng"
+        "forgot_pass_label": "Quên mật khẩu",
+        "login_error": "Số điện thoại hoặc mật khẩu không đúng"
     },
     "REGISTER" : {
-        "note_text_confirm": "Một tin nhắn văn bản gồm mã xác minh 4 chữ số đã được gửi đến số điện thoại của bạn",
-        "forgot_password_note": "Một mã xác minh 4 chữ số đã được gửi đến số điện thoại của bạn, vui lòng kiểm tra tin nhắn",
-        "note_view_apartment_code": "Mỗi căn hộ sẽ được cấp một mã số gồm 6 ký tự, mã số này là duy nhất vì mục đích an ninh. Nếu bạn chưa nhận được mã số căn hộ, vui lòng liên hệ với Ban Quản Lý để được giúp đỡ hoặc bỏ qua bước này để dùng thử",
-        "verification_code": "verification code",
-        "skip": "Skip, trial"
+        "note_text_confirm": "Một tin nhắn văn bản gồm mã xác minh 4 chũ số được gửi đến số điện thoại của bạn",
+        "forgot_password_note": "Một mã xác minh 4 chữ số đã được gửi đến số điện thoại của bạn, vui lòng kiểm tra tin nhắn",
+        "note_view_apartment_code": "Mỗi căn hộ sẽ được cung cấp một mã số gồm 6 ký tự, mã số này là duy nhất vì mục đích an ninh. Nếu bạn chưa nhận được mã số căn hộ. Vui lòng liên hệ với Ban Quản Lý để nhận được giúp đỡ hoặc bỏ qua bước này để dùng thử.",
+        "verification_code": "Mã xác nhận",
+        "skip": "Bỏ qua"
     },
     "ADD_REQUEST": {
-        "title": "Yêu cầu mới",
+        "title": "Yêu cầu mới",
         "apartment" : "Căn hộ",
         "category" : "Danh mục",
-        "title_request": "Tiêu đề",
+        "title_request": "Tiêu đề",
         "message_request": "Nội dung",
-        "btn_submit": "Gửi"
+        "btn_submit": "Gửi"
     },
     "BILL_PAYMENT": {
 
     },
     "CHANGE_PASSWORD": {
-        "title": "Đổi mật khẩu",
-        "place_holder_old_password": "Mật khẩu hiện tại",
-        "place_holder_new_password": "Mật khẩu mới",
-        "place_holder_confirm_password": "Nhập lại mật khẩu mới",
+        "title": "Đổi mật khẩu",
+        "place_holder_old_password": "Mật khẩu hiện tại",
+        "place_holder_new_password": "Mật khẩu mới",
+        "place_holder_confirm_password": "Nhập lại mật khẩu mới",
         "btn_change_pass": "Lưu"
     },
     "DASHBOARD": {
 
     },
     "FORGOT_PASSWORD":{
-        "forgot_password_note": "Một tin nhắn văn bản gồm mã xác minh 4 chữ số đã được gửi đến số điện thoại của bạn",
-        "title": "Quên mật khẩu"
+        "forgot_password_note": "Một mã xác minh 4 chữ số đã được gửi đến số điện thoại của bạn, vui lòng kiểm tra tin nhắn",
+        "title": "Quên mật khẩu"
     },
     "HOME":{
         "title": "Home",
@@ -52,17 +52,17 @@
         "amount_to_pay": "Chờ thanh toán",
         "vnd": "vnd",
         "pay_now": "Thanh toán",
-        "create_request": "Gửi yêu cầu",
-        "cleaning": "Giúp việc",
-        "reparing": "Sửa chữa",
-        "fresh_food": "Thực phẩm",
+        "create_request": "Gửi yêu cầu",
+        "cleaning": "Giúp việc",
+        "reparing": "Sửa chữa",
+        "fresh_food": "Thực phẩm",
         "other": "Khác",
         "top_news": "Tin tức",
         "pull_to_refresh": "Kéo xuống để làm mới",
         "loadding_more": "Đang tải dữ liệu..."
     },
     "MY_ACCOUNT":{
-        "title": "Tài khoản của tôi",
+        "title": "Tải khoản của tôi",
         "btn_save": "Lưu",
         "male": "Nam",
         "female": "Nữ",
@@ -80,16 +80,16 @@
         "activeCode": "Mã căn hộ",
         "user_category": "Vai trò",
         "area": "Diện tích",
-        "address": "Địa chỉ",
-        "emergency": "Khẩn cấp"
+        "address": "Địa chỉ",
+        "emergency": "Khẩn cấp"
     },
     "MY_HOME_DETAIL":{
-        "title": "Chi tiết căn hộ",
+        "title": "Chi tiết căn hộ",
         "active_code": "Mã căn hộ",
         "room": "Căn hộ",
         "user_category": "Vai trò",
         "area": "Diện tích",
-        "address": "Địa chỉ",
+        "address": "Địa chỉ",
         "vehicles": "Phương tiện",
         "vehicles_type": "Loại",
         "vehicles_model": "Model",
@@ -98,9 +98,9 @@
         "name": "Họ tên",
         "sex": "Giới tính",
         "DOB": "Ngày sinh",
-        "phone": "Số điện thoại",
-        "personal_license": "Số CMTND",
-        "nationality": "Quốc tịch"
+        "phone": "Số điện thoại",
+        "personal_license": "Số CMTND",
+        "nationality": "Quốc tịch"
     },
     "NEW_DETAIL":{
 
@@ -121,7 +121,7 @@
         "apartment": "Căn hộ",
         "placeholder_apartment": "Căn hộ",
         "user_name": "Tên",
-        "phone": "Số điện thoại",
+        "phone": "Số điện thoại",
         "address": "Địa chỉ",
         "time_order": "Thời gian",
         "message": "Ghi chú",
@@ -133,9 +133,9 @@
         "vnd": "vnd",
         "pay_now": "Thanh toán",
         "top_up": "top up",
-        "complain": "Khiếu nại",
+        "complain": "Khiếu nại",
         "status_new": "Mới",
-        "status_pending": "Chờ xử lý",
+        "status_pending": "Chờ xử lý",
         "status_done": "Hoàn thành",
         "pull_to_refresh": "Kéo xuống để làm mới",
         "loadding_more": "Đang tải dữ liệu..."
@@ -143,26 +143,26 @@
     "PAYMENT_INFOR":{
         "title": "Thông tin hóa đơn",
         "payment_date": "Hạn thanh toán",
-        "total": "Tổng số",
+        "total": "Tổng số",
         "bank_name": "Ngân hàng",
-        "bank_account_holder": "Chủ tài khoản",
-        "bank_account_number": "Số tài khoản",
-        "description": "Chi tiết",
-        "amount": "Số tiền",
+        "bank_account_holder": "Chủ tài khoản",
+        "bank_account_number": "Số tài khoản",
+        "description": "Chi tiết",
+        "amount": "Số tiền",
         "note": "Đơn giá"
     },
     "PINCODE_PASSWORD":{
 
     },
     "REQUEST_DETAIL":{
-        "title": "Chi tiết yêu cầu"
+        "title": "Chi tiết yêu cầu"
     },
     "REQUEST":{
-        "title": "Yêu cầu",
-        "tab_all": "Tất cả",
+        "title": "Yêu cầu",
+        "tab_all": "Tất cả",
         "tab_registration": "Đăng ký",
         "status_new": "Mới",
-        "status_cancelled": "Hủy",
+        "status_cancelled": "Huỷ",
         "status_processing": "Đang thực hiện",
         "status_done": "Hoàn thành",
         "pull_to_refresh": "Kéo xuống để làm mới",
@@ -188,7 +188,7 @@
         "vn": "Tiếng Việt",
         "en": "Tiếng Anh",
         "change_password": "Đổi mật khẩu",
-        "app_version": "Phiên bản",
-        "subversion": "Sub-version"
+        "app_version": "Phiển bản",
+        "subversion": "Version"
     }
 }

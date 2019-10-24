@@ -24,6 +24,11 @@ export class AddRequestPage implements OnInit {
   message:string;
   widthListScreen:number;
 
+  isErrorTopicID:boolean=false;
+  isErrorTitle:boolean=false;
+  isErrorMessage:boolean=false;
+  isErrorDepartmentID:boolean=false;
+
   imagePickerOptions = {
     maximumImagesCount: 1,
     quality: 50
@@ -131,6 +136,40 @@ export class AddRequestPage implements OnInit {
   }
 
   addRequest(event){
+    var self = this;
+
+    if(this.topicID && this.topicID.length > 0){
+      this.isErrorTopicID = false;
+    }else{
+      this.isErrorTopicID = true;
+    }
+
+    if(this.title && this.title.length > 0){
+      this.isErrorTitle = false;
+    }else{
+      this.isErrorTitle = true;
+    }
+
+    if(this.message && this.message.length > 0){
+      this.isErrorMessage = false;
+    }else{
+      this.isErrorMessage = true;
+    }
+
+    if(this.departmentID && this.departmentID.length > 0){
+      this.isErrorDepartmentID = false;
+    }else{
+      this.isErrorDepartmentID = true;
+    }
+
+    if(this.isErrorMessage || this.isErrorTopicID || this.isErrorTitle || this.isErrorDepartmentID){
+      return;
+    }
+    this.pushRequestToServer();  
+  }
+
+  pushRequestToServer(){
+    var self = this;
     const params = {
       category: this.topicID,
       title: this.title,
@@ -139,7 +178,6 @@ export class AddRequestPage implements OnInit {
       apartment: this.departmentID
     };
     this.loading.present();
-    const self = this;
     this.apiService.addFeedback(params)
       .subscribe(result => {
         self.loading.dismiss();

@@ -6,8 +6,6 @@
       </ion-buttons>
   </ion-toolbar>
 </ion-header>
-  
-
 <ion-content>
   <section>
       <ion-grid>
@@ -16,10 +14,10 @@
               <ion-label class="language-label">{{ 'SETTING.language' | translate }}</ion-label>
           </ion-col>
           <ion-col>
-            <ion-button class="language-button-active">{{ 'SETTING.vn' | translate }}</ion-button>
+            <ion-button [ngClass]="selectedLanguage == 'vi' ? 'language-button-active' : 'language-button-inactive'" (click)="languageChanged('vi')">{{ 'SETTING.vn' | translate }}</ion-button>
           </ion-col>
           <ion-col>
-            <ion-button class="language-button-inactive">{{ 'SETTING.en' | translate }}</ion-button>
+            <ion-button [ngClass]="selectedLanguage != 'vi' ? 'language-button-active' : 'language-button-inactive'" (click)="languageChanged('en')">{{ 'SETTING.en' | translate }}</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -34,7 +32,7 @@
         <ion-label>{{ 'SETTING.app_version' | translate }}</ion-label>
     </ion-item>
     <ion-item>
-        <ion-label slot="end" class="version-text">12</ion-label>
+        <ion-label slot="end" class="version-text">14</ion-label>
         <ion-label>{{ 'SETTING.subversion' | translate }}</ion-label>
     </ion-item>
   </section>

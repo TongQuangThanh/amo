@@ -12,10 +12,17 @@ export class TranslateConfigService {
   ) { }
 
   getDefaultLanguage() {
-    const language = 'vi';
-    console.log(language);
-    this.translate.setDefaultLang(language);
-    return language;
+    const defaultLang = localStorage.getItem('lang');
+    if(defaultLang && (defaultLang == "vi" || defaultLang == 'en')){
+      console.log(defaultLang);
+      this.translate.setDefaultLang(defaultLang);
+      return defaultLang;
+    }else{
+      const language = 'vi';
+      console.log(language);
+      this.translate.setDefaultLang(language);
+      return language;
+    }
   }
 
   setLanguage(setLang) {

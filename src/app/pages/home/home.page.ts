@@ -31,7 +31,7 @@ export class HomePage implements OnInit {
     private nativePageTransitions: NativePageTransitions) {
     this.imageDefault = 'assets/common/no-thumbnail.png';
     platform.ready().then((readySource) => {
-      this.heightScreen = platform.height() * 0.55 - 32;
+      this.heightScreen = platform.height() * 0.58 - 28;
     });
   }
 
@@ -112,5 +112,9 @@ export class HomePage implements OnInit {
 
   goToMyAccount(){
     this.navCtrl.navigateForward('/my-account');
+  }
+
+  createRequest(){
+    this.navCtrl.navigateForward('/add-request');
   }
 }

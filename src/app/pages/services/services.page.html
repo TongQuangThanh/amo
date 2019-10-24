@@ -22,7 +22,7 @@
          <ion-card *ngIf="item._id != ''" (click)="detailPage($event)" id="{{item._id}}">
           <img class="service-image-custom" src="{{item.thumbnail}}"/>
           <ion-row class="ion-no-padding">
-            <ion-col text-center class="service-text-custom" >
+            <ion-col class="ion-text-center service-text-custom" >
               {{item.title}}
             </ion-col>
           </ion-row>

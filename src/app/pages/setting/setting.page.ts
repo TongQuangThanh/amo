@@ -12,7 +12,6 @@ import { TranslateConfigService } from '../../translate-config.service';
 export class SettingPage implements OnInit {
 
   selectedLanguage:string;
-
   constructor(
     private alertService: AlertService,
     private authService: AuthService,
@@ -34,8 +33,11 @@ export class SettingPage implements OnInit {
     this.navCtrl.navigateForward('/change-password');
   }
 
-  languageChanged(){
+  languageChanged(language:string){
+    console.log(11);
+    this.selectedLanguage = language;
     this.translateConfigService.setLanguage(this.selectedLanguage);
+    localStorage.setItem('lang', language);
   }
 
 }
