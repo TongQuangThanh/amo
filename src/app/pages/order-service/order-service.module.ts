@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 
 import { OrderServicePage } from './order-service.page';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
-
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 const routes: Routes = [
   {
     path: '',
@@ -20,6 +20,7 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    TranslateModule,
     RouterModule.forChild(routes)
   ],
   providers: [Geolocation],

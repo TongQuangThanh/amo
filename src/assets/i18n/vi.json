@@ -1,48 +1,106 @@
 {
     "LANDING": {
-        "content_text": "Xin hãy nhập số điện thoại đã đăng kí",
-        "phone_place_holder": "Phone number ...",
-        "send": "Send",
-        "skip": "Skip, trial"
+        "content_text": "Nhập số điện thoại để đăng nhập",
+        "phone_place_holder": "Số điện thoại",
+        "continue": "Tiếp tục",
+        "skip": "Bỏ qua"
     },
     "LOGIN":{
-        "title": "Login",
-        "note_string" : "Enter the password to login",
-        "placeholder_phone": "Số điện thoại",
-        "placeholder_pass": "Mật khẩu",
-        "button_login_label": "Đăng nhập",
-        "forgot_pass_label": "Quên mật khẩu?",
-        "login_error": "Số điện thoại hoặc mật khẩu không đúng"
+        "title": "Đăng nhập",
+        "note_string" : "Nhập mật khẩu của bạn", 
+        "placeholder_phone": "Số điện thoại",
+        "placeholder_pass": "Mật khẩu",
+        "button_login_label": "Đăng nhập",
+        "forgot_pass_label": "Quên mật khẩu?",
+        "login_error": "Số điện thoại hoặc mật khẩu không đúng"
     },
     "REGISTER" : {
-
+        "note_text_confirm": "Một tin nhắn văn bản gồm mã xác minh 4 chữ số đã được gửi đến số điện thoại của bạn",
+        "forgot_password_note": "Một mã xác minh 4 chữ số đã được gửi đến số điện thoại của bạn, vui lòng kiểm tra tin nhắn",
+        "note_view_apartment_code": "Mỗi căn hộ sẽ được cấp một mã số gồm 6 ký tự, mã số này là duy nhất vì mục đích an ninh. Nếu bạn chưa nhận được mã số căn hộ, vui lòng liên hệ với Ban Quản Lý để được giúp đỡ hoặc bỏ qua bước này để dùng thử",
+        "verification_code": "verification code",
+        "skip": "Skip, trial"
     },
     "ADD_REQUEST": {
-
+        "title": "Yêu cầu mới",
+        "apartment" : "Căn hộ",
+        "category" : "Danh mục",
+        "title_request": "Tiêu đề",
+        "message_request": "Nội dung",
+        "btn_submit": "Gửi"
     },
     "BILL_PAYMENT": {
 
     },
     "CHANGE_PASSWORD": {
-
+        "title": "Đổi mật khẩu",
+        "place_holder_old_password": "Mật khẩu hiện tại",
+        "place_holder_new_password": "Mật khẩu mới",
+        "place_holder_confirm_password": "Nhập lại mật khẩu mới",
+        "btn_change_pass": "Lưu"
     },
     "DASHBOARD": {
 
     },
     "FORGOT_PASSWORD":{
-
+        "forgot_password_note": "Một tin nhắn văn bản gồm mã xác minh 4 chữ số đã được gửi đến số điện thoại của bạn",
+        "title": "Quên mật khẩu"
     },
     "HOME":{
-
+        "title": "Home",
+        "my_home": "Căn hộ",
+        "amount_to_pay": "Chờ thanh toán",
+        "vnd": "vnd",
+        "pay_now": "Thanh toán",
+        "create_request": "Gửi yêu cầu",
+        "cleaning": "Giúp việc",
+        "reparing": "Sửa chữa",
+        "fresh_food": "Thực phẩm",
+        "other": "Khác",
+        "top_news": "Tin tức",
+        "pull_to_refresh": "Kéo xuống để làm mới",
+        "loadding_more": "Đang tải dữ liệu..."
     },
     "MY_ACCOUNT":{
-
+        "title": "Tài khoản của tôi",
+        "btn_save": "Lưu",
+        "male": "Nam",
+        "female": "Nữ",
+        "other": "Khác",
+        "placeholder_sex": "Giới tính",
+        "placeholder_displayName": "Họ tên",
+        "placeholder_email": "email",
+        "placeholder_liscense": "Số CMTND",
+        "setting": "Cài đặt",
+        "help_center": "Trợ giúp",
+        "btn_log_out": "Đăng xuất"
     },
     "MY_HOME":{
-
+        "title": "Căn hộ",
+        "activeCode": "Mã căn hộ",
+        "user_category": "Vai trò",
+        "area": "Diện tích",
+        "address": "Địa chỉ",
+        "emergency": "Khẩn cấp"
     },
     "MY_HOME_DETAIL":{
-
+        "title": "Chi tiết căn hộ",
+        "active_code": "Mã căn hộ",
+        "room": "Căn hộ",
+        "user_category": "Vai trò",
+        "area": "Diện tích",
+        "address": "Địa chỉ",
+        "vehicles": "Phương tiện",
+        "vehicles_type": "Loại",
+        "vehicles_model": "Model",
+        "vehicles_identity": "Biển số",
+        "members": "Thành viên",
+        "name": "Họ tên",
+        "sex": "Giới tính",
+        "DOB": "Ngày sinh",
+        "phone": "Số điện thoại",
+        "personal_license": "Số CMTND",
+        "nationality": "Quốc tịch"
     },
     "NEW_DETAIL":{
 
@@ -51,39 +109,86 @@
 
     },
     "NOTIFICATION":{
-
+        "title": "Thông báo",
+        "pull_to_refresh": "Kéo xuống để làm mới",
+        "loadding_more": "Đang tải dữ liệu..."
     },
     "NOTIFICATION_DETAIL":{
 
     },
     "ORDER_SERVICE":{
-
+        "title": "Đặt dịch vụ",
+        "apartment": "Căn hộ",
+        "placeholder_apartment": "Căn hộ",
+        "user_name": "Tên",
+        "phone": "Số điện thoại",
+        "address": "Địa chỉ",
+        "time_order": "Thời gian",
+        "message": "Ghi chú",
+        "btn_order": "Đặt"
     },
     "PAYMENT":{
-
+        "title": "Thanh toán",
+        "amount_to_pay": "Chờ thanh toán",
+        "vnd": "vnd",
+        "pay_now": "Thanh toán",
+        "top_up": "top up",
+        "complain": "Khiếu nại",
+        "status_new": "Mới",
+        "status_pending": "Chờ xử lý",
+        "status_done": "Hoàn thành",
+        "pull_to_refresh": "Kéo xuống để làm mới",
+        "loadding_more": "Đang tải dữ liệu..."
     },
     "PAYMENT_INFOR":{
-
+        "title": "Thông tin hóa đơn",
+        "payment_date": "Hạn thanh toán",
+        "total": "Tổng số",
+        "bank_name": "Ngân hàng",
+        "bank_account_holder": "Chủ tài khoản",
+        "bank_account_number": "Số tài khoản",
+        "description": "Chi tiết",
+        "amount": "Số tiền",
+        "note": "Đơn giá"
     },
     "PINCODE_PASSWORD":{
 
     },
     "REQUEST_DETAIL":{
-
+        "title": "Chi tiết yêu cầu"
     },
     "REQUEST":{
-
+        "title": "Yêu cầu",
+        "tab_all": "Tất cả",
+        "tab_registration": "Đăng ký",
+        "status_new": "Mới",
+        "status_cancelled": "Hủy",
+        "status_processing": "Đang thực hiện",
+        "status_done": "Hoàn thành",
+        "pull_to_refresh": "Kéo xuống để làm mới",
+        "loadding_more": "Đang tải dữ liệu...",
+        "btn_add_request": "Yêu cầu mới",
+        "btn_add_new_registration": "Đăng ký mới"
     },
     "SERVICE_DETAIL":{
-
+        "btn_order": "Đặt hàng"
     },
     "SERVICE_LIST_BY_CATEGORY":{
-
+        "title": "Danh sách dịch vụ"
     },
     "SERVICE":{
-
+        "title": "Tiện ích",
+        "tab_all": "Tất cả",
+        "tab_history": "Lịch sử",
+        "btn_add_new_services": "Thêm dịch vụ mới"
     },
     "SETTING":{
-
+        "title": "Cài đặt",
+        "language": "Ngôn ngữ",
+        "vn": "Tiếng Việt",
+        "en": "Tiếng Anh",
+        "change_password": "Đổi mật khẩu",
+        "app_version": "Phiên bản",
+        "subversion": "Sub-version"
     }
 }

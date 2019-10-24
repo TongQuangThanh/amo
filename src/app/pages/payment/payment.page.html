@@ -1,6 +1,6 @@
 <ion-header no-border>
   <ion-toolbar>
-    <ion-title>Payment</ion-title>
+    <ion-title>{{ 'PAYMENT.title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,11 +8,11 @@
   <div slot="fixed">
     <div class="balance-content">
       <div class="title-blance-content">
-        <p>Amount to pay</p>
+        <p>{{ 'PAYMENT.amount_to_pay' | translate }}</p>
       </div>
       <div class="total-cash-blance-content">
         <p>0</p>
-        <p class="total-cash-blance-content-unit">vnd</p>
+        <p class="total-cash-blance-content-unit">{{ 'PAYMENT.vnd' | translate }}</p>
       </div>
       <div class="clear-balance-rect">
       </div>
@@ -111,7 +111,7 @@
           </svg>
 
 
-          <ion-label class="image-caption-big">Pay Now</ion-label>
+          <ion-label class="image-caption-big">{{ 'PAYMENT.pay_now' | translate }}</ion-label>
         </div>
         <div class="ion-float-left div-avatar-content-big">
           <svg class="img-avatar-big" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -127,7 +127,7 @@
           </svg>
 
 
-          <ion-label class="image-caption-big">Top Up</ion-label>
+          <ion-label class="image-caption-big">{{ 'PAYMENT.top_up' | translate }}</ion-label>
         </div>
         <div class="ion-float-left div-avatar-content-big">
           <svg class="img-avatar-big" viewBox="0 0 39 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -169,7 +169,7 @@
             </g>
           </svg>
 
-          <ion-label class="image-caption-big">Complain</ion-label>
+          <ion-label class="image-caption-big">{{ 'PAYMENT.complain' | translate }}</ion-label>
         </div>
       </div>
     </div>
@@ -177,7 +177,7 @@
       <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
           <ion-refresher-content
           pullingIcon="arrow-dropdown"
-          pullingText="Pull to refresh"
+          pullingText="{{ 'PAYMENT.pull_to_refresh' | translate }}"
           refreshingSpinner="circles"
           refreshingText="Refreshing...">
           </ion-refresher-content>
@@ -187,15 +187,15 @@
           (click)="detailPage($event)" id="{{item._id}}">
           <ion-avatar slot="start" *ngIf="item.status == 'publish'">
             <img src="../../../assets/request/Wait.png">
-            <ion-label class="avatar-done">New</ion-label>
+            <ion-label class="avatar-done">{{ 'PAYMENT.status_new' | translate }}</ion-label>
           </ion-avatar>
           <ion-avatar slot="start" *ngIf="item.status == 'pending'">
             <img src="../../../assets/request/Processing.png">
-            <ion-label class="avatar-done">Pending</ion-label>
+            <ion-label class="avatar-done">{{ 'PAYMENT.status_pending' | translate }}</ion-label>
           </ion-avatar>
           <ion-avatar slot="start" *ngIf="item.status == 'completed'">
             <img src="../../../assets/request/Done.png">
-            <ion-label class="avatar-done">Done</ion-label>
+            <ion-label class="avatar-done">{{ 'PAYMENT.status_done' | translate }}</ion-label>
           </ion-avatar>
           <ion-label>
             <ion-label class="title-payment-item">{{item.payment == null ? "N/A" : item.payment.title}}</ion-label>
@@ -204,14 +204,14 @@
                 - {{item.campaign.title}}</ion-label>
             <ion-label class="node-payment-item">
               <p class="ion-float-left">{{formatString(item.updatedAt)}}</p>
-              <ion-button slot="end" class="amo-button-custom button-pay-now ion-float-right" (click)="paymentClick($event)" id="{{item._id}}" *ngIf="item.status != 'completed'">Pay now</ion-button>
+              <ion-button slot="end" class="amo-button-custom button-pay-now ion-float-right" (click)="paymentClick($event)" id="{{item._id}}" *ngIf="item.status != 'completed'">{{ 'PAYMENT.pay_now' | translate }}</ion-button>
             </ion-label>
           </ion-label>
         </ion-item>
       </ion-list>
       <ion-infinite-scroll threshold="50px" (ionInfinite)="loadData($event)">
         <ion-infinite-scroll-content class="custom-infinite-scroll" loadingSpinner="bubbles"
-          loadingText="Loading more data...">
+          loadingText="{{ 'PAYMENT.loadding_more' | translate }}">
         </ion-infinite-scroll-content>
       </ion-infinite-scroll>
     </ion-content>

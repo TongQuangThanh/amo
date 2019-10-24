@@ -9,13 +9,13 @@
             </ion-chip>
             <ion-chip class="button-my-home" (click)="goToMyHome()">
                 <img width="24px" src="../../../assets/icon/home-icon.png" />
-                <ion-label class="myhome-content-title">My home</ion-label>
+                <ion-label class="myhome-content-title">{{ 'HOME.my_home' | translate }}</ion-label>
             </ion-chip>
         </div>
     </div>
     <div class="amountPay-content">
         <div class="title-blance-content">
-            <p>Amount to pay</p>
+            <p>{{ 'HOME.amount_to_pay' | translate }}</p>
         </div>
         <div class="total-cash-blance-content">
             <p>0</p>
@@ -62,7 +62,7 @@
                     </svg>
 
 
-                <ion-label class="image-caption-big">Pay Now</ion-label>
+                <ion-label class="image-caption-big">{{ 'HOME.pay_now' | translate }}</ion-label>
             </div>
             <div class="ion-float-left div-avatar-content-big">
                 <svg class="img-avatar-big" viewBox="0 0 39 36" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -86,7 +86,7 @@
                 </g>
                 </svg>
 
-                <ion-label class="image-caption-big">Create request</ion-label>
+                <ion-label class="image-caption-big">{{ 'HOME.create_request' | translate }}</ion-label>
             </div>
         </div>
     </div>
@@ -115,7 +115,7 @@
                 <path d="M21.1111 17.8298H8.8889C8.5821 17.8298 8.33337 18.0786 8.33337 18.3854V20.052H21.6667V18.3854C21.6667 18.0785 21.4179 17.8298 21.1111 17.8298Z" fill="#464655"/>
                 <path d="M16.6667 2.27414H13.3334C13.0266 2.27414 12.7778 2.02541 12.7778 1.71861C12.7778 1.41182 13.0266 1.16309 13.3334 1.16309H16.6667C16.9735 1.16309 17.2222 1.41182 17.2222 1.71861C17.2223 2.02535 16.9736 2.27414 16.6667 2.27414Z" fill="#5B5D6E"/>
                 </svg>
-            <ion-label class="image-caption">Booking</ion-label>
+            <ion-label class="image-caption">{{ 'HOME.cleaning' | translate }}</ion-label>
         </div>
         <div class="ion-float-left clear-avatar-rect"></div>
         <div class="ion-float-left div-avatar-content">
@@ -136,7 +136,7 @@
                 <path d="M17.1428 9.42849C17.1428 8.02983 16.0201 6.8892 14.6285 6.8584V11.9984C16.0201 11.9678 17.1428 10.8271 17.1428 9.42849Z" fill="#444D55"/>
             </svg>
 
-            <ion-label class="image-caption">Order food</ion-label>
+            <ion-label class="image-caption">{{ 'HOME.reparing' | translate }}</ion-label>
         </div>
         <div class="ion-float-left clear-avatar-rect"></div>
         <div class="ion-float-left div-avatar-content">
@@ -149,7 +149,7 @@
                 <path d="M10.6751 19.5162C12.7492 19.5162 14.4307 18.0215 14.4307 16.1778C14.4307 14.334 12.7492 12.8394 10.6751 12.8394C8.60098 12.8394 6.91956 14.334 6.91956 16.1778C6.91956 18.0215 8.60098 19.5162 10.6751 19.5162Z" fill="white"/>
             </svg>
 
-            <ion-label class="image-caption">Coffee</ion-label>
+            <ion-label class="image-caption">{{ 'HOME.fresh_food' | translate }}</ion-label>
         </div>
         <div class="ion-float-left clear-avatar-rect"></div>
         <div class="ion-float-left div-avatar-content">
@@ -159,16 +159,16 @@
             <path fill-rule="evenodd" clip-rule="evenodd" d="M23 6C24.6569 6 26 4.65685 26 3C26 1.34315 24.6569 0 23 0C21.3431 0 20 1.34315 20 3C20 4.65685 21.3431 6 23 6Z" fill="#556080"/>
             </svg>
 
-            <ion-label class="image-caption">Other</ion-label>
+            <ion-label class="image-caption">{{ 'HOME.other' | translate }}</ion-label>
         </div>
     </div>
     <div class="new-content">
-        <ion-label class="title-top-new">Top news</ion-label>
+        <ion-label class="title-top-new">{{ 'HOME.top_news' | translate }}</ion-label>
         <ion-content class="list-home-content" [style.height.px]="heightScreen">
             <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
                 <ion-refresher-content
                 pullingIcon="arrow-dropdown"
-                pullingText="Pull to refresh"
+                pullingText="{{ 'HOME.pull_to_refresh' | translate }}"
                 refreshingSpinner="circles"
                 refreshingText="Refreshing...">
                 </ion-refresher-content>
@@ -188,7 +188,7 @@
             <ion-infinite-scroll threshold="50px" (ionInfinite)="loadData($event)">
                 <ion-infinite-scroll-content class="custom-infinite-scroll"
                 loadingSpinner="bubbles"
-                loadingText="Loading more data...">
+                loadingText="{{ 'HOME.loadding_more' | translate }}">
                 </ion-infinite-scroll-content>
             </ion-infinite-scroll>
         </ion-content>

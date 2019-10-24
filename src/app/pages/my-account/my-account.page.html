@@ -4,7 +4,7 @@
         <ion-back-button></ion-back-button>
       </ion-buttons>
       <ion-buttons slot="end" class="white-color" (click)="updateAccount()">
-        <ion-label>Save</ion-label>
+        <ion-label>{{ 'MY_ACCOUNT.btn_save' | translate }}</ion-label>
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
@@ -19,10 +19,10 @@
     <form class="form-margin">
       <ion-list lines="full" class="ion-no-margin ion-no-padding">
         <ion-item lines="none" class="margin-top-10">
-            <ion-input class="custom-common-input custom-common-input-text" placeholder="displayName" [(ngModel)]="displayName" type="text" name="displayName"></ion-input>
+            <ion-input class="custom-common-input custom-common-input-text" placeholder="{{ 'MY_ACCOUNT.placeholder_displayName' | translate }}" [(ngModel)]="displayName" type="text" name="displayName"></ion-input>
         </ion-item>
         <ion-item lines="none" class="margin-top-10">
-            <ion-input class="custom-common-input custom-common-input-text" placeholder="email" [(ngModel)]="email" type="email" name="email"></ion-input>
+            <ion-input class="custom-common-input custom-common-input-text" placeholder="{{ 'MY_ACCOUNT.placeholder_email' | translate }}" [(ngModel)]="email" type="email" name="email"></ion-input>
         </ion-item>
         <ion-item lines="none" class="margin-top-10">
           <ion-grid class="padding-none">
@@ -39,10 +39,10 @@
                 </ion-col>
                 <ion-col class="padding-none">
                   <ion-item lines="none" class="custom-common-input padding-none height-auto sex-custom">
-                    <ion-select class="padding-none custom-common-input-text selection-width-85" placeholder="Sex" interface="action-sheet" name="sex" [(ngModel)]="sex">
-                      <ion-select-option value="male">Male</ion-select-option>
-                      <ion-select-option value="female">Female</ion-select-option>
-                      <ion-select-option value="other">Other</ion-select-option>
+                    <ion-select class="padding-none custom-common-input-text selection-width-85" placeholder="{{ 'MY_ACCOUNT.placeholder_sex' | translate }}" interface="action-sheet" name="sex" [(ngModel)]="sex">
+                      <ion-select-option value="male">{{ 'MY_ACCOUNT.male' | translate }}</ion-select-option>
+                      <ion-select-option value="female">{{ 'MY_ACCOUNT.female' | translate }}</ion-select-option>
+                      <ion-select-option value="other">{{ 'MY_ACCOUNT.other' | translate }}</ion-select-option>
                     </ion-select>
                   </ion-item>
                 </ion-col>
@@ -50,7 +50,7 @@
             </ion-grid>
         </ion-item>
         <ion-item lines="none" class="margin-top-10">
-          <ion-input class="custom-common-input custom-common-input-text" placeholder="Personal Liscence" [(ngModel)]="personalLiscence" type="number" name="personalLiscence"></ion-input>
+          <ion-input class="custom-common-input custom-common-input-text" placeholder="{{ 'MY_ACCOUNT.placeholder_liscense' | translate }}" [(ngModel)]="personalLiscence" type="number" name="personalLiscence"></ion-input>
         </ion-item>
         <!-- <ion-item lines="none" class="margin-top-10">
           <ion-select class="padding-none" placeholder="Nationality" interface="action-sheet" name="nationality" [(ngModel)]="nationality">
@@ -61,12 +61,15 @@
       <section class="full-width function-section">
           <ion-item (click)="changeToSetting()">
             <ion-icon slot="end" name="arrow-dropright"></ion-icon>
-            <ion-label>Settings</ion-label>
+            <ion-label>{{ 'MY_ACCOUNT.setting' | translate }}</ion-label>
           </ion-item>
           <ion-item (click)="callHelpCenter()">
-              <ion-icon slot="end" name="arrow-dropright"></ion-icon>
-              <ion-label>Help center</ion-label>
-            </ion-item>
+            <ion-icon slot="end" name="arrow-dropright"></ion-icon>
+            <ion-label>{{ 'MY_ACCOUNT.help_center' | translate }}</ion-label>
+          </ion-item>
+          <ion-item lines="none" class="padding-none margin-none logout-item">
+            <ion-button expand="full" color="transparent" class="full-width padding-none margin-none full-height amo-button-custom logout-text" (click)="logout()">{{ 'MY_ACCOUNT.btn_log_out' | translate }}</ion-button>
+          </ion-item>
       </section>
     </form>
 </ion-content>

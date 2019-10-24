@@ -1,14 +1,14 @@
 
 
 <ion-img class="image-page" src="/assets/shapes.svg"></ion-img>
-<ion-label class="label-text">Enter the phone number you registered</ion-label>
-<ion-input class="phone-input phone-input-text" [(ngModel)]="phoneNumber" clearInput type="tel" placeholder="Phone number ..."></ion-input>
+<ion-label class="label-text">{{ 'MY_ACCOUNT.content_text' | translate }}</ion-label>
+<ion-input class="phone-input phone-input-text" [(ngModel)]="phoneNumber" clearInput type="tel" placeholder="{{ 'MY_ACCOUNT.phone_place_holder' | translate }}"></ion-input>
 
 <ion-button expand="full" [ngClass]="!checkIsEnabled() ? 'button-common button-next' : 'button-common button-next button-common-active'" [disabled]="!checkIsEnabled()" (click)="ChangeLogin()">
-  <ion-label class="button-next-label">Send</ion-label>
+  <ion-label class="button-next-label">{{ 'MY_ACCOUNT.continue' | translate }}</ion-label>
 </ion-button>
 
 <ion-button expand="full" class="button-skip clear-background" (click)="ChangeLogin()" routerDirection="forward">
-    <ion-label class="button-skip-label">Skip, trial</ion-label>
+    <ion-label class="button-skip-label">{{ 'MY_ACCOUNT.skip' | translate }}</ion-label>
     <ion-icon class="button-skip-label" name="arrow-round-forward"></ion-icon>
 </ion-button>

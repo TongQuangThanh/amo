@@ -3,8 +3,8 @@ import { ApiService } from '../../services/api/api.service';
 import { NavController } from '@ionic/angular';
 import { LoadingService } from '../../services/loading/loading.service';
 import { UtilsService } from '../../utils/utils.service';
-// import { ConstService } from '../../utils/const.service';
 import { AlertService } from '../../services/alert/alert.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-my-account',
@@ -28,7 +28,8 @@ export class MyAccountPage implements OnInit {
     private alertService: AlertService,
     private loading: LoadingService,
     private apiService: ApiService,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private authService: AuthService,
   ) { 
     // this.listCountries = ConstService.LIST_COUNTRIES;
   }
@@ -83,6 +84,11 @@ export class MyAccountPage implements OnInit {
 
   callHelpCenter(){
     this.alertService.presentToast("Function maintainal");
+  }
+
+  logout(){
+    this.authService.logout();
+    this.navCtrl.navigateRoot('/landing');
   }
 
 }

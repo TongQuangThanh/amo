@@ -1,6 +1,6 @@
 <ion-header no-border>
   <ion-toolbar>
-    <ion-title>Services</ion-title>
+    <ion-title>{{ 'SERVICE.title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,10 +8,10 @@
   <!-- Disabled Segment -->
   <ion-segment [(ngModel)]="modeService">
     <ion-segment-button checked class="button-tab-custom" value="All">
-      <ion-label class="margin-none">All</ion-label>
+      <ion-label class="margin-none">{{ 'SERVICE.tab_all' | translate }}</ion-label>
     </ion-segment-button>
     <ion-segment-button class="button-tab-custom" value="History">
-      <ion-label class="margin-none">History</ion-label>
+      <ion-label class="margin-none">{{ 'SERVICE.tab_history' | translate }}</ion-label>
     </ion-segment-button>
   </ion-segment>
   <section class="custom-tab" [style.height.px]="heightScreen">
@@ -46,6 +46,6 @@
     </div>
   </section>
   <section class="full-width function-section" (click)="addNewService($event)">
-    <ion-button expand="block" class="amo-button-custom">Add New Services</ion-button>
+    <ion-button expand="block" class="amo-button-custom">{{ 'SERVICE.btn_add_new_services' | translate }}</ion-button>
   </section>
 </ion-content>

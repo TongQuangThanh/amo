@@ -1,6 +1,6 @@
 <ion-header no-border>
   <ion-toolbar>
-    <ion-title>Notification</ion-title>
+    <ion-title>{{ 'NOTIFICATION.title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -8,7 +8,7 @@
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
       <ion-refresher-content
       pullingIcon="arrow-dropdown"
-      pullingText="Pull to refresh"
+      pullingText="{{ 'NOTIFICATION.pull_to_refresh' | translate }}"
       refreshingSpinner="circles"
       refreshingText="Refreshing...">
       </ion-refresher-content>
@@ -40,7 +40,7 @@
   <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
     <ion-infinite-scroll-content
       loadingSpinner="bubbles"
-      loadingText="Loading more data...">
+      loadingText="{{ 'NOTIFICATION.loadding_more' | translate }}">
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ion-content>

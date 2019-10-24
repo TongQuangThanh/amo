@@ -12,7 +12,7 @@
     <ion-grid >
       <ion-row class="payment-bank-text-title">
         <ion-col>
-            <ion-label>Payment date:</ion-label>
+            <ion-label>{{ 'PAYMENT_INFOR.payment_date' | translate }}</ion-label>
         </ion-col>
         <ion-col>
             <ion-label>{{formatString(paymentStartAt)}} - {{formatString(paymentEndAt)}}</ion-label>
@@ -20,7 +20,7 @@
       </ion-row>
       <ion-row class="payment-bank-text-title">
         <ion-col>
-            <ion-label>Total:</ion-label>
+            <ion-label>{{ 'PAYMENT_INFOR.total' | translate }}</ion-label>
         </ion-col>
         <ion-col>
             <ion-label>{{formatMoney(totalCash)}} vnd</ion-label>
@@ -34,13 +34,13 @@
         {{paymentCategoryTranfer.description}}
       </ion-item>
       <ion-item lines="none" class="payment-bank-infor-text">
-        Bank Name: {{paymentCategoryTranfer.bankName}}
+        {{ 'PAYMENT_INFOR.bank_name' | translate }}: {{paymentCategoryTranfer.bankName}}
       </ion-item>
       <ion-item lines="none" class="payment-bank-infor-text">
-        Bank Account Holder: {{paymentCategoryTranfer.bankAccountHolder}}
+        {{ 'PAYMENT_INFOR.bank_account_holder' | translate }}: {{paymentCategoryTranfer.bankAccountHolder}}
       </ion-item>
       <ion-item lines="none" class="payment-bank-infor-text">
-        Bank Account Number: {{paymentCategoryTranfer.bankAccountNumber}}
+        {{ 'PAYMENT_INFOR.bank_account_number' | translate }}: {{paymentCategoryTranfer.bankAccountNumber}}
       </ion-item>
     </ion-card-content>
   </ion-card>
@@ -53,7 +53,7 @@
       <ion-grid >
         <ion-row class="payment-bank-infor-text-detail">
           <ion-col>
-              <ion-label>Description:</ion-label>
+              <ion-label>{{ 'PAYMENT_INFOR.description' | translate }}</ion-label>
           </ion-col>
           <ion-col>
               <ion-label>{{item.description}}</ion-label>
@@ -61,7 +61,7 @@
         </ion-row>
         <ion-row class="payment-bank-infor-text-detail">
           <ion-col>
-              <ion-label>Amount:</ion-label>
+              <ion-label>{{ 'PAYMENT_INFOR.amount' | translate }}</ion-label>
           </ion-col>
           <ion-col>
               <ion-label>{{formatMoney(item.amount)}} vnd</ion-label>
@@ -69,7 +69,7 @@
         </ion-row>
         <ion-row class="payment-bank-infor-text-detail">
             <ion-col>
-                <ion-label>Note:</ion-label>
+                <ion-label>{{ 'PAYMENT_INFOR.note' | translate }}</ion-label>
             </ion-col>
             <ion-col>
                 <ion-label>{{item.type.description}}</ion-label>

@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { DashboardRoutingModule } from './dashboard.router.module';
-
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { DashboardPage } from './dashboard.page';
 
 @NgModule({
@@ -12,6 +12,7 @@ import { DashboardPage } from './dashboard.page';
     IonicModule,
     CommonModule,
     FormsModule,
+    TranslateModule,
     DashboardRoutingModule
   ],
   declarations: [DashboardPage]

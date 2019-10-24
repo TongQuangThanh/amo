@@ -1,16 +1,16 @@
 <ion-header no-border>
   <ion-toolbar>
-    <ion-title>Requests</ion-title>
+    <ion-title>{{ 'REQUEST.title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-segment [(ngModel)]="modeService">
     <ion-segment-button checked class="button-tab-custom" value="All">
-      <ion-label class="margin-none">All</ion-label>
+      <ion-label class="margin-none">{{ 'REQUEST.tab_all' | translate }}</ion-label>
     </ion-segment-button>
     <ion-segment-button class="button-tab-custom" value="Registration">
-      <ion-label class="margin-none">Registration</ion-label>
+      <ion-label class="margin-none">{{ 'REQUEST.tab_registration' | translate }}</ion-label>
     </ion-segment-button>
   </ion-segment>
   <section class="custom-tab" [style.height.px]="heightScreen">
@@ -20,7 +20,7 @@
         <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
             <ion-refresher-content
             pullingIcon="arrow-dropdown"
-            pullingText="Pull to refresh"
+            pullingText="{{ 'REQUEST.pull_to_refresh' | translate }}"
             refreshingSpinner="circles"
             refreshingText="Refreshing...">
             </ion-refresher-content>
@@ -29,19 +29,19 @@
           <ion-item class="list-request-all-item" lines="none" *ngFor="let item of listRequestAll" (click)="detailPage($event)" id="{{item._id}}">
             <ion-avatar slot="start" *ngIf="item.status == 'new'" class="margin-less">
               <img src="../../../assets/request/Wait.png">
-              <ion-label class="avatar-done">new</ion-label>
+              <ion-label class="avatar-done">{{ 'REQUEST.status_new' | translate }}</ion-label>
             </ion-avatar>
             <ion-avatar slot="start" *ngIf="item.status == 'cancelled'" class="margin-less">
               <img src="../../../assets/request/Cancel.png">
-              <ion-label class="avatar-done">Cancelled</ion-label>
+              <ion-label class="avatar-done">{{ 'REQUEST.status_cancelled' | translate }}</ion-label>
             </ion-avatar>
             <ion-avatar slot="start" *ngIf="item.status == 'processing'" class="margin-less">
                 <img src="../../../assets/request/Processing.png">
-                <ion-label class="avatar-done">Processing</ion-label>
+                <ion-label class="avatar-done">{{ 'REQUEST.status_processing' | translate }}</ion-label>
             </ion-avatar>
             <ion-avatar slot="start" *ngIf="item.status == 'completed'" class="margin-less">
                 <img src="../../../assets/request/Done.png">
-                <ion-label class="avatar-done">Done</ion-label>
+                <ion-label class="avatar-done">{{ 'REQUEST.status_done' | translate }}</ion-label>
             </ion-avatar>
             <ion-label>
               <ion-label class="title-request-all-item ion-text-wrap">{{item.title}}</ion-label>
@@ -54,12 +54,12 @@
         <ion-infinite-scroll threshold="50px" (ionInfinite)="loadData($event)">
           <ion-infinite-scroll-content class="custom-infinite-scroll"
             loadingSpinner="bubbles"
-            loadingText="Loading more data...">
+            loadingText="{{ 'REQUEST.loadding_more' | translate }}">
           </ion-infinite-scroll-content>
         </ion-infinite-scroll>
       </ion-content>
       <section class="full-width function-section">
-          <ion-button expand="block" class="amo-button-custom" (click)="addRequest()">Add New Request</ion-button>
+          <ion-button expand="block" class="amo-button-custom" (click)="addRequest()">{{ 'REQUEST.btn_add_request' | translate }}</ion-button>
         </section>
     </div>
     <div *ngSwitchCase="'Registration'" class="width-100">
@@ -69,7 +69,7 @@
               <img class="service-image-custom-avatar" src="../../../assets/request/Registion.png"/>
               <ion-row class="ion-no-padding">
                 <ion-col text-center class="service-text-avatart-custom avatar-done" >
-                  Done
+                  {{ 'REQUEST.status_done' | translate }}
                 </ion-col>
               </ion-row>
             </ion-card>
@@ -82,7 +82,7 @@
           </ion-item>
         </ion-list>
         <section class="full-width function-section">
-          <ion-button expand="block" class="amo-button-custom">Add New Registration</ion-button>
+          <ion-button expand="block" class="amo-button-custom">{{ 'REQUEST.btn_add_new_registration' | translate }}</ion-button>
         </section>
       </div>
     </div>

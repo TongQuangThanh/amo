@@ -9,7 +9,6 @@ import { LandingPage } from './landing.page';
 // import { LoginPage } from '../auth/login/login.page';
 // import { RegisterPage } from '../auth/register/register.page';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-
 const routes: Routes = [
   {
     path: '',

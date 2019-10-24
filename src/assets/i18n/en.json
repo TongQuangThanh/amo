@@ -1,25 +1,29 @@
 {
     "LANDING": {
-        "content_text": "Enter the phone number you registered",
-        "phone_place_holder": "Phone number ...",
-        "send": "Send",
+        "content_text": "Enter your phone number to login",
+        "phone_place_holder": "Phone number",
+        "continue": "Continue",
         "skip": "Skip, trial"
     },
     "LOGIN":{
         "title": "Login",
-        "note_string" : "Enter the password to login",
+        "note_string" : "Enter your password", 
         "placeholder_phone": "Phone number",
         "placeholder_pass": "Password",
         "button_login_label": "Login",
-        "forgot_pass_label": "Forgot your password?",
-        "login_error": "Phone number or password not correct"
+        "forgot_pass_label": "Forgot password?",
+        "login_error": "Phone number or password is not correct"
     },
     "REGISTER" : {
-        
+	    "note_text_confirm": "A text message with a 4-digit verification code was just sent to your phone number",
+	    "forgot_password_note": "A 4-digit verification code will be sent to your phone number, please check your SMS message",
+	    "verification_code": "verification code",
+	    "note_view_apartment_code": "Each apartment will have a separate code of 6 characters for security purepose. If you have not received the code yet, please contact Your Property Managers for assistance or skip for trial first",
+	    "skip": "Skip, trial"
     },
     "ADD_REQUEST": {
-        "title": "Add request",
-        "department" : "Department",
+        "title": "New request",
+        "apartment" : "Apartment",
         "category" : "Category",
         "title_request": "Title",
         "message_request": "Message",
@@ -30,15 +34,16 @@
     },
     "CHANGE_PASSWORD": {
         "title": "Change password",
-        "place_holder_old_password": "Old password",
+        "place_holder_old_password": "Current password",
         "place_holder_new_password": "New password",
-        "place_holder_confirm_password": "Confirm password",
-        "btn_change_pass": "Change Password"
+        "place_holder_confirm_password": "Re-type new password",
+        "btn_change_pass": "Save"
     },
     "DASHBOARD": {
 
     },
     "FORGOT_PASSWORD":{
+        "forgot_password_note": "A text message with a 4-digit verification code was just sent to your phone number",
         "title": "forgotPassword"
     },
     "HOME":{
@@ -48,49 +53,53 @@
         "vnd": "vnd",
         "pay_now": "Pay Now",
         "create_request": "Create request",
-        "booking": "Booking",
-        "order_food": "Order food",
-        "coffee": "Coffee",
+        "cleaning": "Cleaning",
+        "reparing": "Reparing",
+        "fresh_food": "Fresh food",
         "other": "Other",
         "top_news": "Top news",
         "pull_to_refresh": "Pull to refresh",
         "loadding_more": "Loading more data..."
     },
     "MY_ACCOUNT":{
-        "title": "my account",
+        "title": "My account",
         "btn_save": "Save",
         "male": "Male",
         "female": "Female",
         "other": "Other",
-        "placeholder_sex": "Sex",
-        "placeholder_displayName": "displayName",
+        "placeholder_sex": "Gender",
+        "placeholder_displayName": "Full name",
         "placeholder_email": "email",
-        "placeholder_liscense": "Personal Liscence",
+        "placeholder_liscense": "ID Card",
         "setting": "Settings",
-        "help_center": "Help center"
+        "help_center": "Help center",
+        "btn_log_out": "Log out"
     },
     "MY_HOME":{
         "title": "My Home",
-        "activeCode": "activeCode",
-        "user_category": "User category",
+        "activeCode": "Apartment code",
+        "user_category": "Role",
         "area": "Area",
         "address": "Address",
         "emergency": "Emergency"
     },
     "MY_HOME_DETAIL":{
-        "title": "my home detail",
-        "active_code": "Active Code",
-        "room": "Room",
-        "user_category": "User category",
+        "title": "My home detail",
+        "active_code": "Apartment code",
+        "room": "No.",
+        "user_category": "Role",
         "area": "Area",
         "address": "Address",
-        "vehicles": "Vehicles",
-        "members": "Members",
+        "vehicles": "Vehicle",
+        "vehicles_type": "Type",
+        "vehicles_model": "Model",
+        "vehicles_identity": "License plate",
+        "members": "Member",
         "name": "Name",
-        "sex": "Sex",
+        "sex": "Gender",
         "DOB": "DOB",
         "phone": "Phone",
-        "personal_license": "Personal license",
+        "personal_license": "ID Card",
         "nationality": "Nationality"
     },
     "NEW_DETAIL":{
@@ -109,9 +118,9 @@
     },
     "ORDER_SERVICE":{
         "title": "Order service",
-        "department": "Department",
-        "placeholder_department": "Department",
-        "user_name": "User name",
+        "apartment": "Apartment",
+        "placeholder_apartment": "Apartment",
+        "user_name": "Name",
         "phone": "Phone",
         "address": "Address",
         "time_order": "Time",
@@ -123,6 +132,7 @@
         "amount_to_pay": "Amount to pay",
         "vnd": "vnd",
         "pay_now": "Pay Now",
+        "top_up": "top up",
         "complain": "Complain",
         "status_new": "New",
         "status_pending": "Pending",
@@ -132,14 +142,14 @@
     },
     "PAYMENT_INFOR":{
         "title": "Payment information",
-        "payment_date": "Payment date",
-        "total": "Total",
+        "payment_date": "Due date",
+        "total": "Amount",
         "bank_name": "Bank Name",
         "bank_account_holder": "Bank Account Holder",
         "bank_account_number": "Bank Account Number",
-        "description": "Description",
+        "description": "Detail",
         "amount": "Amount",
-        "note": "Note"
+        "note": "Price"
     },
     "PINCODE_PASSWORD":{
 
@@ -157,29 +167,28 @@
         "status_done": "Done",
         "pull_to_refresh": "Pull to refresh",
         "loadding_more": "Loading more data...",
-        "btn_add_request": "Add New Request",
-        "btn_add_new_registration": "Add New Registration"
+        "btn_add_request": "Create qequest",
+        "btn_add_new_registration": "Create registration"
     },
     "SERVICE_DETAIL":{
-
+        "btn_order": "Order"
     },
     "SERVICE_LIST_BY_CATEGORY":{
         "title": "service by category"
     },
     "SERVICE":{
-        "title": "Services",
+        "title": "Utility & Service",
         "tab_all": "All",
         "tab_history": "History",
-        "btn_add_new_services": "Add New Services"
+        "btn_add_new_services": "Add New Service"
     },
     "SETTING":{
         "title": "Settings",
         "language": "Language",
-        "vn": "Viet Nam",
+        "vn": "Vietnamese",
         "en": "English",
         "change_password": "Change password",
-        "app _version": "App version",
-        "subversion": "Sub-version",
-        "btn_log_out": "Log out"
+        "app_version": "App version",
+        "subversion": "Sub-version"
     }
 }

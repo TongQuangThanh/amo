@@ -12,7 +12,7 @@ export class TranslateConfigService {
   ) { }
 
   getDefaultLanguage() {
-    const language = this.translate.getBrowserLang();
+    const language = 'vi';
     console.log(language);
     this.translate.setDefaultLang(language);
     return language;
