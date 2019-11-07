@@ -44,7 +44,8 @@
     },
     "FORGOT_PASSWORD":{
         "forgot_password_note": "A text message with a 4-digit verification code was just sent to your phone number",
-        "title": "forgotPassword"
+        "title": "forgotPassword",
+        "btn_text_me": "Text me"
     },
     "HOME":{
         "title": "Home",
@@ -106,7 +107,18 @@
 
     },
     "NEW_PASSWORD":{
-
+        "title": "Change password",
+        "place_holder_new_password": "New password",
+        "place_holder_confirm_password": "Re-type new password",
+        "btn_change_pass": "Save",
+        "password_note": "Note: Password must be at least 8 character"
+    },
+    "REGISTER_PASSWORD":{
+        "title": "Password",
+        "place_holder_new_password": "New password",
+        "place_holder_confirm_password": "Re-type new password",
+        "btn_change_pass": "Save",
+        "password_note": "Note: Password must be at least 8 character"
     },
     "NOTIFICATION":{
         "title": "Notification",
@@ -151,8 +163,16 @@
         "amount": "Amount",
         "note": "Price"
     },
+    "APARTMENT_CODE_REGISTER":{
+        "apartmentcode_note": "Each apartment will have a separate code of 6 characters for security purposes. If you have not received the code yet, please contact the building management for assistance or choose the building in the list below to receive basic information first.",
+        "btn_cancel": "Cancel",
+        "wrong_code": "Wrong code"
+    },
     "PINCODE_PASSWORD":{
-
+        "pincode_note": "You phone number has been send please enter the confirmation code",
+        "btn_resend_code": "Resend code",
+        "btn_cancel": "Cancel",
+        "wrong_code": "Wrong code"
     },
     "REQUEST_DETAIL":{
         "title": "Request Detail"

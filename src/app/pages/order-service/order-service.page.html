@@ -10,28 +10,28 @@
   <form (ngSubmit)="orderSericeForm($event)">
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
       <ion-item lines="none">
-        <ion-label position="stacked">{{ 'ORDER_SERVICE.apartment' | translate }}</ion-label>
+        <ion-label position="stacked" class="stack-label">{{ 'ORDER_SERVICE.apartment' | translate }}</ion-label>
         <ion-select class="custom-common-input custom-common-input-text height-auto" placeholder="{{ 'ORDER_SERVICE.placeholder_apartment' | translate }}" interface="action-sheet" (ionChange)="changeValueDepartment($event)" name="departmentID" [(ngModel)]="departmentID">
           <ion-select-option *ngFor="let item of listDepartment" value="{{item.apartment._id}}">{{item.apartment.title + ' - ' + item.campaign.title}}</ion-select-option>
         </ion-select>
       </ion-item>
 
-      <ion-item lines="none">
+      <ion-item lines="none" class="stack-label">
         <ion-label position="stacked">{{ 'ORDER_SERVICE.user_name' | translate }}</ion-label>
         <ion-input class="custom-common-input custom-common-input-text" value="{{userName}}" name="userName" readonly></ion-input>
       </ion-item>
 
-      <ion-item lines="none">
+      <ion-item lines="none" class="stack-label">
         <ion-label position="stacked">{{ 'ORDER_SERVICE.phone' | translate }}</ion-label>
         <ion-input class="custom-common-input custom-common-input-text" value="{{phone}}" name="phone" readonly></ion-input>
       </ion-item>
 
-      <ion-item lines="none">
+      <ion-item lines="none" class="stack-label">
         <ion-label position="stacked">{{ 'ORDER_SERVICE.address' | translate }}<ion-text color="danger">*</ion-text></ion-label>
         <ion-input class="custom-common-input custom-common-input-text" placeholder="{{ 'ORDER_SERVICE.address' | translate }}" [ngClass]="!isErrorAddress ? '' : 'error-input'" required type="text" [(ngModel)]="address" name="address"></ion-input>
       </ion-item>
 
-      <ion-item lines="none">
+      <ion-item lines="none" class="stack-label">
         <ion-label position="stacked">{{ 'ORDER_SERVICE.time_order' | translate }}<ion-text color="danger">*</ion-text></ion-label>
         <ion-datetime [ngClass]="!isErrorTime ? '' : 'error-input'" placeholder="{{ 'ORDER_SERVICE.time_order' | translate }}"
           class="custom-common-input custom-common-input-text height-auto"
@@ -43,9 +43,9 @@
         ></ion-datetime>
       </ion-item>
 
-      <ion-item lines="none">
-        <ion-label position="stacked">{{ 'ORDER_SERVICE.message' | translate }}<ion-text color="danger">*</ion-text></ion-label>
-        <ion-textarea class="custom-common-input custom-common-input-text height-auto" placeholder="{{ 'ORDER_SERVICE.message' | translate }}" [ngClass]="!isErrorMessage ? '' : 'error-input'" [(ngModel)]="message" required rows="4" name="message"></ion-textarea>
+      <ion-item lines="none" class="stack-label">
+        <ion-label position="stacked">{{ 'ORDER_SERVICE.message' | translate }}</ion-label>
+        <ion-textarea class="custom-common-input custom-common-input-text height-auto" placeholder="{{ 'ORDER_SERVICE.message' | translate }}" [(ngModel)]="message" required rows="4" name="message"></ion-textarea>
       </ion-item>
     </ion-list>
 

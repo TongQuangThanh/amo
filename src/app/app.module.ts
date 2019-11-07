@@ -17,7 +17,9 @@ import { TranslateConfigService } from './translate-config.service';
 import { TokenInterceptor } from './inteceptors/inteceptors.service';
 import { NativePageTransitions } from '@ionic-native/native-page-transitions/ngx';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
-import { OrderServicePageModule } from './pages/order-service/order-service.module';
+import { PincodePasswordPageModule } from './pages/pincode-password/pincode-password.module';
+import { PincodeRegisterPageModule } from './pages/auth/pincode-register/pincode-register.module';
+import { ApartmentCodeRegisterPageModule } from './pages/auth/apartment-code-register/apartment-code-register.module';
 import { CodePush } from '@ionic-native/code-push/ngx';
 
 export function LanguageLoader(http: HttpClient) {
@@ -31,7 +33,9 @@ export function LanguageLoader(http: HttpClient) {
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    OrderServicePageModule,
+    PincodePasswordPageModule,
+    PincodeRegisterPageModule,
+    ApartmentCodeRegisterPageModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

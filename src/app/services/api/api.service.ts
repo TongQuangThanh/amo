@@ -193,10 +193,62 @@ export class ApiService {
     );
   }
 
+  resetPassword(params:any): Observable<any> {
+    return this.http.post(EnvService.resetPassword, params).pipe(
+      map(results => results)
+    );
+  }
+
   settingNotification(params:any): Observable<any> {
     return this.http.post(EnvService.notification, params).pipe(
       map(results => results)
     );
   }
 
+  forgotPassword(phoneNumber:string): Observable<any> {
+    return this.http.post(EnvService.forgotPassword, {phone: phoneNumber}).pipe(
+      map(results => results)
+    );
+  }
+
+  verifyTokenCode(phone:string, token:string): Observable<any> {
+    const params = {
+      phone,
+      token
+    }
+    return this.http.post(EnvService.confirmTokenCode, params).pipe(
+      map(results => results)
+    );
+  }
+
+  resentRegisterCode(phone:string): Observable<any> {
+    const params = {
+      phone
+    }
+    return this.http.post(EnvService.register, params).pipe(
+      map(results => results)
+    );
+  }
+
+  confirmRegisterCode(phone:string, code:string): Observable<any> {
+    const params = {
+      phone,
+      code
+    }
+    return this.http.post(EnvService.confirmSMSCode, params).pipe(
+      map(results => results)
+    );
+  }
+
+  confirmApartmentCode(phone:string, ref:string, token:string, password:string): Observable<any> {
+    const params = {
+      phone,
+      ref,
+      password,
+      code:token
+    }
+    return this.http.post(EnvService.confirm, params).pipe(
+      map(results => results)
+    );
+  }
 }

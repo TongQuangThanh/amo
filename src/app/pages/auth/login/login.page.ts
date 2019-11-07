@@ -26,9 +26,10 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     localStorage.removeItem('token');
-    this.route.queryParams.subscribe(params => {
-      this.phone = params.phoneNumber;
-    });
+    // this.route.queryParams.subscribe(params => {
+    //   this.phone = params.phoneNumber;
+    // });
+    this.phone = this.route.snapshot.paramMap.get('phone');
   }
 
   checkIsEnabled() {
@@ -54,5 +55,9 @@ export class LoginPage implements OnInit {
         this.navCtrl.navigateRoot('/dashboard/home');
       }
     );
+  }
+
+  changeToForgotPass(){
+    this.navCtrl.navigateRoot('/forgot-password');
   }
 }

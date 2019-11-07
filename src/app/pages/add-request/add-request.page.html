@@ -11,7 +11,7 @@
   <form (ngSubmit)="addRequest($event)">
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
       <ion-item lines="none">
-        <ion-label position="stacked">{{ 'ADD_REQUEST.apartment' | translate }}<ion-text color="danger">*</ion-text></ion-label>
+        <ion-label position="stacked" class="stack-label">{{ 'ADD_REQUEST.apartment' | translate }}<ion-text color="danger">*</ion-text></ion-label>
         <ion-select 
           class="custom-common-input custom-common-input-text height-auto" [ngClass]="!isErrorDepartmentID ? '' : 'error-input'"
           placeholder="{{ 'ADD_REQUEST.apartment' | translate }}"
@@ -22,7 +22,7 @@
       </ion-item>
 
       <ion-item lines="none">
-        <ion-label position="stacked">{{ 'ADD_REQUEST.category' | translate }}<ion-text color="danger">*</ion-text></ion-label>
+        <ion-label position="stacked" class="stack-label">{{ 'ADD_REQUEST.category' | translate }}<ion-text color="danger">*</ion-text></ion-label>
         <ion-select 
           class="custom-common-input custom-common-input-text height-auto" [ngClass]="!isErrorTopicID ? '' : 'error-input'"
           placeholder="{{ 'ADD_REQUEST.category' | translate }}"
@@ -62,12 +62,12 @@
       </ion-item> -->
 
       <ion-item lines="none"> 
-        <ion-label position="stacked">{{ 'ADD_REQUEST.title_request' | translate }}<ion-text color="danger">*</ion-text></ion-label>
+        <ion-label position="stacked" class="stack-label">{{ 'ADD_REQUEST.title_request' | translate }}<ion-text color="danger">*</ion-text></ion-label>
         <ion-input class="custom-common-input custom-common-input-text" placeholder="{{ 'ADD_REQUEST.title_request' | translate }}" [ngClass]="!isErrorTitle ? '' : 'error-input'" value="{{title}}" [(ngModel)]="title" name="title"></ion-input>
       </ion-item>
 
       <ion-item lines="none">
-        <ion-label position="stacked">{{ 'ADD_REQUEST.message_request' | translate }}<ion-text color="danger">*</ion-text></ion-label>
+        <ion-label position="stacked" class="stack-label">{{ 'ADD_REQUEST.message_request' | translate }}<ion-text color="danger">*</ion-text></ion-label>
         <ion-textarea class="custom-common-input custom-common-input-text height-auto" placeholder="{{ 'ADD_REQUEST.message_request' | translate }}" [ngClass]="!isErrorMessage ? '' : 'error-input'" [(ngModel)]="message" rows="4" name="message"></ion-textarea>
       </ion-item>
     </ion-list>

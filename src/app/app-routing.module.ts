@@ -8,12 +8,35 @@ const routes: Routes = [
     redirectTo: 'landing',
     pathMatch: 'full'
   },
-  { path: 'landing', loadChildren: './pages/landing/landing.module#LandingPageModule' },
-  { path: 'login', loadChildren: './pages/auth/login/login.module#LoginPageModule' },
-  { path: 'register', loadChildren: './pages/auth/register/register.module#RegisterPageModule' },
-
-  { path: 'dashboard', loadChildren: './pages/dashboard/dashboard.module#DashboardPageModule', canActivate: [AuthGuard]},
-  // { path: 'payment', loadChildren: './pages/payment/payment.module#PaymentPageModule', canActivate: [AuthGuard]},
+  { 
+    path: 'landing',
+    loadChildren: './pages/landing/landing.module#LandingPageModule'
+  },
+  { 
+    path: 'login/:phone',
+    loadChildren: './pages/auth/login/login.module#LoginPageModule'
+  },
+  { 
+    path: 'register-password/:phone/:token',
+    loadChildren: './pages/auth/register-password/register-password.module#RegisterPasswordPageModule'
+  },
+  { 
+    path: 'dashboard',
+    loadChildren: './pages/dashboard/dashboard.module#DashboardPageModule',
+    canActivate: [AuthGuard]
+  },
+  { 
+    path: 'forgot-password',
+    loadChildren: './pages/forgot-password/forgot-password.module#ForgotPasswordPageModule'
+  },
+  { 
+    path: 'new-password/:phone/:token',
+    loadChildren: './pages/new-password/new-password.module#NewPasswordPageModule'
+  },
+  { 
+    path: 'pincode-password',
+    loadChildren: './pages/pincode-password/pincode-password.module#PincodePasswordPageModule'
+  },
   { 
     path: 'notificationDetail/:id',
     loadChildren: './pages/notification-detail/notification-detail.module#NotificationDetailPageModule',
@@ -82,10 +105,7 @@ const routes: Routes = [
     path: 'change-password',
     loadChildren: './pages/change-password/change-password.module#ChangePasswordPageModule',
     canActivate: [AuthGuard]
-  },
-  { path: 'forgot-password', loadChildren: './pages/forgot-password/forgot-password.module#ForgotPasswordPageModule' },
-  { path: 'new-password', loadChildren: './pages/new-password/new-password.module#NewPasswordPageModule' },
-  { path: 'pincode-password', loadChildren: './pages/pincode-password/pincode-password.module#PincodePasswordPageModule' },
+  }
 ];
 
 @NgModule({

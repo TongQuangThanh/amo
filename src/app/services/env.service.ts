@@ -6,6 +6,8 @@ export const EnvService = {
   logout: environment.base + '/auth/logout',
   forgotPassword: environment.base + '/auth/forgotPassword',
   confirm: environment.base + '/auth/confirm',
+  confirmTokenCode: environment.base + '/auth/confirmTokenCode',
+  confirmSMSCode: environment.base + '/auth/confirmSmsCode',
   resetPassword: environment.base + '/auth/reset',
   changePassword: environment.base + '/account/change-password',
   updateProfile: environment.base + '/account/profile',

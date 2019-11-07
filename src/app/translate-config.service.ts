@@ -25,6 +25,10 @@ export class TranslateConfigService {
     }
   }
 
+  setLanguageDefault(){
+    this.setLanguage(this.getDefaultLanguage());
+  }
+
   setLanguage(setLang) {
     this.translate.use(setLang);
   }

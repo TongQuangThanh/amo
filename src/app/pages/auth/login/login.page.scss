@@ -64,24 +64,19 @@
     height: 3.5em;
     margin: 0px 10px;
     width: 100%;
+    padding: 0;
 }
 
 .forgot-pass{
-    // position: absolute;
-    height: 19px;
-    // left: 30.67%;
-    // right: 30.93%;
-    // top: calc(50% - 19px/2 + 49px);
-
     font-family: Nunito Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 19px;
-    /* identical to box height */
-
-
+    border: 0px;
+    --box-shadow: none;
     color: #556080;
+    width: 100%;
 }
 
 .padding-content {
@@ -90,4 +85,10 @@
 
 .padding-10 {
     padding: 10px;
+}
+
+.clear-background {
+    --color-activated:#556080;
+    --background: transparent;
+    --background-activated: transparent;
 }

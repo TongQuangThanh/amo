@@ -44,7 +44,8 @@
     },
     "FORGOT_PASSWORD":{
         "forgot_password_note": "Một mã xác minh 4 chữ số đã được gửi đến số điện thoại của bạn, vui lòng kiểm tra tin nhắn",
-        "title": "Quên mật khẩu"
+        "title": "Quên mật khẩu",
+        "btn_text_me": "Gửi cho tôi"
     },
     "HOME":{
         "title": "Home",
@@ -106,7 +107,18 @@
 
     },
     "NEW_PASSWORD":{
-
+        "title": "Đổi mật khẩu",
+        "place_holder_new_password": "Mật khẩu mới",
+        "place_holder_confirm_password": "Nhập lại mật khẩu mới",
+        "btn_change_pass": "Lưu",
+        "password_note": "Lưu ý: Mật khẩu phải bao gồm ít nhất 8 kí tự"
+    },
+    "REGISTER_PASSWORD":{
+        "title": "Mật khẩu",
+        "place_holder_new_password": "Mật khẩu mới",
+        "place_holder_confirm_password": "Nhập lại mật khẩu mới",
+        "btn_change_pass": "Lưu",
+        "password_note": "Lưu ý: Mật khẩu phải bao gồm ít nhất 8 kí tự"
     },
     "NOTIFICATION":{
         "title": "Thông báo",
@@ -152,7 +164,15 @@
         "note": "Đơn giá"
     },
     "PINCODE_PASSWORD":{
-
+        "pincode_note": "Số điện thoại của bạn đã được gửi một mã confirm code. Xin hãy nhập mã confirm code.",
+        "btn_resend_code": "Gửi lại code",
+        "btn_cancel": "Huỷ",
+        "wrong_code": "Code sai"
+    },
+    "APARTMENT_CODE_REGISTER":{
+        "apartmentcode_note": "Mỗi toà nhà sẽ có một mã code gồm 6 chữ cái dùng cho mục đích bảo mật. Nếu bạn không nhận được mã code xin hãy liên hệ quản lý toà nhà.",
+        "btn_cancel": "Huỷ",
+        "wrong_code": "Code sai"
     },
     "REQUEST_DETAIL":{
         "title": "Chi tiết yêu cầu"

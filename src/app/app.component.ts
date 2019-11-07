@@ -7,7 +7,8 @@ import { AuthService } from './services/auth/auth.service';
 import { AlertService } from './services/alert/alert.service';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { CodePush, InstallMode, SyncStatus } from '@ionic-native/code-push/ngx';
- 
+import { TranslateConfigService } from './translate-config.service';
+
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -23,17 +24,20 @@ export class AppComponent {
     private navCtrl: NavController,
     private alertService: AlertService,
     private oneSignal: OneSignal,
-    private codePush: CodePush
+    private codePush: CodePush,
+    private translateConfigService: TranslateConfigService
   ) {
     splashScreen.hide();
     this.initializeApp();
   }
 
   initializeApp() {
+    var self = this;
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-      this.setupPushOneSign();
-      this.checkCodePush();
+      self.statusBar.styleDefault();
+      self.setupPushOneSign();
+      self.checkCodePush();
+      self.translateConfigService.setLanguageDefault()
     });
   }
 

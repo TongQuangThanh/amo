@@ -8,6 +8,7 @@ export const ConstService = {
     slowdownfactor: -1,
     iosdelay: 50
   },
+  PHONE_LENGTH_VN: 10,
   LIST_COUNTRIES: [{
       "name": "Afghanistan",
       "alpha2": "AF",

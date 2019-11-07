@@ -3,7 +3,6 @@ import { ApiService } from '../../services/api/api.service';
 import { NavController } from '@ionic/angular';
 import { LoadingService } from '../../services/loading/loading.service';
 import { UtilsService } from '../../utils/utils.service';
-// import { ConstService } from '../../utils/const.service';
 import { AlertService } from '../../services/alert/alert.service';
 
 @Component({
@@ -61,34 +60,34 @@ export class ChangePasswordPage implements OnInit {
   }
 
   changePass(){
-    if(!this.oldPassword || this.oldPassword == ""){
+    if(!this.oldPassword || this.oldPassword.length < 8){
       this.errorOldPass = true;
       this.errorNewPass = false;
       this.errorConfirmPass = false;
-      this.errorMessage = "Please enter current password";
+      this.errorMessage = "Please enter current password at least 8 character";
       return;
     }
 
-    if(!this.newPassword || this.newPassword == ""){
+    if(!this.newPassword || this.newPassword.length < 8){
       this.errorOldPass = false;
       this.errorNewPass = true;
       this.errorConfirmPass = false;
-      this.errorMessage = "Please new password";
+      this.errorMessage = "Please enter new password at least 8 character";
       return;
     }
 
-    if(!this.confirmPassword || this.confirmPassword == ""){
+    if(!this.confirmPassword || this.confirmPassword.length < 8){
       this.errorOldPass = false;
       this.errorNewPass = false;
       this.errorConfirmPass = true;
-      this.errorMessage = "Please confirm password";
+      this.errorMessage = "Please enter confirm password at least 8 character";
       return;
     }
 
     if(this.newPassword != this.confirmPassword){
       this.errorNewPass = true;
       this.errorConfirmPass = true;
-      this.errorMessage = "Password does not match";
+      this.errorMessage = "New password and confirm password does not match";
       return;
     }
 

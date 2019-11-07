@@ -24,7 +24,6 @@ export class OrderServicePage implements OnInit {
   timeOrder: any;
   isErrorAddress:boolean=false;
   isErrorTime:boolean=false;
-  isErrorMessage:boolean=false;
   // latitude: any;
   // longitude: any;
   serviceID: string;
@@ -86,13 +85,7 @@ export class OrderServicePage implements OnInit {
       this.isErrorTime = true;
     }
 
-    if(this.message && this.message.length > 0){
-      this.isErrorMessage = false;
-    }else{
-      this.isErrorMessage = true;
-    }
-
-    if(this.isErrorMessage || this.isErrorAddress || this.isErrorTime){
+    if(this.isErrorAddress || this.isErrorTime){
       return;
     }
     this.loading.present();

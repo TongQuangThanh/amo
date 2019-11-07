@@ -25,7 +25,9 @@
       <ion-button (click)="login()" class="amo-button-custom" expand="block" [ngClass]="!checkIsEnabled() ? 'button-common login-button' : 'button-common login-button button-common-active'" [disabled]="!checkIsEnabled()">{{ 'LOGIN.button_login_label' | translate }}</ion-button>
     </ion-item>
     <ion-item lines="none">
-      <ion-label class="ion-text-center forgot-pass">{{ 'LOGIN.forgot_pass_label' | translate }}</ion-label>
+        <ion-button expand="block" class="forgot-pass clear-background" (click)="changeToForgotPass()" routerDirection="forward">
+            <ion-label class="button-skip-label">{{ 'LOGIN.forgot_pass_label' | translate }}</ion-label>
+        </ion-button>
     </ion-item>
   </ion-list>
 </ion-content>

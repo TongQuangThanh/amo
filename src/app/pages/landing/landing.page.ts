@@ -5,6 +5,8 @@ import { TranslateConfigService } from '../../translate-config.service';
 import { NavigationExtras } from '@angular/router';
 import { ApiService } from '../../services/api/api.service';
 import { LoadingService } from '../../services/loading/loading.service';
+import { ModalController } from '@ionic/angular';
+import { PincodeRegisterPage } from '../auth/pincode-register/pincode-register.page';
 
 const PHONE_LENGTH_VN = 10;
 
@@ -14,19 +16,19 @@ const PHONE_LENGTH_VN = 10;
   styleUrls: ['./landing.page.scss'],
 })
 export class LandingPage implements OnInit {
-  selectedLanguage: string;
   phoneNumber: string;
-
+  errorInputPhone: boolean;
   constructor(
     private menu: MenuController,
     private loading: LoadingService,
     private authService: AuthService,
     private navCtrl: NavController,
     private translateConfigService: TranslateConfigService,
-    private apiService: ApiService
+    private apiService: ApiService,
+    public modalController: ModalController,
   ) {
     this.phoneNumber = '';
-    this.selectedLanguage = this.translateConfigService.getDefaultLanguage();
+    this.errorInputPhone = false;
     this.menu.enable(false);
     this.navCtrl.setDirection('back', true, 'back');
   }
@@ -55,21 +57,57 @@ export class LandingPage implements OnInit {
 
   checkIsEnabled() {
     if (this.phoneNumber && this.phoneNumber.length >= PHONE_LENGTH_VN) {
+      this.errorInputPhone = false;
       return true;
     }
     return false;
   }
 
   ChangeLogin() {
-    const navigationExtras: NavigationExtras = {
-        queryParams: {
-          phoneNumber : this.phoneNumber
-        }
-    };
-    this.navCtrl.navigateForward(['/login'], navigationExtras);
+    this.navCtrl.navigateForward('/login/' + this.phoneNumber);
   }
 
-  languageChanged() {
-    this.translateConfigService.setLanguage(this.selectedLanguage);
+  sendSMS(){
+    var self = this;
+    this.loading.present();
+    this.apiService.resentRegisterCode(this.phoneNumber).subscribe(result => {
+      self.loading.dismiss();
+      self.presentModal();
+    },
+    error => {
+      self.loading.dismiss();
+    });
+  }
+
+  SkipLogin(){
+    if (this.phoneNumber && this.phoneNumber.length >= PHONE_LENGTH_VN) {
+      this.errorInputPhone = false;
+      this.sendSMS();
+    }else{
+      this.errorInputPhone = true;
+    }
+  }
+
+  async presentModal() {
+    const modal = await this.modalController.create({
+      component: PincodeRegisterPage,
+      componentProps: {
+        "phoneNumber": this.phoneNumber,
+      },
+      cssClass: "custom-modal-wrapper"
+    });
+
+    modal.onDidDismiss().then((dataReturned:any) => {
+      if (dataReturned !== null) {
+        const dataReturnedResult = JSON.parse(dataReturned.data);
+        if(dataReturnedResult.result == '0'){
+          this.navCtrl.navigateForward('/register-password/' + this.phoneNumber + "/" + dataReturnedResult.token);
+        }else{
+
+        }
+      }
+    });
+
+    return await modal.present();
   }
 }
