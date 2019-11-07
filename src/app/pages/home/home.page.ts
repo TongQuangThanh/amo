@@ -29,20 +29,20 @@ export class HomePage implements OnInit {
     private navCtrl: NavController,
     private authService: AuthService,
     private nativePageTransitions: NativePageTransitions) {
-    this.imageDefault = 'assets/common/no-thumbnail.png';
+    this.imageDefault = '../assets/common/no-thumbnail.png';
     platform.ready().then((readySource) => {
       this.heightScreen = platform.height() * 0.58 - 28;
     });
-  }
 
-  ngAfterViewChecked(){
     const profile = this.authService.getProfile();
     if(profile && this.userName != profile.displayName){
       this.userName = profile.displayName;
       
     }
-    if(profile && profile.avatar != "" && this.avatar != profile.avatar){
+    if(profile && profile.avatar && profile.avatar != "" && this.avatar != profile.avatar){
       this.avatar = profile.avatar;
+    }else{
+      this.avatar = '../assets/icon/avatar-default.png';
     }
   }
 
@@ -116,5 +116,24 @@ export class HomePage implements OnInit {
 
   createRequest(){
     this.navCtrl.navigateForward('/add-request');
+  }
+
+  changeRoomService(){
+    this.navCtrl.navigateForward('/service-list-by-category/5a1fc74472c0c547276173b7');
+  }
+
+  changeReparing(){
+    this.navCtrl.navigateForward('/service-list-by-category/5a1fc75a72c0c547276173b9');
+  }
+  changeFood(){
+    this.navCtrl.navigateForward('/service-list-by-category/5c1882bcae44116a4fc3bb3d');
+  }
+
+  changeOther(){
+    this.navCtrl.navigateForward('/service-list-by-category/5cbc3fad1f4b43178ea16a10');
+  }
+  
+  changePayment(){
+    // this.navCtrl.navigateForward('/service-list-by-category/5cbc3fad1f4b43178ea16a10');
   }
 }

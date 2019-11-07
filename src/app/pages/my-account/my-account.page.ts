@@ -49,7 +49,7 @@ export class MyAccountPage implements OnInit {
         self.nationality = result.profile.nationality;
         self.dateOfBirth = result.profile.dateOfBirth;
         self.personalLiscence = result.profile.personalLiscence;
-        self.avatar = result.profile.avatar;
+        self.avatar = result.profile.avatar != null ? result.profile.avatar : '../assets/icon/avatar-default.png';
         self.loading.dismiss()
     },
     error => {

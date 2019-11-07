@@ -28,7 +28,7 @@
       </ion-row>
     </ion-grid>
   </section>
-  <ion-card *ngIf="paymentCategoryTranfer != null">
+  <ion-card *ngIf="paymentCategoryTranfer != null" class="payment-infor-card">
     <ion-card-content>
       <ion-item lines="none" class="payment-bank-infor-text">
         {{paymentCategoryTranfer.description}}
@@ -44,38 +44,36 @@
       </ion-item>
     </ion-card-content>
   </ion-card>
-  <ion-card  *ngFor="let item of listPaymentContent">
+  <ion-card  *ngFor="let item of listPaymentContent" class="payment-infor-card">
     <ion-item lines="none" class="payment-bank-infor-text">
       <ion-icon name="wallet" slot="start" class="icon-color"></ion-icon>
       <ion-label>{{item.type.title}}</ion-label>
     </ion-item>
     <ion-card-content>
-      <ion-grid >
-        <ion-row class="payment-bank-infor-text-detail">
-          <ion-col>
+        <div class="payment-bank-infor-text-detail">
+          <div class="custom-col-3">
               <ion-label>{{ 'PAYMENT_INFOR.description' | translate }}</ion-label>
-          </ion-col>
-          <ion-col>
+          </div>
+          <div class="custom-col-9">
               <ion-label>{{item.description}}</ion-label>
-          </ion-col>
-        </ion-row>
-        <ion-row class="payment-bank-infor-text-detail">
-          <ion-col>
+          </div>
+        </div>
+        <div class="payment-bank-infor-text-detail">
+          <div class="custom-col-3">
               <ion-label>{{ 'PAYMENT_INFOR.amount' | translate }}</ion-label>
-          </ion-col>
-          <ion-col>
+          </div>
+          <div class="custom-col-9">
               <ion-label>{{formatMoney(item.amount)}} vnd</ion-label>
-          </ion-col>
-        </ion-row>
-        <ion-row class="payment-bank-infor-text-detail">
-            <ion-col>
-                <ion-label>{{ 'PAYMENT_INFOR.note' | translate }}</ion-label>
-            </ion-col>
-            <ion-col>
-                <ion-label>{{item.type.description}}</ion-label>
-            </ion-col>
-          </ion-row>
-      </ion-grid>
+          </div>
+        </div>
+        <div class="payment-bank-infor-text-detail">
+          <div class="custom-col-3">
+              <ion-label>{{ 'PAYMENT_INFOR.note' | translate }}</ion-label>
+          </div>
+          <div class="custom-col-9">
+              <ion-label>{{item.type.description}}</ion-label>
+          </div>
+        </div>
     </ion-card-content>
   </ion-card>
 </ion-content>

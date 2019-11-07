@@ -187,7 +187,7 @@
         "status_done": "Done",
         "pull_to_refresh": "Pull to refresh",
         "loadding_more": "Loading more data...",
-        "btn_add_request": "Create qequest",
+        "btn_add_request": "Create new qequest",
         "btn_add_new_registration": "Create registration"
     },
     "SERVICE_DETAIL":{

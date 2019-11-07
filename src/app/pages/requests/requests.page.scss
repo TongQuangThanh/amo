@@ -1,12 +1,8 @@
 .list-request-all-item {
     margin: 16px;
     --background: #FFFFFF;
-    box-shadow: 0px 0px 20px rgba(23, 21, 48, 0.102546);
-    border-radius: 8px;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    -ms-border-radius: 8px;
-    -o-border-radius: 8px;
+    border-bottom: 1px solid #F5F5F5;
+    border-radius: 0px !important;
 }
 
 .list-view-custom {

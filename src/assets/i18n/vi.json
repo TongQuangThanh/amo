@@ -187,7 +187,7 @@
         "status_done": "Hoàn thành",
         "pull_to_refresh": "Kéo xuống để làm mới",
         "loadding_more": "Đang tải dữ liệu...",
-        "btn_add_request": "Yêu cầu mới",
+        "btn_add_request": "Tạo yêu cầu mới",
         "btn_add_new_registration": "Đăng ký mới"
     },
     "SERVICE_DETAIL":{
