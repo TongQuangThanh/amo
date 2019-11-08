@@ -17,15 +17,15 @@
       <div class="clear-balance-rect">
       </div>
       <div class="function-content-button">
-        <div class="ion-float-left div-avatar-content-big">
+        <div class="ion-float-left div-avatar-content-big" (click)="paymentNow()">
             <img class="img-avatar-big" src="../../../assets/common/pay_now.png">
           <ion-label class="image-caption-big">{{ 'PAYMENT.pay_now' | translate }}</ion-label>
         </div>
-        <!-- <div class="ion-float-left div-avatar-content-big">
+        <div class="ion-float-left div-avatar-content-big" (click)="paymentNow()">
             <img class="img-avatar-big" src="../../../assets/common/topup.png">
           <ion-label class="image-caption-big">{{ 'PAYMENT.top_up' | translate }}</ion-label>
-        </div> -->
-        <div class="ion-float-right div-avatar-content-big">
+        </div>
+        <div class="ion-float-right div-avatar-content-big" (click)="paymentNow()">
             <img class="img-avatar-big" src="../../../assets/common/request_icon.png">
           <ion-label class="image-caption-big">{{ 'PAYMENT.complain' | translate }}</ion-label>
         </div>

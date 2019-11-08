@@ -79,7 +79,7 @@ export class ApartmentCodeRegisterPage {
   onKeyUp($event: any, item: any, index: any) {
     let v_index;
 
-    let reg = new RegExp("[a-zA-Z]");
+    let reg = new RegExp("[A-Za-z0-9]");
 
     if ($event.key == "Backspace") {
       if (index == 0) {

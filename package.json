@@ -14,7 +14,8 @@
     "updateIOS": "ionic cordova prepare ios --prod --release",
     "buidlAndroid": "ionic cordova build android --prod --release",
     "buidlIOS": "ionic cordova build ios --prod --release",
-    "codePushAndroid": "appcenter codepush release-cordova -a amtechcom.dev/AMO_v4_android -d Production"
+    "codePushAndroid": "appcenter codepush release-cordova -a amtechcom.dev/AMO_v4_android -d Production",
+    "codePushIOS": "appcenter codepush release-cordova -a amtechcom.dev/AMO_v4_ios -d Production"
   },
   "private": true,
   "dependencies": {
@@ -47,9 +48,6 @@
     "cordova-android": "8.1.0",
     "cordova-ios": "^5.0.1",
     "cordova-plugin-advanced-http": "^2.2.0",
-    "cordova-plugin-appcenter-analytics": "^0.5.0",
-    "cordova-plugin-appcenter-crashes": "^0.5.0",
-    "cordova-plugin-appcenter-shared": "^0.5.0",
     "cordova-plugin-camera": "^4.1.0",
     "cordova-plugin-code-push": "^1.12.0",
     "cordova-plugin-dialogs": "^2.0.2",

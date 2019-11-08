@@ -74,7 +74,7 @@
         <ion-row>
           <ion-col *ngFor="let controlItem of this.pinCodeArray;let i = index;let last=last">
             <input 
-              ng-pattern="/^[A-Z]*$/"
+              ng-pattern="/^[A-Za-z0-9]*$/"
               ng-maxlength="1"
               maxlength="1"
               class="pinCodeInput"

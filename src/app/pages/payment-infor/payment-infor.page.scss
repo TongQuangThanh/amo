@@ -42,6 +42,12 @@ ion-toolbar {
     color: #3880ff;
 }
 
+.payment-infor-card-top{
+    --background: #FFFFFF;
+    box-shadow: 0px 0px 20px rgba(23, 21, 48, 0.102546);
+    border-radius: 8px;
+}
+
 .payment-infor-card{
     --background: #FFFFFF;
     border-bottom: 1px solid #F5F5F5;

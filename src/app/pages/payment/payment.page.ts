@@ -95,4 +95,8 @@ export class PaymentPage implements OnInit {
       return i > 0 && c !== "," && (a.length - i) % 3 === 0 ? "." + c : c;
     });
   }
+
+  paymentNow(){
+    
+  }
 }
