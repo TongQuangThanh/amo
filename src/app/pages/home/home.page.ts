@@ -138,26 +138,28 @@ export class HomePage implements OnInit {
   }
 
   onScroll(event) {
-    const newHeight = 14 - event.detail.currentY/(20*2);
-    const newtop = 35 - event.detail.currentY/(10);
-    const newtop1 = 25 - event.detail.currentY/(20);
-    const newtop2 = 33 - event.detail.currentY/(20);
-    if(newHeight > 9){
-      document.getElementById('contentNews').style.height = newHeight + '%';
-      document.getElementById('content-button-child').style.top = newtop + '%';
-      document.getElementById('function-content-big').style.display = "";
-      document.getElementById('function-content-big').style.top = 'calc('+newtop1+'% + 26px)';
-      document.getElementById('function-content-small').style.display = "none";
-      document.getElementById('contentNews').style.display = "";
-      document.getElementById('new-content').style.top = 'calc('+newtop2+'% + 35px)';
-      this.heightScreen = this.platform.height() * 0.58 - 18 + event.detail.currentY/1.5;
-    }else{
-      document.getElementById('function-content-big').style.display = "none";
-      document.getElementById('contentNews').style.display = "none";
-      document.getElementById('function-content-small').style.display = "";
-      document.getElementById('function-content-small').style.top = 'calc('+9+'% + 26px)';
-      document.getElementById('new-content').style.top = 'calc(18% + 35px)'
-      this.heightScreen = this.platform.height() * 0.72 - 18;
+    if(event.detail.currentY >= 0){
+      const newHeight = 14 - event.detail.currentY/(20*2);
+      const newtop = 35 - event.detail.currentY/(10);
+      const newtop1 = 25 - event.detail.currentY/(20);
+      const newtop2 = 33 - event.detail.currentY/(20);
+      if(newHeight > 9){
+        document.getElementById('contentNews').style.height = newHeight + '%';
+        document.getElementById('content-button-child').style.top = newtop + '%';
+        document.getElementById('function-content-big').style.display = "";
+        document.getElementById('function-content-big').style.top = 'calc('+newtop1+'% + 26px)';
+        document.getElementById('function-content-small').style.display = "none";
+        document.getElementById('contentNews').style.display = "";
+        document.getElementById('new-content').style.top = 'calc('+newtop2+'% + 35px)';
+        this.heightScreen = this.platform.height() * 0.58 - 18 + event.detail.currentY/1.5;
+      }else{
+        document.getElementById('function-content-big').style.display = "none";
+        document.getElementById('contentNews').style.display = "none";
+        document.getElementById('function-content-small').style.display = "";
+        document.getElementById('function-content-small').style.top = 'calc('+9+'% + 26px)';
+        document.getElementById('new-content').style.top = 'calc(18% + 35px)'
+        this.heightScreen = this.platform.height() * 0.72 - 18;
+      }
     }
   }
 }

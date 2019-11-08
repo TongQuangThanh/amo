@@ -97,6 +97,6 @@ export class PaymentPage implements OnInit {
   }
 
   paymentNow(){
-    
+    this.alertService.presentToast("Functional maintenance");
   }
 }
