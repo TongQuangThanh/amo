@@ -52,7 +52,6 @@ export class ForgotPasswordPage implements OnInit {
     });
 
     modal.onDidDismiss().then((dataReturned:any) => {
-      console.log(1111);
       if (dataReturned !== null) {
         const dataReturnedResult = JSON.parse(dataReturned.data);
         if(dataReturnedResult.result == '0'){

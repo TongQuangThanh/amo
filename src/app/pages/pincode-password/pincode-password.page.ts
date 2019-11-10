@@ -19,6 +19,9 @@ export class PincodePasswordPage {
   codeSize: number = 4;
   isChecking:boolean= false;
   isError:boolean=false;
+  isEnableResentCode: boolean;
+  timmer:any;
+  timmerCount: number;
 
   constructor(
     private apiService: ApiService,
@@ -31,6 +34,21 @@ export class PincodePasswordPage {
 
   ngOnInit() {
     this.phoneNumber = this.navParams.data.phoneNumber;
+    this.setupPreventResentCode();
+  }
+
+  setupPreventResentCode(){
+    this.isEnableResentCode = false;
+    var self = this;
+    this.timmerCount = 30;
+    this.timmer = setInterval(() => {
+      if(self.timmerCount > 1){
+        self.timmerCount -=1;
+      }else{
+        self.timmerCount = 0;
+        self.isEnableResentCode = true;
+      }
+    }, 1000);
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -126,11 +144,14 @@ export class PincodePasswordPage {
   }
 
   resentPinCode(){
-    const self = this;
+    if(!this.isEnableResentCode){
+      return;
+    }
     this.apiService.forgotPassword(this.phoneNumber).subscribe(result => {
     },
     error => {
     });
+    this.setupPreventResentCode();
   }
 
   checkingPincode(pinCodeValue:string){

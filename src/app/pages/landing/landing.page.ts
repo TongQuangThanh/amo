@@ -18,6 +18,7 @@ const PHONE_LENGTH_VN = 10;
 export class LandingPage implements OnInit {
   phoneNumber: string;
   errorInputPhone: boolean;
+  errorMessage:string;
   constructor(
     private menu: MenuController,
     private loading: LoadingService,
@@ -28,6 +29,7 @@ export class LandingPage implements OnInit {
     public modalController: ModalController,
   ) {
     this.phoneNumber = '';
+    this.errorMessage= "";
     this.errorInputPhone = false;
     this.menu.enable(false);
     this.navCtrl.setDirection('back', true, 'back');
@@ -75,6 +77,7 @@ export class LandingPage implements OnInit {
       self.presentModal();
     },
     error => {
+      self.errorMessage = error.error.message;
       self.loading.dismiss();
     });
   }

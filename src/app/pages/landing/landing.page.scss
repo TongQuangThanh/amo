@@ -52,12 +52,18 @@
     --padding-start: 10px;
     color: #556080;
 }
+.error-message{
+    position: absolute;
+    left: 4.27%;
+    width: 91.46%;
+    top: calc(52.62% + 51px);
+}
 
 .button-next {
     position: absolute;
     left: 4.27%;
     width: 91.46%;
-    bottom: 9%;
+    bottom: 72px;
     padding: 0;
 }
 
@@ -79,7 +85,7 @@
     height: 19px;
     left: 30%;
     width: 40%;
-    bottom: 10px;
+    bottom: 39px;
     border: 0px;
     --box-shadow: none;
 }

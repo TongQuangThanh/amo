@@ -58,6 +58,6 @@ export class LoginPage implements OnInit {
   }
 
   changeToForgotPass(){
-    this.navCtrl.navigateRoot('/forgot-password');
+    this.navCtrl.navigateForward('/forgot-password');
   }
 }

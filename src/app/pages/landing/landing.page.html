@@ -3,7 +3,9 @@
 <ion-img class="image-page" src="/assets/common/amo_visual.png"></ion-img>
 <ion-label class="label-text">{{ 'LANDING.content_text' | translate }}</ion-label>
 <ion-input class="phone-input phone-input-text" [ngClass]="!errorInputPhone ? '' : 'error-input'" [(ngModel)]="phoneNumber" clearInput type="tel" placeholder="{{ 'LANDING.phone_place_holder' | translate }}"></ion-input>
-
+<ion-item lines="none" class="error-message" *ngIf="errorMessage != ''">
+  <ion-label color="danger" class="ion-text-wrap">{{errorMessage}}</ion-label>
+</ion-item>
 <ion-button expand="block" class="amo-button-custom" [ngClass]="!checkIsEnabled() ? 'button-common button-next' : 'button-common button-next button-common-active'" [disabled]="!checkIsEnabled()" (click)="ChangeLogin()">
   <ion-label class="button-next-label">{{ 'LANDING.continue' | translate }}</ion-label>
 </ion-button>

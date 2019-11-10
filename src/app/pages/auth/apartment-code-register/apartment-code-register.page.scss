@@ -8,20 +8,17 @@ root{
 }
 
 .pinCodeInput {
-    width:100% !important;
-    min-height: 40px;
-    height: 100%;
-    border:0px;
-    border-bottom: 2px solid var(--borderColor);
-    font-size: 24px;
-    text-align: center;
-    // text-security:var(--charShape);
-    -webkit-text-security:var(--charShape);
-    -moz-text-security: var(--charShape);
-
     background: #FFFFFF;
     box-shadow: 0px 0px 20px rgba(23, 21, 48, 0.102546);
     border-radius: 8px;
+    width: 100% !important;
+    min-height: 40px;
+    height: 100%;
+    border: 1px solid #c4c4c4;
+    font-size: 24px;
+    text-align: center;
+    -webkit-text-security:var(--charShape);
+    -moz-text-security: var(--charShape);
     text-transform:uppercase;
 }
 
@@ -106,5 +103,5 @@ color: #FA7268;
 }
 
 .margin-top-16{
-    margin-top: 16px;
+    margin-top: 24px;
 }
