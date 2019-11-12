@@ -44,6 +44,13 @@ export class HomePage implements OnInit {
     }else{
       this.avatar = '../assets/icon/avatar-default.png';
     }
+    this.apiService.userClickStatistic('home')
+      .subscribe(result => {
+        console.log(result)
+    },
+    error => {
+      console.log(error)
+    });
   }
 
   ngOnInit() {

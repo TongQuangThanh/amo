@@ -251,4 +251,10 @@ export class ApiService {
       map(results => results)
     );
   }
+
+  userClickStatistic(screenID: string){
+    return this.http.get(EnvService.userStatistic + screenID).pipe(
+      map(results => results)
+    );
+  }
 }

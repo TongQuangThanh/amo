@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/services/auth/auth.service';
-import { User } from 'src/app/models/user';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { ApiService } from '../../services/api/api.service';
+import { NavParams } from '@ionic/angular';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,14 +8,20 @@ import { User } from 'src/app/models/user';
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
-
-  user: User;
-
-  constructor(private authService: AuthService) {
+  screenID:string;
+  constructor(
+    private apiService: ApiService,
+    //private navParams: NavParams
+  ) {
+    this.screenID = "home";
   }
 
   ngOnInit() {
 
+  }
+
+  tabChanged(event){
+    console.log(event);
   }
 
   ionViewWillEnter() {
@@ -24,5 +30,18 @@ export class DashboardPage implements OnInit {
     //     this.user = user;
     //   }
     // );
+  }
+
+  userRequestTab(screenID:string){
+    if(this.screenID != screenID){
+      this.screenID = screenID;
+      this.apiService.userClickStatistic(screenID)
+        .subscribe(result => {
+          console.log(result)
+      },
+      error => {
+        console.log(error)
+      });
+    }
   }
 }
