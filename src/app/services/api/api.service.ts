@@ -252,8 +252,24 @@ export class ApiService {
     );
   }
 
-  userClickStatistic(screenID: string){
+  userClickStatistic(screenID: string):Observable<any>{
     return this.http.get(EnvService.userStatistic + screenID).pipe(
+      map(results => results)
+    );
+  }
+
+  getListFeedbackReply(feedbackID:string): Observable<any>{
+    const params = new HttpParams().
+      set('page', "1").
+      set('limit', "20").
+      set('_v', (new Date()).getTime().toString());
+    return this.http.get(EnvService.feedback_reply + feedbackID, {params}).pipe(
+      map(results => results)
+    );
+  }
+
+  addFeedbackReply(feedbackID:string, params:any): Observable<any>{
+    return this.http.post(EnvService.feedback_reply + feedbackID, params).pipe(
       map(results => results)
     );
   }

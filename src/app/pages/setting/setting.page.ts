@@ -34,7 +34,6 @@ export class SettingPage implements OnInit {
   }
 
   languageChanged(language:string){
-    console.log(11);
     this.selectedLanguage = language;
     this.translateConfigService.setLanguage(this.selectedLanguage);
     localStorage.setItem('lang', language);

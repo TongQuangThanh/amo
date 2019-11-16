@@ -3,7 +3,7 @@
         "content_text": "Enter your phone number to login",
         "phone_place_holder": "Phone number",
         "continue": "Continue",
-        "skip": "Skip, trial"
+        "skip": "Register"
     },
     "LOGIN":{
         "title": "Login",
@@ -175,7 +175,8 @@
         "wrong_code": "Wrong code"
     },
     "REQUEST_DETAIL":{
-        "title": "Request Detail"
+        "title": "Request Detail",
+        "place_holder_input": "please input text"
     },
     "REQUEST":{
         "title": "Requests",

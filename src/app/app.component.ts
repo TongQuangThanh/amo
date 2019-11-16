@@ -8,6 +8,8 @@ import { AlertService } from './services/alert/alert.service';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { CodePush, InstallMode, SyncStatus } from '@ionic-native/code-push/ngx';
 import { TranslateConfigService } from './translate-config.service';
+import { UtilsService } from './utils/utils.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -25,6 +27,7 @@ export class AppComponent {
     private alertService: AlertService,
     private oneSignal: OneSignal,
     private codePush: CodePush,
+    private router: Router,
     private translateConfigService: TranslateConfigService
   ) {
     splashScreen.hide();
@@ -64,12 +67,18 @@ export class AppComponent {
 
     this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
 
-    this.oneSignal.handleNotificationReceived().subscribe(() => {
-    // do something when notification is received
+    this.oneSignal.handleNotificationReceived().subscribe((event) => {
     });
 
-    this.oneSignal.handleNotificationOpened().subscribe(() => {
-      // do something when a notification is opened
+    this.oneSignal.handleNotificationOpened().subscribe((openResult:any) => {
+      if(openResult.notification.payload.additionalData.type == "post"){
+        this.navCtrl.navigateForward('/new-detail/' + openResult.notification.payload.additionalData._id);
+      }else if(openResult.notification.payload.additionalData.type == "feedbackReply" && 
+        this.router.url == "/request-detail/" + openResult.notification.payload.additionalData.feedback){
+        UtilsService.requestDetailComponentShare.getListMessage(openResult.notification.payload.additionalData.feedback, true);
+      }else if(openResult.notification.payload.additionalData.type == "feedbackReply"){
+        this.navCtrl.navigateForward('/request-detail/' + openResult.notification.payload.additionalData.feedback);
+      }
     });
 
     this.oneSignal.endInit();

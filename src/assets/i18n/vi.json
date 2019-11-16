@@ -3,7 +3,7 @@
         "content_text": "Nhập số điện thoại để đăng nhập",
         "phone_place_holder": "Số điện thoại",
         "continue": "Tiếp tục",
-        "skip": "Bỏ qua"
+        "skip": "Đăng kí"
     },
     "LOGIN":{
         "title": "Đăng nhập",
@@ -175,7 +175,8 @@
         "wrong_code": "Code sai"
     },
     "REQUEST_DETAIL":{
-        "title": "Chi tiết yêu cầu"
+        "title": "Chi tiết yêu cầu",
+        "place_holder_input": "xin hãy nhập text"
     },
     "REQUEST":{
         "title": "Yêu cầu",

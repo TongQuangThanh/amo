@@ -55,7 +55,7 @@
               <ion-label>{{ 'PAYMENT_INFOR.description' | translate }}</ion-label>
           </div>
           <div class="custom-col-9">
-              <ion-label>{{item.description}}</ion-label>
+              <p [innerHTML]="convertText(item.description)" ></p>
           </div>
         </div>
         <div class="payment-bank-infor-text-detail">
@@ -71,7 +71,7 @@
               <ion-label>{{ 'PAYMENT_INFOR.note' | translate }}</ion-label>
           </div>
           <div class="custom-col-9">
-              <ion-label>{{item.type.description}}</ion-label>
+              <p [innerHTML]="convertText(item.type.description)" ></p>
           </div>
         </div>
     </ion-card-content>

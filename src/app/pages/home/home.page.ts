@@ -145,7 +145,7 @@ export class HomePage implements OnInit {
   }
 
   onScroll(event) {
-    if(event.detail.currentY >= 0){
+    if(event.detail.currentY >= 0 && event.detail.currentY % 2 ==0){
       const newHeight = 14 - event.detail.currentY/(20*2);
       const newtop = 35 - event.detail.currentY/(10);
       const newtop1 = 25 - event.detail.currentY/(20);

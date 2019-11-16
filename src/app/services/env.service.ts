@@ -46,6 +46,8 @@ export const EnvService = {
   feedbacks: environment.base + '/feedback?',
   feedbacksDetail: environment.base + '/feedback/',
   feedbacksCategory: environment.base + '/feedback-category/',
-  userStatistic: environment.base + '/user-statistic/'
+  userStatistic: environment.base + '/user-statistic/',
+
+  feedback_reply: environment.base + '/feedback-reply/'
 };
 
