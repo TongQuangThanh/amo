@@ -26,6 +26,13 @@
 @import "~@ionic/angular/css/flex-utils.css";
 
 
+/* Set variables for all modes */
+:root {
+    /* Set the font family of the entire app */
+    --ion-font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Roboto", sans-serif;
+    --ion-toolbar-color: #556080;
+}
+
 .button-common {
     --background-focused: #556080;
     --background-hover:#556080;
@@ -136,5 +143,12 @@ ion-title{
 }
 
 body {
-    font-family: Nunito Sans;
+    font-family: Nunito Sans !important;
+}
+
+ion-toolbar {
+    ion-title {
+        text-align: left;
+        padding-inline-start: 35px;
+    }
 }

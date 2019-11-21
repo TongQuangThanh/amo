@@ -12,8 +12,9 @@
 }
 .input-wrap textarea {
     flex: 1;
-    border-bottom: 1px #387ef5;
-    border-style: solid; 
+    border: 1px #c4c4c4;
+    border-style: solid;
+    border-radius: 4px;
 }
 
 .message-wrap {
