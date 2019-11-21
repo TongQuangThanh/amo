@@ -67,4 +67,8 @@ export class NotificationDetailPage implements OnInit {
       animationDirection: 'back'
     })
   }
+
+  showListComment(){
+    
+  }
 }

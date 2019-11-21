@@ -201,7 +201,9 @@
         "title": "Tiện ích",
         "tab_all": "Tất cả",
         "tab_history": "Lịch sử",
-        "btn_add_new_services": "Thêm dịch vụ mới"
+        "btn_add_new_services": "Thêm dịch vụ mới",
+        "order_date": "Ngày order",
+        "status": "Tình trạng"
     },
     "SETTING":{
         "title": "Cài đặt",

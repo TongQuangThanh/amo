@@ -103,4 +103,8 @@ export class ServicesPage implements OnInit {
     }
     this.alertService.presentToast("Functional maintenance");
   }
+
+  formatString(stringDate: string) {
+    return UtilsService.formatString(stringDate);
+  }
 }

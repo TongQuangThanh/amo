@@ -188,7 +188,7 @@
         "status_done": "Done",
         "pull_to_refresh": "Pull to refresh",
         "loadding_more": "Loading more data...",
-        "btn_add_request": "Create new qequest",
+        "btn_add_request": "Create new request",
         "btn_add_new_registration": "Create registration"
     },
     "SERVICE_DETAIL":{
@@ -201,7 +201,9 @@
         "title": "Utility & Service",
         "tab_all": "All",
         "tab_history": "History",
-        "btn_add_new_services": "Add New Service"
+        "btn_add_new_services": "Add New Service",
+        "order_date": "Order date",
+        "status": "Status"
     },
     "SETTING":{
         "title": "Settings",

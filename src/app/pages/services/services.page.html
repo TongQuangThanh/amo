@@ -33,14 +33,17 @@
     <ion-list class="list-view-custom" *ngSwitchCase="'History'">
       <ion-item class="list-request-all-item" lines="none" *ngFor="let itemServiceLog of listServiceLog">
         <ion-card class="custom-card-avatar">
-          <img class="service-image-custom-avatar" src="https://ionicframework.com/docs/demos/api/list/avatar-finn.png"/>
+          <img src="{{itemServiceLog.metadata.icon}}"/>
+          <ion-label class="item-content-custom">
+              <ion-label class="title-request-all-item ion-text-wrap">{{itemServiceLog.service.title}}</ion-label>
+              <ion-label class="node-request-all-item">
+                <p class="ion-float-left">{{ 'SERVICE.order_date' | translate }} : {{formatString(itemServiceLog.createdAt)}}</p>
+              </ion-label>
+              <ion-label class="node-request-all-item">
+                  <p class="ion-float-left">{{ 'SERVICE.status' | translate }} : {{itemServiceLog.status}}</p>
+                </ion-label>
+            </ion-label>
         </ion-card>
-        <ion-label class="item-content-custom">
-          <ion-label class="title-request-all-item ion-text-wrap">{{itemServiceLog.service.title}}</ion-label>
-          <ion-label class="node-request-all-item">
-            <p class="ion-float-left">{{itemServiceLog.createdAt}}</p>
-          </ion-label>
-        </ion-label>
       </ion-item>
     </ion-list>
     </div>
