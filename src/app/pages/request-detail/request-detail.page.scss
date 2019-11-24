@@ -4,11 +4,13 @@
   
 .input-wrap {
     padding: 5px;
+    padding-bottom: 14px;
     display: flex; 
     position: absolute;
     z-index: 9999;
-    bottom: 10px;
+    bottom: 0px;
     width: 100%;
+    background: white;
 }
 .input-wrap textarea {
     flex: 1;
@@ -19,6 +21,7 @@
 
 ion-textarea{
   border: 1px solid #c3c3c3;
+  height: 40px;
 }
 
 .message-wrap {
@@ -103,4 +106,17 @@ ion-content {
 .list-chat-content {
   --offset-top: -16px !important;
   --overflow: auto;
+}
+
+ion-textarea{
+  border: 1px solid #c3c3c3;
+  height: 40px;
+  border-radius: 4px 0px 0px 4px;
+}
+
+.button-send{
+  --border-radius: 0px 4px 4px 0px;
+  padding: 0;
+  margin: 0;
+  height: 40px;
 }

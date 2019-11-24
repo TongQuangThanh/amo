@@ -16,9 +16,9 @@
                 placeholder="{{ 'PAYMENT_COMMENT.place_holder_input' | translate }}"
                 [(ngModel)]="editorMsg">
       </ion-textarea>
-      <button ion-button clear icon-only item-right (click)="sendMsg()">
+      <ion-button class="button-send" item-right (click)="sendMsg()">
         <ion-icon name="ios-send" ios="ios-send" md="md-send"></ion-icon>
-      </button>
+      </ion-button>
   </div>
   <ion-content class="list-home-content" [style.height.px]="heightScreen">
     <ion-list>

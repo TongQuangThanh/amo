@@ -121,10 +121,10 @@ export class RequestDetailPage implements OnInit, AfterViewInit {
   updateSizeContent(){
     var self = this;
     setTimeout(() => {
-      console.log(self.contentRequest);
-      console.log(self.content);
-      console.log(self.messageInput);
-      self.heightScreen = self.messageInput.nativeElement.getBoundingClientRect().top - self.contentRequest.nativeElement.getBoundingClientRect().bottom - 16;
+      // console.log(self.contentRequest);
+      // console.log(self.content);
+      // console.log(self.messageInput);
+      self.heightScreen = self.messageInput.nativeElement.getBoundingClientRect().top - self.contentRequest.nativeElement.getBoundingClientRect().bottom - 2;
     }, 400);
   }
 
