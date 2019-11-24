@@ -3,7 +3,7 @@
       <ion-buttons slot="start">
         <ion-back-button text=""></ion-back-button>
       </ion-buttons>
-      <ion-title>{{ 'NOTIFICATION_COMMENT.title' | translate }}</ion-title>
+      <ion-title>{{ 'PAYMENT_COMMENT.title' | translate }}</ion-title>
     </ion-toolbar>
   </ion-header>
 
@@ -13,7 +13,7 @@
         <ion-icon name="md-happy"></ion-icon>
       </button> -->
       <ion-textarea #chat_input
-                placeholder="{{ 'NOTIFICATION_COMMENT.place_holder_input' | translate }}"
+                placeholder="{{ 'PAYMENT_COMMENT.place_holder_input' | translate }}"
                 [(ngModel)]="editorMsg"
                 (focusin)="onFocus()">
       </ion-textarea>

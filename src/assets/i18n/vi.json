@@ -134,6 +134,10 @@
         "pull_to_refresh": "Kéo xuống để làm mới",
         "loadding_more": "Đang tải dữ liệu..."
     },
+    "PAYMENT_COMMENT":{
+        "title": "Bình Luận",
+        "place_holder_input": "xin hãy nhập text"
+    },
     "ORDER_SERVICE":{
         "title": "Đặt dịch vụ",
         "apartment": "Căn hộ",
