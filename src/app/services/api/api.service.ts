@@ -71,6 +71,23 @@ export class ApiService {
     );
   }
 
+  getListPaymentComment(paymentBill:string): Observable<any> {
+    const params = new HttpParams().
+      set('paymentBill', paymentBill).
+      set('_v', (new Date()).getTime().toString());
+    return this.http.get(EnvService.paymentComment, {
+      params
+    }).pipe(
+      map(results => results)
+    );
+  }
+  
+  sendPaymentComment(params: any): Observable<any> {
+    return this.http.post(EnvService.paymentComment, params).pipe(
+      map(results => results)
+    );
+  }
+
   getListRequest(page: number, limit: number, category: string, search: string): Observable<any> {
     const params = new HttpParams().
       set('page', page.toString()).

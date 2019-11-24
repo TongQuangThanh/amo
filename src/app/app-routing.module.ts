@@ -60,7 +60,13 @@ const routes: Routes = [
   { 
     path: 'payment-infor/:id',
     loadChildren: './pages/payment-infor/payment-infor.module#PaymentInforPageModule',
-    canActivate: [AuthGuard]},
+    canActivate: [AuthGuard]
+  },
+  { 
+    path: 'paymentComment/:id',
+    loadChildren: './pages/payment-comment/payment-comment.module#PaymentCommentPageModule',
+    canActivate: [AuthGuard]
+  },
   { 
     path: 'request-detail/:id',
     loadChildren: './pages/request-detail/request-detail.module#RequestDetailPageModule',

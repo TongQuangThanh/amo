@@ -30,7 +30,7 @@ export const EnvService = {
   paymentLog: environment.base + '/payment-log',
   payments: environment.base + '/payment-bill?',
   paymentDetail: environment.base + '/payment-bill/',
-  paymentCommentPost: environment.base + '/payment-comment',
+  paymentComment: environment.base + '/payment-comment',
   paymentCategory: environment.base + '/payment-category',
 
   serviceGroup: environment.base + '/service-group',

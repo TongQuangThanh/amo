@@ -50,12 +50,12 @@
       <!-- <button ion-button clear icon-only item-right (click)="switchEmojiPicker()">
         <ion-icon name="md-happy"></ion-icon>
       </button> -->
-      <textarea #chat_input
+      <ion-textarea #chat_input
                 placeholder="{{ 'REQUEST_DETAIL.place_holder_input' | translate }}"
                 [(ngModel)]="editorMsg"
                 (keyup.enter)="sendMsg()"
                 (focusin)="onFocus()">
-      </textarea>
+      </ion-textarea>
       <button ion-button clear icon-only item-right (click)="sendMsg()">
         <ion-icon name="ios-send" ios="ios-send" md="md-send"></ion-icon>
       </button>

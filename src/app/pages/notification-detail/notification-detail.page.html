@@ -3,12 +3,14 @@
     <ion-buttons slot="start">
       <ion-back-button text=""></ion-back-button>
     </ion-buttons>
-    <ion-buttons slot="end">
-      <ion-button class="comment-button" (click)="showListComment()"><ion-icon name="pricetags"></ion-icon></ion-button>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="showListComment()">
+        <ion-icon name="chatboxes"></ion-icon>
+      </ion-fab-button>
+  </ion-fab>
   <ion-img src="{{thumbnail}}"></ion-img>
   <ion-card button class="custom-card margin-none">
       <ion-item lines="none" style="margin-top: 10px;">

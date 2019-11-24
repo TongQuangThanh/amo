@@ -12,40 +12,40 @@
         <!-- <button ion-button clear icon-only item-right (click)="switchEmojiPicker()">
           <ion-icon name="md-happy"></ion-icon>
         </button> -->
-        <textarea #chat_input
+        <ion-textarea #chat_input
                   placeholder="{{ 'NOTIFICATION_COMMENT.place_holder_input' | translate }}"
                   [(ngModel)]="editorMsg"
                   (focusin)="onFocus()">
-        </textarea>
+        </ion-textarea>
         <button ion-button clear icon-only item-right (click)="sendMsg()">
           <ion-icon name="ios-send" ios="ios-send" md="md-send"></ion-icon>
         </button>
     </div>
     <ion-content class="list-home-content" [style.height.px]="heightScreen">
-    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-        <ion-refresher-content
-        pullingIcon="arrow-dropdown"
-        pullingText="{{ 'NOTIFICATION_COMMENT.pull_to_refresh' | translate }}"
-        refreshingSpinner="circles"
-        refreshingText="Refreshing...">
-        </ion-refresher-content>
-    </ion-refresher>
-    <ion-list>
-      <ion-card *ngFor="let item of listArticlesComment">
-        <ion-item>
-          <ion-avatar slot="start">
-            <img *ngIf="item.createdBy" src="{{item.createdBy.avatar}}"/>
-            <img *ngIf="!item.createdBy" src="../assets/icon/avatar-default.png"/>
-          </ion-avatar>
-          <ion-label>
-            <h2 [innerHTML]="convertText(item.content)" ></h2>
-            <p *ngIf="item.createdBy != null">{{item.createdBy.displayName}}</p>
-            <p>{{formatString(item.createdAt)}}</p>
-          </ion-label>
-        </ion-item>
-      </ion-card>
-    </ion-list>
-    <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+      <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+          <ion-refresher-content
+          pullingIcon="arrow-dropdown"
+          pullingText="{{ 'NOTIFICATION_COMMENT.pull_to_refresh' | translate }}"
+          refreshingSpinner="circles"
+          refreshingText="Refreshing...">
+          </ion-refresher-content>
+      </ion-refresher>
+      <ion-list>
+        <ion-card *ngFor="let item of listArticlesComment">
+          <ion-item>
+            <ion-avatar slot="start">
+              <img *ngIf="item.createdBy" src="{{item.createdBy.avatar}}"/>
+              <img *ngIf="!item.createdBy" src="../assets/icon/avatar-default.png"/>
+            </ion-avatar>
+            <ion-label>
+              <h2 [innerHTML]="convertText(item.content)" ></h2>
+              <p *ngIf="item.createdBy != null">{{item.createdBy.displayName}}</p>
+              <p>{{formatString(item.createdAt)}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-card>
+      </ion-list>
+      <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
         <ion-infinite-scroll-content
           loadingSpinner="bubbles"
           loadingText="{{ 'NOTIFICATION_COMMENT.loadding_more' | translate }}">

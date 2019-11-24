@@ -20,7 +20,7 @@ export class PaymentInforPage implements OnInit {
   paymentStartAt: string;
   paymentEndAt : string;
   paymentCategoryTranfer: any;
-
+  paymentID: string;
   constructor(
     private loading: LoadingService,
     private apiService: ApiService,
@@ -28,10 +28,10 @@ export class PaymentInforPage implements OnInit {
     private route: ActivatedRoute
   ) { }
   ngOnInit() {
-    const paymentID = this.route.snapshot.paramMap.get('id');
+    this.paymentID = this.route.snapshot.paramMap.get('id');
     this.listPaymentContent = [];
 
-    this.getPaymentDetail(paymentID);
+    this.getPaymentDetail(this.paymentID);
   }
 
   getPaymentDetail(paymentID: string) {
@@ -75,4 +75,7 @@ export class PaymentInforPage implements OnInit {
     });
   }
 
+  showListComment(){
+    this.navCtrl.navigateForward('/paymentComment/' + this.paymentID);
+  }
 }
