@@ -43,6 +43,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   { 
+    path: 'notificationComment/:id',
+    loadChildren: './pages/notification-comment/notification-comment.module#NotificationCommentPageModule',
+    canActivate: [AuthGuard]
+  },
+  { 
     path: 'service-list-by-category/:id',
     loadChildren: './pages/service-list-by-category/service-list-by-category.module#ServiceListByCategoryPageModule',
     canActivate: [AuthGuard] 

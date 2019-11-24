@@ -7,6 +7,8 @@ import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/na
 import { LoadingService } from '../../services/loading/loading.service';
 import { ConstService } from '../../utils/const.service'
 import { UtilsService } from '../../utils/utils.service';
+import { NotificationCommentPage } from '../notification-comment/notification-comment.page'
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-notification-detail',
@@ -22,20 +24,21 @@ export class NotificationDetailPage implements OnInit {
   sharesCount: number;
   createdAt: string;
   createBy: string;
+  articleID:string;
 
   constructor(
     private loading: LoadingService,
     private apiService: ApiService,
     private navCtrl: NavController,
     private route: ActivatedRoute,
-    private nativePageTransitions: NativePageTransitions) { }
+    public modalController: ModalController) { }
   ngOnInit() {
-    const articleID = this.route.snapshot.paramMap.get('id');
+    this.articleID = this.route.snapshot.paramMap.get('id');
     this.articleTitle = "";
     this.articleContent = "";
     this.thumbnail = "../../../assets/common/no-thumbnail.png";
     
-    this.getArticleDetail(articleID);
+    this.getArticleDetail(this.articleID);
   }
 
   getArticleDetail(articleID) {
@@ -61,14 +64,7 @@ export class NotificationDetailPage implements OnInit {
     return UtilsService.formatString(stringDate);
   }
 
-  backScreen(event){
-    this.navCtrl.back({
-      animated: true,
-      animationDirection: 'back'
-    })
-  }
-
   showListComment(){
-    
+    this.navCtrl.navigateForward('/notificationComment/' + this.articleID);
   }
 }

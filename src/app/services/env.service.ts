@@ -17,6 +17,8 @@ export const EnvService = {
   notification: environment.base + '/account/notification',
   articleCategory: environment.base + '/article-category',
   articles: environment.base + '/article?',
+  articlesComment: environment.base + '/article-comment?',
+  addArticlesComment: environment.base + '/article-comment/',
   articlesDetail: environment.base + '/article/',
 
   apartment: environment.base + '/account/apartments',

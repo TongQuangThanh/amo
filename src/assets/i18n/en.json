@@ -128,6 +128,12 @@
     "NOTIFICATION_DETAIL":{
 
     },
+    "NOTIFICATION_COMMENT":{
+        "title": "Comment",
+        "place_holder_input": "please input text",
+        "pull_to_refresh": "Pull to refresh",
+        "loadding_more": "Loading more data..."
+    },
     "ORDER_SERVICE":{
         "title": "Order service",
         "apartment": "Apartment",

@@ -1,0 +1,23 @@
+.input-wrap {
+    padding: 5px;
+    display: flex; 
+    position: absolute;
+    z-index: 9999;
+    bottom: 10px;
+    width: 100%;
+}
+.input-wrap textarea {
+    flex: 1;
+    border: 1px #c4c4c4;
+    border-style: solid;
+    border-radius: 4px;
+}
+
+ion-content {
+    --overflow: hidden;
+}
+
+.list-home-content {
+    --offset-top: -16px !important;
+    --overflow: auto;
+}

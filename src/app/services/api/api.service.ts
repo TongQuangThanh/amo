@@ -24,6 +24,26 @@ export class ApiService {
       map(results => results)
     );
   }
+  
+  getListArticleComment(page: number, limit: number, article:string, search: string): Observable<any> {
+    const params = new HttpParams().
+      set('page', page.toString()).
+      set('limit', limit.toString()).
+      set('article', article).
+      set('search', search).
+      set('_v', (new Date()).getTime().toString());
+    return this.http.get(EnvService.articlesComment, {
+      params
+    }).pipe(
+      map(results => results)
+    );
+  }
+  
+  sendArticleComment(params: any, articleID:string): Observable<any> {
+    return this.http.post(EnvService.addArticlesComment + articleID, params).pipe(
+      map(results => results)
+    );
+  }
 
   getArticleDetail(articleID: string): Observable<any> {
     return this.http.get(EnvService.articlesDetail + articleID).pipe(
