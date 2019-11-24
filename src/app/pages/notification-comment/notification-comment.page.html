@@ -14,8 +14,7 @@
         </button> -->
         <ion-textarea #chat_input
                   placeholder="{{ 'NOTIFICATION_COMMENT.place_holder_input' | translate }}"
-                  [(ngModel)]="editorMsg"
-                  (focusin)="onFocus()">
+                  [(ngModel)]="editorMsg">
         </ion-textarea>
         <button ion-button clear icon-only item-right (click)="sendMsg()">
           <ion-icon name="ios-send" ios="ios-send" md="md-send"></ion-icon>
