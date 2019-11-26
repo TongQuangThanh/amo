@@ -68,7 +68,7 @@ export class ServiceDetailPage implements OnInit {
     if (event && event.stopPropagation) {
       event.stopPropagation();
     }
-    this.navCtrl.navigateForward('/order-service/' + event.currentTarget.id);
+    this.navCtrl.navigateForward('/order-service/' + this.serviceID);
   }
 
 }
