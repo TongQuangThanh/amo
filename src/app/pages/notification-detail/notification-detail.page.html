@@ -26,6 +26,11 @@
                 <ion-label>{{createBy}}</ion-label>
             </ion-col>
           </ion-row>
+          <ion-row class="row-height-note text-node">
+            <ion-col *ngFor="let item of attachments" (click)="detailAttachment($event)" id="{{item._id}}" class="ion-float-left padding-none">
+              <ion-label><ion-icon name="attach"></ion-icon>{{item.fileName}}</ion-label>
+            </ion-col>
+          </ion-row>
         </ion-grid>
       </ion-item>
   </ion-card>

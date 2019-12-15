@@ -3,6 +3,8 @@ import { ApiService } from '../../services/api/api.service';
 import { NavController } from '@ionic/angular';
 import { LoadingService } from '../../services/loading/loading.service';
 import { CallNumber } from '@ionic-native/call-number/ngx';
+import { ModalController } from '@ionic/angular';
+import { ApartmentCodeRegisterPage } from '../auth/apartment-code-register/apartment-code-register.page';
 
 @Component({
   selector: 'app-my-home',
@@ -15,6 +17,7 @@ export class MyHomePage implements OnInit {
   listDepartment: any;
 
   constructor(
+    public modalController: ModalController,
     private loading: LoadingService,
     private navCtrl: NavController,
     private apiService: ApiService,
@@ -58,4 +61,25 @@ export class MyHomePage implements OnInit {
     }
   }
 
+  async addApartment() {
+    const modal = await this.modalController.create({
+      component: ApartmentCodeRegisterPage,
+      componentProps: {
+      },
+      cssClass: "custom-modal-wrapper"
+    });
+
+    modal.onDidDismiss().then((dataReturned:any) => {
+      if (dataReturned !== null) {
+        const dataReturnedResult = JSON.parse(dataReturned.data);
+        if(dataReturnedResult.result == '0'){
+          this.getListUserApar();
+        }else{
+
+        }
+      }
+    });
+
+    return await modal.present();
+  }
 }

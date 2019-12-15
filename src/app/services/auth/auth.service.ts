@@ -38,8 +38,17 @@ export class AuthService {
 
   register(fName: string, lName: string, email: string, password: string) {
     return this.http.post(EnvService.register,
-      {fName, lName, email, password}
-    );
+      {
+        fName,
+        lName,
+        email,
+        password
+      }
+    ).pipe(
+      tap(result => {
+        return result;
+      })
+    );;
   }
 
   logout() {

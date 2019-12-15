@@ -21,6 +21,7 @@ import { PincodePasswordPageModule } from './pages/pincode-password/pincode-pass
 import { PincodeRegisterPageModule } from './pages/auth/pincode-register/pincode-register.module';
 import { ApartmentCodeRegisterPageModule } from './pages/auth/apartment-code-register/apartment-code-register.module';
 import { CodePush } from '@ionic-native/code-push/ngx';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 export function LanguageLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -50,7 +51,8 @@ export function LanguageLoader(http: HttpClient) {
     SplashScreen,
     NativePageTransitions,
     TranslateConfigService,
-    OneSignal,  
+    OneSignal,
+    InAppBrowser,
     CodePush,
     {
       provide: RouteReuseStrategy,

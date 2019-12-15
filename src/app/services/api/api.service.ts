@@ -289,6 +289,15 @@ export class ApiService {
     );
   }
 
+  addApartmentToUser(activeCode:string): Observable<any> {
+    const params = {
+      apartment: activeCode
+    }
+    return this.http.post(EnvService.apartment, params).pipe(
+      map(results => results)
+    );
+  }
+
   userClickStatistic(screenID: string):Observable<any>{
     return this.http.get(EnvService.userStatistic + screenID).pipe(
       map(results => results)

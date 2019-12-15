@@ -150,6 +150,7 @@ export class HomePage implements OnInit {
       const newtop = 35 - event.detail.currentY/(10);
       const newtop1 = 25 - event.detail.currentY/(20);
       const newtop2 = 33 - event.detail.currentY/(20);
+      
       if(newHeight > 9){
         document.getElementById('contentNews').style.height = newHeight + '%';
         document.getElementById('content-button-child').style.top = newtop + '%';

@@ -13,14 +13,12 @@ export class ApartmentCodeRegisterPage {
 
   pinCodeArray: any[];
   pinCodeFormGroup: FormGroup;
-  phoneNumber: string;
   color: string="gray";
   isHidden: boolean = false;
   codeSize: number = 6;
   isChecking:boolean= false;
   isError:boolean=false;
-  password:string;
-  token:string;
+  refCode:string;
   
   constructor(
     private apiService: ApiService,
@@ -32,9 +30,6 @@ export class ApartmentCodeRegisterPage {
   }
 
   ngOnInit() {
-    this.phoneNumber = this.navParams.data.phoneNumber;
-    this.password = this.navParams.data.password;
-    this.token = this.navParams.data.token;
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -133,11 +128,11 @@ export class ApartmentCodeRegisterPage {
     const self = this;
     this.isChecking = true;
     this.loading.present();
-    this.apiService.confirmApartmentCode(this.phoneNumber, pinCodeValue.toUpperCase(), this.token, this.password)
+    this.apiService.addApartmentToUser(pinCodeValue.toUpperCase())
       .subscribe(result => {
         self.isError = false;
         self.loading.dismiss();
-        self.finishPinCode(pinCodeValue.toUpperCase());
+        self.finishPinCode();
     },
     error => {
       this.isError = true;
@@ -146,11 +141,10 @@ export class ApartmentCodeRegisterPage {
     });
   }
 
-  async finishPinCode(pinCodeValue:string){
+  async finishPinCode(){
     const onClosedData = JSON.stringify({
       result: "0",
       message: "success",
-      token: pinCodeValue
     });
     await this.modalController.dismiss(onClosedData);
   }
@@ -159,7 +153,6 @@ export class ApartmentCodeRegisterPage {
     const onClosedData = JSON.stringify({
       result: "1",
       message: "cancel",
-      token:""
     });
     await this.modalController.dismiss(onClosedData);
   }

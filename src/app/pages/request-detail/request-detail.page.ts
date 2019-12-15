@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
 import { ApiService } from '../../services/api/api.service';
-import { NavController, NavParams } from '@ionic/angular';
+import { NavController, NavParams, Platform } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingService } from '../../services/loading/loading.service';
 import { ConstService } from '../../utils/const.service'
@@ -30,11 +30,14 @@ export class RequestDetailPage implements OnInit, AfterViewInit {
   heightScreen:number;
 
   constructor(
+    private platform: Platform,
     private loading: LoadingService,
     private apiService: ApiService,
     private navCtrl: NavController,
     private route: ActivatedRoute) { 
-      this.heightScreen = 400;
+      platform.ready().then((readySource) => {
+        this.heightScreen = platform.height() * 0.65;
+      });
       UtilsService.requestDetailComponentShare = this;
   }
 

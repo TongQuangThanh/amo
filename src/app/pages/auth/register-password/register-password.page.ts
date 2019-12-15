@@ -22,7 +22,7 @@ export class RegisterPasswordPage implements OnInit {
   errorMessage:string = "";
   errorNewPass:Boolean = false;
   errorConfirmPass:Boolean = false;
-
+  refCode: string;
   constructor(
     private alertService: AlertService,
     private loading: LoadingService,
@@ -33,34 +33,10 @@ export class RegisterPasswordPage implements OnInit {
   ) { 
     this.phoneNumber = this.route.snapshot.paramMap.get('phone');
     this.tokenCode = this.route.snapshot.paramMap.get('token');
+    this.refCode = this.route.snapshot.paramMap.get('refCode');
   }
 
   ngOnInit() {
-  }
-
-  async presentModal() {
-    const modal = await this.modalController.create({
-      component: ApartmentCodeRegisterPage,
-      componentProps: {
-        "phoneNumber": this.phoneNumber,
-        "token": this.tokenCode,
-        "password": this.newPassword
-      },
-      cssClass: "custom-modal-wrapper"
-    });
-
-    modal.onDidDismiss().then((dataReturned:any) => {
-      if (dataReturned !== null) {
-        const dataReturnedResult = JSON.parse(dataReturned.data);
-        if(dataReturnedResult.result == '0'){
-          this.navCtrl.navigateRoot('/login/' + this.phoneNumber);
-        }else{
-
-        }
-      }
-    });
-
-    return await modal.present();
   }
 
   changePass(){
@@ -84,8 +60,15 @@ export class RegisterPasswordPage implements OnInit {
       this.errorMessage = "New password and confirm password does not match";
       return;
     }
-
-    this.presentModal();
+    var self = this;
+    this.apiService.confirmApartmentCode(this.phoneNumber, this.refCode, this.tokenCode, this.newPassword)
+      .subscribe(result => {
+        self.loading.dismiss();
+        this.navCtrl.navigateRoot('/login/' + this.phoneNumber);
+    },
+    error => {
+      self.loading.dismiss();
+    });
   }
 
 }

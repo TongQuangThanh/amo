@@ -9,6 +9,7 @@ import { ConstService } from '../../utils/const.service'
 import { UtilsService } from '../../utils/utils.service';
 import { NotificationCommentPage } from '../notification-comment/notification-comment.page'
 import { ModalController } from '@ionic/angular';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @Component({
   selector: 'app-notification-detail',
@@ -22,11 +23,13 @@ export class NotificationDetailPage implements OnInit {
   thumbnail: string;
   readsCount: number;
   sharesCount: number;
+  attachments: any;
   createdAt: string;
   createBy: string;
   articleID:string;
 
   constructor(
+    private iab: InAppBrowser,
     private loading: LoadingService,
     private apiService: ApiService,
     private navCtrl: NavController,
@@ -49,6 +52,7 @@ export class NotificationDetailPage implements OnInit {
         self.articleTitle = result.article.title;
         self.articleContent = result.article.content;
         self.thumbnail = result.article.thumbnail;
+        self.attachments = result.article.attachments;
         self.readsCount = result.article.readsCount;
         self.sharesCount = result.article.sharesCount;
         self.createdAt = result.article.createdAt;
@@ -66,5 +70,16 @@ export class NotificationDetailPage implements OnInit {
 
   showListComment(){
     this.navCtrl.navigateForward('/notificationComment/' + this.articleID);
+  }
+
+  detailAttachment(event){
+    console.log(event)
+    this.attachments.forEach(element => {
+      if(element.id == event.target.id){
+        const browser = this.iab.create(element.url);
+        browser.show();
+        return;
+      }
+    });
   }
 }

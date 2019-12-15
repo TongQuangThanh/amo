@@ -180,7 +180,7 @@
         "wrong_code": "Code sai"
     },
     "APARTMENT_CODE_REGISTER":{
-        "apartmentcode_note": "Mỗi toà nhà sẽ có một mã code gồm 6 chữ cái dùng cho mục đích bảo mật. Nếu bạn không nhận được mã code xin hãy liên hệ quản lý toà nhà.",
+        "apartmentcode_note": "Mỗi căn hộ sẽ có một mã code gồm 6 chữ cái dùng cho mục đích bảo mật. Nếu bạn không nhận được mã code xin hãy liên hệ quản lý toà nhà.",
         "btn_cancel": "Huỷ",
         "wrong_code": "Code sai"
     },

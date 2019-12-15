@@ -19,6 +19,7 @@ export class LandingPage implements OnInit {
   phoneNumber: string;
   errorInputPhone: boolean;
   errorMessage:string;
+  refCode :string;
   constructor(
     private menu: MenuController,
     private loading: LoadingService,
@@ -33,6 +34,7 @@ export class LandingPage implements OnInit {
     this.errorInputPhone = false;
     this.menu.enable(false);
     this.navCtrl.setDirection('back', true, 'back');
+
   }
 
   ionViewWillEnter() {
@@ -74,6 +76,7 @@ export class LandingPage implements OnInit {
     this.loading.present();
     this.apiService.resentRegisterCode(this.phoneNumber).subscribe(result => {
       self.loading.dismiss();
+      self.refCode = result.ref;
       self.presentModal();
     },
     error => {
@@ -96,6 +99,7 @@ export class LandingPage implements OnInit {
       component: PincodeRegisterPage,
       componentProps: {
         "phoneNumber": this.phoneNumber,
+        "refCode": this.refCode
       },
       cssClass: "custom-modal-wrapper"
     });
@@ -104,7 +108,7 @@ export class LandingPage implements OnInit {
       if (dataReturned !== null) {
         const dataReturnedResult = JSON.parse(dataReturned.data);
         if(dataReturnedResult.result == '0'){
-          this.navCtrl.navigateForward('/register-password/' + this.phoneNumber + "/" + dataReturnedResult.token);
+          this.navCtrl.navigateForward('/register-password/' + this.phoneNumber + "/" + dataReturnedResult.token + "/" + dataReturnedResult.refCode);
         }else{
 
         }

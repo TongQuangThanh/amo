@@ -3,6 +3,7 @@ import { Validators, FormGroup, FormArray, FormControl, FormBuilder } from '@ang
 import { LoadingService } from '../../../services/loading/loading.service';
 import { ApiService } from '../../../services/api/api.service';
 import { ModalController, NavParams } from '@ionic/angular';
+import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-pincode-register',
@@ -22,6 +23,7 @@ export class PincodeRegisterPage {
   isEnableResentCode: boolean;
   timmer:any;
   timmerCount: number;
+  refCode: string;
 
   constructor(
     private apiService: ApiService,
@@ -34,6 +36,7 @@ export class PincodeRegisterPage {
 
   ngOnInit() {
     this.phoneNumber = this.navParams.data.phoneNumber;
+    this.refCode = this.navParams.data.refCode;
     this.setupPreventResentCode();
   }
 
@@ -147,7 +150,9 @@ export class PincodeRegisterPage {
     if(!this.isEnableResentCode){
       return;
     }
+    var self = this;
     this.apiService.resentRegisterCode(this.phoneNumber).subscribe(result => {
+      self.refCode = result.ref;
     },
     error => {
     });
@@ -176,7 +181,8 @@ export class PincodeRegisterPage {
     const onClosedData = JSON.stringify({
       result: "0",
       message: "success",
-      token: pinCodeValue
+      token: pinCodeValue,
+      refCode: this.refCode
     });
     await this.modalController.dismiss(onClosedData);
   }

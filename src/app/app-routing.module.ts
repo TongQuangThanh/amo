@@ -17,7 +17,7 @@ const routes: Routes = [
     loadChildren: './pages/auth/login/login.module#LoginPageModule'
   },
   { 
-    path: 'register-password/:phone/:token',
+    path: 'register-password/:phone/:token/:refCode',
     loadChildren: './pages/auth/register-password/register-password.module#RegisterPasswordPageModule'
   },
   { 
