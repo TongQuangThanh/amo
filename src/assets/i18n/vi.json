@@ -15,9 +15,9 @@
         "login_error": "Số điện thoại hoặc mật khẩu không đúng"
     },
     "REGISTER" : {
-        "note_text_confirm": "Một tin nhắn văn bản gồm mã xác minh 4 chũ số được gửi đến số điện thoại của bạn",
+        "note_text_confirm": "Một tin nhắn văn bản gồm mã xác minh 4 chữ số đã được gửi đến số điện thoại của bạn",
         "forgot_password_note": "Một mã xác minh 4 chữ số đã được gửi đến số điện thoại của bạn, vui lòng kiểm tra tin nhắn",
-        "note_view_apartment_code": "Mỗi căn hộ sẽ được cung cấp một mã số gồm 6 ký tự, mã số này là duy nhất vì mục đích an ninh. Nếu bạn chưa nhận được mã số căn hộ. Vui lòng liên hệ với Ban Quản Lý để nhận được giúp đỡ hoặc bỏ qua bước này để dùng thử.",
+        "note_view_apartment_code": "Mỗi căn hộ sẽ được cung cấp một mã số gồm 6 ký tự, mã số này là duy nhất vì mục đích an ninh. Nếu bạn chưa nhận được Mã căn hộ, vui lòng liên hệ với Ban Quản Lý để nhận được giúp đỡ hoặc bỏ qua bước này để dùng thử.",
         "verification_code": "Mã xác nhận",
         "skip": "Bỏ qua"
     },
@@ -130,13 +130,13 @@
     },
     "NOTIFICATION_COMMENT":{
         "title": "Bình Luận",
-        "place_holder_input": "xin hãy nhập text",
+        "place_holder_input": "Viết bình luận...",
         "pull_to_refresh": "Kéo xuống để làm mới",
         "loadding_more": "Đang tải dữ liệu..."
     },
     "PAYMENT_COMMENT":{
-        "title": "Bình Luận",
-        "place_holder_input": "xin hãy nhập text"
+        "title": "Khiếu nại",
+        "place_holder_input": "Nhập nội dung..."
     },
     "ORDER_SERVICE":{
         "title": "Đặt dịch vụ",
@@ -174,19 +174,19 @@
         "note": "Đơn giá"
     },
     "PINCODE_PASSWORD":{
-        "pincode_note": "Số điện thoại của bạn đã được gửi một mã confirm code. Xin hãy nhập mã confirm code.",
-        "btn_resend_code": "Gửi lại code",
+        "pincode_note": "Một tin nhắn văn bản gồm mã xác minh 4 chữ số đã được gửi đến số điện thoại của bạn",
+        "btn_resend_code": "Gửi lại mã",
         "btn_cancel": "Huỷ",
-        "wrong_code": "Code sai"
+        "wrong_code": "Mã xách minh sai"
     },
     "APARTMENT_CODE_REGISTER":{
-        "apartmentcode_note": "Mỗi căn hộ sẽ có một mã gồm 6 ký tự dùng cho mục đích bảo mật. Nếu bạn không nhận được Mã Căn Hộ xin hãy liên hệ Ban quản lý toà nhà.",
+        "apartmentcode_note": "Mỗi căn hộ sẽ được cung cấp một mã số gồm 6 ký tự, mã số này là duy nhất vì mục đích an ninh. Nếu bạn chưa nhận được Mã căn hộ, vui lòng liên hệ với Ban Quản Lý để nhận được giúp đỡ.",
         "btn_cancel": "Huỷ",
-        "wrong_code": "Mã Căn Hộ sai"
+        "wrong_code": "Mã căn hộ sai"
     },
     "REQUEST_DETAIL":{
         "title": "Chi tiết yêu cầu",
-        "place_holder_input": "xin hãy nhập text"
+        "place_holder_input": "Nhập tin nhắn..."
     },
     "REQUEST":{
         "title": "Yêu cầu",
@@ -212,7 +212,7 @@
         "tab_all": "Tất cả",
         "tab_history": "Lịch sử",
         "btn_add_new_services": "Thêm dịch vụ mới",
-        "order_date": "Ngày order",
+        "order_date": "Ngày đặt",
         "status": "Tình trạng"
     },
     "SETTING":{
@@ -221,7 +221,7 @@
         "vn": "Tiếng Việt",
         "en": "Tiếng Anh",
         "change_password": "Đổi mật khẩu",
-        "app_version": "Phiển bản",
-        "subversion": "Version"
+        "app_version": "Phiên bản",
+        "subversion": "Bản build"
     }
 }
