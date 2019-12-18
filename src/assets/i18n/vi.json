@@ -136,7 +136,7 @@
     },
     "PAYMENT_COMMENT":{
         "title": "Khiếu nại",
-        "place_holder_input": "Nhập nội dung..."
+        "place_holder_input": "Nhập tin nhắn..."
     },
     "ORDER_SERVICE":{
         "title": "Đặt dịch vụ",
@@ -177,12 +177,12 @@
         "pincode_note": "Một tin nhắn văn bản gồm mã xác minh 4 chữ số đã được gửi đến số điện thoại của bạn",
         "btn_resend_code": "Gửi lại mã",
         "btn_cancel": "Huỷ",
-        "wrong_code": "Mã xách minh sai"
+        "wrong_code": "Mã sai"
     },
     "APARTMENT_CODE_REGISTER":{
         "apartmentcode_note": "Mỗi căn hộ sẽ được cung cấp một mã số gồm 6 ký tự, mã số này là duy nhất vì mục đích an ninh. Nếu bạn chưa nhận được Mã căn hộ, vui lòng liên hệ với Ban Quản Lý để nhận được giúp đỡ.",
         "btn_cancel": "Huỷ",
-        "wrong_code": "Mã căn hộ sai"
+        "wrong_code": "Mã sai"
     },
     "REQUEST_DETAIL":{
         "title": "Chi tiết yêu cầu",
