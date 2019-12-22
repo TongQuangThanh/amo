@@ -1,8 +1,8 @@
 {
   "name": "anhmo-mobile-new",
-  "version": "4.0.1",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "version": "4.0.2",
+  "author": "AMO",
+  "homepage": "http://amoapp.net/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

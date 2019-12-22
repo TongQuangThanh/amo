@@ -19,6 +19,9 @@ export class NewDetailPage implements OnInit {
   createdBy : string;
   thumbnail: string;
   totalViewers : number;
+  buttonTitle :string;
+  serviceID :string;
+  isDisplayButton :boolean;
 
   constructor(
     private loading: LoadingService,
@@ -29,6 +32,7 @@ export class NewDetailPage implements OnInit {
   ngOnInit() {
     const newID = this.route.snapshot.paramMap.get('id');
     this.newTitle = "";
+    this.isDisplayButton = false;
     this.newContent = "";
     this.thumbnail = "../../../assets/common/no-thumbnail.png";
     
@@ -46,6 +50,11 @@ export class NewDetailPage implements OnInit {
         self.createAt = result.post.createAt;
         self.createdBy = result.post.createdBy.displayName;
         self.totalViewers = result.post.totalViewers;
+        self.buttonTitle = result.post.titleButton;
+        self.serviceID = result.post.serviceID;
+        if(self.serviceID != null && self.serviceID != ""){
+          self.isDisplayButton = true;
+        }
         self.loading.dismiss();
     },
     error => {
