@@ -6,27 +6,27 @@
         "skip": "Đăng kí"
     },
     "LOGIN":{
-        "title": "Đăng nhập",
+        "title": "Đăng nhập",
         "note_string" : "Nhập mật khẩu của bạn", 
         "placeholder_phone": "Số điện thoại",
         "placeholder_pass": "Mật khẩu",
-        "button_login_label": "Đăng nhập",
+        "button_login_label": "Đăng nhập",
         "forgot_pass_label": "Quên mật khẩu",
         "login_error": "Số điện thoại hoặc mật khẩu không đúng"
     },
     "REGISTER" : {
-        "note_text_confirm": "Một tin nhắn văn bản gồm mã xác minh 4 chũ số được gửi đến số điện thoại của bạn",
+        "note_text_confirm": "Một tin nhắn văn bản gồm mã xác minh 4 chữ số đã được gửi đến số điện thoại của bạn",
         "forgot_password_note": "Một mã xác minh 4 chữ số đã được gửi đến số điện thoại của bạn, vui lòng kiểm tra tin nhắn",
-        "note_view_apartment_code": "Mỗi căn hộ sẽ được cung cấp một mã số gồm 6 ký tự, mã số này là duy nhất vì mục đích an ninh. Nếu bạn chưa nhận được mã số căn hộ. Vui lòng liên hệ với Ban Quản Lý để nhận được giúp đỡ hoặc bỏ qua bước này để dùng thử.",
+        "note_view_apartment_code": "Mỗi căn hộ sẽ được cung cấp một mã số gồm 6 ký tự, mã số này là duy nhất vì mục đích an ninh. Nếu bạn chưa nhận được Mã căn hộ, vui lòng liên hệ với Ban Quản Lý để nhận được giúp đỡ hoặc bỏ qua bước này để dùng thử.",
         "verification_code": "Mã xác nhận",
         "skip": "Bỏ qua"
     },
     "ADD_REQUEST": {
         "title": "Yêu cầu mới",
-        "apartment" : "Căn hộ",
-        "category" : "Danh mục",
+        "apartment" : "Căn hộ",
+        "category" : "Danh mục",
         "title_request": "Tiêu đề",
-        "message_request": "Nội dung",
+        "message_request": "Nội dung",
         "btn_submit": "Gửi"
     },
     "BILL_PAYMENT": {
@@ -49,16 +49,16 @@
     },
     "HOME":{
         "title": "Home",
-        "my_home": "Căn hộ",
-        "amount_to_pay": "Chờ thanh toán",
+        "my_home": "Căn hộ",
+        "amount_to_pay": "Chờ thanh toán",
         "vnd": "vnd",
-        "pay_now": "Thanh toán",
+        "pay_now": "Thanh toán",
         "create_request": "Gửi yêu cầu",
         "cleaning": "Giúp việc",
         "reparing": "Sửa chữa",
         "fresh_food": "Thực phẩm",
-        "other": "Khác",
-        "top_news": "Tin tức",
+        "other": "Khác",
+        "top_news": "Tin tức",
         "pull_to_refresh": "Kéo xuống để làm mới",
         "loadding_more": "Đang tải dữ liệu..."
     },
@@ -66,39 +66,39 @@
         "title": "Tải khoản của tôi",
         "btn_save": "Lưu",
         "male": "Nam",
-        "female": "Nữ",
-        "other": "Khác",
-        "placeholder_sex": "Giới tính",
-        "placeholder_displayName": "Họ tên",
+        "female": "Nữ",
+        "other": "Khác",
+        "placeholder_sex": "Giới tính",
+        "placeholder_displayName": "Họ tên",
         "placeholder_email": "email",
-        "placeholder_liscense": "Số CMTND",
-        "setting": "Cài đặt",
-        "help_center": "Trợ giúp",
+        "placeholder_liscense": "Số CMTND",
+        "setting": "Cài đặt",
+        "help_center": "Trợ giúp",
         "btn_log_out": "Đăng xuất"
     },
     "MY_HOME":{
-        "title": "Căn hộ",
-        "activeCode": "Mã căn hộ",
-        "user_category": "Vai trò",
-        "area": "Diện tích",
+        "title": "Căn hộ",
+        "activeCode": "Mã căn hộ",
+        "user_category": "Vai trò",
+        "area": "Diện tích",
         "address": "Địa chỉ",
         "emergency": "Khẩn cấp"
     },
     "MY_HOME_DETAIL":{
         "title": "Chi tiết căn hộ",
-        "active_code": "Mã căn hộ",
-        "room": "Căn hộ",
-        "user_category": "Vai trò",
-        "area": "Diện tích",
+        "active_code": "Mã căn hộ",
+        "room": "Căn hộ",
+        "user_category": "Vai trò",
+        "area": "Diện tích",
         "address": "Địa chỉ",
-        "vehicles": "Phương tiện",
+        "vehicles": "Phương tiện",
         "vehicles_type": "Loại",
         "vehicles_model": "Model",
         "vehicles_identity": "Biển số",
-        "members": "Thành viên",
-        "name": "Họ tên",
-        "sex": "Giới tính",
-        "DOB": "Ngày sinh",
+        "members": "Thành viên",
+        "name": "Họ tên",
+        "sex": "Giới tính",
+        "DOB": "Ngày sinh",
         "phone": "Số điện thoại",
         "personal_license": "Số CMTND",
         "nationality": "Quốc tịch"
@@ -121,7 +121,7 @@
         "password_note": "Lưu ý: Mật khẩu phải bao gồm ít nhất 8 kí tự"
     },
     "NOTIFICATION":{
-        "title": "Thông báo",
+        "title": "Thông báo",
         "pull_to_refresh": "Kéo xuống để làm mới",
         "loadding_more": "Đang tải dữ liệu..."
     },
@@ -130,72 +130,72 @@
     },
     "NOTIFICATION_COMMENT":{
         "title": "Bình Luận",
-        "place_holder_input": "xin hãy nhập text",
+        "place_holder_input": "Viết bình luận...",
         "pull_to_refresh": "Kéo xuống để làm mới",
         "loadding_more": "Đang tải dữ liệu..."
     },
     "PAYMENT_COMMENT":{
-        "title": "Bình Luận",
-        "place_holder_input": "xin hãy nhập text"
+        "title": "Khiếu nại",
+        "place_holder_input": "Nhập tin nhắn..."
     },
     "ORDER_SERVICE":{
-        "title": "Đặt dịch vụ",
-        "apartment": "Căn hộ",
-        "placeholder_apartment": "Căn hộ",
+        "title": "Đặt dịch vụ",
+        "apartment": "Căn hộ",
+        "placeholder_apartment": "Căn hộ",
         "user_name": "Tên",
         "phone": "Số điện thoại",
-        "address": "Địa chỉ",
-        "time_order": "Thời gian",
-        "message": "Ghi chú",
-        "btn_order": "Đặt"
+        "address": "Địa chỉ",
+        "time_order": "Thời gian",
+        "message": "Ghi chú",
+        "btn_order": "Đặt"
     },
     "PAYMENT":{
-        "title": "Thanh toán",
-        "amount_to_pay": "Chờ thanh toán",
+        "title": "Thanh toán",
+        "amount_to_pay": "Chờ thanh toán",
         "vnd": "vnd",
-        "pay_now": "Thanh toán",
-        "top_up": "top up",
+        "pay_now": "Thanh toán",
+        "top_up": "Nạp tiền",
         "complain": "Khiếu nại",
-        "status_new": "Mới",
+        "status_new": "Mới",
         "status_pending": "Chờ xử lý",
-        "status_done": "Hoàn thành",
+        "status_done": "Hoàn thành",
         "pull_to_refresh": "Kéo xuống để làm mới",
         "loadding_more": "Đang tải dữ liệu..."
     },
     "PAYMENT_INFOR":{
-        "title": "Thông tin hóa đơn",
-        "payment_date": "Hạn thanh toán",
+        "title": "Thông tin hóa đơn",
+        "payment_date": "Hạn thanh toán",
         "total": "Tổng số",
-        "bank_name": "Ngân hàng",
+        "bank_name": "Ngân hàng",
         "bank_account_holder": "Chủ tài khoản",
         "bank_account_number": "Số tài khoản",
         "description": "Chi tiết",
         "amount": "Số tiền",
-        "note": "Đơn giá"
+        "note": "Đơn giá"
     },
     "PINCODE_PASSWORD":{
-        "pincode_note": "Số điện thoại của bạn đã được gửi một mã confirm code. Xin hãy nhập mã confirm code.",
-        "btn_resend_code": "Gửi lại code",
+        "pincode_note": "Một tin nhắn văn bản gồm mã xác minh 4 chữ số đã được gửi đến số điện thoại của bạn",
+        "btn_resend_code": "Gửi lại mã",
         "btn_cancel": "Huỷ",
-        "wrong_code": "Code sai"
+        "wrong_code": "Mã sai"
     },
     "APARTMENT_CODE_REGISTER":{
-        "apartmentcode_note": "Mỗi căn hộ sẽ có một mã code gồm 6 chữ cái dùng cho mục đích bảo mật. Nếu bạn không nhận được mã code xin hãy liên hệ quản lý toà nhà.",
+        "apartmentcode_note": "Mỗi căn hộ sẽ được cung cấp một mã số gồm 6 ký tự, mã số này là duy nhất vì mục đích an ninh. Nếu bạn chưa nhận được Mã căn hộ, vui lòng liên hệ với Ban Quản Lý để nhận được giúp đỡ.",
         "btn_cancel": "Huỷ",
-        "wrong_code": "Code sai"
+        "wrong_code": "Mã sai"
     },
     "REQUEST_DETAIL":{
         "title": "Chi tiết yêu cầu",
-        "place_holder_input": "xin hãy nhập text"
+        "place_holder_input": "Nhập tin nhắn..."
     },
     "REQUEST":{
         "title": "Yêu cầu",
         "tab_all": "Tất cả",
-        "tab_registration": "Đăng ký",
-        "status_new": "Mới",
+        "tab_registration": "Đăng ký",
+        "status_new": "Mới",
         "status_cancelled": "Huỷ",
-        "status_processing": "Đang thực hiện",
-        "status_done": "Hoàn thành",
+        "status_processing": "Đang thực hiện",
+        "status_done": "Hoàn thành",
         "pull_to_refresh": "Kéo xuống để làm mới",
         "loadding_more": "Đang tải dữ liệu...",
         "btn_add_request": "Tạo yêu cầu mới",
@@ -212,16 +212,16 @@
         "tab_all": "Tất cả",
         "tab_history": "Lịch sử",
         "btn_add_new_services": "Thêm dịch vụ mới",
-        "order_date": "Ngày order",
+        "order_date": "Ngày đặt",
         "status": "Tình trạng"
     },
     "SETTING":{
-        "title": "Cài đặt",
-        "language": "Ngôn ngữ",
+        "title": "Cài đặt",
+        "language": "Ngôn ngữ",
         "vn": "Tiếng Việt",
         "en": "Tiếng Anh",
         "change_password": "Đổi mật khẩu",
-        "app_version": "Phiển bản",
-        "subversion": "Version"
+        "app_version": "Phiên bản",
+        "subversion": "Bản build"
     }
 }

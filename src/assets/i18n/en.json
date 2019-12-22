@@ -18,7 +18,7 @@
 	    "note_text_confirm": "A text message with a 4-digit verification code was just sent to your phone number",
 	    "forgot_password_note": "A 4-digit verification code will be sent to your phone number, please check your SMS message",
 	    "verification_code": "verification code",
-	    "note_view_apartment_code": "Each apartment will have a separate code of 6 characters for security purepose. If you have not received the code yet, please contact Your Property Managers for assistance or skip for trial first",
+	    "note_view_apartment_code": "Each apartment will have a separate code of 6 characters for security purepose. If you have not received the code yet, please contact your Property Managers for assistance or skip for trial first.",
 	    "skip": "Skip, trial"
     },
     "ADD_REQUEST": {
@@ -44,7 +44,7 @@
     },
     "FORGOT_PASSWORD":{
         "forgot_password_note": "A text message with a 4-digit verification code was just sent to your phone number",
-        "title": "forgotPassword",
+        "title": "Forgot password",
         "btn_text_me": "Text me"
     },
     "HOME":{
@@ -130,13 +130,13 @@
     },
     "NOTIFICATION_COMMENT":{
         "title": "Comment",
-        "place_holder_input": "please input text",
+        "place_holder_input": "Write a comment...",
         "pull_to_refresh": "Pull to refresh",
         "loadding_more": "Loading more data..."
     },
     "PAYMENT_COMMENT":{
-        "title": "Comment",
-        "place_holder_input": "please input text"
+        "title": "Complain",
+        "place_holder_input": "Type a message..."
     },
     "ORDER_SERVICE":{
         "title": "Order service",
@@ -154,7 +154,7 @@
         "amount_to_pay": "Amount to pay",
         "vnd": "vnd",
         "pay_now": "Pay Now",
-        "top_up": "top up",
+        "top_up": "Top Up",
         "complain": "Complain",
         "status_new": "New",
         "status_pending": "Pending",
@@ -174,19 +174,19 @@
         "note": "Price"
     },
     "APARTMENT_CODE_REGISTER":{
-        "apartmentcode_note": "Each apartment will have a separate code of 6 characters for security purposes. If you have not received the code yet, please contact the building management for assistance or choose the building in the list below to receive basic information first.",
+        "apartmentcode_note": "Each apartment will have a separate code of 6 characters for security purepose. If you have not received the code yet, please contact your Property Managers for assistance or skip for trial first.",
         "btn_cancel": "Cancel",
         "wrong_code": "Wrong code"
     },
     "PINCODE_PASSWORD":{
-        "pincode_note": "You phone number has been send please enter the confirmation code",
-        "btn_resend_code": "Resend code",
+        "pincode_note": "A text message with 4-digit verification code was just sent to your phone number",
+        "btn_resend_code": "Resend",
         "btn_cancel": "Cancel",
         "wrong_code": "Wrong code"
     },
     "REQUEST_DETAIL":{
         "title": "Request Detail",
-        "place_holder_input": "please input text"
+        "place_holder_input": "Type a message..."
     },
     "REQUEST":{
         "title": "Requests",
@@ -202,7 +202,7 @@
         "btn_add_new_registration": "Create registration"
     },
     "SERVICE_DETAIL":{
-        "btn_order": "Order"
+        "btn_order": "Place Order"
     },
     "SERVICE_LIST_BY_CATEGORY":{
         "title": "service by category"
@@ -211,7 +211,7 @@
         "title": "Utility & Service",
         "tab_all": "All",
         "tab_history": "History",
-        "btn_add_new_services": "Add New Service",
+        "btn_add_new_services": "Add new service",
         "order_date": "Order date",
         "status": "Status"
     },
@@ -221,7 +221,7 @@
         "vn": "Vietnamese",
         "en": "English",
         "change_password": "Change password",
-        "app_version": "App version",
-        "subversion": "Version"
+        "app_version": "Version",
+        "subversion": "Build"
     }
 }
