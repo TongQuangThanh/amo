@@ -73,4 +73,11 @@ export class NewDetailPage implements OnInit {
     });
   }
 
+  orderService(event) {
+    if (event && event.stopPropagation) {
+      event.stopPropagation();
+    }
+    this.navCtrl.navigateForward('/order-service/' + this.serviceID);
+  }
+
 }

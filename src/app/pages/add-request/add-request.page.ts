@@ -8,6 +8,7 @@ import { LoadingService } from '../../services/loading/loading.service';
 import { FileUploader, FileLikeObject } from 'ng2-file-upload';
 import { AlertService } from '../../services/alert/alert.service';
 import { Platform, NavController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-add-request',
@@ -38,6 +39,7 @@ export class AddRequestPage implements OnInit {
   hasBaseDropZoneOver: boolean = false;
 
   constructor(
+    private translate: TranslateService,
     private camera: Camera,
     public actionSheetController: ActionSheetController,
     private file: File,
@@ -181,11 +183,12 @@ export class AddRequestPage implements OnInit {
     this.apiService.addFeedback(params)
       .subscribe(result => {
         self.loading.dismiss();
-        self.alertService.presentToast("add request success");
+        self.alertService.presentToast(this.translate.instant('ADD_REQUEST.message_add_request_sucess'));
         self.navCtrl.back();
     },
     error => {
       self.loading.dismiss();
+      self.alertService.presentToast(this.translate.instant('ADD_REQUEST.message_add_request_fail'));
     });
   }
 

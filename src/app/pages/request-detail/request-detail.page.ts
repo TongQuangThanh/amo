@@ -143,7 +143,7 @@ export class RequestDetailPage implements OnInit, AfterViewInit {
         _id: this.currentUser._id,
         avatar: this.currentUser.avatar == "" ? '../assets/icon/avatar-default.png' : this.currentUser.avatar
       },
-      createdAt: Date.now().toString(),
+      createdAt: new Date().toISOString(),
       content: this.editorMsg,
     };
 

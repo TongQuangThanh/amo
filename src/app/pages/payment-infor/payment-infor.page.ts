@@ -65,7 +65,11 @@ export class PaymentInforPage implements OnInit {
   }
 
   convertText(textInput:string){
-    return textInput.replace(/\n/ig, '<br/>');;
+    if(textInput && textInput.length > 0){
+      return textInput.replace(/\n/ig, '<br/>');
+    }else{
+      return "";
+    }
   }
 
   backScreen(event){

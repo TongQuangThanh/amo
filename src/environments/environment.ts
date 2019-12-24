@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  //base: 'http://127.0.0.1:3031',
+  // base: 'http://127.0.0.1:3031',
   base: 'https://api.amoapp.net',
   baseDomain: 'api.amoapp.net',
   static: 'https://static.amoapp.net/',

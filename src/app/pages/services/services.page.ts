@@ -5,6 +5,7 @@ import { ConstService } from '../../utils/const.service'
 import { UtilsService } from '../../utils/utils.service'
 import { LoadingService } from '../../services/loading/loading.service';
 import { AlertService } from '../../services/alert/alert.service'
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-services',
@@ -19,6 +20,7 @@ export class ServicesPage implements OnInit {
   heightScreen: number;
 
   constructor(
+    private translate: TranslateService,
     private loading: LoadingService,
     private apiService: ApiService,
     private navCtrl: NavController,
@@ -101,7 +103,7 @@ export class ServicesPage implements OnInit {
     if (event && event.stopPropagation) {
       event.stopPropagation();
     }
-    this.alertService.presentToast("Functional maintenance");
+    this.alertService.presentToast(this.translate.instant('COMMON.maintain'));
   }
 
   formatString(stringDate: string) {

@@ -5,6 +5,7 @@ import { LoadingService } from '../../services/loading/loading.service';
 import { UtilsService } from '../../utils/utils.service';
 import { AlertService } from '../../services/alert/alert.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-my-account',
@@ -25,6 +26,7 @@ export class MyAccountPage implements OnInit {
   // listCountries:any;
 
   constructor(
+    private translate: TranslateService,
     private alertService: AlertService,
     private loading: LoadingService,
     private apiService: ApiService,
@@ -71,10 +73,11 @@ export class MyAccountPage implements OnInit {
       .subscribe(result => {
         localStorage.setItem('profile', JSON.stringify(result.profile));
         self.loading.dismiss()
-        self.alertService.presentToast("update successfully");
+        self.alertService.presentToast(this.translate.instant('MY_ACCOUNT.message_update_sucess'));
     },
     error => {
       self.loading.dismiss();
+      self.alertService.presentToast(this.translate.instant('MY_ACCOUNT.message_update_fail'));
     });
   }
 
@@ -83,7 +86,7 @@ export class MyAccountPage implements OnInit {
   }
 
   callHelpCenter(){
-    this.alertService.presentToast("Function maintainal");
+    this.alertService.presentToast(this.translate.instant('COMMON.maintain'));
   }
 
   logout(){

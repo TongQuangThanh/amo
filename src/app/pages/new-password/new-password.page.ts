@@ -5,6 +5,7 @@ import { LoadingService } from '../../services/loading/loading.service';
 import { UtilsService } from '../../utils/utils.service';
 import { AlertService } from '../../services/alert/alert.service';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-new-password',
@@ -22,6 +23,7 @@ export class NewPasswordPage implements OnInit {
   errorConfirmPass:Boolean = false;
 
   constructor(
+    private translate: TranslateService,
     private alertService: AlertService,
     private loading: LoadingService,
     private apiService: ApiService,
@@ -50,7 +52,7 @@ export class NewPasswordPage implements OnInit {
         self.errorMessage = "";
         self.errorNewPass = false;
         self.errorConfirmPass = false;
-        self.alertService.presentToast("update successfully");
+        self.alertService.presentToast(this.translate.instant('NEW_PASSWORD.message_change_pass_sucess'));
         self.navCtrl.navigateBack('/login/' + self.phoneNumber);
     },
     error => {

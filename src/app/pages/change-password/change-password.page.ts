@@ -4,6 +4,7 @@ import { NavController } from '@ionic/angular';
 import { LoadingService } from '../../services/loading/loading.service';
 import { UtilsService } from '../../utils/utils.service';
 import { AlertService } from '../../services/alert/alert.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-change-password',
@@ -21,6 +22,7 @@ export class ChangePasswordPage implements OnInit {
   errorConfirmPass:Boolean = false;
 
   constructor(
+    private translate: TranslateService,
     private alertService: AlertService,
     private loading: LoadingService,
     private apiService: ApiService,
@@ -47,7 +49,7 @@ export class ChangePasswordPage implements OnInit {
           self.errorMessage = result.message;
         }else{
           this.errorMessage = "";
-          self.alertService.presentToast("update successfully");
+          self.alertService.presentToast(this.translate.instant('CHANGE_PASSWORD.message_change_pass_sucess'));
         }
     },
     error => {

@@ -27,7 +27,9 @@
         "category" : "Category",
         "title_request": "Title",
         "message_request": "Message",
-        "btn_submit": "Submit"
+        "btn_submit": "Submit",
+        "add_request_sucess" : "Add request success",
+        "add_request_fail" : "Add request fail"
     },
     "BILL_PAYMENT": {
 
@@ -37,7 +39,8 @@
         "place_holder_old_password": "Current password",
         "place_holder_new_password": "New password",
         "place_holder_confirm_password": "Re-type new password",
-        "btn_change_pass": "Save"
+        "btn_change_pass": "Save",
+        "message_change_pass_sucess": "Update password successfully"
     },
     "DASHBOARD": {
 
@@ -74,7 +77,9 @@
         "placeholder_liscense": "ID Card",
         "setting": "Settings",
         "help_center": "Help center",
-        "btn_log_out": "Log out"
+        "btn_log_out": "Log out",
+        "message_update_sucess": "Update profile successfully",
+        "message_update_fail": "Update profile fail"
     },
     "MY_HOME":{
         "title": "My Home",
@@ -104,14 +109,15 @@
         "nationality": "Nationality"
     },
     "NEW_DETAIL":{
-
+        "default_button_order": "Order serivice"
     },
     "NEW_PASSWORD":{
         "title": "Change password",
         "place_holder_new_password": "New password",
         "place_holder_confirm_password": "Re-type new password",
         "btn_change_pass": "Save",
-        "password_note": "Note: Password must be at least 8 character"
+        "password_note": "Note: Password must be at least 8 character",
+        "message_change_pass_sucess": "Update password successfully"
     },
     "REGISTER_PASSWORD":{
         "title": "Password",
@@ -132,7 +138,8 @@
         "title": "Comment",
         "place_holder_input": "Write a comment...",
         "pull_to_refresh": "Pull to refresh",
-        "loadding_more": "Loading more data..."
+        "loadding_more": "Loading more data...",
+        "msg_apartment_not_correct" : "You haven't apartment information"
     },
     "PAYMENT_COMMENT":{
         "title": "Complain",
@@ -147,7 +154,9 @@
         "address": "Address",
         "time_order": "Time",
         "message": "Message",
-        "btn_order": "Order"
+        "btn_order": "Order",
+        "msg_order_success" :"Request order successfully",
+        "msg_order_fail" :"Request order fail"
     },
     "PAYMENT":{
         "title": "Payment",
@@ -223,5 +232,8 @@
         "change_password": "Change password",
         "app_version": "Version",
         "subversion": "Build"
+    },
+    "COMMON": {
+        "maintain" : "Function maintainal"
     }
 }

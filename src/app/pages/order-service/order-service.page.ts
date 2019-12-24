@@ -7,6 +7,7 @@ import { LoadingService } from '../../services/loading/loading.service';
 import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { AlertService } from '../../services/alert/alert.service';
 import * as moment from 'moment';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-order-service',
@@ -24,10 +25,18 @@ export class OrderServicePage implements OnInit {
   timeOrder: any;
   isErrorAddress:boolean=false;
   isErrorTime:boolean=false;
+
+  compareWithFn = (o1, o2) => {
+    return o1 && o2 ? o1.id === o2.id : o1 === o2;
+  };
+
+  compareWith = this.compareWithFn;
+
   // latitude: any;
   // longitude: any;
   serviceID: string;
   constructor(
+    private translate: TranslateService,
     private route: ActivatedRoute,
     private alertService: AlertService,
     private apiService: ApiService,
@@ -54,6 +63,10 @@ export class OrderServicePage implements OnInit {
     this.apiService.getListUserApartment()
       .subscribe(result => {
         self.listDepartment = result.userApartments;
+        if(self.listDepartment.length > 0){
+          self.departmentID = self.listDepartment[0]._id;
+          self.address = self.listDepartment[0].campaign.address;
+        }
         self.loading.dismiss()
     },
     error => {
@@ -62,7 +75,6 @@ export class OrderServicePage implements OnInit {
   }
 
   changeValueDepartment(event){
-    // this.departmentID = event.detail.value;
     for(let item in this.listDepartment){
       if (this.listDepartment[item].apartment._id == event.detail.value){
         this.address = this.listDepartment[item].campaign.address;
@@ -110,11 +122,11 @@ export class OrderServicePage implements OnInit {
     };
     this.apiService.addServiceLog(params).subscribe(result => {
       self.loading.dismiss();
-      self.alertService.presentToast("add order request success");
+      self.alertService.presentToast(this.translate.instant('ORDER_SERVICE.msg_order_success'));
       self.navCtrl.back();
     },
     error => {
-      self.alertService.presentToast(JSON.stringify(error));
+      self.alertService.presentToast(this.translate.instant('ORDER_SERVICE.msg_order_fail'));
       self.loading.dismiss();
     });
   }

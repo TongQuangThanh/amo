@@ -31,7 +31,7 @@
              class="message"
              [class.left]=" msg.createdBy._id !== currentUser._id "
              [class.right]=" msg.createdBy._id === currentUser._id ">
-          <img class="user-img" [src]="msg.createdBy.avatar" alt="" >
+          <img class="user-img" [src]="msg.createdBy.avatar" alt="" />
           <!-- <ion-spinner name="dots" *ngIf="msg.status === 'pending'"></ion-spinner> -->
           <div class="msg-detail">
             <div class="msg-info">

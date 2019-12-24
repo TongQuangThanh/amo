@@ -6,6 +6,7 @@ import { UtilsService } from '../../utils/utils.service'
 import { Platform, NavController } from '@ionic/angular';
 import { AlertService } from '../../services/alert/alert.service';
 import { ActivatedRoute } from '@angular/router';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-notification-comment',
@@ -23,6 +24,7 @@ export class NotificationCommentPage {
   apartment: string;
 
   constructor(
+    private translate: TranslateService,
     private alertService: AlertService,
     private apiService: ApiService,
     private loading: LoadingService,
@@ -100,7 +102,7 @@ export class NotificationCommentPage {
 
   sendMsg(){
     if(this.apartment == ""){
-      this.alertService.presentToast("you haven't apartment infomation");
+      this.alertService.presentToast(this.translate.instant('NOTIFICATION_COMMENT.msg_apartment_not_correct'));
     }
     this.loading.present();
     const self = this;

@@ -27,7 +27,9 @@
         "category" : "Danh mục",
         "title_request": "Tiêu đề",
         "message_request": "Nội dung",
-        "btn_submit": "Gửi"
+        "btn_submit": "Gửi",
+        "message_add_request_sucess" : "Gửi yêu cầu thành công",
+        "message_add_request_fail" : "Gửi yêu cầu thất bại"
     },
     "BILL_PAYMENT": {
 
@@ -37,7 +39,8 @@
         "place_holder_old_password": "Mật khẩu hiện tại",
         "place_holder_new_password": "Mật khẩu mới",
         "place_holder_confirm_password": "Nhập lại mật khẩu mới",
-        "btn_change_pass": "Lưu"
+        "btn_change_pass": "Lưu",
+        "message_change_pass_sucess": "Cập nhật mật khẩu thành công"
     },
     "DASHBOARD": {
 
@@ -74,7 +77,9 @@
         "placeholder_liscense": "Số CMTND",
         "setting": "Cài đặt",
         "help_center": "Trợ giúp",
-        "btn_log_out": "Đăng xuất"
+        "btn_log_out": "Đăng xuất",
+        "message_update_sucess": "Cập nhật thông tin thành công",
+        "message_update_fail": "Cập nhật thông tin thất bại"
     },
     "MY_HOME":{
         "title": "Căn hộ",
@@ -104,14 +109,15 @@
         "nationality": "Quốc tịch"
     },
     "NEW_DETAIL":{
-
+        "default_button_order": "Đặt dịch vụ"
     },
     "NEW_PASSWORD":{
         "title": "Đổi mật khẩu",
         "place_holder_new_password": "Mật khẩu mới",
         "place_holder_confirm_password": "Nhập lại mật khẩu mới",
         "btn_change_pass": "Lưu",
-        "password_note": "Lưu ý: Mật khẩu phải bao gồm ít nhất 8 kí tự"
+        "password_note": "Lưu ý: Mật khẩu phải bao gồm ít nhất 8 kí tự",
+        "message_change_pass_sucess": "Cập nhật mật khẩu thành công"
     },
     "REGISTER_PASSWORD":{
         "title": "Mật khẩu",
@@ -132,7 +138,8 @@
         "title": "Bình Luận",
         "place_holder_input": "Viết bình luận...",
         "pull_to_refresh": "Kéo xuống để làm mới",
-        "loadding_more": "Đang tải dữ liệu..."
+        "loadding_more": "Đang tải dữ liệu...",
+        "msg_apartment_not_correct" : "Bạn không có thông tin căn hộ"
     },
     "PAYMENT_COMMENT":{
         "title": "Khiếu nại",
@@ -147,7 +154,9 @@
         "address": "Địa chỉ",
         "time_order": "Thời gian",
         "message": "Ghi chú",
-        "btn_order": "Đặt"
+        "btn_order": "Đặt",
+        "msg_order_success" :"Đặt dịch vụ thành công",
+        "msg_order_fail" :"Đặt dịch vụ thất bại"
     },
     "PAYMENT":{
         "title": "Thanh toán",
@@ -223,5 +232,8 @@
         "change_password": "Đổi mật khẩu",
         "app_version": "Phiên bản",
         "subversion": "Bản build"
+    },
+    "COMMON": {
+        "maintain" : "Chức năng đang bảo trì"
     }
 }

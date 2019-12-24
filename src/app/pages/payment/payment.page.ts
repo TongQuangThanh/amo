@@ -6,6 +6,7 @@ import { LoadingService } from '../../services/loading/loading.service';
 import { ConstService } from '../../utils/const.service';
 import { UtilsService } from '../../utils/utils.service';
 import { AlertService } from '../../services/alert/alert.service'
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-payment',
@@ -20,6 +21,7 @@ export class PaymentPage implements OnInit {
   numberRecordOnPage: number;
 
   constructor(
+    private translate: TranslateService,
     private loading: LoadingService,
     private platform: Platform,
     private alertService: AlertService,
@@ -76,7 +78,7 @@ export class PaymentPage implements OnInit {
     if (event && event.stopPropagation) {
       event.stopPropagation();
     }
-    this.alertService.presentToast("Functional maintenance");
+    this.alertService.presentToast(this.translate.instant('COMMON.maintain'));
   }
 
   doRefresh(event) {
@@ -97,6 +99,6 @@ export class PaymentPage implements OnInit {
   }
 
   paymentNow(){
-    this.alertService.presentToast("Functional maintenance");
+    this.alertService.presentToast(this.translate.instant('COMMON.maintain'));
   }
 }

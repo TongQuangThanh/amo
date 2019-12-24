@@ -29,8 +29,43 @@
           refreshingText="Refreshing...">
           </ion-refresher-content>
       </ion-refresher>
-      <ion-list>
-        <ion-card *ngFor="let item of listArticlesComment">
+      <ion-list class="list-chat-content">
+        <div class="message-wrap">
+          <div *ngFor="let item of listArticlesComment.reverse()">
+            <div *ngIf="item.status == 'approve'" class="message left">
+              <img class="user-img" *ngIf="item.createdBy" src="{{item.createdBy.avatar}}"/>
+              <img  class="user-img"*ngIf="!item.createdBy" src="../assets/icon/avatar-default.png"/>
+              <!-- <ion-spinner name="dots" *ngIf="msg.status === 'pending'"></ion-spinner> -->
+              <div class="msg-detail">
+                <div class="msg-info">
+                  <p>{{item.createdBy.displayName}}</p>
+                  <p>{{formatString(item.createdAt)}}</p>
+                </div>
+                <div class="msg-content">
+                  <span class="triangle"></span>
+                  <p [innerHTML]="convertText(item.content)" ></p>
+                </div>
+              </div>
+            </div>
+            <div *ngFor="let itemRep of item.replies.reverse()"
+                class="message right">
+              <img class="user-img" *ngIf="itemRep.createdBy" src="{{itemRep.createdBy.avatar}}"/>
+              <img  class="user-img"*ngIf="!itemRep.createdBy" src="../assets/icon/avatar-default.png"/>
+              <!-- <ion-spinner name="dots" *ngIf="msg.status === 'pending'"></ion-spinner> -->
+              <div class="msg-detail">
+                <div class="msg-info">
+                  <p>{{itemRep.createdBy.displayName}}</p>
+                  <p>{{formatString(itemRep.createdAt)}}</p>
+                </div>
+                <div class="msg-content">
+                  <span class="triangle"></span>
+                  <p [innerHTML]="convertText(itemRep.content)" ></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- <ion-card *ngFor="let item of listArticlesComment">
           <ion-item>
             <ion-avatar slot="start">
               <img *ngIf="item.createdBy" src="{{item.createdBy.avatar}}"/>
@@ -42,7 +77,18 @@
               <p>{{formatString(item.createdAt)}}</p>
             </ion-label>
           </ion-item>
-        </ion-card>
+          <ion-item *ngFor="let itemRep of item.replies.reverse()">
+            <ion-avatar slot="start">
+              <img *ngIf="itemRep.createdBy" src="{{itemRep.createdBy.avatar}}"/>
+              <img *ngIf="!itemRep.createdBy" src="../assets/icon/avatar-default.png"/>
+            </ion-avatar>
+            <ion-label>
+              <h2 [innerHTML]="convertText(itemRep.content)" ></h2>
+              <p *ngIf="itemRep.createdBy != null">{{itemRep.createdBy.displayName}}</p>
+              <p>{{formatString(item.createdAt)}}</p>
+            </ion-label>
+          </ion-item>
+        </ion-card> -->
       </ion-list>
       <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
         <ion-infinite-scroll-content
