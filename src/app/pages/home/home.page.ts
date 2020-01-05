@@ -126,18 +126,18 @@ export class HomePage implements OnInit {
   }
 
   changeRoomService(){
-    this.navCtrl.navigateForward('/service-list-by-category/5a1fc74472c0c547276173b7');
+    this.navCtrl.navigateForward('/service-detail/5dd89f2e4f49f84a7ecd1b5d');
   }
 
   changeReparing(){
-    this.navCtrl.navigateForward('/service-list-by-category/5a1fc75a72c0c547276173b9');
+    this.navCtrl.navigateForward('/service-detail/5e100f3ad010aa572bc9497c');
   }
   changeFood(){
-    this.navCtrl.navigateForward('/service-list-by-category/5c1882bcae44116a4fc3bb3d');
+    this.navCtrl.navigateForward('/service-detail/5dcbac0447a69d3e4ebae1a3');
   }
 
   changeOther(){
-    this.navCtrl.navigateForward('/service-list-by-category/5cbc3fad1f4b43178ea16a10');
+    this.navCtrl.navigateForward('/service-list-by-category/5dcbaa0647a69d3e4ebae19e');
   }
   
   changePayment(){
