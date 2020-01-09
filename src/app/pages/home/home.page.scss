@@ -337,3 +337,41 @@ ion-content {
 .btn-new-request{
     margin-right: 10%;
 }
+
+#popupThumbnail{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    z-index: 9999;
+}
+
+#popupButton{
+    position: absolute;
+    bottom: 10px;
+    left: 10%;
+    width: 80%;
+    --background: rgb(255, 255, 255);
+    text-transform: none;
+    color: rgb(239,110,146);
+    --background-activated: rgba(29, 25, 24, 0.5);
+    border-radius: 5px;
+    --border-radius: 5px;
+    padding: 0px 16px 0px 16px;
+}
+
+.iconClose{
+    width: 40px;
+    position: absolute;
+    right: -20px;
+    top: -20px;
+}
+
+.popupImage{
+    border-radius: 10px;
+}
+
+ion-backdrop{
+    opacity: 0.5;;
+}

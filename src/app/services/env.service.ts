@@ -50,6 +50,7 @@ export const EnvService = {
   feedbacksCategory: environment.base + '/feedback-category/',
   userStatistic: environment.base + '/user-statistic/',
 
-  feedback_reply: environment.base + '/feedback-reply/'
+  feedback_reply: environment.base + '/feedback-reply/',
+  popupConfig: environment.base + '/popup-config',
 };
 

@@ -21,6 +21,12 @@ export class HomePage implements OnInit {
   numberRecordOnPage: number;
   userName: string;
   avatar: string;
+  popupThumbnail: string;
+  popupButtonTitle: string;
+  popupButtonStyle: any;
+  popupButtonColor: string;
+  popupLink: string;
+  isShowPopup: boolean;
 
   constructor(
     private loading: LoadingService,
@@ -33,7 +39,11 @@ export class HomePage implements OnInit {
     platform.ready().then((readySource) => {
       this.heightScreen = platform.height() * 0.58 - 18;
     });
-
+    this.popupThumbnail = "";
+    this.popupButtonTitle = "";
+    this.popupLink = "";
+    this.isShowPopup = false;
+    this.getConfigPopup();
     const profile = this.authService.getProfile();
     if(profile && this.userName != profile.displayName){
       this.userName = profile.displayName;
@@ -54,10 +64,6 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
-    // this.listNews  = [];
-    // this.currentPage = 1;
-    // this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
-    // this.getNews(this.currentPage, this.numberRecordOnPage, '', '', null, false);
     const params = {
       playerId: localStorage.getItem('playID')
     };
@@ -75,6 +81,24 @@ export class HomePage implements OnInit {
     this.currentPage = 1;
     this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
     this.getNews(this.currentPage, this.numberRecordOnPage, '', '', null, false);
+  }
+
+  getConfigPopup() {
+    const self = this;
+    this.apiService.getPopupConfig()
+      .subscribe(result => {
+        self.popupThumbnail = result.popupConfig.thumbnail;
+        self.popupButtonTitle = result.popupConfig.buttonTitle;
+        if(self.popupButtonTitle != null && self.popupButtonTitle.length > 0){
+          self.isShowPopup = true;
+        }
+        self.popupButtonColor= "color: red;";
+        self.popupButtonStyle = { '--background': result.popupConfig.buttonColor, 'color': result.popupConfig.textColor };
+        self.popupLink = result.popupConfig.link;
+
+    },
+    error => {
+    });
   }
 
   getNews(page: number, limit: number, category: string, search: string, event: any, isRefresh: boolean) {
@@ -169,5 +193,12 @@ export class HomePage implements OnInit {
         this.heightScreen = this.platform.height() * 0.72 - 18;
       }
     }
+  }
+
+  changeScreenPopup(){
+    this.navCtrl.navigateForward(this.popupLink);
+  }
+  closePopup(){
+    this.isShowPopup = false;
   }
 }
