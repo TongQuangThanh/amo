@@ -63,24 +63,41 @@ export class AppComponent {
   }
 
   setupPushOneSign() {
+    var self = this;
     this.oneSignal.startInit('712abf97-1cbe-442b-8c16-d10e29e292a4');
 
-    this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
+    this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
 
     this.oneSignal.handleNotificationReceived().subscribe((event) => {
+
     });
 
     this.oneSignal.handleNotificationOpened().subscribe((openResult:any) => {
-      if(openResult.notification.payload.additionalData.type == "post"){
-        this.navCtrl.navigateForward('/new-detail/' + openResult.notification.payload.additionalData._id);
-      }else if(openResult.notification.payload.additionalData.type == "feedbackReply" && 
-        this.router.url == "/request-detail/" + openResult.notification.payload.additionalData.feedback){
-        UtilsService.requestDetailComponentShare.getListMessage(openResult.notification.payload.additionalData.feedback, true);
-      }else if(openResult.notification.payload.additionalData.type == "feedbackReply"){
-        this.navCtrl.navigateForward('/request-detail/' + openResult.notification.payload.additionalData.feedback);
+      if(UtilsService.isAppOpen){
+        if(openResult.notification.payload.additionalData.type == "post"){
+          self.navCtrl.navigateForward('/new-detail/' + openResult.notification.payload.additionalData._id);
+        }if(openResult.notification.payload.additionalData.type == "service"){
+          self.navCtrl.navigateForward('/service-detail/' + openResult.notification.payload.additionalData._id);
+        }else if(openResult.notification.payload.additionalData.type == "feedbackReply" && 
+          self.router.url == "/request-detail/" + openResult.notification.payload.additionalData.feedback){
+          UtilsService.requestDetailComponentShare.getListMessage(openResult.notification.payload.additionalData.feedback, true);
+        }else if(openResult.notification.payload.additionalData.type == "feedbackReply"){
+          self.navCtrl.navigateForward('/request-detail/' + openResult.notification.payload.additionalData.feedback);
+        }
+      }else{
+        if(openResult.notification.payload.additionalData.type == "post"){
+          UtilsService.notificationNavigatorLink = '/new-detail/' + openResult.notification.payload.additionalData._id;
+        }if(openResult.notification.payload.additionalData.type == "service"){
+          UtilsService.notificationNavigatorLink = '/service-detail/' + openResult.notification.payload.additionalData._id;
+        }else if(openResult.notification.payload.additionalData.type == "feedbackReply"){
+          UtilsService.notificationNavigatorLink = '/request-detail/' + openResult.notification.payload.additionalData.feedback;
+        }
       }
     });
-
+    this.oneSignal.iOSSettings({
+      kOSSettingsKeyAutoPrompt: true,
+      kOSSettingsKeyInAppLaunchURL: true
+    });
     this.oneSignal.endInit();
     this.oneSignal.getIds().then((id) => {
       localStorage.setItem('playID', id.userId);

@@ -45,6 +45,7 @@ export class HomePage implements OnInit {
     this.isShowPopup = false;
     this.getConfigPopup();
     const profile = this.authService.getProfile();
+    UtilsService.isAppOpen = true;
     if(profile && this.userName != profile.displayName){
       this.userName = profile.displayName;
       
@@ -61,6 +62,11 @@ export class HomePage implements OnInit {
     error => {
       console.log(error)
     });
+
+    if(UtilsService.notificationNavigatorLink != ""){
+      this.navCtrl.navigateForward(UtilsService.notificationNavigatorLink);
+      UtilsService.notificationNavigatorLink = "";
+    }
   }
 
   ngOnInit() {

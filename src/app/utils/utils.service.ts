@@ -15,6 +15,8 @@ export const UtilsService = {
       return false
     }
   },
-  requestDetailComponentShare:null
+  requestDetailComponentShare:null,
+  isAppOpen:false,
+  notificationNavigatorLink: ""
 };
 
