@@ -21,12 +21,12 @@ export class HomePage implements OnInit {
   numberRecordOnPage: number;
   userName: string;
   avatar: string;
-  popupThumbnail: string;
-  popupButtonTitle: string;
-  popupButtonStyle: any;
-  popupButtonColor: string;
-  popupLink: string;
-  isShowPopup: boolean;
+  // popupThumbnail: string;
+  // popupButtonTitle: string;
+  // popupButtonStyle: any;
+  // popupButtonColor: string;
+  // popupLink: string;
+  // isShowPopup: boolean;
 
   constructor(
     private loading: LoadingService,
@@ -39,11 +39,11 @@ export class HomePage implements OnInit {
     platform.ready().then((readySource) => {
       this.heightScreen = platform.height() * 0.58 - 18;
     });
-    this.popupThumbnail = "";
-    this.popupButtonTitle = "";
-    this.popupLink = "";
-    this.isShowPopup = false;
-    this.getConfigPopup();
+    // this.popupThumbnail = "";
+    // this.popupButtonTitle = "";
+    // this.popupLink = "";
+    // this.isShowPopup = false;
+    // this.getConfigPopup();
     const profile = this.authService.getProfile();
     UtilsService.isAppOpen = true;
     if(profile && this.userName != profile.displayName){
@@ -89,23 +89,23 @@ export class HomePage implements OnInit {
     this.getNews(this.currentPage, this.numberRecordOnPage, '', '', null, false);
   }
 
-  getConfigPopup() {
-    const self = this;
-    this.apiService.getPopupConfig()
-      .subscribe(result => {
-        self.popupThumbnail = result.popupConfig.thumbnail;
-        self.popupButtonTitle = result.popupConfig.buttonTitle;
-        if(self.popupButtonTitle != null && self.popupButtonTitle.length > 0){
-          self.isShowPopup = true;
-        }
-        self.popupButtonColor= "color: red;";
-        self.popupButtonStyle = { '--background': result.popupConfig.buttonColor, 'color': result.popupConfig.textColor };
-        self.popupLink = result.popupConfig.link;
+  // getConfigPopup() {
+  //   const self = this;
+  //   this.apiService.getPopupConfig()
+  //     .subscribe(result => {
+  //       self.popupThumbnail = result.popupConfig.thumbnail;
+  //       self.popupButtonTitle = result.popupConfig.buttonTitle;
+  //       if(self.popupButtonTitle != null && self.popupButtonTitle.length > 0){
+  //         self.isShowPopup = true;
+  //       }
+  //       self.popupButtonColor= "color: red;";
+  //       self.popupButtonStyle = { '--background': result.popupConfig.buttonColor, 'color': result.popupConfig.textColor };
+  //       self.popupLink = result.popupConfig.link;
 
-    },
-    error => {
-    });
-  }
+  //   },
+  //   error => {
+  //   });
+  // }
 
   getNews(page: number, limit: number, category: string, search: string, event: any, isRefresh: boolean) {
     const self = this;
@@ -199,12 +199,5 @@ export class HomePage implements OnInit {
         this.heightScreen = this.platform.height() * 0.72 - 18;
       }
     }
-  }
-
-  changeScreenPopup(){
-    this.navCtrl.navigateForward(this.popupLink);
-  }
-  closePopup(){
-    this.isShowPopup = false;
   }
 }

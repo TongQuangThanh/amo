@@ -132,9 +132,3 @@
         </ion-content>
     </div>
 </ion-content>
-<ion-backdrop tappable="true" *ngIf="isShowPopup == true" ionBackdropTap="closePopup()"></ion-backdrop>
-<div id="popupThumbnail" *ngIf="isShowPopup == true">
-    <img class="iconClose" src="../../../assets/icon/close.png" (click)="closePopup()"/>
-    <img class="popupImage" src="{{ popupThumbnail }}"/>
-    <ion-button expand="block" id="popupButton" (click)="changeScreenPopup()" type="submit">{{ popupButtonTitle }}</ion-button>
-</div>

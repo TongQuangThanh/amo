@@ -6,6 +6,7 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AuthService } from './services/auth/auth.service';
 import { AlertService } from './services/alert/alert.service';
 import { OneSignal } from '@ionic-native/onesignal/ngx';
+import { ApiService } from './services/api/api.service';
 import { CodePush, InstallMode, SyncStatus } from '@ionic-native/code-push/ngx';
 import { TranslateConfigService } from './translate-config.service';
 import { UtilsService } from './utils/utils.service';
@@ -18,6 +19,13 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
+  popupThumbnail: string;
+  popupButtonTitle: string;
+  popupButtonStyle: any;
+  popupButtonColor: string;
+  popupLink: string;
+  isShowPopup: boolean;
+
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
@@ -28,10 +36,41 @@ export class AppComponent {
     private oneSignal: OneSignal,
     private codePush: CodePush,
     private router: Router,
+    private apiService: ApiService,
     private translateConfigService: TranslateConfigService
   ) {
     splashScreen.hide();
     this.initializeApp();
+    this.popupThumbnail = "";
+    this.popupButtonTitle = "";
+    this.popupLink = "";
+    this.isShowPopup = false;
+    this.getConfigPopup();
+  }
+
+  getConfigPopup() {
+    const self = this;
+    this.apiService.getPopupConfig()
+      .subscribe(result => {
+        self.popupThumbnail = result.popupConfig.thumbnail;
+        self.popupButtonTitle = result.popupConfig.buttonTitle;
+        if(self.popupButtonTitle != null && self.popupButtonTitle.length > 0){
+          self.isShowPopup = true;
+        }
+        self.popupButtonColor= "color: red;";
+        self.popupButtonStyle = { '--background': result.popupConfig.buttonColor, 'color': result.popupConfig.textColor };
+        self.popupLink = result.popupConfig.link;
+
+    },
+    error => {
+    });
+  }
+
+  changeScreenPopup(){
+    this.navCtrl.navigateForward(this.popupLink);
+  }
+  closePopup(){
+    this.isShowPopup = false;
   }
 
   initializeApp() {
@@ -62,6 +101,15 @@ export class AppComponent {
     });
   }
 
+  addCountUserClick(popupID:string){
+    console.log(11111);
+    this.apiService.countUserClick(popupID).subscribe(result => {
+      console.log(result);
+    },
+    error => {
+    });
+    }
+
   setupPushOneSign() {
     var self = this;
     this.oneSignal.startInit('712abf97-1cbe-442b-8c16-d10e29e292a4');
@@ -75,8 +123,16 @@ export class AppComponent {
     this.oneSignal.handleNotificationOpened().subscribe((openResult:any) => {
       if(UtilsService.isAppOpen){
         if(openResult.notification.payload.additionalData.type == "post"){
+          if(openResult.notification.payload.additionalData.popupConfig_id != null && 
+            openResult.notification.payload.additionalData.popupConfig_id != ""){
+              self.addCountUserClick(openResult.notification.payload.additionalData.popupConfig_id);
+          }
           self.navCtrl.navigateForward('/new-detail/' + openResult.notification.payload.additionalData._id);
         }if(openResult.notification.payload.additionalData.type == "service"){
+          if(openResult.notification.payload.additionalData.popupConfig_id != null && 
+            openResult.notification.payload.additionalData.popupConfig_id != ""){
+              self.addCountUserClick(openResult.notification.payload.additionalData.popupConfig_id);
+          }
           self.navCtrl.navigateForward('/service-detail/' + openResult.notification.payload.additionalData._id);
         }else if(openResult.notification.payload.additionalData.type == "feedbackReply" && 
           self.router.url == "/request-detail/" + openResult.notification.payload.additionalData.feedback){
@@ -86,8 +142,16 @@ export class AppComponent {
         }
       }else{
         if(openResult.notification.payload.additionalData.type == "post"){
+          if(openResult.notification.payload.additionalData.popupConfig_id != null && 
+            openResult.notification.payload.additionalData.popupConfig_id != ""){
+              self.addCountUserClick(openResult.notification.payload.additionalData.popupConfig_id);
+          }
           UtilsService.notificationNavigatorLink = '/new-detail/' + openResult.notification.payload.additionalData._id;
         }if(openResult.notification.payload.additionalData.type == "service"){
+          if(openResult.notification.payload.additionalData.popupConfig_id != null && 
+            openResult.notification.payload.additionalData.popupConfig_id != ""){
+              self.addCountUserClick(openResult.notification.payload.additionalData.popupConfig_id);
+          }
           UtilsService.notificationNavigatorLink = '/service-detail/' + openResult.notification.payload.additionalData._id;
         }else if(openResult.notification.payload.additionalData.type == "feedbackReply"){
           UtilsService.notificationNavigatorLink = '/request-detail/' + openResult.notification.payload.additionalData.feedback;

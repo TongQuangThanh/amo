@@ -1,6 +1,6 @@
 {
   "name": "anhmo-mobile-new",
-  "version": "4.0.2",
+  "version": "4.0.4",
   "author": "AMO",
   "homepage": "http://amoapp.net/",
   "scripts": {
@@ -69,7 +69,7 @@
   },
   "devDependencies": {
     "@angular-devkit/architect": "~0.801.2",
-    "@angular-devkit/build-angular": "~0.801.2",
+    "@angular-devkit/build-angular": "^0.803.22",
     "@angular-devkit/core": "~8.1.2",
     "@angular-devkit/schematics": "~8.1.2",
     "@angular/cli": "~8.1.2",

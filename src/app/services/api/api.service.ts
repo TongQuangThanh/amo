@@ -110,6 +110,14 @@ export class ApiService {
     );
   }
 
+  countUserClick(popupId:string): Observable<any> {
+    const params = new HttpParams().
+      set('_v', (new Date()).getTime().toString());
+    return this.http.get(EnvService.countPopupConfig + popupId).pipe(
+      map(results => results)
+    );
+  }
+
   getFeedbackCategory(apartmentID:string): Observable<any> {
     const params = new HttpParams().
       set('apartment', apartmentID).
