@@ -19,6 +19,7 @@ import { Router } from '@angular/router';
 })
 export class AppComponent {
 
+  popupConfigId: string;
   popupThumbnail: string;
   popupButtonTitle: string;
   popupButtonStyle: any;
@@ -52,6 +53,7 @@ export class AppComponent {
     const self = this;
     this.apiService.getPopupConfig()
       .subscribe(result => {
+        self.popupConfigId = result.popupConfig._id;
         self.popupThumbnail = result.popupConfig.thumbnail;
         self.popupButtonTitle = result.popupConfig.buttonTitle;
         if(self.popupButtonTitle != null && self.popupButtonTitle.length > 0){
@@ -66,7 +68,16 @@ export class AppComponent {
     });
   }
 
+  addCountPopupConfigClick(){
+    this.apiService.countUserPopupConfigClick(this.popupConfigId).subscribe(result => {
+      console.log(result);
+    },
+    error => {
+    });
+  }
+
   changeScreenPopup(){
+    this.addCountPopupConfigClick();
     this.navCtrl.navigateForward(this.popupLink);
   }
   closePopup(){
@@ -102,13 +113,11 @@ export class AppComponent {
   }
 
   addCountUserClick(popupID:string){
-    console.log(11111);
-    this.apiService.countUserClick(popupID).subscribe(result => {
-      console.log(result);
+    this.apiService.countNotificationUserClick(popupID).subscribe(result => {
     },
     error => {
     });
-    }
+  }
 
   setupPushOneSign() {
     var self = this;

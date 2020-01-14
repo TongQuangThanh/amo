@@ -52,6 +52,8 @@ export const EnvService = {
 
   feedback_reply: environment.base + '/feedback-reply/',
   popupConfig: environment.base + '/popup-config',
-  countPopupConfig: environment.base + '/notification-common/count-user-click/',
+  countNotificationConfig: environment.base + '/notification-common/count-user-click/',
+  countPostClick: environment.base + '/post/user-click/',
+  countPopupConfigClick: environment.base + '/popup-config/user-click/',
 };
 

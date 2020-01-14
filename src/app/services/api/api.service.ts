@@ -110,10 +110,26 @@ export class ApiService {
     );
   }
 
-  countUserClick(popupId:string): Observable<any> {
+  countNotificationUserClick(notificationId:string): Observable<any> {
     const params = new HttpParams().
       set('_v', (new Date()).getTime().toString());
-    return this.http.get(EnvService.countPopupConfig + popupId).pipe(
+    return this.http.get(EnvService.countNotificationConfig + notificationId).pipe(
+      map(results => results)
+    );
+  }
+
+  countUserButtonPost(postId:string): Observable<any> {
+    const params = new HttpParams().
+      set('_v', (new Date()).getTime().toString());
+    return this.http.get(EnvService.countPostClick + postId).pipe(
+      map(results => results)
+    );
+  }
+
+  countUserPopupConfigClick(popupId:string): Observable<any> {
+    const params = new HttpParams().
+      set('_v', (new Date()).getTime().toString());
+    return this.http.get(EnvService.countPopupConfigClick + popupId).pipe(
       map(results => results)
     );
   }

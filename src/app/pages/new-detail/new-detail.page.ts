@@ -12,7 +12,7 @@ import { UtilsService } from '../../utils/utils.service';
   styleUrls: ['./new-detail.page.scss'],
 })
 export class NewDetailPage implements OnInit {
-
+  newID: string;
   newTitle: string;
   newContent: string;
   createAt: string;
@@ -30,19 +30,19 @@ export class NewDetailPage implements OnInit {
     private route: ActivatedRoute
   ) { }
   ngOnInit() {
-    const newID = this.route.snapshot.paramMap.get('id');
+    this.newID = this.route.snapshot.paramMap.get('id');
     this.newTitle = "";
     this.isDisplayButton = false;
     this.newContent = "";
     this.thumbnail = "../../../assets/common/no-thumbnail.png";
     
-    this.getNewDetail(newID);
+    this.getNewDetail();
   }
 
-  getNewDetail(newID) {
+  getNewDetail() {
     this.loading.present();
     const self = this;
-    this.apiService.getPosteDetail(newID)
+    this.apiService.getPosteDetail(this.newID)
       .subscribe(result => {
         self.newTitle = result.post.title;
         self.newContent = result.post.content;
@@ -73,10 +73,20 @@ export class NewDetailPage implements OnInit {
     });
   }
 
+  addCountPostClick(){
+    this.apiService.countUserButtonPost(this.newID).subscribe(result => {
+      console.log(result);
+    },
+    error => {
+    });
+  }
+
   orderService(event) {
     if (event && event.stopPropagation) {
       event.stopPropagation();
     }
+
+    this.addCountPostClick();
     this.navCtrl.navigateForward('/order-service/' + this.serviceID);
   }
 
