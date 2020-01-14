@@ -78,6 +78,7 @@ export class AppComponent {
 
   changeScreenPopup(){
     this.addCountPopupConfigClick();
+    this.isShowPopup = false;
     this.navCtrl.navigateForward(this.popupLink);
   }
   closePopup(){
