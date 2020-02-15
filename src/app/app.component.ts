@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 
 import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -15,17 +15,17 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss']
+  styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
-
+export class AppComponent{
   popupConfigId: string;
   popupThumbnail: string;
   popupButtonTitle: string;
-  popupButtonStyle: any;
+  popupButtonBackgroud: string;
   popupButtonColor: string;
   popupLink: string;
   isShowPopup: boolean;
+  btnAction: any;
 
   constructor(
     private platform: Platform,
@@ -53,20 +53,45 @@ export class AppComponent {
     const self = this;
     this.apiService.getPopupConfig()
       .subscribe(result => {
+        //console.log(result.popupConfig)
         self.popupConfigId = result.popupConfig._id;
         self.popupThumbnail = result.popupConfig.thumbnail;
         self.popupButtonTitle = result.popupConfig.buttonTitle;
         if(self.popupButtonTitle != null && self.popupButtonTitle.length > 0){
           self.isShowPopup = true;
         }
-        self.popupButtonColor= "color: red;";
-        self.popupButtonStyle = { '--background': result.popupConfig.buttonColor, 'color': result.popupConfig.textColor };
+        self.popupButtonBackgroud = "#" + result.popupConfig.buttonColor;
+        self.popupButtonColor = "#" + result.popupConfig.textColor;
         self.popupLink = result.popupConfig.link;
 
     },
     error => {
     });
   }
+
+  hex2Rgb(hex) {
+    var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+    return result ? {
+      r: parseInt(result[1], 16),
+      g: parseInt(result[2], 16),
+      b: parseInt(result[3], 16)
+    } : null;
+  }
+
+  getButtonBackgroud(){
+    var colorRGB = this.hex2Rgb(this.popupButtonBackgroud);
+    var resultColorString = 'rgb('+ colorRGB.r +', '+ colorRGB.b +', '+ colorRGB.b +')';
+    return resultColorString;
+  }
+
+  getButtonColor(){
+    var colorRGB = this.hex2Rgb(this.popupButtonColor);
+    var resultColorString = 'rgb('+ colorRGB.r +', '+ colorRGB.b +', '+ colorRGB.b +')';
+    return resultColorString;
+  }
+
+  
+  
 
   addCountPopupConfigClick(){
     this.apiService.countUserPopupConfigClick(this.popupConfigId).subscribe(result => {

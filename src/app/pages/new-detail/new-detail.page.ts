@@ -3,6 +3,7 @@ import { ApiService } from '../../services/api/api.service';
 import { NavController, NavParams } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingService } from '../../services/loading/loading.service';
+import { DomSanitizer } from '@angular/platform-browser';
 import { ConstService } from '../../utils/const.service'
 import { UtilsService } from '../../utils/utils.service';
 
@@ -14,7 +15,7 @@ import { UtilsService } from '../../utils/utils.service';
 export class NewDetailPage implements OnInit {
   newID: string;
   newTitle: string;
-  newContent: string;
+  newContent: any;
   createAt: string;
   createdBy : string;
   thumbnail: string;
@@ -24,6 +25,7 @@ export class NewDetailPage implements OnInit {
   isDisplayButton :boolean;
 
   constructor(
+    private sanitizer: DomSanitizer,
     private loading: LoadingService,
     private apiService: ApiService,
     private navCtrl: NavController,
@@ -45,7 +47,7 @@ export class NewDetailPage implements OnInit {
     this.apiService.getPosteDetail(this.newID)
       .subscribe(result => {
         self.newTitle = result.post.title;
-        self.newContent = result.post.content;
+        self.newContent = self.sanitizer.bypassSecurityTrustHtml(result.post.content);
         self.thumbnail = result.post.thumbnail;
         self.createAt = result.post.createAt;
         self.createdBy = result.post.createdBy.displayName;
