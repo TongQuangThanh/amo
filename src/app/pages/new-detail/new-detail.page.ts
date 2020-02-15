@@ -47,7 +47,7 @@ export class NewDetailPage implements OnInit {
     this.apiService.getPosteDetail(this.newID)
       .subscribe(result => {
         self.newTitle = result.post.title;
-        self.newContent = self.sanitizer.bypassSecurityTrustHtml(result.post.content);
+        self.newContent = self.sanitizer.bypassSecurityTrustHtml(result.post.content) as string;
         self.thumbnail = result.post.thumbnail;
         self.createAt = result.post.createAt;
         self.createdBy = result.post.createdBy.displayName;
