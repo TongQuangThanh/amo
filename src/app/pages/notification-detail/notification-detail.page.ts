@@ -9,7 +9,8 @@ import { ConstService } from '../../utils/const.service'
 import { UtilsService } from '../../utils/utils.service';
 import { NotificationCommentPage } from '../notification-comment/notification-comment.page'
 import { ModalController } from '@ionic/angular';
-import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+// import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { PreviewAnyFile } from '@ionic-native/preview-any-file';
 
 @Component({
   selector: 'app-notification-detail',
@@ -29,7 +30,8 @@ export class NotificationDetailPage implements OnInit {
   articleID:string;
 
   constructor(
-    private iab: InAppBrowser,
+    // private iab: InAppBrowser,
+    // private previewAnyFile: PreviewAnyFile,
     private loading: LoadingService,
     private apiService: ApiService,
     private navCtrl: NavController,
@@ -76,8 +78,11 @@ export class NotificationDetailPage implements OnInit {
     console.log(event)
     this.attachments.forEach(element => {
       if(element.id == event.target.id){
-        const browser = this.iab.create(element.url);
-        browser.show();
+        //const browser = this.iab.create(element.url);
+        //browser.show();
+        PreviewAnyFile.preview(element.url)
+          .then((res: any) => console.log(res))
+          .catch((error: any) => console.error(error));
         return;
       }
     });

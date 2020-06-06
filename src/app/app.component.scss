@@ -54,3 +54,14 @@ ion-backdrop{
 .transparentButton{
     --background: transparent;
 }
+
+.actitonButton{
+    padding: 0;
+    margin: 0;
+    border-radius: 10px;
+    position: absolute;
+    width: 80%;
+    margin-left: 10%;
+    bottom: -36px;
+    height: 50px;
+}

@@ -22,6 +22,7 @@ import { PincodeRegisterPageModule } from './pages/auth/pincode-register/pincode
 import { ApartmentCodeRegisterPageModule } from './pages/auth/apartment-code-register/apartment-code-register.module';
 import { CodePush } from '@ionic-native/code-push/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
 
 export function LanguageLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -53,6 +54,7 @@ export function LanguageLoader(http: HttpClient) {
     TranslateConfigService,
     OneSignal,
     InAppBrowser,
+    ImagePicker,
     CodePush,
     {
       provide: RouteReuseStrategy,

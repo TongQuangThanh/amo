@@ -31,7 +31,7 @@
           <ion-select-option *ngFor="let item of listTopic" value="{{item._id}}">{{item.title}}</ion-select-option>
         </ion-select>
       </ion-item>
-      <!-- <ion-item lines="none" class="file-input-container">
+      <ion-item lines="none" class="file-input-container">
         <ion-grid>
           <ion-row class="height-item-button">
             <ion-col>
@@ -41,7 +41,7 @@
               </label>
             </ion-col>
             <ion-col>
-              <label (click)="selectImage()" class="label-upload">
+              <label (click)="pickImage()" class="label-upload">
                 Add Image
               </label>
             </ion-col>
@@ -59,7 +59,7 @@
             </ion-list>
           </ion-row>
         </ion-grid>
-      </ion-item> -->
+      </ion-item>
 
       <ion-item lines="none"> 
         <ion-label position="stacked" class="stack-label">{{ 'ADD_REQUEST.title_request' | translate }}<ion-text color="danger">*</ion-text></ion-label>

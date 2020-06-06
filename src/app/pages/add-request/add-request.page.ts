@@ -9,6 +9,7 @@ import { FileUploader, FileLikeObject } from 'ng2-file-upload';
 import { AlertService } from '../../services/alert/alert.service';
 import { Platform, NavController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
 
 @Component({
   selector: 'app-add-request',
@@ -39,6 +40,7 @@ export class AddRequestPage implements OnInit {
   hasBaseDropZoneOver: boolean = false;
 
   constructor(
+    private imagePicker: ImagePicker,
     private translate: TranslateService,
     private camera: Camera,
     public actionSheetController: ActionSheetController,
@@ -85,47 +87,54 @@ export class AddRequestPage implements OnInit {
     this.getFeedbackCategory(event.detail.value);
   }
 
-  pickImage(sourceType) {
-    const options: CameraOptions = {
-      quality: 100,
-      sourceType: sourceType,
-      destinationType: this.camera.DestinationType.FILE_URI,
-      encodingType: this.camera.EncodingType.PNG,
-      mediaType: this.camera.MediaType.PICTURE
-    }
-    this.camera.getPicture(options).then((imageData) => {
-      // imageData is either a base64 encoded string or a file URI
-      // If it's base64 (DATA_URL):
-      let base64Image = 'data:image/jpeg;base64,' + imageData;
-      alert(base64Image);
-    }, (err) => {
-      // Handle error
-    });
+  pickImage() {
+    this.imagePicker.getPictures({
+      maximumImagesCount: 4,
+    }).then((results) => {
+      for (var i = 0; i < results.length; i++) {
+          console.log(results[i]);
+      }
+    }, (err) => { });
+    // const options: CameraOptions = {
+    //   quality: 100,
+    //   sourceType: sourceType,
+    //   destinationType: this.camera.DestinationType.FILE_URI,
+    //   encodingType: this.camera.EncodingType.PNG,
+    //   mediaType: this.camera.MediaType.PICTURE
+    // }
+    // this.camera.getPicture(options).then((imageData) => {
+    //   // imageData is either a base64 encoded string or a file URI
+    //   // If it's base64 (DATA_URL):
+    //   let base64Image = 'data:image/jpeg;base64,' + imageData;
+    //   alert(base64Image);
+    // }, (err) => {
+    //   // Handle error
+    // });
   }
 
-  async selectImage() {
-    const actionSheet = await this.actionSheetController.create({
-      header: "Select Image source",
-      buttons: [{
-        text: 'Load from Library',
-        handler: () => {
-          this.pickImage(this.camera.PictureSourceType.PHOTOLIBRARY);
-        }
-      },
-      {
-        text: 'Use Camera',
-        handler: () => {
-          this.pickImage(this.camera.PictureSourceType.CAMERA);
-        }
-      },
-      {
-        text: 'Cancel',
-        role: 'cancel'
-      }
-      ]
-    });
-    await actionSheet.present();
-  }
+  // async selectImage() {
+  //   const actionSheet = await this.actionSheetController.create({
+  //     header: "Select Image source",
+  //     buttons: [{
+  //       text: 'Load from Library',
+  //       handler: () => {
+  //         this.pickImage(this.camera.PictureSourceType.PHOTOLIBRARY);
+  //       }
+  //     },
+  //     {
+  //       text: 'Use Camera',
+  //       handler: () => {
+  //         this.pickImage(this.camera.PictureSourceType.CAMERA);
+  //       }
+  //     },
+  //     {
+  //       text: 'Cancel',
+  //       role: 'cancel'
+  //     }
+  //     ]
+  //   });
+  //   await actionSheet.present();
+  // }
 
   getFiles(): FileLikeObject[] {
     return this.uploader.queue.map((fileItem) => {

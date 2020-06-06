@@ -80,13 +80,14 @@ export class AppComponent{
 
   getButtonBackgroud(){
     var colorRGB = this.hex2Rgb(this.popupButtonBackgroud);
-    var resultColorString = 'rgb('+ colorRGB.r +', '+ colorRGB.b +', '+ colorRGB.b +')';
+    console.log(colorRGB);
+    var resultColorString = 'rgb('+ colorRGB.r +', '+ colorRGB.g +', '+ colorRGB.b +')';
     return resultColorString;
   }
 
   getButtonColor(){
     var colorRGB = this.hex2Rgb(this.popupButtonColor);
-    var resultColorString = 'rgb('+ colorRGB.r +', '+ colorRGB.b +', '+ colorRGB.b +')';
+    var resultColorString = 'rgb('+ colorRGB.r +', '+ colorRGB.g +', '+ colorRGB.b +')';
     return resultColorString;
   }
 
