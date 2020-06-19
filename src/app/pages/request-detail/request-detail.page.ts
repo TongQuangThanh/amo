@@ -28,6 +28,8 @@ export class RequestDetailPage implements OnInit, AfterViewInit {
   currentUser: any;
   feedbackID:string;
   heightScreen:number;
+  listImage: any[] = [];
+  widthListScreen:number;
 
   constructor(
     private platform: Platform,
@@ -36,6 +38,7 @@ export class RequestDetailPage implements OnInit, AfterViewInit {
     private navCtrl: NavController,
     private route: ActivatedRoute) { 
       platform.ready().then((readySource) => {
+        this.widthListScreen = platform.width() * 0.8;
         this.heightScreen = platform.height() * 0.65;
       });
       UtilsService.requestDetailComponentShare = this;
@@ -65,6 +68,7 @@ export class RequestDetailPage implements OnInit, AfterViewInit {
         self.createdAt = result.feedback.createdAt;
         self.createBy = result.feedback.createdBy != null ? result.feedback.createdBy.displayName : "";
         self.feedbackID = result.feedback._id;
+        self.listImage = result.feedback.attachments;
         self.updateSizeContent();
         self.getListMessage(self.feedbackID);
     },

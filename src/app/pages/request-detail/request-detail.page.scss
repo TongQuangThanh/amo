@@ -1,6 +1,41 @@
 .line-breaker {
     white-space: pre-line; 
 }
+
+div[scrollX] {
+  white-space: nowrap;
+  overflow: auto;
+  display: flex;
+
+  .scroll-item {
+    display: inline-block;
+  }
+
+  .selectable-icon{
+      color: red;
+      font-size: 100px;
+      width: 100px;
+      height: 100px;
+      margin-right: 10px;
+      padding: 0;
+  }
+  .close {
+      position: absolute;
+      top: -10px;
+      right: 0px;
+      width: 30px;
+  }
+  .item-button{
+  margin-top: 10px;
+  margin-right: 10px;
+  padding: 0;
+  color: transparent;
+  --background: transparent;
+  --background-focused: transparent;
+  --background-hover: transparent;
+  position: relative;
+  }
+}
   
 .input-wrap {
     padding: 5px;

@@ -21,6 +21,15 @@
                   <ion-label>{{createBy}}</ion-label>
               </ion-col>
             </ion-row>
+            <ion-row *ngIf="listImage.length > 0">
+              <ion-item no-lines>
+                <div scrollX="true" [style.width.px]="widthListScreen">
+                  <div *ngFor="let item1 of listImage" class="item-button">
+                    <ion-img  name="radio-button-on" src="{{item1.url}}" id="{{item1._id}}" class="scroll-item selectable-icon"></ion-img>
+                  </div>
+                </div>
+              </ion-item>
+            </ion-row>
           </ion-grid>
         </ion-item>
     </ion-card>

@@ -1,15 +1,18 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, mergeMap } from 'rxjs/operators';
 import { EnvService } from '../env.service';
+import { HTTP } from '@ionic-native/http/ngx';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ApiService {
   constructor(
-    private http: HttpClient) {}
+    private http: HttpClient,
+    private httpNative: HTTP
+  ) {}
 
   getListArticle(page: number, limit: number, category: string, search: string): Observable<any> {
     const params = new HttpParams().
@@ -348,6 +351,19 @@ export class ApiService {
 
   addFeedbackReply(feedbackID:string, params:any): Observable<any>{
     return this.http.post(EnvService.feedback_reply + feedbackID, params).pipe(
+      map(results => results)
+    );
+  }
+
+  uploadImage(payload:any): Observable<any>{
+    // const token = localStorage.getItem('token');
+    // const headers = {
+    //   Authorization: 'Bearer ' + token
+    // };
+    //this.httpNative.post(EnvService.media_addFile, payload, headers);
+  
+    
+    return this.http.post(EnvService.media_addFile, payload).pipe(
       map(results => results)
     );
   }

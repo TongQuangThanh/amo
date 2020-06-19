@@ -32,7 +32,7 @@
       <ion-list class="list-chat-content">
         <div class="message-wrap">
           <div *ngFor="let item of listArticlesComment.reverse()">
-            <div *ngIf="item.status == 'approve'" class="message left">
+            <div *ngIf="item.status == 'approve' || item.createdBy.phone == profile.phone" class="message left">
               <img class="user-img" *ngIf="item.createdBy" src="{{item.createdBy.avatar}}"/>
               <img  class="user-img"*ngIf="!item.createdBy" src="../assets/icon/avatar-default.png"/>
               <!-- <ion-spinner name="dots" *ngIf="msg.status === 'pending'"></ion-spinner> -->

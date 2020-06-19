@@ -69,6 +69,17 @@ ion-refresher {
     display: inline-block;
 }
 
+.note-video-clip {
+    width: 100% !important;
+    height: auto !important;
+}
+
+video,
+iframe {
+  width: 100% !important;
+  height: auto !important;
+}
+
 .full-width {
     width: 100%;
 }

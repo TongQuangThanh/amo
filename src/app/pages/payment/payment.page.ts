@@ -45,7 +45,7 @@ export class PaymentPage implements OnInit {
     this.listPaymentBills  = [];
     this.currentPage = 1;
     this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
-    this.getPaymentLogs(this.currentPage, this.numberRecordOnPage, '', '', null, false);
+    this.getPaymentLogs(this.currentPage, this.numberRecordOnPage, '', '', null, true);
   }
 
   getPaymentLogs(page: number, limit: number, category: string, search: string, event: any, isRefresh: boolean) {
@@ -53,7 +53,12 @@ export class PaymentPage implements OnInit {
     const self = this;
     this.apiService.getListPayment(page, limit, category, search)
       .subscribe(result => {
-        self.listPaymentBills = self.listPaymentBills.concat(result.paymentBills);
+        if (isRefresh) {
+          self.listPaymentBills = result.paymentBills;
+        } else {
+          self.listPaymentBills = self.listPaymentBills.concat(result.paymentBills);
+        }
+        
         if (event) {
           event.target.complete();
         }

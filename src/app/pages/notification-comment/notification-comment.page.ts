@@ -7,6 +7,7 @@ import { Platform, NavController } from '@ionic/angular';
 import { AlertService } from '../../services/alert/alert.service';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-notification-comment',
@@ -22,6 +23,7 @@ export class NotificationCommentPage {
   heightScreen:number;
   editorMsg:any;
   apartment: string;
+  profile: any;
 
   constructor(
     private translate: TranslateService,
@@ -30,7 +32,9 @@ export class NotificationCommentPage {
     private loading: LoadingService,
     private route: ActivatedRoute,
     private platform: Platform,
+    private authService: AuthService
   ) {
+    this.profile = this.authService.getProfile();
     this.listArticlesComment = [];
     this.apartment = "";
     platform.ready().then((readySource) => {
@@ -63,6 +67,7 @@ export class NotificationCommentPage {
     const self = this;
     this.apiService.getListArticleComment(page, limit, articleID, search)
       .subscribe(result => {
+        console.log(result.comments);
         if(result.comments.length > 0){
           if(self.currentPage <= 1){
             self.listArticlesComment = result.comments;

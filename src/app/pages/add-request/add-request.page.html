@@ -34,29 +34,29 @@
       <ion-item lines="none" class="file-input-container">
         <ion-grid>
           <ion-row class="height-item-button">
-            <ion-col>
+            <!-- <ion-col>
               <label class="label-upload">
                 <input type="file" ng2FileSelect [uploader]="uploader" disabled multiple />
                 Add Files
               </label>
-            </ion-col>
+            </ion-col> -->
             <ion-col>
-              <label (click)="pickImage()" class="label-upload">
+              <label (click)="selectImage()" class="label-upload">
                 Add Image
               </label>
             </ion-col>
           </ion-row>
           <ion-row>
-            <ion-list class="custom-upload-list">
-              <ion-item *ngFor="let item of uploader.queue" class="ion-text-wrap">
-                <ion-button slot="start" fill="clear">
-                  <ion-icon slot="icon-only" name="trash"></ion-icon>
-                </ion-button>
-                <ion-label>
-                  {{ item?.file?.name }}
-                </ion-label>
+            <ion-row>
+              <ion-item no-lines>
+                <div scrollX="true" [style.width.px]="widthListScreen">
+                  <div *ngFor="let item1 of listImage" class="item-button">
+                    <ion-img  name="radio-button-on" src="{{item1.media.url}}" class="scroll-item selectable-icon"></ion-img>
+                    <img class="close" src="../assets/icon/close-icon.png" id="{{item1.media._id}}" (click)="removeImageAttachment($event)"/>
+                  </div>
+                </div>
               </ion-item>
-            </ion-list>
+            </ion-row>
           </ion-row>
         </ion-grid>
       </ion-item>

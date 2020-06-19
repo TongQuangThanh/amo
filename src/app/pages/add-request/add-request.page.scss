@@ -1,19 +1,59 @@
-div[scrollX=true] {
+// div[scrollX=true] {
+//     display: flex;
+//     flex-wrap: nowrap;
+//     overflow-x: auto;
+//     &::-webkit-scrollbar {
+//        display: none;
+//     }
+//      .scroll-item {
+//        flex: 0 0 auto;
+//     }
+
+//     ion-avatar{
+//         margin-left: 10px;
+//     }
+//   }
+
+div[scrollX] {
+    white-space: nowrap;
+    overflow: auto;
     display: flex;
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    &::-webkit-scrollbar {
-       display: none;
-    }
-     .scroll-item {
-       flex: 0 0 auto;
+
+    .scroll-item {
+      display: inline-block;
     }
 
-    ion-avatar{
-        margin-left: 10px;
+    .selectable-icon{
+        color: red;
+        font-size: 100px;
+        width: 100px;
+        margin-right: 10px;
+        padding: 0;
+    }
+    .close {
+        position: absolute;
+        top: -10px;
+        right: 0px;
+        width: 30px;
+    }
+    .item-button{
+    margin-top: 10px;
+    margin-right: 10px;
+    padding: 0;
+    color: transparent;
+    --background: transparent;
+    --background-focused: transparent;
+    --background-hover: transparent;
+    position: relative;
     }
   }
 
+
+  /* Hide ion-content scrollbar */
+  ::-webkit-scrollbar{
+    display:none;
+  }
+  
 
 .file-input-container {
 

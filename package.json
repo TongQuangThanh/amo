@@ -1,6 +1,6 @@
 {
   "name": "anhmo-mobile-new",
-  "version": "4.0.5",
+  "version": "4.0.6",
   "author": "AMO",
   "homepage": "http://amoapp.net/",
   "scripts": {
@@ -28,13 +28,14 @@
     "@angular/platform-browser-dynamic": "~8.2.14",
     "@angular/router": "~8.2.14",
     "@ionic-native/call-number": "^5.15.1",
-    "@ionic-native/camera": "^5.15.0",
+    "@ionic-native/camera": "^5.26.0",
     "@ionic-native/code-push": "^5.15.1",
     "@ionic-native/core": "^5.0.0",
     "@ionic-native/deeplinks": "^5.18.0",
-    "@ionic-native/file": "^5.15.1",
-    "@ionic-native/file-transfer": "^5.15.1",
+    "@ionic-native/file": "^5.26.0",
+    "@ionic-native/file-transfer": "^5.26.0",
     "@ionic-native/geolocation": "^5.15.0",
+    "@ionic-native/http": "^5.26.0",
     "@ionic-native/image-picker": "^5.26.0",
     "@ionic-native/in-app-browser": "^5.18.0",
     "@ionic-native/native-page-transitions": "^5.15.0",
@@ -62,6 +63,7 @@
     "cordova-plugin-telerik-imagepicker": "^2.3.3",
     "cordova-plugin-zip": "^3.1.0",
     "core-js": "^2.5.4",
+    "jquery": "^3.5.1",
     "moment": "^2.24.0",
     "ng2-file-upload": "^1.3.0",
     "rxjs": "~6.5.5",
@@ -119,7 +121,8 @@
       "cordova-plugin-geolocation": {},
       "cordova-plugin-file-transfer": {},
       "cordova-plugin-inappbrowser": {},
-      "cordova-plugin-preview-any-file": {}
+      "cordova-plugin-preview-any-file": {},
+      "cordova-plugin-advanced-http": {}
     },
     "platforms": [
       "android",
