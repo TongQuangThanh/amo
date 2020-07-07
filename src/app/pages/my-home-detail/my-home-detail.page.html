@@ -1,114 +1,65 @@
 <ion-header no-border>
     <ion-toolbar>
-      <ion-title>{{apartmentTitle}}</ion-title>
       <ion-buttons slot="start">
         <ion-back-button text=""></ion-back-button>
       </ion-buttons>
     </ion-toolbar>
-  </ion-header>
-  
-
-<ion-content>
+</ion-header>
+<ion-content fullscreen>
+    <ion-img class="image-page" src="/assets/common/amo visual 2.png"></ion-img>
     <ion-grid *ngIf="apartment != null">
-      <ion-row>
-        <ion-col>
-            <ion-label class="ion-text-wrap home-infor">{{ 'MY_HOME_DETAIL.active_code' | translate }}</ion-label>
-        </ion-col>
-        <ion-col>
-            <ion-label class="ion-text-wrap home-infor">{{apartment.apartment.activeCode}}</ion-label>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-          <ion-col>
-              <ion-label class="ion-text-wrap home-infor">{{ 'MY_HOME_DETAIL.room' | translate }}</ion-label>
-          </ion-col>
-          <ion-col>
-              <ion-label class="ion-text-wrap home-infor">{{apartment.apartment.title}}</ion-label>
-          </ion-col>
+        <ion-row>
+            <ion-col>
+                <ion-label class="ion-text-wrap apartment-name-style">{{ apartmentTitle }}</ion-label>
+            </ion-col>
         </ion-row>
-      <ion-row>
-        <ion-col>
-            <ion-label class="ion-text-wrap home-infor">{{ 'MY_HOME_DETAIL.user_category' | translate }}</ion-label>
-        </ion-col>
-        <ion-col>
-            <ion-label class="ion-text-wrap home-infor">{{apartment.userCategory.title}}</ion-label>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-            <ion-label class="ion-text-wrap home-infor">{{ 'MY_HOME_DETAIL.area' | translate }}</ion-label>
-        </ion-col>
-        <ion-col>
-            <ion-label class="ion-text-wrap home-infor">{{apartment.apartment.area}} m2</ion-label>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-            <ion-label class="ion-text-wrap home-infor">{{ 'MY_HOME_DETAIL.address' | translate }}</ion-label>
-        </ion-col>
-        <ion-col>
-            <ion-label class="ion-text-wrap home-infor">{{apartment.campaign.address}}</ion-label>
-        </ion-col>
-      </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-label class="ion-text-wrap home-infor" style="display:flex;"><ion-icon style="margin-top:1px;" name="pin"></ion-icon> {{apartment.campaign.address}}</ion-label>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-label class="ion-text-wrap home-infor">ID: {{apartment.apartment.activeCode}}</ion-label>
+                <ion-label class="ion-text-wrap txt_reset">Reset</ion-label>
+            </ion-col>
+            <ion-col>
+                <button class="btn_apartment_phone">
+                    <ion-icon class="call-icon" name="call"></ion-icon>
+                    <ion-label>{{'MY_HOME_DETAIL.btn_apartment_phone' | translate}}</ion-label>
+                </button>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-label class="ion-text-wrap home-infor">{{ 'MY_HOME_DETAIL.owner' | translate }}</ion-label>
+                <ion-input [readonly]="true" class="custom-common-input custom-common-input-text color-text-cus margin-top-5" placeholder="" name="owner_name" value="{{apartment.apartment.owner.name}}"></ion-input>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-label class="ion-text-wrap home-infor">{{ 'MY_HOME_DETAIL.phone' | translate }}</ion-label>
+                <ion-input [readonly]="true" class="custom-common-input custom-common-input-text color-text-cus margin-top-5" placeholder="" name="phone" type="number"  value="{{apartment.apartment.owner.phone}}"></ion-input>
+            </ion-col>
+            <ion-col>
+                <ion-label class="ion-text-wrap home-infor">{{ 'MY_HOME_DETAIL.area_of_use' | translate }}</ion-label>
+                <ion-input [readonly]="true" class="custom-common-input custom-common-input-text color-text-cus margin-top-5" placeholder="" name="area_of_use" value="{{apartment.apartment.area}} m2"></ion-input>
+            </ion-col>
+        </ion-row>
+
     </ion-grid>
-    <ion-list>
+    <ion-list *ngIf="apartment != null" style="margin-top: 50px;">
       <div>
         <ion-item (click)="toggleGroupVehicle()">
-          <ion-icon slot="end" name="remove-circle-outline" *ngIf="isGroupVehicleShown()"></ion-icon>
-          <ion-icon slot="end" name="add-circle-outline" *ngIf="!isGroupVehicleShown()"></ion-icon>
-          <ion-label>{{ 'MY_HOME_DETAIL.vehicles' | translate }}</ion-label>
+          <ion-icon slot="end" name="arrow-forward"></ion-icon>
+          <ion-label class="color-text-cus">{{ 'MY_HOME_DETAIL.vehicles' | translate }}</ion-label>
         </ion-item>
-        <ion-card
-          *ngFor="let item of listVehicle"
-          [ngClass]="isGroupVehicleShown() ? 'item-accordion-vehicle' : 'item-accordion-vehicle item-accordion-inactive'">
-          <ion-item lines="none">
-            <ion-label class="ion-text-wrap">{{ 'MY_HOME_DETAIL.vehicles_type' | translate }}</ion-label>
-            <ion-label class="ion-text-wrap">{{item.type}}</ion-label>
-          </ion-item>
-          <ion-item lines="none">
-              <ion-label class="ion-text-wrap">{{ 'MY_HOME_DETAIL.vehicles_model' | translate }}</ion-label>
-              <ion-label class="ion-text-wrap">{{item.model}}</ion-label>
-          </ion-item>
-          <ion-item lines="none">
-              <ion-label class="ion-text-wrap">{{ 'MY_HOME_DETAIL.vehicles_identity' | translate }}</ion-label>
-              <ion-label class="ion-text-wrap">{{item.identity}}</ion-label>
-          </ion-item>
-        </ion-card>
       </div>
       <div>
-          <ion-item (click)="toggleGroupMember()">
-            <ion-icon slot="end" name="remove-circle-outline" *ngIf="isGroupVehicleMember()"></ion-icon>
-            <ion-icon slot="end" name="add-circle-outline" *ngIf="!isGroupVehicleMember()"></ion-icon>
-            <ion-label>{{ 'MY_HOME_DETAIL.members' | translate }}</ion-label>
+          <ion-item (click)="goToFamilyMemberList()">
+            <ion-icon slot="end" name="arrow-forward"></ion-icon>
+            <ion-label class="color-text-cus">{{ 'MY_HOME_DETAIL.members' | translate }}</ion-label>
           </ion-item>
-          <ion-card
-            *ngFor="let item of listMembers"
-            [ngClass]="isGroupVehicleMember() ? 'item-accordion-member' : 'item-accordion-member item-accordion-inactive'">
-            <ion-item lines="none">
-              <ion-label class="ion-text-wrap">{{ 'MY_HOME_DETAIL.name' | translate }}</ion-label>
-              <ion-label class="ion-text-wrap">{{item.name}}</ion-label>
-            </ion-item>
-            <ion-item lines="none">
-                <ion-label class="ion-text-wrap">{{ 'MY_HOME_DETAIL.sex' | translate }}</ion-label>
-                <ion-label class="ion-text-wrap">{{item.gender}}</ion-label>
-            </ion-item>
-            <ion-item lines="none">
-                <ion-label class="ion-text-wrap">{{ 'MY_HOME_DETAIL.DOB' | translate }}</ion-label>
-                <ion-label class="ion-text-wrap">{{formatString(item.dateOfBirth)}}</ion-label>
-            </ion-item>
-            <ion-item lines="none">
-                <ion-label class="ion-text-wrap">{{ 'MY_HOME_DETAIL.phone' | translate }}</ion-label>
-                <ion-label class="ion-text-wrap">{{item.phone}}</ion-label>
-            </ion-item>
-            <ion-item lines="none">
-                <ion-label class="ion-text-wrap">{{ 'MY_HOME_DETAIL.personal_license' | translate }}</ion-label>
-                <ion-label class="ion-text-wrap">{{item.personalLicense}}</ion-label>
-            </ion-item>
-            <ion-item lines="none">
-                <ion-label class="ion-text-wrap">{{ 'MY_HOME_DETAIL.nationality' | translate }}</ion-label>
-                <ion-label class="ion-text-wrap">{{item.nationality}}</ion-label>
-            </ion-item>
-          </ion-card>
         </div>
     </ion-list>
 </ion-content>

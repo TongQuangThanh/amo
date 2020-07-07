@@ -1,0 +1,93 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <ion-buttons slot="end" class="white-color btn-save" (click)="updateAccount()">
+      <ion-label>{{ 'FAMILY_DETAIL.btn_save' | translate }}</ion-label>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="header-infor">
+      <ion-avatar class="center-avatar">
+          <img src="{{avatar}}"/>
+      </ion-avatar>
+  </div>
+  <form class="form-margin">
+    <ion-list lines="full" class="ion-no-margin ion-no-padding">
+      <ion-item lines="none" class="margin-top-10">
+          <ion-input class="custom-common-input custom-common-input-text" placeholder="{{ 'FAMILY_DETAIL.placeholder_displayName' | translate }}" [(ngModel)]="displayName" type="text" name="displayName"></ion-input>
+      </ion-item>
+      <ion-item lines="none" class="margin-top-10">
+        <ion-input class="custom-common-input custom-common-input-text" placeholder="{{ 'FAMILY_DETAIL.placeholder_email' | translate }}" [(ngModel)]="email" type="email" name="email"></ion-input>
+      </ion-item>
+      <ion-item lines="none" class="margin-top-10">
+        <ion-grid class="padding-none">
+            <ion-row class="padding-none">
+              <ion-col class="padding-none">
+                <ion-item lines="none" class="custom-common-input padding-none height-auto DOB-custom">
+                  <ion-select class="padding-none custom-common-input-text selection-width-85" placeholder="{{ 'FAMILY_DETAIL.relationship' | translate }}" interface="action-sheet" name="relationship" [(ngModel)]="relationship">
+                    <ion-select-option value="me">{{ 'FAMILY_DETAIL.me' | translate }}</ion-select-option>
+                    <ion-select-option value="father">{{ 'FAMILY_DETAIL.father' | translate }}</ion-select-option>
+                    <ion-select-option value="mother">{{ 'FAMILY_DETAIL.mother' | translate }}</ion-select-option>
+                    <ion-select-option value="husband">{{ 'FAMILY_DETAIL.husband' | translate }}</ion-select-option>
+                    <ion-select-option value="wife">{{ 'FAMILY_DETAIL.wife' | translate }}</ion-select-option>
+                    <ion-select-option value="son">{{ 'FAMILY_DETAIL.son' | translate }}</ion-select-option>
+                    <ion-select-option value="daughter_in_law">{{ 'FAMILY_DETAIL.daughter_in_law' | translate }}</ion-select-option>
+                    <ion-select-option value="brother">{{ 'FAMILY_DETAIL.brother' | translate }}</ion-select-option>
+                    <ion-select-option value="sister">{{ 'FAMILY_DETAIL.sister' | translate }}</ion-select-option>
+                    <ion-select-option value="relative">{{ 'FAMILY_DETAIL.relative' | translate }}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-col>
+              <ion-col class="padding-none">
+                <ion-item lines="none" class="custom-common-input padding-none height-auto sex-custom">
+                  <ion-select class="padding-none custom-common-input-text selection-width-85" placeholder="{{ 'FAMILY_DETAIL.staying' | translate }}" interface="action-sheet" name="sex" [(ngModel)]="staying">
+                    <ion-select-option value="male">{{ 'FAMILY_DETAIL.staying' | translate }}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+      </ion-item>
+      <ion-item lines="none" class="margin-top-10">
+        <ion-grid class="padding-none">
+            <ion-row class="padding-none">
+              <ion-col class="padding-none">
+                <ion-item lines="none" class="custom-common-input padding-none height-auto DOB-custom">
+                  <ion-datetime placeholder="YYYY/MM/DD"
+                    class="padding-none custom-common-input-text"
+                    name="dateOfBirth" [(ngModel)]="dateOfBirth"
+                    displayFormat="YYYY/MM/DD"
+                    min="1900"
+                    max="2030"></ion-datetime>
+                </ion-item>
+              </ion-col>
+              <ion-col class="padding-none">
+                <ion-item lines="none" class="custom-common-input padding-none height-auto sex-custom">
+                  <ion-select class="padding-none custom-common-input-text selection-width-85" placeholder="{{ 'FAMILY_DETAIL.placeholder_sex' | translate }}" interface="action-sheet" name="sex" [(ngModel)]="sex">
+                    <ion-select-option value="male">{{ 'FAMILY_DETAIL.male' | translate }}</ion-select-option>
+                    <ion-select-option value="female">{{ 'FAMILY_DETAIL.female' | translate }}</ion-select-option>
+                    <ion-select-option value="other">{{ 'FAMILY_DETAIL.other' | translate }}</ion-select-option>
+                  </ion-select>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+      </ion-item>
+      <ion-item lines="none" class="margin-top-10">
+        <ion-input class="custom-common-input custom-common-input-text" placeholder="{{ 'FAMILY_DETAIL.placeholder_phone' | translate }}" [(ngModel)]="phoneNumber" type="number" name="phoneNumber"></ion-input>
+      </ion-item>
+      <ion-item lines="none" class="margin-top-10">
+        <ion-input class="custom-common-input custom-common-input-text" placeholder="{{ 'MY_ACCOUNT.placeholder_liscense' | translate }}" [(ngModel)]="personalLiscence" type="number" name="personalLiscence"></ion-input>
+      </ion-item>
+      <ion-item lines="none" class="custom-common-input padding-none height-auto nationality-custom margin-top-10">
+        <ion-select class="padding-none" placeholder="Nationality" interface="action-sheet" name="nationality" [(ngModel)]="nationality">
+            <ion-select-option *ngFor="let item of listCountries" value="{{item.alpha2}}">{{item.name}}</ion-select-option>
+          </ion-select>
+      </ion-item>
+    </ion-list>
+  </form>
+</ion-content>

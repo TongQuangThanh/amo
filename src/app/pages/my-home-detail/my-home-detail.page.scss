@@ -16,4 +16,71 @@
     height: 0px;
     margin: 0;
 }
+ion-header {
+    position: fixed;
+}
 
+ion-toolbar {
+    --background: transparent;
+    --ion-color-base: transparent !important;
+}
+
+.function-section{
+    position: absolute;
+    bottom: 10px;
+}
+.apartment-name-style {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    color: #556080;
+}
+.home-infor {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    color: #556080;
+}
+.btn_apartment_phone {
+    float: right;
+    border: 1px solid #FA7268;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    color: #FA7268;
+    height: 24px;
+    background-color: transparent;
+    padding-left: 15px;
+    padding-right: 15px;
+    display: flex;
+}
+.txt_reset {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    color: #FA7268;
+    margin-left: 20px;
+}
+.color-text-cus {
+    color: #556080;
+    font-weight: bold;
+}
+.call-icon {
+    margin-top: 2px;
+}
+.image-page {
+    margin-bottom: 10px;
+}
+.margin-top-5 {
+    margin-top: 5px;
+}

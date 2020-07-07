@@ -4,9 +4,6 @@
     <ion-buttons slot="start">
       <ion-back-button text=""></ion-back-button>
     </ion-buttons>
-    <ion-buttons slot="end" (click)="addApartment()">
-      <ion-icon slot="icon-only" name="person-add"></ion-icon>
-    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -65,4 +62,7 @@
       </div>
     </ion-card>
   </ion-list>
+  <section class="full-width function-section">
+    <ion-button expand="block" class="amo-button-custom" (click)="addApartment()">{{ 'MY_HOME.btn_add_new' | translate }}</ion-button>
+  </section>
 </ion-content>

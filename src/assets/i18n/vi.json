@@ -87,7 +87,8 @@
         "user_category": "Vai trò",
         "area": "Diện tích",
         "address": "Địa chỉ",
-        "emergency": "Khẩn cấp"
+        "emergency": "Khẩn cấp",
+        "btn_add_new": "Thêm căn hộ"
     },
     "MY_HOME_DETAIL":{
         "title": "Chi tiết căn hộ",
@@ -106,7 +107,11 @@
         "DOB": "Ngày sinh",
         "phone": "Số điện thoại",
         "personal_license": "Số CMTND",
-        "nationality": "Quốc tịch"
+        "nationality": "Quốc tịch",
+        "btn_apartment_phone": "Apartment phone",
+        "owner": "Chủ hộ",
+        "phone": "Điện thoại",
+        "area_of_use": "Diện tích sử dụng"
     },
     "NEW_DETAIL":{
         "default_button_order": "Đặt dịch vụ"
@@ -235,5 +240,43 @@
     },
     "COMMON": {
         "maintain" : "Chức năng đang bảo trì"
+    },
+    "APARTMENT_FAMILY":{
+        "title": "Thành viên gia đình",
+        "title_age": "Tuổi",
+        "btn_add_new": "Thêm thành viên",
+        "btn_edit": "Sửa",
+        "btn_delete": "Xóa"
+    },
+    "FAMILY_DETAIL":{
+        "title": "Tải khoản của tôi",
+        "btn_save": "Lưu",
+        "male": "Nam",
+        "female": "Nữ",
+        "other": "Khác",
+        "placeholder_sex": "Giới tính",
+        "placeholder_displayName": "Họ tên",
+        "placeholder_email": "email",
+        "placeholder_liscense": "Số CMTND",
+        "setting": "Cài đặt",
+        "help_center": "Trợ giúp",
+        "btn_log_out": "Đăng xuất",
+        "message_update_sucess": "Cập nhật thông tin thành công",
+        "message_update_fail": "Cập nhật thông tin thất bại",
+
+        "me": "Tôi",
+        "father": "Bố",
+        "mother": "Mẹ",
+        "husband": "Người chồng",
+        "wife": "Người vợ",
+        "son": "Con trai",
+        "daughter": "Con gái",
+        "daughter_in_law": "Con dâu",
+        "brother": "Anh trai/ Em trai",
+        "sister": "Chị gái/ Em gái",
+        "relative": "Họ hàng",
+        "relationship": "Mối quan hệ",
+        "staying": "staying",
+        "placeholder_phone": "Số điện thoại"
     }
 }

@@ -20,6 +20,7 @@ import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { PincodePasswordPageModule } from './pages/pincode-password/pincode-password.module';
 import { PincodeRegisterPageModule } from './pages/auth/pincode-register/pincode-register.module';
 import { ApartmentCodeRegisterPageModule } from './pages/auth/apartment-code-register/apartment-code-register.module';
+import { ConfirmModalPageModule } from './components/confirm-modal/confirm-modal.module';
 import { CodePush } from '@ionic-native/code-push/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
@@ -37,6 +38,7 @@ export function LanguageLoader(http: HttpClient) {
     PincodePasswordPageModule,
     PincodeRegisterPageModule,
     ApartmentCodeRegisterPageModule,
+    ConfirmModalPageModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

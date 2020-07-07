@@ -116,7 +116,24 @@ const routes: Routes = [
     path: 'change-password',
     loadChildren: './pages/change-password/change-password.module#ChangePasswordPageModule',
     canActivate: [AuthGuard]
+  },
+  { 
+    path: 'family/:id', 
+    loadChildren: './pages/family/family.module#FamilyPageModule',
+    canActivate: [AuthGuard] 
+  },
+  { 
+    path: 'family-detail/:apartment_id/:user_id', 
+    loadChildren: './pages/family-detail/family-detail.module#FamilyDetailPageModule',
+    canActivate: [AuthGuard]  
+  },
+  { 
+    path: 'confirm-modal', 
+    loadChildren: './components/confirm-modal/confirm-modal.module#ConfirmModalPageModule' 
   }
+
+
+
 ];
 
 @NgModule({
