@@ -29,7 +29,7 @@
             <img *ngIf="!item.createdBy" src="../assets/icon/avatar-default.png"/>
           </ion-avatar>
           <ion-label>
-            <h2 [innerHTML]="convertText(item.content)" ></h2>
+            <h2 [innerHTML]="convertText(item.content)" class="line-breaker "></h2>
             <p *ngIf="item.createdBy != null">{{item.createdBy.displayName}}</p>
             <p>{{formatString(item.createdAt)}}</p>
           </ion-label>

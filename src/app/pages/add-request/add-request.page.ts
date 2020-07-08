@@ -76,6 +76,9 @@ export class AddRequestPage implements OnInit {
     this.apiService.getListUserApartment()
       .subscribe(result => {
         self.listDepartment = result.userApartments;
+        if(self.listDepartment.length > 0){
+          self.departmentID = self.listDepartment[0].apartment._id;
+        }
         self.loading.dismiss();
       },
         error => {

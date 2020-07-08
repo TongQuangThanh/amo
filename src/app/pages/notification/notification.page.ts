@@ -69,7 +69,7 @@ export class NotificationPage implements OnInit {
 
   detailPage(event) {
     // this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
-    this.navCtrl.navigateForward('/notificationDetail/' + event.currentTarget.id);
+    this.navCtrl.navigateForward('/notification-detail/' + event.currentTarget.id);
   }
 
   formatString(stringDate: string) {

@@ -54,9 +54,21 @@ export class PaymentPage implements OnInit {
     this.apiService.getListPayment(page, limit, category, search)
       .subscribe(result => {
         if (isRefresh) {
-          self.listPaymentBills = result.paymentBills;
+          ///self.listPaymentBills = result.paymentBills;
+          const listPaymentNoNull = [];
+          for(let i=0;i<result.paymentBills.length;i++){
+            if(result.paymentBills[i].payment){
+              listPaymentNoNull.push(result.paymentBills[i]);
+            }
+          }
+          self.listPaymentBills = listPaymentNoNull;
         } else {
-          self.listPaymentBills = self.listPaymentBills.concat(result.paymentBills);
+          //self.listPaymentBills = self.listPaymentBills.concat(result.paymentBills);
+          for(let i=0;i<result.paymentBills.length;i++){
+            if(result.paymentBills[i].payment){
+              self.listPaymentBills.push(result.paymentBills[i]);
+            }
+          }
         }
         
         if (event) {

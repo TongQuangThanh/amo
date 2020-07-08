@@ -42,13 +42,19 @@ export class ChangePasswordPage implements OnInit {
     this.apiService.changePassword(params)
       .subscribe(result => {
         self.loading.dismiss()
-        if(result.message != ""){
+        if(result.message != "SUCCESS"){
           self.errorOldPass = false;
           self.errorNewPass = false;
           self.errorConfirmPass = false;
           self.errorMessage = result.message;
         }else{
-          this.errorMessage = "";
+          self.errorMessage = "";
+          self.oldPassword = "";
+          self.newPassword = "";
+          self.confirmPassword = "";
+          self.errorOldPass = false;
+          self.errorNewPass = false;
+          self.errorConfirmPass = false;
           self.alertService.presentToast(this.translate.instant('CHANGE_PASSWORD.message_change_pass_sucess'));
         }
     },

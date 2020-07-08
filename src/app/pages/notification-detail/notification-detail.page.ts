@@ -71,7 +71,7 @@ export class NotificationDetailPage implements OnInit {
   }
 
   showListComment(){
-    this.navCtrl.navigateForward('/notificationComment/' + this.articleID);
+    this.navCtrl.navigateForward('/notification-comment/' + this.articleID);
   }
 
   detailAttachment(event){
