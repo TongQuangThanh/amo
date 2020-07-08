@@ -6,6 +6,7 @@ import { ConstService } from '../../utils/const.service';
 import { UtilsService } from '../../utils/utils.service';
 import { LoadingService } from '../../services/loading/loading.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-home',
@@ -21,6 +22,7 @@ export class HomePage implements OnInit {
   numberRecordOnPage: number;
   userName: string;
   avatar: string;
+  getPostSubscriber: Subscription;
   // popupThumbnail: string;
   // popupButtonTitle: string;
   // popupButtonStyle: any;
@@ -86,7 +88,7 @@ export class HomePage implements OnInit {
     this.listNews  = [];
     this.currentPage = 1;
     this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
-    this.getNews(this.currentPage, this.numberRecordOnPage, '', '', null, false);
+    this.getNews(this.currentPage, this.numberRecordOnPage, '', '', null, true);
   }
 
   // getConfigPopup() {
@@ -109,8 +111,11 @@ export class HomePage implements OnInit {
 
   getNews(page: number, limit: number, category: string, search: string, event: any, isRefresh: boolean) {
     const self = this;
+    if (this.getPostSubscriber) {
+      this.getPostSubscriber.unsubscribe();
+    }
     this.loading.present();
-    this.apiService.getPosts(page, limit, category, search)
+    this.getPostSubscriber = this.apiService.getPosts(page, limit, category, search)
       .subscribe(result => {
         if (isRefresh) {
           self.listNews = result.posts;

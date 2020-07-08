@@ -55,5 +55,6 @@ export const EnvService = {
   countNotificationConfig: environment.base + '/notification-common/count-user-click/',
   countPostClick: environment.base + '/post/user-click/',
   countPopupConfigClick: environment.base + '/popup-config/user-click/',
+  media_addFile: environment.base + '/media',
 };
 

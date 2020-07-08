@@ -27,7 +27,10 @@ export class RequestDetailPage implements OnInit, AfterViewInit {
   showEmojiPicker = false;
   currentUser: any;
   feedbackID:string;
+  defineHeightScreen:number;
   heightScreen:number;
+  listImage: any[] = [];
+  widthListScreen:number;
 
   constructor(
     private platform: Platform,
@@ -35,8 +38,11 @@ export class RequestDetailPage implements OnInit, AfterViewInit {
     private apiService: ApiService,
     private navCtrl: NavController,
     private route: ActivatedRoute) { 
+      var self = this;
       platform.ready().then((readySource) => {
-        this.heightScreen = platform.height() * 0.65;
+        self.widthListScreen = platform.width() * 0.8;
+        self.heightScreen = platform.height() * 0.65;
+        self.defineHeightScreen = this.heightScreen;
       });
       UtilsService.requestDetailComponentShare = this;
   }
@@ -65,6 +71,10 @@ export class RequestDetailPage implements OnInit, AfterViewInit {
         self.createdAt = result.feedback.createdAt;
         self.createBy = result.feedback.createdBy != null ? result.feedback.createdBy.displayName : "";
         self.feedbackID = result.feedback._id;
+        self.listImage = result.feedback.attachments;
+        if(self.listImage.length > 0){
+          this.heightScreen = self.defineHeightScreen - 100;
+        }
         self.updateSizeContent();
         self.getListMessage(self.feedbackID);
     },

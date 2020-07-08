@@ -4,7 +4,7 @@ import { Platform, NavController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ApiService } from '../../services/api/api.service';
 import { LoadingService } from '../../services/loading/loading.service';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
+// import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { AlertService } from '../../services/alert/alert.service';
 import * as moment from 'moment';
 import { TranslateService } from '@ngx-translate/core';
@@ -25,6 +25,8 @@ export class OrderServicePage implements OnInit {
   timeOrder: any;
   isErrorAddress:boolean=false;
   isErrorTime:boolean=false;
+  location:string;
+  apartment: string;
 
   compareWithFn = (o1, o2) => {
     return o1 && o2 ? o1.id === o2.id : o1 === o2;
@@ -41,7 +43,7 @@ export class OrderServicePage implements OnInit {
     private alertService: AlertService,
     private apiService: ApiService,
     private loading: LoadingService,
-    private geolocation: Geolocation,
+    //private geolocation: Geolocation,
     private navCtrl: NavController,
     private authService: AuthService) { 
       const profile = this.authService.getProfile();
@@ -66,6 +68,8 @@ export class OrderServicePage implements OnInit {
         if(self.listDepartment.length > 0){
           self.departmentID = self.listDepartment[0]._id;
           self.address = self.listDepartment[0].campaign.address;
+          self.location = self.listDepartment[0].campaign.latlng;
+          self.apartment = self.listDepartment[0].apartment.title + " - " + self.listDepartment[0].apartment.campaign.title;
         }
         self.loading.dismiss()
     },
@@ -78,6 +82,8 @@ export class OrderServicePage implements OnInit {
     for(let item in this.listDepartment){
       if (this.listDepartment[item].apartment._id == event.detail.value){
         this.address = this.listDepartment[item].campaign.address;
+        this.location = this.listDepartment[item].campaign.latlng;
+        this.apartment = this.listDepartment[item].apartment.title + " - " + this.listDepartment[item].apartment.campaign.title;
         break;
       }
     }
@@ -101,24 +107,25 @@ export class OrderServicePage implements OnInit {
       return;
     }
     this.loading.present();
-    this.geolocation.getCurrentPosition().then((resp) => {
-      self.requestOrder(resp.coords.latitude, resp.coords.longitude);
-     }).catch((error) => {
-      self.requestOrder("", "");
-     });
+    this.requestOrder();
+    // this.geolocation.getCurrentPosition().then((resp) => {
+    //   self.requestOrder(resp.coords.latitude, resp.coords.longitude);
+    //  }).catch((error) => {
+    //   self.requestOrder("", "");
+    //  });
   }
 
-  requestOrder(latitude:any, longitude:any){
+  requestOrder(){
     const self = this;
     const params = {
       service: this.serviceID,
       appointAt: moment(this.timeOrder),
       phone: this.phone,
       address: this.address,
-      latitude: latitude,
-      longitude: longitude,
+      location: this.location,
       name: this.userName,
-      message: this.message
+      message: this.message,
+      apartmentOrder: this.apartment
     };
     this.apiService.addServiceLog(params).subscribe(result => {
       self.loading.dismiss();

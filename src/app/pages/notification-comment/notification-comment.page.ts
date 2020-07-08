@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef, OnInit } from '@angular/core';
 import { LoadingService } from '../../services/loading/loading.service';
 import { ApiService } from '../../services/api/api.service';
 import { ConstService } from '../../utils/const.service'
@@ -7,13 +7,14 @@ import { Platform, NavController } from '@ionic/angular';
 import { AlertService } from '../../services/alert/alert.service';
 import { ActivatedRoute } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-notification-comment',
   templateUrl: './notification-comment.page.html',
   styleUrls: ['./notification-comment.page.scss'],
 })
-export class NotificationCommentPage {
+export class NotificationCommentPage implements OnInit{
 
   listArticlesComment: any;
   currentPage: number;
@@ -22,6 +23,10 @@ export class NotificationCommentPage {
   heightScreen:number;
   editorMsg:any;
   apartment: string;
+  profile: any;
+
+
+  @ViewChild("chat_input", {static: false}) inputField: ElementRef;
 
   constructor(
     private translate: TranslateService,
@@ -30,7 +35,9 @@ export class NotificationCommentPage {
     private loading: LoadingService,
     private route: ActivatedRoute,
     private platform: Platform,
+    private authService: AuthService
   ) {
+    this.profile = this.authService.getProfile();
     this.listArticlesComment = [];
     this.apartment = "";
     platform.ready().then((readySource) => {
@@ -39,6 +46,10 @@ export class NotificationCommentPage {
     this.articleID = this.route.snapshot.paramMap.get('id');
     this.currentPage = 1;
     this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
+    
+  }
+
+  ngOnInit(): void {
     this.getDefaulUserDeparment();
   }
 
@@ -51,6 +62,7 @@ export class NotificationCommentPage {
           self.apartment = result.userApartments[0]._id;
         }
         self.loading.dismiss();
+        console.log(result.userApartments);
         self.getArticleComment(self.currentPage, self.numberRecordOnPage, self.articleID, '', null)
     },
     error => {
@@ -75,6 +87,7 @@ export class NotificationCommentPage {
           event.target.complete();
         }
         self.loading.dismiss();
+        self.inputField.nativeElement.focus();
     },
     error => {
       self.loading.dismiss();

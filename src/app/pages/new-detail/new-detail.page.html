@@ -27,7 +27,7 @@
         </ion-grid>
       </ion-item>
   </ion-card>
-  <p [innerHTML]="newContent" class="padding-left-right-card"></p>
+  <p [innerHTML]="newContent" class="padding-left-right-card" style="width: 100%;"></p>
 </ion-content>
 <section class="full-width function-section" *ngIf="isDisplayButton == true" >
   <ion-button expand="block" class="amo-button-custom" (click)="orderService($event)">{{ buttonTitle == "" ? ('NEW_DETAIL.default_button_order' | translate) : buttonTitle }}</ion-button>

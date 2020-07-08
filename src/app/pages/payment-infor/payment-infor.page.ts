@@ -80,6 +80,6 @@ export class PaymentInforPage implements OnInit {
   }
 
   showListComment(){
-    this.navCtrl.navigateForward('/paymentComment/' + this.paymentID);
+    this.navCtrl.navigateForward('/payment-comment/' + this.paymentID);
   }
 }

@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-packageName="com.george.anhmo" id="com.george.anhmo" ios-CFBundleIdentifier="vn.amtechcom.anhmo" version="4.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-packageName="com.george.anhmo" id="com.george.anhmo" ios-CFBundleIdentifier="vn.amtechcom.anhmo" version="4.0.6" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>AMO</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
@@ -12,6 +12,8 @@
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <preference name="ScrollEnabled" value="false" />
+    <preference name="AllowInlineMediaPlayback" value="true" />
+    <allow-navigation href="https://*youtube.com/*" />
     <preference name="android-minSdkVersion" value="19" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashMaintainAspectRatio" value="true" />
@@ -20,6 +22,7 @@
     <preference name="SplashScreen" value="screen" />
     <preference name="SplashScreenDelay" value="3000" />
     <preference name="iosPersistentFileLocation" value="Library" />
+    <preference name="AllowInlineMediaPlayback" value="true" />
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
     <platform name="android">
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application" xmlns:android="http://schemas.android.com/apk/res/android">
@@ -97,14 +100,17 @@
         <splash height="2208" src="resources/ios/splash/Default-736h.png" width="1242" />
         <splash height="2436" src="resources/ios/splash/Default-2436h.png" width="1125" />
         <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
-        <config-file overwrite="true" parent="NSPhotoLibraryUsageDescription" platform="ios" target="*-Info.plist">
-            <string>myproject requires permission to access your photo library.</string>
+        <config-file mode="merge" overwrite="true" parent="NSPhotoLibraryUsageDescription" platform="ios" target="*-Info.plist">
+            <string>need photo library access to get pictures from there</string>
         </config-file>
-        <config-file overwrite="true" parent="NSCameraUsageDescription" platform="ios" target="*-Info.plist">
-            <string>myproject requires permission to access your photo library and/or cameras.</string>
+        <config-file mode="merge" overwrite="true" parent="NSCameraUsageDescription" platform="ios" target="*-Info.plist">
+            <string>need camera access to take pictures</string>
         </config-file>
-        <config-file overwrite="true" parent="NSLocationWhenInUseUsageDescription" platform="ios" target="*-Info.plist">
-            <string>myproject needs permission to use your location to store geodata.</string>
+        <config-file mode="merge" overwrite="true" parent="NSLocationWhenInUseUsageDescription" platform="ios" target="*-Info.plist">
+            <string>need location access to find things nearby</string>
+        </config-file>
+        <config-file mode="merge" overwrite="true" parent="NSPhotoLibraryAddUsageDescription" platform="ios" target="*-Info.plist">
+            <string>need photo library access to save pictures there</string>
         </config-file>
         <preference name="CodePushDeploymentKey" value="8MsBKrKTc64T1rurHG6oTnjwbL2Rw1le3TdTl" />
         <preference name="APP_SECRET" value="8efc5133-c8a2-4a12-846d-22a0e814d7d5" />

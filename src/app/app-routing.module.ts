@@ -38,12 +38,12 @@ const routes: Routes = [
     loadChildren: './pages/pincode-password/pincode-password.module#PincodePasswordPageModule'
   },
   { 
-    path: 'notificationDetail/:id',
+    path: 'notification-detail/:id',
     loadChildren: './pages/notification-detail/notification-detail.module#NotificationDetailPageModule',
     canActivate: [AuthGuard]
   },
   { 
-    path: 'notificationComment/:id',
+    path: 'notification-comment/:id',
     loadChildren: './pages/notification-comment/notification-comment.module#NotificationCommentPageModule',
     canActivate: [AuthGuard]
   },
@@ -63,7 +63,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   { 
-    path: 'paymentComment/:id',
+    path: 'payment-comment/:id',
     loadChildren: './pages/payment-comment/payment-comment.module#PaymentCommentPageModule',
     canActivate: [AuthGuard]
   },

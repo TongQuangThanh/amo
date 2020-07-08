@@ -5,6 +5,7 @@ import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/na
 import { LoadingService } from '../../services/loading/loading.service';
 import { ConstService } from '../../utils/const.service'
 import { UtilsService } from '../../utils/utils.service'
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-notification',
@@ -15,6 +16,7 @@ export class NotificationPage implements OnInit {
   listArticles: any;
   currentPage: number;
   numberRecordOnPage: number;
+  getArticleSubscriber: Subscription;
 
   constructor(
     private loading: LoadingService,
@@ -32,15 +34,24 @@ export class NotificationPage implements OnInit {
     this.listArticles  = [];
     this.currentPage = 1;
     this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
-    this.getArticles(this.currentPage, this.numberRecordOnPage, '', '', null);
+    this.getArticles(this.currentPage, this.numberRecordOnPage, '', '', null, true);
   }
 
-  getArticles(page: number, limit: number, category: string, search: string, event: any) {
-    this.loading.present();
+  getArticles(page: number, limit: number, category: string, search: string, event: any, isRefresh: boolean) {
+    
     const self = this;
-    this.apiService.getListArticle(page, limit, category, search)
+    if (this.getArticleSubscriber) {
+      this.getArticleSubscriber.unsubscribe();
+    }
+    this.loading.present();
+    this.getArticleSubscriber = this.apiService.getListArticle(page, limit, category, search)
       .subscribe(result => {
-        self.listArticles = self.listArticles.concat(result.articles);
+        if (isRefresh) {
+          self.listArticles = result.articles;
+        } else {
+          self.listArticles = self.listArticles.concat(result.articles);
+        }
+        
         if (event) {
           event.target.complete();
         }
@@ -53,12 +64,12 @@ export class NotificationPage implements OnInit {
 
   loadData(event) {
     this.currentPage++;
-    this.getArticles(this.currentPage, this.numberRecordOnPage, '', '', event);
+    this.getArticles(this.currentPage, this.numberRecordOnPage, '', '', event, false);
   }
 
   detailPage(event) {
     // this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
-    this.navCtrl.navigateForward('/notificationDetail/' + event.currentTarget.id);
+    this.navCtrl.navigateForward('/notification-detail/' + event.currentTarget.id);
   }
 
   formatString(stringDate: string) {
@@ -68,7 +79,7 @@ export class NotificationPage implements OnInit {
   doRefresh(event) {
     this.currentPage = 1;
     this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
-    this.getArticles(this.currentPage, this.numberRecordOnPage, '', '', event);
+    this.getArticles(this.currentPage, this.numberRecordOnPage, '', '', event, true);
   }
 
 }

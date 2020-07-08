@@ -10,6 +10,7 @@ import { UtilsService } from '../../utils/utils.service';
 import { NotificationCommentPage } from '../notification-comment/notification-comment.page'
 import { ModalController } from '@ionic/angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+// import { PreviewAnyFile } from '@ionic-native/preview-any-file';
 
 @Component({
   selector: 'app-notification-detail',
@@ -30,6 +31,7 @@ export class NotificationDetailPage implements OnInit {
 
   constructor(
     private iab: InAppBrowser,
+    // private previewAnyFile: PreviewAnyFile,
     private loading: LoadingService,
     private apiService: ApiService,
     private navCtrl: NavController,
@@ -69,15 +71,28 @@ export class NotificationDetailPage implements OnInit {
   }
 
   showListComment(){
-    this.navCtrl.navigateForward('/notificationComment/' + this.articleID);
+    this.navCtrl.navigateForward('/notification-comment/' + this.articleID);
   }
 
   detailAttachment(event){
     console.log(event)
     this.attachments.forEach(element => {
       if(element.id == event.target.id){
-        const browser = this.iab.create(element.url);
+        console.log(1111);
+        let url_online= "";
+        const fileExtensition = element.fileName.split('.').pop().toLowerCase();
+        if(fileExtensition == 'png' || fileExtensition == 'jpg' || fileExtensition == "pdf"){
+          url_online = element.url
+        }else{
+          url_online = 'https://docs.google.com/viewer?url='+ element.url + '&embedded=true';
+        }
+        // window.open(url_online, '_blank', 'location=yes')
+        // window.location.assign(url_online);
+        const browser = this.iab.create(url_online, "_system", "location=yes,enableviewportscale=yes");
         browser.show();
+        // PreviewAnyFile.preview(element.url)
+        //   .then((res: any) => console.log(res))
+        //   .catch((error: any) => console.error(error));
         return;
       }
     });

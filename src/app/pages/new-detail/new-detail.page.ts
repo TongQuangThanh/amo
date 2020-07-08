@@ -6,6 +6,7 @@ import { LoadingService } from '../../services/loading/loading.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ConstService } from '../../utils/const.service'
 import { UtilsService } from '../../utils/utils.service';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-new-detail',
@@ -62,6 +63,14 @@ export class NewDetailPage implements OnInit {
     error => {
       self.loading.dismiss();
     });
+  }
+
+  updateVideoUrl(urlVideo: string) {
+    // Appending an ID to a YouTube URL is safe.
+    // Always make sure to construct SafeValue objects as
+    // close as possible to the input data so
+    // that it's easier to check if the value is safe.
+    return this.sanitizer.bypassSecurityTrustResourceUrl(urlVideo);
   }
 
   formatString(stringDate: string) {

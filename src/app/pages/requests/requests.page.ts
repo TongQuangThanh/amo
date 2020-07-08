@@ -5,6 +5,7 @@ import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/na
 import { ConstService } from '../../utils/const.service'
 import { UtilsService } from '../../utils/utils.service'
 import { LoadingService } from '../../services/loading/loading.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-requests',
@@ -20,6 +21,7 @@ export class RequestsPage implements OnInit {
   numberRecordOnPage: number;
   heightScreen: number;
   heightScreenSub: number;
+  getRequestSubscriber: Subscription;
 
   constructor(
     private loading: LoadingService,
@@ -48,15 +50,23 @@ export class RequestsPage implements OnInit {
     this.listRequestRegistion = [];
     this.currentPage = 1;
     this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
-    this.getRequestAll(this.currentPage, this.numberRecordOnPage, '', '', null, false);
+    this.getRequestAll(this.currentPage, this.numberRecordOnPage, '', '', null, true);
   }
 
   getRequestAll(page: number, limit: number, category: string, search: string, event: any, isRefresh: boolean) {
-    this.loading.present();
+    
     const self = this;
-    this.apiService.getListRequest(page, limit, category, search)
+    if (this.getRequestSubscriber) {
+      this.getRequestSubscriber.unsubscribe();
+    }
+    this.loading.present();
+    this.getRequestSubscriber = this.apiService.getListRequest(page, limit, category, search)
       .subscribe(result => {
-        self.listRequestAll = self.listRequestAll.concat(result.feedbacks);
+        if (isRefresh) {
+          self.listRequestAll = result.feedbacks;
+        } else {
+          self.listRequestAll = self.listRequestAll.concat(result.feedbacks);
+        }
         if (event) {
           event.target.complete();
         }

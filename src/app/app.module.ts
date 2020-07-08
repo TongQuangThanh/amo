@@ -23,6 +23,9 @@ import { ApartmentCodeRegisterPageModule } from './pages/auth/apartment-code-reg
 import { ConfirmModalPageModule } from './components/confirm-modal/confirm-modal.module';
 import { CodePush } from '@ionic-native/code-push/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { Camera } from '@ionic-native/Camera/ngx';
+import { File } from '@ionic-native/file/ngx';
+import { HTTP } from '@ionic-native/http/ngx';
 
 export function LanguageLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -55,6 +58,9 @@ export function LanguageLoader(http: HttpClient) {
     TranslateConfigService,
     OneSignal,
     InAppBrowser,
+    Camera,
+    HTTP,
+    File,
     CodePush,
     {
       provide: RouteReuseStrategy,

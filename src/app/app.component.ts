@@ -80,13 +80,14 @@ export class AppComponent{
 
   getButtonBackgroud(){
     var colorRGB = this.hex2Rgb(this.popupButtonBackgroud);
-    var resultColorString = 'rgb('+ colorRGB.r +', '+ colorRGB.b +', '+ colorRGB.b +')';
+    console.log(colorRGB);
+    var resultColorString = 'rgb('+ colorRGB.r +', '+ colorRGB.g +', '+ colorRGB.b +')';
     return resultColorString;
   }
 
   getButtonColor(){
     var colorRGB = this.hex2Rgb(this.popupButtonColor);
-    var resultColorString = 'rgb('+ colorRGB.r +', '+ colorRGB.b +', '+ colorRGB.b +')';
+    var resultColorString = 'rgb('+ colorRGB.r +', '+ colorRGB.g +', '+ colorRGB.b +')';
     return resultColorString;
   }
 
@@ -156,6 +157,7 @@ export class AppComponent{
     });
 
     this.oneSignal.handleNotificationOpened().subscribe((openResult:any) => {
+      console.log(openResult);
       if(UtilsService.isAppOpen){
         if(openResult.notification.payload.additionalData.type == "post"){
           if(openResult.notification.payload.additionalData.popupConfig_id != null && 
@@ -174,6 +176,20 @@ export class AppComponent{
           UtilsService.requestDetailComponentShare.getListMessage(openResult.notification.payload.additionalData.feedback, true);
         }else if(openResult.notification.payload.additionalData.type == "feedbackReply"){
           self.navCtrl.navigateForward('/request-detail/' + openResult.notification.payload.additionalData.feedback);
+        }else if(openResult.notification.payload.additionalData.type == "feedback"){
+          self.navCtrl.navigateForward('/request-detail/' + openResult.notification.payload.additionalData._id);
+        }else if(openResult.notification.payload.additionalData.type == "article"){
+          self.navCtrl.navigateForward('/notification-detail/' + openResult.notification.payload.additionalData._id);
+        }else if(openResult.notification.payload.additionalData.type == "articleComment"){
+          self.navCtrl.navigateForward('/notification-detail/' + openResult.notification.payload.additionalData.article._id);
+        }else if(openResult.notification.payload.additionalData.type == "articleReply"){
+          self.navCtrl.navigateForward('/notification-comment/' + openResult.notification.payload.additionalData.article._id);
+        }else if(openResult.notification.payload.additionalData.type == "paymentBill"){
+          self.navCtrl.navigateForward('/payment-infor/' + openResult.notification.payload.additionalData._id);
+        }else if(openResult.notification.payload.additionalData.type == "paymentLog"){
+          self.navCtrl.navigateForward('/payment-infor/' + openResult.notification.payload.additionalData.paymentBill);
+        }else if(openResult.notification.payload.additionalData.type == "paymentComment"){
+          self.navCtrl.navigateForward('/payment-comment/' + openResult.notification.payload.additionalData.paymentBill);
         }
       }else{
         if(openResult.notification.payload.additionalData.type == "post"){
@@ -190,6 +206,20 @@ export class AppComponent{
           UtilsService.notificationNavigatorLink = '/service-detail/' + openResult.notification.payload.additionalData._id;
         }else if(openResult.notification.payload.additionalData.type == "feedbackReply"){
           UtilsService.notificationNavigatorLink = '/request-detail/' + openResult.notification.payload.additionalData.feedback;
+        }else if(openResult.notification.payload.additionalData.type == "feedback"){
+          UtilsService.notificationNavigatorLink = '/request-detail/' + openResult.notification.payload.additionalData._id;
+        }else if(openResult.notification.payload.additionalData.type == "article"){
+          UtilsService.notificationNavigatorLink = '/notification-detail/' + openResult.notification.payload.additionalData._id;
+        }else if(openResult.notification.payload.additionalData.type == "articleComment"){
+          UtilsService.notificationNavigatorLink = '/notification-detail/' + openResult.notification.payload.additionalData.article._id;
+        }else if(openResult.notification.payload.additionalData.type == "articleReply"){
+          UtilsService.notificationNavigatorLink = '/notification-comment/' + openResult.notification.payload.additionalData.article._id;
+        }else if(openResult.notification.payload.additionalData.type == "paymentBill"){
+          UtilsService.notificationNavigatorLink = '/payment-infor/' + openResult.notification.payload.additionalData._id;
+        }else if(openResult.notification.payload.additionalData.type == "paymentLog"){
+          UtilsService.notificationNavigatorLink = '/payment-infor/' + openResult.notification.payload.additionalData.paymentBill;
+        }else if(openResult.notification.payload.additionalData.type == "paymentComment"){
+          UtilsService.notificationNavigatorLink = '/payment-comment/' + openResult.notification.payload.additionalData.paymentBill;
         }
       }
     });

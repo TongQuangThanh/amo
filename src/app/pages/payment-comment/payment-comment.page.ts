@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { LoadingService } from '../../services/loading/loading.service';
 import { ApiService } from '../../services/api/api.service';
 import { ConstService } from '../../utils/const.service'
@@ -12,13 +12,13 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: './payment-comment.page.html',
   styleUrls: ['./payment-comment.page.scss'],
 })
-export class PaymentCommentPage {
+export class PaymentCommentPage implements OnInit{
 
   listPaymentComment: any;
   paymentBillID:string;
   heightScreen:number;
   editorMsg:any;
-
+  @ViewChild("chat_input", {static: false}) inputField: ElementRef;
   constructor(
     private alertService: AlertService,
     private apiService: ApiService,
@@ -31,6 +31,10 @@ export class PaymentCommentPage {
       this.heightScreen = platform.height() - 70- 60;
     });
     this.paymentBillID = this.route.snapshot.paramMap.get('id');
+    
+  }
+
+  ngOnInit(): void {
     this.getPaymentComment();
   }
 
@@ -41,6 +45,7 @@ export class PaymentCommentPage {
       .subscribe(result => {
         self.listPaymentComment = result.paymentComments;
         self.loading.dismiss();
+        self.inputField.nativeElement.focus();
     },
     error => {
       self.loading.dismiss();
