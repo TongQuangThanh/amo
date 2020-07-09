@@ -26,6 +26,9 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Camera } from '@ionic-native/Camera/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { HTTP } from '@ionic-native/http/ngx';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTabsModule } from '@angular/material/tabs';
 
 export function LanguageLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -42,14 +45,17 @@ export function LanguageLoader(http: HttpClient) {
     PincodeRegisterPageModule,
     ApartmentCodeRegisterPageModule,
     ConfirmModalPageModule,
+    MatTabsModule,
     HttpClientModule,
+    NgbModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: (LanguageLoader),
         deps: [HttpClient]
       }
-    })
+    }),
+    BrowserAnimationsModule
   ],
   providers: [
     StatusBar,
