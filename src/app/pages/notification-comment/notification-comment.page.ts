@@ -26,7 +26,7 @@ export class NotificationCommentPage implements OnInit{
   profile: any;
 
 
-  @ViewChild("chat_input", {static: false}) inputField: ElementRef;
+  @ViewChild("chat_input") inputField: ElementRef;
 
   constructor(
     private translate: TranslateService,

@@ -13,9 +13,9 @@ import { UtilsService } from '../../utils/utils.service';
 })
 export class RequestDetailPage implements OnInit, AfterViewInit {
 
-  @ViewChild('contentRequest', { static: false }) contentRequest: any;
-  @ViewChild('content', { static: false }) content: any;
-  @ViewChild('chat_input', { static: false }) messageInput: any;
+  @ViewChild('contentRequest') contentRequest: any;
+  @ViewChild('content') content: any;
+  @ViewChild('chat_input') messageInput: any;
 
   requestTitle: string;
   requestContent: string;

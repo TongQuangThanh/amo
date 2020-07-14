@@ -18,7 +18,7 @@ export class PaymentCommentPage implements OnInit{
   paymentBillID:string;
   heightScreen:number;
   editorMsg:any;
-  @ViewChild("chat_input", {static: false}) inputField: ElementRef;
+  @ViewChild("chat_input") inputField: ElementRef;
   constructor(
     private alertService: AlertService,
     private apiService: ApiService,
