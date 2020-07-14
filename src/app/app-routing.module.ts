@@ -10,111 +10,111 @@ const routes: Routes = [
   },
   { 
     path: 'landing',
-    loadChildren: './pages/landing/landing.module#LandingPageModule'
+    loadChildren: () => import('./pages/landing/landing.module').then(m => m.LandingPageModule)
   },
   { 
     path: 'login/:phone',
-    loadChildren: './pages/auth/login/login.module#LoginPageModule'
+    loadChildren: () => import('./pages/auth/login/login.module').then(m => m.LoginPageModule)
   },
   { 
     path: 'register-password/:phone/:token/:refCode',
-    loadChildren: './pages/auth/register-password/register-password.module#RegisterPasswordPageModule'
+    loadChildren: () => import('./pages/auth/register-password/register-password.module').then(m => m.RegisterPasswordPageModule)
   },
   { 
     path: 'dashboard',
-    loadChildren: './pages/dashboard/dashboard.module#DashboardPageModule',
+    loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardPageModule),
     canActivate: [AuthGuard]
   },
   { 
     path: 'forgot-password',
-    loadChildren: './pages/forgot-password/forgot-password.module#ForgotPasswordPageModule'
+    loadChildren: () => import('./pages/forgot-password/forgot-password.module').then(m => m.ForgotPasswordPageModule)
   },
   { 
     path: 'new-password/:phone/:token',
-    loadChildren: './pages/new-password/new-password.module#NewPasswordPageModule'
+    loadChildren: () => import('./pages/new-password/new-password.module').then(m => m.NewPasswordPageModule)
   },
   { 
     path: 'pincode-password',
-    loadChildren: './pages/pincode-password/pincode-password.module#PincodePasswordPageModule'
+    loadChildren: () => import('./pages/pincode-password/pincode-password.module').then(m => m.PincodePasswordPageModule)
   },
   { 
     path: 'notification-detail/:id',
-    loadChildren: './pages/notification-detail/notification-detail.module#NotificationDetailPageModule',
+    loadChildren: () => import('./pages/notification-detail/notification-detail.module').then(m => m.NotificationDetailPageModule),
     canActivate: [AuthGuard]
   },
   { 
     path: 'notification-comment/:id',
-    loadChildren: './pages/notification-comment/notification-comment.module#NotificationCommentPageModule',
+    loadChildren: () => import('./pages/notification-comment/notification-comment.module').then(m => m.NotificationCommentPageModule),
     canActivate: [AuthGuard]
   },
   { 
     path: 'service-list-by-category/:id',
-    loadChildren: './pages/service-list-by-category/service-list-by-category.module#ServiceListByCategoryPageModule',
+    loadChildren: () => import('./pages/service-list-by-category/service-list-by-category.module').then(m => m.ServiceListByCategoryPageModule),
     canActivate: [AuthGuard] 
   },
   { 
     path: 'new-detail/:id',
-    loadChildren: './pages/new-detail/new-detail.module#NewDetailPageModule',
+    loadChildren: () => import('./pages/new-detail/new-detail.module').then(m => m.NewDetailPageModule),
     canActivate: [AuthGuard]
   },
   { 
     path: 'payment-infor/:id',
-    loadChildren: './pages/payment-infor/payment-infor.module#PaymentInforPageModule',
+    loadChildren: () => import('./pages/payment-infor/payment-infor.module').then(m => m.PaymentInforPageModule),
     canActivate: [AuthGuard]
   },
   { 
     path: 'payment-comment/:id',
-    loadChildren: './pages/payment-comment/payment-comment.module#PaymentCommentPageModule',
+    loadChildren: () => import('./pages/payment-comment/payment-comment.module').then(m => m.PaymentCommentPageModule),
     canActivate: [AuthGuard]
   },
   { 
     path: 'request-detail/:id',
-    loadChildren: './pages/request-detail/request-detail.module#RequestDetailPageModule',
+    loadChildren: () => import('./pages/request-detail/request-detail.module').then(m => m.RequestDetailPageModule),
     canActivate: [AuthGuard]
   },
   { 
     path: 'service-detail/:id',
-    loadChildren: './pages/service-detail/service-detail.module#ServiceDetailPageModule',
+    loadChildren: () => import('./pages/service-detail/service-detail.module').then(m => m.ServiceDetailPageModule),
     canActivate: [AuthGuard]
   },
   { 
     path: 'order-service/:id',
-    loadChildren: './pages/order-service/order-service.module#OrderServicePageModule',
+    loadChildren: () => import('./pages/order-service/order-service.module').then(m => m.OrderServicePageModule),
     canActivate: [AuthGuard]
   },
   { 
     path: 'add-request',
-    loadChildren: './pages/add-request/add-request.module#AddRequestPageModule',
+    loadChildren: () => import('./pages/add-request/add-request.module').then(m => m.AddRequestPageModule),
     canActivate: [AuthGuard]
   },
   { 
     path: 'bill-payment/:id',
-    loadChildren: './pages/bill-payment/bill-payment.module#BillPaymentPageModule',
+    loadChildren: () => import('./pages/bill-payment/bill-payment.module').then(m => m.BillPaymentPageModule),
     canActivate: [AuthGuard]
   },
   { 
     path: 'my-home',
-    loadChildren: './pages/my-home/my-home.module#MyHomePageModule',
+    loadChildren: () => import('./pages/my-home/my-home.module').then(m => m.MyHomePageModule),
     canActivate: [AuthGuard]
   },
   { 
     path: 'my-home-detail/:id',
-    loadChildren: './pages/my-home-detail/my-home-detail.module#MyHomeDetailPageModule',
+    loadChildren: () => import('./pages/my-home-detail/my-home-detail.module').then(m => m.MyHomeDetailPageModule),
     canActivate: [AuthGuard]
   },
   { 
     path: 'my-account',
-    loadChildren: './pages/my-account/my-account.module#MyAccountPageModule',
+    loadChildren: () => import('./pages/my-account/my-account.module').then(m => m.MyAccountPageModule),
     canActivate: [AuthGuard]
   },
   { 
     path: 'setting',
-    loadChildren: './pages/setting/setting.module#SettingPageModule',
+    loadChildren: () => import('./pages/setting/setting.module').then(m => m.SettingPageModule),
     canActivate: [AuthGuard]
   },
   { 
     path: 'change-password',
-    loadChildren: './pages/change-password/change-password.module#ChangePasswordPageModule',
+    loadChildren: () => import('./pages/change-password/change-password.module').then(m => m.ChangePasswordPageModule),
     canActivate: [AuthGuard]
   }
 ];

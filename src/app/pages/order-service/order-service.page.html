@@ -12,7 +12,7 @@
       <ion-item lines="none">
         <ion-label position="stacked" class="stack-label">{{ 'ORDER_SERVICE.apartment' | translate }}</ion-label>
         <ion-select [compareWith]="compareWith" class="custom-common-input custom-common-input-text height-auto" placeholder="{{ 'ORDER_SERVICE.placeholder_apartment' | translate }}" interface="action-sheet" (ionChange)="changeValueDepartment($event)" name="departmentID" [(ngModel)]="departmentID">
-          <ion-select-option *ngFor="let item of listDepartment; let idx = index" value="{{item.apartment._id}}" [selected]="item.apartment._id == departmentID">{{item.apartment.title + ' - ' + item.campaign.title}}</ion-select-option>
+          <ion-select-option *ngFor="let item of listDepartment; let idx = index" value="{{item.apartment._id}}">{{item.apartment.title + ' - ' + item.campaign.title}}</ion-select-option>
         </ion-select>
       </ion-item>
 

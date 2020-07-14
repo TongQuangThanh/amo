@@ -8,7 +8,6 @@ import { IonicModule } from '@ionic/angular';
 import { AddRequestPage } from './add-request.page';
 import { Camera } from '@ionic-native/Camera/ngx';
 import { File } from '@ionic-native/file/ngx';
-import { FileUploadModule } from 'ng2-file-upload';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 const routes: Routes = [
   {
@@ -23,7 +22,6 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     TranslateModule,
-    FileUploadModule,
     RouterModule.forChild(routes)
   ],
   providers: [Camera,File],
