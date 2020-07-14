@@ -128,11 +128,13 @@ const routes: Routes = [
     canActivate: [AuthGuard]  
   },
   { 
-    path: 'confirm-modal', 
-    loadChildren: './components/confirm-modal/confirm-modal.module#ConfirmModalPageModule' 
-  }
-
-
+    path: 'register-to-receive-goods', 
+    loadChildren: './pages/register-to-receive-goods/register-to-receive-goods.module#RegisterToReceiveGoodsPageModule' 
+  },
+  { 
+    path: 'register-for-shipping', 
+    loadChildren: './pages/register-for-shipping/register-for-shipping.module#RegisterForShippingPageModule' 
+  },
 
 ];
 
