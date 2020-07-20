@@ -2,42 +2,45 @@
     position: absolute;
     left: 0%;
     right: 0%;
-    top: 0%;
-    bottom: 55.02%;
-
-    background: #FA7268;
-    mix-blend-mode: normal;
-    opacity: 0.3;
+}
+.landing-text {
+    margin: 20px 17px;
+}
+.landing-input {
+    margin: 20px 17px 0 17px;
+}
+.landing-errorMessage {
+    margin: 0px 17px;
 }
 
-.label-text {
+.landing-white-bg {
     position: absolute;
-    height: 19px;
-    left: 4.27%;
-    right: 30.4%;
-    top: calc(50% - 19px/2 - 8px);
-
+    width: 100%;
+    height: 60%;
+    bottom: 0;
+    /* Fill/White */
+    background: #FFFFFF;
+    border-radius: 24px 24px 0px 0px;
+}
+.label-text {
+    /* T2 (16)/Regular */
     font-family: Nunito Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
-    line-height: 19px;
-    /* identical to box height */
-    color: #556080;
+    font-size: 16px;
+    line-height: 24px;
+    
+    /* Fill/Black */
+    color: #21313F;
 }
 
 .phone-input {
-    position: absolute;
-    left: 4.27%;
-    width: 91.46%;
-    top: 52.62%;
     height: 3.5em;
     // height: 40px;
     mix-blend-mode: normal;
     // opacity: 0.15;
-    border: 1px solid  rgba(85, 96, 128, 0.15);
+    border: 1px solid #D3D6D9;
     box-sizing: border-box;
-    box-shadow: 0px 0px 20px rgba(23, 21, 48, 0.102546);
     border-radius: 8px;
 }
 
@@ -45,20 +48,36 @@
     font-family: Nunito Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
-    line-height: 19px;
+    font-size: 16px;
     /* identical to box height */
 
     --padding-start: 10px;
-    color: #556080;
+    color: #7A838C;
 }
-.error-message{
-    position: absolute;
-    left: 4.27%;
-    width: 91.46%;
-    top: calc(52.62% + 51px);
+.input-text {
+    color: #21313F;
+    margin-top: -20px;
 }
 
+.input-icon {
+    margin: 17px 17px 17px 2px;
+    font-size: 20px;
+}
+.label-floating {
+    transform: translate3d(0,11px,0);
+    margin-top: 5px;
+}
+
+.item-inner  {
+    border: none !important;
+}
+
+.error-message{
+    padding-left: 0;
+}
+.ion-text-wrap {
+    padding-left: -16px;
+}
 .button-next {
     position: absolute;
     left: 4.27%;
@@ -97,9 +116,14 @@
     font-size: 14px;
     line-height: 19px;
     /* identical to box height */
-    color: #556080;
+    color: #21313F;
 }
-
+.button-skip-icon {
+    font-size: 13px;
+    line-height: 20px;
+    margin-left: 2px;
+    color: #21313F;
+}
 .clear-background {
     --background: transparent;
     --background-activated: transparent;

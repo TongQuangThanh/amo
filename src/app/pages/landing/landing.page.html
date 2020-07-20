@@ -1,16 +1,30 @@
-
-
+<ion-img class="image-page" src="/assets/common/amo_visual_bg.png"></ion-img>
 <ion-img class="image-page" src="/assets/common/amo_visual.png"></ion-img>
-<ion-label class="label-text">{{ 'LANDING.content_text' | translate }}</ion-label>
-<ion-input class="phone-input phone-input-text" [ngClass]="!errorInputPhone ? '' : 'error-input'" [(ngModel)]="phoneNumber" clearInput type="tel" placeholder="{{ 'LANDING.phone_place_holder' | translate }}"></ion-input>
-<ion-item lines="none" class="error-message" *ngIf="errorMessage != ''">
-  <ion-label color="danger" class="ion-text-wrap">{{errorMessage}}</ion-label>
-</ion-item>
-<ion-button expand="block" class="amo-button-custom" [ngClass]="!checkIsEnabled() ? 'button-common button-next' : 'button-common button-next button-common-active'" [disabled]="!checkIsEnabled()" (click)="ChangeLogin()">
-  <ion-label class="button-next-label">{{ 'LANDING.continue' | translate }}</ion-label>
-</ion-button>
+<div class="landing-white-bg">
+  <div class="landing-text">
+    <ion-label class="label-text">{{ 'LANDING.content_text' | translate }}</ion-label>
+  </div>
 
-<ion-button expand="block" class="button-skip clear-background" (click)="SkipLogin()" routerDirection="forward">
-    <ion-label class="button-skip-label">{{ 'LANDING.skip' | translate }}</ion-label>
-    <ion-icon class="button-skip-label" name="arrow-round-forward"></ion-icon>
-</ion-button>
+  <div class="landing-input">
+    <ion-item class="phone-input phone-input-text" [ngClass]="!errorInputPhone ? '' : 'error-input'">
+      <ion-icon name="custom-mobile" class="input-icon" src="/assets/icon/custom-mobile.svg" slot="start"></ion-icon>
+      <ion-label class="item-inner" position="floating">{{ 'LANDING.phone_number_text' | translate }}</ion-label>
+      <ion-input class="input-text" [(ngModel)]="phoneNumber" clearInput type="tel"></ion-input>
+    </ion-item>
+    <!-- <ion-input class="phone-input phone-input-text" [ngClass]="!errorInputPhone ? '' : 'error-input'" [(ngModel)]="phoneNumber" clearInput type="tel" placeholder="{{ 'LANDING.phone_place_holder' | translate }}"></ion-input> -->
+  </div>
+  <div class="landing-errorMessage">
+    <ion-item lines="none" class="error-message" *ngIf="errorMessage != ''">
+      <ion-label color="danger" class="ion-text-wrap">{{errorMessage}}</ion-label>
+    </ion-item>
+  </div>
+  
+  <ion-button expand="block" class="" [ngClass]="!checkIsEnabled() ? 'button-common button-next' : 'button-common button-next button-common-active'" [disabled]="!checkIsEnabled()" (click)="ChangeLogin()">
+    <ion-label class="button-next-label">{{ 'LANDING.continue' | translate }}</ion-label>
+  </ion-button>
+  
+  <ion-button expand="block" class="button-skip clear-background" (click)="SkipLogin()" routerDirection="forward">
+      <ion-label class="button-skip-label">{{ 'LANDING.skip' | translate }}</ion-label>
+      <ion-icon class="button-skip-icon" name="chevron-forward-outline" src="/assets/icon/chevron-forward-outline.svg"></ion-icon>
+  </ion-button>
+</div>

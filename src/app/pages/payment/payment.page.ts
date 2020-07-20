@@ -19,6 +19,7 @@ export class PaymentPage implements OnInit {
   listPaymentBills: any;
   currentPage: number;
   numberRecordOnPage: number;
+  segmentModel: string = "service_fee";
 
   constructor(
     private translate: TranslateService,
@@ -39,6 +40,12 @@ export class PaymentPage implements OnInit {
     // this.currentPage = 1;
     // this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
     // this.getPaymentLogs(this.currentPage, this.numberRecordOnPage, '', '', null, false);
+  }
+
+  segmentChanged(event){
+    console.log(this.segmentModel);
+    
+    console.log(event);
   }
 
   ionViewWillEnter(){

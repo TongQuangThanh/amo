@@ -6,6 +6,9 @@ import { UtilsService } from '../../utils/utils.service';
 import { AlertService } from '../../services/alert/alert.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { TranslateService } from '@ngx-translate/core';
+import { ActionSheetController } from '@ionic/angular';
+import { TranslateConfigService } from '../../translate-config.service';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-my-account',
@@ -24,6 +27,8 @@ export class MyAccountPage implements OnInit {
   personalLiscence: any;
   avatar:any;
   // listCountries:any;
+  userName: string;
+  selectedLanguage:string;
 
   constructor(
     private translate: TranslateService,
@@ -32,8 +37,37 @@ export class MyAccountPage implements OnInit {
     private apiService: ApiService,
     private navCtrl: NavController,
     private authService: AuthService,
+    public actionSheetController: ActionSheetController,
+    private translateConfigService: TranslateConfigService,
+    
   ) { 
     // this.listCountries = ConstService.LIST_COUNTRIES;
+    this.selectedLanguage = this.translateConfigService.getDefaultLanguage();
+    const profile = this.authService.getProfile();
+    if(profile && this.userName != profile.displayName){
+      this.userName = profile.displayName;
+    }
+  }
+  async selectLanguage() {
+    const actionSheet = await this.actionSheetController.create({
+      header: this.translate.instant('MY_ACCOUNT.language'),
+      cssClass: 'select-language',
+      buttons: [{
+        text: this.translate.instant('MY_ACCOUNT.vn'),
+        icon: 'checkmark-circle',
+        cssClass : 'select-language-btn selected-btn',
+        handler: () => {
+          this.languageChanged('vi');          
+        }
+      }, {
+        text: this.translate.instant('MY_ACCOUNT.en'),
+        cssClass : 'select-language-btn',
+        handler: () => {
+          this.languageChanged('en');
+        }
+      }]
+    });
+    await actionSheet.present();
   }
 
   ngOnInit() {
@@ -51,7 +85,7 @@ export class MyAccountPage implements OnInit {
         self.nationality = result.profile.nationality;
         self.dateOfBirth = result.profile.dateOfBirth;
         self.personalLiscence = result.profile.personalLiscence;
-        self.avatar = result.profile.avatar != null ? result.profile.avatar : '../assets/icon/avatar-default.png';
+        self.avatar = result.profile.avatar != null ? result.profile.avatar : '../assets/icon/avatar-red.svg';
         self.loading.dismiss()
     },
     error => {
@@ -93,5 +127,17 @@ export class MyAccountPage implements OnInit {
     this.authService.logout();
     this.navCtrl.navigateRoot('/landing');
   }
+
+  languageChanged(language:string){
+    this.selectedLanguage = language;
+    this.translateConfigService.setLanguage(this.selectedLanguage);
+    localStorage.setItem('lang', language);
+  }
+
+  changePassword(){
+    this.navCtrl.navigateForward('/change-password');
+  }
+
+  
 
 }

@@ -1,23 +1,28 @@
 <ion-tabs ionTabsDidChange="tabChanged($event)">
-  <ion-tab-bar slot="bottom">
+  <ion-tab-bar slot="bottom" class="ion-no-border">
     <ion-tab-button tab="home" (click)="userRequestTab('home')">
-      <ion-icon src="../../../assets/icon/custom-home.svg"></ion-icon>        
+      <ion-icon class="tab-icon" src="../../../assets/icon/custom-home.svg"></ion-icon>
+      <ion-label class="tab-label">{{ 'DASHBOARD.tab_home' | translate }}</ion-label>        
     </ion-tab-button>
 
     <ion-tab-button tab="notification" (click)="userRequestTab('notification')">
-      <ion-icon src="../../../assets/icon/custom-notification.svg"></ion-icon>
+      <ion-icon class="tab-icon" src="../../../assets/icon/custom-noti.svg"></ion-icon>
+      <ion-label class="tab-label">{{ 'DASHBOARD.tab_notification' | translate }}</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="payment" (click)="userRequestTab('chargeNotice')">
-      <ion-icon src="../../../assets/icon/custom-payment.svg"></ion-icon>
+      <ion-icon class="tab-icon" src="../../../assets/icon/custom-pay.svg"></ion-icon>
+      <ion-label class="tab-label">{{ 'DASHBOARD.tab_payment' | translate }}</ion-label>
     </ion-tab-button>
     
     <ion-tab-button tab="requests" (click)="userRequestTab('request')">
-      <ion-icon src="../../../assets/icon/custom-requests.svg"></ion-icon>
+      <ion-icon class="tab-icon" src="../../../assets/icon/custom-request.svg"></ion-icon>
+      <ion-label class="tab-label">{{ 'DASHBOARD.tab_request' | translate }}</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="services" (click)="userRequestTab('service')">
-      <ion-icon src="../../../assets/icon/custom-services.svg"></ion-icon>
+      <ion-icon class="tab-icon" src="../../../assets/icon/custom-service.svg"></ion-icon>
+      <ion-label class="tab-label">{{ 'DASHBOARD.tab_service' | translate }}</ion-label>
     </ion-tab-button>
     
   </ion-tab-bar>
