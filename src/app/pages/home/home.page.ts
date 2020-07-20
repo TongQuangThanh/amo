@@ -55,7 +55,7 @@ export class HomePage implements OnInit {
     if(profile && profile.avatar && profile.avatar != "" && this.avatar != profile.avatar){
       this.avatar = profile.avatar;
     }else{
-      this.avatar = '../assets/icon/avatar-default.png';
+      this.avatar = '../assets/icon/avatar-default.svg';
     }
     this.apiService.userClickStatistic('home')
       .subscribe(result => {
@@ -176,7 +176,11 @@ export class HomePage implements OnInit {
   }
   
   changePayment(){
-    // this.navCtrl.navigateForward('/service-list-by-category/5cbc3fad1f4b43178ea16a10');
+    this.navCtrl.navigateForward('/payment');
+  }
+
+  goToNotification(){
+    this.navCtrl.navigateForward('/notification');
   }
 
   onScroll(event) {
@@ -205,4 +209,5 @@ export class HomePage implements OnInit {
       }
     }
   }
+
 }

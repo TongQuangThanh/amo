@@ -1,9 +1,10 @@
 {
     "LANDING": {
         "content_text": "Enter your phone number to login",
-        "phone_place_holder": "Phone number",
+        "phone_place_holder": "Enter phone number ...",
+        "phone_number_text": "Phone number",
         "continue": "Continue",
-        "skip": "Register"
+        "skip": "Skip, trial"
     },
     "LOGIN":{
         "title": "Login",
@@ -15,7 +16,7 @@
         "login_error": "Phone number or password is not correct"
     },
     "REGISTER" : {
-	    "note_text_confirm": "A text message with a 4-digit verification code was just sent to your phone number",
+	    "note_text_confirm": "Enter your phone number to get 4-digit verification code and create new password.",
 	    "forgot_password_note": "A 4-digit verification code will be sent to your phone number, please check your SMS message",
 	    "verification_code": "verification code",
 	    "note_view_apartment_code": "Each apartment will have a separate code of 6 characters for security purepose. If you have not received the code yet, please contact your Property Managers for assistance or skip for trial first.",
@@ -43,12 +44,16 @@
         "message_change_pass_sucess": "Update password successfully"
     },
     "DASHBOARD": {
-
+        "tab_home": "Home",
+        "tab_notification": "News",
+        "tab_payment": "Payment",
+        "tab_request": "Email",
+        "tab_service": "Services"
     },
     "FORGOT_PASSWORD":{
         "forgot_password_note": "A text message with a 4-digit verification code was just sent to your phone number",
         "title": "Forgot password",
-        "btn_text_me": "Text me"
+        "btn_text_me": "Continue"
     },
     "HOME":{
         "title": "Home",
@@ -63,7 +68,13 @@
         "other": "Other",
         "top_news": "Top news",
         "pull_to_refresh": "Pull to refresh",
-        "loadding_more": "Loading more data..."
+        "loadding_more": "Loading more data...",
+        "amount_number": "vnd",
+        "create_request_detail": "Send request to manager...",
+        "book_car": "Book car",
+        "helper": "Helper",
+        "view_all": "View all",
+        "top_notification": "New notifications"
     },
     "MY_ACCOUNT":{
         "title": "My account",
@@ -79,7 +90,18 @@
         "help_center": "Help center",
         "btn_log_out": "Log out",
         "message_update_sucess": "Update profile successfully",
-        "message_update_fail": "Update profile fail"
+        "message_update_fail": "Update profile fail",
+        "language":"Language",
+        "app_notification": "App notification",
+        "change_password": "Change password",
+        "app_infomation": "App information",
+        "contact": "Contact",
+        "feedback": "Feedback",
+        "terms": "Terms & Conditions",
+        "guideline": "Guideline",
+        "vote": "Vote, rate",
+        "vn": "Vietnamese",
+        "en": "English"
     },
     "MY_HOME":{
         "title": "My Home",
@@ -132,7 +154,7 @@
         "loadding_more": "Loading more data..."
     },
     "NOTIFICATION_DETAIL":{
-
+        "btn_comment": "Add comment"
     },
     "NOTIFICATION_COMMENT":{
         "title": "Comment",
@@ -169,7 +191,17 @@
         "status_pending": "Pending",
         "status_done": "Done",
         "pull_to_refresh": "Pull to refresh",
-        "loadding_more": "Loading more data..."
+        "loadding_more": "Loading more data...",
+        "all_payment": "All",
+        "electricity_fee": "Electricity Fee",
+        "water_fee": "Water Fee",
+        "service_fee": "Services Fee",
+        "management_fee": "Management Fee",
+        "badge_outdate": "Outdate",
+        "badge_paid": "Paid",
+        "badge_sent": "Sent",
+        "transfer": "Transfer",
+        "cash": "Cash"
     },
     "PAYMENT_INFOR":{
         "title": "Payment information",

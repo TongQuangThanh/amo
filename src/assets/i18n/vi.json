@@ -1,9 +1,10 @@
 {
     "LANDING": {
-        "content_text": "Nhập số điện thoại để đăng nhập",
-        "phone_place_holder": "Số điện thoại",
+        "content_text": "Nhập số điện thoại của bạn để đăng nhập",
+        "phone_place_holder": "Nhập số điện thoại...",
+        "phone_number_text": "Số điện thoại",
         "continue": "Tiếp tục",
-        "skip": "Đăng kí"
+        "skip": "Bỏ qua để dùng thử"
     },
     "LOGIN":{
         "title": "Đăng nhập",
@@ -11,7 +12,7 @@
         "placeholder_phone": "Số điện thoại",
         "placeholder_pass": "Mật khẩu",
         "button_login_label": "Đăng nhập",
-        "forgot_pass_label": "Quên mật khẩu",
+        "forgot_pass_label": "Bạn quên mật khẩu?",
         "login_error": "Số điện thoại hoặc mật khẩu không đúng"
     },
     "REGISTER" : {
@@ -43,12 +44,16 @@
         "message_change_pass_sucess": "Cập nhật mật khẩu thành công"
     },
     "DASHBOARD": {
-
+        "tab_home": "Trang chủ",
+        "tab_notification": "Thông báo",
+        "tab_payment": "Thanh toán",
+        "tab_request": "Hộp thư",
+        "tab_service": "Tiện ích"
     },
     "FORGOT_PASSWORD":{
-        "forgot_password_note": "Một mã xác minh 4 chữ số đã được gửi đến số điện thoại của bạn, vui lòng kiểm tra tin nhắn",
+        "forgot_password_note": "Nhập số điện thoại lấy mã xác nhận, tạo mật khẩu mới.",
         "title": "Quên mật khẩu",
-        "btn_text_me": "Gửi cho tôi"
+        "btn_text_me": "Tiếp tục"
     },
     "HOME":{
         "title": "Home",
@@ -63,10 +68,16 @@
         "other": "Khác",
         "top_news": "Tin tức",
         "pull_to_refresh": "Kéo xuống để làm mới",
-        "loadding_more": "Đang tải dữ liệu..."
+        "loadding_more": "Đang tải dữ liệu...",
+        "amount_number": "vnđ",
+        "create_request_detail": "Gửi yêu cầu cho BQL...",
+        "book_car": "Gọi xe",
+        "helper": "Giúp việc",
+        "view_all": "Tất cả",
+        "top_notification": "Thông báo mới nhất"
     },
     "MY_ACCOUNT":{
-        "title": "Tải khoản của tôi",
+        "title": "Tài khoản",
         "btn_save": "Lưu",
         "male": "Nam",
         "female": "Nữ",
@@ -79,7 +90,18 @@
         "help_center": "Trợ giúp",
         "btn_log_out": "Đăng xuất",
         "message_update_sucess": "Cập nhật thông tin thành công",
-        "message_update_fail": "Cập nhật thông tin thất bại"
+        "message_update_fail": "Cập nhật thông tin thất bại",
+        "language":"Ngôn ngữ",
+        "app_notification": "Thông báo ứng dụng",
+        "change_password": "Đổi mật khẩu",
+        "app_infomation": "Thông tin ứng dụng",
+        "contact": "Liên hệ",
+        "feedback": "Góp ý",
+        "terms": "Quy chế hoạt động, điều khoản",
+        "guideline": "Hướng dẫn sử dụng",
+        "vote": "Bình chọn, đánh giá",
+        "vn": "Tiếng Việt",
+        "en": "Tiếng Anh"
     },
     "MY_HOME":{
         "title": "Căn hộ",
@@ -132,7 +154,7 @@
         "loadding_more": "Đang tải dữ liệu..."
     },
     "NOTIFICATION_DETAIL":{
-
+        "btn_comment": "Thêm bình luận"
     },
     "NOTIFICATION_COMMENT":{
         "title": "Bình Luận",
@@ -160,7 +182,7 @@
     },
     "PAYMENT":{
         "title": "Thanh toán",
-        "amount_to_pay": "Chờ thanh toán",
+        "amount_to_pay": "Số tiền cần thanh toán",
         "vnd": "vnd",
         "pay_now": "Thanh toán",
         "top_up": "Nạp tiền",
@@ -169,7 +191,17 @@
         "status_pending": "Chờ xử lý",
         "status_done": "Hoàn thành",
         "pull_to_refresh": "Kéo xuống để làm mới",
-        "loadding_more": "Đang tải dữ liệu..."
+        "loadding_more": "Đang tải dữ liệu...",
+        "all_payment": "Tất cả",
+        "electricity_fee": "Tiền điện",
+        "water_fee": "Tiền nước",
+        "service_fee": "Phí dịch vụ",
+        "management_fee": "Phí quản lý",
+        "badge_outdate": "Quá hạn",
+        "badge_paid": "Đã t.toán",
+        "badge_sent": "Đã gửi",
+        "transfer": "Chuyển khoản",
+        "cash": "Tiền mặt"
     },
     "PAYMENT_INFOR":{
         "title": "Thông tin hóa đơn",

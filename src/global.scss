@@ -37,9 +37,10 @@
     --background-focused: #556080;
     --background-hover:#556080;
     --background: #556080;
+    --background-activated: #c5433a;
     mix-blend-mode: normal;
     opacity: 0.1;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 .button-common-active {
@@ -92,12 +93,12 @@ iframe {
     --background: #FA7268;
     text-transform: none;
     --background-activated: rgba(250, 114, 104,0.5);
-    border-radius: 5px;
-    --border-radius: 5px;
+    border-radius: 8px;
+    --border-radius: 8px;
     padding: 0px 16px 0px 16px;
     .button-native {
-        border-radius: 5px;
-        --border-radius: 5px;
+        border-radius: 8px;
+        --border-radius: 8px;
     }
 }
 
@@ -149,8 +150,9 @@ iframe {
 }
 
 ion-title{
-    font-size: 24px;
-    color: #556080;
+    margin-left: 20px;
+    font-size: 18px;
+    color: #21313F;;
 }
 
 body {
@@ -162,4 +164,15 @@ ion-toolbar {
         text-align: left;
         padding-inline-start: 35px;
     }
+}
+
+@font-face {
+    font-family: Nunito Sans;
+    src: url(assets/font/NunitoSans-Regular.ttf);
+}
+
+ion-back-button {
+    --icon-font-size: 20px;
+    margin-left: 16px;
+    color: #21313F;
 }

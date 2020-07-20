@@ -1,14 +1,38 @@
-<ion-header no-border>
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button text=""></ion-back-button>
+      <ion-back-button text="" icon="arrow-back-outline"></ion-back-button>
     </ion-buttons>
     <ion-title>{{ 'LOGIN.title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-list>
+  <div class="login-input">
+    <ion-item class="phone-input phone-input-text">
+      <ion-icon name="custom-mobile" class="input-icon" src="/assets/icon/custom-mobile.svg" slot="start"></ion-icon>
+      <ion-label class="item-inner" position="floating">{{ 'LOGIN.placeholder_phone' | translate }}</ion-label>
+      <ion-input class="input-text" [(ngModel)]="phone" clearInput type="tel" name="phone"></ion-input>
+    </ion-item>
+    <ion-item class="margin-20 pass-input pass-input-text">
+      <ion-icon name="custom-locker" class="input-icon" src="/assets/icon/custom-locker.svg" slot="start"></ion-icon>
+      <ion-label class="item-inner" position="floating">{{ 'LOGIN.placeholder_pass' | translate }}</ion-label>
+      <ion-input class="input-text" [(ngModel)]="password" clearInput type="password" name="password"></ion-input>
+      <ion-icon name="eye-off-outline" class="pass-hide-icon" src="/assets/icon/eye-off-outline.svg" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item lines="none" class="error-message" *ngIf="errorMessage != ''">
+      <ion-label color="danger" class="ion-text-wrap">{{errorMessage}}</ion-label>
+    </ion-item>
+    
+  </div>
+  <ion-button (click)="login()" expand="block" class="" [ngClass]="!checkIsEnabled() ? 'button-common login-button' : 'button-common login-button button-common-active'" [disabled]="!checkIsEnabled()">
+    <ion-label class="button-next-label">{{ 'LOGIN.button_login_label' | translate }}</ion-label>
+  </ion-button>
+  <ion-button expand="block" class="forgot-pass clear-background" (click)="changeToForgotPass()" routerDirection="forward">
+      <ion-label class="button-skip-label">{{ 'LOGIN.forgot_pass_label' | translate }}</ion-label>
+  </ion-button>
+
+  <!-- <ion-list>
     <ion-item lines="none" class="padding-10">
       <p class="text-note">{{ 'LOGIN.note_string' | translate }}</p>
     </ion-item>
@@ -29,5 +53,5 @@
             <ion-label class="button-skip-label">{{ 'LOGIN.forgot_pass_label' | translate }}</ion-label>
         </ion-button>
     </ion-item>
-  </ion-list>
+  </ion-list> -->
 </ion-content>
