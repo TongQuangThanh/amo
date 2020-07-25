@@ -126,6 +126,10 @@ const routes: Routes = [
     path: 'payment',
     loadChildren: () => import('./pages/payment/payment.module').then(m => m.PaymentPageModule),
     canActivate: [AuthGuard]
+  },
+  {
+    path: 'order-shop-history',
+    loadChildren: () => import('./pages/order-shop-history/order-shop-history.module').then( m => m.OrderShopHistoryPageModule)
   }
 ];
 
