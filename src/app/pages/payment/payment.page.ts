@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Platform, NavController } from '@ionic/angular';
+import { Component, OnInit, ViewChild  } from '@angular/core';
+import { Platform, NavController, NavParams } from '@ionic/angular';
 import { ApiService } from '../../services/api/api.service';
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
 import { LoadingService } from '../../services/loading/loading.service';
@@ -7,6 +7,8 @@ import { ConstService } from '../../utils/const.service';
 import { UtilsService } from '../../utils/utils.service';
 import { AlertService } from '../../services/alert/alert.service'
 import { TranslateService } from '@ngx-translate/core';
+import { SuperTabs } from '@ionic-super-tabs/angular';
+import { SuperTabsConfig } from '@ionic-super-tabs/core';
 
 @Component({
   selector: 'app-payment',
@@ -28,8 +30,9 @@ export class PaymentPage implements OnInit {
     private alertService: AlertService,
     private apiService: ApiService,
     private navCtrl: NavController,
+    // public navParams: NavParams, 
     private nativePageTransitions: NativePageTransitions) {
-
+      
     platform.ready().then((readySource) => {
       this.heightScreen = platform.height() - 200 - 44 - 50;
     });
@@ -66,6 +69,7 @@ export class PaymentPage implements OnInit {
           for(let i=0;i<result.paymentBills.length;i++){
             if(result.paymentBills[i].payment){
               listPaymentNoNull.push(result.paymentBills[i]);
+              listPaymentNoNull.push(result.paymentBills[i]);
             }
           }
           self.listPaymentBills = listPaymentNoNull;
@@ -73,6 +77,7 @@ export class PaymentPage implements OnInit {
           //self.listPaymentBills = self.listPaymentBills.concat(result.paymentBills);
           for(let i=0;i<result.paymentBills.length;i++){
             if(result.paymentBills[i].payment){
+              self.listPaymentBills.push(result.paymentBills[i]);
               self.listPaymentBills.push(result.paymentBills[i]);
             }
           }
@@ -125,4 +130,5 @@ export class PaymentPage implements OnInit {
   paymentNow(){
     this.alertService.presentToast(this.translate.instant('COMMON.maintain'));
   }
+
 }

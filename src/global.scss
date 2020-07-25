@@ -169,10 +169,57 @@ ion-toolbar {
 @font-face {
     font-family: Nunito Sans;
     src: url(assets/font/NunitoSans-Regular.ttf);
+    font-weight: normal;
+}
+@font-face {
+    font-family: Nunito Sans;
+    src: url(assets/font/NunitoSans-Black.ttf);
+    font-weight: 900;
+}
+@font-face {
+    font-family: Nunito Sans;
+    src: url(assets/font/NunitoSans-Bold.ttf);
+    font-weight: bold;
 }
 
 ion-back-button {
     --icon-font-size: 20px;
     margin-left: 16px;
     color: #21313F;
+}
+.badge-danger {
+    background: rgba(250, 114, 104, 0.2);
+    border-radius: 4px;
+    padding: 2px 15px;
+}
+.badge-danger-label {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    color: #FA7268;
+}
+.badge-paid {
+    background: rgba(81, 210, 181, 0.2);
+    border-radius: 4px;
+    padding: 2px 15px;
+}
+.badge-paid-label {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    color: #51D2B5;
+}
+.badge-sent {
+    background: rgba(0, 154, 201, 0.2);
+    border-radius: 4px;
+    padding: 2px 15px;
+}
+.badge-sent-label {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    color: #009AC9;
 }

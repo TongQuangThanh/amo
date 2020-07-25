@@ -21,6 +21,7 @@ export class PaymentInforPage implements OnInit {
   paymentEndAt : string;
   paymentCategoryTranfer: any;
   paymentID: string;
+  managementFeeEnable: any;
   constructor(
     private loading: LoadingService,
     private apiService: ApiService,
@@ -43,9 +44,9 @@ export class PaymentInforPage implements OnInit {
         self.titlePage = result.paymentBill.payment.title;
         self.paymentStartAt = result.paymentBill.payment.paymentStartAt;
         self.paymentCategoryTranfer = result.paymentBill.category.transfer;
-        console.log(self.paymentCategoryTranfer);
         self.paymentEndAt = result.paymentBill.payment.paymentEndAt;
         self.listPaymentContent = result.paymentBill.content;
+        self.managementFeeEnable = new Array(self.listPaymentContent.length).fill(false);
         self.loading.dismiss()
     },
     error => {
@@ -81,5 +82,12 @@ export class PaymentInforPage implements OnInit {
 
   showListComment(){
     this.navCtrl.navigateForward('/payment-comment/' + this.paymentID);
+  }
+
+  toggleGroupManagementFee(indexElement:number){
+    this.managementFeeEnable[indexElement] = !this.managementFeeEnable[indexElement];
+  }
+  isGroupManagementFeeShown(indexElement:number){
+    return this.managementFeeEnable[indexElement];
   }
 }

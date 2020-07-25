@@ -54,14 +54,15 @@ export class MyAccountPage implements OnInit {
       cssClass: 'select-language',
       buttons: [{
         text: this.translate.instant('MY_ACCOUNT.vn'),
-        icon: 'checkmark-circle',
-        cssClass : 'select-language-btn selected-btn',
+        icon: this.selectedLanguage === 'vi' ? 'checkmark-circle' : '',
+        cssClass : this.selectedLanguage === 'vi' ? 'select-language-btn selected-btn' : 'select-language-btn',
         handler: () => {
           this.languageChanged('vi');          
         }
       }, {
         text: this.translate.instant('MY_ACCOUNT.en'),
-        cssClass : 'select-language-btn',
+        cssClass : this.selectedLanguage === 'en' ? 'select-language-btn selected-btn' : 'select-language-btn',
+        icon: this.selectedLanguage === 'en' ? 'checkmark-circle' : '',
         handler: () => {
           this.languageChanged('en');
         }

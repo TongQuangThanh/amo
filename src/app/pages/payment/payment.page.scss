@@ -296,17 +296,13 @@
     display: block;
 }
 .button-tab-custom {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center;
-    color: #7A838C;
     border-radius: 0;
+    box-shadow: none;
 }
 .segment-toolbar {
     border-bottom: 1px solid #F4F5F5;
+    background: transparent;
+    box-shadow: none;
 }
 .segment-content {
     background: transparent;
@@ -389,42 +385,7 @@
 .custom-last-col {
     padding: 0;
 }
-.badge-danger {
-    background: rgba(250, 114, 104, 0.2);
-    border-radius: 4px;
-    padding: 2px 15px;
-}
-.badge-danger-label {
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 18px;
-    text-align: center;
-    color: #FA7268;
-}
-.badge-paid {
-    background: rgba(81, 210, 181, 0.2);
-    border-radius: 4px;
-    padding: 2px 15px;
-}
-.badge-paid-label {
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 18px;
-    text-align: center;
-    color: #51D2B5;
-}
-.badge-sent {
-    background: rgba(0, 154, 201, 0.2);
-    border-radius: 4px;
-    padding: 2px 15px;
-}
-.badge-sent-label {
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 18px;
-    text-align: center;
-    color: #009AC9;
-}
+
 .payment-fee {
     font-family: Nunito Sans;
     font-style: normal;
@@ -445,4 +406,28 @@ ion-col {
     // display: flex; 
     // align-items: flex-end;
     margin-top: 5px;
+}
+
+.super-tabs-content {
+    top: calc(20% + 60px);
+}
+:host {  
+    --super-tabs-toolbar-background: black;
+    --st-indicator-color: #FA7268;
+    --st-indicator-width: 30px;
+    --ion-color-base: transparent;
+}
+.button-tab-label {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    text-transform: none !important;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #7A838C;
+}
+
+.no-scroll {
+    --overflow: hidden;
 }

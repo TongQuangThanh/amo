@@ -9,6 +9,9 @@ import { NavParams } from '@ionic/angular';
 })
 export class DashboardPage implements OnInit {
   screenID:string;
+  tabIconEnable: boolean= false;
+  iconSelected = "home";
+
   constructor(
     private apiService: ApiService,
     //private navParams: NavParams
@@ -30,18 +33,25 @@ export class DashboardPage implements OnInit {
     //     this.user = user;
     //   }
     // );
+  } 
+  
+  isTabIconActiveShown(){
+    return this.tabIconEnable;
   }
-
+  
   userRequestTab(screenID:string){
+    this.iconSelected = screenID
     if(this.screenID != screenID){
       this.screenID = screenID;
       this.apiService.userClickStatistic(screenID)
         .subscribe(result => {
-          console.log(result)
+          console.log(result);
       },
       error => {
         console.log(error)
       });
     }
   }
+
+  
 }
