@@ -38,6 +38,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/pincode-password/pincode-password.module').then(m => m.PincodePasswordPageModule)
   },
   { 
+    path: 'notification',
+    loadChildren: () => import('./pages/notification/notification.module').then(m => m.NotificationPageModule),
+    canActivate: [AuthGuard]
+  },
+  { 
     path: 'notification-detail/:id',
     loadChildren: () => import('./pages/notification-detail/notification-detail.module').then(m => m.NotificationDetailPageModule),
     canActivate: [AuthGuard]
@@ -115,6 +120,11 @@ const routes: Routes = [
   { 
     path: 'change-password',
     loadChildren: () => import('./pages/change-password/change-password.module').then(m => m.ChangePasswordPageModule),
+    canActivate: [AuthGuard]
+  },
+  { 
+    path: 'payment',
+    loadChildren: () => import('./pages/payment/payment.module').then(m => m.PaymentPageModule),
     canActivate: [AuthGuard]
   }
 ];

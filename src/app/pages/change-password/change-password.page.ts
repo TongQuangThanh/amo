@@ -32,6 +32,13 @@ export class ChangePasswordPage implements OnInit {
   ngOnInit() {
   }
 
+  checkIsEnabled() {
+    if (this.oldPassword && this.newPassword.length >= 8 && this.newPassword && this.newPassword.length >= 8 && this.confirmPassword && this.confirmPassword.length >= 8) {
+      return true;
+    }
+    return false;
+  }
+
   updateAccount(){
     var self = this;
     const params = {

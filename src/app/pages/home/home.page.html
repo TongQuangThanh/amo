@@ -8,45 +8,16 @@
                 <ion-label class="avatar-content-title">{{userName}}</ion-label>
             </ion-chip>
             <ion-chip class="button-my-home" (click)="goToMyHome()">
-                <img width="24px" src="../../../assets/icon/home-icon.png" />
+                <img width="12px" src="../../../assets/icon/home-icon.svg" />
                 <ion-label class="myhome-content-title">{{ 'HOME.my_home' | translate }}</ion-label>
             </ion-chip>
         </div>
     </div>
     <div id="contentNews" class="amountPay-content">
-        <div id="content-button-child" class="function-content-button">
+        <!-- <div id="content-button-child" class="function-content-button">
             <div class="ion-float-left div-avatar-content-big btn-paynow" (click)="changePayment()">
                 <img class="img-avatar-big" src="../../../assets/common/pay_now.png">
                 <ion-label class="image-caption-big">{{ 'HOME.pay_now' | translate }}</ion-label>
-                <!-- <svg class="total-cash" width="122" height="64" viewBox="0 0 122 64" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g filter="url(#filter0_d)">
-                    <path d="M20 22C20 20.8954 20.8954 20 22 20H100C101.105 20 102 20.8954 102 22V38C102 39.1046 101.105 40 100 40H20V22Z" fill="#FA7268"/>
-                    </g>
-                    <text _ngcontent-qsl-c4="" class="font-cash-number" fill="white" font-size="14" x="60" y="34" text-anchor="middle">0 đ</text>
-                    <g filter="url(#filter1_d)">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M20 43.9961V39.9999H24L20 43.9961Z" fill="#FA7268"/>
-                    </g>
-                    <defs>
-                    <filter id="filter0_d" x="0" y="0" width="122" height="60" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
-                    <feOffset/>
-                    <feGaussianBlur stdDeviation="10"/>
-                    <feColorMatrix type="matrix" values="0 0 0 0 0.0901961 0 0 0 0 0.0823529 0 0 0 0 0.188235 0 0 0 0.102546 0"/>
-                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
-                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
-                    </filter>
-                    <filter id="filter1_d" x="0" y="20" width="44" height="43.9962" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
-                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0"/>
-                    <feOffset/>
-                    <feGaussianBlur stdDeviation="10"/>
-                    <feColorMatrix type="matrix" values="0 0 0 0 0.0901961 0 0 0 0 0.0823529 0 0 0 0 0.188235 0 0 0 0.102546 0"/>
-                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
-                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
-                    </filter>
-                    </defs>
-                    </svg>   -->
             </div>
             <div class="ion-float-right div-avatar-content-big btn-new-request">
                 <div (click)="createRequest()">
@@ -54,81 +25,174 @@
                     <ion-label class="image-caption-big">{{ 'HOME.create_request' | translate }}</ion-label>
                 </div>
             </div>
+        </div> -->
+        <div id="content-button-child" class="function-content-button">
+            <div class="ion-float-left div-avatar-content-big btn-paynow" (click)="changePayment()">
+                <ion-item lines="none" class="content-item">
+                    <ion-icon item-start name="pay-now" class="content-icon" src="/assets/icon/pay_now.svg"></ion-icon>
+                    <span class="image-caption-big">{{ 'HOME.pay_now' | translate }}</span>
+                </ion-item>
+                <ion-label class="amountPay-number">3.345.000 <span class="amountPay-unit">vnd</span></ion-label>
+            </div>
+            <div class="ion-float-right div-avatar-content-big btn-new-request" (click)="createRequest()">
+                <ion-item lines="none" class="content-item">
+                    <ion-icon item-start name="request-icon" class="content-icon" src="/assets/icon/request_icon.svg"></ion-icon>
+                    <span class="image-caption-big">{{ 'HOME.create_request' | translate }}</span>
+                </ion-item>
+                <ion-label class="request-detail">{{ 'HOME.create_request_detail' | translate }}</ion-label>
+            </div>
         </div>
     </div>
     <div id="function-content-big" class="function-content">
         <div class="ion-float-left div-avatar-content" (click)="changeRoomService()">
-            <img class="img-avatar"  src="../../../assets/icon/do-le.jpeg"/>
-            <ion-label class="image-caption">{{ 'HOME.cleaning' | translate }}</ion-label>
+            <img class="img-avatar"  src="../../../assets/icon/book-car.svg"/>
+            <ion-label class="image-caption">{{ 'HOME.book_car' | translate }}</ion-label>
         </div>
-        <div class="ion-float-left clear-avatar-rect"></div>
+        <!-- <div class="ion-float-left clear-avatar-rect"></div> -->
         <div class="ion-float-left div-avatar-content" (click)="changeReparing()">
-            <img class="img-avatar"  src="../../../assets/icon/ve-sinh.jpeg"/>
+            <img class="img-avatar"  src="../../../assets/icon/helper.svg"/>
+            <ion-label class="image-caption">{{ 'HOME.helper' | translate }}</ion-label>
+        </div>
+        <!-- <div class="ion-float-left clear-avatar-rect"></div> -->
+        <div class="ion-float-left div-avatar-content" (click)="changeFood()">
+            <img class="img-avatar"  src="../../../assets/icon/reparing.svg"/>
             <ion-label class="image-caption">{{ 'HOME.reparing' | translate }}</ion-label>
         </div>
-        <div class="ion-float-left clear-avatar-rect"></div>
-        <div class="ion-float-left div-avatar-content" (click)="changeFood()">
-            <img class="img-avatar"  src="../../../assets/icon/danh-giay.jpeg"/>
-            <ion-label class="image-caption">{{ 'HOME.fresh_food' | translate }}</ion-label>
-        </div>
-        <div class="ion-float-left clear-avatar-rect"></div>
+        <!-- <div class="ion-float-left clear-avatar-rect"></div> -->
         <div class="ion-float-left div-avatar-content" (click)="changeOther()">
-            <img class="img-avatar"  src="../../../assets/icon/other.png"/>
+            <img class="img-avatar"  src="../../../assets/icon/others.svg"/>
             <ion-label class="image-caption">{{ 'HOME.other' | translate }}</ion-label>
         </div>
     </div>
     <div id="function-content-small" style="display: none;" class="function-content-small">
         <div class="ion-float-left div-avatar-content-small" (click)="changePayment()">
-            <img class="img-avatar-small"  src="../../../assets/common/pay_now.png"/>
+            <img class="img-avatar-small"  src="../../../assets/icon/pay_now.svg"/>
         </div>
         <div class="ion-float-left div-avatar-content-small" (click)="createRequest()">
-            <img class="img-avatar-small"  src="../../../assets/common/request_icon.png"/>
+            <img class="img-avatar-small"  src="../../../assets/icon/request_icon.svg"/>
         </div>
         <div class="ion-float-left div-avatar-content-small" (click)="changeRoomService()">
-            <img class="img-avatar-small"  src="../../../assets/icon/do-le.jpeg"/>
+            <img class="img-avatar-small"  src="../../../assets/icon/book-car.svg"/>
         </div>
         <div class="ion-float-left clear-avatar-rect"></div>
         <div class="ion-float-left div-avatar-content-small" (click)="changeReparing()">
-            <img class="img-avatar-small"  src="../../../assets/icon/ve-sinh.jpeg"/>
+            <img class="img-avatar-small"  src="../../../assets/icon/helper.svg"/>
         </div>
         <div class="ion-float-left clear-avatar-rect"></div>
         <div class="ion-float-left div-avatar-content-small" (click)="changeFood()">
-            <img class="img-avatar-small"  src="../../../assets/icon/danh-giay.jpeg"/>
+            <img class="img-avatar-small"  src="../../../assets/icon/reparing.svg"/>
         </div>
         <div class="ion-float-left clear-avatar-rect"></div>
         <div class="ion-float-left div-avatar-content-small" (click)="changeOther()">
-            <img class="img-avatar-small"  src="../../../assets/icon/other.png"/>
+            <img class="img-avatar-small"  src="../../../assets/icon/others.svg"/>
         </div>
     </div>
     <div class="new-content" id="new-content">
-        <ion-label class="title-top-new">{{ 'HOME.top_news' | translate }}</ion-label>
-        <ion-content class="list-home-content" [style.height.px]="heightScreen" [scrollEvents]="true" (ionScroll)="onScroll($event)">
-            <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+        <ion-content class="list-home-content" [style.height.px]="heightScreen" [scrollEvents]="true" >
+            <!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
                 <ion-refresher-content
                 pullingIcon="arrow-dropdown"
                 pullingText="{{ 'HOME.pull_to_refresh' | translate }}"
                 refreshingSpinner="circles"
                 refreshingText="Refreshing...">
                 </ion-refresher-content>
-            </ion-refresher>
-            <ion-list class="list-view-custom">
-                <ion-card button class="card-content-custom" *ngFor="let item of listNews" (click)="detailPage($event)" id="{{item._id}}">
-                    <ion-img src="{{item.thumbnail}}"></ion-img>
-                    <ion-item lines="none" style="margin-top: 10px;">
-                        <ion-card-title class="ion-text-wrap content-two-line content-title">{{item.title}}</ion-card-title>
-                    </ion-item>
-                    <ion-item lines="none">
-                        <ion-label class="ion-text-wrap content-two-line content-sub">{{item.excerpt}}</ion-label>
-                    </ion-item>
-                    
-                </ion-card>
-            </ion-list>
-            <ion-infinite-scroll threshold="50px" (ionInfinite)="loadData($event)">
-                <ion-infinite-scroll-content class="custom-infinite-scroll"
-                loadingSpinner="bubbles"
-                loadingText="{{ 'HOME.loadding_more' | translate }}">
-                </ion-infinite-scroll-content>
-            </ion-infinite-scroll>
+            </ion-refresher> -->
+            <!-- <ion-content> -->
+                <ion-label class="title-top-new">{{ 'HOME.top_notification' | translate }}</ion-label>
+                <div class="ion-float-right" (click)="goToNotification()">
+                    <ion-label class="view-all-label">{{ 'HOME.view_all' | translate }}</ion-label>
+                </div>
+                <ion-list class="list-view-custom">
+                    <ion-card button class="card-content-custom" *ngFor="let item of listNews" (click)="detailPage($event)" id="{{item._id}}">
+                        <!-- <div class="card-img">
+                            <ion-img class="card-img-responsive" src="{{item.thumbnail}}"></ion-img>
+                            <ion-badge class="badge-corner badge-corner-base" slot="start">1111111111111111</ion-badge>
+                        </div> -->
+                        <div class="card-img">
+                            <ion-img src="{{item.thumbnail}}" class="img-responsive" alt=""></ion-img>
+                            <ion-label class="badge-corner badge-corner-base">11/06/2020</ion-label>
+                        </div>
+                        
+                        <ion-item lines="none" style="margin-top: 10px;">
+                            <ion-card-title class="ion-text-wrap content-two-line content-title">{{item.title}}</ion-card-title>
+                        </ion-item>
+                        <!-- <ion-item lines="none">
+                            <ion-label class="ion-text-wrap content-two-line content-sub">{{item.excerpt}}</ion-label>
+                        </ion-item> -->
+                        <div class="ion-float-left">
+                            <ion-item lines="none" class="card-bottom">
+                                <ion-icon item-start name="eye-outline" class="card-bottom-icon"></ion-icon>
+                                <span class="image-caption-big" class="card-bottom-label"> 115 </span>
+                            </ion-item>
+                        </div>
+                        <div class="ion-float-left">
+                            <ion-item lines="none" class="card-bottom">
+                                <ion-icon item-start name="custom-comment" class="card-bottom-icon" src="assets/icon/custom-comment.svg"></ion-icon>
+                                <span class="image-caption-big" class="card-bottom-label"> 2455 </span>
+                            </ion-item>
+                        </div>
+                        <div class="ion-float-left">
+                            <ion-item lines="none" class="card-bottom">
+                                <ion-icon item-start name="custom-attach" class="card-bottom-icon" src="assets/icon/custom-attach.svg"></ion-icon>
+                                <span class="image-caption-big" class="card-bottom-label"> 2 </span>
+                            </ion-item>
+                        </div>
+                    </ion-card>
+                </ion-list>
+                <!-- <ion-infinite-scroll threshold="50px" (ionInfinite)="loadData($event)">
+                    <ion-infinite-scroll-content class="custom-infinite-scroll"
+                    loadingSpinner="bubbles"
+                    loadingText="{{ 'HOME.loadding_more' | translate }}">
+                    </ion-infinite-scroll-content>
+                </ion-infinite-scroll> -->
+            <!-- </ion-content> -->
+            
+            <!-- <ion-content> -->
+                <ion-label class="title-top-new">{{ 'HOME.top_news' | translate }}</ion-label>
+                <div class="ion-float-right" (click)="goToNotification()">
+                    <ion-label class="view-all-label">{{ 'HOME.view_all' | translate }}</ion-label>
+                </div>
+                <ion-list class="list-view-custom">
+                    <ion-card button class="card-content-custom" *ngFor="let item of listNews" (click)="detailPage($event)" id="{{item._id}}">
+                        <div class="card-img">
+                            <ion-img src="{{item.thumbnail}}" class="img-responsive" alt=""></ion-img>
+                            <ion-label class="badge-corner badge-corner-base">11/06/2020</ion-label>
+                        </div>
+                        <ion-item lines="none" style="margin-top: 10px;">
+                            <ion-card-title class="ion-text-wrap content-two-line content-title">{{item.title}}</ion-card-title>
+                        </ion-item>
+                        <!-- <ion-item lines="none">
+                            <ion-label class="ion-text-wrap content-two-line content-sub">{{item.excerpt}}</ion-label>
+                        </ion-item> -->
+                        <div class="ion-float-left">
+                            <ion-item lines="none" class="card-bottom">
+                                <ion-icon item-start name="eye-outline" class="card-bottom-icon"></ion-icon>
+                                <span class="image-caption-big" class="card-bottom-label"> 115 </span>
+                            </ion-item>
+                        </div>
+                        <div class="ion-float-left">
+                            <ion-item lines="none" class="card-bottom">
+                                <ion-icon item-start name="custom-comment" class="card-bottom-icon" src="assets/icon/custom-comment.svg"></ion-icon>
+                                <span class="image-caption-big" class="card-bottom-label"> 2455 </span>
+                            </ion-item>
+                        </div>
+                        <div class="ion-float-left">
+                            <ion-item lines="none" class="card-bottom">
+                                <ion-icon item-start name="custom-attach" class="card-bottom-icon" src="assets/icon/custom-attach.svg"></ion-icon>
+                                <span class="image-caption-big" class="card-bottom-label"> 2 </span>
+                            </ion-item>
+                        </div>
+                    </ion-card>
+                </ion-list>
+                <!-- <ion-infinite-scroll threshold="50px" (ionInfinite)="loadData($event)">
+                    <ion-infinite-scroll-content class="custom-infinite-scroll"
+                    loadingSpinner="bubbles"
+                    loadingText="{{ 'HOME.loadding_more' | translate }}">
+                    </ion-infinite-scroll-content>
+                </ion-infinite-scroll> -->
+            <!-- </ion-content>             -->
+            
         </ion-content>
+        
     </div>
 </ion-content>
