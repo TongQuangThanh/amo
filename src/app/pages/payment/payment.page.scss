@@ -310,7 +310,7 @@
 }
 .segment-content-card {
     box-shadow: none;
-    
+    margin: 0;
 }
 .segment-card-content {
     padding-left: 0;
@@ -321,6 +321,9 @@
     font-size: 16px;
     line-height: 24px;
     color: #21313F;
+}
+.ion-padding {
+    padding-top: 0;
 }
 
 /* custom list */
@@ -377,7 +380,7 @@
     --background-focused: #FA7268;
     --background-hover:#FA7268;
     --background-activated: #ca5149;
-    border-radius: 4px;
+    --border-radius: 4px;
     font-size: 14px;
     margin: 0;
     height: 32px;
@@ -409,7 +412,7 @@ ion-col {
 }
 
 .super-tabs-content {
-    top: calc(20% + 60px);
+    top: calc(17% + 60px);
 }
 :host {  
     --super-tabs-toolbar-background: black;

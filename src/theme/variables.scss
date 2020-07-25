@@ -156,16 +156,11 @@
       --padding-left: 0;
     }
   }
-  super-tabs-toolbar:affter {
-    // background-image: none !important;
-    content: none;
-  }
   super-tab-button.active {
     ion-label {
       color: #21313F;
       font-weight: bold;
     }
-      
-    }
+  }
    
 }

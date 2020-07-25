@@ -120,6 +120,7 @@ ion-card-header {
 .function-item {
     position: fixed;
     bottom: 0;
+    --background: transparent;
     // --padding-start: 0;
     // --padding-end: 0;
     // --inner-padding-end: 0;
@@ -149,14 +150,13 @@ ion-card-header {
     margin-right: 10px;
 }
 .add-button{
-    background: #D4EBF3;
     --background-focused: #bee6f3;
     --background-hover:#bee6f3;
     --background: #D4EBF3;
+    --ion-toolbar-color: #D4EBF3;
     --background-activated: #bee6f3;
     mix-blend-mode: normal;
     border-radius: 5px;
-    width: 100%;
     height: 44px;
     margin-top: 10px;
     margin-bottom: 20px;
@@ -169,7 +169,7 @@ ion-card-header {
     line-height: 24px;
     text-align: center;
     color: #009AC9;
-    padding: 10px 30px;
+    padding: 10px 20px;
 }
 .number-watermark {
     position: absolute;
