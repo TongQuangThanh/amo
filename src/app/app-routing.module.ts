@@ -130,7 +130,15 @@ const routes: Routes = [
   {
     path: 'order-shop-history',
     loadChildren: () => import('./pages/order-shop-history/order-shop-history.module').then( m => m.OrderShopHistoryPageModule)
+  },
+  {
+    path: 'pop-delete-member',
+    loadChildren: () => import('./pages/popup-delete-member/popup-delete-member.module').then( m => m.PopupDeleteMemberPageModule)
+  },  {
+    path: 'my-account-detail',
+    loadChildren: () => import('./pages/my-account-detail/my-account-detail.module').then( m => m.MyAccountDetailPageModule)
   }
+
 ];
 
 @NgModule({

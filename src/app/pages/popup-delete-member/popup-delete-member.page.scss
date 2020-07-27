@@ -1,0 +1,69 @@
+root{
+    --borderColor:gray;
+    --charShape:none;
+}
+.content-wrap {
+    --background: rgba(33,49,63,0);
+}
+.content-container {
+    position: fixed;
+    height: 300px;
+    bottom: 0;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background: #ffffff;
+}
+.header-item {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+.modal-item {
+    margin: 30px 0;
+}
+.modal-toolbar {
+    margin-top: 10px;
+}
+.trash-icon {
+    font-size: 60px;
+}
+.delete_message {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #21313F;
+}
+.cancel-button {
+    width: 43.73%;
+    background: #D3D6D9;
+    --ion-toolbar-color: #D3D6D9;
+    border-radius: 8px;
+    margin: 0 10px;
+}
+.cancel-button-label {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #21313F;
+}
+.delete-button {
+    width: 43.73%;
+    background: #FA7268;
+    --ion-toolbar-color: #FA7268;
+    border-radius: 8px;
+    margin: 0 10px;
+}
+.delete-button-label {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+}

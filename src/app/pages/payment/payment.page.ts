@@ -69,7 +69,6 @@ export class PaymentPage implements OnInit {
           for(let i=0;i<result.paymentBills.length;i++){
             if(result.paymentBills[i].payment){
               listPaymentNoNull.push(result.paymentBills[i]);
-              listPaymentNoNull.push(result.paymentBills[i]);
             }
           }
           self.listPaymentBills = listPaymentNoNull;
@@ -77,7 +76,6 @@ export class PaymentPage implements OnInit {
           //self.listPaymentBills = self.listPaymentBills.concat(result.paymentBills);
           for(let i=0;i<result.paymentBills.length;i++){
             if(result.paymentBills[i].payment){
-              self.listPaymentBills.push(result.paymentBills[i]);
               self.listPaymentBills.push(result.paymentBills[i]);
             }
           }

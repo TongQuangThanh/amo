@@ -131,7 +131,19 @@
         "DOB": "DOB",
         "phone": "Phone",
         "personal_license": "ID Card",
-        "nationality": "Nationality"
+        "nationality": "Nationality",
+        "apartment_info": "Information",
+        "apartment_owner": "Owner",
+        "apartment_type": "Status",
+        "btn_delete": "Delete apartment",
+        "btn_reset_code": "Reset apartment code",
+        "apartment_owner_name": "Owner name",
+        "apartment_owner_email": "Owner email",
+        "delete": "Delete",
+        "exit": "Exit",
+        "btn_add_member": "Add member",
+        "btn_add_vehicle": "Add vehicle",
+        "delete_message": "Bạn chắc chắn muốn xóa thành viên? Việc này sẽ xóa tất cả dữ liệu bạn đã thiết lập."
     },
     "NEW_DETAIL":{
         "default_button_order": "Order serivice"

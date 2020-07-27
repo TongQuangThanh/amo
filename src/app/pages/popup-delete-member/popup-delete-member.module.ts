@@ -2,15 +2,15 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-import { SuperTabsModule } from '@ionic-super-tabs/angular';
+import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
-import { MyHomeDetailPage } from './my-home-detail.page';
+import { PopupDeleteMemberPage } from './popup-delete-member.page';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 const routes: Routes = [
   {
     path: '',
-    component: MyHomeDetailPage
+    component: PopupDeleteMemberPage
   }
 ];
 
@@ -19,10 +19,10 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
+    ReactiveFormsModule,
     TranslateModule,
-    SuperTabsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [MyHomeDetailPage]
+  declarations: [PopupDeleteMemberPage]
 })
-export class MyHomeDetailPageModule {}
+export class PopupDeleteMemberPageModule {}

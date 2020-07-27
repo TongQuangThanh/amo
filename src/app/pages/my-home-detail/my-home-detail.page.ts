@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../services/api/api.service';
 import { LoadingService } from '../../services/loading/loading.service';
 import { UtilsService } from '../../utils/utils.service';
+import { ModalController } from '@ionic/angular';
+import { PopupDeleteMemberPage } from '../popup-delete-member/popup-delete-member.page';
 
 @Component({
   selector: 'app-my-home-detail',
@@ -19,6 +21,7 @@ export class MyHomeDetailPage implements OnInit {
   memberEnable: boolean= false;
   // profile:any;
   constructor(
+    public modalController: ModalController,
     private loading: LoadingService,
     private apiService: ApiService,
     private route: ActivatedRoute,
@@ -65,6 +68,14 @@ export class MyHomeDetailPage implements OnInit {
 
   formatString(stringDate: string) {
     return UtilsService.formatString(stringDate);
+  }
+
+  async deleteMemberModal() {
+    const modal = await this.modalController.create({
+      component: PopupDeleteMemberPage,
+      cssClass: 'my-custom-class'
+    });
+    return await modal.present();
   }
 
 }
