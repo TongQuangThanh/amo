@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-
+import { SuperTabsModule } from '@ionic-super-tabs/angular';
 import { IonicModule } from '@ionic/angular';
 
 import { MyHomeDetailPage } from './my-home-detail.page';
@@ -20,6 +20,7 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     TranslateModule,
+    SuperTabsModule,
     RouterModule.forChild(routes)
   ],
   declarations: [MyHomeDetailPage]

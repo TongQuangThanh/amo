@@ -150,4 +150,19 @@
     --border-width: 0 !important;
     min-width: auto !important;
   }
+
+  super-tabs-toolbar {
+    .buttons-container {
+      --padding-left: 0;
+    }
+  }
+  super-tab-button.active {
+    ion-label {
+      color: #21313F;
+      font-weight: bold;
+    }
+  }
+  .sc-ion-modal-ios-h {
+    --background: none !important;
+}
 }

@@ -12,14 +12,31 @@
 
 <ion-content>
   <ion-list>
-    <ion-card *ngFor="let item of listDepartment" (click)="detailPage($event)" id="{{item._id}}">
-      <div class="custom-row">
+    <ion-card *ngFor="let item of listDepartment; let i = index" (click)="detailPage($event)" id="{{item._id}}">
+      <ion-text class="number-watermark ion-float-right">
+        <h1 class="number-watermark-text">{{i <= 9 ? "0"+ (i +1): (i+1)}}</h1>
+      </ion-text>
+      <ion-card-header>
+        <ion-card-title class="home-title">{{item.apartment.title + ' - ' + item.campaign.title}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content class="home-content">
+        <ion-label class="home-address">{{item.campaign.address}}</ion-label>
+        <ion-item lines="none" class="hotline-item">
+          <ion-label class="hotline-title">{{ 'MY_HOME.hotline_label' | translate }}</ion-label>
+          <ion-button slot="end" class="hotline-number clear-background">
+            <ion-icon class="hotline-icon" name="call-outline"></ion-icon>
+            (427) 253-7047
+          </ion-button>
+          <!-- <ion-label class="hotline-number" slot="end"><ion-icon class="hotline-icon" name="call-outline" slot="end"></ion-icon>(427) 253-7047</ion-label> -->
+        </ion-item>
+      </ion-card-content>
+      
+      <!-- <div class="custom-row">
           <div class="custom-col-9">
             <ion-item lines="none">
                 <ion-card-title class="ion-text-wrap home-title content-two-line">{{item.apartment.title + ' - ' + item.campaign.title}}</ion-card-title>
               </ion-item>
               <ion-item lines="none">
-                <!-- <ion-label class="ion-text-wrap home-infor">123123</ion-label> -->
                 <ion-grid>
                   <ion-row>
                     <ion-col>
@@ -62,7 +79,18 @@
               <ion-label class="ion-text-wrap button-call-text">{{ 'MY_HOME.emergency' | translate }}</ion-label>
             </ion-segment-button>
           </div>
-      </div>
+      </div> -->
     </ion-card>
   </ion-list>
+  <ion-toolbar lines="none" class="function-item ion-text-center">
+    <ion-button class="add-button">
+      <ion-label class="add-button-label">{{ 'MY_HOME.button_add' | translate }}</ion-label>
+    </ion-button>
+  </ion-toolbar>
 </ion-content>
+<!-- <ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <button expand="block" fill="outline" class="delete-button" >{{ 'MY_HOME.button_delete' | translate }}</button>
+    <button expand="block" fill="outline" class="add-button" >{{ 'MY_HOME.button_add' | translate }}</button>
+  </ion-toolbar>
+</ion-footer> -->

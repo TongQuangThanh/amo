@@ -26,6 +26,7 @@ import { Camera } from '@ionic-native/Camera/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { HTTP } from '@ionic-native/http/ngx';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SuperTabsModule } from '@ionic-super-tabs/angular';
 
 export function LanguageLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -42,6 +43,7 @@ export function LanguageLoader(http: HttpClient) {
     PincodeRegisterPageModule,
     ApartmentCodeRegisterPageModule,
     HttpClientModule,
+    SuperTabsModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

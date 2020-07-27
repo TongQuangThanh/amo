@@ -109,15 +109,18 @@
         "user_category": "Vai trò",
         "area": "Diện tích",
         "address": "Địa chỉ",
-        "emergency": "Khẩn cấp"
+        "emergency": "Khẩn cấp",
+        "hotline_label": "Hotline Ban quản lý:",
+        "button_delete": "Xóa căn hộ",
+        "button_add": "Thêm căn hộ"
     },
     "MY_HOME_DETAIL":{
         "title": "Chi tiết căn hộ",
         "active_code": "Mã căn hộ",
         "room": "Căn hộ",
         "user_category": "Vai trò",
-        "area": "Diện tích",
-        "address": "Địa chỉ",
+        "area": "Diện tích sử dụng",
+        "address": "Địa chỉ căn hộ",
         "vehicles": "Phương tiện",
         "vehicles_type": "Loại",
         "vehicles_model": "Model",
@@ -128,7 +131,19 @@
         "DOB": "Ngày sinh",
         "phone": "Số điện thoại",
         "personal_license": "Số CMTND",
-        "nationality": "Quốc tịch"
+        "nationality": "Quốc tịch",
+        "apartment_info": "Thông tin",
+        "apartment_owner": "Chủ hộ",
+        "apartment_type": "Trạng thái",
+        "btn_delete": "Xóa căn hộ",
+        "btn_reset_code": "Đặt lại mã căn hộ",
+        "apartment_owner_name": "Tên chủ hộ",
+        "apartment_owner_email": "Email chủ hộ",
+        "delete": "Xóa",
+        "exit": "Thoát",
+        "btn_add_member": "Thêm thành viên",
+        "btn_add_vehicle": "Thêm phương tiện",
+        "delete_message": "Bạn chắc chắn muốn xóa thành viên? Việc này sẽ xóa tất cả dữ liệu bạn đã thiết lập."
     },
     "NEW_DETAIL":{
         "default_button_order": "Đặt dịch vụ"
@@ -212,7 +227,20 @@
         "bank_account_number": "Số tài khoản",
         "description": "Chi tiết",
         "amount": "Số tiền",
-        "note": "Đơn giá"
+        "note": "Đơn giá",
+        "badge_outdate": "Quá hạn",
+        "badge_paid": "Đã t.toán",
+        "badge_sent": "Đã gửi",
+        "complain":"Khiếu nại",
+        "pay_now": "Thanh toán",
+        "electricity_fee": "Tiền điện",
+        "water_fee": "Tiền nước",
+        "service_fee": "Phí dịch vụ",
+        "management_fee": "Phí quản lý",
+        "payment_method": "Phương thức thanh toán",
+        "payment_online": "Online",
+        "payment_transfer": "Chuyển khoản",
+        "payment_cash": "Tiền mặt"
     },
     "PINCODE_PASSWORD":{
         "pincode_note": "Một tin nhắn văn bản gồm mã xác minh 4 chữ số đã được gửi đến số điện thoại của bạn",

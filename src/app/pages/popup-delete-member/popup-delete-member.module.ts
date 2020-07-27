@@ -2,29 +2,27 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-import { SuperTabsModule } from '@ionic-super-tabs/angular';
+import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
-import { PaymentPage } from './payment.page';
+import { PopupDeleteMemberPage } from './popup-delete-member.page';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-
-
 const routes: Routes = [
   {
     path: '',
-    component: PaymentPage
+    component: PopupDeleteMemberPage
   }
 ];
 
 @NgModule({
   imports: [
     CommonModule,
-    SuperTabsModule,
     FormsModule,
     IonicModule,
+    ReactiveFormsModule,
     TranslateModule,
-    RouterModule.forChild(routes),
+    RouterModule.forChild(routes)
   ],
-  declarations: [PaymentPage]
+  declarations: [PopupDeleteMemberPage]
 })
-export class PaymentPageModule {}
+export class PopupDeleteMemberPageModule {}

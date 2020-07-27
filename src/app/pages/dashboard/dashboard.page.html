@@ -1,27 +1,32 @@
 <ion-tabs ionTabsDidChange="tabChanged($event)">
   <ion-tab-bar slot="bottom" class="ion-no-border">
     <ion-tab-button tab="home" (click)="userRequestTab('home')">
-      <ion-icon class="tab-icon" src="../../../assets/icon/custom-home.svg"></ion-icon>
+      <ion-icon name="custom-home" src="assets/icon/custom-home.svg" *ngIf="iconSelected != 'home'" class="tab-icon"></ion-icon>
+      <ion-icon name="custom-home-active" src="assets/icon/custom-home-active.svg" *ngIf="iconSelected == 'home'" class="tab-icon"></ion-icon>
       <ion-label class="tab-label">{{ 'DASHBOARD.tab_home' | translate }}</ion-label>        
     </ion-tab-button>
 
     <ion-tab-button tab="notification" (click)="userRequestTab('notification')">
-      <ion-icon class="tab-icon" src="../../../assets/icon/custom-noti.svg"></ion-icon>
+      <ion-icon name="custom-noti" src="assets/icon/custom-noti.svg" *ngIf="iconSelected != 'notification'" class="tab-icon"></ion-icon>
+      <ion-icon name="custom-noti-active" src="assets/icon/custom-noti-active.svg" *ngIf="iconSelected == 'notification'" class="tab-icon"></ion-icon>
       <ion-label class="tab-label">{{ 'DASHBOARD.tab_notification' | translate }}</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="payment" (click)="userRequestTab('chargeNotice')">
-      <ion-icon class="tab-icon" src="../../../assets/icon/custom-pay.svg"></ion-icon>
+      <ion-icon name="custom-pay" src="assets/icon/custom-pay.svg"  *ngIf="iconSelected != 'chargeNotice'" class="tab-icon"></ion-icon>
+      <ion-icon name="custom-pay-active" src="assets/icon/custom-pay-active.svg"*ngIf="iconSelected == 'chargeNotice'" class="tab-icon"></ion-icon>
       <ion-label class="tab-label">{{ 'DASHBOARD.tab_payment' | translate }}</ion-label>
     </ion-tab-button>
     
     <ion-tab-button tab="requests" (click)="userRequestTab('request')">
-      <ion-icon class="tab-icon" src="../../../assets/icon/custom-request.svg"></ion-icon>
+      <ion-icon name="custom-request" src="assets/icon/custom-request.svg"  *ngIf="iconSelected != 'request'" class="tab-icon"></ion-icon>
+      <ion-icon name="custom-request-active" src="assets/icon/custom-request-active.svg" *ngIf="iconSelected == 'request'" class="tab-icon"></ion-icon>
       <ion-label class="tab-label">{{ 'DASHBOARD.tab_request' | translate }}</ion-label>
     </ion-tab-button>
 
     <ion-tab-button tab="services" (click)="userRequestTab('service')">
-      <ion-icon class="tab-icon" src="../../../assets/icon/custom-service.svg"></ion-icon>
+      <ion-icon name="custom-service" src="assets/icon/custom-service.svg"  *ngIf="iconSelected != 'service'" class="tab-icon"></ion-icon>
+      <ion-icon name="custom-service-active" src="assets/icon/custom-service-active.svg" *ngIf="iconSelected == 'service'" class="tab-icon"></ion-icon>
       <ion-label class="tab-label">{{ 'DASHBOARD.tab_service' | translate }}</ion-label>
     </ion-tab-button>
     

@@ -109,7 +109,10 @@
         "user_category": "Role",
         "area": "Area",
         "address": "Address",
-        "emergency": "Emergency"
+        "emergency": "Emergency",
+        "hotline_label": "Hotline:",
+        "button_delete": "Delete apartment",
+        "button_add": "Add apartment"
     },
     "MY_HOME_DETAIL":{
         "title": "My home detail",
@@ -128,7 +131,19 @@
         "DOB": "DOB",
         "phone": "Phone",
         "personal_license": "ID Card",
-        "nationality": "Nationality"
+        "nationality": "Nationality",
+        "apartment_info": "Information",
+        "apartment_owner": "Owner",
+        "apartment_type": "Status",
+        "btn_delete": "Delete apartment",
+        "btn_reset_code": "Reset apartment code",
+        "apartment_owner_name": "Owner name",
+        "apartment_owner_email": "Owner email",
+        "delete": "Delete",
+        "exit": "Exit",
+        "btn_add_member": "Add member",
+        "btn_add_vehicle": "Add vehicle",
+        "delete_message": "Bạn chắc chắn muốn xóa thành viên? Việc này sẽ xóa tất cả dữ liệu bạn đã thiết lập."
     },
     "NEW_DETAIL":{
         "default_button_order": "Order serivice"
@@ -212,7 +227,20 @@
         "bank_account_number": "Bank Account Number",
         "description": "Detail",
         "amount": "Amount",
-        "note": "Price"
+        "note": "Price",
+        "badge_outdate": "Outdate",
+        "badge_paid": "Paid",
+        "badge_sent": "Sent",
+        "complain":"Complain",
+        "pay_now": "Pay Now",
+        "electricity_fee": "Electricity Fee",
+        "water_fee": "Water Fee",
+        "service_fee": "Services Fee",
+        "management_fee": "Management Fee",
+        "payment_method": "Payment method",
+        "payment_online": "Online",
+        "payment_transfer": "Chuyển khoản",
+        "payment_cash": "Tiền mặt"
     },
     "APARTMENT_CODE_REGISTER":{
         "apartmentcode_note": "Each apartment will have a separate code of 6 characters for security purepose. If you have not received the code yet, please contact your Property Managers for assistance or skip for trial first.",

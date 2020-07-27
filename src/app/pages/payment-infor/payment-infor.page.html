@@ -1,39 +1,107 @@
-<ion-header no-border>
+<ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-title>{{titlePage}}</ion-title>
     <ion-buttons slot="start">
-      <ion-back-button text=""></ion-back-button>
+      <ion-back-button text="" icon="arrow-back-outline"></ion-back-button>
     </ion-buttons>
+    <!-- <ion-title>{{titlePage}}</ion-title> -->
+    <ion-title>{{titlePage}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+<ion-content class="payment-info-content">
+  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
       <ion-fab-button (click)="showListComment()">
         <ion-icon name="chatboxes"></ion-icon>
       </ion-fab-button>
-  </ion-fab>
-  <section>
-    <ion-grid >
-      <ion-row class="payment-bank-text-title">
+  </ion-fab> -->
+  <section class="section-content">
+    <ion-grid class="section-grid">
+      <ion-row>
         <ion-col>
-            <ion-label>{{ 'PAYMENT_INFOR.payment_date' | translate }}</ion-label>
+          <ion-badge class="badge-danger"><span class="badge-danger-label">{{ 'PAYMENT_INFOR.badge_outdate' | translate }}</span></ion-badge>
         </ion-col>
-        <ion-col>
-            <ion-label>{{formatString(paymentStartAt)}} - {{formatString(paymentEndAt)}}</ion-label>
-        </ion-col>
-      </ion-row>
-      <ion-row class="payment-bank-text-title">
-        <ion-col>
-            <ion-label>{{ 'PAYMENT_INFOR.total' | translate }}</ion-label>
-        </ion-col>
-        <ion-col>
-            <ion-label>{{formatMoney(totalCash)}} vnd</ion-label>
+        <ion-col size="auto">
+          <ion-label class="payment-fee ion-float-right"><span class="amountPay-number">{{formatMoney(totalCash)}}</span><span class="amountPay-unit">đ</span></ion-label>
         </ion-col>
       </ion-row>
     </ion-grid>
   </section>
-  <ion-card *ngIf="paymentCategoryTranfer != null" class="payment-infor-card-top">
+
+  <section class="section-content margin-top-10">
+    <ion-grid class="section-grid">
+      <ion-row>
+        <ion-col>
+          <ion-label class="section-title">{{ 'PAYMENT_INFOR.payment_date' | translate }}</ion-label>
+        </ion-col>
+        <ion-col size="auto">
+          <ion-label class="due-date ion-float-right">{{formatString(paymentStartAt)}} - {{formatString(paymentEndAt)}}</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
+
+  <section class="margin-top-10">
+    <ion-list *ngFor="let item of listPaymentContent; let i = index" class="section-content">
+      <div class="">
+        <ion-grid class="section-grid content-fee">
+          <ion-row (click)="toggleGroupManagementFee(i)" class="">
+            <ion-col class="fee-col padding-right-0" size="2">
+              <ion-icon name="car-sport" class="icon-parking"></ion-icon>
+            </ion-col>
+            <ion-col class="fee-col padding-left-0">
+              <ion-label class="section-title">{{item.type.title}}</ion-label>
+            </ion-col>
+            <ion-col class="fee-col" size="auto">
+              <ion-label class="due-date ion-float-right">{{formatMoney(item.amount)}} </ion-label>
+              <ion-icon name="chevron-down-outline" *ngIf="isGroupManagementFeeShown(i)" class="icon-view-detail"></ion-icon>
+              <ion-icon name="chevron-forward-outline" *ngIf="!isGroupManagementFeeShown(i)" class="icon-view-detail"></ion-icon>
+            </ion-col>
+            <!-- <ion-col size="1" class="fee-col">
+              
+            </ion-col> -->
+          </ion-row>
+          <ion-row [ngClass]="isGroupManagementFeeShown(i) ? 'item-fee-detail' : 'item-fee-detail item-fee-inactive'">
+            <ion-col size="2" class="padding-right-0">
+            </ion-col>
+            <ion-col class="padding-left-0">
+              <p [innerHTML]="convertText(item.description)" class="fee-detail"></p>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <!-- <ion-card [ngClass]="isGroupManagementFeeShown() ? 'item-fee-detail' : 'item-fee-detail item-fee-inactive'">
+          <ion-item lines="none">
+            <p [innerHTML]="convertText(item.description)" class="fee-detail"></p>
+          </ion-item>
+        </ion-card> -->
+      </div>
+    </ion-list>
+  </section>
+  
+  <section class="section-content margin-top-10">
+    <ion-item lines="none">
+      <ion-label class="section-title">{{ 'PAYMENT_INFOR.payment_method' | translate }}</ion-label>
+    </ion-item>
+    <ion-item lines="none" class="margin-right-10">
+      <ion-button class="payment-method-button" expand="block">
+        <ion-icon class="payment-method-button-icon" name="custom-digital-wallet" src="assets/icon/custom-digital-wallet.svg"></ion-icon>
+        <ion-label class="payment-method-button-label">{{ 'PAYMENT_INFOR.payment_online' | translate }}</ion-label>
+      </ion-button>
+    </ion-item>
+    <ion-item lines="none" class="margin-right-10">
+      <ion-button class="payment-method-button payment-transfer" expand="block">
+        <ion-icon class="payment-method-button-icon" name="custom-pay-transfer" src="assets/icon/custom-pay-transfer.svg"></ion-icon>
+        <ion-label class="payment-method-button-label">{{ 'PAYMENT_INFOR.payment_transfer' | translate }}</ion-label>
+      </ion-button>
+      <ion-button class="payment-method-button payment-cash" expand="block">
+        <ion-icon class="payment-method-button-icon" name="custom-money" src="assets/icon/custom-money.svg"></ion-icon>
+        <ion-label class="payment-method-button-label">{{ 'PAYMENT_INFOR.payment_cash' | translate }}</ion-label>
+      </ion-button>
+    </ion-item>
+  </section>
+
+  
+
+  <!-- <ion-card *ngIf="paymentCategoryTranfer != null" class="payment-infor-card-top">
     <ion-card-content>
       <ion-item lines="none" class="payment-bank-infor-text">
         {{paymentCategoryTranfer.description}}
@@ -80,5 +148,10 @@
           </div>
         </div>
     </ion-card-content>
-  </ion-card>
+  </ion-card> -->
 </ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <button expand="block" fill="outline" class="conplain-button">{{ 'PAYMENT_INFOR.complain' | translate }}</button>
+  </ion-toolbar>
+</ion-footer>
