@@ -27,6 +27,8 @@ export class FamilyDetailPage implements OnInit {
   avatar:any;
   phoneNumber: any;
   listCountries:any;
+  relationship: any;
+  staying: any;
 
 
   heightScreen: number;
@@ -53,6 +55,8 @@ export class FamilyDetailPage implements OnInit {
       this.heightScreen = platform.height() - 200 - 44 - 50;
     });
     this.listCountries = ConstService.LIST_COUNTRIES;
+    this.relationship = "";
+    this.staying = "";
    }
 
    ngOnInit() {
@@ -102,6 +106,9 @@ export class FamilyDetailPage implements OnInit {
       }
     });
     return listdata;
+  }
+  updateAccount() {
+
   }
 
 

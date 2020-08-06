@@ -1,0 +1,113 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-title>{{ 'SEVICE_NEW.title' | translate }}</ion-title>
+    <button class="button-history" (click)="moveHistoryPage()">
+      <img class="icon-home" src="../assets/icon/History.png"/>
+      <ion-label class="font-weight-600 margin-left-20">{{ 'SEVICE_NEW.label_history' | translate }}</ion-label>
+    </button>
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content>
+  <ion-slides [options]="slideOpts" class="margin-top-20">
+    <ion-slide *ngFor="let object of list_data_silde_1">
+      <ion-item lines="none" class="ion-no-padding" id="{{object.id}}">
+        <img class="" src="{{object.url}}"/>
+        <div *ngIf="object.deadline != ''" class="group-1-slider-title">
+          <ion-label>{{object.deadline}}</ion-label>
+        </div>
+      </ion-item>
+    </ion-slide>
+  </ion-slides>
+  <ion-grid class="ion-grid-class">
+    <ion-row class="margin-top-25">
+      <ion-col class="ion-col-class" size="3" (click)="moveCallTheCarPage()">
+        <div class="button-1">
+          <img class="class-image-button" src="../assets/icon/icon-services-1.png"/>
+          <ion-label class="text-button">{{ 'SEVICE_NEW.button_title_1' | translate }}</ion-label>
+        </div>
+      </ion-col>
+      <ion-col class="ion-col-class" size="3">
+        <div class="button-1">
+          <img class="class-image-button" src="../assets/icon/icon-services-2.png"/>
+          <ion-label class="text-button">{{ 'SEVICE_NEW.button_title_2' | translate }}</ion-label>
+        </div>
+      </ion-col>
+      <ion-col class="ion-col-class" size="3" (click)="moveRepairServicePage()">
+        <div class="button-1">
+          <img class="class-image-button" src="../assets/icon/icon-services-3.png"/>
+          <ion-label class="text-button">{{ 'SEVICE_NEW.button_title_3' | translate }}</ion-label>
+        </div>
+      </ion-col>
+      <ion-col class="ion-col-class" size="3">
+        <div class="button-1">
+          <img class="class-image-button" src="../assets/icon/icon-services-4.png"/>
+          <ion-label class="text-button">{{ 'SEVICE_NEW.button_title_4' | translate }}</ion-label>
+        </div>
+      </ion-col>
+    </ion-row>
+    <ion-row class="margin-top-25">
+      <ion-col class="ion-col-class" size="3">
+        <div class="button-1">
+          <img class="class-image-button" src="../assets/icon/icon-services-5.png"/>
+          <ion-label class="text-button">{{ 'SEVICE_NEW.button_title_5' | translate }}</ion-label>
+        </div>
+      </ion-col>
+      <ion-col class="ion-col-class" size="3">
+        <div class="button-1">
+          <img class="class-image-button" src="../assets/icon/icon-services-6.png"/>
+          <ion-label class="text-button">{{ 'SEVICE_NEW.button_title_6' | translate }}</ion-label>
+        </div>
+      </ion-col>
+      <ion-col class="ion-col-class" size="3">
+        <div class="button-1">
+          <img class="class-image-button" src="../assets/icon/icon-services-7.png"/>
+          <ion-label class="text-button">{{ 'SEVICE_NEW.button_title_7' | translate }}</ion-label>
+        </div>
+      </ion-col>
+      <ion-col class="ion-col-class" size="3">
+        <div class="button-1">
+          <img class="class-image-button" src="../assets/icon/icon-services-8.png"/>
+          <ion-label class="text-button">{{ 'SEVICE_NEW.button_title_8' | translate }}</ion-label>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid class="group-2-style">
+    <ion-row class="margin-top-10">
+      <ion-col class="group-2-label-1 ion-align-self-start" size="6">
+        <ion-label class="font-weight-bold">{{ 'SEVICE_NEW.group_2_title_1' | translate }}</ion-label>
+      </ion-col>
+      <ion-col class="group-2-label-2 ion-align-self-end" size="6" (click)="moveResidentMarketPage()">
+        <ion-label>{{ 'SEVICE_NEW.group_2_title_2' | translate }}</ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-slides [options]="slideOpts_1">
+    <ion-slide *ngFor="let object of list_data_silde_2">
+      <ion-card class="margin-right-5 margin-top-5" (click)="moveGianHangDetailPage($event)" id="{{object.id}}">
+        <ion-item lines="none" class="ion-no-padding">
+          <img class="" src="{{object.url}}"/>
+          <div *ngIf="object.deadline != ''" class="group-1-slider-title">
+            <ion-label>{{object.deadline}}</ion-label>
+          </div>
+        </ion-item>
+        <ion-card-content class="ion-no-padding padding-bottom-15">
+          <div class="group-1-text-title">
+            <ion-label class="">{{object.title}}</ion-label>
+          </div>
+          <div class="group-1-text-place">
+            <img class="group-1-icon-place" src="../assets/icon/icon-place.png"/>
+            <ion-label>{{object.text_place}}</ion-label>
+          </div>
+          <div class="group-1-text-star">
+            <img class="group-1-icon-star" src="../assets/icon/icon-star.png"/>
+            <ion-label>{{object.text_star_rate}}</ion-label>
+            <img class="group-1-icon-tag" src="../assets/icon/icon-tag.png"/>
+            <ion-label>{{object.text_tag}}</ion-label>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+  </ion-slides>
+</ion-content>

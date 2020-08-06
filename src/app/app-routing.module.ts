@@ -119,23 +119,70 @@ const routes: Routes = [
   },
   { 
     path: 'family/:id', 
-    loadChildren: './pages/family/family.module#FamilyPageModule',
+    loadChildren: () => import('./pages/family/family.module').then(m => m.FamilyPageModule),
     canActivate: [AuthGuard] 
   },
   { 
     path: 'family-detail/:apartment_id/:user_id', 
-    loadChildren: './pages/family-detail/family-detail.module#FamilyDetailPageModule',
+    loadChildren: () => import('./pages/family-detail/family-detail.module').then(m => m.FamilyDetailPageModule),
     canActivate: [AuthGuard]  
   },
   { 
     path: 'register-to-receive-goods', 
-    loadChildren: './pages/register-to-receive-goods/register-to-receive-goods.module#RegisterToReceiveGoodsPageModule' 
+    loadChildren: () => import('./pages/register-to-receive-goods/register-to-receive-goods.module').then(m => m.RegisterToReceiveGoodsPageModule)
   },
   { 
     path: 'register-for-shipping', 
-    loadChildren: './pages/register-for-shipping/register-for-shipping.module#RegisterForShippingPageModule' 
+    loadChildren: () => import('./pages/register-for-shipping/register-for-shipping.module').then(m => m.RegisterForShippingPageModule)
   },
-
+  { 
+    path: 'register-keep-vehicle', 
+    loadChildren: () => import('./pages/register-keep-vehicle/register-keep-vehicle.module').then(m => m.RegisterKeepVehiclePageModule)
+  },
+  { 
+    path: 'resident-market', 
+    loadChildren: () => import('./pages/resident-market/resident-market.module').then(m => m.ResidentMarketPageModule)
+  },
+  { 
+    path: 'mo-gian-hang', 
+    loadChildren: () => import('./pages/mo-gian-hang/mo-gian-hang.module').then(m => m.MoGianHangPageModule)
+  },
+  { 
+    path: 'gian-hang-detail/:id', 
+    loadChildren: () => import('./pages/gian-hang-detail/gian-hang-detail.module').then(m => m.GianHangDetailPageModule)
+  },
+  { 
+    path: 'gio-hang', 
+    loadChildren: () => import('./pages/gio-hang/gio-hang.module').then(m => m.GioHangPageModule)
+  },
+  { 
+    path: 'call-the-car', 
+    loadChildren: () => import('./pages/call-the-car/call-the-car.module').then(m => m.CallTheCarPageModule)
+  },
+  { 
+    path: 'call-the-car-detail/:id', 
+    loadChildren: () => import('./pages/call-the-car-detail/call-the-car-detail.module').then(m => m.CallTheCarDetailPageModule)
+  },
+  { 
+    path: 'history', 
+    loadChildren: () => import('./pages/history/history.module').then(m => m.HistoryPageModule)
+  },
+  { 
+    path: 'history-detail', 
+    loadChildren: () => import('./pages/history-detail/history-detail.module').then(m => m.HistoryDetailPageModule)
+  },
+  { 
+    path: 'chat-to-shop', 
+    loadChildren: () => import('./pages/chat-to-shop/chat-to-shop.module').then(m => m.ChatToShopPageModule)
+  },
+  { 
+    path: 'repair-service', 
+    loadChildren: () => import('./pages/repair-service/repair-service.module').then(m => m.RepairServicePageModule)
+  },
+  { 
+    path: 'repair-service-detail', 
+    loadChildren: () => import('./pages/repair-service-detail/repair-service-detail.module').then(m => m.RepairServiceDetailPageModule)
+  },
 ];
 
 @NgModule({

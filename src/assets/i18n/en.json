@@ -278,6 +278,8 @@
         "relationship": "Relationship",
         "staying": "staying",
         "placeholder_phone": "Phone number"
+    },
+    "INBOX_29": {
+        "title": "Đăng ký nhận đồ hộ"
     }
-
 }
