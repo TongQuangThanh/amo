@@ -1,5 +1,5 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar>
+  <ion-toolbar class="header-toolbar">
     <ion-buttons slot="start">
       <ion-back-button text="" icon="arrow-back-outline"></ion-back-button>
     </ion-buttons>
@@ -29,12 +29,17 @@
           </ion-card>
           <ion-card class="ion-float-left padding-none card-bottom margin-left-0">
             <ion-icon item-start name="eye-outline" class="card-bottom-icon"></ion-icon>
-            <span class="image-caption-big" class="card-bottom-label"> 1111 </span>
+            <span class="image-caption-big" class="card-bottom-label"> {{readsCount}} </span>
             <ion-icon item-start name="custom-oval" class="card-bottom-icon custom-oval" src="assets/icon/custom-oval.svg"></ion-icon>
           </ion-card>
           <ion-card class="ion-float-left padding-none card-bottom margin-left-0">
             <ion-icon item-start name="custom-comment" class="card-bottom-icon" src="assets/icon/custom-comment.svg"></ion-icon>
-              <span class="image-caption-big" class="card-bottom-label"> 2 </span>
+            <span class="image-caption-big" class="card-bottom-label"> {{commentsCount}} </span>
+            <ion-icon item-start name="custom-oval" class="card-bottom-icon custom-oval" src="assets/icon/custom-oval.svg"></ion-icon>
+          </ion-card>
+          <ion-card class="ion-float-left padding-none card-bottom margin-left-0">
+            <ion-icon item-start name="custom-share" class="card-bottom-icon" src="assets/icon/custom-share.svg"></ion-icon>
+              <span class="image-caption-big" class="card-bottom-label"> {{sharesCount}} </span>
           </ion-card>
         </ion-list>
       </div>
@@ -50,10 +55,104 @@
   </ion-card>
   
   <p [innerHTML]="articleContent" class="padding-left-right-card full-width article-content"></p>
+
+  <ion-list class="list-chat-content">
+    <div class="message-wrap">
+      <div>
+        <div class="message left">
+          <!-- <img class="user-img" *ngIf="item.createdBy" src="{{item.createdBy.avatar}}"/> -->
+          <img  class="user-img" src="../assets/icon/avatar-default.png"/>
+          <div class="msg-detail">
+            <div class="msg-info">
+              <p>BQL tòa nhà</p>
+            </div>
+            <div class="msg-content">
+              <p>Thật tuyệt vời khi có dịch vụ này</p>
+            </div>
+            <div class="msg-time">
+              <p><span class="msg-time-label">3 ngày</span> <span class="btn-reply">Trả lời</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="message left reply">
+          <!-- <img class="user-img" *ngIf="itemRep.createdBy" src="{{itemRep.createdBy.avatar}}"/> -->
+          <img  class="user-img" src="../assets/icon/avatar-default.png"/>
+          <div class="msg-detail">
+            <div class="msg-info">
+              <p>Cư dân 1</p>
+            </div>
+            <div class="msg-content">
+              <p>Tôi đã dùng qua sản phẩm. Dịch vụ rất hữu ích, tiết kiệm thời gian</p>
+            </div>
+            <div class="msg-time">
+              <p><span class="msg-time-label">3 ngày</span> <span class="btn-reply">Trả lời</span></p>
+            </div>
+          </div>
+        </div>
+        <div class="message left">
+          <!-- <img class="user-img" *ngIf="item.createdBy" src="{{item.createdBy.avatar}}"/> -->
+          <img  class="user-img" src="../assets/icon/avatar-default.png"/>
+          <div class="msg-detail">
+            <div class="msg-info">
+              <p>Cư dân 2</p>
+            </div>
+            <div class="msg-content">
+              <p>Dịch vụ rất hữu ích, tiết kiệm thời gian</p>
+            </div>
+            <div class="msg-time">
+              <p><span class="msg-time-label">3 ngày</span> <span class="btn-reply">Trả lời</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <div *ngFor="let item of listArticlesComment.reverse()">
+        <div *ngIf="item.status == 'approve' || item.createdBy.phone == profile.phone" class="message left">
+          <img class="user-img" *ngIf="item.createdBy" src="{{item.createdBy.avatar}}"/>
+          <img  class="user-img"*ngIf="!item.createdBy" src="../assets/icon/avatar-default.png"/>
+          <div class="msg-detail">
+            <div class="msg-info">
+              <p>{{item.createdBy.displayName}}</p>
+              <p>{{formatString(item.createdAt)}}</p>
+            </div>
+            <div class="msg-content">
+              <span class="triangle"></span>
+              <p [innerHTML]="convertText(item.content)" ></p>
+            </div>
+          </div>
+        </div>
+        <div *ngFor="let itemRep of item.replies.reverse()"
+            class="message right">
+          <img class="user-img" *ngIf="itemRep.createdBy" src="{{itemRep.createdBy.avatar}}"/>
+          <img  class="user-img"*ngIf="!itemRep.createdBy" src="../assets/icon/avatar-default.png"/>
+          <div class="msg-detail">
+            <div class="msg-info">
+              <p>{{itemRep.createdBy.displayName}}</p>
+              <p>{{formatString(itemRep.createdAt)}}</p>
+            </div>
+            <div class="msg-content">
+              <span class="triangle"></span>
+              <p [innerHTML]="convertText(itemRep.content)" ></p>
+            </div>
+          </div>
+        </div>
+      </div> -->
+    </div>
+  </ion-list>
 </ion-content>
 
-<ion-footer class="ion-no-border">
+<ion-footer class="ion-no-border footer-content">
+  <ion-item lines="none" class="add-comment-item">
+    <ion-icon name="image" slot="start" class="add-image-icon"></ion-icon>
+    <ion-textarea class="input-area" 
+      rows="1"  
+      auto-grow
+      placeholder="{{ 'REQUEST_DETAIL.place_holder_input' | translate }}">
+      <ion-icon name="paper-plane" class="icon-send icon-send-default"></ion-icon>
+    </ion-textarea>    
+  </ion-item>
+</ion-footer>
+<!-- <ion-footer class="ion-no-border">
   <ion-toolbar>
     <button expand="block" fill="outline" class="comment-button" (click)="showListComment()">{{ 'NOTIFICATION_DETAIL.btn_comment' | translate }}</button>
   </ion-toolbar>
-</ion-footer>
+</ion-footer> -->

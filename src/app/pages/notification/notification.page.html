@@ -1,9 +1,9 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-buttons slot="start">
+  <ion-toolbar class="header-toolbar">
+    <!-- <ion-buttons slot="start">
       <ion-back-button text="" icon="arrow-back-outline"></ion-back-button>
-    </ion-buttons>
-    <ion-title>{{ 'NOTIFICATION.title' | translate }}</ion-title>
+    </ion-buttons> -->
+    <ion-title class="title-info">{{ 'NOTIFICATION.title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -17,7 +17,7 @@
       </ion-refresher-content>
   </ion-refresher>
   <ion-list>
-    <ion-card button *ngFor="let item of listArticles" (click)="detailPage($event)" id="{{item._id}}">
+    <ion-card class="info-card" button *ngFor="let item of listArticles" (click)="detailPage($event)" id="{{item._id}}">
       <div class="card-img">
         <ion-img src="{{item.thumbnail}}"></ion-img>
         <ion-label class="badge-corner badge-corner-base">{{formatString(item.updatedAt)}}</ion-label>

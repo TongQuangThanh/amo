@@ -167,6 +167,8 @@
     margin-inline-end: 0px;
     margin-top: 0px;
     margin-right: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 10px 30px rgba(33, 49, 63, 0.1);
 }
 
 .list-home-content {
@@ -261,7 +263,7 @@
     display: block;
     font-family: Nunito Sans;
     font-style: normal;
-    font-weight: normal;
+    font-weight: bold;
     margin-top: 5px;
     margin-left: 15px;
     font-size: 16px;
@@ -395,6 +397,7 @@ ion-content {
 }
 .card-bottom-icon {
     font-size: 18px;
+    color: #7A838C;
 }
 .card-bottom-label {
     margin-left: 5px;

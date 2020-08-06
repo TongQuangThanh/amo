@@ -1,5 +1,5 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar>
+  <ion-toolbar class="header-toolbar">
     <ion-title>{{apartmentTitle}}</ion-title>
     <ion-buttons slot="start">
       <ion-back-button text="" icon="arrow-back-outline"></ion-back-button>
@@ -28,84 +28,89 @@
     <super-tabs-container *ngIf="apartment != null">
       <!-- super-tab info -->
       <super-tab class="ion-padding">
-        <ion-item lines="none" class="custom-input custom-input-text">
-          <ion-icon name="custom-company" class="input-icon" src="/assets/icon/custom-company.svg" slot="start"></ion-icon>
-          <ion-label class="item-inner" position="floating">{{ 'MY_HOME_DETAIL.active_code' | translate }}</ion-label>
-          <ion-input class="input-text" value="{{apartment.apartment.activeCode}}"></ion-input>
+        <ion-item class="input-item" lines="none">
+          <ion-icon class="input-icon" name="custom-company" src="/assets/icon/custom-company.svg" slot="start"></ion-icon>
+          <ion-label class="input-floating-label" position="floating">{{ 'MY_HOME_DETAIL.active_code' | translate }}</ion-label>
+          <ion-input class="input-text" type="text" name="activeCode" value="{{apartment.apartment.activeCode}}"></ion-input>
+          <!-- <ion-icon class="clear-input check-default" name="close-circle" slot="end"></ion-icon> -->
         </ion-item>
         <ion-item lines="none" class="custom-textarea custom-textarea-text">
           <ion-icon name="custom-location" class="input-icon" src="/assets/icon/custom-location.svg" slot="start"></ion-icon>
           <ion-label class="item-inner" position="floating">{{ 'MY_HOME_DETAIL.address' | translate }}</ion-label>
-          <ion-textarea class="textarea-text" value="{{apartment.campaign.address}}"></ion-textarea>
+          <ion-textarea class="textarea-text" value="{{apartment.campaign.address}}" autosize></ion-textarea>
         </ion-item>
-        <ion-item lines="none" class="custom-input custom-input-text">
-          <ion-icon name="custom-area" class="input-icon" src="/assets/icon/custom-area.svg" slot="start"></ion-icon>
-          <ion-label class="item-inner" position="floating">{{ 'MY_HOME_DETAIL.area' | translate }}</ion-label>
-          <ion-input class="input-text" value="{{apartment.apartment.area}} m2"></ion-input>
+        <ion-item class="input-item" lines="none">
+          <ion-icon class="input-icon" name="custom-area" src="/assets/icon/custom-area.svg" slot="start"></ion-icon>
+          <ion-label class="input-floating-label" position="floating">{{ 'MY_HOME_DETAIL.area' | translate }}</ion-label>
+          <ion-input class="input-text" type="text" name="area" value="{{apartment.apartment.area}} m2"></ion-input>
+          <!-- <ion-icon class="clear-input check-default" name="close-circle" slot="end"></ion-icon> -->
         </ion-item>
-        <ion-item lines="none" class="custom-input custom-input-text" disabled>
-          <ion-icon name="custom-flag" class="input-icon" src="/assets/icon/custom-flag.svg" slot="start"></ion-icon>
-          <ion-label class="item-inner" position="floating">{{ 'MY_HOME_DETAIL.apartment_type' | translate }}</ion-label>
-          <ion-input class="input-text" value="{{apartment.apartment.status}}"></ion-input>
+        <ion-item class="input-item" lines="none" disabled>
+          <ion-icon class="input-icon" name="custom-flag" src="/assets/icon/custom-flag.svg" slot="start"></ion-icon>
+          <ion-label class="input-floating-label" position="floating">{{ 'MY_HOME_DETAIL.apartment_type' | translate }}</ion-label>
+          <ion-input class="input-text" type="text" name="status" value="{{apartment.apartment.status}}"></ion-input>
+          <!-- <ion-icon class="clear-input check-default" name="close-circle" slot="end"></ion-icon> -->
         </ion-item>
-        <ion-toolbar lines="none" class="function-item ion-text-center">
+        <ion-item lines="none" class="function-item ion-text-center">
           <ion-button class="delete-button">
             <ion-label class="delete-button-label">{{ 'MY_HOME_DETAIL.btn_delete' | translate }}</ion-label>
           </ion-button>
-          <ion-button class="add-button">
+          <ion-button class="add-button" (click)="resetApartmentCode()">
             <ion-label class="add-button-label">{{ 'MY_HOME_DETAIL.btn_reset_code' | translate }}</ion-label>
           </ion-button>
-        </ion-toolbar>
+        </ion-item>
       </super-tab>
       <!-- super-tab owner -->
       <super-tab class="ion-padding">
-        <ion-item lines="none" class="custom-input custom-input-text">
-          <ion-icon name="custom-user" class="input-icon" src="/assets/icon/custom-user.svg" slot="start"></ion-icon>
-          <ion-label class="item-inner" position="floating">{{ 'MY_HOME_DETAIL.apartment_owner' | translate }}</ion-label>
-          <ion-input class="input-text" value="{{apartment.apartment.owner.name}}"></ion-input>
+        <ion-item class="input-item" lines="none">
+          <ion-icon class="input-icon" name="custom-user" src="/assets/icon/custom-user.svg" slot="start"></ion-icon>
+          <ion-label class="input-floating-label" position="floating">{{ 'MY_HOME_DETAIL.apartment_owner' | translate }}</ion-label>
+          <ion-input class="input-text" type="text" name="userName" value="{{apartment.apartment.owner.name}}"></ion-input>
+          <!-- <ion-icon class="clear-input check-valid" name="checkmark-circle" slot="end"></ion-icon> -->
         </ion-item>
-        <ion-item lines="none" class="custom-input custom-input-text">
-          <ion-icon name="custom-mail" class="input-icon" src="/assets/icon/custom-mail.svg" slot="start"></ion-icon>
-          <ion-label class="item-inner" position="floating">{{ 'MY_HOME_DETAIL.apartment_owner_email' | translate }}</ion-label>
-          <ion-input class="input-text" value="hoangson115@gmail.com"></ion-input>
-        </ion-item>
+        <ion-item class="input-item" lines="none">
+          <ion-icon class="input-icon" name="custom-mail" src="/assets/icon/custom-mail.svg" slot="start"></ion-icon>
+          <ion-label class="input-floating-label" position="floating">{{ 'MY_HOME_DETAIL.apartment_owner_email' | translate }}</ion-label>
+          <ion-input class="input-text" type="text" name="userEmail" value=""></ion-input>
+          <!-- <ion-icon class="clear-input check-valid" name="checkmark-circle" slot="end"></ion-icon> -->
+        </ion-item>    
         <ion-row>
           <ion-col class="no-padding padding-right-10" size="5">
-            <ion-item lines="none" class="custom-input custom-input-text">
-              <ion-icon name="flag-vn" class="input-flag-icon" src="/assets/icon/flag-vn.svg" slot="start"></ion-icon>
-              <!-- <ion-label class="item-inner" position="floating">{{ 'MY_HOME_DETAIL.DOB' | translate }}</ion-label> -->
-              <ion-input class="" value="+84"></ion-input>
+            <ion-item class="input-item" lines="none">
+              <ion-icon class="input-icon" name="flag-vn" src="/assets/icon/flag-vn.svg" slot="start"></ion-icon>
+              <ion-input class="input-text" type="text" name="region" value="+84"></ion-input>
             </ion-item>
           </ion-col>
-          <ion-col class="no-padding padding-left-10">
-            <ion-item lines="none" class="custom-input custom-input-text">
-              <ion-input type="number" value="986463236"></ion-input>
+          <ion-col class="no-padding padding-left-10" size="7">
+            <ion-item class="input-item" lines="none">
+              <ion-input class="input-text" type="number" value="{{apartment.apartment.owner.phone}}"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
         <ion-row>
-          <ion-col class="no-padding padding-right-10">
-            <ion-item lines="none" class="custom-input custom-input-text">
-              <ion-icon name="custom-gift" class="input-icon" src="/assets/icon/custom-gift.svg" slot="start"></ion-icon>
-              <ion-label class="item-inner" position="floating">{{ 'MY_HOME_DETAIL.DOB' | translate }}</ion-label>
-              <ion-datetime class="input-text input-text-50" displayFormat="DD/MM/YYYY" min="1900-01-01" max="2020-12-31" value="1986-06-14"></ion-datetime>
+          <ion-col class="no-padding padding-right-10" size="6">
+            <ion-item class="input-item" lines="none">
+              <ion-icon class="input-icon" name="custom-gift" src="/assets/icon/custom-gift.svg" slot="start"></ion-icon>
+              <ion-label class="input-floating-label" position="floating">{{ 'MY_HOME_DETAIL.DOB' | translate }}</ion-label>
+              <ion-datetime class="input-text input-text-50" displayFormat="DD/MM/YYYY" value="1986-06-14"></ion-datetime>
             </ion-item>
           </ion-col>
-          <ion-col class="no-padding padding-left-10">
-            <ion-item lines="none" class="custom-input custom-input-text">
-              <ion-icon name="custom-gender" class="input-icon" src="/assets/icon/custom-gender.svg" slot="start"></ion-icon>
-              <ion-label class="item-inner" position="floating">{{ 'MY_HOME_DETAIL.sex' | translate }}</ion-label>
-              <ion-select placeholder="Select One" class="input-text select-text" value="m" >
-                <ion-select-option value="f">Female</ion-select-option>
-                <ion-select-option value="m">Male</ion-select-option>
+          <ion-col class="no-padding padding-left-10" size="6">
+            <ion-item class="input-item" lines="none">
+              <ion-icon class="input-icon" name="custom-gift" src="/assets/icon/custom-gender.svg" slot="start"></ion-icon>
+              <ion-label class="input-floating-label" position="floating">{{ 'MY_HOME_DETAIL.sex' | translate }}</ion-label>
+              <ion-select placeholder="{{ 'MY_HOME_DETAIL.sex' | translate }}" class="input-text select-text" value="m" >
+                <ion-select-option value="f">{{ 'MY_HOME_DETAIL.female' | translate }}</ion-select-option>
+                <ion-select-option value="m">{{ 'MY_HOME_DETAIL.male' | translate }}</ion-select-option>
               </ion-select>
-            </ion-item>
+            </ion-item>        
           </ion-col>
         </ion-row>
+
       </super-tab>
       <!-- super-tab members -->
       <super-tab class="no-padding">
-        <ion-list>
+        <ion-list class="list-content">
           <!-- <ion-card class="member-card">
             <ion-row class="member-card-item">
               <ion-col class="content-col">
@@ -117,7 +122,7 @@
               </ion-col>
             </ion-row>
           </ion-card> -->
-          <ion-card class="member-card">
+          <ion-card class="card-content">
             <ion-row class="member-card-item">
               <ion-col class="content-col">
                 <p class="title-name">Nguyễn Thùy Dung</p>
@@ -128,85 +133,85 @@
               </ion-col>
             </ion-row>
           </ion-card>
-          <ion-card class="member-card">
+          <ion-card class="card-content">
             <ion-row class="member-card-item">
               <ion-col class="content-col">
                 <p class="title-name">Nguyễn Hoàng Nam</p>
                 <p class="title-content">Con trai - 0947 633 765 - 20/1/1996</p>
               </ion-col>
-              <ion-col size="auto" class="border-left button-col">
+              <ion-col size="auto" class="border-left button-col" (click)="deleteMemberModal()">
                 <ion-label class="danger-text">{{ 'MY_HOME_DETAIL.delete' | translate }}</ion-label>
               </ion-col>
             </ion-row>
           </ion-card>
-          <ion-card class="member-card">
+          <ion-card class="card-content">
             <ion-row class="member-card-item">
               <ion-col class="content-col">
                 <p class="title-name">Nguyễn Hoàng Nam</p>
                 <p class="title-content">Con trai - 0947 633 765 - 20/1/1996</p>
               </ion-col>
-              <ion-col size="auto" class="border-left button-col">
+              <ion-col size="auto" class="border-left button-col" (click)="deleteMemberModal()">
                 <ion-label class="danger-text">{{ 'MY_HOME_DETAIL.delete' | translate }}</ion-label>
               </ion-col>
             </ion-row>
           </ion-card>
         </ion-list>    
         <ion-toolbar lines="none" class="function-item ion-text-center">
-          <ion-button class="add-button margin-left-0">
+          <ion-button class="add-button margin-left-0" (click)="addMember()">
             <ion-label class="add-button-label">{{ 'MY_HOME_DETAIL.btn_add_member' | translate }}</ion-label>
           </ion-button>
         </ion-toolbar>    
       </super-tab>
       <!-- super-tab vehicles -->
       <super-tab class="no-padding">
-        <ion-list>
-          <ion-card class="member-card">
+        <ion-list class="list-content">
+          <ion-card class="card-content">
             <ion-row class="member-card-item">
               <ion-col class="content-col">
                 <p class="title-name">Camry 2.5Q</p>
                 <p class="title-content">Oto - 30A-215.65 - Màu đen</p>
               </ion-col>
-              <ion-col size="auto" class="border-left button-col">
+              <ion-col size="auto" class="border-left button-col" (click)="deleteVehicleModal()">
                 <ion-label class="danger-text">{{ 'MY_HOME_DETAIL.delete' | translate }}</ion-label>
               </ion-col>
             </ion-row>
           </ion-card>
-          <ion-card class="member-card">
+          <ion-card class="card-content">
             <ion-row class="member-card-item">
               <ion-col class="content-col">
                 <p class="title-name">Honda Wave Alpha</p>
                 <p class="title-content">Xe máy - 30B1-346.73 - Màu trắng</p>
               </ion-col>
-              <ion-col size="auto" class="border-left button-col">
+              <ion-col size="auto" class="border-left button-col" (click)="deleteVehicleModal()">
                 <ion-label class="danger-text">{{ 'MY_HOME_DETAIL.delete' | translate }}</ion-label>
               </ion-col>
             </ion-row>
           </ion-card>
-          <ion-card class="member-card">
+          <ion-card class="card-content">
             <ion-row class="member-card-item">
               <ion-col class="content-col">
                 <p class="title-name">Honda Lead</p>
                 <p class="title-content">Xe máy - 29B-126.35 - Màu bạc</p>
               </ion-col>
-              <ion-col size="auto" class="border-left button-col">
+              <ion-col size="auto" class="border-left button-col" (click)="deleteVehicleModal()">
                 <ion-label class="danger-text">{{ 'MY_HOME_DETAIL.delete' | translate }}</ion-label>
               </ion-col>
             </ion-row>
           </ion-card>
-          <ion-card class="member-card">
+          <ion-card class="card-content">
             <ion-row class="member-card-item">
               <ion-col class="content-col">
                 <p class="title-name">Mini</p>
                 <p class="title-content">Xe đạp - Màu hồng</p>
               </ion-col>
-              <ion-col size="auto" class="border-left button-col">
+              <ion-col size="auto" class="border-left button-col" (click)="deleteVehicleModal()">
                 <ion-label class="danger-text">{{ 'MY_HOME_DETAIL.delete' | translate }}</ion-label>
               </ion-col>
             </ion-row>
           </ion-card>
         </ion-list>    
         <ion-toolbar lines="none" class="function-item ion-text-center">
-          <ion-button class="add-button margin-left-0">
+          <ion-button class="add-button margin-left-0" (click)="addVehicle()">
             <ion-label class="add-button-label">{{ 'MY_HOME_DETAIL.btn_add_vehicle' | translate }}</ion-label>
           </ion-button>
         </ion-toolbar> 

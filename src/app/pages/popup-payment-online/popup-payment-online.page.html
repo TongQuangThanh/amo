@@ -1,0 +1,43 @@
+<ion-content class="content-wrap">
+  <div class="content-container">
+    <ion-item lines="none" class="header-item ion-no-padding">
+      <ion-title class="popup-title">{{ 'PAYMENT_INFOR.select_wallet' | translate }}</ion-title>
+      <ion-buttons slot="end" (click)="closeModal()" class="btn-done">
+        <ion-icon name="close"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item lines="none" class="select-item ion-no-padding btn-language-active">
+      <ion-title class="select-title"><img src="assets/icon/logo_VNPay.png" /></ion-title>      
+      <ion-buttons slot="end" class="btn-done">
+        <ion-icon name="checkmark-circle" class="active"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item lines="none" class="select-item ion-no-padding">
+      <ion-title class="select-title"><img src="assets/icon/logo_Momo.png" /></ion-title>
+      <ion-buttons slot="end" class="btn-done">
+        <ion-icon name="checkmark-circle" class="hide"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item lines="none" class="select-item ion-no-padding">
+      <ion-title class="select-title"><img src="assets/icon/logo_AirPay.png" /></ion-title>
+      <ion-buttons slot="end" class="btn-done">
+        <ion-icon name="checkmark-circle" class="hide"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item lines="none" class="select-item ion-no-padding">
+      <ion-title class="select-title"><img src="assets/icon/logo_ZaloPay.png" /></ion-title>
+      <ion-buttons slot="end" class="btn-done">
+        <ion-icon name="checkmark-circle" class="hide"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item lines="none" class="select-item ion-no-padding no-padding-end">
+      <ion-title class="select-title ion-no-padding">
+        <ion-button class="add-button">
+          <ion-label class="add-button-label">{{ 'PAYMENT_INFOR.btn_continue' | translate }}</ion-label>
+        </ion-button>
+      </ion-title>
+    </ion-item>
+
+  </div>
+  
+</ion-content>

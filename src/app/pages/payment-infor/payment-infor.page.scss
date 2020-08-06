@@ -41,7 +41,9 @@ ion-toolbar {
 .icon-color {
     color: #3880ff;
 }
-
+.item-payment-date {
+    padding: 3px 0;
+}
 .payment-infor-card-top{
     --background: #FFFFFF;
     box-shadow: 0px 0px 20px rgba(23, 21, 48, 0.102546);
@@ -72,6 +74,12 @@ ion-toolbar {
 .section-content {
     background: #ffffff;
 }
+.section-content-fee {
+    margin: 0 16px;
+    padding: 4px 0;
+    border-bottom: 1px solid #F4F5F5;
+    
+}
 .section-grid {
     margin: 0 10px;
 }
@@ -80,6 +88,7 @@ ion-toolbar {
     font-size: 18px;
     line-height: 28px;
     color: #009AC9;
+    text-align: right;
 }
 .amountPay-unit {
     font-weight: bold;
@@ -103,9 +112,25 @@ ion-toolbar {
     text-align: right;
     color: #21313F;
 }
-ion-footer > ion-toolbar {
-    background: #E5E5E5;
-    text-align: center;
+ion-item.fee-item {
+    --inner-padding-end: 0px;
+}
+.fee-title {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #21313F;
+}
+.amount-number {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: right;
+    color: #21313F;
 }
 .conplain-button{
     background: #D3D6D9;
@@ -116,7 +141,7 @@ ion-footer > ion-toolbar {
     mix-blend-mode: normal;
     border-radius: 5px;
     left: 4.27%;
-    width: 91.46%;
+    // width: 91.46%;
     height: 44px;
     font-family: Nunito Sans;
     font-style: normal;
@@ -135,6 +160,7 @@ ion-footer > ion-toolbar {
 .icon-parking {
     color: #F2994A;
     font-size: 24px;
+    margin-right: 20px;
 }
 .icon-water {
     color: #009AC9;
@@ -142,7 +168,7 @@ ion-footer > ion-toolbar {
 }
 
 .item-fee-detail {
-    margin: 20px 0 0 0;
+    margin: 20px 0 0 44px;
     padding-top: 0;
     padding-bottom: 0;
     transition: height 0.09s all linear;
@@ -168,7 +194,8 @@ ion-footer > ion-toolbar {
     border-bottom: 1px solid #F4F5F5;
 }
 .icon-view-detail {
-    margin-left: 20px
+    font-size: 16px;
+    margin-left: 20px;
 }
 .item-no-border {
     border: none;
@@ -184,14 +211,15 @@ ion-footer > ion-toolbar {
     margin-right: 10px;
 }
 
-.payment-method-button{
+.payment-method-button {
     // background: #FBFBFB;
     --background-focused: #FBFBFB;
     --background-hover:#FBFBFB;
-    --background: #FBFBFB;
+    --background: none;
     --background-activated: #D3D6D9;
     border: 1px solid #D3D6D9;
     border-radius: 8px;
+    --box-shadow: none;
     // left: 4.27%;
     width: 100%;
     height: 60px;
@@ -203,6 +231,9 @@ ion-footer > ion-toolbar {
     text-align: center;
     color: #21313F;
     margin: 0;
+}
+.payment-method-button.ion-actived {
+    border: 1px solid #009AC9;
 }
 .payment-method-button-label {
     font-family: Nunito Sans;
@@ -221,4 +252,15 @@ ion-footer > ion-toolbar {
 }
 .payment-cash {
     margin: 20px 0 20px 10px;
+}
+.payment-fee {
+    text-align: right;
+}
+
+.function-button {
+    margin-top: 30px;
+    text-align: center;
+}
+.two-button {
+    width: 43.73%;
 }

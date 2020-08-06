@@ -103,14 +103,14 @@
                     <ion-label class="view-all-label">{{ 'HOME.view_all' | translate }}</ion-label>
                 </div>
                 <ion-list class="list-view-custom">
-                    <ion-card button class="card-content-custom" *ngFor="let item of listNews" (click)="detailPage($event)" id="{{item._id}}">
+                    <ion-card button class="card-content-custom" *ngFor="let item of listArticles" (click)="detailPageNoti($event)" id="{{item._id}}">
                         <!-- <div class="card-img">
                             <ion-img class="card-img-responsive" src="{{item.thumbnail}}"></ion-img>
                             <ion-badge class="badge-corner badge-corner-base" slot="start">1111111111111111</ion-badge>
                         </div> -->
                         <div class="card-img">
                             <ion-img src="{{item.thumbnail}}" class="img-responsive" alt=""></ion-img>
-                            <ion-label class="badge-corner badge-corner-base">11/06/2020</ion-label>
+                            <ion-label class="badge-corner badge-corner-base">{{formatString(item.updatedAt)}}</ion-label>
                         </div>
                         
                         <ion-item lines="none" style="margin-top: 10px;">
@@ -122,19 +122,19 @@
                         <div class="ion-float-left">
                             <ion-item lines="none" class="card-bottom">
                                 <ion-icon item-start name="eye-outline" class="card-bottom-icon"></ion-icon>
-                                <span class="image-caption-big" class="card-bottom-label"> 115 </span>
+                                <span class="card-bottom-label">{{item.readsCount}}</span>
                             </ion-item>
                         </div>
                         <div class="ion-float-left">
                             <ion-item lines="none" class="card-bottom">
                                 <ion-icon item-start name="custom-comment" class="card-bottom-icon" src="assets/icon/custom-comment.svg"></ion-icon>
-                                <span class="image-caption-big" class="card-bottom-label"> 2455 </span>
+                                <span class="card-bottom-label"> {{item.commentsCount}} </span>
                             </ion-item>
                         </div>
                         <div class="ion-float-left">
                             <ion-item lines="none" class="card-bottom">
-                                <ion-icon item-start name="custom-attach" class="card-bottom-icon" src="assets/icon/custom-attach.svg"></ion-icon>
-                                <span class="image-caption-big" class="card-bottom-label"> 2 </span>
+                                <ion-icon item-start name="custom-share" class="card-bottom-icon" src="assets/icon/custom-share.svg"></ion-icon>
+                                <span class="card-bottom-label"> {{item.sharesCount}} </span>
                             </ion-item>
                         </div>
                     </ion-card>
@@ -149,14 +149,14 @@
             
             <!-- <ion-content> -->
                 <ion-label class="title-top-new">{{ 'HOME.top_news' | translate }}</ion-label>
-                <div class="ion-float-right" (click)="goToNotification()">
+                <div class="ion-float-right" (click)="goToNews()">
                     <ion-label class="view-all-label">{{ 'HOME.view_all' | translate }}</ion-label>
                 </div>
                 <ion-list class="list-view-custom">
                     <ion-card button class="card-content-custom" *ngFor="let item of listNews" (click)="detailPage($event)" id="{{item._id}}">
                         <div class="card-img">
                             <ion-img src="{{item.thumbnail}}" class="img-responsive" alt=""></ion-img>
-                            <ion-label class="badge-corner badge-corner-base">11/06/2020</ion-label>
+                            <ion-label class="badge-corner badge-corner-base">{{formatString(item.updatedAt)}}</ion-label>
                         </div>
                         <ion-item lines="none" style="margin-top: 10px;">
                             <ion-card-title class="ion-text-wrap content-two-line content-title">{{item.title}}</ion-card-title>
@@ -167,19 +167,13 @@
                         <div class="ion-float-left">
                             <ion-item lines="none" class="card-bottom">
                                 <ion-icon item-start name="eye-outline" class="card-bottom-icon"></ion-icon>
-                                <span class="image-caption-big" class="card-bottom-label"> 115 </span>
+                                <ion-label class="card-bottom-label"> {{item.totalViewers}} </ion-label>
                             </ion-item>
                         </div>
                         <div class="ion-float-left">
                             <ion-item lines="none" class="card-bottom">
-                                <ion-icon item-start name="custom-comment" class="card-bottom-icon" src="assets/icon/custom-comment.svg"></ion-icon>
-                                <span class="image-caption-big" class="card-bottom-label"> 2455 </span>
-                            </ion-item>
-                        </div>
-                        <div class="ion-float-left">
-                            <ion-item lines="none" class="card-bottom">
-                                <ion-icon item-start name="custom-attach" class="card-bottom-icon" src="assets/icon/custom-attach.svg"></ion-icon>
-                                <span class="image-caption-big" class="card-bottom-label"> 2 </span>
+                                <ion-icon item-start name="person-circle-outline" class="card-bottom-icon"></ion-icon>
+                                <ion-label class="card-bottom-label"> {{item.createdBy.displayName}} </ion-label>
                             </ion-item>
                         </div>
                     </ion-card>

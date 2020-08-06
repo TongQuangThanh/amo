@@ -1,0 +1,19 @@
+<ion-content class="content-wrap">
+  <div class="content-container">
+    <ion-item lines="none" class="header-item ion-no-padding">
+      <ion-title class="popup-title">{{ 'MY_ACCOUNT.feedback' | translate }}</ion-title>
+      <ion-buttons slot="end" (click)="closeModal()" class="btn-done">
+        <ion-icon name="close"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item class="modal-item feedback-textarea" lines="none">
+      <ion-textarea class="feedback-textarea-placeholder" rows="6" placeholder="{{ 'MY_ACCOUNT.feeback_placeholder' | translate }}"></ion-textarea>
+    </ion-item>
+    <ion-toolbar lines="none" class="ion-text-center modal-toolbar">
+      <ion-button class="delete-button">
+        <ion-label class="delete-button-label">{{ 'MY_ACCOUNT.send' | translate }}</ion-label>
+      </ion-button>
+    </ion-toolbar>
+  </div>
+  
+</ion-content>

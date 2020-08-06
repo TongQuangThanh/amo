@@ -536,14 +536,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova.plugins.diagnostic.Diagnostic_Bluetooth",
-      "file": "plugins/cordova.plugins.diagnostic/www/android/diagnostic.bluetooth.js",
-      "pluginId": "cordova.plugins.diagnostic",
-      "merges": [
-        "cordova.plugins.diagnostic.bluetooth"
-      ]
-    },
-    {
       "id": "cordova.plugins.diagnostic.Diagnostic_Wifi",
       "file": "plugins/cordova.plugins.diagnostic/www/android/diagnostic.wifi.js",
       "pluginId": "cordova.plugins.diagnostic",

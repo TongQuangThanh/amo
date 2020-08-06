@@ -10,6 +10,11 @@ import { ActionSheetController } from '@ionic/angular';
 import { TranslateConfigService } from '../../translate-config.service';
 import { ModalController } from '@ionic/angular';
 
+import { PopupHotlinePage } from '../popup-hotline/popup-hotline.page';
+import { PopupFeedbackPage } from '../popup-feedback/popup-feedback.page';
+import { PopupLogoutPage } from '../popup-logout/popup-logout.page';
+import { PopupChangeLanguagePage } from '../popup-change-language/popup-change-language.page';
+
 @Component({
   selector: 'app-my-account',
   templateUrl: './my-account.page.html',
@@ -28,9 +33,11 @@ export class MyAccountPage implements OnInit {
   avatar:any;
   // listCountries:any;
   userName: string;
+  phone: string;
   selectedLanguage:string;
 
   constructor(
+    public modalController: ModalController,
     private translate: TranslateService,
     private alertService: AlertService,
     private loading: LoadingService,
@@ -46,6 +53,7 @@ export class MyAccountPage implements OnInit {
     const profile = this.authService.getProfile();
     if(profile && this.userName != profile.displayName){
       this.userName = profile.displayName;
+      this.phone = profile.phone;
     }
   }
   async selectLanguage() {
@@ -135,10 +143,51 @@ export class MyAccountPage implements OnInit {
     localStorage.setItem('lang', language);
   }
 
+  changeToMyAccountDetail(){
+    this.navCtrl.navigateForward('/my-account-detail');
+  }
+
   changePassword(){
     this.navCtrl.navigateForward('/change-password');
   }
 
-  
+  changeToTerms(){
+    this.navCtrl.navigateForward('/terms');
+  }
 
+  changeToGuideline(){
+    this.navCtrl.navigateForward('/guideline');
+  }
+
+  async hotlineModal() {
+    const modal = await this.modalController.create({
+      component: PopupHotlinePage,
+      cssClass: 'hotline-page-custom'
+    });
+    return await modal.present();
+  }
+
+  async feedbackModal() {
+    const modal = await this.modalController.create({
+      component: PopupFeedbackPage,
+      cssClass: 'feedback-page-custom'
+    });
+    return await modal.present();
+  }
+
+  async logoutModal() {
+    const modal = await this.modalController.create({
+      component: PopupLogoutPage,
+      cssClass: 'logout-page-custom'
+    });
+    return await modal.present();
+  }
+
+  async changePasswordModal() {
+    const modal = await this.modalController.create({
+      component: PopupChangeLanguagePage,
+      cssClass: 'changepass-page-custom'
+    });
+    return await modal.present();
+  }
 }

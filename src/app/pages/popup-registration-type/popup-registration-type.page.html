@@ -1,0 +1,41 @@
+<ion-content class="content-wrap">
+  <div class="content-container">
+    <ion-item lines="none" class="header-item ion-no-padding">
+      <ion-title class="popup-title">{{ 'REGISTRATION_TYPE.title' | translate }}</ion-title>
+      <ion-buttons slot="end" (click)="closeModal()" class="btn-done">
+        <ion-icon name="close"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-grid>
+      <ion-row class="ion-align-items-center">
+        <ion-col class="item-type">
+          <div>
+            <ion-icon name="custom-car" class="item-icon" src="assets/icon/custom-car.svg"></ion-icon>
+            <ion-label class="item-label">{{ 'REGISTRATION_TYPE.parking' | translate }}</ion-label>
+          </div>          
+        </ion-col>
+        <ion-col class="item-type" (click)="registGuest()">
+          <div class="item-bor">
+            <ion-icon name="custom-team" class="item-icon" src="assets/icon/custom-team.svg"></ion-icon>
+            <ion-label class="item-label">{{ 'REGISTRATION_TYPE.guest' | translate }}</ion-label>
+          </div>          
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-align-items-center">
+        <ion-col class="item-type">
+          <div>
+            <ion-icon name="custom-archive" class="item-icon" src="assets/icon/custom-archive.svg"></ion-icon>
+            <ion-label class="item-label">{{ 'REGISTRATION_TYPE.parking' | translate }}</ion-label>
+          </div>         
+        </ion-col>
+        <ion-col class="item-type">
+          <div>
+            <ion-icon name="custom-truck" class="item-icon" src="assets/icon/custom-truck.svg"></ion-icon>
+            <ion-label class="item-label">{{ 'REGISTRATION_TYPE.parking' | translate }}</ion-label>
+          </div>          
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  
+</ion-content>

@@ -47,7 +47,7 @@
         "tab_home": "Home",
         "tab_notification": "News",
         "tab_payment": "Payment",
-        "tab_request": "Email",
+        "tab_request": "Inbox",
         "tab_service": "Services"
     },
     "FORGOT_PASSWORD":{
@@ -101,7 +101,24 @@
         "guideline": "Guideline",
         "vote": "Vote, rate",
         "vn": "Vietnamese",
-        "en": "English"
+        "en": "English",
+        "hotline_message": "Hotline number",
+        "copy_num": "Copy number",
+        "call": "Call now",
+        "send": "Send",
+        "feeback_placeholder": "Send us your feedback...",
+        "logout_message": "Are you sure you want to logout AMO account?",
+        "btn_cancel": "Cancel"
+    },
+    "MY_ACCOUNT_DETAIL": {
+        "title": "Account information",
+        "name": "Name",
+        "email": "Email",
+        "DOB": "DOB",
+        "gender": "Gender",
+        "btn_save": "Save",
+        "male": "Male",
+        "female": "Female"
     },
     "MY_HOME":{
         "title": "My Home",
@@ -128,6 +145,8 @@
         "members": "Member",
         "name": "Name",
         "sex": "Gender",
+        "male": "Male",
+        "female": "Female",
         "DOB": "DOB",
         "phone": "Phone",
         "personal_license": "ID Card",
@@ -143,10 +162,12 @@
         "exit": "Exit",
         "btn_add_member": "Add member",
         "btn_add_vehicle": "Add vehicle",
-        "delete_message": "Bạn chắc chắn muốn xóa thành viên? Việc này sẽ xóa tất cả dữ liệu bạn đã thiết lập."
+        "delete_message": "Bạn chắc chắn muốn xóa thành viên? Việc này sẽ xóa tất cả dữ liệu bạn đã thiết lập.",
+        "delete_vehicle_message": "Bạn chắc chắn muốn xóa phương tiện? Việc này sẽ xóa tất cả dữ liệu bạn đã thiết lập."
     },
     "NEW_DETAIL":{
-        "default_button_order": "Order serivice"
+        "default_button_order": "Order serivice",
+        "btn_callToAction" : "Call to action"
     },
     "NEW_PASSWORD":{
         "title": "Change password",
@@ -239,13 +260,25 @@
         "management_fee": "Management Fee",
         "payment_method": "Payment method",
         "payment_online": "Online",
-        "payment_transfer": "Chuyển khoản",
-        "payment_cash": "Tiền mặt"
+        "payment_transfer": "Transfer",
+        "payment_cash": "Cash",
+        "btn_copy" : "Copy",
+        "payment_cash_message" : "Qúy cư dân vui lòng thanh toán phí dịch vụ tại sảnh của tòa nhà từ ngày 13/05/2020",
+        "payment_online_message" : "",
+        "payment_transfer_message" : "Qúy cư dân vui lòng thanh toán phí dịch vụ qua tài khoản ngân hàng BQL với nội dung như sau:",
+        "payment_transfer_subtitle" : "Apartment name _ Services fee ...",
+        "bank_account_management" : "Số tài khoản Ban quản lý",
+        "select_wallet" : "Select E-wallet",
+        "btn_continue" : "Continue",
+        "payment_success_message" : "Payment successfully",
+        "payment_another" : "Payment another bill"
     },
     "APARTMENT_CODE_REGISTER":{
+        "title" : "Apartment code",
         "apartmentcode_note": "Each apartment will have a separate code of 6 characters for security purepose. If you have not received the code yet, please contact your Property Managers for assistance or skip for trial first.",
         "btn_cancel": "Cancel",
-        "wrong_code": "Wrong code"
+        "wrong_code": "Wrong code",
+        "btn_done": "Done"
     },
     "PINCODE_PASSWORD":{
         "pincode_note": "A text message with 4-digit verification code was just sent to your phone number",
@@ -255,7 +288,8 @@
     },
     "REQUEST_DETAIL":{
         "title": "Request Detail",
-        "place_holder_input": "Type a message..."
+        "place_holder_input": "Type a message...",
+        "chat_title" : "Request processing"
     },
     "REQUEST":{
         "title": "Requests",
@@ -268,7 +302,8 @@
         "pull_to_refresh": "Pull to refresh",
         "loadding_more": "Loading more data...",
         "btn_add_request": "Create new request",
-        "btn_add_new_registration": "Create registration"
+        "btn_add_new_registration": "Create registration",
+        "tab_request": "Requests"
     },
     "SERVICE_DETAIL":{
         "btn_order": "Place Order"
@@ -295,5 +330,59 @@
     },
     "COMMON": {
         "maintain" : "Function maintainal"
+    },
+    "TERMS" : {
+        "title": "Terms & Conditions"
+    },
+    "GUIDELINE" : {
+        "title": "Guideline"
+    },
+    "ADD_HOME" : {
+        "title": "Add new home",
+        "placeholder_activeCode": "Apartment code",
+        "btn_done": "Done",
+        "message": "Nhập mã căn hộ của bạn để thêm mới 1 căn hộ mới cần quản lý"
+    },
+    "ADD_HOME_MEMBER" : {
+        "title": "Add new member",
+        "placeholder_name": "Member name",
+        "placeholder_relationship": "Relationship with owner",
+        "placeholder_memberID": "Member's ID",
+        "placeholder_DOB" : "DOB",
+        "placeholder_gender" : "Gender",
+        "male": "Male",
+        "female": "Female",
+        "btn_add": "Add member",
+        "wife": "Wife",
+        "husband": "Husband",
+        "son": "Son",
+        "daughter": "Daughter",
+        "father": "Father",
+        "mother": "Mother",
+        "brother": "Brother",
+        "sister": "Sister",
+        "relative" : "Relative",
+        "housemaid": "Housemaid",
+        "friend" : "Friend",
+        "guest" : "Guest"
+    },
+    "ADD_HOME_VEHICLE" : {
+        "title" : "Add vehicle"
+    },
+    "NEWS" : {
+        "title" : "News"
+    },
+    "REGISTRATION_GUEST" : {
+        "title" : "Guest registration",
+        "apartment" : "Apartment",
+        "arrival_time" : "Arrival time",
+        "guest_quantity" : "Number of guest",
+        "guest_name" : "Guest name",
+        "guest_ID" : "Guest ID number",
+        "note" : "Note...",
+        "btn_send" : "Send",
+        "select_apartment_title" : "Select apartment",
+        "send_success_message" : "Đăng ký của bạn đã được gửi đi. Vui lòng kiểm tra phản hồi ở tab Đăng ký",
+        "back_registration_tab" : "Back to registration tab"
     }
 }

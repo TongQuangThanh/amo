@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { ApiService } from '../../services/api/api.service';
 import { NavController, NavParams } from '@ionic/angular';
 import * as moment from 'moment';
@@ -10,6 +10,7 @@ import { UtilsService } from '../../utils/utils.service';
 import { NotificationCommentPage } from '../notification-comment/notification-comment.page'
 import { ModalController } from '@ionic/angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { AuthService } from 'src/app/services/auth/auth.service';
 // import { PreviewAnyFile } from '@ionic-native/preview-any-file';
 
 @Component({
@@ -19,15 +20,21 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 })
 export class NotificationDetailPage implements OnInit {
 
+  @ViewChild("chat_input") inputField: ElementRef;
+
   articleTitle: string;
   articleContent: string;
   thumbnail: string;
   readsCount: number;
+  commentsCount: number;
   sharesCount: number;
   attachments: any;
   createdAt: string;
   createBy: string;
   articleID:string;
+  listArticlesComment: any;
+  currentPage: number;
+  profile: any;
 
   constructor(
     private iab: InAppBrowser,
@@ -36,7 +43,12 @@ export class NotificationDetailPage implements OnInit {
     private apiService: ApiService,
     private navCtrl: NavController,
     private route: ActivatedRoute,
-    public modalController: ModalController) { }
+    private authService: AuthService,
+    public modalController: ModalController) { 
+      this.profile = this.authService.getProfile();
+      this.listArticlesComment = [];
+      this.currentPage = 1;
+    }
   ngOnInit() {
     this.articleID = this.route.snapshot.paramMap.get('id');
     this.articleTitle = "";
@@ -56,10 +68,35 @@ export class NotificationDetailPage implements OnInit {
         self.thumbnail = result.article.thumbnail;
         self.attachments = result.article.attachments;
         self.readsCount = result.article.readsCount;
+        self.commentsCount = result.article.commentsCount;
         self.sharesCount = result.article.sharesCount;
         self.createdAt = result.article.createdAt;
         self.createBy = result.article.createdBy != null ? result.article.createdBy.displayName : "";
         self.loading.dismiss();
+    },
+    error => {
+      self.loading.dismiss();
+    });
+  }
+
+  getArticleComment(page: number, limit: number, articleID: string, search: string, event: any) {
+    this.loading.present();
+    const self = this;
+    this.apiService.getListArticleComment(page, limit, articleID, search)
+      .subscribe(result => {
+        if(result.comments.length > 0){
+          if(self.currentPage <= 1){
+            self.listArticlesComment = result.comments;
+          }else{
+            self.listArticlesComment = self.listArticlesComment.concat(result.comments);
+          }
+          
+        }
+        if (event) {
+          event.target.complete();
+        }
+        self.loading.dismiss();
+        self.inputField.nativeElement.focus();
     },
     error => {
       self.loading.dismiss();
@@ -96,5 +133,9 @@ export class NotificationDetailPage implements OnInit {
         return;
       }
     });
+  }
+
+  convertText(textInput:string){
+    return textInput.replace(/\n/ig, '<br/>');;
   }
 }

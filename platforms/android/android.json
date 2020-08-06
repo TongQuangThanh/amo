@@ -29,7 +29,7 @@
           "/*": [
             {
               "xml": "<feature name=\"NativePageTransitions\"><param name=\"android-package\" value=\"com.telerik.plugins.nativepagetransitions.NativePageTransitions\" /><param name=\"onload\" value=\"true\" /></feature>",
-              "count": 1
+              "count": 2
             },
             {
               "xml": "<feature name=\"Camera\"><param name=\"android-package\" value=\"org.apache.cordova.camera.CameraLauncher\" /></feature>",
@@ -262,7 +262,7 @@
   },
   "installed_plugins": {
     "com.telerik.plugins.nativepagetransitions": {
-      "PACKAGE_NAME": "vn.amtechcom.anhmo"
+      "PACKAGE_NAME": "com.george.anhmo"
     },
     "cordova-plugin-camera": {
       "ANDROID_SUPPORT_V4_VERSION": "27.+",

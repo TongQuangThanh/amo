@@ -1,0 +1,121 @@
+ion-button.md {
+    .button-native {
+        --padding-start: 0 !important;
+    }
+}
+.error-input {
+    border: 1px solid #FA7268;
+}
+
+.error-message {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+    color: #FA7268;
+}
+.account-back-button {
+    margin-left: 10px !important;
+}
+.account-info {
+    margin: 30px 17px 0 17px;
+}
+
+// custom floating input
+ion-datetime.ios {
+    padding-bottom: 5px !important;
+    padding-top: 0 !important;
+}
+ion-select.ios {
+    padding-bottom: 5px !important;
+    padding-top: 0 !important;
+}
+.input-text-50 {
+    --padding-end: 0;
+    --padding-bottom: 6px;
+}
+.input-num {
+    color: #21313F;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+}
+.input-flag-icon {
+    font-size: 24px;
+    margin-left: 5px;
+}
+
+.change-pass-button{
+    margin: 0;
+    padding: 0;
+}
+.pass-hide-icon {
+    margin: 19px 13px 17px 2px;
+    font-size: 18px;
+}
+.clear-input {
+    color: #D3D6D9;
+}
+.check-valid {
+    color: #009AC9;
+}
+.check-unvalid {
+    color: #FA7268;
+}
+.check-success {
+    color: #51D2B5;
+}
+::slotted(ion-buttons) {
+    --min-height: 32px;
+}
+.button-save {
+    --ion-toolbar-color: rgba(0, 154, 201, 0.15);
+    --background-activated: rgba(0, 154, 201, 0.25);
+    --background-focused: rgba(0, 154, 201, 0.25);
+    --background-hover: rgba(0, 154, 201, 0.25);
+    --border-radius: 100px;  
+    padding: 0 12px;
+    margin-right: 14px;
+    height: 32px;
+    --min-height: 32px;
+}
+.button-save.md {
+    --box-shadow: none !important;
+    padding: 0;
+}
+.button-save-label {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: #009AC9;
+}
+.icon-save {
+    font-size: 16px !important;
+    color: #009AC9;
+}
+.avatar {
+    margin-top: 20px;
+}
+.account-avatar {
+    margin:0 auto;
+    width: 100px;
+    height: 100px;
+}
+.no-padding {
+    padding: 0;
+}
+.padding-left-10 {
+    padding-left: 10px;
+}
+.padding-right-10 {
+    padding-right: 10px;
+}
+.margin-left-0 {
+    margin-left: 0 !important;
+}

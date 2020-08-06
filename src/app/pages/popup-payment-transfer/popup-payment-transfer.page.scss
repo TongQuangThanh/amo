@@ -1,0 +1,107 @@
+root{
+    --borderColor:gray;
+    --charShape:none;
+}
+.content-wrap {
+    --background: rgba(33,49,63,0);
+}
+.content-container {
+    position: fixed;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    background: #ffffff;
+    display: block;
+    justify-content: end;
+}
+.header-item {
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+}
+.modal-item {
+    margin: 0 20px 0 20px;
+}
+.modal-header {
+    border-bottom: 1px solid #F4F5F5;
+    margin: 0 28px 0px 28px;
+}
+.modal-footer {
+    margin: 0 20px 30px 20px;
+    --min-height: 24px;
+}
+.modal-toolbar {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.no-margin-bottom {
+    margin-bottom: 0;
+}
+.trash-icon {
+    font-size: 60px;
+    color: #FA7268;
+}
+.normal_message {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #21313F;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.small_message {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #21313F;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.back_account {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 28px;
+    text-align: left;
+    color: #21313F;
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+}
+.button-save {
+    --ion-toolbar-color: rgba(0, 154, 201, 0.15);
+    --background-activated: rgba(0, 154, 201, 0.25);
+    --background-focused: rgba(0, 154, 201, 0.25);
+    --background-hover: rgba(0, 154, 201, 0.25);
+    --border-radius: 100px;  
+    --background: rgba(0, 154, 201, 0.15);
+    margin-inline-start: 0;
+    margin-inline-end: 0;
+    height: 32px;
+    --min-height: 32px;
+}
+.button-save.md {
+    --box-shadow: none !important;
+    padding: 0;
+}
+.button-save-label {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 20px;
+    color: #009AC9;
+    padding-right: 10px;
+}
+.icon-save {
+    font-size: 16px !important;
+    color: #009AC9;
+    padding-left: 10px;
+}

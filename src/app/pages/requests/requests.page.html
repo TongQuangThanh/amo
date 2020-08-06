@@ -1,10 +1,64 @@
-<ion-header no-border>
-  <ion-toolbar>
-    <ion-title>{{ 'REQUEST.title' | translate }}</ion-title>
+<ion-header class="ion-no-border">
+  <ion-toolbar class="header-toolbar">
+    <ion-title class="header-title">{{ 'REQUEST.title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <super-tabs activeTabIndex="0" [config]="{ debug: true, sideMenu: 'left', allowElementScroll: true, nativeSmoothScroll: true }" class="super-tabs-content">
+    <super-tabs-toolbar no-border class="segment-toolbar">
+      <super-tab-button>
+        <ion-label class="super-tab-button-label">{{ 'REQUEST.tab_request' | translate }}</ion-label>
+      </super-tab-button>
+      <super-tab-button>
+        <ion-label class="super-tab-button-label">{{ 'REQUEST.tab_registration' | translate }}</ion-label>
+      </super-tab-button>
+    </super-tabs-toolbar>
+  
+    <super-tabs-container>      
+      <super-tab>
+        <ion-list>
+          <ion-card *ngFor="let item of listRequestAll" (click)="detailPage($event)" id="{{item._id}}" class="request-card">
+            <ion-item lines="none">
+              <ion-badge slot="start" class="badge-lightred" *ngIf="item.status == 'new'">{{ 'REQUEST.status_new' | translate }}</ion-badge>
+              <ion-badge slot="start" class="badge-primary" *ngIf="item.status == 'processing'">{{ 'REQUEST.status_processing' | translate }}</ion-badge>
+              <ion-badge slot="start" class="badge-success" *ngIf="item.status == 'completed'">{{ 'REQUEST.status_done' | translate }}</ion-badge>
+              <ion-badge slot="start" class="badge-cancel" *ngIf="item.status == 'cancelled'">{{ 'REQUEST.status_cancelled' | translate }}</ion-badge>
+              <ion-label slot="end" class="update-time">{{formatString(item.updatedAt)}}</ion-label>
+            </ion-item>
+            <ion-text class="">
+              <p class="request-title">{{item.title}}</p>
+            </ion-text>
+          </ion-card>
+        </ion-list>
+        <ion-toolbar class="toolbar-button ion-text-center">
+          <ion-button class="lightblue-button normal-button" (click)="addRequest()">{{ 'REQUEST.btn_add_request' | translate }}</ion-button>
+        </ion-toolbar>
+      </super-tab>
+      <super-tab>
+        <ion-list>
+          <ion-card *ngFor="let itemServiceLog of listRequestRegistion" id="{{itemServiceLog._id}}" class="request-card">
+            <ion-item lines="none">
+              <ion-badge slot="start" class="badge-lightred" *ngIf="itemServiceLog.status == 'new'">{{ 'REQUEST.status_new' | translate }}</ion-badge>
+              <ion-badge slot="start" class="badge-primary" *ngIf="itemServiceLog.status == 'processing'">{{ 'REQUEST.status_processing' | translate }}</ion-badge>
+              <ion-badge slot="start" class="badge-success" *ngIf="itemServiceLog.status == 'completed'">{{ 'REQUEST.status_done' | translate }}</ion-badge>
+              <ion-badge slot="start" class="badge-cancel" *ngIf="itemServiceLog.status == 'cancelled'">{{ 'REQUEST.status_cancelled' | translate }}</ion-badge>
+              <ion-label slot="end" class="update-time">{{formatString(itemServiceLog.updatedAt)}}</ion-label>
+            </ion-item>
+            <ion-text class="">
+              <p class="request-title">{{itemServiceLog.title}}</p>
+            </ion-text>
+          </ion-card>
+        </ion-list>
+        <ion-toolbar class="toolbar-button ion-text-center">
+          <ion-button class="lightblue-button normal-button" (click)="registrationTypeModal()">{{ 'REQUEST.btn_add_new_registration' | translate }}</ion-button>
+        </ion-toolbar>
+      </super-tab>
+    </super-tabs-container>
+  </super-tabs>
+</ion-content>
+
+<!-- <ion-content>
   <ion-segment [(ngModel)]="modeService">
     <ion-segment-button checked class="button-tab-custom" value="All">
       <ion-label class="margin-none">{{ 'REQUEST.tab_all' | translate }}</ion-label>
@@ -87,5 +141,5 @@
       </div>
     </div>
   </section>
-</ion-content>
+</ion-content> -->
 
