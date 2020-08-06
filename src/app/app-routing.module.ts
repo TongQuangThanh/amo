@@ -183,6 +183,10 @@ const routes: Routes = [
     path: 'repair-service-detail', 
     loadChildren: () => import('./pages/repair-service-detail/repair-service-detail.module').then(m => m.RepairServiceDetailPageModule)
   },
+  { 
+    path: 'repair-service-booking', 
+    loadChildren: () => import('./pages/repair-service-booking/repair-service-booking.module').then(m => m.RepairServiceBookingPageModule)
+  },
 ];
 
 @NgModule({

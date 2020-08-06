@@ -381,7 +381,7 @@
         "button_send": "Thêm vào giỏ hàng"
     },
     "SEVICE_05": {
-        "title": "Giỏ hàng",
+        "title": "Sản phẩm",
         "group_1_title": "Phương thức thanh toán",
         "group_2_title": "Giao hàng",
         "group_3_title": "Tổng tiền",
@@ -444,5 +444,26 @@
         "title" : "",
         "group_3_label" : "Chọn tất cả",
         "button_send": "Tiếp tục"
+    },
+    "INBOX_56": {
+        "title": "Sản phẩm",
+        "group_1_title": "Phương thức thanh toán",
+        "group_2_title": "Giao hàng",
+        "group_3_title": "Tổng tiền",
+        "label_edit": "Chỉnh sửa",
+        "label_note": "Lưu ý",
+        "button_1_text": "Ch.Khoản",
+        "button_2_text": "Tiền mặt",
+        "textbox_1_placeHolder_1": "Số điện thoại người nhận",
+        "textbox_1_placeHolder_2": "Số điện thoai",
+        "pulldown_1_placeHolder_1": "Căn hộ",
+        "pulldown_1_placeHolder_2": "Chọn căn hộ",
+        "pulldown_2_placeHolder_1": "Thời gian đến",
+        "pulldown_3_placeHolder_1": "Thời gian kết thúc",
+        "textarea_placeHolder_2": "Ghi chú...",
+        "popup_text_1": "Đặt dịch vụ thành công",
+        "popup_text_2": "Xem lịch sử đặt dịch vụ",
+        "total_money": "Tổng tiền",
+        "button_send": "Đặt hàng"
     }
 }

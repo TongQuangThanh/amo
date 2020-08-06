@@ -158,8 +158,9 @@ export class RepairServiceDetailPage implements OnInit {
       this.total_money = ": " + total.toString();
     }
   }
-  goToPageGioHang() {
-    localStorage.setItem('data', JSON.stringify(this.data_repair));
-    this.navCtrl.navigateForward('/gio-hang');
+  
+  moveRepairServiceBookingPage() {
+    localStorage.setItem('data_repair', JSON.stringify(this.data_repair));
+    this.navCtrl.navigateForward('/repair-service-booking');
   }
 }
