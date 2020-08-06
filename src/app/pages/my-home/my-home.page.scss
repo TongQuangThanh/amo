@@ -111,6 +111,7 @@ ion-card-header {
     color: #009AC9;
     margin-right: 0;
     margin-left: 0;
+    --box-shadow: none !important;
 }
 .clear-background {
     // --color-activated:#556080;
@@ -156,10 +157,11 @@ ion-card-header {
     --ion-toolbar-color: #D4EBF3;
     --background-activated: #bee6f3;
     mix-blend-mode: normal;
-    border-radius: 5px;
+    --border-radius: 8px;
     height: 44px;
     margin-top: 10px;
     margin-bottom: 20px;
+    --box-shadow: none;
 }
 .add-button-label {
     font-family: Nunito Sans;
@@ -182,4 +184,15 @@ ion-card-header {
     font-size: 50px;
     line-height: 75px;
     color: #F4F5F5;
+}
+
+// custom list apartments 
+.list-content.md {
+    // margin: 10px 16px;
+    padding: 0;
+}
+.card-content {
+    margin: 20px 16px 20px 16px;
+    box-shadow: 0px 10px 30px rgba(33, 49, 63, 0.1);
+    border-radius: 8px;
 }

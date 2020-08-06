@@ -61,7 +61,7 @@
         "amount_to_pay": "Chờ thanh toán",
         "vnd": "vnd",
         "pay_now": "Thanh toán",
-        "create_request": "Gửi yêu cầu",
+        "create_request": "Tạo yêu cầu",
         "cleaning": "Đồ lễ",
         "reparing": "Vệ sinh",
         "fresh_food": "Đánh giày",
@@ -101,7 +101,24 @@
         "guideline": "Hướng dẫn sử dụng",
         "vote": "Bình chọn, đánh giá",
         "vn": "Tiếng Việt",
-        "en": "Tiếng Anh"
+        "en": "Tiếng Anh",
+        "hotline_message": "Số điện thoại đường dây nóng",
+        "copy_num": "Sao chép",
+        "call": "Gọi điện",
+        "send": "Gửi",
+        "feeback_placeholder": "Viết góp ý cho chúng tôi...",
+        "logout_message": "Bạn có chắc chắn muốn đăng xuất khỏi tài khoản AMO?",
+        "btn_cancel": "Huỷ"
+    },
+    "MY_ACCOUNT_DETAIL": {
+        "title": "Thông tin tài khoản",
+        "name": "Tên",
+        "email": "Email",
+        "DOB": "Ngày sinh",
+        "gender": "Giới tính",
+        "btn_save": "Lưu",
+        "male": "Nam",
+        "female": "Nữ"
     },
     "MY_HOME":{
         "title": "Căn hộ",
@@ -143,10 +160,14 @@
         "exit": "Thoát",
         "btn_add_member": "Thêm thành viên",
         "btn_add_vehicle": "Thêm phương tiện",
-        "delete_message": "Bạn chắc chắn muốn xóa thành viên? Việc này sẽ xóa tất cả dữ liệu bạn đã thiết lập."
+        "delete_message": "Bạn chắc chắn muốn xóa thành viên? Việc này sẽ xóa tất cả dữ liệu bạn đã thiết lập.",
+        "delete_vehicle_message": "Bạn chắc chắn muốn xóa phương tiện? Việc này sẽ xóa tất cả dữ liệu bạn đã thiết lập.",
+        "male": "Nam",
+        "female": "Nữ"
     },
     "NEW_DETAIL":{
-        "default_button_order": "Đặt dịch vụ"
+        "default_button_order": "Đặt dịch vụ",
+        "btn_callToAction" : "Call to action"
     },
     "NEW_PASSWORD":{
         "title": "Đổi mật khẩu",
@@ -240,7 +261,17 @@
         "payment_method": "Phương thức thanh toán",
         "payment_online": "Online",
         "payment_transfer": "Chuyển khoản",
-        "payment_cash": "Tiền mặt"
+        "payment_cash": "Tiền mặt",
+        "btn_copy" : "Sao chép",
+        "payment_cash_message" : "Quý cư dân vui lòng thanh toán phí dịch vụ tại sảnh của tòa nhà từ ngày 13/05/2020",
+        "payment_online_message" : "",
+        "payment_transfer_message" : "Quý cư dân vui lòng thanh toán phí dịch vụ qua tài khoản ngân hàng BQL với nội dung như sau:",
+        "payment_transfer_subtitle" : "Tên căn hộ _ Phí dịch vụ tháng...",
+        "bank_account_management" : "Số tài khoản Ban quản lý",
+        "select_wallet" : "Chọn ví",
+        "btn_continue" : "Tiếp tục",
+        "payment_success_message" : "Thanh toán thành công",
+        "payment_another" : "Thanh toán hóa đơn khác"
     },
     "PINCODE_PASSWORD":{
         "pincode_note": "Một tin nhắn văn bản gồm mã xác minh 4 chữ số đã được gửi đến số điện thoại của bạn",
@@ -249,16 +280,19 @@
         "wrong_code": "Mã sai"
     },
     "APARTMENT_CODE_REGISTER":{
-        "apartmentcode_note": "Mỗi căn hộ sẽ được cung cấp một mã số gồm 6 ký tự, mã số này là duy nhất vì mục đích an ninh. Nếu bạn chưa nhận được Mã căn hộ, vui lòng liên hệ với Ban Quản Lý để nhận được giúp đỡ.",
+        "title" : "Mã căn hộ",
+        "apartmentcode_note": "Mỗi căn hộ sẽ có một mã riêng gồm 6 ký tự. Nếu bạn chưa nhận được mã, vui lòng liên hệ Ban quản lý tòa nhà để được hỗ trợ. Hoặc quét mã QR Code dưới sảnh tòa nhà.",
         "btn_cancel": "Huỷ",
-        "wrong_code": "Mã sai"
+        "wrong_code": "Mã sai",
+        "btn_done" : "Xong"
     },
     "REQUEST_DETAIL":{
         "title": "Chi tiết yêu cầu",
-        "place_holder_input": "Nhập tin nhắn..."
+        "place_holder_input": "Nhập tin nhắn...",
+        "chat_title" : "Xử lý yêu cầu"
     },
     "REQUEST":{
-        "title": "Yêu cầu",
+        "title": "Hộp thư",
         "tab_all": "Tất cả",
         "tab_registration": "Đăng ký",
         "status_new": "Mới",
@@ -268,7 +302,8 @@
         "pull_to_refresh": "Kéo xuống để làm mới",
         "loadding_more": "Đang tải dữ liệu...",
         "btn_add_request": "Tạo yêu cầu mới",
-        "btn_add_new_registration": "Đăng ký mới"
+        "btn_add_new_registration": "Đăng ký mới",
+        "tab_request": "Yêu cầu"
     },
     "SERVICE_DETAIL":{
         "btn_order": "Đặt hàng"
@@ -295,5 +330,67 @@
     },
     "COMMON": {
         "maintain" : "Chức năng đang bảo trì"
-    }
+    },
+    "TERMS" : {
+        "title": "Quy chế hoạt động, điều khoản"
+    },
+    "GUIDELINE" : {
+        "title": "Hướng dẫn sử dụng"
+    },
+    "ADD_HOME" : {
+        "title": "Thêm mới căn hộ",
+        "placeholder_activeCode": "Mã căn hộ",
+        "btn_done": "Xong",
+        "message": "Nhập mã căn hộ của bạn để thêm mới 1 căn hộ mới cần quản lý"
+    },
+    "ADD_HOME_MEMBER" : {
+        "title": "Thêm thành viên",
+        "placeholder_name": "Tên thành viên",
+        "placeholder_relationship": "Quan hệ với chủ hộ",
+        "placeholder_memberID": "Số chứng minh thư/căn cước",
+        "placeholder_DOB" : "Ngày sinh",
+        "placeholder_gender" : "Giới tính",
+        "male": "Nam",
+        "female": "Nữ",
+        "btn_add": "Thêm",
+        "wife" : "Vợ",
+        "husband" : "Chồng",
+        "son": "Con trai",
+        "daughter": "Con gái",
+        "father": "Bố",
+        "mother": "Mẹ",
+        "brother": "Anh",
+        "sister": "Chị",
+        "relative" : "Họ hàng",
+        "housemaid": "Giúp việc",
+        "friend" : "Bạn",
+        "guest" : "Khách thuê"
+    },
+    "ADD_HOME_VEHICLE" : {
+        "title" : "Thêm phương tiện"
+    },
+    "NEWS" : {
+        "title" : "Tin tức"
+    },
+    "REGISTRATION_TYPE" : {
+        "title" : "Đăng ký mới",
+        "parking" : "Gửi xe",
+        "guest" : "Khách thăm",
+        "receive" : "Nhận đồ hộ",
+        "shipping" : "Chuyển đồ"
+    },
+    "REGISTRATION_GUEST" : {
+        "title" : "Đăng kí khách đến thăm",
+        "apartment" : "Căn hộ",
+        "arrival_time" : "Thời gian đến",
+        "guest_quantity" : "Số lượng khách đến thăm",
+        "guest_name" : "Tên khách thăm",
+        "guest_ID" : "Số chứng minh thư",
+        "note" : "Ghi chú...",
+        "btn_send" : "Gửi",
+        "select_apartment_title" : "Chọn căn hộ",
+        "send_success_message" : "Đăng ký của bạn đã được gửi đi. Vui lòng kiểm tra phản hồi ở tab Đăng ký",
+        "back_registration_tab" : "Về trang đăng ký"
+    }    
+
 }

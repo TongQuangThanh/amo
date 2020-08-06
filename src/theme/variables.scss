@@ -160,9 +160,25 @@
     ion-label {
       color: #21313F;
       font-weight: bold;
+      font-family: Nunito Sans;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 24px;
     }
   }
-  .sc-ion-modal-ios-h {
+  .show-modal {
     --background: none !important;
-}
+    --ion-background-color: none !important;
+  }
+  .ios.item-label-floating {
+    --min-height: 60px !important;
+  }
+  input.native-input.sc-ion-input-ios {
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+  }
+  .md {
+    letter-spacing: normal !important;
+  }
 }

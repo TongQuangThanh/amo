@@ -4,7 +4,9 @@ import { NavController } from '@ionic/angular';
 import { LoadingService } from '../../services/loading/loading.service';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { ModalController } from '@ionic/angular';
+
 import { ApartmentCodeRegisterPage } from '../auth/apartment-code-register/apartment-code-register.page';
+import { PopupBuildingManagementPhonePage } from '../popup-building-management-phone/popup-building-management-phone.page';
 
 @Component({
   selector: 'app-my-home',
@@ -80,6 +82,19 @@ export class MyHomePage implements OnInit {
       }
     });
 
+    return await modal.present();
+  }
+
+  addNewHome(){
+    this.navCtrl.navigateForward('/add-home');
+  }
+
+  async buildingManagementPhoneModal($event) {
+    $event.stopPropagation();
+    const modal = await this.modalController.create({
+      component: PopupBuildingManagementPhonePage,
+      cssClass: 'buildingManagementPhone-custom-class'
+    });
     return await modal.present();
   }
 }

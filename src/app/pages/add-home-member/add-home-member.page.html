@@ -1,0 +1,67 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="header-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="arrow-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'ADD_HOME_MEMBER.title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="account-info">
+    <ion-item class="input-item" lines="none">
+      <ion-icon class="input-icon" name="custom-user" src="/assets/icon/custom-user.svg" slot="start"></ion-icon>
+      <ion-label class="input-floating-label" position="floating">{{ 'ADD_HOME_MEMBER.placeholder_name' | translate }}</ion-label>
+      <ion-input class="input-text" type="text" name="userName" value=""></ion-input>
+      <!-- <ion-icon class="clear-input check-valid" name="checkmark-circle" slot="end"></ion-icon> -->
+    </ion-item>
+    <ion-item class="input-item" lines="none" (click)="selectRelationship()">
+      <ion-icon class="input-icon" name="custom-user-check" src="/assets/icon/custom-user-check.svg" slot="start"></ion-icon>
+      <ion-label class="input-floating-label" position="floating">{{ 'ADD_HOME_MEMBER.placeholder_relationship' | translate }}</ion-label>
+      <ion-input class="input-text" type="text" name="userEmail" value=""></ion-input>
+      <ion-icon class="select-icon" name="caret-down-outline" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item class="input-item" lines="none">
+      <ion-icon class="input-icon" name="custom-card" src="/assets/icon/custom-card.svg" slot="start"></ion-icon>
+      <ion-label class="input-floating-label" position="floating">{{ 'ADD_HOME_MEMBER.placeholder_memberID' | translate }}</ion-label>
+      <ion-input class="input-text" type="text" name="userEmail" value=""></ion-input>
+      <!-- <ion-icon class="clear-input check-valid" name="checkmark-circle" slot="end"></ion-icon> -->
+    </ion-item>
+    <ion-row>
+      <ion-col class="no-padding padding-right-10" size="5">
+        <ion-item class="input-item" lines="none">
+          <ion-icon class="input-icon" name="flag-vn" src="/assets/icon/flag-vn.svg" slot="start"></ion-icon>
+          <ion-input class="input-text" type="text" name="region" value="+84"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col class="no-padding padding-left-10" size="7">
+        <ion-item lines="none" class="input-item">
+          <ion-input class="input-text" type="number" value=""></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="no-padding padding-right-10" size="6">
+        <ion-item class="input-item" lines="none">
+          <ion-icon class="input-icon" name="custom-gift" src="/assets/icon/custom-gift.svg" slot="start"></ion-icon>
+          <ion-label class="input-floating-label" position="floating">{{ 'ADD_HOME_MEMBER.placeholder_DOB' | translate }}</ion-label>
+          <ion-datetime class="input-text input-text-50" displayFormat="DD/MM/YYYY" value="01-01-1990"></ion-datetime>
+        </ion-item>
+      </ion-col>
+      <ion-col class="no-padding padding-left-10" size="6">
+        <ion-item class="input-item" lines="none">
+          <ion-icon class="input-icon" name="custom-gender" src="/assets/icon/custom-gender.svg" slot="start"></ion-icon>
+          <ion-label class="input-floating-label" position="floating">{{ 'ADD_HOME_MEMBER.placeholder_gender' | translate }}</ion-label>
+          <ion-select class="input-text select-text" value="m" >
+            <ion-select-option value="f">{{ 'ADD_HOME_MEMBER.female' | translate }}</ion-select-option>
+            <ion-select-option value="m">{{ 'ADD_HOME_MEMBER.male' | translate }}</ion-select-option>
+          </ion-select>
+        </ion-item>        
+      </ion-col>
+    </ion-row>
+    <ion-button expand="block" class="button-common button-common-bottom button-next">
+      <ion-label>{{ 'ADD_HOME_MEMBER.btn_add' | translate }}</ion-label>
+    </ion-button>
+  </div>
+  
+</ion-content>

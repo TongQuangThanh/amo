@@ -1,0 +1,50 @@
+.login-button{
+    margin: 15px 0;
+    position: absolute;
+    left: 4.27%;
+    width: 91.46%;
+    bottom: 0;
+    padding: 0;
+    --box-shadow: none;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+}
+.pincode-input {
+    display: flex;
+    align-items: center !important;
+    align-content: center !important;
+    border: 1px solid #D3D6D9;
+    border-radius: 8px;
+    margin: 10px 5px;
+    text-align: center;
+    height: 44px;
+}
+ion-input.has-focus {
+    border: 1px solid #009AC9;
+}
+ion-item.item-has-focus {
+    border: none !important;
+}
+
+.button-qrcode {
+    --ion-toolbar-color: rgba(0, 154, 201, 0);;
+    --background-activated: rgba(0, 154, 201, 0);
+    --background-focused: rgba(0, 154, 201, 0);
+    --background-hover: rgba(0, 154, 201, 0); 
+}
+.button-qrcode.md {
+    --box-shadow: none !important;
+    padding: 0;
+}
+.icon-qrcode {
+    font-size: 20px !important;
+    color: #21313F;
+}
+.icon-qrcode.ios {
+    margin-right: 10px;
+}

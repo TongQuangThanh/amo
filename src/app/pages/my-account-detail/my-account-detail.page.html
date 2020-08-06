@@ -1,9 +1,73 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>myAccountDetail</ion-title>
+<ion-header class="ion-no-border">
+  <ion-toolbar class="header-toolbar">
+    <ion-buttons slot="start">
+      <!-- <ion-button> -->
+        <ion-back-button text="" icon="arrow-back-outline"></ion-back-button>
+      <!-- </ion-button> -->
+    </ion-buttons>
+    <ion-title>{{ 'MY_ACCOUNT_DETAIL.title' | translate }}</ion-title>
+    <ion-button slot="end" class="button-save">
+      <!-- <ion-button> -->
+        <ion-icon slot="start" name="custom-save" class="icon-save" src="/assets/icon/custom-save.svg"></ion-icon>
+        <ion-label class="button-save-label">{{ 'MY_ACCOUNT_DETAIL.btn_save' | translate }}</ion-label>
+        
+      <!-- </ion-button> -->
+    </ion-button>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
+  <div class="avatar">
+    <ion-avatar class="account-avatar">
+      <img src="{{avatar}}"/>
+    </ion-avatar>
+  </div>
+  
+  <div class="account-info">
+    <ion-item class="input-item" lines="none">
+      <ion-icon class="input-icon" name="custom-user" src="/assets/icon/custom-user.svg" slot="start"></ion-icon>
+      <ion-label class="input-floating-label" position="floating">{{ 'MY_ACCOUNT_DETAIL.name' | translate }}</ion-label>
+      <ion-input class="input-text" type="text" name="userName" value="{{displayName}}"></ion-input>
+      <!-- <ion-icon class="clear-input check-valid" name="checkmark-circle" slot="end"></ion-icon> -->
+    </ion-item>
+    <ion-item class="input-item" lines="none">
+      <ion-icon class="input-icon" name="custom-mail" src="/assets/icon/custom-mail.svg" slot="start"></ion-icon>
+      <ion-label class="input-floating-label" position="floating">{{ 'MY_ACCOUNT_DETAIL.email' | translate }}</ion-label>
+      <ion-input class="input-text" type="text" name="userEmail" value="{{email}}"></ion-input>
+      <!-- <ion-icon class="clear-input check-valid" name="checkmark-circle" slot="end"></ion-icon> -->
+    </ion-item>
 
+    <ion-row>
+      <ion-col class="no-padding padding-right-10" size="5">
+        <ion-item class="input-item" lines="none">
+          <ion-icon class="input-icon" name="flag-vn" src="/assets/icon/flag-vn.svg" slot="start"></ion-icon>
+          <ion-input class="input-text" type="text" name="region" value="+84"></ion-input>
+        </ion-item>
+      </ion-col>
+      <ion-col class="no-padding padding-left-10">
+        <ion-item lines="none" class="input-item">
+          <ion-input class="input-text" type="number" value="{{phone}}"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="no-padding padding-right-10" size="6">
+        <ion-item class="input-item" lines="none">
+          <ion-icon class="input-icon" name="custom-gift" src="/assets/icon/custom-gift.svg" slot="start"></ion-icon>
+          <ion-label class="input-floating-label" position="floating">{{ 'MY_ACCOUNT_DETAIL.DOB' | translate }}</ion-label>
+          <ion-datetime class="input-text input-text-50" displayFormat="DD/MM/YYYY" value="{{dateOfBirth}}"></ion-datetime>
+        </ion-item>
+      </ion-col>
+      <ion-col class="no-padding padding-left-10">
+        <ion-item class="input-item" lines="none">
+          <ion-icon class="input-gender" name="custom-gift" src="/assets/icon/custom-gender.svg" slot="start"></ion-icon>
+          <ion-label class="input-floating-label" position="floating">{{ 'MY_ACCOUNT_DETAIL.gender' | translate }}</ion-label>
+          <ion-select placeholder="Gender" class="input-text select-text" value="m" >
+            <ion-select-option value="f">{{ 'MY_ACCOUNT_DETAIL.female' | translate }}</ion-select-option>
+            <ion-select-option value="m">{{ 'MY_ACCOUNT_DETAIL.male' | translate }}</ion-select-option>
+          </ion-select>
+        </ion-item>        
+      </ion-col>
+    </ion-row>
+  </div>
 </ion-content>

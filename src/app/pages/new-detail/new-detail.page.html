@@ -1,5 +1,5 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar>
+  <ion-toolbar class="header-toolbar">
     <ion-buttons slot="start">
       <ion-back-button text="" icon="arrow-back-outline"></ion-back-button>
     </ion-buttons>
@@ -67,5 +67,12 @@
   <p [innerHTML]="newContent" class="padding-left-right-card article-content" style="width: 100%;"></p>
 </ion-content>
 <section class="full-width function-section" *ngIf="isDisplayButton == true" >
-  <ion-button expand="block" class="amo-button-custom" (click)="orderService($event)">{{ buttonTitle == "" ? ('NEW_DETAIL.default_button_order' | translate) : buttonTitle }}</ion-button>
+  <ion-button expand="block" class="button-common button-common-active" (click)="orderService($event)">{{ buttonTitle == "" ? ('NEW_DETAIL.default_button_order' | translate) : buttonTitle }}</ion-button>
 </section>
+
+<!-- <ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <button expand="block" fill="outline" class="comment-button">{{ 'NEW_DETAIL.btn_callToAction' | translate }}</button>
+  </ion-toolbar>
+</ion-footer> -->
+

@@ -12,66 +12,30 @@
 .landing-errorMessage {
     margin: 0px 17px;
 }
-
 .landing-white-bg {
     position: absolute;
     width: 100%;
     height: 60%;
     bottom: 0;
-    /* Fill/White */
     background: #FFFFFF;
     border-radius: 24px 24px 0px 0px;
 }
 .label-text {
-    /* T2 (16)/Regular */
     font-family: Nunito Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
     line-height: 24px;
-    
-    /* Fill/Black */
     color: #21313F;
-}
-
-.phone-input {
-    height: 3.5em;
-    // height: 40px;
-    mix-blend-mode: normal;
-    // opacity: 0.15;
-    border: 1px solid #D3D6D9;
-    box-sizing: border-box;
-    border-radius: 8px;
-}
-
-.phone-input-text {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    /* identical to box height */
-
-    --padding-start: 10px;
-    color: #7A838C;
 }
 .input-text {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
     color: #21313F;
-    margin-top: -20px;
 }
-
-.input-icon {
-    margin: 17px 17px 17px 2px;
-    font-size: 20px;
-}
-.label-floating {
-    transform: translate3d(0,11px,0);
-    margin-top: 5px;
-}
-
-.item-inner  {
-    border: none !important;
-}
-
 .error-message{
     padding-left: 0;
 }
@@ -82,53 +46,46 @@
     position: absolute;
     left: 4.27%;
     width: 91.46%;
-    bottom: 72px;
+    bottom: 65px;
     padding: 0;
+    --box-shadow: none;
 }
-
 .button-next-label {
     font-family: Nunito Sans;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
     line-height: 22px;
-    /* identical to box height */
-
     text-align: center;
-
     color: #FFFFFF;
 }
-
 .button-skip {
     position: absolute;
     height: 19px;
     left: 30%;
-    width: 40%;
-    bottom: 39px;
+    // width: 40%;
+    bottom: 20px;
     border: 0px;
     --box-shadow: none;
 }
-
 .button-skip-label {
     font-family: Nunito Sans;
     font-style: normal;
     font-weight: normal;
-    font-size: 14px;
-    line-height: 19px;
-    /* identical to box height */
+    font-size: 16px;
+    line-height: 24px;
     color: #21313F;
 }
 .button-skip-icon {
-    font-size: 13px;
+    font-size: 14px;
     line-height: 20px;
-    margin-left: 2px;
+    margin-left: 10px;
     color: #21313F;
 }
 .clear-background {
     --background: transparent;
     --background-activated: transparent;
 }
-
 .error-input {
     border: 1px solid #FA7268;
 }

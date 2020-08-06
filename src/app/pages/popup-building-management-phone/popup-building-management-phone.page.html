@@ -1,0 +1,26 @@
+<!-- <ion-backdrop></ion-backdrop> -->
+<ion-content class="content-wrap">
+  <div class="content-container">
+    <ion-item lines="none" class="header-item">
+      <ion-buttons slot="end" class="" (click)="closeModal()" class="btn-done">
+        <ion-icon name="close"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-toolbar lines="none" class="ion-text-center">
+      <ion-icon name="call-outline" class="modal-icon"></ion-icon>
+    </ion-toolbar>
+    <ion-toolbar class="ion-text-center modal-item">
+      <p class="delete_message">{{ 'MY_ACCOUNT.hotline_message' | translate }}</p>
+      <p class="hotline-num">(024) 3836 3456</p>
+    </ion-toolbar>
+    <ion-toolbar lines="none" class="ion-text-center modal-toolbar">
+      <ion-button class="cancel-button">
+        <ion-label class="cancel-button-label">{{ 'MY_ACCOUNT.copy_num' | translate }}</ion-label>
+      </ion-button>
+      <ion-button class="delete-button">
+        <ion-label class="delete-button-label">{{ 'MY_ACCOUNT.call' | translate }}</ion-label>
+      </ion-button>
+    </ion-toolbar>
+  </div>
+  
+</ion-content>

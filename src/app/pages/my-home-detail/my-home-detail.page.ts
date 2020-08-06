@@ -4,7 +4,10 @@ import { ApiService } from '../../services/api/api.service';
 import { LoadingService } from '../../services/loading/loading.service';
 import { UtilsService } from '../../utils/utils.service';
 import { ModalController } from '@ionic/angular';
+import { NavController } from '@ionic/angular';
+
 import { PopupDeleteMemberPage } from '../popup-delete-member/popup-delete-member.page';
+import { PopupDeleteVehiclePage } from '../popup-delete-vehicle/popup-delete-vehicle.page';
 
 @Component({
   selector: 'app-my-home-detail',
@@ -24,6 +27,7 @@ export class MyHomeDetailPage implements OnInit {
     public modalController: ModalController,
     private loading: LoadingService,
     private apiService: ApiService,
+    private navCtrl: NavController,
     private route: ActivatedRoute,
   ) { 
     // this.profile = this.authService.getProfile();
@@ -73,9 +77,28 @@ export class MyHomeDetailPage implements OnInit {
   async deleteMemberModal() {
     const modal = await this.modalController.create({
       component: PopupDeleteMemberPage,
-      cssClass: 'my-custom-class'
+      cssClass: 'delete-member-custom-class'
     });
     return await modal.present();
   }
 
+  async deleteVehicleModal() {
+    const modal = await this.modalController.create({
+      component: PopupDeleteVehiclePage,
+      cssClass: 'delete-vehicle-custom-class'
+    });
+    return await modal.present();
+  }
+
+  resetApartmentCode(){
+    this.navCtrl.navigateForward('/reset-apartment-code');
+  }
+
+  addMember(){
+    this.navCtrl.navigateForward('/add-home-member');
+  }
+  addVehicle(){
+    this.navCtrl.navigateForward('/add-home-vehicle');
+  }
+  
 }

@@ -18,11 +18,15 @@ export class HomePage implements OnInit {
   heightScreen: number;
   // data
   listNews: any;
+  listArticles: any;
   currentPage: number;
   numberRecordOnPage: number;
+  currentPageNoti: number;
+  numberRecordOnPageNoti: number;
   userName: string;
   avatar: string;
   getPostSubscriber: Subscription;
+  getArticleSubscriber: Subscription;
   // popupThumbnail: string;
   // popupButtonTitle: string;
   // popupButtonStyle: any;
@@ -88,7 +92,11 @@ export class HomePage implements OnInit {
     this.listNews  = [];
     this.currentPage = 1;
     this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
+    this.listArticles  = [];
+    this.currentPageNoti = 1;
+    this.numberRecordOnPageNoti = ConstService.NUMBER_RECORD_ON_PAGE;
     this.getNews(this.currentPage, this.numberRecordOnPage, '', '', null, true);
+    this.getArticles(this.currentPageNoti, this.numberRecordOnPageNoti, '', '', null, true);
   }
 
   // getConfigPopup() {
@@ -132,6 +140,31 @@ export class HomePage implements OnInit {
     });
   }
 
+  getArticles(page: number, limit: number, category: string, search: string, event: any, isRefresh: boolean) {
+    
+    const self = this;
+    if (this.getArticleSubscriber) {
+      this.getArticleSubscriber.unsubscribe();
+    }
+    this.loading.present();
+    this.getArticleSubscriber = this.apiService.getListArticle(page, limit, category, search)
+      .subscribe(result => {
+        if (isRefresh) {
+          self.listArticles = result.articles;
+        } else {
+          self.listArticles = self.listArticles.concat(result.articles);
+        }
+        
+        if (event) {
+          event.target.complete();
+        }
+        self.loading.dismiss();
+    },
+    error => {
+      self.loading.dismiss();
+    });
+  }
+
   loadData(event) {
     this.currentPage++;
     this.getNews(this.currentPage, this.numberRecordOnPage, '', '', event, false);
@@ -143,9 +176,24 @@ export class HomePage implements OnInit {
     this.getNews(this.currentPage, this.numberRecordOnPage, '', '', event, true);
   }
 
+  loadDataNoti(event) {
+    this.currentPageNoti++;
+    this.getArticles(this.currentPageNoti, this.numberRecordOnPageNoti, '', '', event, false);
+  }
+
+  doRefreshNoti(event) {
+    this.currentPageNoti = 1;
+    this.numberRecordOnPageNoti = ConstService.NUMBER_RECORD_ON_PAGE;
+    this.getArticles(this.currentPage, this.numberRecordOnPageNoti, '', '', event, true);
+  }
+
   detailPage(event) {
     // this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
     this.navCtrl.navigateForward('/new-detail/' + event.currentTarget.id);
+  }
+  detailPageNoti(event) {
+    // this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
+    this.navCtrl.navigateForward('/notification-detail/' + event.currentTarget.id);
   }
 
   goToMyHome(){
@@ -183,6 +231,10 @@ export class HomePage implements OnInit {
     this.navCtrl.navigateForward('/notification');
   }
 
+  goToNews(){
+    this.navCtrl.navigateForward('/news');
+  }
+
   onScroll(event) {
     if(event.detail.currentY >= 0 && event.detail.currentY % 3 ==0){
       const newHeight = 14 - event.detail.currentY/(20*2);
@@ -210,4 +262,7 @@ export class HomePage implements OnInit {
     }
   }
 
+  formatString(stringDate: string) {
+    return UtilsService.formatString(stringDate);
+  }
 }

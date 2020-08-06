@@ -83,18 +83,11 @@ super-tab-button.active {
     // --padding-start: 10px;
     color: #7A838C;
 }
-.input-text {
-    color: #21313F;
-    margin-top: -20px;
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
-}
 .input-text-50 {
     --padding-end: 0;
-    --padding-bottom: 16px;
+}
+.input-text-50.ios {
+    --padding-top: 0;
 }
 .custom-textarea{
     // height: 60px;
@@ -113,30 +106,16 @@ super-tab-button.active {
 }
 .textarea-text {
     color: #21313F;
-    margin-top: -8px;
+    margin-top: 0;
     font-family: Nunito Sans;
     font-style: normal;
     font-weight: 600;
     font-size: 16px;
     line-height: 24px;
 }
-.input-icon {
-    margin: 17px 17px 17px 2px;
-    font-size: 20px;
-}
+
 .input-flag-icon {
     font-size: 24px;
-}
-.item-inner {
-    margin-top: -5px;
-}
-.input-item {
-    border: 1px solid #D3D6D9;
-    border-radius: 8px;
-}
-.label-floating {
-    transform: translate3d(0,11px,0);
-    margin-top: 12px;
 }
 .item-disabled {
     opacity: 1;
@@ -145,27 +124,30 @@ super-tab-button.active {
         color: #7A838C;
     }
 }
-.select-text {
+.select-text.ios {
     --padding-top: 0;
-    --padding-bottom: 18px;
+    // --padding-bottom: 18px;
 }
 .function-item {
-    position: fixed;
-    bottom: 0;
+    position: absolute;
+    bottom: 20px;
     left: 0;
+    right: 0;
     --background: transparent;
 }
 .delete-button{
-    --background: rgba(250, 114, 104, 0.15);
-    --background-focused: rgba(250, 114, 104, 0.45);
-    --background-hover:rgba(250, 114, 104, 0.45);
-    --ion-toolbar-color: rgba(250, 114, 104, 0.15);
-    --background-activated: rgba(250, 114, 104, 0.45);
+    --background: #FEEAE8;
+    --background-focused: rgba(250, 114, 104, 0.25);
+    --background-hover:rgba(250, 114, 104, 0.25);
+    --ion-toolbar-color: #FEEAE8;
+    --background-activated: rgba(250, 114, 104, 0.25);
     mix-blend-mode: normal;
-    border-radius: 5px;
-    width: 160px;
+    --border-radius: 8px;
+    width: 180px;
     height: 44px;
-    margin: 10px 10px 20px 0;
+    margin: 0 10px;
+    --box-shadow: none;
+
 }
 .delete-button-label {
     font-family: Nunito Sans;
@@ -183,12 +165,11 @@ super-tab-button.active {
     --ion-toolbar-color: #D4EBF3;
     --background-activated: #bee6f3;
     mix-blend-mode: normal;
-    border-radius: 5px;
-    width: 160px;
+    --border-radius: 8px;
+    width: 180px;
     height: 44px;
-    margin: 10px 0px 20px 10px;
-    margin-top: 10px;
-    margin-bottom: 20px;
+    margin: 0 10px;
+    --box-shadow: none;
 }
 .add-button-label {
     font-family: Nunito Sans;
@@ -237,4 +218,15 @@ super-tab-button.active {
 }
 .content-col {
     padding: 20px 16px;
+}
+
+// custom list apartments 
+.list-content.md {
+    // margin: 10px 16px;
+    padding: 0;
+}
+.card-content {
+    margin: 20px 16px 20px 16px;
+    box-shadow: 0px 10px 30px rgba(33, 49, 63, 0.1);
+    border-radius: 8px;
 }
