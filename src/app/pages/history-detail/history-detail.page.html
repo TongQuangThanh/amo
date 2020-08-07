@@ -1,0 +1,81 @@
+<ion-header no-border>
+    <ion-toolbar>
+      <ion-title>{{data_history.title}}</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button text=""></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <ion-list lines="full" class="ion-no-margin ion-no-padding padding-top-10 padding-bottom-20 ion-list-class">
+      <ion-grid class="ion-no-padding scroll-class">
+        <ion-row class="ion-no-padding line-bottom-10">
+          <ion-col class="group-2-col-1 center-div" size="8">
+            <div class="">
+              <ion-label *ngIf="data_history.status == 1" class="ion-label-1">{{ 'PAY_15.status_1' | translate }}</ion-label>
+              <ion-label *ngIf="data_history.status == 2" class="ion-label-2">{{ 'PAY_15.status_2' | translate }}</ion-label>
+              <ion-label *ngIf="data_history.status == 3" class="ion-label-3">{{ 'PAY_15.status_3' | translate }}</ion-label>
+            </div>
+          </ion-col>
+          <ion-col size="4">
+            <div class="div-title-row-2-col-2">
+              <ion-label class="">{{data_history.money}}</ion-label>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-no-padding margin-top-15">
+          <ion-col class="" size="6">
+            <ion-label class="lable-left">{{ 'PAY_15.label_1' | translate }}</ion-label>
+          </ion-col>
+          <ion-col class="" size="6">
+            <ion-label class="lable-right">{{data_history.distributor}}</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-no-padding margin-top-15">
+          <ion-col class="" size="6">
+            <ion-label class="lable-left">{{ 'PAY_15.label_2' | translate }}</ion-label>
+          </ion-col>
+          <ion-col class="" size="6">
+            <ion-label class="lable-right">{{data_history.name}}</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-no-padding margin-top-15">
+          <ion-col class="" size="6">
+            <ion-label class="lable-left">{{ 'PAY_15.label_3' | translate }}</ion-label>
+          </ion-col>
+          <ion-col class="" size="6">
+            <ion-label class="lable-right">{{data_history.role}}</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-no-padding margin-top-15">
+          <ion-col class="" size="6">
+            <ion-label class="lable-left">{{ 'PAY_15.label_4' | translate }}</ion-label>
+          </ion-col>
+          <ion-col class="" size="6">
+            <ion-label class="lable-right">{{data_history.code_orders}}</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-no-padding margin-top-15">
+          <ion-col class="" size="6">
+            <ion-label class="lable-left">{{ 'PAY_15.label_5' | translate }}</ion-label>
+          </ion-col>
+          <ion-col class="" size="6">
+            <ion-label class="lable-right">{{data_history.date_time}}</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-list>
+  </ion-content>
+  <section class="full-width function-section shadow-section">
+    <div class="col-6">
+      <ion-button expand="block" class="amo-button-custom-1 padding-0">{{ 'PAY_15.text_button_1' | translate }}</ion-button>
+    </div>
+    <div class="col-6" *ngIf="data_history.status == 1 || data_history.status == 3">
+      <ion-button expand="block" class="amo-button-custom-2 padding-0" (click)="moveToChatToShopPage()">{{ 'PAY_15.text_button_2' | translate }}</ion-button>
+    </div>
+    <div class="col-6" *ngIf="data_history.status == 2">
+      <ion-button expand="block" class="amo-button-custom-3 padding-0">{{ 'PAY_15.text_button_3' | translate }}</ion-button>
+    </div>
+  </section>
+  

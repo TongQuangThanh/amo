@@ -331,6 +331,47 @@
     "COMMON": {
         "maintain" : "Function maintainal"
     },
+    "APARTMENT_FAMILY":{
+        "title": "FAMILY",
+        "title_age": "years old",
+        "btn_add_new": "Add member",
+        "btn_edit": "Edit",
+        "btn_delete": "Delete"
+    },
+    "FAMILY_DETAIL":{
+        "title": "My account",
+        "btn_save": "Save",
+        "male": "Male",
+        "female": "Female",
+        "other": "Other",
+        "placeholder_sex": "Gender",
+        "placeholder_displayName": "Full name",
+        "placeholder_email": "email",
+        "placeholder_liscense": "ID Card",
+        "setting": "Settings",
+        "help_center": "Help center",
+        "btn_log_out": "Log out",
+        "message_update_sucess": "Update profile successfully",
+        "message_update_fail": "Update profile fail",
+
+        "me": "Me",
+        "father": "Father",
+        "mother": "Mother",
+        "husband": "Husband",
+        "wife": "Wife",
+        "son": "Son",
+        "daughter": "Daughter",
+        "daughter_in_law": "Daughter-in-law",
+        "brother": "Brother",
+        "sister": "Sister",
+        "relative": "Relative",
+        "relationship": "Relationship",
+        "staying": "staying",
+        "placeholder_phone": "Phone number"
+    },
+    "INBOX_29": {
+        "title": "Đăng ký nhận đồ hộ"
+    },
     "TERMS" : {
         "title": "Terms & Conditions"
     },

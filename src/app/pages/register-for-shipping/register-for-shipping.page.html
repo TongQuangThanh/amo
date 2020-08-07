@@ -1,0 +1,114 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-title>{{ 'INBOX_24.title' | translate }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="full" class="ion-no-margin ion-no-padding margin-top-20">
+    <ion-item lines="none">
+      <ion-item lines="none" class="item-common">
+        <img class="icon-home" src="../assets/icon/my-home.png"/>
+        <img class="icon-pulldown-down" src="../assets/icon/Down.png"/>
+        <label *ngIf="form_apartment_id != ''" class="pulldown-1-placeholder">{{ 'INBOX_24.pulldown_1_placeHolder_1' | translate }}</label>
+        <div class="width-100 {{form_apartment_class}}">
+          <ion-select class="pulldown-apartment-select" placeholder="{{ 'INBOX_24.pulldown_1_placeHolder_2' | translate }}" interface="action-sheet" name="form_apartment_id" [(ngModel)]="form_apartment_id" (ionChange)="ionChangePulldown1($event)">
+            <ion-select-option *ngFor="let item of listDepartment" value="{{item.apartment._id}}">{{item.apartment.title + ' - ' + item.campaign.title}}</ion-select-option>
+          </ion-select>
+        </div>
+      </ion-item>
+    </ion-item>
+    <ion-item lines="none" class="margin-top-20">
+      <ion-item lines="none" class="item-common no-border margin-right-5" (click)="eventButton1(1)">
+        <div class="{{button_1_class}}"></div>
+        <label class="button-1-text">{{ 'INBOX_24.button_1_text' | translate }}</label> 
+        <img *ngIf="button_active == 1" class="button-1-icon" src="../assets/icon/Fill.png"/>
+      </ion-item>
+      <ion-item lines="none" class="item-common no-border margin-left-5" (click)="eventButton1(2)">
+        <div class="{{button_2_class}}"></div>
+        <label class="button-1-text">{{ 'INBOX_24.button_2_text' | translate }}</label> 
+        <img *ngIf="button_active == 2" class="button-1-icon" src="../assets/icon/Fill.png"/>
+      </ion-item>
+    </ion-item>
+    <ion-item lines="none" class="margin-top-20">
+      <ion-item lines="none" class="item-common">
+        <img class="icon-home" src="../assets/icon/Clock.png"/>
+        <img class="icon-pulldown-down" src="../assets/icon/Down.png"/>
+        <label *ngIf="form_start_time != ''" class="pulldown-1-placeholder">{{ 'INBOX_24.pulldown_2_placeHolder_1' | translate }}</label>
+        <div class="width-100 {{form_start_time_class}}">
+          <ion-datetime 
+            placeholder="{{ 'INBOX_24.pulldown_2_placeHolder_1' | translate }}"
+            class="datetime-commom"
+            name="form_start_time" [(ngModel)]="form_start_time"
+            displayFormat="DD/MM/YYYY H:mm"
+            (ionChange)="ionChangeStartTime()"
+            min="1900"
+            max="2030">
+          </ion-datetime>
+        </div>
+      </ion-item>
+    </ion-item>
+    <ion-item lines="none" class="margin-top-20">
+      <ion-item lines="none" class="item-common">
+        <img class="icon-home" src="../assets/icon/Clock.png"/>
+        <img class="icon-pulldown-down" src="../assets/icon/Down.png"/>
+        <label *ngIf="form_end_time != ''" class="pulldown-1-placeholder">{{ 'INBOX_24.pulldown_3_placeHolder_1' | translate }}</label>
+        <div class="width-100 {{form_end_time_class}}">
+        <ion-datetime placeholder="{{ 'INBOX_24.pulldown_3_placeHolder_1' | translate }}"
+            class="datetime-commom"
+            name="form_end_time" [(ngModel)]="form_end_time"
+            displayFormat="DD/MM/YYYY H:mm"
+            (ionChange)="ionChangeEndTime()"
+            min="1900"
+            max="2030">
+          </ion-datetime>
+        </div>
+      </ion-item>
+    </ion-item>
+    <ion-item lines="none" class="margin-top-20 line-1">
+      <label class="font-weight-600 margin-left-20 margin-top-20 margin-bottom-5">{{ 'INBOX_24.group_1_title' | translate }}</label>
+    </ion-item>
+    <div *ngFor="let product of list_product" class="{{product.class}}">
+      <ion-item lines="none" class="margin-top-20">
+        <ion-item lines="none" class="item-common">
+          <img class="icon-home" src="../assets/icon/Archiver.png"/>
+          <label *ngIf="product.name_product != ''" class="pulldown-1-placeholder">{{ 'INBOX_24.textbox_1_placeHolder_1' | translate }} {{product.index}}</label>
+          <ion-input type="text" class="text-box-1" 
+            placeholder="{{ 'INBOX_24.textbox_1_placeHolder_1' | translate }} {{product.index}}..." 
+            value="{{product.name_product}}" 
+            (ionChange)="ionchangGroup1TextBox()"
+            [(ngModel)]="product.name_product">
+          </ion-input>
+        </ion-item>
+      </ion-item>
+      <ion-item lines="none" class="margin-top-10">
+        <ion-item lines="none" class="item-common no-border">
+          <div>
+            <label class="margin-0">{{ 'INBOX_24.group_1_number_title' | translate }}</label>
+          </div>
+          <div class="group-1-button-change-number">
+            <button class="button-3-1" (click)="downNumberProduct(product.index)"><img class="icon-button-3" src="../assets/icon/tru.png"/></button>
+            <label class="group-1-label-1">{{product.number_of_product}}</label>
+            <button class="button-3-2" (click)="upNumberProduct(product.index)"><img class="icon-button-3" src="../assets/icon/plus.png"/></button>
+          </div>
+        </ion-item>
+      </ion-item>
+    </div>
+    <ion-item lines="none" class="margin-top-20">
+      <ion-item lines="none" class="item-common no-border">
+        <ion-button expand="block" class="group-1-button-custom" (click)="addProduct()">{{ 'INBOX_24.group_1_button_1' | translate }}</ion-button>
+      </ion-item>
+    </ion-item>
+    <ion-item lines="none" class="margin-top-20 line-1">
+      <ion-item lines="none" class="item-common margin-top-20">
+          <ion-textarea class="text-area-1" rows="4" cols="20" placeholder="{{ 'INBOX_24.textarea_placeHolder_2' | translate }}"></ion-textarea>
+      </ion-item>
+    </ion-item>
+  </ion-list>
+  <section class="full-width function-section">
+    <ion-button expand="block" class="amo-button-custom">{{ 'INBOX_24.button_send' | translate }}</ion-button>
+  </section>
+</ion-content>

@@ -80,40 +80,44 @@
     --border-radius: 10px;
     margin-top: 34%;
   }
+  .custom-comfirm-modal .modal-wrapper{
+    --border-radius: 10px;
+    margin-top: auto;
+    height: 350px;
+  }
+}
 
-  .select-language {
-    .action-sheet-wrapper.sc-ion-action-sheet-ios {
-      .action-sheet-container.sc-ion-action-sheet-ios {
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-      }
-    }
-   
-    div > .action-sheet-container .sc-ion-action-sheet-ios {
-      margin-bottom: 0;
-      border-bottom-left-radius: 0;
-      border-bottom-right-radius: 0;
+.select-language {
+  .action-sheet-wrapper.sc-ion-action-sheet-ios {
+    .action-sheet-container.sc-ion-action-sheet-ios {
       padding-left: 0 !important;
       padding-right: 0 !important;
-      padding-top: 0 !important;
-      padding-bottom: 0 !important;
     }
+  }
+  
+  div > .action-sheet-container .sc-ion-action-sheet-ios {
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
 
-    .action-sheet-wrapper.sc-ion-action-sheet-ios {
-      .action-sheet-container.sc-ion-action-sheet-ios {
-        .action-sheet-title.sc-ion-action-sheet-ios {
-          font-family: Nunito Sans;
-          font-style: normal;
-          font-weight: bold;
-          font-size: 18px;
-          line-height: 28px;
-          color: #21313F;
-          margin: 20px 0;
-        }
+  .action-sheet-wrapper.sc-ion-action-sheet-ios {
+    .action-sheet-container.sc-ion-action-sheet-ios {
+      .action-sheet-title.sc-ion-action-sheet-ios {
+        font-family: Nunito Sans;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 28px;
+        color: #21313F;
+        margin: 20px 0;
       }
     }
-  } 
-
+  }
 
   .select-language-btn {
     .sc-ion-action-sheet-ios {

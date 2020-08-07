@@ -1,0 +1,39 @@
+ion-toolbar{
+    --border-width: 0px !important;
+}
+.item-common {
+    width: 100%;
+    background: #FBFBFB;
+    mix-blend-mode: normal;
+    border: 1px solid #D3D6D9;
+    box-sizing: border-box;
+    border-radius: 8px;
+    // margin-left: 20px;
+    // margin-right: 20px;
+}
+.text-box-1 {
+    --padding-start: 50px !important;
+    --padding-end: 15px !important;
+    background-color: #FBFBFB;
+    --padding-top: 15px;
+    --padding-bottom: 15px;
+}
+.has-input-value .text-box-1{
+    --padding-top: 25px; 
+    --padding-bottom: 5px;
+}
+.text-box-placeholder {
+    position: absolute;
+    opacity: 0.5;
+    z-index: 999;
+    font-size: 12px;
+    margin-left: 50px;
+    top: 7px;
+    pointer-events: none;
+}
+.icon-text-box-active {
+    z-index: 999;
+    pointer-events: none;
+    margin-left: 17px;
+    position: absolute;
+}

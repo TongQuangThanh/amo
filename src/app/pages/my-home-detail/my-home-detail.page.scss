@@ -16,6 +16,14 @@
     height: 0px;
     margin: 0;
 }
+ion-header {
+    position: fixed;
+}
+
+ion-toolbar {
+    --background: transparent;
+    --ion-color-base: transparent !important;
+}
 
 // custom super-tab
 :host {  
