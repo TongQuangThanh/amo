@@ -1,34 +1,78 @@
-<ion-header no-border>
-  <ion-toolbar>
+<ion-header class="ion-no-border">
+  <ion-toolbar class="header-toolbar">
     <ion-buttons slot="start">
-      <ion-back-button text=""></ion-back-button>
+      <ion-back-button text="" icon="arrow-back-outline"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen>
   <ion-img src="{{thumbnail}}"></ion-img>
   <ion-card button class="custom-card margin-none">
-      <ion-item lines="none" style="margin-top: 10px;">
-          <ion-card-title class="ion-text-wrap content-two-line">{{newTitle}}</ion-card-title>
+    <ion-item lines="none" style="margin-top: 10px;">
+        <ion-card-title class="ion-text-wrap content-two-line">{{newTitle}}</ion-card-title>
+    </ion-item>
+    <!-- <ion-item lines="none">
+      <ion-grid>
+        <ion-row class="row-height-note text-node">
+          <ion-col class="ion-float-left padding-none">
+            <ion-label>{{formatString(createAt)}}</ion-label>
+          </ion-col>
+          <ion-col class="ion-float-left padding-none">
+              <ion-label>{{createdBy}}</ion-label>
+          </ion-col>
+          <ion-col class="ion-float-right padding-none">
+            <ion-label class="ion-float-right"><ion-icon name="eye"></ion-icon> {{totalViewers}}</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item> -->
+
+    <!-- <div class="ion-float-left">
+      <ion-item lines="none" class="card-bottom">
+        <span class="image-caption-big" class="card-bottom-label"> {{formatString(createAt)}} </span>
+        <ion-icon item-start name="custom-oval" class="card-bottom-icon custom-oval" src="assets/icon/custom-oval.svg"></ion-icon>
       </ion-item>
-      <ion-item lines="none">
-        <ion-grid>
-          <ion-row class="row-height-note text-node">
-            <ion-col class="ion-float-left padding-none">
-              <ion-label>{{formatString(createAt)}}</ion-label>
-            </ion-col>
-            <ion-col class="ion-float-left padding-none">
-                <ion-label>{{createdBy}}</ion-label>
-            </ion-col>
-            <ion-col class="ion-float-right padding-none">
-              <ion-label class="ion-float-right"><ion-icon name="eye"></ion-icon> {{totalViewers}}</ion-label>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
+    </div>
+    <div class="ion-float-left custom-margin-10">
+      <ion-item lines="none" class="card-bottom">
+        <span class="image-caption-big" class="card-bottom-label"> {{createdBy}} </span>
+        <ion-icon item-start name="custom-oval" class="card-bottom-icon custom-oval" src="assets/icon/custom-oval.svg"></ion-icon>
       </ion-item>
+    </div>
+    <div class="ion-float-left custom-margin-10">
+        <ion-item lines="none" class="card-bottom">
+          <ion-icon item-start name="eye-outline" class="card-bottom-icon"></ion-icon>
+          <span class="image-caption-big" class="card-bottom-label"> {{totalViewers}} </span>
+        </ion-item>
+    </div> -->
+
+    <div class="">
+      <ion-list class="text-node information-node">
+        <ion-card class="ion-float-left padding-none card-bottom">
+          <span class="image-caption-big" class="card-bottom-label"> {{formatString(createAt)}} </span>
+          <ion-icon item-start name="custom-oval" class="card-bottom-icon custom-oval" src="assets/icon/custom-oval.svg"></ion-icon>
+        </ion-card>
+        <ion-card class="ion-float-left padding-none card-bottom margin-left-0">
+          <span class="image-caption-big" class="card-bottom-label"> {{createdBy}} </span>
+          <ion-icon item-start name="custom-oval" class="card-bottom-icon custom-oval" src="assets/icon/custom-oval.svg"></ion-icon>
+        </ion-card>
+        <ion-card class="ion-float-left padding-none card-bottom margin-left-0">
+          <ion-icon item-start name="eye-outline" class="card-bottom-icon"></ion-icon>
+          <span class="image-caption-big" class="card-bottom-label"> {{totalViewers}} </span>
+        </ion-card>
+      </ion-list>
+    </div>
+
   </ion-card>
-  <p [innerHTML]="newContent" class="padding-left-right-card" style="width: 100%;"></p>
+  <p [innerHTML]="newContent" class="padding-left-right-card article-content" style="width: 100%;"></p>
 </ion-content>
 <section class="full-width function-section" *ngIf="isDisplayButton == true" >
-  <ion-button expand="block" class="amo-button-custom" (click)="orderService($event)">{{ buttonTitle == "" ? ('NEW_DETAIL.default_button_order' | translate) : buttonTitle }}</ion-button>
+  <ion-button expand="block" class="button-common button-common-active" (click)="orderService($event)">{{ buttonTitle == "" ? ('NEW_DETAIL.default_button_order' | translate) : buttonTitle }}</ion-button>
 </section>
+
+<!-- <ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <button expand="block" fill="outline" class="comment-button">{{ 'NEW_DETAIL.btn_callToAction' | translate }}</button>
+  </ion-toolbar>
+</ion-footer> -->
+

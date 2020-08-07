@@ -6,6 +6,9 @@ import { ConstService } from '../../utils/const.service'
 import { UtilsService } from '../../utils/utils.service'
 import { LoadingService } from '../../services/loading/loading.service';
 import { Subscription } from 'rxjs';
+import { ModalController } from '@ionic/angular';
+
+import { PopupRegistrationTypePage } from '../popup-registration-type/popup-registration-type.page';
 
 @Component({
   selector: 'app-requests',
@@ -24,6 +27,7 @@ export class RequestsPage implements OnInit {
   getRequestSubscriber: Subscription;
 
   constructor(
+    public modalController: ModalController,
     private loading: LoadingService,
     private apiService: ApiService,
     private navCtrl: NavController,
@@ -101,5 +105,13 @@ export class RequestsPage implements OnInit {
     this.currentPage = 1;
     this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
     this.getRequestAll(this.currentPage, this.numberRecordOnPage, '', '', event, true);
+  }
+
+  async registrationTypeModal() {
+    const modal = await this.modalController.create({
+      component: PopupRegistrationTypePage,
+      cssClass: 'popupRegistrationType-page-custom'
+    });
+    return await modal.present();
   }
 }

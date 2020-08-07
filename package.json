@@ -1,6 +1,6 @@
 {
   "name": "anhmo-mobile-new",
-  "version": "4.0.6",
+  "version": "4.0.7",
   "author": "AMO",
   "homepage": "http://amoapp.net/",
   "scripts": {
@@ -81,10 +81,10 @@
     "@angular-devkit/build-angular": "~0.1000.2",
     "@angular-devkit/core": "~10.0.2",
     "@angular-devkit/schematics": "~10.0.2",
-    "@angular/cli": "^10.0.2",
+    "@angular/cli": "^10.0.3",
     "@angular/compiler-cli": "~10.0.3",
     "@angular/language-service": "~10.0.3",
-    "@ionic/angular-toolkit": "^2.2.0",
+    "@ionic/angular-toolkit": "^2.3.0",
     "@nativescript/schematics": "^9.0.0",
     "@types/jasmine": "~3.3.8",
     "@types/jasminewd2": "~2.0.3",

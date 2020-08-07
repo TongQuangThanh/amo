@@ -86,3 +86,103 @@
     height: 350px;
   }
 }
+
+.select-language {
+  .action-sheet-wrapper.sc-ion-action-sheet-ios {
+    .action-sheet-container.sc-ion-action-sheet-ios {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+  }
+  
+  div > .action-sheet-container .sc-ion-action-sheet-ios {
+    margin-bottom: 0;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .action-sheet-wrapper.sc-ion-action-sheet-ios {
+    .action-sheet-container.sc-ion-action-sheet-ios {
+      .action-sheet-title.sc-ion-action-sheet-ios {
+        font-family: Nunito Sans;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 28px;
+        color: #21313F;
+        margin: 20px 0;
+      }
+    }
+  }
+
+  .select-language-btn {
+    .sc-ion-action-sheet-ios {
+      font-family: Nunito Sans;
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 24px;
+      color: #21313F;
+      // background: #F4F5F5;
+    }    
+  }
+
+  .selected-btn {
+    .sc-ion-action-sheet-ios {
+      background: #F4F5F5;
+    }  
+    .action-sheet-icon.sc-ion-action-sheet-ios {
+      font-size: 18px;
+      line-height: 24px;
+      color: #009AC9;
+    }
+  }
+
+  .segment-button-checked {
+    --background-checked: none;
+    --indicator-box-shadow: none !important;
+    color: #21313F !important;
+    font-weight: bold !important;
+    border-bottom: 2px solid #21313F;
+    border-radius: 0;
+  }
+  ion-segment-button {
+    --border-width: 0 !important;
+    min-width: auto !important;
+  }
+
+  super-tabs-toolbar {
+    .buttons-container {
+      --padding-left: 0;
+    }
+  }
+  super-tab-button.active {
+    ion-label {
+      color: #21313F;
+      font-weight: bold;
+      font-family: Nunito Sans;
+      font-style: normal;
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+  .show-modal {
+    --background: none !important;
+    --ion-background-color: none !important;
+  }
+  .ios.item-label-floating {
+    --min-height: 60px !important;
+  }
+  input.native-input.sc-ion-input-ios {
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+  }
+  .md {
+    letter-spacing: normal !important;
+  }
+}

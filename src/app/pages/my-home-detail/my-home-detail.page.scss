@@ -25,62 +25,216 @@ ion-toolbar {
     --ion-color-base: transparent !important;
 }
 
-.function-section{
-    position: absolute;
-    bottom: 10px;
+// custom super-tab
+:host {  
+    --super-tabs-toolbar-background: black;
+    --st-indicator-color: #FA7268;
+    --st-indicator-width: 30px;
+    --ion-color-base: transparent;
 }
-.apartment-name-style {
+super-tab-button.active {
+    --border-width:30px;
+}
+.segment-toolbar {
+    border-bottom: 1px solid #F4F5F5;
+    background: transparent;
+    box-shadow: none;
+    box-shadow: 0px 10px 30px rgba(33, 49, 63, 0.1);
+}
+.button-tab-custom {
+    border-radius: 0;
+    box-shadow: none;
+}
+.button-tab-label {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    text-transform: none !important;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #7A838C;
+}
+.no-scroll {
+    --overflow: hidden;
+}
+.ion-padding {
+    padding-top: 30px;
+}
+.no-padding {
+    padding: 0;
+}
+.padding-left-10 {
+    padding-left: 10px;
+}
+.padding-right-10 {
+    padding-right: 10px;
+}
+.margin-left-0 {
+    margin-left: 0 !important;
+}
+
+// custom-input
+.custom-input{
+    display: flex;
+    height: 60px;
+    border: 1px solid #D3D6D9;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.custom-input-text {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    // --padding-start: 10px;
+    color: #7A838C;
+}
+.input-text-50 {
+    --padding-end: 0;
+}
+.input-text-50.ios {
+    --padding-top: 0;
+}
+.custom-textarea{
+    // height: 60px;
+    border: 1px solid #D3D6D9;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.custom-textarea-text {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+    // --padding-start: 10px;
+    color: #7A838C;
+}
+.textarea-text {
+    color: #21313F;
+    margin-top: 0;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.input-flag-icon {
+    font-size: 24px;
+}
+.item-disabled {
+    opacity: 1;
+    --background: #F0F0F0;
+    .input-text {
+        color: #7A838C;
+    }
+}
+.select-text.ios {
+    --padding-top: 0;
+    // --padding-bottom: 18px;
+}
+.function-item {
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    right: 0;
+    --background: transparent;
+}
+.delete-button{
+    --background: #FEEAE8;
+    --background-focused: rgba(250, 114, 104, 0.25);
+    --background-hover:rgba(250, 114, 104, 0.25);
+    --ion-toolbar-color: #FEEAE8;
+    --background-activated: rgba(250, 114, 104, 0.25);
+    mix-blend-mode: normal;
+    --border-radius: 8px;
+    width: 180px;
+    height: 44px;
+    margin: 0 10px;
+    --box-shadow: none;
+
+}
+.delete-button-label {
     font-family: Nunito Sans;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
-    line-height: 22px;
-    color: #556080;
-}
-.home-infor {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 19px;
-    color: #556080;
-}
-.btn_apartment_phone {
-    float: right;
-    border: 1px solid #FA7268;
-    box-sizing: border-box;
-    border-radius: 5px;
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 19px;
+    line-height: 24px;
+    text-align: center;
     color: #FA7268;
-    height: 24px;
-    background-color: transparent;
-    padding-left: 15px;
-    padding-right: 15px;
-    display: flex;
 }
-.txt_reset {
+.add-button{
+    --background-focused: #bee6f3;
+    --background-hover:#bee6f3;
+    --background: #D4EBF3;
+    --ion-toolbar-color: #D4EBF3;
+    --background-activated: #bee6f3;
+    mix-blend-mode: normal;
+    --border-radius: 8px;
+    width: 180px;
+    height: 44px;
+    margin: 0 10px;
+    --box-shadow: none;
+}
+.add-button-label {
     font-family: Nunito Sans;
     font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 19px;
-    color: #FA7268;
-    margin-left: 20px;
-}
-.color-text-cus {
-    color: #556080;
     font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #009AC9;
 }
-.call-icon {
-    margin-top: 2px;
+
+.title-name {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: #21313F;
+    margin-bottom: 5px;
 }
-.image-page {
-    margin-bottom: 10px;
+.title-content {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    color: #7A838C;
+    margin-bottom: 0;
 }
-.margin-top-5 {
-    margin-top: 5px;
+.danger-text {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #FA7268;
+}
+.border-left {
+    border-left: 1px solid #F4F5F5;
+}
+.button-col {
+    align-items: center;
+    display: flex;
+    padding: 20px 21px;
+}
+.content-col {
+    padding: 20px 16px;
+}
+
+// custom list apartments 
+.list-content.md {
+    // margin: 10px 16px;
+    padding: 0;
+}
+.card-content {
+    margin: 20px 16px 20px 16px;
+    box-shadow: 0px 10px 30px rgba(33, 49, 63, 0.1);
+    border-radius: 8px;
 }

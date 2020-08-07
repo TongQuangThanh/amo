@@ -1,0 +1,72 @@
+root{
+    --borderColor:gray;
+    --charShape:none;
+}
+ion-buttons.md {
+    margin-left: 0;
+}
+ion-title.md {
+    padding-inline-end: 0;
+}
+.content-wrap {
+    --background: rgba(33,49,63,0);
+}
+.content-container {
+    position: fixed;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    background: #ffffff;
+    display: block;
+    justify-content: end;
+}
+.header-item {
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    display: flex;
+    height: 60px;
+    border-bottom: 1px solid #F4F5F5;
+}
+.popup-title {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 28px;
+    text-align: center;
+    color: #21313F;
+}
+.modal-item {
+    margin: 20px 18px 15px 18px;
+}
+.modal-toolbar {
+    margin-top: 18px;
+    margin-bottom: 20px;
+}
+.item-type {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.item-icon {
+    font-size: 30px;
+    color: #FA7268;
+}
+.item-label {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #21313F;
+    display: block;
+}
+.item-bor {
+    border: 1px solid #D3D6D9;
+    border-radius: 8px;
+    display: inline-block;
+    width: 140px;
+    padding: 19px 0;
+}

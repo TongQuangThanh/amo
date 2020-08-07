@@ -1,0 +1,35 @@
+<ion-content class="content-wrap">
+  <div class="content-container">
+    <ion-item lines="none" class="header-item ion-no-padding">
+      <ion-title class="popup-title">{{ 'MY_ACCOUNT.language' | translate }}</ion-title>
+      <ion-buttons slot="end" (click)="closeModal()" class="btn-done">
+        <ion-icon name="close"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item lines="none" [ngClass]="selectedLanguage == 'vi' ? 'select-item ion-no-padding btn-language-active' : 'select-item ion-no-padding'" (click)="languageChanged('vi')">
+      <ion-title class="select-title">{{ 'MY_ACCOUNT.vn' | translate }}</ion-title>
+      <ion-buttons slot="end" class="btn-done">
+        <ion-icon name="checkmark-circle" [ngClass]="selectedLanguage == 'vi' ? 'active' : 'hide'"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item lines="none" [ngClass]="selectedLanguage == 'en' ? 'select-item ion-no-padding btn-language-active' : 'select-item ion-no-padding'" (click)="languageChanged('en')">
+      <ion-title class="select-title">{{ 'MY_ACCOUNT.en' | translate }}</ion-title>
+      <ion-buttons slot="end" class="btn-done">
+        <ion-icon name="checkmark-circle" [ngClass]="selectedLanguage == 'en' ? 'active' : 'hide'"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <!-- <ion-toolbar [ngClass]="selectedLanguage == 'vi' ? 'btn-language btn-language-active' : 'btn-language'" (click)="languageChanged('vi')">
+      <ion-label class="setting-item-label">{{ 'MY_ACCOUNT.vn' | translate }}</ion-label>
+      <ion-icon [ngClass]="selectedLanguage == 'vi' ? 'setting-item-forward active' : 'setting-item-forward hide'" name="checkmark-circle" slot="end"></ion-icon>
+    </ion-toolbar>
+    <ion-toolbar [ngClass]="selectedLanguage == 'en' ? 'btn-language btn-language-active' : 'btn-language'" (click)="languageChanged('en')">
+      <p class="setting-item-label">{{ 'MY_ACCOUNT.en' | translate }}</p>
+      <ion-icon [ngClass]="selectedLanguage == 'en' ? 'setting-item-forward active' : 'setting-item-forward hide'" name="checkmark-circle" slot="end"></ion-icon>
+    </ion-toolbar> -->
+    <!-- <ion-item class="" lines="none">
+      <ion-label class="setting-item-label">{{ 'MY_ACCOUNT.en' | translate }}</ion-label>
+      <ion-icon class="setting-item-forward" name="checkmark-circle" slot="end"></ion-icon>
+    </ion-item> -->
+  </div>
+  
+</ion-content>

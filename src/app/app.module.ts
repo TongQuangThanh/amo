@@ -26,11 +26,10 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Camera } from '@ionic-native/Camera/ngx';
 import { File } from '@ionic-native/file/ngx';
 import { HTTP } from '@ionic-native/http/ngx';
-
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTabsModule } from '@angular/material/tabs';
 import { SuperTabsModule } from '@ionic-super-tabs/angular';
+//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatTabsModule } from '@angular/material/tabs';
 export function LanguageLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
@@ -49,7 +48,8 @@ export function LanguageLoader(http: HttpClient) {
     ConfirmModalPageModule,
     MatTabsModule,
     HttpClientModule,
-    NgbModule, 
+    //NgbModule, 
+    SuperTabsModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

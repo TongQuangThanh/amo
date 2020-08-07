@@ -1,185 +1,75 @@
-.list-request-all-item {
-    margin: 16px;
-    --background: #FFFFFF;
-    border-bottom: 1px solid #F5F5F5;
-    border-radius: 0px !important;
-}
-
-.list-view-custom {
-    margin-bottom: 5px;
-}
-
-.title-request-all-item {
+.header-title {
     font-family: Nunito Sans;
     font-style: normal;
-    font-weight: bold;
-    font-size: 14px;
-    height: 32px;
-    line-height : 1.1;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    display: block;
-    display: -webkit-box;
-
-    color: #556080;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    font-weight: 800;
+    font-size: 26px;
+    line-height: 40px;
+    color: #21313F;
 }
-
-.node-request-all-item {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 16px;
-    display: block;
-    color: #BBBFCC;
+ion-toolbar ion-title.md {
+    padding-inline-start: 16px;
 }
-
-.avatar-done {
-    width: 50px;
-    margin-left: -7px;
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 10px;
-    line-height: 14px;
-    /* identical to box height */
-
-    text-align: center;
-
-    color: #01BCC4;
+ion-toolbar ion-title.ios {
+    padding-inline-start: 0;
 }
-
-.avatar-out-of-date {
-    width: 50px;
-    margin-left: -7px;
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 10px;
-    line-height: 14px;
-    /* identical to box height */
-
-    text-align: center;
-
-    color: #FA7268;
-}
-
-.avatar-paying {
-    width: 50px;
-    margin-left: -7px;
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 10px;
-    line-height: 14px;
-    /* identical to box height */
-
-    text-align: center;
-
-    color: #FAC440;
-}
-
-.custom-infinite-scroll {
-    min-height: 5px;
-}
-
-.button-tab-custom {
-    --background: rgba(255,255,255,0.1);
-    mix-blend-mode: normal;
-    border-radius: 15px;
-
-    --color: rgba(33,38,50,0.5);
-
-    mix-blend-mode: normal;
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 19px;
-    /* identical to box height */
-
-    width: 40%;
-}
-
-.button-tab-custom-left {
-    position: absolute;
-    top: 0px;
-    left: 16px;
-}
-
-.button-tab-custom-right {
-    position: absolute;
-    top: 0px;
-    right: 16px;
-}
-
-.custom-tab {
-    display: flex;
-    height: 40px;
-}
-
-.activated {
-    --background-activated: rgba(33,38,50,0.1);
-    --background: rgba(33,38,50,0.1);
-    --color: rgba(33,38,50,1);
-    --color-activated: rgba(33,38,50,1);
-    --color-focused: rgba(33,38,50,1);
-}
-
-.width-100 {
-    width: 100%;
-}
-
-.function-section {
-    margin-top: 10px;
-    position: absolute;
-    width: 100%;
-    bottom: 10px;
-}
-
-.button-tab-custom {
-    --background-checked: rgba(255,255,255,0.1);
-    mix-blend-mode: normal;
-    border-radius: 15px;
-
-    color: rgba(33,38,50,0.5);
-
-    mix-blend-mode: normal;
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 19px;
-    /* identical to box height */
-
-    width: 40%;
-    border-width: 0px;
-    margin-left: 10px;
-    margin-right: 10px;
-    min-height: 24px;
-}
-
 .margin-none {
     margin: 0;
 }
-
-.segment-button-checked {
-    --background-checked: rgba(33,38,50,0.1);
-    color: rgba(33,38,50,1);
-    --color-checked:auto;
+.request-card {
+    box-shadow: 0px 10px 30px rgba(33, 49, 63, 0.1);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.request-title {
+    margin: 0 16px 16px 16px;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: #21313F;
+}
+// custom super-tab
+:host {  
+    --super-tabs-toolbar-background: black;
+    --st-indicator-color: #FA7268;
+    --st-indicator-width: 10px;
+    --ion-color-base: transparent;
+}
+.segment-toolbar {
+    border-bottom: 1px solid #F4F5F5;
+    box-shadow: 0px 10px 30px rgba(33, 49, 63, 0.1);
+    background: transparent;
+}
+.button-tab-custom {
+    border-radius: 0;
+    box-shadow: none;
+}
+.super-tab-button-label {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    text-transform: none !important;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #7A838C;
+}
+.update-time {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: right;
+    color: #7A838C;
 }
 
-ion-card {
-    -webkit-margin-start: 5px;
-    margin-inline-start: 5px;
-    -webkit-margin-end: 5px;
-    margin-inline-end: 5px;
-    margin-bottom: 10px;
-    margin-top: 0px;
+.toolbar-button {
+    position: sticky;
+    bottom: 14px;
+    --background: transparent;
 }
-
-.margin-less{
-    margin-top: -10px;
+.normal-button {
+    width: 43.73%;
 }

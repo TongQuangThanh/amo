@@ -3,15 +3,15 @@
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 2;
-    max-height: 44px;
+    // max-height: 44px;
     -webkit-box-orient: vertical;
 
     font-family: Nunito Sans;
     font-style: normal;
     font-weight: bold;
-    font-size: 16px;
-    line-height: 22px;
-    color: #556080;
+    font-size: 18px;
+    line-height: 28px;
+    color: #21313F;
 }
 
 .row-height-note {
@@ -40,4 +40,92 @@ ion-toolbar {
 .function-section{
     position: absolute;
     bottom: 10px;
+    margin: 0 16px;
+    width: 92%;
+}
+
+.article-content {
+    border-top: 5px solid #F4F5F5;
+    padding-top: 15px;
+}
+.text-node {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    color: #7A838C;
+    margin-bottom: 15px;
+    padding-top: 10px;
+}
+.information-node {
+    display: block;
+    margin-left: 20px;
+}
+.margin-left-0 {
+    margin-left: 0;
+}
+.card-bottom {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    color: #7A838C; 
+    background: none;
+    margin-top: 0;
+    margin-bottom: 5px; 
+    margin-right: 10px;
+    margin-left: 0;
+    box-shadow: none;
+}
+.card-bottom-icon {
+    font-size: 14px;
+    vertical-align: middle;
+}
+.card-bottom-label {
+    // margin-left: 5px;
+    font-size: 14px;
+}
+.custom-margin-10 {
+    margin-left: -10px !important;
+}
+.custom-oval {
+    font-size: 4px;
+    margin-left: 10px;
+    vertical-align: middle;
+}
+.clear-both {
+    clear: both;
+}
+.image-caption-big {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    color: #7A838C;
+}
+
+.comment-button{
+    background: #FA7268;
+    --background-focused: #FA7268;
+    --background-hover:#FA7268;
+    --background: #FA7268;
+    --background-activated: #c5433a;
+    mix-blend-mode: normal;
+    border-radius: 8px;
+    left: 4.27%;
+    width: 91.46%;
+    height: 44px;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 13px;
+    margin-bottom: 13px;
+    --box-shadow: none;
 }

@@ -1,0 +1,95 @@
+root{
+    --borderColor:gray;
+    --charShape:none;
+}
+.content-wrap {
+    --background: rgba(33,49,63,0);
+}
+.content-container {
+    position: fixed;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    background: #ffffff;
+    display: block;
+    justify-content: end;
+}
+.header-item {
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+}
+.modal-item {
+    margin: 24px 0;
+    padding: 0 32px;
+}
+.modal-toolbar {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.trash-icon {
+    font-size: 60px;
+    color: #FA7268;
+}
+.delete_message {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #21313F;
+    margin-bottom: 0;
+}
+.cancel-button {
+    width: 43.73%;
+    height: 44px;
+    --ion-toolbar-color: #D3D6D9;
+    --background-activated: #c5c7c9;
+    --background-focused: #c5c7c9;
+    --background-hover: #c5c7c9;
+    --border-radius: 8px;
+    margin: 0 10px;
+    --box-shadow: none !important;
+}
+.cancel-button-label {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #21313F;
+    text-transform: none;
+}
+.delete-button {
+    width: 43.73%;
+    height: 44px;
+    --ion-toolbar-color: #FA7268;
+    --background-activated: #c5433a;
+    --background-focused: #c5433a;
+    --background-hover: #c5433a;
+    --border-radius: 8px;
+    margin: 0 10px;
+    --box-shadow: none !important;
+}
+.delete-button-label {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #FFFFFF;
+    text-transform: none;
+}
+.hotline-num {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 28px;
+    text-align: center;
+    color: #21313F;
+}

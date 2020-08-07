@@ -34,19 +34,95 @@
 }
 
 .button-common {
-    --background-focused: #556080;
-    --background-hover:#556080;
-    --background: #556080;
+    --background-focused: #D3D6D9;
+    --background-hover:#D3D6D9;
+    --background: #D3D6D9;
+    --background-activated: #D3D6D9;
     mix-blend-mode: normal;
-    opacity: 0.1;
-    border-radius: 5px;
+    --border-radius: 8px;
+    height: 44px;
+    margin: 0;
+    --box-shadow: none;
 }
 
 .button-common-active {
     --background-focused: #FA7268;
     --background-hover:#FA7268;
     --background: #FA7268;
-    opacity: 1;
+}
+
+.button-common {
+    ion-label {
+        font-family: Nunito Sans;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 24px;
+        text-align: center;
+        color: #FFFFFF;
+    }    
+}
+.button-common-bottom {
+    position: absolute;
+    bottom: 20px;
+    width: 91%;
+}
+.default-button {
+    // width: 43.73%;
+    height: 44px;
+    --ion-toolbar-color: #D3D6D9;
+    --background-activated: #c5c7c9;
+    --background-focused: #c5c7c9;
+    --background-hover: #c5c7c9;
+    --border-radius: 8px;
+    margin: 0 10px;
+    --box-shadow: none !important;
+    --color: #21313F;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    text-transform: none;
+}
+.amo-button {
+    // width: 43.73%;
+    height: 44px;
+    --ion-toolbar-color: #FA7268;
+    --background-activated: #c5433a;
+    --background-focused: #c5433a;
+    --background-hover: #c5433a;
+    --border-radius: 8px;
+    margin: 0 10px;
+    --box-shadow: none !important;
+    --color: #FFFFFF;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    text-transform: none;
+}
+.lightblue-button {
+    // width: 43.73%;
+    height: 44px;
+    --ion-toolbar-color: #D4EBF3;
+    --background-activated: #bee6f3;
+    --background-focused: #bee6f3;
+    --background-hover: #bee6f3;
+    --border-radius: 8px;
+    margin: 0 10px;
+    --box-shadow: none !important;
+    --color: #009AC9;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    text-transform: none;
 }
 
 
@@ -92,12 +168,12 @@ iframe {
     --background: #FA7268;
     text-transform: none;
     --background-activated: rgba(250, 114, 104,0.5);
-    border-radius: 5px;
-    --border-radius: 5px;
+    border-radius: 8px;
+    --border-radius: 8px;
     padding: 0px 16px 0px 16px;
     .button-native {
-        border-radius: 5px;
-        --border-radius: 5px;
+        border-radius: 8px;
+        --border-radius: 8px;
     }
 }
 
@@ -149,8 +225,9 @@ iframe {
 }
 
 ion-title{
-    font-size: 20px;
-    color: #556080;
+    // margin-left: 20px;
+    font-size: 18px;
+    color: #21313F;;
 }
 
 body {
@@ -158,8 +235,226 @@ body {
 }
 
 ion-toolbar {
-    ion-title {
+    ion-title.ios {
         text-align: left;
         padding-inline-start: 35px;
+        padding-inline-end: 20px;
+        font-family: Nunito Sans;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 28px;
+        color: #21313F;
     }
+}
+ion-toolbar {
+    ion-title.md {
+        text-align: left;
+        padding-inline-start: 0;
+        padding-inline-end: 20px;
+        font-family: Nunito Sans;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 18px;
+        line-height: 28px;
+        color: #21313F;
+    }
+}
+.header-toolbar.ios {
+    margin: 0 16px;
+}
+
+@font-face {
+    font-family: Nunito Sans;
+    src: url(assets/font/NunitoSans-Regular.ttf);
+    font-weight: normal;
+}
+@font-face {
+    font-family: Nunito Sans;
+    src: url(assets/font/NunitoSans-Black.ttf);
+    font-weight: 900;
+}
+@font-face {
+    font-family: Nunito Sans;
+    src: url(assets/font/NunitoSans-Bold.ttf);
+    font-weight: bold;
+}
+
+ion-back-button {
+    --icon-font-size: 20px;
+    // margin-left: 16px;
+    color: #21313F;    
+}
+
+// badge style
+.badge-danger {
+    background: rgba(250, 114, 104, 0.2);
+    border-radius: 4px;
+    padding: 2px 15px;
+}
+.badge-danger-label {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    color: #FA7268;
+}
+.badge-paid {
+    background: rgba(81, 210, 181, 0.2);
+    border-radius: 4px;
+    padding: 2px 15px;
+}
+.badge-paid-label {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    color: #51D2B5;
+}
+.badge-sent {
+    background: rgba(0, 154, 201, 0.2);
+    border-radius: 4px;
+    padding: 2px 15px;
+}
+.badge-sent-label {
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    color: #009AC9;
+}
+.badge-lightred {
+    background: rgba(250, 114, 104, 0.2);
+    border-radius: 4px;
+    padding: 2px 15px;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    color: #FA7268;
+}
+.badge-primary {
+    background: rgba(0, 154, 201, 0.2);
+    border-radius: 4px;
+    padding: 2px 15px;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    color: #009AC9;
+}
+.badge-success {
+    background: rgba(81, 210, 181, 0.2);
+    border-radius: 4px;
+    padding: 2px 15px;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    color: #51D2B5;
+}
+.badge-cancel {
+    background: #D3D6D9;
+    border-radius: 4px;
+    padding: 2px 15px;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+// validate input
+.pass-hide-icon {
+    font-size: 18px;
+    color: #21313F;
+}
+.clear-input {
+    font-size: 18px;
+    color: #D3D6D9;
+}
+.check-valid {
+    font-size: 18px;
+    color: #009AC9;
+}
+.check-unvalid {
+    font-size: 18px;
+    color: #FA7268;
+}
+.check-success {
+    font-size: 18px;
+    color: #51D2B5;
+}
+ion-label {
+    text-transform: none;
+}
+
+// custom floating input
+.input-item {
+    display: flex;
+    align-items: center !important;
+    align-content: center !important;
+    border: 1px solid #D3D6D9;
+    border-radius: 8px;
+    height: 60px;
+    margin-bottom: 20px;
+}
+.input-icon {
+    font-size: 20px;
+    color: #21313F;
+    margin-right: 20px;
+}
+.input-text {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: #21313F;
+}
+.input-floating-label {
+    font-family: Nunito Sans !important;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px !important;
+    --color: #7A838C !important;
+}
+.label-floating.sc-ion-label-ios-h {
+    transform: translate3d(0, 14px, 0);
+    margin-top: 8px;
+}
+.item-has-value .label-floating.sc-ion-label-ios-h {
+    transform: translate3d(0, 0, 0) scale(0.82);
+}
+.item-has-focus .label-floating.sc-ion-label-ios-h {
+    transform: translate3d(0, 0, 0) scale(0.82);
+}
+input.native-input.sc-ion-input-ios {
+    padding-bottom: 0 !important;
+    padding-top: 0 !important;
+}
+ion-item.item-has-focus {
+    border: 1px solid #009AC9;
+}
+
+// custom common text
+.message_text {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #21313F;
+}
+
+.no-padding-end {
+    --inner-padding-end: 0px;
 }

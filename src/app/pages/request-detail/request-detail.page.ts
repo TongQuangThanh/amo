@@ -1,9 +1,9 @@
-import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, AfterViewInit, Input, ElementRef } from '@angular/core';
 import { ApiService } from '../../services/api/api.service';
 import { NavController, NavParams, Platform } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingService } from '../../services/loading/loading.service';
-import { ConstService } from '../../utils/const.service'
+import { ConstService } from '../../utils/const.service';
 import { UtilsService } from '../../utils/utils.service';
 
 @Component({
@@ -12,7 +12,7 @@ import { UtilsService } from '../../utils/utils.service';
   styleUrls: ['./request-detail.page.scss'],
 })
 export class RequestDetailPage implements OnInit, AfterViewInit {
-
+  
   @ViewChild('contentRequest') contentRequest: any;
   @ViewChild('content') content: any;
   @ViewChild('chat_input') messageInput: any;
@@ -41,18 +41,18 @@ export class RequestDetailPage implements OnInit, AfterViewInit {
       var self = this;
       platform.ready().then((readySource) => {
         self.widthListScreen = platform.width() * 0.8;
-        self.heightScreen = platform.height() * 0.65;
+        self.heightScreen = platform.height() * 0.63;
         self.defineHeightScreen = this.heightScreen;
       });
       UtilsService.requestDetailComponentShare = this;
   }
 
   ngOnInit() {
-    
+   
     this.requestTitle = "";
     this.requestContent = "";
     this.currentUser = JSON.parse(localStorage.getItem('profile'));
-    
+
   }
 
   ngAfterViewInit(){

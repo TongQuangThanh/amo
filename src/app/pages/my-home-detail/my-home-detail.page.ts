@@ -3,7 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { ApiService } from '../../services/api/api.service';
 import { LoadingService } from '../../services/loading/loading.service';
 import { UtilsService } from '../../utils/utils.service';
+import { ModalController } from '@ionic/angular';
 import { NavController } from '@ionic/angular';
+
+import { PopupDeleteMemberPage } from '../popup-delete-member/popup-delete-member.page';
+import { PopupDeleteVehiclePage } from '../popup-delete-vehicle/popup-delete-vehicle.page';
 
 @Component({
   selector: 'app-my-home-detail',
@@ -21,10 +25,11 @@ export class MyHomeDetailPage implements OnInit {
   _apartmentID: any;
   // profile:any;
   constructor(
+    public modalController: ModalController,
     private loading: LoadingService,
     private apiService: ApiService,
-    private route: ActivatedRoute,
     private navCtrl: NavController,
+    private route: ActivatedRoute
   ) { 
     // this.profile = this.authService.getProfile();
   }
@@ -68,9 +73,31 @@ export class MyHomeDetailPage implements OnInit {
     return UtilsService.formatString(stringDate);
   }
 
-  // vund5
-  goToFamilyMemberList() {
-    this.navCtrl.navigateForward('/family/' + this._apartmentID);
+  async deleteMemberModal() {
+    const modal = await this.modalController.create({
+      component: PopupDeleteMemberPage,
+      cssClass: 'delete-member-custom-class'
+    });
+    return await modal.present();
+  }
+
+  async deleteVehicleModal() {
+    const modal = await this.modalController.create({
+      component: PopupDeleteVehiclePage,
+      cssClass: 'delete-vehicle-custom-class'
+    });
+    return await modal.present();
+  }
+
+  resetApartmentCode(){
+    this.navCtrl.navigateForward('/reset-apartment-code');
+  }
+
+  addMember(){
+    this.navCtrl.navigateForward('/add-home-member');
+  }
+  addVehicle(){
+    this.navCtrl.navigateForward('/add-home-vehicle');
   }
 
 }

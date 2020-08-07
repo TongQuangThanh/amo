@@ -1,0 +1,57 @@
+<!-- <ion-header class="ion-no-border">
+  <ion-toolbar class="header-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="arrow-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'APARTMENT_CODE_REGISTER.title' | translate }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button text="" icon="qr-code"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-header class="ion-no-border">
+  <ion-toolbar class="header-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="arrow-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'APARTMENT_CODE_REGISTER.title' | translate }}</ion-title>
+    <ion-button slot="end" class="button-qrcode">
+      <ion-icon slot="start" name="qr-code" class="icon-qrcode"></ion-icon> 
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="login-input">
+    <p class="message_text">{{ 'APARTMENT_CODE_REGISTER.apartmentcode_note' | translate }}</p>
+    <ion-item lines="none" class="padding-none margin-none no-border">
+      <ion-input class="pincode-input input-text" ng-pattern="/^[A-Za-z0-9]*$/" type="text" maxlength="1"></ion-input>
+      <ion-input class="pincode-input input-text" ng-pattern="/^[A-Za-z0-9]*$/" type="text" maxlength="1"></ion-input>
+      <ion-input class="pincode-input input-text" ng-pattern="/^[A-Za-z0-9]*$/" type="text" maxlength="1"></ion-input>
+      <ion-input class="pincode-input input-text" ng-pattern="/^[A-Za-z0-9]*$/" type="text" maxlength="1"></ion-input>
+      <ion-input class="pincode-input input-text" ng-pattern="/^[A-Za-z0-9]*$/" type="text" maxlength="1"></ion-input>
+      <ion-input class="pincode-input input-text" ng-pattern="/^[A-Za-z0-9]*$/" type="text" maxlength="1"></ion-input>
+      <!-- <ion-grid class="pinCodeGrid">
+        <form [formGroup]='pinCodeFormGroup' class="form-class">
+          <ion-row>
+            <ion-col *ngFor="let controlItem of this.pinCodeArray;let i = index;let last=last">
+              <input 
+                ng-pattern="/^[A-Za-z0-9]*$/"
+                ng-maxlength="1"
+                maxlength="1"
+                class="pinCodeInput"
+                type="text"
+                formControlName="{{controlItem}}"
+                (keyup)="onKeyUp($event,controlItem, i)"
+                (keydown)="onKeyDown($event)"/>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-grid> -->
+    </ion-item>
+  </div>
+  <ion-button expand="block" class="button-common login-button">
+    <ion-label>{{ 'APARTMENT_CODE_REGISTER.btn_done' | translate }}</ion-label>
+  </ion-button>
+</ion-content>

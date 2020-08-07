@@ -1,39 +1,79 @@
-<ion-header no-border>
-  <ion-toolbar>
-    <ion-title>{{titlePage}}</ion-title>
+<ion-header class="ion-no-border">
+  <ion-toolbar class="header-toolbar">
     <ion-buttons slot="start">
-      <ion-back-button text=""></ion-back-button>
+      <ion-back-button text="" icon="arrow-back-outline"></ion-back-button>
     </ion-buttons>
+    <!-- <ion-title>{{titlePage}}</ion-title> -->
+    <ion-title>{{titlePage}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+<ion-content class="payment-info-content">
+  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
       <ion-fab-button (click)="showListComment()">
         <ion-icon name="chatboxes"></ion-icon>
       </ion-fab-button>
-  </ion-fab>
-  <section>
-    <ion-grid >
-      <ion-row class="payment-bank-text-title">
-        <ion-col>
-            <ion-label>{{ 'PAYMENT_INFOR.payment_date' | translate }}</ion-label>
-        </ion-col>
-        <ion-col>
-            <ion-label>{{formatString(paymentStartAt)}} - {{formatString(paymentEndAt)}}</ion-label>
-        </ion-col>
-      </ion-row>
-      <ion-row class="payment-bank-text-title">
-        <ion-col>
-            <ion-label>{{ 'PAYMENT_INFOR.total' | translate }}</ion-label>
-        </ion-col>
-        <ion-col>
-            <ion-label>{{formatMoney(totalCash)}} vnd</ion-label>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+  </ion-fab> -->
+  <section class="section-content">
+    <ion-item lines="none">
+      <ion-badge class="badge-lightred" *ngIf="paymentStatus == 'publish'">{{ 'PAYMENT.badge_outdate' | translate }}</ion-badge>
+      <ion-badge class="badge-primary" *ngIf="paymentStatus == 'pending'">{{ 'PAYMENT.badge_sent' | translate }}</ion-badge>
+      <ion-badge class="badge-primary" *ngIf="paymentStatus == 'completed'">{{ 'PAYMENT.badge_paid' | translate }}</ion-badge>
+      <ion-label class="payment-fee ion-float-right" slot="end"><span class="amountPay-number">{{formatMoney(totalCash)}}đ</span></ion-label>
+    </ion-item>
   </section>
-  <ion-card *ngIf="paymentCategoryTranfer != null" class="payment-infor-card-top">
+
+  <section class="section-content margin-top-10">
+    <ion-item lines="none" class="item-payment-date">
+      <ion-label class="section-title">{{ 'PAYMENT_INFOR.payment_date' | translate }}</ion-label>
+      <ion-label class="due-date ion-float-right">{{formatString(paymentStartAt)}} - {{formatString(paymentEndAt)}}</ion-label>
+    </ion-item>
+  </section>
+
+  <section class="section-content margin-top-10">
+    <ion-list *ngFor="let item of listPaymentContent; let i = index" class="section-content-fee">
+      <ion-item lines="none" (click)="toggleGroupManagementFee(i)" class="fee-item ion-no-padding">
+        <ion-icon name="car-sport" class="icon-parking"></ion-icon>
+        <ion-label class="fee-title">{{item.type.title}}</ion-label>
+        <ion-label class="amount-number ion-float-right">{{formatMoney(item.amount)}} </ion-label>
+        <ion-icon name="chevron-down-outline" *ngIf="isGroupManagementFeeShown(i)" class="icon-view-detail"></ion-icon>
+        <ion-icon name="chevron-forward-outline" *ngIf="!isGroupManagementFeeShown(i)" class="icon-view-detail"></ion-icon>
+      </ion-item>
+      <ion-item lines="none" [ngClass]="isGroupManagementFeeShown(i) ? 'item-fee-detail ion-no-padding' : 'item-fee-detail ion-no-padding item-fee-inactive'">
+        <p [innerHTML]="convertText(item.description)" class="fee-detail"></p>
+      </ion-item>
+    </ion-list>
+  </section>
+  
+  <section class="section-content margin-top-10">
+    <ion-item lines="none">
+      <ion-label class="section-title">{{ 'PAYMENT_INFOR.payment_method' | translate }}</ion-label>
+    </ion-item>
+    <ion-item lines="none" class="">
+      <ion-button class="payment-method-button" expand="block" (click)="paymentOnlineModal()">
+        <ion-icon class="payment-method-button-icon" name="custom-digital-wallet" src="assets/icon/custom-digital-wallet.svg"></ion-icon>
+        <ion-label class="payment-method-button-label">{{ 'PAYMENT_INFOR.payment_online' | translate }}</ion-label>
+      </ion-button>
+    </ion-item>
+    <ion-item lines="none" class="">
+      <ion-button class="payment-method-button payment-transfer" expand="block" (click)="paymentTransferModal()">
+        <ion-icon class="payment-method-button-icon" name="custom-pay-transfer" src="assets/icon/custom-pay-transfer.svg"></ion-icon>
+        <ion-label class="payment-method-button-label">{{ 'PAYMENT_INFOR.payment_transfer' | translate }}</ion-label>
+      </ion-button>
+      <ion-button class="payment-method-button payment-cash" expand="block" (click)="paymentCashModal()">
+        <ion-icon class="payment-method-button-icon" name="custom-money" src="assets/icon/custom-money.svg"></ion-icon>
+        <ion-label class="payment-method-button-label">{{ 'PAYMENT_INFOR.payment_cash' | translate }}</ion-label>
+      </ion-button>
+    </ion-item>
+  </section>
+  
+  <ion-toolbar class="function-button">
+    <ion-button class="default-button two-button">{{ 'PAYMENT_INFOR.complain' | translate }}</ion-button>
+    <ion-button class="amo-button two-button" *ngIf="paymentStatus == 'publish'" (click)="paymentSuccessModal()">{{ 'PAYMENT_INFOR.pay_now' | translate }}</ion-button>
+  </ion-toolbar>
+  
+
+  <!-- <ion-card *ngIf="paymentCategoryTranfer != null" class="payment-infor-card-top">
     <ion-card-content>
       <ion-item lines="none" class="payment-bank-infor-text">
         {{paymentCategoryTranfer.description}}
@@ -80,5 +120,11 @@
           </div>
         </div>
     </ion-card-content>
-  </ion-card>
+  </ion-card> -->
 </ion-content>
+<!-- <ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <button expand="block" fill="outline" class="conplain-button">{{ 'PAYMENT_INFOR.complain' | translate }}</button>
+    <button expand="block" fill="outline" class="conplain-button">{{ 'PAYMENT_INFOR.complain' | translate }}</button>
+  </ion-toolbar>
+</ion-footer> -->

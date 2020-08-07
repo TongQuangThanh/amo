@@ -102,7 +102,7 @@
           "/*": [
             {
               "xml": "<feature name=\"NativePageTransitions\"><param name=\"ios-package\" value=\"NativePageTransitions\" /></feature>",
-              "count": 1
+              "count": 2
             },
             {
               "xml": "<feature name=\"Camera\"><param name=\"ios-package\" value=\"CDVCamera\" /></feature>",

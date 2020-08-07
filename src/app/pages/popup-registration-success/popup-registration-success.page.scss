@@ -1,0 +1,56 @@
+root{
+    --borderColor:gray;
+    --charShape:none;
+}
+.content-wrap {
+    --background: rgba(33,49,63,0);
+}
+.content-container {
+    position: fixed;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    background: #ffffff;
+    display: block;
+    justify-content: end;
+}
+.header-item {
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+}
+.modal-item {
+    margin: 0 0 70px 0;
+    padding: 0 20px;
+}
+.modal-bottom {
+    margin-bottom: 15px;
+}
+.modal-toolbar {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.trash-icon {
+    font-size: 60px;
+    color: #FA7268;
+}
+.normal-message {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #21313F;
+    margin-bottom: 0;
+}
+.extra-message {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #009AC9;
+}
