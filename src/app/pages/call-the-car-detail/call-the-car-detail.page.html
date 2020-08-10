@@ -1,0 +1,28 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-title>{{ 'INBOX_12.title' | translate }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content>
+  <ion-list lines="full" class="ion-no-margin ion-no-padding margin-top-10">
+    <ion-item lines="none" class="margin-top-20">
+      <ion-item lines="none" class="item-common">
+        <img class="icon-text-box-active" src="../assets/icon/Compass.png"/>
+        <label *ngIf="place_from != ''" class="text-box-placeholder">{{ 'INBOX_12.textbox_1_placeHolder_1' | translate }}</label>
+        <div class="width-100 {{place_from_class}}">
+          <ion-input type="text" class="text-box-1" 
+            type="text"
+            placeholder="{{ 'INBOX_12.textbox_1_placeHolder_1' | translate }}" 
+            value="{{place_from}}" 
+            (ionChange)="ionChangeTextBox1()"
+            [(ngModel)]="place_from">
+          </ion-input>
+        </div>
+      </ion-item>
+    </ion-item>
+  </ion-list>
+</ion-content>

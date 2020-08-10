@@ -1,0 +1,69 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-title>{{ 'APARTMENT_FAMILY.title' | translate }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="list-family-content" [style.height.px]="heightScreen">
+  <!-- <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="{{ 'PAYMENT.pull_to_refresh' | translate }}"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+      </ion-refresher-content>
+  </ion-refresher> -->
+  <ion-list class="list-view-custom">
+    <ion-item-sliding class="padding-left-x" *ngFor="let item of listMembers" (click)="goToFamilyMemberDetail($event)" id="{{item._id}}">
+      <ion-item>
+        <ion-avatar slot="start">
+          <img src="../../../assets/icon/avatar-default.png">
+        </ion-avatar>
+        <ion-label>
+          <!-- <ion-label class="name-family-item">{{item.name}}<ion-icon class="phone-icon" name="md-tablet-portrait"></ion-icon></ion-label> -->
+          <ion-label class="name-family-item">{{item.name}}</ion-label>
+          <ion-label class="gender-family-item">{{item.gender}}</ion-label>
+          <ion-label class="flex-family-item">
+            <ion-label class="years-family-item">{{item.age}} {{'APARTMENT_FAMILY.title_age' | translate}}</ion-label>
+            <ion-label class="phone-family-item"><ion-label class="float-right flex-family-item"><ion-icon class="icon-phone" name="call"></ion-icon> {{item.phone}}</ion-label></ion-label>
+          </ion-label>
+        </ion-label>
+      </ion-item>
+      <ion-item-options>
+          <!-- <button primary class="btn-edit"><p class="label-edit text-button">{{'APARTMENT_FAMILY.btn_edit' | translate}}</p></button> -->
+          <button danger (click)="presentModal()" class="btn-delete text-button"><p>{{'APARTMENT_FAMILY.btn_delete' | translate}}</p></button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <!-- <ion-item class="list-family-item" lines="none" *ngFor="let item of listMembers"
+      (click)="detailPage($event)" id="{{item._id}}">
+      <ion-avatar slot="start">
+        <img src="../../../assets/icon/avatar-default.png">
+      </ion-avatar>
+      <ion-label>
+        <ion-label class="name-family-item">{{item.name}}<ion-icon class="phone-icon" name="md-tablet-portrait"></ion-icon></ion-label>
+        <ion-label class="gender-family-item">{{item.gender}}</ion-label>
+        <ion-label class="flex-family-item">
+          <ion-label class="years-family-item">{{item.age}} {{'APARTMENT_FAMILY.title_age' | translate}}</ion-label>
+          <ion-label class="phone-family-item"><ion-label class="float-right">{{item.phone}}</ion-label></ion-label>
+        </ion-label>
+      </ion-label>
+    </ion-item> -->
+
+    
+  </ion-list>
+
+
+  <!-- <ion-infinite-scroll threshold="50px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content class="custom-infinite-scroll" loadingSpinner="bubbles"
+      loadingText="{{ 'PAYMENT.loadding_more' | translate }}">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
+  <section class="full-width function-section">
+    <ion-button expand="block" class="amo-button-custom" (click)="goToFamilyMemberDetail('0')">{{ 'APARTMENT_FAMILY.btn_add_new' | translate }}</ion-button>
+  </section>
+</ion-content>
+

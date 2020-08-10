@@ -1,0 +1,30 @@
+.header-infor {
+    margin-top: 12px;
+}
+.header-infor ion-label{
+    font-weight: bold;
+    font-size: 24px;
+    color: #556080;
+}
+.image-icon-check {
+    margin: 0 auto;
+    margin-top: 45px;
+}
+.label-confirm {
+    text-align: center;
+}
+.function-section{
+    position: absolute;
+    bottom: 16px;
+    display: flex;
+}
+.amo-button-custom-1 {
+    width: 50%;
+    padding: 0px 5px 0px 20px;
+    color: #556080;
+    --background: #dddfe6;
+}
+.amo-button-custom-2 {
+    width: 50%;
+    padding: 0px 20px 0px 5px;
+}

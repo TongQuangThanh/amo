@@ -22,19 +22,21 @@ export class MyHomeDetailPage implements OnInit {
   listMembers:any;
   apartmentTitle:string;
   memberEnable: boolean= false;
+  _apartmentID: any;
   // profile:any;
   constructor(
     public modalController: ModalController,
     private loading: LoadingService,
     private apiService: ApiService,
     private navCtrl: NavController,
-    private route: ActivatedRoute,
+    private route: ActivatedRoute
   ) { 
     // this.profile = this.authService.getProfile();
   }
 
   ngOnInit() {
     const apartmentID = this.route.snapshot.paramMap.get('id');
+    this._apartmentID = apartmentID;
     this.getListUserApar(apartmentID);
   }
 
@@ -48,6 +50,7 @@ export class MyHomeDetailPage implements OnInit {
         self.apartmentTitle = self.apartment.campaign.title;
         self.listMembers = self.apartment.apartment.members;
         self.loading.dismiss()
+        // console.log(self.apartment);
     },
     error => {
       self.loading.dismiss();
@@ -60,10 +63,6 @@ export class MyHomeDetailPage implements OnInit {
 
   isGroupVehicleShown(){
     return this.vehicleEnable;
-  }
-
-  toggleGroupMember(){
-    this.memberEnable = !this.memberEnable;
   }
 
   isGroupVehicleMember(){
@@ -100,5 +99,5 @@ export class MyHomeDetailPage implements OnInit {
   addVehicle(){
     this.navCtrl.navigateForward('/add-home-vehicle');
   }
-  
+
 }

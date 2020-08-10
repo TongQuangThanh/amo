@@ -337,6 +337,231 @@
     "COMMON": {
         "maintain" : "Chức năng đang bảo trì"
     },
+    "APARTMENT_FAMILY":{
+        "title": "Thành viên gia đình",
+        "title_age": "Tuổi",
+        "btn_add_new": "Thêm thành viên",
+        "btn_edit": "Sửa",
+        "btn_delete": "Xóa"
+    },
+    "FAMILY_DETAIL":{
+        "title": "Tải khoản của tôi",
+        "btn_save": "Lưu",
+        "male": "Nam",
+        "female": "Nữ",
+        "other": "Khác",
+        "placeholder_sex": "Giới tính",
+        "placeholder_displayName": "Họ tên",
+        "placeholder_email": "email",
+        "placeholder_liscense": "Số CMTND",
+        "setting": "Cài đặt",
+        "help_center": "Trợ giúp",
+        "btn_log_out": "Đăng xuất",
+        "message_update_sucess": "Cập nhật thông tin thành công",
+        "message_update_fail": "Cập nhật thông tin thất bại",
+
+        "me": "Tôi",
+        "father": "Bố",
+        "mother": "Mẹ",
+        "husband": "Người chồng",
+        "wife": "Người vợ",
+        "son": "Con trai",
+        "daughter": "Con gái",
+        "daughter_in_law": "Con dâu",
+        "brother": "Anh trai/ Em trai",
+        "sister": "Chị gái/ Em gái",
+        "relative": "Họ hàng",
+        "relationship": "Mối quan hệ",
+        "staying": "staying",
+        "placeholder_phone": "Số điện thoại"
+    },
+    "INBOX_24": {
+        "title": "Đăng ký chuyển đồ",
+        "button_1_text": "Chuyển vào",
+        "button_2_text": "Chuyển ra",
+        "pulldown_1_placeHolder_1": "Căn hộ",
+        "pulldown_1_placeHolder_2": "Chọn căn hộ",
+        "pulldown_2_placeHolder_1": "Thời gian bắt đầu",
+        "pulldown_3_placeHolder_1": "Thời gian kết thúc",
+        "group_1_title": "Chi tiết hàng hóa",
+        "textbox_1_placeHolder_1": "Hàng hóa",
+        "group_1_number_title": "Số lượng hàng hóa",
+        "group_1_button_1": "Thêm hàng hóa",
+        "textarea_placeHolder_2": "Ghi chú...",
+        "button_send": "Gửi"
+    },
+    "INBOX_29": {
+        "title": "Đăng ký nhận đồ hộ",
+        "pulldown_1_placeHolder_1": "Căn hộ",
+        "pulldown_1_placeHolder_2": "Chọn căn hộ",
+        "textarea_placeHolder_1": "Thông tin hàng hóa...",
+        "title_area_select_image": "Ảnh hàng hóa (nếu có)",
+        "checkbox_support_payment": "Thanh toán giúp",
+        "textbox_placeHolder_1": "Nhập số tiền...",
+        "textbox_placeHolder_2": "Số tiền",
+        "textbox_2_placeHolder_1": "Nhập số tiền tip...",
+        "textbox_2_placeHolder_2": "Tiền tip",
+        "checkbox_money_tip": "Tip cho nhân viên lễ tân",
+        "select_other": "Khác...",
+        "textarea_placeHolder_2": "Ghi chú...",
+        "button_send": "Gửi",
+        "popup_header_title": "Tiền tip",
+        "popup_button_save": "Ok"
+    },
+    "INBOX_31": {
+        "title": "Đăng ký gửi xe",
+        "sub_title_1": "Đăng ký mới",
+        "sub_title_2": "Hủy phương tiện",
+        "pulldown_1_placeHolder_1": "Căn hộ",
+        "pulldown_1_placeHolder_2": "Chọn căn hộ",
+        "textbox_1_placeHolder_1":"Tên đầy đủ",
+        "group_2_title": "Phương tiện",
+        "pulldown_2_placeHolder_1":"Chọn phương tiện",
+        "pulldown_2_placeHolder_2":"Loại phương tiện",
+        "pulldown_2_option_1":"Ô tô",
+        "pulldown_2_option_2":"Xe máy",
+        "pulldown_2_option_3":"Xe đạp",
+        "textbox_2_placeHolder_1": "Hãng xe",
+        "textbox_3_placeHolder_1": "Model",
+        "textbox_4_placeHolder_1": "Biển kiểm soát",
+        "pulldown_3_placeHolder_1":"Thời gian gửi",
+        "group_3_title": "Chụp giấy đăng ký xe (rõ ràng 2 mặt, sắc nét)",
+        "group_4_title": "Các phương tiện",
+        "textarea_placeHolder_2": "Ghi chú...",
+        "button_send": "Gửi"
+    },
+    "SEVICE_NEW": {
+        "title" : "Tiện ích",
+        "label_history" : "Lịch sử",
+        "button_title_1": "Gọi xe",
+        "button_title_2": "Giúp việc",
+        "button_title_3": "Sửa chữa",
+        "button_title_4": "Đồ ăn",
+        "button_title_5": "Thiết bị thông minh",
+        "button_title_6": "Bảo trì căn hộ",
+        "button_title_7": "Dịch vụ AMO",
+        "button_title_8": "Khác",
+        "group_2_title_1": "Chợ cư dân",
+        "group_2_title_2": "Tất cả"
+    },
+    "INBOX_36": {
+        "title" : "Dịch vụ xe",
+        "label_history" : "Mở gian hàng"
+    },
+    "INBOX_12": {
+        "title" : "Gọi xe",
+        "textbox_1_placeHolder_1": "Nhập điểm đến",
+        "textbox_1_placeHolder_2": "Điểm đến",
+        "textbox_2_placeHolder_1": "Nhập điểm đi",
+        "textbox_2_placeHolder_2": "Điểm đi"
+    },
+    "INBOX_19": {
+        "title" : "Chợ cư dân",
+        "label_history" : "Mở gian hàng"
+    },
+    "INBOX_21": {
+        "title" : "Mở gian hàng",
+        "label_history" : "Mở gian hàng",
+        "pulldown_1_placeHolder_1": "Chọn loại hình",
+        "pulldown_1_placeHolder_2": "Loại hình gian hàng",
+        "textbox_1_placeHolder_1": "Nhập tên gian hàng",
+        "textbox_1_placeHolder_2": "Tên gian hàng",
+        "textarea_placeHolder_1": "Ghi chú...",
+        "button_send": "Gửi yêu cầu",
+        "popup_text_1": "Yêu cầu mở gian hàng của bạn đã được tiếp nhận. Vui lòng chờ phản hồi.",
+        "popup_text_2": "Tiếp tục mua sắm"
+    },
+    "SEVICE_29": {
+        "title" : "",
+        "group_3_label" : "Chọn tất cả",
+        "button_send": "Thêm vào giỏ hàng"
+    },
+    "SEVICE_05": {
+        "title": "Sản phẩm",
+        "group_1_title": "Phương thức thanh toán",
+        "group_2_title": "Giao hàng",
+        "group_3_title": "Tổng tiền",
+        "label_edit": "Chỉnh sửa",
+        "label_note": "Lưu ý",
+        "button_1_text": "Ch.Khoản",
+        "button_2_text": "Tiền mặt",
+        "textbox_1_placeHolder_1": "Số điện thoại người nhận",
+        "textbox_1_placeHolder_2": "Số điện thoai",
+        "pulldown_1_placeHolder_1": "Căn hộ",
+        "pulldown_1_placeHolder_2": "Chọn căn hộ",
+        "pulldown_2_placeHolder_1": "Thời gian bắt đầu",
+        "pulldown_3_placeHolder_1": "Thời gian kết thúc",
+        "textarea_placeHolder_2": "Ghi chú...",
+        "popup_text_1": "Đơn hàng của bạn đã được tiếp nhận\nShop sẽ sớm liên lạc lại với bạn",
+        "popup_text_2": "Tiếp tục dịch vụ",
+        "total_money": "Tổng tiền",
+        "button_send": "Đặt hàng"
+    },
+    "INBOX_35": {
+        "title" : "Lịch sử",
+        "label_history" : "Mở gian hàng",
+        "status_1" : "Nhà cc hủy",
+        "status_2" : "Hoàn thành",
+        "status_3" : "Đang xử lý",
+        "code_orders" : "Mã đơn hàng:"
+    },
+    "PAY_15": {
+        "title" : "",
+        "status_1" : "Nhà cc hủy",
+        "status_2" : "Hoàn thành",
+        "status_3" : "Đang xử lý",
+        "label_1": "Nhà cung cấp",
+        "label_2": "Người thực hiện",
+        "label_3": "Chức vụ",
+        "label_4": "Mã đơn hàng",
+        "label_5": "Thời gian",
+        "text_button_1": "Khiếu nại",
+        "text_button_2": "Chat",
+        "text_button_3": "Hủy"
+    },
+    "SEVICE_10": {
+        "title": "",
+        "placeholder_textarea": "Nhập nội dung..."
+    },
+    "SEVICE_33": {
+        "title": "Sửa chữa",
+        "placeholder_textbox_1": "Tìm kiếm nhanh dịch vụ...",
+        "button_1": "Sửa chữa điều hòa",
+        "button_2": "Sửa chữa quạt",
+        "button_3": "Sửa chữa máy giặt",
+        "button_4": "Sửa chữa tivi",
+        "button_5": "Sửa chữa bếp gas/điện",
+        "button_6": "Sửa chữa tủ lạnh",
+        "button_7": "Sửa chữa nhà vệ sinh",
+        "button_8": "Sửa chữa đèn điện",
+        "button_9": "Sửa chữa nội thất"
+    },
+    "NOTI_6": {
+        "title" : "",
+        "group_3_label" : "Chọn tất cả",
+        "button_send": "Tiếp tục"
+    },
+    "INBOX_56": {
+        "title": "Sản phẩm",
+        "group_1_title": "Phương thức thanh toán",
+        "group_2_title": "Giao hàng",
+        "group_3_title": "Tổng tiền",
+        "label_edit": "Chỉnh sửa",
+        "label_note": "Lưu ý",
+        "button_1_text": "Ch.Khoản",
+        "button_2_text": "Tiền mặt",
+        "textbox_1_placeHolder_1": "Số điện thoại người nhận",
+        "textbox_1_placeHolder_2": "Số điện thoai",
+        "pulldown_1_placeHolder_1": "Căn hộ",
+        "pulldown_1_placeHolder_2": "Chọn căn hộ",
+        "pulldown_2_placeHolder_1": "Thời gian đến",
+        "pulldown_3_placeHolder_1": "Thời gian kết thúc",
+        "textarea_placeHolder_2": "Ghi chú...",
+        "popup_text_1": "Đặt dịch vụ thành công",
+        "popup_text_2": "Xem lịch sử đặt dịch vụ",
+        "total_money": "Tổng tiền",
+        "button_send": "Đặt hàng"
+    },
     "TERMS" : {
         "title": "Quy chế hoạt động, điều khoản"
     },
@@ -412,5 +637,4 @@
         "parking_time" : "Thời gian gửi",
         "vehicle_register_label" : "Chụp giấy đăng kí xe (rõ ràng 2 mặt, sắc nét)"
     }
-
 }

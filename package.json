@@ -1,6 +1,6 @@
 {
   "name": "anhmo-mobile-new",
-  "version": "4.0.6",
+  "version": "4.0.7",
   "author": "AMO",
   "homepage": "http://amoapp.net/",
   "scripts": {
@@ -25,6 +25,7 @@
     "@angular/compiler": "~10.0.3",
     "@angular/core": "~10.0.3",
     "@angular/forms": "~10.0.3",
+    "@angular/localize": "^10.0.3",
     "@angular/material": "^10.0.1",
     "@angular/platform-browser": "~10.0.3",
     "@angular/platform-browser-dynamic": "~10.0.3",
@@ -47,6 +48,7 @@
     "@ionic-native/status-bar": "^5.27.0",
     "@ionic-super-tabs/angular": "^7.0.8",
     "@ionic/angular": "^5.2.3",
+    "@ng-bootstrap/ng-bootstrap": "~5.2.2",
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
     "call-number": "^1.0.1",
@@ -66,6 +68,7 @@
     "cordova-plugin-telerik-imagepicker": "^2.3.3",
     "cordova-plugin-zip": "^3.1.0",
     "core-js": "^2.6.11",
+    "hammerjs": "^2.0.8",
     "jquery": "^3.5.1",
     "moment": "^2.27.0",
     "rxjs": "^6.6.0",

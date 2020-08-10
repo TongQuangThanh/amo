@@ -1,0 +1,82 @@
+
+.DOB-custom {
+    margin-right: 10px;
+    box-shadow: none;
+}
+
+.sex-custom {
+    margin-left: 10px;
+    box-shadow: none;
+}
+.selection-width-85 {
+    max-width:85%;
+}
+
+.function-section{
+    position: absolute;
+    bottom: 16px;
+}
+
+.header-infor{
+    width: 100%;
+    height: 13.18%;
+    background: #FA7268;
+}
+
+.center-avatar{
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    left: calc(50% - 50px);
+    top: 40px;
+}
+
+.form-margin{
+    margin-top: 70px;
+}
+
+.white-color{
+    color: white;
+}
+
+.btn-save {
+    margin-right: 10px;
+}
+
+ion-header {
+    position: fixed;
+}
+
+ion-toolbar {
+    --background: transparent;
+    --ion-color-base: transparent !important;
+}
+
+.logout-item{
+    --inner-padding-end: 0;
+    --padding-start: 0;
+    margin-top: 16px;
+}
+
+.logout-text{
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+    /* identical to box height */
+
+    text-align: center;
+
+    color: #FA7268;
+}
+.nationality-custom {
+    box-shadow: none;
+    margin-left: 16px;
+    margin-right: 16px;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+}

@@ -1,0 +1,37 @@
+<ion-header no-border>
+  <ion-toolbar>
+    <ion-title>{{ 'INBOX_36.title' | translate }}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text=""></ion-back-button>
+    </ion-buttons>
+    <!-- <button class="button-add-new-market" >
+      <img class="icon-home" src="../assets/icon/Add-circle-outline.png"/>
+      <ion-label class="font-weight-600 margin-left-20">{{ 'INBOX_36.label_history' | translate }}</ion-label>
+    </button> -->
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content>
+  <ion-list class="list-view-custom">
+    <ion-item *ngFor="let object of listDataMarket" id="{{object._id}}" class="ion-item-class ion-no-padding" (click)="detailPage($event)">
+      <div slot="start" class="div-logo">
+        <img src="{{object.url_logo}}">
+      </div>
+      <div>
+        <div class="group-1-text-title">
+          <ion-label class="">{{object.title}}</ion-label>
+        </div>
+        <div class="group-1-text-place">
+          <img class="group-1-icon-place" src="../assets/icon/icon-place.png"/>
+          <ion-label>{{object.text_place}}</ion-label>
+        </div>
+        <div class="group-1-text-star">
+          <img class="group-1-icon-star" src="../assets/icon/icon-star.png"/>
+          <ion-label class="class-label-rate">{{object.text_star_rate}}</ion-label>
+          <img class="group-1-icon-tag" src="../assets/icon/icon-tag.png"/>
+          <ion-label>{{object.text_tag}}</ion-label>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

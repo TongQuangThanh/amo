@@ -20,6 +20,7 @@ import { OneSignal } from '@ionic-native/onesignal/ngx';
 import { PincodePasswordPageModule } from './pages/pincode-password/pincode-password.module';
 import { PincodeRegisterPageModule } from './pages/auth/pincode-register/pincode-register.module';
 import { ApartmentCodeRegisterPageModule } from './pages/auth/apartment-code-register/apartment-code-register.module';
+import { ConfirmModalPageModule } from './components/confirm-modal/confirm-modal.module';
 import { CodePush } from '@ionic-native/code-push/ngx';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { Camera } from '@ionic-native/Camera/ngx';
@@ -27,7 +28,8 @@ import { File } from '@ionic-native/file/ngx';
 import { HTTP } from '@ionic-native/http/ngx';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SuperTabsModule } from '@ionic-super-tabs/angular';
-
+//import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatTabsModule } from '@angular/material/tabs';
 export function LanguageLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
@@ -39,10 +41,14 @@ export function LanguageLoader(http: HttpClient) {
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
+    SuperTabsModule.forRoot(),
     PincodePasswordPageModule,
     PincodeRegisterPageModule,
     ApartmentCodeRegisterPageModule,
+    ConfirmModalPageModule,
+    MatTabsModule,
     HttpClientModule,
+    //NgbModule, 
     SuperTabsModule.forRoot(),
     TranslateModule.forRoot({
       loader: {

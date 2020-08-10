@@ -1,0 +1,109 @@
+
+.list-family-content {
+    // top: 186px;
+    overflow: auto;
+    // position: absolute;
+}
+
+.list-family-item {
+    margin: 16px;
+    --background: #FFFFFF;
+    border-bottom: 1px solid #F5F5F5;
+    border-radius: 0px !important;
+}
+
+.name-family-item {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 25px;
+    /* identical to box height */
+    color: #556080;
+}
+
+.gender-family-item {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 20px;
+    /* identical to box height */
+    color: #BBBFCC;
+}
+
+.years-family-item {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 20px;
+    display: block;
+    color: #BBBFCC;
+    width: 50%;
+}
+.phone-family-item {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 20px;
+    display: block;
+    color: #BBBFCC;
+    padding-right: 10px;
+    width: 50%;
+}
+
+.list-view-custom {
+    margin-bottom: 5px;
+}
+
+.phone-icon {
+    margin-top: 5px;
+    margin-left: 10px;
+    position: absolute;
+    color: #FA7268;
+}
+.call-icon {
+    margin-top: 2px;
+    margin-left: 2px;
+    position: absolute;
+}
+.flex-family-item {
+    display: flex;
+}
+.function-section{
+    position: absolute;
+    bottom: 16px;
+}
+.float-right {
+    float: right;
+}
+.btn-edit {
+    background: #556080;
+    box-shadow: 0px 0px 20px rgba(23, 21, 48, 0.102546);
+    width: 60px;
+    color: #FFFFFF;
+}
+.btn-delete {
+    background: #FA7268;
+    box-shadow: 0px 0px 20px rgba(23, 21, 48, 0.102546);
+    border-radius: 0px 8px 8px 0px;
+    width: 80px;
+    color: #FFFFFF;
+}
+.text-button {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+}
+.padding-left-x {
+    padding-left: 10px;
+}
+.icon-phone {
+    margin-top: 3px;
+    margin-right: 3px;
+}
