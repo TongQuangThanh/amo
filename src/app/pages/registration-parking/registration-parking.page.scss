@@ -1,8 +1,11 @@
 .owner-info {
+    margin: 5px 17px 0 17px;
+}
+.parking-info {
     margin: 10px 17px 0 17px;
 }
-.guest-info {
-    margin: 10px 17px 0 17px;
+.parking-note {
+    margin: 20px 17px 20px 17px;
 }
 .devider-line {
     height: 6px;
@@ -97,6 +100,46 @@ ion-textarea {
     color: #21313F;
     mix-blend-mode: normal;
 }
+.note-content.md {
+    --padding-top: 0;
+}
 .button-send {
     margin-top: 40px;
+}
+
+.image-content {
+    height: 120px;
+    background: #F4F5F5;
+    border: 1px solid #D3D6D9;
+    border-radius: 8px;
+    width: 100%;
+}
+.image-content-icon {
+    background: #F4F5F5;
+    border: 1px solid #D3D6D9;
+    border-radius: 8px;
+    width: 100%;
+    padding: 31px 0;
+}
+.image-grid {
+    padding: 0;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.image-row {
+    padding: 0;
+}
+.image-col {
+    text-align: center;
+    padding: 0;
+}
+.item-icon {
+    font-size: 50px;
+    opacity: 0.1;
+}
+.padding-left-10 {
+    padding-left: 10px;
+}
+.padding-right-10 {
+    padding-right: 10px;
 }

@@ -58,53 +58,77 @@
 
   <ion-list class="list-chat-content">
     <div class="message-wrap">
-      <div>
+      
         <div class="message left">
           <!-- <img class="user-img" *ngIf="item.createdBy" src="{{item.createdBy.avatar}}"/> -->
           <img  class="user-img" src="../assets/icon/avatar-default.png"/>
           <div class="msg-detail">
-            <div class="msg-info">
-              <p>BQL tòa nhà</p>
-            </div>
-            <div class="msg-content">
-              <p>Thật tuyệt vời khi có dịch vụ này</p>
-            </div>
-            <div class="msg-time">
-              <p><span class="msg-time-label">3 ngày</span> <span class="btn-reply">Trả lời</span></p>
-            </div>
+            <ion-grid class="msg-grid">
+              <ion-row>
+                <div class="msg-info">
+                  <p>BQL tòa nhà</p>
+                </div>
+              </ion-row>
+              <ion-row>
+                <div class="msg-content">
+                  <p>Thật tuyệt vời</p>
+                </div>
+              </ion-row>
+              <ion-row>
+                <div class="msg-time">
+                  <p><span class="msg-time-label">3 ngày</span> <span class="btn-reply">Trả lời</span></p>
+                </div>
+              </ion-row>
+            </ion-grid>
           </div>
         </div>
         <div class="message left reply">
           <!-- <img class="user-img" *ngIf="itemRep.createdBy" src="{{itemRep.createdBy.avatar}}"/> -->
           <img  class="user-img" src="../assets/icon/avatar-default.png"/>
           <div class="msg-detail">
-            <div class="msg-info">
-              <p>Cư dân 1</p>
-            </div>
-            <div class="msg-content">
-              <p>Tôi đã dùng qua sản phẩm. Dịch vụ rất hữu ích, tiết kiệm thời gian</p>
-            </div>
-            <div class="msg-time">
-              <p><span class="msg-time-label">3 ngày</span> <span class="btn-reply">Trả lời</span></p>
-            </div>
+            <ion-grid class="msg-grid">
+              <ion-row>
+                <div class="msg-info">
+                  <p>Cư dân 1</p>
+                </div>
+              </ion-row>
+              <ion-row>
+                <div class="msg-content">
+                  <p>Tôi đã dùng qua sản phẩm. Dịch vụ rất hữu ích, tiết kiệm thời gian</p>
+                </div>
+              </ion-row>
+              <ion-row>
+                <div class="msg-time">
+                  <p><span class="msg-time-label">3 ngày</span> <span class="btn-reply">Trả lời</span></p>
+                </div>
+              </ion-row>
+            </ion-grid>
           </div>
         </div>
         <div class="message left">
           <!-- <img class="user-img" *ngIf="item.createdBy" src="{{item.createdBy.avatar}}"/> -->
           <img  class="user-img" src="../assets/icon/avatar-default.png"/>
           <div class="msg-detail">
-            <div class="msg-info">
-              <p>Cư dân 2</p>
-            </div>
-            <div class="msg-content">
-              <p>Dịch vụ rất hữu ích, tiết kiệm thời gian</p>
-            </div>
-            <div class="msg-time">
-              <p><span class="msg-time-label">3 ngày</span> <span class="btn-reply">Trả lời</span></p>
-            </div>
+            <ion-grid class="msg-grid">
+              <ion-row>
+                <div class="msg-info">
+                  <p>Cư dân 2</p>
+                </div>
+              </ion-row>
+              <ion-row>
+                <div class="msg-content">
+                  <p>Dịch vụ rất hữu ích, tiết kiệm thời gian</p>
+                </div>
+              </ion-row>
+              <ion-row>
+                <div class="msg-time">
+                  <p><span class="msg-time-label">3 ngày</span> <span class="btn-reply">Trả lời</span></p>
+                </div>
+              </ion-row>
+            </ion-grid>
           </div>
         </div>
-      </div>
+      
       <!-- <div *ngFor="let item of listArticlesComment.reverse()">
         <div *ngIf="item.status == 'approve' || item.createdBy.phone == profile.phone" class="message left">
           <img class="user-img" *ngIf="item.createdBy" src="{{item.createdBy.avatar}}"/>

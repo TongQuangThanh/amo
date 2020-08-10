@@ -25,6 +25,12 @@ export class PopupRegistrationTypePage implements OnInit {
     this.modalController.dismiss();
   }
 
+  registParking(){
+    //// this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
+    this.navCtrl.navigateForward('/registration-parking');
+    this.closeModal();
+  }
+
   registGuest(){
     //// this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
     this.navCtrl.navigateForward('/registration-guest');

@@ -1,0 +1,54 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="header-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="arrow-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'NOTIFICATION_POLL.title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form class="form" #form1>
+    <h2 class="label-question">1. Bạn muốn thanh toán hóa đơn điện nước bằng hình thức gì?</h2>
+    <div class="inputGroup">
+      <input id="radio1" name="radio" type="radio" checked/>
+      <label class="label-answer" for="radio1">Tiền mặt</label>
+    </div>
+    <div class="inputGroup">
+      <input id="radio2" name="radio" type="radio"/>
+      <label class="label-answer" for="radio2">Chuyển khoản</label>
+    </div>
+    <div class="inputGroup">
+      <input id="radio3" name="radio" type="radio"/>
+      <label class="label-answer" for="radio3">Visa/Master card</label>
+    </div>
+  </form>
+  <form class="form" #form2 hidden>
+    <h2 class="label-question">2. Bạn muốn gửi hóa đơn theo phương thức gì?</h2>
+    <div class="inputGroup">
+      <input id="radio21" name="radio2" type="radio" checked/>
+      <label class="label-answer" for="radio21">Hóa đơn điện tử</label>
+    </div>
+    <div class="inputGroup">
+      <input id="radio22" name="radio2" type="radio"/>
+      <label class="label-answer" for="radio22">Hóa đơn in</label>
+    </div>
+  </form>
+  <form class="form" #form3 hidden>
+    <h2 class="label-question">Ý kiến khác của bạn</h2>
+    <ion-item class="textarea-item" lines="none">
+      <ion-textarea class="note-content" rows="4" placeholder="{{ 'REGISTRATION_GUEST.note' | translate }}"></ion-textarea>
+    </ion-item>
+  </form>
+  <ion-item lines="none" class="modal-toolbar ion-no-padding">
+    <ion-button class="default-button small-button button-left button-bottom" slot="start">
+      <ion-label class="button-label">{{ 'NOTIFICATION_POLL.back' | translate }}</ion-label>
+    </ion-button>
+    <ion-button class="lightblue-button small-button button-right button-bottom" slot="end">
+      <ion-label class="button-label">{{ 'NOTIFICATION_POLL.continue' | translate }}</ion-label>
+    </ion-button>
+    <ion-button class="lightblue-button small-button button-right button-bottom" slot="end" hidden>
+      <ion-label class="button-label">{{ 'NOTIFICATION_POLL.send' | translate }}</ion-label>
+    </ion-button>
+  </ion-item>
+</ion-content>

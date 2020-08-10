@@ -433,3 +433,25 @@ ion-content {
     line-height: 25px;
     text-align: center;
 }
+.badge-corner-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    background-color: #F2C94C;
+    border-top-left-radius: 0;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 0;
+    color: #FFFFFF;
+}
+.badge-corner-icon {
+    font-size: 12px;
+    line-height: 30px;
+    text-align: center;
+}
+.hide {
+    display: none;
+}

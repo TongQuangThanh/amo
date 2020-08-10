@@ -181,6 +181,9 @@ ion-footer > ion-toolbar {
 .message-wrap {
     padding: 0 16px; 
 }
+.msg-grid {
+    --ion-grid-padding: 0;
+}
 .message-wrap .message {
     position: relative;
     padding: 7px 0; 
@@ -208,6 +211,7 @@ ion-footer > ion-toolbar {
     color: #21313F; 
 }
 .message-wrap .message .msg-detail .msg-content {
+    display: block;
     position: relative;
     margin-top: 5px;
     border-radius: 8px;
@@ -218,6 +222,7 @@ ion-footer > ion-toolbar {
     max-width: 100%; 
 }
 .message-wrap .message .msg-detail .msg-time {
+    display: block;
     position: relative;
     padding: 0;
     width: auto;
@@ -262,6 +267,7 @@ ion-footer > ion-toolbar {
     font-size: 12px;
     line-height: 18px;
     color: #7A838C;
+    margin-right: 30px;
 }
 .btn-reply {
     font-family: Nunito Sans;
@@ -270,7 +276,7 @@ ion-footer > ion-toolbar {
     font-size: 12px;
     line-height: 18px;    
     color: #21313F;
-    margin-left: 30px;
+    margin-right: 30px;
 }
 
 // custom add comment //

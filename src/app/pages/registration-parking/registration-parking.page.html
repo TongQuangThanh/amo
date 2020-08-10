@@ -1,0 +1,99 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="header-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="arrow-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'REGISTRATION_PARKING.title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item lines="none">
+    <ion-badge class="badge-success">{{ 'REGISTRATION_PARKING.status_processed' | translate }}</ion-badge>
+  </ion-item>
+  <div class="owner-info">
+    <ion-item class="input-item" lines="none" (click)="selectApartmentModal()">
+      <ion-icon class="input-icon" name="custom-apartment" src="/assets/icon/custom-apartment.svg" slot="start"></ion-icon>
+      <ion-label class="input-floating-label" position="floating">{{ 'REGISTRATION_PARKING.apartment' | translate }}</ion-label>
+      <ion-input class="input-text" type="text" value=""></ion-input>
+      <ion-icon class="select-icon" name="caret-down-outline" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item class="input-item" lines="none">
+      <ion-icon class="input-icon" name="custom-user" src="/assets/icon/custom-user.svg" slot="start"></ion-icon>
+      <ion-label class="input-floating-label" position="floating">{{ 'REGISTRATION_PARKING.name' | translate }}</ion-label>
+      <!-- <ion-input class="input-text" type="text" name="userEmail" value=""></ion-input> -->
+      <ion-input class="input-text" type="text" value=""></ion-input>
+    </ion-item>
+  </div>
+  <div class="devider-line"></div>
+  <div class="parking-info">
+    <ion-item class="guest-quantity ion-no-padding" lines="none">
+      <ion-label class="quantity-title">{{ 'REGISTRATION_PARKING.vehicle' | translate }}</ion-label>
+    </ion-item>
+    <ion-item class="input-item" lines="none">
+      <ion-icon class="input-icon" name="custom-category" src="/assets/icon/custom-category.svg" slot="start"></ion-icon>
+      <ion-label class="input-floating-label" position="floating">{{ 'REGISTRATION_PARKING.vehicle_type' | translate }}</ion-label>
+      <ion-input class="input-text" type="text" name="userEmail" value=""></ion-input>
+      <ion-icon class="select-icon" name="caret-down-outline" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item class="input-item" lines="none">
+      <ion-icon class="input-icon" name="custom-car-black" src="/assets/icon/custom-car-black.svg" slot="start"></ion-icon>
+      <ion-label class="input-floating-label" position="floating">{{ 'REGISTRATION_PARKING.vehicle_branch' | translate }}</ion-label>
+      <ion-input class="input-text" type="text" name="userEmail" value=""></ion-input>
+    </ion-item>
+    <ion-item class="input-item" lines="none">
+      <ion-icon class="input-icon" name="custom-model" src="/assets/icon/custom-model.svg" slot="start"></ion-icon>
+      <ion-label class="input-floating-label" position="floating">{{ 'REGISTRATION_PARKING.vehicle_model' | translate }}</ion-label>
+      <ion-input class="input-text" type="text" name="userEmail" value=""></ion-input>
+    </ion-item>
+    <ion-item class="input-item" lines="none">
+      <ion-icon class="input-icon" name="custom-noCar" src="/assets/icon/custom-noCar.svg" slot="start"></ion-icon>
+      <ion-label class="input-floating-label" position="floating">{{ 'REGISTRATION_PARKING.vehicle_numberID' | translate }}</ion-label>
+      <ion-input class="input-text" type="text" name="userEmail" value=""></ion-input>
+    </ion-item>
+    <ion-item class="input-item" lines="none">
+      <ion-icon class="input-icon" name="custom-calendar" src="/assets/icon/custom-calendar.svg" slot="start"></ion-icon>
+      <ion-label class="input-floating-label" position="floating">{{ 'REGISTRATION_PARKING.parking_time' | translate }}</ion-label>
+      <ion-datetime class="input-text input-text-50" displayFormat="DD/MM/YYYY" value=""></ion-datetime>
+      <ion-icon class="select-icon" name="caret-down-outline" slot="end"></ion-icon>
+    </ion-item>
+  </div>
+  <div class="devider-line"></div>
+  <div class="parking-info">
+    <ion-item class="guest-quantity ion-no-padding" lines="none">
+      <ion-label class="quantity-title">{{ 'REGISTRATION_PARKING.vehicle_register_label' | translate }}</ion-label>
+    </ion-item>
+    <!-- <ion-item class="" lines="none">
+      <ion-img src="/assets/common/registerCard1.png" class="img-responsive" alt=""></ion-img>
+      <ion-img src="/assets/common/registerCard2.png" class="img-responsive" alt=""></ion-img>
+    </ion-item> -->
+    <ion-grid class="image-grid" lines="none">
+      <ion-row class="ion-align-items-center image-row">
+        <ion-col class="image-col padding-right-10">
+          <div class="image-content-icon">
+            <ion-icon class="item-icon" name="camera"></ion-icon>
+          </div>
+          <!-- <div class="image-content">
+            <ion-img src="/assets/common/registerCard1.png" class="image-responsive" alt=""></ion-img>
+          </div> -->
+        </ion-col>
+        <ion-col class="image-col padding-left-10">
+          <div class="image-content-icon">
+            <ion-icon class="item-icon" name="camera"></ion-icon>
+          </div>
+          <!-- <div class="image-content">
+            <ion-img src="/assets/common/registerCard2.png" class="image-responsive" alt=""></ion-img>
+          </div> -->
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div class="devider-line"></div>
+  <div class="parking-note">
+    <ion-item class="textarea-item" lines="none">
+      <ion-textarea class="note-content" rows="4" placeholder="{{ 'REGISTRATION_GUEST.note' | translate }}"></ion-textarea>
+    </ion-item>
+    <ion-button expand="block" class="button-common button-send">
+      <ion-label>{{ 'REGISTRATION_GUEST.btn_send' | translate }}</ion-label>
+    </ion-button>
+  </div>
+</ion-content>

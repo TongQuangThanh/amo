@@ -199,6 +199,12 @@
         "loadding_more": "Loading more data...",
         "msg_apartment_not_correct" : "You haven't apartment information"
     },
+    "NOTIFICATION_POLL" : {
+        "title" : "Khảo sát cư dân về các vấn đề ...",
+        "continue" : "Continue",
+        "back" : "Back", 
+        "send" : "Send"
+    },
     "PAYMENT_COMMENT":{
         "title": "Complain",
         "place_holder_input": "Type a message..."
@@ -372,6 +378,13 @@
     "NEWS" : {
         "title" : "News"
     },
+    "REGISTRATION_TYPE" : {
+        "title" : "New registration",
+        "parking" : "Parking",
+        "guest" : "Guest",
+        "receive" : "Receiving",
+        "shipping" : "Shipping"
+    },
     "REGISTRATION_GUEST" : {
         "title" : "Guest registration",
         "apartment" : "Apartment",
@@ -384,5 +397,19 @@
         "select_apartment_title" : "Select apartment",
         "send_success_message" : "Đăng ký của bạn đã được gửi đi. Vui lòng kiểm tra phản hồi ở tab Đăng ký",
         "back_registration_tab" : "Back to registration tab"
+    },
+    "REGISTRATION_PARKING" : {
+        "title" : "Parking registration",
+        "status_processed" : "Processed",
+        "status_unprocess" : "Unprocess",
+        "apartment" : "Apartment name",
+        "name" : "Full name",
+        "vehicle" : "Vehicle",
+        "vehicle_type" : "Vehicle type",
+        "vehicle_branch" : "Vehicle branch",
+        "vehicle_model" : "Model",
+        "vehicle_numberID" : "Vehicle number ID",
+        "parking_time" : "Parking from",
+        "vehicle_register_label" : "Chụp giấy đăng kí xe (rõ ràng 2 mặt, sắc nét)"
     }
 }

@@ -230,7 +230,19 @@ const routes: Routes = [
   {
     path: 'popup-select-apartment',
     loadChildren: () => import('./pages/popup-select-apartment/popup-select-apartment.module').then( m => m.PopupSelectApartmentPageModule)
+  },  {
+    path: 'registration-parking',
+    loadChildren: () => import('./pages/registration-parking/registration-parking.module').then( m => m.RegistrationParkingPageModule)
+  },
+  {
+    path: 'notification-poll',
+    loadChildren: () => import('./pages/notification-poll/notification-poll.module').then( m => m.NotificationPollPageModule)
+  },
+  {
+    path: 'popup-poll-success',
+    loadChildren: () => import('./pages/popup-poll-success/popup-poll-success.module').then( m => m.PopupPollSuccessPageModule)
   }
+
 
 
 ];
