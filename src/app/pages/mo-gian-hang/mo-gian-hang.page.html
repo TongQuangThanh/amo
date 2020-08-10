@@ -1,4 +1,4 @@
-<ion-header no-border>
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-title>{{ 'INBOX_21.title' | translate }}</ion-title>
     <ion-buttons slot="start">
@@ -11,8 +11,8 @@
   <ion-list lines="full" class="ion-no-margin ion-no-padding margin-top-10">
     <ion-item lines="none" class="margin-top-20">
       <ion-item lines="none" class="item-common">
-        <img class="icon-pulldown-left" src="../assets/icon/Category.png"/>
-        <img class="icon-pulldown-down" src="../assets/icon/Down.png"/>
+        <img class="icon-pulldown-left" src="../assets/icon/svg/Category.svg"/>
+        <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg"/>
         <label *ngIf="form_type != ''" class="pulldown-customize-placeholder">{{ 'INBOX_21.pulldown_1_placeHolder_2' | translate }}</label>
         <div class="width-100 {{form_type_class}}">
           <ion-select class="pulldown-customize" placeholder="{{ 'INBOX_21.pulldown_1_placeHolder_1' | translate }}" interface="action-sheet" name="form_type" [(ngModel)]="form_type" (ionChange)="ionChangePulldown1($event)">
@@ -23,7 +23,7 @@
     </ion-item>
     <ion-item lines="none" class="margin-top-20">
       <ion-item lines="none" class="item-common">
-        <img class="icon-text-box-active" src="../assets/icon/Marketplace.png"/>
+        <img class="icon-text-box-active" src="../assets/icon/svg/Marketplace.svg"/>
         <label *ngIf="form_name != ''" class="text-box-placeholder">{{ 'INBOX_21.textbox_1_placeHolder_2' | translate }}</label>
         <div class="width-100 {{form_name_class}}">
           <ion-input type="text" class="text-box-1" 
@@ -58,7 +58,7 @@
         <div class="modal-body">
           <ion-list lines="full" class="ion-no-margin ion-no-padding margin-top-10">
             <ion-item lines="none" class="popup-ion-item" id="area-show-image">
-              <img class="" src="../assets/icon/Outline.png"/>
+              <img class="" src="../assets/icon/svg/Outline.svg"/>
             </ion-item>
             <ion-item lines="none" class="popup-ion-item" id="area-show-image">
               <ion-label class="popup-text-1">{{ 'INBOX_21.popup_text_1' | translate }}</ion-label>

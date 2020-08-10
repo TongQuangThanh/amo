@@ -1,4 +1,4 @@
-<ion-header no-border>
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button text=""></ion-back-button>
@@ -19,13 +19,13 @@
       <ion-item lines="none" class="item-common">
         <div>
           <div class="group-1-text-place">
-            <img class="group-1-icon-place" src="../assets/icon/icon-place.png"/>
+            <img class="group-1-icon-place" src="../assets/icon/svg/icon-place.svg"/>
             <ion-label>{{data_gian_hang.text_place}}</ion-label>
           </div>
           <div class="group-1-text-star">
-            <img class="group-1-icon-star" src="../assets/icon/icon-star.png"/>
+            <img class="group-1-icon-star" src="../assets/icon/svg/icon-star.svg"/>
             <ion-label class="class-label-rate">{{data_gian_hang.text_star_rate}}</ion-label>
-            <img *ngIf="data_gian_hang.text_tag != ''" class="group-1-icon-tag" src="../assets/icon/icon-tag.png"/>
+            <img *ngIf="data_gian_hang.text_tag != ''" class="group-1-icon-tag" src="../assets/icon/svg/icon-tag.svg"/>
             <ion-label *ngIf="data_gian_hang.text_tag != ''">{{data_gian_hang.text_tag}}</ion-label>
           </div>
         </div>
@@ -64,9 +64,9 @@
               <ion-label>{{object.note}}</ion-label>
           </div>
           <div class="group-1-button-change-number">
-            <button class="button-3-1" (click)="downNumberProduct(object.id)"><img class="icon-button-3" src="../assets/icon/tru.png"/></button>
+            <button class="button-3-1" (click)="downNumberProduct(object.id)"><img class="icon-button-3" src="../assets/icon/svg/tru.svg"/></button>
             <label class="group-1-label-1">{{object.number}}</label>
-            <button class="button-3-2" (click)="upNumberProduct(object.id)"><img class="icon-button-3" src="../assets/icon/plus.png"/></button>
+            <button class="button-3-2" (click)="upNumberProduct(object.id)"><img class="icon-button-3" src="../assets/icon/svg/plus.svg"/></button>
           </div>
         </ion-col>
         <ion-col class="ion-col-class group-2-col-3" size="2">
@@ -115,9 +115,9 @@
                   <ion-label>{{data.note}}</ion-label>
               </div>
               <div class="group-1-button-change-number">
-                <button class="button-3-1" (click)="downNumberProduct_1(object.id_tab, data.id)"><img class="icon-button-3" src="../assets/icon/tru.png"/></button>
+                <button class="button-3-1" (click)="downNumberProduct_1(object.id_tab, data.id)"><img class="icon-button-3" src="../assets/icon/svg/tru.svg"/></button>
                 <label class="group-1-label-1">{{data.number}}</label>
-                <button class="button-3-2" (click)="upNumberProduct_1(object.id_tab, data.id)"><img class="icon-button-3" src="../assets/icon/plus.png"/></button>
+                <button class="button-3-2" (click)="upNumberProduct_1(object.id_tab, data.id)"><img class="icon-button-3" src="../assets/icon/svg/plus.svg"/></button>
               </div>
             </ion-col>
             <ion-col class="ion-col-class group-2-col-3" size="2">

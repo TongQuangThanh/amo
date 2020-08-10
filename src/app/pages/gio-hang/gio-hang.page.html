@@ -1,4 +1,4 @@
-<ion-header no-border>
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-title>{{ 'SEVICE_05.title' | translate }}</ion-title>
     <ion-buttons slot="start">
@@ -40,13 +40,13 @@
         <div class="{{button_1_class}}"></div>
         <img class="image-button-payment" src="../assets/icon/pay-1.png"/>
         <label class="button-1-text padding-right-10">{{ 'SEVICE_05.button_1_text' | translate }}</label> 
-        <img *ngIf="button_active == 1" class="button-1-icon" src="../assets/icon/Fill.png"/>
+        <img *ngIf="button_active == 1" class="button-1-icon" src="../assets/icon/svg/Fill.svg"/>
       </ion-item>
       <ion-item lines="none" class="item-common no-border margin-left-5" (click)="eventButton1(2)">
         <div class="{{button_2_class}}"></div>
         <img class="image-button-payment" src="../assets/icon/money-1.png"/>
         <label class="button-1-text padding-right-10">{{ 'SEVICE_05.button_2_text' | translate }}</label> 
-        <img *ngIf="button_active == 2" class="button-1-icon" src="../assets/icon/Fill.png"/>
+        <img *ngIf="button_active == 2" class="button-1-icon" src="../assets/icon/svg/Fill.svg"/>
       </ion-item>
     </ion-item>
     <ion-item lines="none" class="margin-top-20 line-1">
@@ -54,8 +54,8 @@
     </ion-item>
     <ion-item lines="none" class="margin-top-20">
       <ion-item lines="none" class="item-common">
-        <img class="icon-home" src="../assets/icon/my-home.png"/>
-        <img class="icon-pulldown-down" src="../assets/icon/Down.png"/>
+        <img class="icon-home" src="../assets/icon/svg/my-home.svg"/>
+        <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg"/>
         <label *ngIf="form_apartment_id != ''" class="pulldown-1-placeholder">{{ 'SEVICE_05.pulldown_1_placeHolder_1' | translate }}</label>
         <div class="width-100 {{form_apartment_class}}">
           <ion-select class="pulldown-apartment-select" placeholder="{{ 'SEVICE_05.pulldown_1_placeHolder_2' | translate }}" interface="action-sheet" name="form_apartment_id" [(ngModel)]="form_apartment_id" (ionChange)="ionChangePulldown1($event)">
@@ -81,8 +81,8 @@
     </ion-item>
     <ion-item lines="none" class="margin-top-20">
       <ion-item lines="none" class="item-common">
-        <img class="icon-home" src="../assets/icon/Clock.png"/>
-        <img class="icon-pulldown-down" src="../assets/icon/Down.png"/>
+        <img class="icon-home" src="../assets/icon/svg/Clock.svg"/>
+        <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg"/>
         <label *ngIf="form_start_time != ''" class="pulldown-1-placeholder">{{ 'SEVICE_05.pulldown_2_placeHolder_1' | translate }}</label>
         <div class="width-100 {{form_start_time_class}}">
           <ion-datetime 
@@ -116,7 +116,7 @@
         <div class="modal-body">
           <ion-list lines="full" class="ion-no-margin ion-no-padding margin-top-10">
             <ion-item lines="none" class="popup-ion-item" id="area-show-image">
-              <img class="" src="../assets/icon/Outline.png"/>
+              <img class="" src="../assets/icon/svg/Outline.svg"/>
             </ion-item>
             <ion-item lines="none" class="popup-ion-item" id="area-show-image">
               <ion-label class="popup-text-1">{{ 'SEVICE_05.popup_text_1' | translate }}</ion-label>

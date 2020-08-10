@@ -8,7 +8,7 @@
     </ion-item>
     <ion-grid>
       <ion-row class="ion-align-items-center">
-        <ion-col class="item-type">
+        <ion-col class="item-type" (click)="registKeepVehicle()">
           <div>
             <ion-icon name="custom-car" class="item-icon" src="assets/icon/custom-car.svg"></ion-icon>
             <ion-label class="item-label">{{ 'REGISTRATION_TYPE.parking' | translate }}</ion-label>
@@ -22,16 +22,16 @@
         </ion-col>
       </ion-row>
       <ion-row class="ion-align-items-center">
-        <ion-col class="item-type">
+        <ion-col class="item-type" (click)="eventButton3()">
           <div>
             <ion-icon name="custom-archive" class="item-icon" src="assets/icon/custom-archive.svg"></ion-icon>
-            <ion-label class="item-label">{{ 'REGISTRATION_TYPE.parking' | translate }}</ion-label>
+            <ion-label class="item-label">{{ 'REGISTRATION_TYPE.receive' | translate }}</ion-label>
           </div>         
         </ion-col>
-        <ion-col class="item-type">
+        <ion-col class="item-type" (click)="eventButton4()">
           <div>
             <ion-icon name="custom-truck" class="item-icon" src="assets/icon/custom-truck.svg"></ion-icon>
-            <ion-label class="item-label">{{ 'REGISTRATION_TYPE.parking' | translate }}</ion-label>
+            <ion-label class="item-label">{{ 'REGISTRATION_TYPE.shipping' | translate }}</ion-label>
           </div>          
         </ion-col>
       </ion-row>
