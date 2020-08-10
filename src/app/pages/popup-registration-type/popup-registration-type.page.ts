@@ -30,4 +30,16 @@ export class PopupRegistrationTypePage implements OnInit {
     this.navCtrl.navigateForward('/registration-guest');
     this.closeModal();
   }
+  registKeepVehicle(){
+    this.navCtrl.navigateForward('/register-keep-vehicle');
+    this.closeModal();
+  }
+  eventButton3(){
+    this.navCtrl.navigateForward('/register-to-receive-goods');
+    this.closeModal();
+  }
+  eventButton4(){
+    this.navCtrl.navigateForward('/register-for-shipping');
+    this.closeModal();
+  }
 }
