@@ -15,23 +15,23 @@
           </div>          
         </ion-col>
         <ion-col class="item-type" (click)="registGuest()">
-          <div class="item-bor">
+          <div class="">
             <ion-icon name="custom-team" class="item-icon" src="assets/icon/custom-team.svg"></ion-icon>
             <ion-label class="item-label">{{ 'REGISTRATION_TYPE.guest' | translate }}</ion-label>
           </div>          
         </ion-col>
       </ion-row>
       <ion-row class="ion-align-items-center">
-        <ion-col class="item-type">
+        <ion-col class="item-type" (click)="registReceive()">
           <div>
             <ion-icon name="custom-archive" class="item-icon" src="assets/icon/custom-archive.svg"></ion-icon>
-            <ion-label class="item-label">{{ 'REGISTRATION_TYPE.parking' | translate }}</ion-label>
+            <ion-label class="item-label">{{ 'REGISTRATION_TYPE.receive' | translate }}</ion-label>
           </div>         
         </ion-col>
-        <ion-col class="item-type">
+        <ion-col class="item-type" (click)="registShipping()">
           <div>
             <ion-icon name="custom-truck" class="item-icon" src="assets/icon/custom-truck.svg"></ion-icon>
-            <ion-label class="item-label">{{ 'REGISTRATION_TYPE.parking' | translate }}</ion-label>
+            <ion-label class="item-label">{{ 'REGISTRATION_TYPE.shipping' | translate }}</ion-label>
           </div>          
         </ion-col>
       </ion-row>

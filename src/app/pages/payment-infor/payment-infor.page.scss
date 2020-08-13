@@ -264,3 +264,105 @@ ion-item.fee-item {
 .two-button {
     width: 43.73%;
 }
+
+// custom select button
+/* CONTAINERS */
+
+.container {max-width: 850px; width: 100%; margin: 0 auto;}
+.four { width: 32.26%; max-width: 32.26%;}
+.one { width: 100%; max-width: 100%;}
+.two { width: 50%; max-width: 50%;}
+
+
+/* COLUMNS */
+
+.col {
+  display: block;
+  float:left;
+  margin: 0 10px 20px 0;
+}
+
+.md .col {
+    display: block;
+    float:left;
+    margin: 0 0 20px 0;
+}
+.col:first-of-type { margin-left: 0; }
+
+/* CLEARFIX */
+
+.cf:before,
+.cf:after {
+    content: " ";
+    display: table;
+}
+
+.cf:after {
+    clear: both;
+}
+
+.cf {
+    *zoom: 1;
+}
+
+/* FORM */
+
+.plan input, .form .payment-plan input, .form .payment-type input{
+	display: none;
+}
+
+label{
+	position: relative;
+    background-color: #FBFBFB;
+	text-align: center;
+    height: 60px;
+	display: block;
+	cursor: pointer;
+    border: 1px solid #D3D6D9;
+    border-radius: 8px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+    box-sizing: border-box;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 60px;
+    color: #21313F;
+}
+label.transfer {
+    background-image: url('../../../assets/icon/custom-pay-transfer.svg');
+    background-repeat: no-repeat;
+    background-position: 5% center;
+    padding-left: 35px;
+    margin-right: 20px !important;
+}
+label.cash {
+    background-image: url('../../../assets/icon/custom-money.svg');
+    background-repeat: no-repeat;
+    background-position: 10% center;
+    padding-left: 35px;
+}
+label.online {
+    background-image: url('../../../assets/icon/custom-digital-wallet.svg');
+    background-repeat: no-repeat;
+    background-position: 35% center;
+    padding-left: 45px;
+}
+.plan input:checked + label, .form .payment-plan input:checked + label, .form .payment-type input:checked + label{
+    border: 1px solid #009AC9;
+    border-radius: 8px;
+	background-color: none;
+}
+
+.plan input:checked + label:after, form .payment-plan input:checked + label:after, .form .payment-type input:checked + label:after{
+    // content: "\2713";
+    content: url(../../../assets/icon/custom-checkmark.svg);
+    font-size: 16px;
+    color: #ffffff;
+	border-radius: 100%;
+	z-index: 999;
+	position: absolute;
+	top: -10px;
+	right: 10px;
+}

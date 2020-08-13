@@ -301,6 +301,11 @@ const routes: Routes = [
     path: 'popup-select-apartment',
     loadChildren: () => import('./pages/popup-select-apartment/popup-select-apartment.module').then( m => m.PopupSelectApartmentPageModule)
   }
+  ,
+  {
+    path: 'notification-poll',
+    loadChildren: () => import('./pages/notification-poll/notification-poll.module').then( m => m.NotificationPollPageModule)
+  }
 ];
 
 @NgModule({
