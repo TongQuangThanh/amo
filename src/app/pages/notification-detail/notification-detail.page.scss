@@ -298,7 +298,7 @@ ion-footer > ion-toolbar {
     top: 10px;
     color: #D3D6D9;
   }
-  ion-item.item-has-focus {
+  ion-item.item-has-value {
     .icon-send {
       color: #009AC9;
     }
@@ -315,8 +315,8 @@ ion-footer > ion-toolbar {
     color: #21313F;
     background: #F4F5F5;
     border-radius: 8px;   
-    padding-left: 15px;
-    padding-right: 30px;
+    padding: 0 30px 0 15px;
+    max-height: 110px;
   }
   .input-area.md {
       margin-top: 0;

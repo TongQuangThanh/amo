@@ -8,49 +8,34 @@
 </ion-header>
 <ion-content>
   <ion-card class="card-content">
-    <div lines="none" *ngIf="listImage.length > 0" class="grid">
+    <!-- <div lines="none" *ngIf="listImage.length > 0" class="grid">
       <div *ngFor="let item1 of listImage" class="griditem">
         <ion-img  name="radio-button-on" src="{{item1.url}}" id="{{item1._id}}" class=""></ion-img>
       </div>
-    </div>
+    </div> -->
+
+    <ion-grid class="image-grid">
+      <ion-row class="image-row">
+        <ion-col class="image-col" size="8">
+          <img class="image-col-1 image-col-left" src="assets/common/img_test_1.jpg" />
+        </ion-col>
+        <ion-col class="image-col" size="4">
+          <img class="image-col-2 image-col-right-top" src="assets/common/img_test_2.jpg" />
+          <div class="image-container">
+            <img class="image-col-2 image-col-right-bottom" src="assets/common/img_test_3.jpg" />
+            <ion-label class="centered">+1</ion-label>
+          </div>          
+        </ion-col>
+      </ion-row>      
+    </ion-grid>
+    
+
     <ion-card-content class="">
-      <p [innerHTML]="requestContent" #contentRequest class="text-content"
-        ng-text-truncate="longText"
-        ng-tt-chars-threshold="40"
-        ng-tt-more-label="Show"
-        ng-tt-less-label="Hide">
-      </p>
-      <ion-label>Read more</ion-label>
+      <p [innerHTML]="requestContent" #contentRequest class="text-content"></p>
+      <!-- <ion-label>Read more</ion-label> -->
     </ion-card-content>
   </ion-card>  
   <div class="devider-line"></div>
-  <!-- <ion-card button class="custom-card margin-none">
-      <ion-item lines="none" style="margin-top: 10px;">
-          <ion-card-title class="ion-text-wrap content-two-line">{{requestTitle}}</ion-card-title>
-      </ion-item>
-      <ion-item lines="none">
-        <ion-grid>
-          <ion-row class="row-height-note text-node">
-            <ion-col class="ion-float-left padding-none">
-              <ion-label>{{formatString(createdAt)}}</ion-label>
-            </ion-col>
-            <ion-col class="ion-float-left padding-none">
-                <ion-label>{{createBy}}</ion-label>
-            </ion-col>
-          </ion-row>
-          <ion-row *ngIf="listImage.length > 0">
-            <ion-item no-lines>
-              <div scrollX="true" [style.width.px]="widthListScreen">
-                <div *ngFor="let item1 of listImage" class="item-button">
-                  <ion-img  name="radio-button-on" src="{{item1.url}}" id="{{item1._id}}" class="scroll-item selectable-icon"></ion-img>
-                </div>
-              </div>
-            </ion-item>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
-  </ion-card>
-  <p [innerHTML]="requestContent" #contentRequest class="padding-left-right-card"></p> -->
   <ion-content #content class="list-chat-content" [style.height.px]="heightScreen">
     <ion-label class="chat-title">{{ 'REQUEST_DETAIL.chat_title' | translate }}</ion-label>
     <div class="message-wrap">
