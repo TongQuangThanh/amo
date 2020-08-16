@@ -25,18 +25,11 @@ export class PopupRegistrationTypePage implements OnInit {
     this.modalController.dismiss();
   }
 
-  registParking(){
-    //// this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
-    this.navCtrl.navigateForward('/register-keep-vehicle');
-    this.closeModal();
-  }
-
   registGuest(){
     //// this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
     this.navCtrl.navigateForward('/registration-guest');
     this.closeModal();
   }
-
   registReceive(){
     //// this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
     this.navCtrl.navigateForward('/register-to-receive-goods');
@@ -44,8 +37,11 @@ export class PopupRegistrationTypePage implements OnInit {
   }
 
   registShipping(){
-    //// this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
     this.navCtrl.navigateForward('/register-for-shipping');
+    this.closeModal();
+  }
+  registKeepVehicle(){
+    this.navCtrl.navigateForward('/register-keep-vehicle');
     this.closeModal();
   }
 }
