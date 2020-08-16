@@ -1,0 +1,145 @@
+.owner-info {
+    margin: 5px 17px 0 17px;
+}
+.parking-info {
+    margin: 10px 17px 0 17px;
+}
+.parking-note {
+    margin: 20px 17px 20px 17px;
+}
+.devider-line {
+    height: 6px;
+    background: #F4F5F5;
+    width: 100%;
+}
+ion-datetime.ios {
+    padding-bottom: 5px !important;
+    padding-top: 0 !important;
+}
+ion-select.ios {
+    padding-bottom: 5px !important;
+    padding-top: 0 !important;
+}
+.input-text-50 {
+    --padding-end: 0;
+    --padding-bottom: 6px;
+}
+.no-padding {
+    padding: 0;
+}
+.padding-left-10 {
+    padding-left: 10px;
+}
+.padding-right-10 {
+    padding-right: 10px;
+}
+.margin-left-0 {
+    margin-left: 0 !important;
+}
+
+.select-icon {
+    font-size: 14px;
+    color: #21313F;
+}
+
+// custom datetime picker
+.picker-wrapper.sc-ion-picker-ios .picker-toolbar{
+    --border-radius: 24px !important;
+}
+
+.quantity-buttons {
+    position: absolute;
+    right: 0;
+}
+.quantity-title {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #21313F;
+}
+.icon-button {
+    margin-left: 25px;
+    color: #FA7268;
+    background: #FBFBFB;
+    border: 1px solid #D3D6D9;
+    border-radius: 8px;
+    width: 30px;
+    
+}
+.btn-minus {
+    font-size: 7px;
+}
+.btn-plus {
+    font-size: 10px;
+}
+.quantity {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: #21313F;
+    margin-left: 25px;
+}
+.textarea-item {
+    border: 1px solid #D3D6D9;
+    border-radius: 8px;
+}
+ion-textarea {
+    --placeholder-font-size: 16px;
+    --placeholder-font-family: Nunito Sans;
+}
+.note-content {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #21313F;
+    mix-blend-mode: normal;
+}
+.note-content.md {
+    --padding-top: 0;
+}
+.button-send {
+    margin-top: 40px;
+}
+
+.image-content {
+    height: 120px;
+    background: #F4F5F5;
+    border: 1px solid #D3D6D9;
+    border-radius: 8px;
+    width: 100%;
+}
+.image-content-icon {
+    background: #F4F5F5;
+    border: 1px solid #D3D6D9;
+    border-radius: 8px;
+    width: 100%;
+    padding: 31px 0;
+}
+.image-grid {
+    padding: 0;
+    margin-bottom: 20px;
+    margin-top: 10px;
+}
+.image-row {
+    padding: 0;
+}
+.image-col {
+    text-align: center;
+    padding: 0;
+}
+.item-icon {
+    font-size: 50px;
+    opacity: 0.1;
+}
+.padding-left-10 {
+    padding-left: 10px;
+}
+.padding-right-10 {
+    padding-right: 10px;
+}

@@ -19,7 +19,7 @@
       <ion-icon class="input-icon" name="custom-calendar" src="/assets/icon/custom-calendar.svg" slot="start"></ion-icon>
       <ion-label class="input-floating-label" position="floating">{{ 'REGISTRATION_GUEST.arrival_time' | translate }}</ion-label>
       <!-- <ion-input class="input-text" type="text" name="userEmail" value=""></ion-input> -->
-      <ion-datetime class="input-text input-text-50" displayFormat="DD/MM/YYYY" value=""></ion-datetime>
+      <ion-datetime class="input-text input-text-50" displayFormat="MMM DD, YYYY HH:mm" value="" cancelText="Cancel" doneText="OK" pickerFormat="MMM DD HH:mm"></ion-datetime>
       <ion-icon class="select-icon" name="caret-down-outline" slot="end"></ion-icon>
     </ion-item>
   </div>
@@ -51,7 +51,7 @@
     <ion-item class="textarea-item" lines="none">
       <ion-textarea class="note-content" rows="4" placeholder="{{ 'REGISTRATION_GUEST.note' | translate }}"></ion-textarea>
     </ion-item>
-    <ion-button expand="block" class="button-common button-common-bottom button-next" (click)="popupRegistrationSuccessModal()">
+    <ion-button expand="block" class="button-common button-send" (click)="popupRegistrationSuccessModal()">
       <ion-label>{{ 'REGISTRATION_GUEST.btn_send' | translate }}</ion-label>
     </ion-button>
   </div>

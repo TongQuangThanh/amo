@@ -3,17 +3,11 @@
     <ion-buttons slot="start">
       <ion-back-button text="" icon="arrow-back-outline"></ion-back-button>
     </ion-buttons>
-    <!-- <ion-title>{{titlePage}}</ion-title> -->
     <ion-title>{{titlePage}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="payment-info-content">
-  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button (click)="showListComment()">
-        <ion-icon name="chatboxes"></ion-icon>
-      </ion-fab-button>
-  </ion-fab> -->
   <section class="section-content">
     <ion-item lines="none">
       <ion-badge class="badge-lightred" *ngIf="paymentStatus == 'publish'">{{ 'PAYMENT.badge_outdate' | translate }}</ion-badge>
@@ -45,25 +39,39 @@
     </ion-list>
   </section>
   
-  <section class="section-content margin-top-10">
+  <!-- <section class="section-content margin-top-10">
     <ion-item lines="none">
       <ion-label class="section-title">{{ 'PAYMENT_INFOR.payment_method' | translate }}</ion-label>
     </ion-item>
     <ion-item lines="none" class="">
-      <ion-button class="payment-method-button" expand="block" (click)="paymentOnlineModal()">
+      <ion-button class="payment-method-button" expand="block">
         <ion-icon class="payment-method-button-icon" name="custom-digital-wallet" src="assets/icon/custom-digital-wallet.svg"></ion-icon>
         <ion-label class="payment-method-button-label">{{ 'PAYMENT_INFOR.payment_online' | translate }}</ion-label>
       </ion-button>
     </ion-item>
     <ion-item lines="none" class="">
-      <ion-button class="payment-method-button payment-transfer" expand="block" (click)="paymentTransferModal()">
+      <ion-button class="payment-method-button payment-transfer" expand="block">
         <ion-icon class="payment-method-button-icon" name="custom-pay-transfer" src="assets/icon/custom-pay-transfer.svg"></ion-icon>
         <ion-label class="payment-method-button-label">{{ 'PAYMENT_INFOR.payment_transfer' | translate }}</ion-label>
       </ion-button>
-      <ion-button class="payment-method-button payment-cash" expand="block" (click)="paymentCashModal()">
+      <ion-button class="payment-method-button payment-cash" expand="block">
         <ion-icon class="payment-method-button-icon" name="custom-money" src="assets/icon/custom-money.svg"></ion-icon>
         <ion-label class="payment-method-button-label">{{ 'PAYMENT_INFOR.payment_cash' | translate }}</ion-label>
       </ion-button>
+    </ion-item>
+
+  </section> -->
+
+  <section class="section-content margin-top-10 plan cf">
+    <ion-item lines="none">
+      <ion-label class="section-title">{{ 'PAYMENT_INFOR.payment_method' | translate }}</ion-label>
+    </ion-item>
+    <ion-item lines="none" class="">
+      <input type="radio" name="radio1" id="payment_online" value="payment_online"><label class="free-label one col online" for="payment_online">{{ 'PAYMENT_INFOR.payment_online' | translate }}</label>
+    </ion-item>
+    <ion-item lines="none" class="">
+      <input type="radio" name="radio1" id="payment_transfer" value="payment_transfer"><label class="basic-label two col transfer" for="payment_transfer">{{ 'PAYMENT_INFOR.payment_transfer' | translate }}</label>
+      <input type="radio" name="radio1" id="payment_cash" value="payment_cash" checked><label class="premium-label two col cash" for="payment_cash">{{ 'PAYMENT_INFOR.payment_cash' | translate }}</label>
     </ion-item>
   </section>
   

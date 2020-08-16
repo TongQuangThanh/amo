@@ -63,7 +63,7 @@
         "pay_now": "Thanh toán",
         "create_request": "Tạo yêu cầu",
         "cleaning": "Đồ lễ",
-        "reparing": "Vệ sinh",
+        "reparing": "Sửa chữa",
         "fresh_food": "Đánh giày",
         "other": "Khác",
         "top_news": "Tin tức",
@@ -199,6 +199,12 @@
         "loadding_more": "Đang tải dữ liệu...",
         "msg_apartment_not_correct" : "Bạn không có thông tin căn hộ"
     },
+    "NOTIFICATION_POLL" : {
+        "title" : "Khảo sát cư dân về các vấn đề ...",
+        "continue" : "Tiếp tục",
+        "back" : "Quay lại", 
+        "send" : "Gửi"
+    },
     "PAYMENT_COMMENT":{
         "title": "Khiếu nại",
         "place_holder_input": "Nhập tin nhắn..."
@@ -260,7 +266,7 @@
         "management_fee": "Phí quản lý",
         "payment_method": "Phương thức thanh toán",
         "payment_online": "Online",
-        "payment_transfer": "Chuyển khoản",
+        "payment_transfer": "Ch.khoản",
         "payment_cash": "Tiền mặt",
         "btn_copy" : "Sao chép",
         "payment_cash_message" : "Quý cư dân vui lòng thanh toán phí dịch vụ tại sảnh của tòa nhà từ ngày 13/05/2020",
@@ -616,5 +622,19 @@
         "select_apartment_title" : "Chọn căn hộ",
         "send_success_message" : "Đăng ký của bạn đã được gửi đi. Vui lòng kiểm tra phản hồi ở tab Đăng ký",
         "back_registration_tab" : "Về trang đăng ký"
+    },
+    "REGISTRATION_PARKING" : {
+        "title" : "Đăng kí gửi xe",
+        "status_processed" : "Đã xử lý",
+        "status_unprocess" : "Chưa xử lý",
+        "apartment" : "Căn hộ",
+        "name" : "Tên đầy đủ",
+        "vehicle" : "Phương tiện",
+        "vehicle_type" : "Loại phương tiện",
+        "vehicle_branch" : "Hãng xe",
+        "vehicle_model" : "Model",
+        "vehicle_numberID" : "Biển kiểm soát",
+        "parking_time" : "Thời gian gửi",
+        "vehicle_register_label" : "Chụp giấy đăng kí xe (rõ ràng 2 mặt, sắc nét)"
     }
 }

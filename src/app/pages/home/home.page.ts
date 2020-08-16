@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { Platform, NavController } from '@ionic/angular';
 import { ApiService } from '../../services/api/api.service';
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
@@ -87,7 +87,7 @@ export class HomePage implements OnInit {
       console.log(error)
     });
   }
-
+  
   ionViewWillEnter(){
     this.listNews  = [];
     this.currentPage = 1;
@@ -208,19 +208,19 @@ export class HomePage implements OnInit {
     this.navCtrl.navigateForward('/add-request');
   }
 
-  changeRoomService(){
-    this.navCtrl.navigateForward('/service-detail/5dd89f2e4f49f84a7ecd1b5d');
+  changeCarBooking(){
+    this.navCtrl.navigateForward('/call-the-car');
   }
 
   changeReparing(){
-    this.navCtrl.navigateForward('/service-detail/5e100f3ad010aa572bc9497c');
+    this.navCtrl.navigateForward('/repair-service');
   }
-  changeFood(){
-    this.navCtrl.navigateForward('/service-detail/5dcbac0447a69d3e4ebae1a3');
+  changeHelper(){
+    this.navCtrl.navigateForward('/repair-service');
   }
 
   changeOther(){
-    this.navCtrl.navigateForward('/service-list-by-category/5dcbaa0647a69d3e4ebae19e');
+    this.navCtrl.navigateForward('/repair-service');
   }
   
   changePayment(){
@@ -243,20 +243,25 @@ export class HomePage implements OnInit {
       const newtop2 = 33 - event.detail.currentY/(20);
       
       if(newHeight > 9){
-        document.getElementById('contentNews').style.height = newHeight + '%';
-        document.getElementById('content-button-child').style.top = newtop + '%';
-        document.getElementById('function-content-big').style.display = "";
-        document.getElementById('function-content-big').style.top = 'calc('+newtop1+'% + 26px)';
-        document.getElementById('function-content-small').style.display = "none";
-        document.getElementById('contentNews').style.display = "";
-        document.getElementById('new-content').style.top = 'calc('+newtop2+'% + 35px)';
+        document.getElementById('main-header').style.display = "";
+        document.getElementById('sub-header').style.display = "none";
+        document.getElementById('main-header').style.transition = "height 0.5s ease-in-out";
+        // document.getElementById('contentNews').style.height = newHeight + '%';
+        // document.getElementById('content-button-child').style.top = newtop + '%';
+        // document.getElementById('function-content-big').style.display = "";
+        // document.getElementById('function-content-big').style.top = 'calc('+newtop1+'% + 26px)';
+        // document.getElementById('function-content-small').style.display = "none";
+        // document.getElementById('contentNews').style.display = "";
+        // document.getElementById('new-content').style.top = 'calc('+newtop2+'% + 35px)';
         this.heightScreen = this.platform.height() * 0.58 - 18 + event.detail.currentY/1.5;
       }else{
-        document.getElementById('function-content-big').style.display = "none";
-        document.getElementById('contentNews').style.display = "none";
-        document.getElementById('function-content-small').style.display = "";
-        document.getElementById('function-content-small').style.top = 'calc('+9+'% + 26px)';
-        document.getElementById('new-content').style.top = 'calc(18% + 35px)'
+        document.getElementById('main-header').style.display = "none";
+        document.getElementById('sub-header').style.display = "";
+        document.getElementById('sub-header').style.transition = "height 0.5s ease-in-out";
+        // document.getElementById('contentNews').style.display = "none";
+        // document.getElementById('function-content-small').style.display = "";
+        // document.getElementById('function-content-small').style.top = 'calc('+9+'% + 26px)';
+        // document.getElementById('new-content').style.top = 'calc(18% + 35px)'
         this.heightScreen = this.platform.height() * 0.72 - 18;
       }
     }
@@ -265,4 +270,5 @@ export class HomePage implements OnInit {
   formatString(stringDate: string) {
     return UtilsService.formatString(stringDate);
   }
+
 }

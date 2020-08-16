@@ -6,6 +6,15 @@
     height: 17%;
     background: #FA7268;
 }
+.header-toolbar {
+    --background: #FA7268; 
+    --min-height: 100px;
+    margin: 0;
+}
+
+.btn-account {
+    margin: 0 16px;
+}
 
 .avatar-content {
     position: absolute;
@@ -13,7 +22,17 @@
     top: 24%;
     width: 91.46%;
 }
-
+.avatar-content-title {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 28px;
+    /* identical to box height */
+    vertical-align: super;
+    color: #FFFFFF;
+    margin-left: 10px;
+}
 .total-cash {
     position: absolute;
     top: -3em;
@@ -24,17 +43,6 @@
     font-family: Nunito Sans;
     font-style: normal;
     font-weight: normal;
-}
-
-.avatar-content-title {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 22px;
-    /* identical to box height */
-    vertical-align: super;
-    color: #FFFFFF;
 }
 
 .myhome-content-title {
@@ -49,11 +57,12 @@
     margin-left: 5px;
 }
 
-.amountPay-content{
+.amountPay-content {
+    z-index: 1000;
     position: absolute;
     left: 4.27%;
     width: 91.46%;
-    top: 11%;
+    top: 80%;
     
 }
 
@@ -61,29 +70,20 @@
     position: absolute;
     left: 4.27%;
     width: 91.46%;
-    top: calc(22% + 26px);
-    height: 8.11%;
-    padding-top: 4px;
-    // background: #FFFFFF;
-    // box-shadow: 0px 0px 20px rgba(23, 21, 48, 0.102546);
-    // border-radius: 8px;
+    top: 80px;
 }
-.function-content-small{
+
+.noti-content {
     position: absolute;
-    left: 4.27%;
-    width: 91.46%;
-    top: calc(25% + 26px);
-    height: 8.11%;
-    padding-top: 4px;
-    background: #FFFFFF;
-    box-shadow: 0px 0px 20px rgba(23, 21, 48, 0.102546);
-    border-radius: 8px;
+    // left: 4.27%;
+    width: 100%;
+    top: 160px;
 }
 
 .new-content {
     position: absolute;
-    left: 4.27%;
-    width: 91.46%;
+    // left: 4.27%;
+    width: 100%;
     top: calc(32% + 35px);
 }
 
@@ -94,6 +94,7 @@
     font-size: 18px;
     line-height: 28px;
     color: #21313F;
+    margin-left: 16px;
 }
 
 .view-all-label {
@@ -104,6 +105,7 @@
     line-height: 26px;
     text-align: right;
     color: #009AC9;
+    margin-right: 16px;
 }
 
 .subContentText {
@@ -165,26 +167,50 @@
     margin-inline-start: 0px;
     -webkit-margin-end: 0px;
     margin-inline-end: 0px;
+    margin-left: 16px;
     margin-top: 0px;
-    margin-right: 20px;
+    margin-right: 4px;
+    border-radius: 8px;
+    box-shadow: 0px 10px 30px rgba(33, 49, 63, 0.1);
+}
+
+.card-content-news {
+    width: auto;
+    -webkit-margin-start: 0px;
+    margin-inline-start: 0px;
+    -webkit-margin-end: 0px;
+    margin-inline-end: 0px;
+    margin: 20px 20px;
     border-radius: 8px;
     box-shadow: 0px 10px 30px rgba(33, 49, 63, 0.1);
 }
 
 .list-home-content {
     --offset-top: -16px !important;
-    --overflow: auto;
+    // --overflow: auto;
+    height: 500px !important;
 }
 
 .list-view-custom {
     padding-top: 10px;
-
     overflow-x: scroll;
     overflow-y: hidden;
     white-space: nowrap;
 
     .card-content-custom {
         display: inline-block;
+    }
+}
+
+.list-view-news {
+    padding-top: 0;
+
+    // overflow-x: scroll;
+    // overflow-y: hidden;
+    // white-space: nowrap;
+
+    .card-content-new {
+        display: block;
     }
 }
 
@@ -206,13 +232,6 @@
 .img-avatar {
     width: 40px;
 }
-
-.img-avatar-small {
-    width: 2.0em;
-    height: 60%;
-    margin-top : 20%;
-}
-
 .img-avatar-big {
     height: 1.5em;
 }
@@ -224,7 +243,7 @@
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 40px;
     text-align: center;
     color: #21313F;
 }
@@ -331,14 +350,14 @@
     left: 10%;
 }
 
-ion-content {
-    --overflow: hidden;
-}
-
 .button-my-home {
     position: absolute;
-    right: 0px;
+    margin: 0 16px;
+    right: 0;
     --background: #E46B64;
+}
+.button-my-home img {
+    font-size: 12px;
 }
 
 .button-avatar {
@@ -433,3 +452,81 @@ ion-content {
     line-height: 25px;
     text-align: center;
 }
+.badge-corner-right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    background-color: #F2C94C;
+    border-top-left-radius: 0;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 0;
+    color: #FFFFFF;
+}
+.badge-corner-icon {
+    font-size: 12px;
+    line-height: 30px;
+    text-align: center;
+}
+.hide {
+    display: none;
+}
+
+// custom header small
+.amountPay-content-small {
+    z-index: 1000;
+    position: absolute;
+    width: 100%;
+    top: 80%;  
+}
+.header-toolbar-small {
+    --background: #ffffff; 
+    --min-height: 80px;
+    margin: 0;
+}
+.div-avatar-content-small {
+    width: 50%;
+    height: 44px;
+    background: #FFFFFF;
+    border: 1px solid #F4F5F5;
+}
+.amountPay-number-small {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 28px;
+    color: #FA7268;
+    padding-left: 16px;
+}
+.function-content-small{
+    position: absolute;
+    width: 100%;
+    top: 44px;
+}
+.btn-other {
+    background: #009AC9;
+    border-bottom-right-radius: 8px;
+    height: 40px;
+}
+.btn-book-car {
+    background: #F2C94C;
+    border-bottom-left-radius: 8px;
+    height: 40px;
+}
+.btn-helper {
+    background: #BB6BD9;
+    height: 40px;
+}
+.btn-repairing {
+    background: #51D2B5;
+    height: 40px;
+}
+.img-avatar-small {
+    width: 30px;
+    margin-top: 5px;
+}
+

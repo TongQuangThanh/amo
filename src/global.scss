@@ -70,6 +70,7 @@
 .default-button {
     // width: 43.73%;
     height: 44px;
+    --background: #D3D6D9;
     --ion-toolbar-color: #D3D6D9;
     --background-activated: #c5c7c9;
     --background-focused: #c5c7c9;
@@ -108,6 +109,7 @@
 .lightblue-button {
     // width: 43.73%;
     height: 44px;
+    --background: #D4EBF3;
     --ion-toolbar-color: #D4EBF3;
     --background-activated: #bee6f3;
     --background-focused: #bee6f3;
@@ -124,7 +126,9 @@
     text-align: center;
     text-transform: none;
 }
-
+.small-button {
+    height: 32px;
+}
 
 ion-refresher { 
     z-index: 0;
@@ -406,6 +410,7 @@ ion-label {
     border-radius: 8px;
     height: 60px;
     margin-bottom: 20px;
+    --background: transparent !important;
 }
 .input-icon {
     font-size: 20px;
@@ -427,9 +432,15 @@ ion-label {
     font-size: 16px !important;
     --color: #7A838C !important;
 }
+.input-text.ios {
+    margin-bottom: 10px;
+}
+.input-text.ios.no-floating-label {
+    margin-bottom: 0;
+}
 .label-floating.sc-ion-label-ios-h {
-    transform: translate3d(0, 14px, 0);
-    margin-top: 8px;
+    transform: translate3d(0, 10px, 0);
+    margin-top: 14px;
 }
 .item-has-value .label-floating.sc-ion-label-ios-h {
     transform: translate3d(0, 0, 0) scale(0.82);
@@ -442,6 +453,9 @@ input.native-input.sc-ion-input-ios {
     padding-top: 0 !important;
 }
 ion-item.item-has-focus {
+    border: 1px solid #009AC9;
+}
+ion-item.textarea-item.item-has-focus {
     border: 1px solid #009AC9;
 }
 
@@ -457,4 +471,20 @@ ion-item.item-has-focus {
 
 .no-padding-end {
     --inner-padding-end: 0px;
+}
+
+// custom popup background transparent
+.sc-ion-modal-md-h {
+    --background: none !important;
+    --ion-background-color: none !important;
+}
+.sc-ion-modal-ios-h {
+    --background: none !important;
+    --ion-background-color: none !important;
+}
+
+// custom datetime picker
+.picker-wrapper.sc-ion-picker-ios {
+    border-top-left-radius: 24px !important;
+    border-top-right-radius: 24px !important;
 }

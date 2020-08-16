@@ -16,9 +16,9 @@
     height: 0px;
     margin: 0;
 }
-ion-header {
-    position: fixed;
-}
+// ion-header {
+//     position: fixed;
+// }
 
 ion-toolbar {
     --background: transparent;
@@ -75,6 +75,9 @@ super-tab-button.active {
 }
 
 // custom-input
+.no-floating-label {
+    margin-bottom: 0;
+}
 .custom-input{
     display: flex;
     height: 60px;
