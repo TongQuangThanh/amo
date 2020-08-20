@@ -20,7 +20,7 @@
           </ion-col>
           <ion-col size="4">
             <div class="div-title-row-2-col-2">
-              <ion-label class="">{{data_history.money}}</ion-label>
+              <ion-label class="font-weight-bold">{{data_history.money}}</ion-label>
             </div>
           </ion-col>
         </ion-row>
@@ -69,13 +69,13 @@
   </ion-content>
   <section class="full-width function-section shadow-section">
     <div class="col-6">
-      <ion-button expand="block" class="amo-button-custom-1 padding-0">{{ 'PAY_15.text_button_1' | translate }}</ion-button>
+      <ion-button expand="block" class="amo-button-custom-1 padding-0 font-weight-bold">{{ 'PAY_15.text_button_1' | translate }}</ion-button>
     </div>
     <div class="col-6" *ngIf="data_history.status == 1 || data_history.status == 3">
-      <ion-button expand="block" class="amo-button-custom-2 padding-0" (click)="moveToChatToShopPage()">{{ 'PAY_15.text_button_2' | translate }}</ion-button>
+      <ion-button expand="block" class="amo-button-custom-2 padding-0 font-weight-bold" (click)="moveToChatToShopPage()">{{ 'PAY_15.text_button_2' | translate }}</ion-button>
     </div>
     <div class="col-6" *ngIf="data_history.status == 2">
-      <ion-button expand="block" class="amo-button-custom-3 padding-0">{{ 'PAY_15.text_button_3' | translate }}</ion-button>
+      <ion-button expand="block" class="amo-button-custom-3 padding-0 font-weight-bold">{{ 'PAY_15.text_button_3' | translate }}</ion-button>
     </div>
   </section>
   

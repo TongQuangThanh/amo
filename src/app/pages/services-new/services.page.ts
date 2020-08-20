@@ -6,6 +6,7 @@ import { UtilsService } from '../../utils/utils.service'
 import { LoadingService } from '../../services/loading/loading.service';
 import { AlertService } from '../../services/alert/alert.service'
 import { TranslateService } from '@ngx-translate/core';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-services',
@@ -20,6 +21,10 @@ export class ServicesPage implements OnInit {
   heightScreen: number;
   list_data_silde_1: any;
   list_data_silde_2: any;
+  getShopProductSubscriber: Subscription;
+  currentPageNoti: number;
+  numberRecordOnPageNoti: number;
+  range_value: any;
 
   constructor(
     private translate: TranslateService,
@@ -65,58 +70,67 @@ export class ServicesPage implements OnInit {
       {id: "3", url: "../assets/images/services/3.png", deadline: "Khuyến mại", title: "Miến trộn quán cây xoài", text_place: "B1505 - Vinhome Riverside", text_star_rate: "4.5", text_tag: "Giảm 5% toàn menu"},
       {id: "4", url: "../assets/images/services/3.png", deadline: "Khuyến mại", title: "Miến trộn quán cây xoài", text_place: "B1505 - Vinhome Riverside", text_star_rate: "4.5", text_tag: "Giảm 5% toàn menu"}
     ]
+    this.range_value = '70%';
   }
 
   ionViewWillEnter(){
     this.listServiceCategory = [];
     this.listServiceLog = [];
-    this.getRequestAll();
+    this.getServicePromotionCode();
+    this.currentPageNoti = 1;
+    this.numberRecordOnPageNoti = ConstService.NUMBER_RECORD_ON_PAGE;
+    this.getShopProducts(this.currentPageNoti, this.numberRecordOnPageNoti, '', null, true);
   }
 
-  getRequestAll() {
+  getServicePromotionCode() {
     const self = this;
+    // this.list_data_silde_1 = [];
     this.loading.present();
-    this.apiService.getListServiceGroup()
+    this.apiService.getDataServicePromotionCode()
       .subscribe(result => {
-        for(let i=0;i<result.serviceGroup.length;i+=3){
-          let arrayServiceGroupTmp = [];
-          if(i < result.serviceGroup.length){
-            arrayServiceGroupTmp.push(result.serviceGroup[i]);
-          }
-          if(i + 1 < result.serviceGroup.length){
-            arrayServiceGroupTmp.push(result.serviceGroup[i + 1]);
-          }else{
-            arrayServiceGroupTmp.push({
-              _id: "",
-              title: "",
-              thumbnail: ""
-            })
-          }
-          if(i + 2 < result.serviceGroup.length){
-            arrayServiceGroupTmp.push(result.serviceGroup[i + 2]);
-          }else{
-            arrayServiceGroupTmp.push({
-              _id: "",
-              title: "",
-              thumbnail: ""
-            })
-          }
+        let data_promotion_code = result.promotionCodes;
+        data_promotion_code.forEach(product => {
 
-          self.listServiceCategory.push(arrayServiceGroupTmp);
-        }
+          // this.list_data_silde_1.push(product);
+        });
 
-        self.getAllServiceLog();
+
+
+
+
+
+
+        
+        console.log(result);
     },
     error => {
       self.loading.dismiss();
     });
   }
 
-  getAllServiceLog(){
+  getAllServiceLog() {
     var self = this;
     this.apiService.getListServiceLogs()
       .subscribe(result => {
         self.listServiceLog = result.serviceLogs;
+        self.loading.dismiss();
+    },
+    error => {
+      self.loading.dismiss();
+    });
+  }
+  getShopProducts(page: number, limit: number, search: string, event: any, isRefresh: boolean) {
+    const self = this;
+    if (this.getShopProductSubscriber) {
+      this.getShopProductSubscriber.unsubscribe();
+    }
+    this.loading.present();
+    this.getShopProductSubscriber = this.apiService.getDataServiceShopProduct(page, limit, search)
+      .subscribe(result => {
+        console.log(result);
+        if (event) {
+          event.target.complete();
+        }
         self.loading.dismiss();
     },
     error => {
@@ -152,5 +166,9 @@ export class ServicesPage implements OnInit {
   }
   moveRepairServicePage() {
     this.navCtrl.navigateForward('/repair-service');
+  }
+  getStyleRange1() {
+    
+    return this.range_value;
   }
 }
