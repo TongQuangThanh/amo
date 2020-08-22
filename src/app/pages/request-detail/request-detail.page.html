@@ -27,13 +27,25 @@
           </div>          
         </ion-col>
       </ion-row>      
-    </ion-grid>
-    
+    </ion-grid>    
 
-    <ion-card-content class="">
+    <ion-card-content class="box">
+      <input type="checkbox" id="expanded">
       <p [innerHTML]="requestContent" #contentRequest class="text-content"></p>
-      <!-- <ion-label>Read more</ion-label> -->
+      <label *ngIf="requestContent.length > 200" for="expanded" role="button">{{ 'REQUEST_DETAIL.read_more' | translate }}</label>
     </ion-card-content>
+
+    <!-- <ion-card-content class="group-box">
+      <div>
+        <div *ngIf="!showMore">
+          {{trimString(requestContent,100)}}
+        </div>
+        <div *ngIf="showMore">
+          {{requestContent}}
+        </div>
+        <a (click)="showMore = !showMore">Show <span [innerHtml]="showMore ? 'less' : 'More'"></span></a>
+      </div>
+    </ion-card-content> -->
   </ion-card>  
   <div class="devider-line"></div>
   <ion-content #content class="list-chat-content" [style.height.px]="heightScreen">

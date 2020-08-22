@@ -25,12 +25,14 @@
     "ADD_REQUEST": {
         "title": "New request",
         "apartment" : "Apartment",
+        "name" : "Full name",
         "category" : "Category",
         "title_request": "Title",
         "message_request": "Message",
         "btn_submit": "Submit",
         "add_request_sucess" : "Add request success",
-        "add_request_fail" : "Add request fail"
+        "add_request_fail" : "Add request fail",
+        "add_image_label" : "Add image"
     },
     "BILL_PAYMENT": {
 
@@ -295,7 +297,8 @@
     "REQUEST_DETAIL":{
         "title": "Request Detail",
         "place_holder_input": "Type a message...",
-        "chat_title" : "Request processing"
+        "chat_title" : "Request processing",
+        "read_more" : "Read more"
     },
     "REQUEST":{
         "title": "Requests",
