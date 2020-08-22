@@ -1,4 +1,4 @@
-<ion-header no-border>
+<ion-header class="ion-no-border">
     <ion-toolbar>
       <ion-title>{{ 'INBOX_29.title' | translate }}</ion-title>
       <ion-buttons slot="start">
@@ -11,8 +11,8 @@
     <ion-list lines="full" class="ion-no-margin ion-no-padding margin-top-20">
       <ion-item lines="none">
         <ion-item lines="none" class="item-common">
-          <img class="icon-home" src="../assets/icon/my-home.png"/>
-          <img class="icon-pulldown-down" src="../assets/icon/Down.png"/>
+          <img class="icon-home" src="../assets/icon/svg/my-home.svg"/>
+          <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg"/>
           <label *ngIf="form_apartment_id != ''" class="pulldown-1-placeholder">{{ 'INBOX_29.pulldown_1_placeHolder_1' | translate }}</label>
           <div class="width-100 {{form_apartment_class}}">
             <ion-select class="pulldown-apartment-select" placeholder="{{ 'INBOX_29.pulldown_1_placeHolder_2' | translate }}" interface="action-sheet" name="form_apartment_id" [(ngModel)]="form_apartment_id" (ionChange)="ionChangePulldown1($event)">
@@ -45,13 +45,13 @@
             </ion-col>
             <ion-col class="ion-col-class" size="4" size-md>
               <ion-item lines="none" class="ion-item-for-image" (click)="selectImage()">
-                <img class="image-class" src="../assets/icon/add-item.png"/>
+                <img class="image-class" src="../assets/icon/svg/add-item.svg"/>
               </ion-item>
             </ion-col>
           </ion-row>
         </ion-grid>
         <ion-item lines="none" class="item-common background-fbfbfb" *ngIf="number_of_image == 0" (click)="selectImage()">
-          <img class="icon-camera" src="../assets/icon/Camera.png"/>
+          <img class="icon-camera" src="../assets/icon/svg/Camera.svg"/>
         </ion-item>
       </ion-item>
       <ion-item lines="none" class="margin-top-20 line-1">
@@ -60,8 +60,8 @@
       </ion-item>
       <ion-item lines="none" class="pointer-events-all">
         <ion-item lines="none" class="item-common">
-          <img *ngIf="check_box_1 == true" class="icon-dollar-active" src="../assets/icon/icon-dollar.png"/>
-          <img *ngIf="check_box_1 == false" class="icon-dollar" src="../assets/icon/icon-dollar.png"/>
+          <img *ngIf="check_box_1 == true" class="icon-dollar-active" src="../assets/icon/svg/icon-dollar.svg"/>
+          <img *ngIf="check_box_1 == false" class="icon-dollar" src="../assets/icon/svg/icon-dollar.svg"/>
           <label *ngIf="form_money_payment != ''" class="pulldown-1-placeholder">{{ 'INBOX_29.textbox_placeHolder_2' | translate }}</label>
           <div class="width-100 {{form_money_payment_class}}">
             <ion-input type="text" class="text-box-1" 
@@ -94,12 +94,12 @@
             <button (click)="presentModal(4)" class="button-tip" *ngIf="tip_value != 4">
               <label *ngIf="form_money_tip_value == ''">{{ 'INBOX_29.select_other' | translate }}</label>
               <label *ngIf="form_money_tip_value != ''">{{form_money_tip_value}}</label>
-              <img class="ion-edit" src="../assets/icon/Edit.png"/>
+              <img class="ion-edit" src="../assets/icon/svg/Edit.svg"/>
             </button>
             <button (click)="presentModal(4)" class="button-tip-active" *ngIf="tip_value == 4">
                 <label *ngIf="form_money_tip_value == ''">{{ 'INBOX_29.select_other' | translate }}</label>
                 <label *ngIf="form_money_tip_value != ''">{{form_money_tip_value}}</label>
-                <img class="ion-edit" src="../assets/icon/Edit.png"/>
+                <img class="ion-edit" src="../assets/icon/svg/Edit.svg"/>
             </button>
           </div>
           <div class="group-button-tip group-inactive" *ngIf="check_box_2 == false">
@@ -109,7 +109,7 @@
               <button class="button-tip" disabled>
                 <label *ngIf="form_money_tip_value == ''">{{ 'INBOX_29.select_other' | translate }}</label>
                 <label *ngIf="form_money_tip_value != ''">{{form_money_tip_value}}</label>
-                <img class="ion-edit" src="../assets/icon/Edit.png"/>
+                <img class="ion-edit" src="../assets/icon/svg/Edit.svg"/>
               </button>
           </div>
         </ion-item>
@@ -137,7 +137,7 @@
           </div>
           <div class="modal-body">
             <ion-item lines="none" class="popup-item-input">
-              <img class="icon-dollar-active" src="../assets/icon/icon-dollar.png"/>
+              <img class="icon-dollar-active" src="../assets/icon/svg/icon-dollar.svg"/>
               <label *ngIf="form_money_tip != ''" class="pulldown-1-placeholder">{{ 'INBOX_29.textbox_2_placeHolder_2' | translate }}</label>
               <div class="width-100 {{form_money_tip_class}}">
                 <ion-input type="text" class="text-box-1" 
@@ -183,7 +183,7 @@
                   </ion-col>
                   <ion-col class="ion-col-class" size="6" size-md>
                     <ion-item lines="none" class="ion-item-for-image" (click)="selectImage()">
-                      <img class="image-class icon-add-image" src="../assets/icon/add-item.png"/>
+                      <img class="image-class icon-add-image" src="../assets/icon/svg/add-item.svg"/>
                     </ion-item>
                   </ion-col>
                 </ion-row>
