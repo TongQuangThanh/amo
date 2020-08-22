@@ -16,7 +16,7 @@
         <label *ngIf="form_type != ''" class="pulldown-customize-placeholder">{{ 'INBOX_21.pulldown_1_placeHolder_2' | translate }}</label>
         <div class="width-100 {{form_type_class}}">
           <ion-select class="pulldown-customize" placeholder="{{ 'INBOX_21.pulldown_1_placeHolder_1' | translate }}" interface="action-sheet" name="form_type" [(ngModel)]="form_type" (ionChange)="ionChangePulldown1($event)">
-            <ion-select-option *ngFor="let item of listType" value="{{item.id}}">{{item.name}}</ion-select-option>
+            <ion-select-option *ngFor="let item of listType" value="{{item._id}}">{{item.description}}</ion-select-option>
           </ion-select>
         </div>
       </ion-item>

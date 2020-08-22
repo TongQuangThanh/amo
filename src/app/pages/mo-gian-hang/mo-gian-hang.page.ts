@@ -38,13 +38,25 @@ export class MoGianHangPage implements OnInit {
     this.form_name = "";
     this.form_name_class = "";
     this.form_note = "";
-    this.listType = [
-      {id: "1", name: "Thực phẩm, ăn uống"},
-      {id: "2", name: "Chăm sóc sắc đẹp"},
-      {id: "3", name: "Đồ gia dụng"},
-      {id: "3", name: "Thời trang"}
-    ];
+    this.listType = [];
     this.flag_show_hide_popup = false;
+  }
+  ionViewWillEnter(){
+    this.getDataUserShop();
+  }
+  getDataUserShop() {
+    const self = this;
+    this.listType = [];
+    
+    this.loading.present();
+    this.apiService.getDataShopProductCategory()
+      .subscribe(result => {
+        self.listType = result.shopCategories;
+        self.loading.dismiss();
+    },
+    error => {
+      self.loading.dismiss();
+    });
   }
   ionChangePulldown1(event) {
     if (this.form_type != '') {

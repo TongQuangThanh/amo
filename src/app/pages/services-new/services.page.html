@@ -1,9 +1,9 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-title>{{ 'SEVICE_NEW.title' | translate }}</ion-title>
+  <ion-toolbar class="header-toolbar">
+    <ion-title class="header-title">{{ 'SEVICE_NEW.title' | translate }}</ion-title>
     <button class="button-history" (click)="moveHistoryPage()">
       <img class="icon-home" src="../assets/icon/svg/History.svg"/>
-      <ion-label class="font-weight-600 margin-left-20">{{ 'SEVICE_NEW.label_history' | translate }}</ion-label>
+      <ion-label class="font-weight-bold margin-left-20">{{ 'SEVICE_NEW.label_history' | translate }}</ion-label>
     </button>
   </ion-toolbar>
 </ion-header>
@@ -11,15 +11,67 @@
 <ion-content>
   <ion-slides [options]="slideOpts" class="margin-top-20">
     <ion-slide *ngFor="let object of list_data_silde_1">
-      <ion-item lines="none" class="ion-no-padding" id="{{object.id}}">
-        <img class="" src="{{object.url}}"/>
+      <ion-item lines="none" class="ion-no-padding" id="{{object._id}}">
+        <ion-img src="{{object.bg_url}}" class="img-responsive" alt=""></ion-img>
+        <div class="div-promotion-code">
+          <ion-grid class="ion-grid-class">
+            <ion-row class="">
+              <ion-col class="ion-col-class" size="3">
+                <ion-img src="{{object.thumbnail}}" class="img-responsive" alt=""></ion-img>
+              </ion-col>
+              <ion-col class="ion-col-class" size="9">
+                <div class="row col-12 promotion-code-1">
+                  <div class="col-8"><ion-label>{{object.title}}</ion-label></div>
+                  <div class="col-4">{{object.money}}</div>
+                </div>
+                <div class="col-12">
+                  <ion-label class="promotion-code-2">{{object.detail}}</ion-label>
+                </div>
+              </ion-col>
+            </ion-row>
+            <ion-row class="margin-top-5">
+              <ion-col class="ion-col-class" size="12">
+                <div class="col-12 promotion-code-3">
+                  <img src="../assets/icon/svg/people.svg" class="item-1" alt=""/>
+                  <ion-label class="item-2">{{object.actual_order}}</ion-label>
+                </div>
+                <div class="col-12">
+                  <div class="range-1" [ngStyle]="{'width': getStyleRange1(object._id)}"></div>
+                  <div class="range-2"></div>
+                </div>
+                <div class="row col-12">
+                  <div class="col-4 promotion-code-4">{{object.moc_1}}</div>
+                  <div class="col-4 promotion-code-5">{{object.moc_2}}</div>
+                  <div class="col-4 promotion-code-6">{{object.moc_3}}</div>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+        <!-- <img class="" src="{{object.url}}"/> -->
         <div *ngIf="object.deadline != ''" class="group-1-slider-title">
           <ion-label>{{object.deadline}}</ion-label>
         </div>
       </ion-item>
     </ion-slide>
   </ion-slides>
-  <ion-grid class="ion-grid-class">
+  <ion-grid class="margin-top-20">
+    <ion-row *ngFor="let arrayServiceGroup of listServiceCategory">
+      <ion-col *ngFor="let item of arrayServiceGroup">
+       <!-- <ion-card *ngIf="item._id != ''" (click)="detailPage($event)" id="{{item._id}}"> -->
+        <div class="button-1" *ngIf="item._id != ''" (click)="detailPage($event)" id="{{item._id}}">
+          <img class="class-image-button" src="{{item.thumbnail}}"/>
+          <ion-row class="ion-no-padding">
+            <ion-col class="ion-text-center service-text-custom text-button" >
+              {{item.title}}
+            </ion-col>
+          </ion-row>
+        </div>
+       <!-- </ion-card> -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- <ion-grid class="ion-grid-class">
     <ion-row class="margin-top-20">
       <ion-col class="ion-col-class" size="3" (click)="moveCallTheCarPage()">
         <div class="button-1">
@@ -72,28 +124,29 @@
         </div>
       </ion-col>
     </ion-row>
-  </ion-grid>
+  </ion-grid> -->
   <ion-grid class="group-2-style">
     <ion-row class="margin-top-10">
       <ion-col class="group-2-label-1 ion-align-self-start" size="6">
         <ion-label class="font-weight-bold">{{ 'SEVICE_NEW.group_2_title_1' | translate }}</ion-label>
       </ion-col>
-      <ion-col class="group-2-label-2 ion-align-self-end" size="6" (click)="moveResidentMarketPage()">
+      <ion-col class="font-weight-bold group-2-label-2 ion-align-self-end" size="6" (click)="moveResidentMarketPage()">
         <ion-label>{{ 'SEVICE_NEW.group_2_title_2' | translate }}</ion-label>
       </ion-col>
     </ion-row>
   </ion-grid>
   <ion-slides [options]="slideOpts_1">
     <ion-slide *ngFor="let object of list_data_silde_2">
-      <ion-card class="margin-right-5 margin-top-5" (click)="moveGianHangDetailPage($event)" id="{{object.id}}">
+      <ion-card class="margin-right-5 margin-top-5" (click)="moveGianHangDetailPage($event)" id="{{object._id}}">
         <ion-item lines="none" class="ion-no-padding">
-          <img class="" src="{{object.url}}"/>
-          <div *ngIf="object.deadline != ''" class="group-1-slider-title">
+          <ion-img src="{{object.thumbnail}}" class="img-responsive" alt=""></ion-img>
+          <!-- <img class="" src="{{object.url}}"/> -->
+          <div *ngIf="object.deadline != ''" class="note-2">
             <ion-label>{{object.deadline}}</ion-label>
           </div>
         </ion-item>
         <ion-card-content class="ion-no-padding padding-bottom-15">
-          <div class="group-1-text-title">
+          <div class="font-weight-bold group-1-text-title">
             <ion-label class="">{{object.title}}</ion-label>
           </div>
           <div class="group-1-text-place">
