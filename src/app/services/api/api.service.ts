@@ -413,14 +413,14 @@ export class ApiService {
       map(results => results)
     );
   }
-  getDataShopProductCategory(): Observable<any> {
-    const params = new HttpParams().
-      set('_v', (new Date()).getTime().toString());
-    return this.http.get(EnvService.getShopProductCategory, {
-      params
-    }).pipe(
-      map(results => results)
-    );
-  }
+  // getDataShopProductCategory(): Observable<any> {
+  //   const params = new HttpParams().
+  //     set('_v', (new Date()).getTime().toString());
+  //   return this.http.get(EnvService.getShopProductCategory, {
+  //     params
+  //   }).pipe(
+  //     map(results => results)
+  //   );
+  // }
 
 }
