@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraOptions, PictureSourceType } from '@ionic-native/Camera/ngx';
 // import { File, IWriteOptions, FileEntry } from '@ionic-native/file/ngx';
-import { ActionSheetController, Platform, NavController} from '@ionic/angular';
+import { ActionSheetController, Platform, NavController, ModalController} from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ApiService } from '../../services/api/api.service';
 import { LoadingService } from '../../services/loading/loading.service';
 import { AlertService } from '../../services/alert/alert.service';
 import { TranslateService } from '@ngx-translate/core';
 // import { Diagnostic } from '@ionic-native/diagnostic/ngx';
+
+import { PopupSelectApartmentPage } from '../popup-select-apartment/popup-select-apartment.page';
 
 @Component({
   selector: 'app-add-request',
@@ -24,6 +26,10 @@ export class AddRequestPage implements OnInit {
   message: string;
   widthListScreen: number;
   listImage: any[] = [];
+  number_of_image: any;
+  list_image: any;
+  list_image_1: any;
+  flag_show_all_image: any;
 
   isErrorTopicID: boolean = false;
   isErrorTitle: boolean = false;
@@ -37,6 +43,7 @@ export class AddRequestPage implements OnInit {
 
   hasBaseDropZoneOver: boolean = false;
   constructor(
+    public modalController: ModalController,
     private translate: TranslateService,
     private camera: Camera,
     private platform: Platform,
@@ -55,6 +62,37 @@ export class AddRequestPage implements OnInit {
 
   ngOnInit() {
     this.getUserApar();
+    this.list_image = [];
+    this.flag_show_all_image = false;
+    this.breakListImage();
+  }
+  breakListImage() {
+    var self = this; 
+    var index = 0;
+    this.list_image_1 = [];
+    this.number_of_image = self.list_image.length;
+    for(var i = 0; i < self.number_of_image; i++) {
+      self.list_image[i].index = index;
+      index++;
+      if (index < 5) {
+        self.list_image_1.push(
+          self.list_image[i]
+        );
+      }
+    }
+  }
+  deleteImageToList(index) {
+    var self = this;
+    this.list_image.forEach(element => {
+      if (element.index == index) {
+        console.log(element);
+        self.list_image.splice(index, 1);
+      }
+    });
+    this.breakListImage();
+  }
+  showAllImage() {
+    this.flag_show_all_image = true;
   }
 
   getFeedbackCategory(apartmentID: string) {
@@ -337,4 +375,11 @@ export class AddRequestPage implements OnInit {
         });
   }
 
+  async selectApartmentModal() {
+    const modal = await this.modalController.create({
+      component: PopupSelectApartmentPage,
+      cssClass: 'popupSelectApartment-page-custom'
+    });
+    return await modal.present();
+  }
 }

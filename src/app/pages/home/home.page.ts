@@ -242,7 +242,7 @@ export class HomePage implements OnInit {
       const newtop1 = 25 - event.detail.currentY/(20);
       const newtop2 = 33 - event.detail.currentY/(20);
       
-      if(newHeight > 9){
+      if(newHeight > 8){
         document.getElementById('main-header').style.display = "";
         document.getElementById('sub-header').style.display = "none";
         document.getElementById('main-header').style.transition = "height 0.5s ease-in-out";

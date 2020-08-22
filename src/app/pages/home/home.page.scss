@@ -221,13 +221,6 @@
     width: 25%;
     height: 100%;
 }
-.div-avatar-content-small{
-    vertical-align: top;
-    display: inline-block;
-    text-align: center;
-    width: 16%;
-    height: 100%;
-}
 
 .img-avatar {
     width: 40px;
@@ -289,6 +282,18 @@
     line-height: 19px;
     text-align: left;
     color: #009AC9;
+}
+.image-caption-pay {
+    display: block;
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-left: 15px;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: left;
+    color: #FA7268;
 }
 
 
@@ -476,57 +481,60 @@
 }
 
 // custom header small
-.amountPay-content-small {
+.sub-header-toolbar {
+    --background: #FA7268; 
+    --min-height: 30px;
+    margin: 0;
+}
+.sub-amountPay-content {
     z-index: 1000;
     position: absolute;
     width: 100%;
-    top: 80%;  
+    top: 30px;
 }
-.header-toolbar-small {
-    --background: #ffffff; 
-    --min-height: 80px;
-    margin: 0;
-}
-.div-avatar-content-small {
-    width: 50%;
-    height: 44px;
-    background: #FFFFFF;
-    border: 1px solid #F4F5F5;
-}
-.amountPay-number-small {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 28px;
-    color: #FA7268;
-    padding-left: 16px;
-}
-.function-content-small{
+.sub-function-content-button {
     position: absolute;
-    width: 100%;
-    top: 44px;
+    width:100%;
+    --background: #ffffff;
+    // top: 44px;
+    box-shadow: 0px 10px 30px rgba(33, 49, 63, 0.1);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+.div-avatar-content-item {
+    // width: 50%;
+    width: 16.67%;
+    height: 44px;
 }
 .btn-other {
-    background: #009AC9;
+    font-size: 24px;
     border-bottom-right-radius: 8px;
-    height: 40px;
+    background: #ffffff;
+}
+.btn-pay_now {
+    font-size: 24px;
+    border-bottom-left-radius: 8px;
+    background: #ffffff;
+}
+.btn-request_icon {
+    font-size: 24px;
+    background: #ffffff;
 }
 .btn-book-car {
-    background: #F2C94C;
-    border-bottom-left-radius: 8px;
-    height: 40px;
+    font-size: 24px;
+    background: #ffffff;
 }
 .btn-helper {
-    background: #BB6BD9;
-    height: 40px;
+    font-size: 24px;
+    background: #ffffff;
 }
 .btn-repairing {
-    background: #51D2B5;
-    height: 40px;
+    font-size: 24px;
+    background: #ffffff;
 }
 .img-avatar-small {
-    width: 30px;
-    margin-top: 5px;
+    width: 24px;
+    margin-top: 8px;
 }
+
 

@@ -25,12 +25,14 @@
     "ADD_REQUEST": {
         "title": "Yêu cầu mới",
         "apartment" : "Căn hộ",
+        "name" : "Tên đầy đủ",
         "category" : "Danh mục",
         "title_request": "Tiêu đề",
         "message_request": "Nội dung",
         "btn_submit": "Gửi",
         "message_add_request_sucess" : "Gửi yêu cầu thành công",
-        "message_add_request_fail" : "Gửi yêu cầu thất bại"
+        "message_add_request_fail" : "Gửi yêu cầu thất bại",
+        "add_image_label" : "Ảnh tình trạng (nếu có)"
     },
     "BILL_PAYMENT": {
 
@@ -295,7 +297,8 @@
     "REQUEST_DETAIL":{
         "title": "Chi tiết yêu cầu",
         "place_holder_input": "Nhập tin nhắn...",
-        "chat_title" : "Xử lý yêu cầu"
+        "chat_title" : "Xử lý yêu cầu",
+        "read_more" : "Xem thêm"
     },
     "REQUEST":{
         "title": "Hộp thư",

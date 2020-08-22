@@ -46,6 +46,7 @@ ion-toolbar{
 }
 .class-image-button {
     margin: 0 auto;
+    width:50%;
 }
 .margin-top-20 {
     margin-top: 20px;
@@ -57,6 +58,8 @@ ion-toolbar{
     font-size: 13px;
     line-height: 20px;
     margin-top: 10px;
+    padding-inline-start: 0;
+    padding-inline-end: 0;
 }
 .font-weight-bold {
     font-weight: 600;
@@ -88,9 +91,33 @@ ion-toolbar{
     left: 0;
     background-color: #009AC9;
     border-radius: 8px 0px;
-    padding: 3px 10px;
+    padding: 2px 10px;
     color: #fff;
-    font-size: 12px;
+    font-size: 10px;
+    line-height: 18px;
+}
+.note-1 {
+    position: absolute;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    background-color: #009AC9;
+    border-radius: 8px 0px;
+    padding: 2px 10px;
+    color: #fff;
+    font-size: 10px;
+    line-height: 18px;
+}
+.note-2 {
+    position: absolute;
+    z-index: 99;
+    top: 0px;
+    left: 0;
+    background-color: #EB5757;
+    border-radius: 8px 0px;
+    padding: 2px 10px;
+    color: #fff;
+    font-size: 10px;
     line-height: 18px;
 }
 .ion-no-padding {
@@ -197,7 +224,7 @@ ion-toolbar{
     line-height: 20px;
     color: #FFFFFF;
     white-space: normal;
-    margin-top: 5px;
+    margin-top: 10px;
 }
 .promotion-code-3 {
     font-weight: bold;
