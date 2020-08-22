@@ -25,28 +25,22 @@ export class PopupRegistrationTypePage implements OnInit {
     this.modalController.dismiss();
   }
 
-  registParking(){
-    //// this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
-    this.navCtrl.navigateForward('/register-keep-vehicle');
-    this.closeModal();
-  }
-
   registGuest(){
     //// this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
     this.navCtrl.navigateForward('/registration-guest');
     this.closeModal();
   }
 
-  registKeepVehicle(){
-    this.navCtrl.navigateForward('/register-keep-vehicle');
-    this.closeModal();
-  }
   eventButton3(){
     this.navCtrl.navigateForward('/register-to-receive-goods');
     this.closeModal();
   }
   eventButton4(){
     this.navCtrl.navigateForward('/register-for-shipping');
+    this.closeModal();
+  }
+  registKeepVehicle(){
+    this.navCtrl.navigateForward('/register-keep-vehicle');
     this.closeModal();
   }
 }

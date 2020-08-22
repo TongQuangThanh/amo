@@ -228,7 +228,7 @@ export class HomePage implements OnInit {
   }
 
   goToNotification(){
-    this.navCtrl.navigateForward('/notification/notification.module');
+    this.navCtrl.navigateForward('/notification');
   }
 
   goToNews(){
