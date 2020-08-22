@@ -231,7 +231,7 @@ iframe {
 ion-title{
     // margin-left: 20px;
     font-size: 18px;
-    color: #21313F;;
+    color: #21313F;
 }
 
 body {
@@ -448,11 +448,11 @@ ion-label {
 .item-has-focus .label-floating.sc-ion-label-ios-h {
     transform: translate3d(0, 0, 0) scale(0.82);
 }
-input.native-input.sc-ion-input-ios {
+.input-item input.native-input.sc-ion-input-ios {
     padding-bottom: 0 !important;
     padding-top: 0 !important;
 }
-ion-item.item-has-focus {
+ion-item.input-item.item-has-focus {
     border: 1px solid #009AC9;
 }
 ion-item.textarea-item.item-has-focus {

@@ -16,7 +16,7 @@
             <div class="ion-float-left div-avatar-content-big btn-paynow" (click)="changePayment()">
                 <ion-item lines="none" class="content-item">
                     <ion-icon item-start name="pay-now" class="content-icon" src="/assets/icon/pay_now.svg"></ion-icon>
-                    <span class="image-caption-big">{{ 'HOME.pay_now' | translate }}</span>
+                    <span class="image-caption-pay">{{ 'HOME.pay_now' | translate }}</span>
                 </ion-item>
                 <ion-label class="amountPay-number">3.345.000 <span class="amountPay-unit">vnd</span></ion-label>
             </div>
@@ -31,40 +31,31 @@
     </div>
 </ion-header>
 <ion-header id="sub-header" class="ion-no-border" style="display: none;">
-    <div class="amountPay-content-small">
-        <div id="content-button-child" class="function-content-button">
-            <div class="ion-float-left div-avatar-content-small btn-paynow" (click)="changePayment()">
-                <ion-item lines="none" class="content-item">
-                    <ion-icon item-start name="pay-now" class="content-icon" src="/assets/icon/pay_now.svg"></ion-icon>
-                    <ion-label class="amountPay-number-small">3.345.000 <span class="amountPay-unit">vnd</span></ion-label>
-                </ion-item>
+    <ion-toolbar class="sub-header-toolbar"></ion-toolbar>
+    <div class="sub-amountPay-content">
+        <div id="content-button-child" class="sub-function-content-button">
+            <div class="ion-float-left div-avatar-content-item btn-pay_now ion-text-center" (click)="changePayment()">
+                <img class="img-avatar-small"  src="../../../assets/icon/pay_now.svg"/>
             </div>
-            <div class="ion-float-right div-avatar-content-small btn-new-request" (click)="createRequest()">
-                <ion-item lines="none" class="content-item">
-                    <ion-icon item-start name="request-icon" class="content-icon" src="/assets/icon/request_icon.svg"></ion-icon>
-                    <span class="image-caption-big">{{ 'HOME.create_request' | translate }}</span>
-                </ion-item>
+            <div class="ion-float-left div-avatar-content-item btn-request_icon ion-text-center" (click)="createRequest()">
+                <img class="img-avatar-small"  src="../../../assets/icon/request_icon.svg"/>
             </div>
-        </div>
-    </div>
-    <div class="function-content-small">
-        <div class="ion-float-left div-avatar-content btn-book-car" (click)="changeCarBooking()">
-            <img class="img-avatar-small"  src="../../../assets/icon/book-car.svg"/>
-        </div>
-        <!-- <div class="ion-float-left clear-avatar-rect"></div> -->
-        <div class="ion-float-left div-avatar-content btn-helper" (click)="changeHelper()">
-            <img class="img-avatar-small"  src="../../../assets/icon/helper.svg"/>
-        </div>
-        <!-- <div class="ion-float-left clear-avatar-rect"></div> -->
-        <div class="ion-float-left div-avatar-content btn-repairing" (click)="changeReparing()">
-            <img class="img-avatar-small"  src="../../../assets/icon/reparing.svg"/>
-        </div>
-        <!-- <div class="ion-float-left clear-avatar-rect"></div> -->
-        <div class="ion-float-left div-avatar-content btn-other" (click)="changeOther()">
-            <img class="img-avatar-small"  src="../../../assets/icon/others.svg"/>
+            <div class="ion-float-left div-avatar-content-item btn-book-car ion-text-center" (click)="changeCarBooking()">
+                <img class="img-avatar-small"  src="../../../assets/icon/custom-taxi.svg"/>
+            </div>
+            <div class="ion-float-left div-avatar-content-item btn-helper ion-text-center" (click)="changeHelper()">
+                <img class="img-avatar-small"  src="../../../assets/icon/custom-maid.svg"/>
+            </div>
+            <div class="ion-float-left div-avatar-content-item btn-repairing ion-text-center" (click)="changeReparing()">
+                <img class="img-avatar-small"  src="../../../assets/icon/custom-repair.svg"/>
+            </div>
+            <div class="ion-float-left div-avatar-content-item btn-other ion-text-center" (click)="changeOther()">
+                <img class="img-avatar-small"  src="../../../assets/icon/custom-more.svg"/>
+            </div>
         </div>
     </div>
 </ion-header>
+
 <ion-content [style.height.px]="heightScreen" [scrollEvents]="true" (ionScroll)="onScroll($event)">
     <div id="function-content-big" class="function-content">
         <div class="ion-float-left div-avatar-content" (click)="changeCarBooking()">

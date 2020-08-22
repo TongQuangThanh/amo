@@ -31,8 +31,10 @@ export class RequestDetailPage implements OnInit, AfterViewInit {
   heightScreen:number;
   listImage: any[] = [];
   widthListScreen:number;
+  showMore : false;
 
   constructor(
+    
     private platform: Platform,
     private loading: LoadingService,
     private apiService: ApiService,
@@ -77,6 +79,7 @@ export class RequestDetailPage implements OnInit, AfterViewInit {
         }
         self.updateSizeContent();
         self.getListMessage(self.feedbackID);
+        // console.log("content length : "+self.requestContent.length);
     },
     error => {
       self.loading.dismiss();
@@ -212,4 +215,9 @@ export class RequestDetailPage implements OnInit, AfterViewInit {
     textarea.scrollTop = textarea.scrollHeight;
   }
 
+  trimString(string, length) {
+    return string.length > length
+      ? string.substring(0, length) + "..."
+      : string;
+  }
 }

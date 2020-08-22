@@ -1,14 +1,83 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-title>{{ 'ADD_REQUEST.title' | translate }}</ion-title>
+  <ion-toolbar class="header-toolbar">
     <ion-buttons slot="start">
-      <ion-back-button text=""></ion-back-button>
+      <ion-back-button text="" icon="arrow-back-outline"></ion-back-button>
     </ion-buttons>
+    <ion-title>{{ 'ADD_REQUEST.title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <form (ngSubmit)="addRequest($event)">
+  <div class="general-info">
+    <ion-item class="input-item" lines="none" (click)="selectApartmentModal()">
+      <ion-icon class="input-icon" name="custom-apartment" src="/assets/icon/custom-apartment.svg" slot="start"></ion-icon>
+      <ion-label class="input-floating-label" position="floating">{{ 'ADD_REQUEST.apartment' | translate }}</ion-label>
+      <ion-input class="input-text" type="text" value="A1511 - Central Point Bắc Hà"></ion-input>
+      <ion-icon class="select-icon" name="caret-down-outline" slot="end"></ion-icon>
+    </ion-item>
+    <ion-item class="input-item" lines="none">
+      <ion-icon class="input-icon" name="custom-user" src="/assets/icon/custom-user.svg" slot="start"></ion-icon>
+      <ion-label class="input-floating-label" position="floating">{{ 'ADD_REQUEST.name' | translate }}</ion-label>
+      <ion-input class="input-text" type="text" value=""></ion-input>
+    </ion-item>
+    <ion-item class="input-item" lines="none">
+      <ion-icon class="input-icon" name="custom-user" src="/assets/icon/custom-file.svg" slot="start"></ion-icon>
+      <ion-label class="input-floating-label" position="floating">{{ 'ADD_REQUEST.title_request' | translate }}</ion-label>
+      <ion-input class="input-text" type="text" value=""></ion-input>
+    </ion-item>
+    <ion-item class="textarea-item" lines="none">
+      <ion-textarea class="note-content" rows="4" placeholder="{{ 'ADD_REQUEST.message_request' | translate }}"></ion-textarea>
+    </ion-item>
+    <ion-item class="guest-quantity ion-no-padding" lines="none">
+      <ion-label class="add-image-title">{{ 'ADD_REQUEST.add_image_label' | translate }}</ion-label>
+    </ion-item>
+    <ion-item lines="none" class="ion-no-padding">
+      <ion-grid *ngIf="number_of_image != 0" class="ion-grid-class">
+        <ion-row>
+          <ion-col class="ion-col-class" *ngFor="let image of list_image_1" size="4" size-md>
+            <ion-item lines="none" class="ion-item-for-image">
+              <img class="image-class" src="{{image.src}}"/>
+            </ion-item>
+            <button type="button" class="close-image-icon" (click)="deleteImageToList(image.index)">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <div *ngIf="number_of_image > 4 && image.index == 3" class="mask-multiple-image" (click)="showAllImage()">
+              <label>+{{number_of_image - 4}}</label>
+            </div>
+          </ion-col>
+          <ion-col class="ion-col-class" size="4" size-md>
+            <ion-item lines="none" class="ion-item-for-image" (click)="selectImage()">
+              <img class="image-class" src="../assets/icon/add-item.png"/>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-item lines="none" class="ion-no-padding item-common background-fbfbfb" *ngIf="number_of_image == 0" (click)="selectImage()">
+        <!-- <img class="icon-camera" src="../assets/icon/Camera.png"/> -->
+        <ion-icon name="camera" class="icon-camera"></ion-icon>
+      </ion-item>
+    </ion-item>
+
+    <!-- <ion-grid class="image-grid" lines="none">
+      <ion-row class="ion-align-items-center image-row">
+        <ion-col class="image-col padding-right-10">
+          <div class="image-content-icon">
+            <ion-icon class="item-icon" name="camera"></ion-icon>
+          </div>
+        </ion-col>
+        <ion-col class="image-col padding-left-10">
+          <div class="image-content-icon">
+            <ion-icon class="item-icon" name="camera"></ion-icon>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid> -->
+    <ion-button expand="block" class="button-common button-send margin-top-40">
+      <ion-label>{{ 'ADD_REQUEST.btn_submit' | translate }}</ion-label>
+    </ion-button>
+  </div>
+
+  <!-- <form (ngSubmit)="addRequest($event)">
     <ion-list lines="full" class="ion-no-margin ion-no-padding">
       <ion-item lines="none">
         <ion-label position="stacked" class="stack-label">{{ 'ADD_REQUEST.apartment' | translate }}<ion-text color="danger">*</ion-text></ion-label>
@@ -34,12 +103,6 @@
       <ion-item lines="none" class="file-input-container">
         <ion-grid>
           <ion-row class="height-item-button">
-            <!-- <ion-col>
-              <label class="label-upload">
-                <input type="file" ng2FileSelect [uploader]="uploader" disabled multiple />
-                Add Files
-              </label>
-            </ion-col> -->
             <ion-col>
               <label (click)="selectImage()" class="label-upload">
                 Add Image
@@ -75,5 +138,5 @@
     <div class="ion-padding">
       <ion-button expand="block" type="submit" class="amo-button-custom">{{ 'ADD_REQUEST.btn_submit' | translate }}</ion-button>
     </div>
-  </form>
+  </form> -->
 </ion-content>
