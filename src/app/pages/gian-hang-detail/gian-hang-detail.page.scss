@@ -48,7 +48,6 @@ super-tab-button {
     margin-right: 17px;
 }
 .title-1 {
-    font-weight: 500;
     font-size: 18px;
     line-height: 28px;
     margin-inline-end: 0px;
@@ -75,17 +74,32 @@ super-tab-button {
     text-align: center;
     vertical-align: middle;
     align-items: center;
-    padding-bottom: 5px;
+    margin-top: 10px;
 }
 .group-1-text-star {
-    width: 100%;
     display: inline-flex;
     font-size: 14px;
     color: #21313F;
     text-align: center;
     vertical-align: middle;
     align-items: center;
-    padding-bottom: 10px;
+    position: absolute;
+    bottom: 10px;
+    right: 18px;
+    border-radius: 100px;
+    padding: 1px 10px;
+    overflow: hidden;
+}
+.group-1-text-star img, .group-1-text-star ion-label {
+    z-index: 99;
+}
+.group-1-text-star div{
+    background: #FFFFFF;
+    opacity: 0.8;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
 }
 .group-1-icon-star {
     // margin-left: 8px;
@@ -104,7 +118,9 @@ super-tab-button {
     --inner-border-width: 0px;
 }
 .class-label-rate {
-    width: 30px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: 2px;
 }
 
 .function-section{
@@ -131,10 +147,6 @@ super-tab-button {
     color: #fff;
     font-size: 12px;
     line-height: 18px;
-}
-.div-logo {
-    margin-inline-end: 10px;
-    width: 70px;
 }
 .note-1 {
     position: absolute;
@@ -202,10 +214,13 @@ super-tab-button {
     margin-top: -1px;
 }
 .group-2-col-2 {
-    padding-left: 10px;
+    padding-left: 20px;
 }
 .group-2-col-3 ion-label{
     float: right;
+}
+.div-title-col-2 .col-4{
+    text-align: right;
 }
 .div-title-col-2 ion-label{
     font-weight: 400;
@@ -223,8 +238,9 @@ super-tab-button {
 .margin-bottom-30 {
     margin-bottom: 30px;
 }
-.margin-top-25 {
-    margin-bottom: 25px;
+.row-data-product {
+    border-bottom: 1px solid #F4F5F5;
+    padding: 20px 0px;
 }
 .col-group-2-image {
     height: 100%;
@@ -257,4 +273,34 @@ super-tab-button {
 }
 .shadow-section {
     box-shadow: 0px -20px 20px 0px rgb(37 34 77 / 10%);
+}
+.div-logo {
+    border-radius: 8px;
+    overflow: hidden;
+}
+.col-1, 
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12 {
+    padding: 0;
+}
+.row {
+    margin: 0;
+}
+.button-disable {
+    --background: #D3D6D9 !important;
+    text-transform: none;
+    --background-activated: rgba(250, 114, 104,0.5);
+    border-radius: 8px;
+    --border-radius: 8px;
+    padding: 0px 16px 0px 16px;
+    pointer-events: none;
 }

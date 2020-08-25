@@ -32,12 +32,7 @@ export class ResidentMarketPage implements OnInit {
       
   }
   ngOnInit() {
-    this.listDataMarket = [
-      {id: "", url_logo: "../assets/images/services/6.png", title: "Papai-Tiệm ăn Online 24h", text_place: "B1506 - Vinhome Riverside ", text_star_rate: "4.5", text_tag: "Giảm 5% toàn menu", text_note: "-5%", type_note: 1},
-      {id: "", url_logo: "../assets/images/services/7.png", title: "TocoToco Trần Duy Hưng", text_place: "31 Trần Duy Hưng - Cầu Giấy", text_star_rate: "4.5", text_tag: "Mua 2 tặng 1", text_note: "KM", type_note: 2},
-      {id: "", url_logo: "../assets/images/services/6.png", title: "Papai-Tiệm ăn Online 24h", text_place: "B1506 - Vinhome Riverside ", text_star_rate: "4.5", text_tag: "Giảm 5% toàn menu", text_note: "-5%", type_note: 1},
-      {id: "", url_logo: "../assets/images/services/7.png", title: "TocoToco Trần Duy Hưng", text_place: "31 Trần Duy Hưng - Cầu Giấy", text_star_rate: "4.5", text_tag: "Mua 2 tặng 1", text_note: "KM", type_note: 2}
-    ]
+    this.listDataMarket = [];
   }
   ionViewWillEnter(){
     this.currentPageNoti = 1;
@@ -53,24 +48,26 @@ export class ResidentMarketPage implements OnInit {
     this.loading.present();
     this.getShopProductSubscriber = this.apiService.getDataUserShop(page, limit, search)
       .subscribe(result => {
-        let data_shop_product = result.shopProducts;
-        // data_shop_product.forEach(product => {
-        //   let title = product.title;
-        //   let deadline = "-5%";
-        //   let text_place = "B1505 - Vinhome Riverside";
-        //   let text_star_rate = product.stars;
-        //   let text_tag = "Giảm 5% toàn menu";
-        //   let object = {
-        //     '_id' : product._id,
-        //     'thumbnail': product.thumbnail,
-        //     'title': title,
-        //     'deadline': deadline,
-        //     'text_place': text_place,
-        //     'text_star_rate': text_star_rate,
-        //     'text_tag': text_tag
-        //   }
-        //   this.listDataMarket.push(object);
-        // });
+        let data_shop_product = result.requestShopProducts;
+        data_shop_product.forEach(product => {
+          let title = product.title;
+          let text_note = "KM";
+          let text_place = product.apartment.title + ' - ' + product.apartment.campaign.title;
+          let text_star_rate = product.stars;
+          let text_tag = product.promotion ? product.promotion : "";
+          let object = {
+            '_id' : product._id,
+            'thumbnail': product.thumbnail,
+            // 'thumbnail': "../assets/images/services/trasua.jpg",
+            'title': title,
+            'text_note': text_note,
+            'type_note': text_tag == "" ? 0 : 1,
+            'text_place': text_place,
+            'text_star_rate': text_star_rate,
+            'text_tag': text_tag
+          }
+          this.listDataMarket.push(object);
+        });
 
         if (event) {
           event.target.complete();

@@ -8,31 +8,28 @@
 <ion-content fullscreen>
   <ion-list lines="full" class="ion-no-margin ion-no-padding">
     <ion-item lines="none" class="ion-no-padding">
-      <ion-img class="image-page" src="{{data_gian_hang.image}}"></ion-img>
+      <ion-img class="image-page" src="{{data_gian_hang.thumbnail}}"></ion-img>
+      <div class="group-1-text-star">
+        <div></div>
+        <img class="group-1-icon-star" src="../assets/icon/svg/icon-star.svg"/>
+        <ion-label class="class-label-rate">{{data_gian_hang.text_star_rate}}</ion-label>
+      </div>
     </ion-item>
     <ion-item lines="none" class="margin-top-20">
       <ion-item lines="none" class="item-common">
-        <ion-label class="ion-text-wrap title-1">{{data_gian_hang.text_title}}</ion-label>
-      </ion-item>
-    </ion-item>
-    <ion-item lines="none" class="margin-top-10">
-      <ion-item lines="none" class="item-common">
         <div>
+          <div>
+            <ion-label class="ion-text-wrap title-1 font-weight-bold">{{data_gian_hang.text_title}}</ion-label>
+          </div>
           <div class="group-1-text-place">
             <img class="group-1-icon-place" src="../assets/icon/svg/icon-place.svg"/>
             <ion-label>{{data_gian_hang.text_place}}</ion-label>
           </div>
-          <div class="group-1-text-star">
-            <img class="group-1-icon-star" src="../assets/icon/svg/icon-star.svg"/>
-            <ion-label class="class-label-rate">{{data_gian_hang.text_star_rate}}</ion-label>
-            <img *ngIf="data_gian_hang.text_tag != ''" class="group-1-icon-tag" src="../assets/icon/svg/icon-tag.svg"/>
-            <ion-label *ngIf="data_gian_hang.text_tag != ''">{{data_gian_hang.text_tag}}</ion-label>
-          </div>
         </div>
       </ion-item>
     </ion-item>
-    <ion-item lines="none" class="line-1">
-      <ion-slides [options]="slideOpts" class="margin-top-20">
+    <ion-item lines="none" class="line-1" *ngIf="data_gian_hang.group_1.length != 0">
+      <ion-slides [options]="slideOpts" class="margin-top-10">
         <ion-slide *ngFor="let object of data_gian_hang.group_1">
           <ion-item lines="none" class="ion-no-padding" id="{{object.id}}">
             <img class="" src="{{object.url}}"/>
@@ -44,7 +41,7 @@
       </ion-slides>
     </ion-item>
     <!-- <ion-grid class="ion-grid-class ion-no-padding">
-      <ion-row class="margin-top-25" *ngFor="let object of data_gian_hang.group_2" id="{{object.id}}">
+      <ion-row class="row-data-product" *ngFor="let object of data_gian_hang.group_2" id="{{object.id}}">
         <ion-col class="ion-col-class group-2-col-1" size="3">
           <ion-item class="col-group-2-image">
             <img src="{{object.image}}">
@@ -75,7 +72,7 @@
       </ion-row>
     </ion-grid> -->
   </ion-list>
-  <super-tabs class="line-1 class-super-tabs margin-top-20" activeTabIndex="0" [config]="{ debug: true, sideMenu: 'left', allowElementScroll: true, nativeSmoothScroll: true }">
+  <super-tabs *ngIf="data_gian_hang.group_3.length != 0" class="line-1 class-super-tabs margin-top-10" activeTabIndex="0" [config]="{ debug: true, sideMenu: 'left', allowElementScroll: true, nativeSmoothScroll: true }">
     <super-tabs-toolbar slot="top" scrollable="true" scrollable-padding="false">
       <super-tab-button *ngFor="let object of data_gian_hang.group_3">
         <ion-label>{{object.title}}</ion-label>
@@ -83,7 +80,7 @@
     </super-tabs-toolbar>
     <super-tabs-container autoScrollTop>
       <super-tab class="ion-padding hidden-overflow" *ngFor="let object of data_gian_hang.group_3">
-        <ion-grid class="ion-no-padding margin-bottom-15">
+        <!-- <ion-grid class="ion-no-padding margin-bottom-15">
           <ion-row class="">
             <ion-col class="group-2-label-1 ion-align-self-start" size="6">
               <ion-label class="group-3-sub-title">{{object.title}}</ion-label>
@@ -92,12 +89,21 @@
               <ion-label class="group-3-select-all">{{ 'SEVICE_29.group_3_label' | translate }}</ion-label>
             </ion-col>
           </ion-row>
-        </ion-grid>
+        </ion-grid> -->
 
         <ion-grid class="ion-no-padding scroll-class">
-          <ion-row class="margin-top-25" *ngFor="let data of object.data" id="{{data.id}}">
+          <ion-row class="row-data-product" *ngFor="let data of object.data" id="{{data.id}}">
             <ion-col class="ion-col-class group-2-col-1" size="3">
-              <ion-item class="col-group-2-image">
+              <div class="div-logo">
+                <ion-img src="{{data.image}}"></ion-img>
+                <div *ngIf="data.text_note != '' && data.type_note == 1" class="note-1">
+                  <ion-label>{{data.text_note}}</ion-label>
+                </div>
+                <div *ngIf="data.text_note != '' && data.type_note == 2" class="note-2">
+                  <ion-label>{{data.text_note}}</ion-label>
+                </div>
+              </div>
+              <!-- <ion-item class="col-group-2-image">
                 <img src="{{data.image}}">
                 <div *ngIf="data.text_note != '' && data.type_note == 1" class="note-1">
                   <ion-label>{{data.text_note}}</ion-label>
@@ -105,23 +111,25 @@
                 <div *ngIf="data.text_note != '' && data.type_note == 2" class="note-2">
                   <ion-label>{{data.text_note}}</ion-label>
                 </div>
-              </ion-item>
+              </ion-item> -->
             </ion-col>
-            <ion-col class="ion-col-class group-2-col-2" size="7">
-              <div class="div-title-col-2">
-                <ion-label class="">{{data.title}}</ion-label>
+            <ion-col class="item ion-col-class group-2-col-2" size="9">
+              <div class="row div-title-col-2">
+                <div class="col-8">
+                  <ion-label class="font-weight-bold">{{data.title}}</ion-label>
+                </div>
+                <div class="col-4">
+                  <ion-label class="font-weight-bold">{{data.money}}</ion-label>
+                </div>
               </div>
               <div class="div-note-col-2">
                   <ion-label>{{data.note}}</ion-label>
               </div>
               <div class="group-1-button-change-number">
                 <button class="button-3-1" (click)="downNumberProduct_1(object.id_tab, data.id)"><img class="icon-button-3" src="../assets/icon/svg/tru.svg"/></button>
-                <label class="group-1-label-1">{{data.number}}</label>
+                <label class="group-1-label-1 font-weight-bold">{{data.number}}</label>
                 <button class="button-3-2" (click)="upNumberProduct_1(object.id_tab, data.id)"><img class="icon-button-3" src="../assets/icon/svg/plus.svg"/></button>
               </div>
-            </ion-col>
-            <ion-col class="ion-col-class group-2-col-3" size="2">
-              <ion-label class="">{{data.money}}</ion-label>
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -130,5 +138,5 @@
   </super-tabs>
 </ion-content>
 <section class="full-width function-section shadow-section">
-  <ion-button expand="block" class="amo-button-custom padding-0" (click)="goToPageGioHang()">{{ 'SEVICE_29.button_send' | translate }}{{total_money}}</ion-button>
+  <ion-button expand="block" class="amo-button-custom padding-0 {{disable_button_send}}" (click)="goToPageGioHang()">{{ 'SEVICE_29.button_send' | translate }}{{total_money}}</ion-button>
 </section>

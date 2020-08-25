@@ -445,7 +445,8 @@
         "button_title_7": "Dịch vụ AMO",
         "button_title_8": "Khác",
         "group_2_title_1": "Chợ cư dân",
-        "group_2_title_2": "Xem thêm"
+        "group_2_title_2": "Xem thêm",
+        "promotion_code_detail" : "Cùng mua với bạn bè/hàng xóm để được nhận giảm giá cao nhất."
     },
     "INBOX_36": {
         "title" : "Dịch vụ xe",
@@ -477,7 +478,7 @@
     "SEVICE_29": {
         "title" : "",
         "group_3_label" : "Chọn tất cả",
-        "button_send": "Thêm vào giỏ hàng"
+        "button_send": "Tiếp tục"
     },
     "SEVICE_05": {
         "title": "Sản phẩm",
@@ -498,7 +499,7 @@
         "popup_text_1": "Đơn hàng của bạn đã được tiếp nhận\nShop sẽ sớm liên lạc lại với bạn",
         "popup_text_2": "Tiếp tục dịch vụ",
         "total_money": "Tổng tiền",
-        "button_send": "Đặt hàng"
+        "button_send": "Đặt dịch vụ"
     },
     "INBOX_35": {
         "title" : "Lịch sử",
