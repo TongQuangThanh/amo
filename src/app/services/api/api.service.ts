@@ -378,11 +378,9 @@ export class ApiService {
     );
   }
 
-  getDataServiceShopProduct(page: number, limit: number, search: string): Observable<any> {
+  getDataServiceShopProduct(search_id: string): Observable<any> {
     const params = new HttpParams().
-      set('page', page.toString()).
-      set('limit', limit.toString()).
-      set('search', search).
+      set('requestShopProduct', search_id).
       set('_v', (new Date()).getTime().toString());
     return this.http.get(EnvService.serviceShopProduct, {
       params
@@ -413,14 +411,13 @@ export class ApiService {
       map(results => results)
     );
   }
-  // getDataShopProductCategory(): Observable<any> {
-  //   const params = new HttpParams().
-  //     set('_v', (new Date()).getTime().toString());
-  //   return this.http.get(EnvService.getShopProductCategory, {
-  //     params
-  //   }).pipe(
-  //     map(results => results)
-  //   );
-  // }
+  postRequestionCreateUserShop(category:string, title:string, note:string): Observable<any> {
+    const params = {
+      category, title, note
+    }
+    return this.http.post(EnvService.getUserShop, params).pipe(
+      map(results => results)
+    );
+  }
 
 }

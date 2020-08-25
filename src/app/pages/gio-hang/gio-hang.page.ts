@@ -33,6 +33,7 @@ export class GioHangPage implements OnInit {
   form_phone_number_class:any;
   flag_show_hide_popup: any;
   total_money: any;
+  disable_button_send: any;
   
   constructor(
     public modalController: ModalController,
@@ -63,6 +64,7 @@ export class GioHangPage implements OnInit {
     this.flag_show_hide_popup = false;
     this.total_money = "";
     this.getTotalMoney();
+    this.disable_button_send = "button-disable";
 
   }
   getListProduct() {
@@ -70,12 +72,16 @@ export class GioHangPage implements OnInit {
     this.list_product = [];
     self.data_gian_hang.group_2.forEach(product => {
       if (product.number > 0) {
+        product['monet_total'] = product.number * parseInt(product.money.replace('.', "").replace('đ', ""));
+        product['monet_total'] = self.convertFormatMoney(product['monet_total']);
         self.list_product.push(product);
       }
     });
     self.data_gian_hang.group_3.forEach(object => {
       object.data.forEach(product => {
         if (product.number > 0) {
+          product['monet_total'] = product.number * parseInt(product.money.replace('.', "").replace('đ', ""));
+          product['monet_total'] = self.convertFormatMoney(product['monet_total']);
           self.list_product.push(product);
         }
       });
@@ -96,6 +102,7 @@ export class GioHangPage implements OnInit {
     } else {
       this.form_apartment_class = "";
     }
+    this.checkStatusButtonSend();
   }
   ionChangeStartTime(){
     if (this.form_start_time != '') {
@@ -103,6 +110,7 @@ export class GioHangPage implements OnInit {
     } else {
       this.form_start_time_class = "";
     }
+    this.checkStatusButtonSend();
     // var date = new Date(this.form_start_time);
     // this.form_start_time_label = this.datePipe.transform(date,"dd/MM/yyyy hh:mm");
   }
@@ -112,6 +120,7 @@ export class GioHangPage implements OnInit {
     } else {
       this.form_end_time_class = "";
     }
+    this.checkStatusButtonSend();
     // var date = new Date(this.form_end_time);
     // this.form_end_time_label = this.datePipe.transform(date,"dd/MM/yyyy hh:mm");
   }
@@ -135,6 +144,7 @@ export class GioHangPage implements OnInit {
     } else {
       this.form_phone_number_class = '';
     }
+    this.checkStatusButtonSend();
   }
   getTotalMoney(){
     var self = this;
@@ -142,18 +152,18 @@ export class GioHangPage implements OnInit {
     var total = 0;
     self.data_gian_hang.group_2.forEach(product => {
       if (product.number > 0) {
-        total = total + product.number * product.money;
+        total = total + product.number * parseInt(product.money.replace('.', "").replace('đ', ""));
       }
     });
     self.data_gian_hang.group_3.forEach(object => {
       object.data.forEach(product => {
         if (product.number > 0) {
-          total = total + product.number * product.money;
+          total = total + product.number * parseInt(product.money.replace('.', "").replace('đ', ""));
         }
       });
     });
     if (total > 0) {
-      this.total_money = "" + total.toString();
+      this.total_money = ": " + this.convertFormatMoney(total) + 'đ';
     }
   }
   eventButton1(value) {
@@ -165,5 +175,30 @@ export class GioHangPage implements OnInit {
   }
   eventButtonClosePopup() {
     this.flag_show_hide_popup = false;
+  }
+  convertFormatMoney(value) {
+    value = value.toString();
+    let convert1 = "";
+    let convert2 = "";
+    let count1 = value.length;
+    for(let i = 1; i <= count1; i++) {
+      if (i % 3 == 0 && i != count1) {
+        convert1 = convert1 + value[count1 - i] + '.';
+      } else {
+        convert1 = convert1 + value[count1 - i];
+      }
+    }
+    let count2 = convert1.length
+    for(let i = 1; i <= count2; i++) {
+      convert2 = convert2 + convert1[count2 - i];
+    }
+    return convert2;
+  }
+  checkStatusButtonSend() {
+    if (this.form_apartment_id != "" && this.form_phone_number != "" && this.form_start_time != "") {
+      this.disable_button_send = "";
+    } else {
+      this.disable_button_send = "button-disable";
+    }
   }
 }

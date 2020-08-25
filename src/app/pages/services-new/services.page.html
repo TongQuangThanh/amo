@@ -22,10 +22,10 @@
               <ion-col class="ion-col-class" size="9">
                 <div class="row col-12 promotion-code-1">
                   <div class="col-8"><ion-label>{{object.title}}</ion-label></div>
-                  <div class="col-4">{{object.money}}</div>
+                  <div class="col-4"><ion-label>{{object.money}}</ion-label></div>
                 </div>
                 <div class="col-12">
-                  <ion-label class="promotion-code-2">{{object.detail}}</ion-label>
+                  <ion-label class="promotion-code-2">{{ 'SEVICE_NEW.promotion_code_detail' | translate }}</ion-label>
                 </div>
               </ion-col>
             </ion-row>
@@ -141,8 +141,11 @@
         <ion-item lines="none" class="ion-no-padding">
           <ion-img src="{{object.thumbnail}}" class="img-responsive" alt=""></ion-img>
           <!-- <img class="" src="{{object.url}}"/> -->
-          <div *ngIf="object.deadline != ''" class="note-2">
-            <ion-label>{{object.deadline}}</ion-label>
+          <div *ngIf="object.text_note != '' && object.type_note == 1" class="note-1">
+            <ion-label>{{object.text_note}}</ion-label>
+          </div>
+          <div *ngIf="object.text_note != '' && object.type_note == 2" class="note-2">
+            <ion-label>{{object.text_note}}</ion-label>
           </div>
         </ion-item>
         <ion-card-content class="ion-no-padding padding-bottom-15">
@@ -154,10 +157,14 @@
             <ion-label>{{object.text_place}}</ion-label>
           </div>
           <div class="group-1-text-star">
-            <img class="group-1-icon-star" src="../assets/icon/svg/icon-star.svg"/>
-            <ion-label>{{object.text_star_rate}}</ion-label>
-            <img class="group-1-icon-tag" src="../assets/icon/svg/icon-tag.svg"/>
-            <ion-label>{{object.text_tag}}</ion-label>
+            <div class="group-1-text-star-1">
+              <img class="group-1-icon-star" src="../assets/icon/svg/icon-star.svg"/>
+              <ion-label class="class-label-rate">{{object.text_star_rate}}</ion-label>
+            </div>
+            <div class="group-1-text-star-2" *ngIf="object.text_tag != ''">
+              <img class="group-1-icon-tag" src="../assets/icon/svg/icon-tag.svg"/>
+              <ion-label>{{object.text_tag}}</ion-label>
+            </div>
           </div>
         </ion-card-content>
       </ion-card>

@@ -18,7 +18,7 @@
         </ion-col>
         <ion-col class="ion-col-class group-2-col-2" size="8">
           <div class="div-title-col-2">
-            <ion-label class="">{{object.title}}</ion-label>
+            <ion-label class="font-weight-bold">{{object.title}}</ion-label>
           </div>
           <div class="div-note-col-2">
             <ion-label>{{ 'SEVICE_05.label_edit' | translate }}</ion-label>
@@ -28,7 +28,7 @@
           </div>
         </ion-col>
         <ion-col class="ion-col-class group-2-col-3" size="2">
-          <ion-label class="">{{object.money*object.number}}</ion-label>
+          <ion-label class="font-weight-bold">{{object.monet_total}}</ion-label>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -131,9 +131,5 @@
   </div>
 </ion-content>
 <section class="full-width function-section shadow-section">
-  <ion-item lines="none">
-    <ion-label class="text-total-left">{{ 'SEVICE_05.total_money' | translate }}</ion-label>
-    <ion-label class="text-total-right">{{total_money}}</ion-label>
-  </ion-item>
-  <ion-button (click)="eventButtonSend()" expand="block" class="amo-button-custom">{{ 'SEVICE_05.button_send' | translate }}</ion-button>
+  <ion-button (click)="eventButtonSend()" expand="block" class="amo-button-custom {{disable_button_send}}">{{ 'SEVICE_05.button_send' | translate }}{{total_money}}</ion-button>
 </section>

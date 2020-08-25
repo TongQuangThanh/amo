@@ -38,12 +38,17 @@
     </ion-item>
     <ion-item lines="none" class="margin-top-20">
       <ion-item lines="none" class="item-common">
-        <ion-textarea class="text-area-1" rows="4" cols="20" placeholder="{{ 'INBOX_21.textarea_placeHolder_1' | translate }}"></ion-textarea>
+        <ion-textarea 
+          class="text-area-1" 
+          rows="4" cols="20" 
+          placeholder="{{ 'INBOX_21.textarea_placeHolder_1' | translate }}"
+          [(ngModel)]="form_note"
+          ></ion-textarea>
       </ion-item>
     </ion-item>
   </ion-list>
   <section class="full-width function-section">
-    <ion-button (click)="eventButtonSend()" expand="block" class="amo-button-custom padding-0">{{ 'INBOX_21.button_send' | translate }}</ion-button>
+    <ion-button (click)="eventButtonSend()" expand="block" class="amo-button-custom padding-0 {{disable_button_send}}">{{ 'INBOX_21.button_send' | translate }}</ion-button>
   </section>
   <div *ngIf="flag_show_hide_popup == true" class="modal-backdrop fade show"></div>
   <div *ngIf="flag_show_hide_popup == true" class="modal" tabindex="-1" role="dialog">
