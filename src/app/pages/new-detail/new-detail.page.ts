@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api/api.service';
-import { NavController, NavParams } from '@ionic/angular';
+import { NavController, NavParams, Platform } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { LoadingService } from '../../services/loading/loading.service';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -24,8 +24,10 @@ export class NewDetailPage implements OnInit {
   buttonTitle :string;
   serviceID :string;
   isDisplayButton :boolean;
+  heightScreen: number;
 
   constructor(
+    private platform: Platform,
     private sanitizer: DomSanitizer,
     private loading: LoadingService,
     private apiService: ApiService,
@@ -101,4 +103,22 @@ export class NewDetailPage implements OnInit {
     this.navCtrl.navigateForward('/order-service/' + this.serviceID);
   }
 
+  onScroll(event) {
+    if(event.detail.currentY >= 0 && event.detail.currentY % 3 ==0){
+      const newHeight = 14 - event.detail.currentY/(20*2);      
+      if(newHeight > 8){
+        document.getElementById('header-toolbar').style.background = "rgba(255, 255, 255, 0)";
+        document.getElementById('header-toolbar').style.boxShadow = "none";
+        //document.getElementById('header-toolbar').style.transition = "all 0.3s linear 0.3s";  
+        document.getElementById('header-toolbar').style.transition = "background 0.6s ease-in";
+        this.heightScreen = this.platform.height() * 0.58 - 18 + event.detail.currentY/1.5;
+      }else{
+        document.getElementById('header-toolbar').style.background = "rgba(255, 255, 255, 1)";
+        document.getElementById('header-toolbar').style.boxShadow = "0px 0px 20px rgba(0, 0, 0, 0.1)";
+        //document.getElementById('header-toolbar').style.transition = "all 0.3s linear 0.3s";    
+        document.getElementById('header-toolbar').style.transition = "background 0.6s ease-out";        
+        this.heightScreen = this.platform.height() * 0.72 - 18;
+      }
+    }
+  }
 }
