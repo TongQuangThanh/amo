@@ -10,6 +10,9 @@ ion-item {
 ion-header {
     position: fixed;
 }
+#sub-header {
+ background-color: #ffffff;
+}
 .ion-color-primary {
     --ion-color-base: #ffffff !important;
     --ion-color-base-rgb: var(--ion-color-primary-rgb, 56, 128, 255) !important;
@@ -173,9 +176,7 @@ super-tab-button {
     line-height: 18px;
 }
 .ion-grid-class {
-    margin-top: 20px;
-    margin-left: 17px;
-    margin-right: 17px;
+    padding: 10px 5px;
 }
 .group-1-button-change-number {
     position: relative;
@@ -183,6 +184,9 @@ super-tab-button {
     height: 32px;
     text-align: center;
 
+}
+.text-white {
+    color: #FFFFFF;
 }
 .group-1-label-1 {
     line-height: 32px;
@@ -303,4 +307,107 @@ super-tab-button {
     --border-radius: 8px;
     padding: 0px 16px 0px 16px;
     pointer-events: none;
+}
+
+
+// promotion code
+.range-1 {
+    position: absolute;
+    background: #FFFFFF;
+    border-radius: 16px;
+    width: 50%;
+    height: 4px;
+}
+.range-2 {
+    background: #FFFFFF;
+    opacity: 0.3;
+    border-radius: 16px;
+    width: 100%;
+    height: 4px;
+}
+.div-promotion-code {
+    background: #97171B;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 10px 30px rgba(33, 49, 63, 0.1);
+    border-radius: 10px;
+}
+.promotion-code-1 .object_title {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+.object_money{
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 32px;
+    text-align: right;
+    color: #F4F5F5;
+}
+.promotion-code-2 {
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    white-space: normal;
+    margin-top: 10px;
+}
+.promotion-code-3 {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: right;
+    color: #FFFFFF;
+    display: block;
+}
+.promotion-code-4 {
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    margin-top: 5px;
+}
+.promotion-code-5 {
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 5px;
+}
+.promotion-code-6 {
+    font-size: 14px;
+    line-height: 20px;
+    text-align: right;
+    color: #FFFFFF;
+    margin-top: 5px;
+}
+.col-1, 
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12 {
+    padding: 0;
+}
+.row {
+    margin: 0;
+}
+.margin-top-5 {
+    margin-top: 5px;
+}
+.div-promotion-code ion-col {
+    padding-bottom: 0;
+    padding-top: 0;
+}
+.promotion-code-3 .item-1{
+    vertical-align: initial;
+}
+.promotion-code-3 .item-2{
+    float: right;
+    margin-left: 5px;
 }

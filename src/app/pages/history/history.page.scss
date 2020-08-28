@@ -100,27 +100,15 @@ ion-item{
 .group-2-col-2 .div-text {
     padding-left: 10px;
 }
-.group-2-col-2 .div-text .div-col-1{
+.div-col-1, .div-col-2{
     font-size: 14px;
-    line-height: 20px;
+    line-height: 24px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     height: 50%;
 }
-.group-2-col-2 .div-text .div-col-2{
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-size: 14px;
-    line-height: 20px;
-    color: #7A838C;
-    height: 50%;
-}
-.group-2-col-2 .div-text .div-col-2 ion-label{
-    position: absolute;
-    bottom: -4px;
-}
+
 .group-2-col-3 .div-col-1{
     font-size: 14px;
     line-height: 20px;
@@ -161,4 +149,22 @@ ion-item{
 .col-12
 {
     padding: 0;
+}
+
+.avatar-class {
+    height: 20px;
+    width: 20px;
+    margin-inline-end: 10px;
+}
+.label-name {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 15px;
+    color: #21313F;
+}
+.no-border {
+    --border-width: 0;
+}
+.div-button-chat {
+    float: right;
 }

@@ -66,5 +66,7 @@ export const EnvService = {
   postRequestShopProduct: environment.base + '/request-shop-product',
   getOrderHistory: environment.base + '/order-history',
   getOrderHistoryById: environment.base + '/order-history/id',
+  getServiceLog: environment.base + '/service-log',
+  getServiceLogById: environment.base + '/service-log/id',
 };
 

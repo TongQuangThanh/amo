@@ -419,5 +419,24 @@ export class ApiService {
       map(results => results)
     );
   }
+  postRequestionOrderProduct(orderInfor:any, paymentMode:any,customerInfor:any): Observable<any> {
+    const params = {
+      orderInfor,
+      paymentMode,
+      customerInfor
+    }
+    return this.http.post(EnvService.getOrderHistory, params).pipe(
+      map(results => results)
+    );
+  }
+  getListOrderHistorys(): Observable<any> {
+    const params = new HttpParams().
+      set('_v', (new Date()).getTime().toString());
+    return this.http.get(EnvService.getOrderHistory, {
+      params
+    }).pipe(
+      map(results => results)
+    );
+  }
 
 }
