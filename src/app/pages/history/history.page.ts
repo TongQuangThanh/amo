@@ -32,7 +32,7 @@ export class HistoryPage implements OnInit {
             id: "1",
             status: "1",
             text_rate: "4.5",
-            title: "Điện tử, điện lạnh - Sửa chữa bảo dưỡng điều hòa",
+            title: "Miến trộn quán Cây Xoài - Đống Đa, Hà Nội",
             money: "75.000 đ",
             avatar: "../assets/images/services/6.png",
             name: "Nguyễn Doãn Vũ",
@@ -64,23 +64,62 @@ export class HistoryPage implements OnInit {
             code_orders: "68686",
             date_time: "21/07/2020 - 02:14",
           },
+          {
+            id: "3",
+            status: "3",
+            text_rate: "4.5",
+            title: "Điện tử, điện lạnh - Sửa chữa bảo dưỡng điều hòa",
+            money: "75.000 đ",
+            avatar: "../assets/images/services/6.png",
+            name: "Nguyễn Doãn Vũ",
+            role: "CEO",
+            code_orders: "68686",
+            date_time: "21/07/2020 - 02:14",
+          },
+          {
+            id: "3",
+            status: "3",
+            text_rate: "4.5",
+            title: "Điện tử, điện lạnh - Sửa chữa bảo dưỡng điều hòa",
+            money: "75.000 đ",
+            avatar: "../assets/images/services/6.png",
+            name: "Nguyễn Doãn Vũ",
+            role: "CEO",
+            code_orders: "68686",
+            date_time: "21/07/2020 - 02:14",
+          },
         ]
       }
     ]
+    this.getAllOrderHistory();
+    // this.getAllServiceLog();
   }
-  getListApartment(){
-    // var self = this;
-    // this.loading.present();
-    // this.apiService.getListUserApartment()
-    //   .subscribe(result => {
-    //     console.log(result.userApartments);
-    //     self.listDepartment = result.userApartments;
-    //     self.loading.dismiss()
-    // },
-    // error => {
-    //   self.loading.dismiss();
-    // });
+  getAllOrderHistory() {
+    var self = this;
+    this.apiService.getListOrderHistorys()
+      .subscribe(result => {
+        // self.data_history = result.ordersHistory;
+        self.loading.dismiss();
+    },
+    error => {
+      self.loading.dismiss();
+    });
   }
+
+
+  getAllServiceLog() {
+    var self = this;
+    this.apiService.getListServiceLogs()
+      .subscribe(result => {
+        self.data_history = result.serviceLogs;
+        self.loading.dismiss();
+    },
+    error => {
+      self.loading.dismiss();
+    });
+  }
+
+
   gotoHistoryDetail() {
     this.navCtrl.navigateForward('/history-detail');
   }
