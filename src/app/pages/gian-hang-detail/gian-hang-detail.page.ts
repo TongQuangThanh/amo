@@ -20,6 +20,7 @@ export class GianHangDetailPage implements OnInit {
   list_data_range: any;
   heightScreen: number;
   showHeader:number;
+  flag_show_hide_popup: any;
 
   constructor(
     private translate: TranslateService,
@@ -48,6 +49,7 @@ export class GianHangDetailPage implements OnInit {
     this.total_money = "";
     this.disable_button_send = "button-disable";
     this.showHeader = 1;
+    this.flag_show_hide_popup = false;
   }
   ionViewWillEnter(){
     
@@ -58,11 +60,7 @@ export class GianHangDetailPage implements OnInit {
     this.data_gian_hang = {};
     this.data_gian_hang['group_1'] = [];
     this.data_gian_hang['group_2'] = [];
-    this.data_gian_hang['group_3'] = [{
-      id_tab: "1",
-      title: "Mặt hàng",
-      data: []
-    }];
+    this.data_gian_hang['group_3'] = [];
     this.loading.present();
     this.apiService.getDataServiceShopProduct(_id)
       .subscribe(result => {
@@ -72,14 +70,29 @@ export class GianHangDetailPage implements OnInit {
             self.data_gian_hang['text_title'] = product.requestShopProduct.title;
             self.data_gian_hang['text_place'] = product.requestShopProduct.apartment.title + ' - ' + product.requestShopProduct.apartment.campaign.title;
             self.data_gian_hang['text_star_rate'] = product.requestShopProduct.stars;
-            self.data_gian_hang['thumbnail'] = product.thumbnail;
+            let thumbnail = product.requestShopProduct.thumbnail;
+            if (product.requestShopProduct.attachments && product.requestShopProduct.attachments.length > 0) {
+              thumbnail = product.requestShopProduct.attachments[0].url;
+            }
+            self.data_gian_hang['thumbnail'] = thumbnail;
+            self.data_gian_hang['logo'] = product.requestShopProduct.thumbnail;
+            let time_open = "Luôn mở cửa";
+            if (product.requestShopProduct.timeOpen) {
+              time_open = product.requestShopProduct.timeOpen;
+            }
+            self.data_gian_hang['time_open'] = time_open;
             if (product.promotionCodes && product.promotionCodes.length > 0) {
-              // let today = new Date();
-              // let endAt = new Date(product.endAt);
-              // var ageDate = Math.abs(endAt.getTime() - today.getTime());
-              // let deadline = Math.ceil(ageDate / (1000 * 3600 * 24));
-              // deadline = deadline ? deadline : 0;
-              // let deadline_convert = deadline == 0 ? "Khuyến mại" : "Còn " + deadline + "   ngày";
+              let promotionCodes = product.promotionCodes[0];
+              let deadline_convert = '';
+              if (promotionCodes.endAt) {
+                let today = new Date();
+                let endAt = new Date(promotionCodes.endAt);
+                var ageDate = Math.abs(endAt.getTime() - today.getTime());
+                let deadline = Math.ceil(ageDate / (1000 * 3600 * 24));
+                deadline = deadline ? deadline : 0;
+                deadline_convert = deadline == 0 ? "Khuyến mại" : "Còn " + deadline + "   ngày";
+              }
+              
               let title = product.title;
               let money = product.price;
               if (product.discountProducts && product.discountProducts.length > 0) {
@@ -90,7 +103,7 @@ export class GianHangDetailPage implements OnInit {
                   money = product.discountProducts[0].discountValue;
                 }
               }
-              let promotionCodes = product.promotionCodes[0];
+              
               let slider_value = (promotionCodes.numberOrder * 100) / promotionCodes.promotion2;
               let discount = 0;
               if (promotionCodes.numberOrder >= promotionCodes.promotion1 && promotionCodes.numberOrder < promotionCodes.promotion2) {
@@ -109,7 +122,7 @@ export class GianHangDetailPage implements OnInit {
                 'id' : product._id,
                 'thumbnail': product.thumbnail,
                 'bg_url': "../assets/images/services/1.png",
-                'deadline' : '',
+                'deadline' : deadline_convert,
                 'title' : title,
                 'money' : self.convertFormatMoney(money),
                 'detail' : detail,
@@ -123,6 +136,16 @@ export class GianHangDetailPage implements OnInit {
               self.list_data_range[product._id] = slider_value + '%';
               self.data_gian_hang.group_1.push(object);
             } else {
+              let index = self.getIndexCategoryInList(product.category._id);
+              if (index < 0) {
+                self.data_gian_hang['group_3'].push({
+                  id_tab: product.category._id,
+                  title: product.category.title,
+                  data: []
+                });
+                index = self.data_gian_hang['group_3'].length - 1;
+              }
+              
               let title = product.title;
               let money = product.price;
               if (product.discountProducts && product.discountProducts.length > 0) {
@@ -141,8 +164,7 @@ export class GianHangDetailPage implements OnInit {
                 note: product.excerpt, 
                 number: 0
               }
-              self.data_gian_hang.group_3[0].data.push(object);
-              
+              self.data_gian_hang.group_3[index].data.push(object);
             }
           }
         });
@@ -218,13 +240,13 @@ export class GianHangDetailPage implements OnInit {
     var total = 0;
     self.data_gian_hang.group_1.forEach(product => {
       if (product.number > 0) {
-        total = total + product.number * parseInt(product.money.replace('.', "").replace('đ', ""));
+        total = total + product.number * parseInt(product.money.replace(/\./g, "").replace(/đ/g, ""));
       }
     });
     self.data_gian_hang.group_3.forEach(object => {
       object.data.forEach(product => {
         if (product.number > 0) {
-          total = total + product.number * parseInt(product.money.replace('.', "").replace('đ', ""));
+          total = total + product.number * parseInt(product.money.replace(/\./g, "").replace(/đ/g, ""));
         }
       });
     });
@@ -276,5 +298,23 @@ export class GianHangDetailPage implements OnInit {
     } else {
       return 'none';
     }
+  }
+  getIndexCategoryInList(id_tab) {
+    var self = this;
+    let index = -1;
+    let index_value = -1;
+    self.data_gian_hang.group_3.forEach(object => {
+      index++;
+      if (object.id_tab == id_tab) {
+        index_value = index;
+      }
+    });
+    return index_value;
+  }
+  eventButtonClosePopup() {
+    this.flag_show_hide_popup = false;
+  }
+  eventButtonShowPopup() {
+    this.flag_show_hide_popup = true;
   }
 }
