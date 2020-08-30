@@ -85,7 +85,7 @@ export class GioHangPage implements OnInit {
     this.orderInfor = [];
     self.data_gian_hang.group_1.forEach(product => {
       if (product.number > 0) {
-        let money = parseInt(product.money.replace('.', "").replace('đ', ""));
+        let money = parseInt(product.money.replace(/\./g, "").replace(/đ/g, ""));
         product['money_total'] = product.number * money;
         product['money_total'] = self.convertFormatMoney(product['money_total']);
         self.list_product.push(product);
@@ -100,7 +100,7 @@ export class GioHangPage implements OnInit {
     self.data_gian_hang.group_3.forEach(object => {
       object.data.forEach(product => {
         if (product.number > 0) {
-          let money = parseInt(product.money.replace('.', "").replace('đ', ""));
+          let money = parseInt(product.money.replace(/\./g, "").replace(/đ/g, ""));
           product['money_total'] = product.number * money;
           product['money_total'] = self.convertFormatMoney(product['money_total']);
           self.list_product.push(product);
@@ -178,13 +178,13 @@ export class GioHangPage implements OnInit {
     var total = 0;
     self.data_gian_hang.group_1.forEach(product => {
       if (product.number > 0) {
-        total = total + product.number * parseInt(product.money.replace('.', "").replace('đ', ""));
+        total = total + product.number * parseInt(product.money.replace(/\./g, "").replace(/đ/g, ""));
       }
     });
     self.data_gian_hang.group_3.forEach(object => {
       object.data.forEach(product => {
         if (product.number > 0) {
-          total = total + product.number * parseInt(product.money.replace('.', "").replace('đ', ""));
+          total = total + product.number * parseInt(product.money.replace(/\./g, "").replace(/đ/g, ""));
         }
       });
     });

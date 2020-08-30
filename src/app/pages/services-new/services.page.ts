@@ -206,9 +206,13 @@ export class ServicesPage implements OnInit {
           let text_place = product.apartment.title + ' - ' + product.apartment.campaign.title;
           let text_star_rate = product.stars;
           let text_tag = product.promotion ? product.promotion : "";
+          let thumbnail = product.thumbnail;
+          if (product.attachments && product.attachments.length > 0) {
+            thumbnail = product.attachments[0].url;
+          }
           let object = {
             '_id' : product._id,
-            'thumbnail': product.thumbnail,
+            'thumbnail': thumbnail,
             'title': title,
             'text_note': text_note,
             'type_note': text_tag == "" ? 0 : 1,

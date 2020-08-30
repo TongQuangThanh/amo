@@ -16,20 +16,20 @@
         <div class="div-promotion-code">
           <ion-grid class="ion-grid-class">
             <ion-row class="">
-              <ion-col class="ion-col-class" size="3">
+              <ion-col class="ion-col-class padding-right-5" size="3">
                 <ion-img src="{{object.thumbnail}}" class="img-responsive" alt=""></ion-img>
               </ion-col>
-              <ion-col class="ion-col-class" size="9">
+              <ion-col class="ion-col-class padding-top-10 padding-left-20 padding-right-10" size="9">
                 <div class="row col-12 promotion-code-1">
                   <div class="col-8"><ion-label>{{object.title}}</ion-label></div>
-                  <div class="col-4"><ion-label>{{object.money}}</ion-label></div>
+                  <div class="col-4"><ion-label>{{object.money}}đ</ion-label></div>
                 </div>
                 <div class="col-12">
                   <ion-label class="promotion-code-2">{{ 'SEVICE_NEW.promotion_code_detail' | translate }}</ion-label>
                 </div>
               </ion-col>
             </ion-row>
-            <ion-row class="margin-top-10">
+            <ion-row class="padding-bottom-10 padding-top-10 padding-left-10 padding-right-10">
               <ion-col class="ion-col-class" size="12">
                 <div class="col-12 promotion-code-3">
                   <img src="../assets/icon/svg/people.svg" class="item-1" alt=""/>
@@ -139,8 +139,7 @@
     <ion-slide *ngFor="let object of list_data_silde_2">
       <ion-card class="margin-right-5 margin-top-5" (click)="moveGianHangDetailPage($event)" id="{{object._id}}">
         <ion-item lines="none" class="ion-no-padding">
-          <ion-img src="{{object.thumbnail}}" class="img-responsive" alt=""></ion-img>
-          <!-- <img class="" src="{{object.url}}"/> -->
+          <ion-img src="{{object.thumbnail}}" class="img-responsive width-100" alt=""></ion-img>
           <div *ngIf="object.text_note != '' && object.type_note == 1" class="note-1">
             <ion-label>{{object.text_note}}</ion-label>
           </div>
