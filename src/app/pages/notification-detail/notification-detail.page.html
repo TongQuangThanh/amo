@@ -1,11 +1,11 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar class="header-toolbar">
-    <ion-buttons slot="start">
+  <ion-toolbar id="header-toolbar" class="header-toolbar-post">
+    <ion-buttons slot="start" class="btn-header-back">
       <ion-back-button text="" icon="arrow-back-outline"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-content fullscreen>
+<ion-content fullscreen [style.height.px]="heightScreen" [scrollEvents]="true" (ionScroll)="onScroll($event)">
   <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
       <ion-fab-button (click)="showListComment()">
         <ion-icon name="chatboxes"></ion-icon>

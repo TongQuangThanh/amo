@@ -45,10 +45,12 @@ ion-header {
 }
 
 ion-toolbar {
-    --background: transparent;
+    --background: rgba(255, 255, 255, 0);
     --ion-color-base: transparent !important;
 }
-
+.btn-header-back.ios {
+    margin: 0 16px;
+}
 .comment-button{
     --background: transparent;
     text-transform: none;

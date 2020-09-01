@@ -7,6 +7,7 @@ import { UtilsService } from '../../utils/utils.service';
 import { LoadingService } from '../../services/loading/loading.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Subscription } from 'rxjs';
+import { RouterModule, Routes } from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -33,8 +34,12 @@ export class HomePage implements OnInit {
   // popupButtonColor: string;
   // popupLink: string;
   // isShowPopup: boolean;
+  screenID:string;
+  tabIconEnable: boolean= false;
+  iconSelected = "";
 
   constructor(
+    private route: NavController,
     private loading: LoadingService,
     private platform: Platform,
     private apiService: ApiService,
@@ -94,7 +99,7 @@ export class HomePage implements OnInit {
     this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
     this.listArticles  = [];
     this.currentPageNoti = 1;
-    this.numberRecordOnPageNoti = ConstService.NUMBER_RECORD_ON_PAGE;
+    this.numberRecordOnPageNoti = ConstService.NUMBER_RECORD_NOTI_ON_PAGE;
     this.getNews(this.currentPage, this.numberRecordOnPage, '', '', null, true);
     this.getArticles(this.currentPageNoti, this.numberRecordOnPageNoti, '', '', null, true);
   }
@@ -228,7 +233,8 @@ export class HomePage implements OnInit {
   }
 
   goToNotification(){
-    this.navCtrl.navigateForward('/notification');
+    this.navCtrl.navigateForward('dashboard/notification');
+    this.iconSelected = "notification";
   }
 
   goToNews(){
@@ -238,30 +244,18 @@ export class HomePage implements OnInit {
   onScroll(event) {
     if(event.detail.currentY >= 0 && event.detail.currentY % 3 ==0){
       const newHeight = 14 - event.detail.currentY/(20*2);
-      const newtop = 35 - event.detail.currentY/(10);
-      const newtop1 = 25 - event.detail.currentY/(20);
-      const newtop2 = 33 - event.detail.currentY/(20);
       
       if(newHeight > 8){
         document.getElementById('main-header').style.display = "";
         document.getElementById('sub-header').style.display = "none";
-        document.getElementById('main-header').style.transition = "height 0.5s ease-in-out";
-        // document.getElementById('contentNews').style.height = newHeight + '%';
-        // document.getElementById('content-button-child').style.top = newtop + '%';
-        // document.getElementById('function-content-big').style.display = "";
-        // document.getElementById('function-content-big').style.top = 'calc('+newtop1+'% + 26px)';
-        // document.getElementById('function-content-small').style.display = "none";
-        // document.getElementById('contentNews').style.display = "";
-        // document.getElementById('new-content').style.top = 'calc('+newtop2+'% + 35px)';
         this.heightScreen = this.platform.height() * 0.58 - 18 + event.detail.currentY/1.5;
       }else{
         document.getElementById('main-header').style.display = "none";
-        document.getElementById('sub-header').style.display = "";
-        document.getElementById('sub-header').style.transition = "height 0.5s ease-in-out";
-        // document.getElementById('contentNews').style.display = "none";
-        // document.getElementById('function-content-small').style.display = "";
-        // document.getElementById('function-content-small').style.top = 'calc('+9+'% + 26px)';
-        // document.getElementById('new-content').style.top = 'calc(18% + 35px)'
+        if (event.detail.deltaY > 0) {
+          document.getElementById('sub-header').style.display = "none";
+        } else {
+          document.getElementById('sub-header').style.display = "";
+        };
         this.heightScreen = this.platform.height() * 0.72 - 18;
       }
     }
