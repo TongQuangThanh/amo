@@ -100,13 +100,17 @@ export class ServicesPage implements OnInit {
           } else if (product.numberOrder == product.promotion2) {
             discount = product.promotionPercent2 / 100;
           }
-          let money = self.convertFormatMoney(product.shopProduct.price - product.shopProduct.price * discount) + 'đ';
+          let money = self.convertFormatMoney(product.shopProduct.price - product.shopProduct.price * discount);
           let detail = 'Cùng mua với bạn bè/hàng xóm để được nhận giảm giá cao nhất.';
           let actual_order = product.numberOrder+"/"+product.promotion2;
           
           let moc_1 = "-0%";
           let moc_2 = "-"+product.promotionPercent1+"%";
           let moc_3 = "-"+product.promotionPercent2+"%";
+          let background_image = '';
+          if (product.thumbnail) {
+            background_image = product.thumbnail;
+          }
           let object = {
             '_id' : product._id,
             'thumbnail': product.shopProduct.thumbnail,
@@ -120,6 +124,7 @@ export class ServicesPage implements OnInit {
             'moc_1' : moc_1,
             'moc_2' : moc_2,
             'moc_3' : moc_3,
+            'background_image' : background_image
           }
           self.list_data_range[product._id] = slider_value + '%';
           this.list_data_silde_1.push(object);

@@ -3,7 +3,7 @@
     <ion-title class="header-title">{{ 'SEVICE_NEW.title' | translate }}</ion-title>
     <button class="button-history" (click)="moveHistoryPage()">
       <img class="icon-home" src="../assets/icon/svg/History.svg"/>
-      <ion-label class="font-weight-bold margin-left-20">{{ 'SEVICE_NEW.label_history' | translate }}</ion-label>
+      <ion-label class="font-weight-bold">{{ 'SEVICE_NEW.label_history' | translate }}</ion-label>
     </button>
   </ion-toolbar>
 </ion-header>
@@ -12,8 +12,8 @@
   <ion-slides [options]="slideOpts" class="margin-top-20">
     <ion-slide *ngFor="let object of list_data_silde_1">
       <ion-item lines="none" class="ion-no-padding" id="{{object._id}}">
-        <!-- <ion-img src="{{object.bg_url}}" class="img-responsive" alt=""></ion-img> -->
-        <div class="div-promotion-code">
+        <ion-img *ngIf="object.background_image != ''" src="{{object.background_image}}" class="img-responsive" alt=""></ion-img>
+        <div *ngIf="object.background_image == ''" class="div-promotion-code">
           <ion-grid class="ion-grid-class">
             <ion-row class="">
               <ion-col class="ion-col-class padding-right-5" size="3">
