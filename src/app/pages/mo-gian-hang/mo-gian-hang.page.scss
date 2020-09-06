@@ -158,3 +158,25 @@ ion-select::part(icon) {
     font-size: 14px;
     color: #009AC9;
 }
+
+.button-disable {
+    --background: #D3D6D9 !important;
+    text-transform: none;
+    --background-activated: rgba(250, 114, 104,0.5);
+    border-radius: 8px;
+    --border-radius: 8px;
+    padding: 0px 16px 0px 16px;
+    pointer-events: none;
+}
+.group-1-slider-title {
+    position: absolute;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    background-color: #009AC9;
+    border-radius: 8px 0px;
+    padding: 2px 10px;
+    color: #fff;
+    font-size: 10px;
+    line-height: 15px;
+}

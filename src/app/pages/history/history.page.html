@@ -11,7 +11,7 @@
     <super-tabs class="class-super-tabs" activeTabIndex="0" [config]="{ debug: true, sideMenu: 'left', allowElementScroll: true, nativeSmoothScroll: true }">
       <super-tabs-toolbar slot="top" scrollable="true" scrollable-padding="false">
         <super-tab-button *ngFor="let object of data_history">
-          <ion-label>{{object.title}}</ion-label>
+          <ion-label class="font-weight-bold">{{object.title}}</ion-label>
         </super-tab-button>
       </super-tabs-toolbar>
       <super-tabs-container autoScrollTop>
@@ -36,37 +36,37 @@
               <ion-row class="ion-no-padding">
                 <ion-col class="group-2-col-1" size="8">
                   <div class="div-title-row-2-col-1">
-                    <ion-label class="">{{data.title}}</ion-label>
+                    <ion-label class="font-weight-bold">{{data.title}}</ion-label>
                   </div>
                 </ion-col>
                 <ion-col class="group-2-col-1" size="4">
                   <div class="div-title-row-2-col-2">
-                    <ion-label class="">{{data.money}}</ion-label>
+                    <ion-label class="font-weight-bold">{{data.money}}</ion-label>
                   </div>
                 </ion-col>
               </ion-row>
-              <ion-row class="ion-no-padding margin-top-20">
-                <ion-col class="group-2-col-2 col-6" size="6">
-                  <div class="div-logo col-3">
-                    <img src="{{data.avatar}}">
+              <ion-row class="ion-no-padding">
+                <ion-col class="" size="12">
+                  <ion-item class="no-border">
+                    <ion-avatar class="avatar-class" slot="start">
+                      <img src="{{data.avatar}}">
+                    </ion-avatar>
+                    <ion-label class="label-name">{{data.name}}</ion-label>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+              <ion-row class="ion-no-padding">
+                <ion-col size="8">
+                  <div class="div-col-1">
+                    <ion-label class="">{{ 'INBOX_35.code_orders' | translate }} {{data.code_orders}}</ion-label>
                   </div>
-                  <div class="div-text col-9" size="8">
-                    <div class="div-col-1 col-12">
-                      <ion-label class="">{{data.name}}</ion-label>
-                    </div>
-                    <div class="div-col-2 col-12">
-                      <ion-label>{{data.role}}</ion-label>
-                    </div>
+                  <div class="div-col-2">
+                    <ion-label class="">{{data.date_time}}</ion-label>
                   </div>
                 </ion-col>
-                <ion-col class="group-2-col-3" size="6">
-                  <div class="div-text" size="8">
-                    <div class="div-col-1">
-                      <ion-label class="">{{ 'INBOX_35.code_orders' | translate }} {{data.code_orders}}</ion-label>
-                    </div>
-                    <div class="div-col-2">
-                      <ion-label class="">{{data.date_time}}</ion-label>
-                    </div>
+                <ion-col class="group-2-col-3" size="4">
+                  <div class="div-button-chat">
+                    <img class="group-1-icon-star" src="../assets/icon/svg/button-chat.svg"/>
                   </div>
                 </ion-col>
               </ion-row>

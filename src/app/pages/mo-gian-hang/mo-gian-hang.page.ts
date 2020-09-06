@@ -21,6 +21,7 @@ export class MoGianHangPage implements OnInit {
   form_note: any;
   listType: any;
   flag_show_hide_popup: any;
+  disable_button_send: string;
 
   constructor(
     private translate: TranslateService,
@@ -38,13 +39,26 @@ export class MoGianHangPage implements OnInit {
     this.form_name = "";
     this.form_name_class = "";
     this.form_note = "";
-    this.listType = [
-      {id: "1", name: "Thực phẩm, ăn uống"},
-      {id: "2", name: "Chăm sóc sắc đẹp"},
-      {id: "3", name: "Đồ gia dụng"},
-      {id: "3", name: "Thời trang"}
-    ];
+    this.listType = [];
     this.flag_show_hide_popup = false;
+    this.disable_button_send = "button-disable";
+  }
+  ionViewWillEnter(){
+    this.getDataUserShop();
+  }
+  getDataUserShop() {
+    const self = this;
+    this.listType = [];
+    
+    this.loading.present();
+    this.apiService.getDataShopProductCategory()
+      .subscribe(result => {
+        self.listType = result.shopCategories;
+        self.loading.dismiss();
+    },
+    error => {
+      self.loading.dismiss();
+    });
   }
   ionChangePulldown1(event) {
     if (this.form_type != '') {
@@ -52,6 +66,7 @@ export class MoGianHangPage implements OnInit {
     } else {
       this.form_type_class = '';
     }
+    this.checkStatusButtonSend();
   }
   ionChangeTextBox1() {
     if (this.form_name != '') {
@@ -59,11 +74,32 @@ export class MoGianHangPage implements OnInit {
     } else {
       this.form_name_class = '';
     }
+    this.checkStatusButtonSend();
   }
   eventButtonSend() {
-    this.flag_show_hide_popup = true;
+    var self = this;
+    this.loading.present();
+    this.apiService.postRequestionCreateUserShop(this.form_type, this.form_name, this.form_note).subscribe(result => {
+      self.loading.dismiss();
+      self.flag_show_hide_popup = true;
+    },
+    error => {
+      self.loading.dismiss();
+    });
   }
   eventButtonClosePopup() {
     this.flag_show_hide_popup = false;
+    this.form_type == "";
+    this.form_name == "";
+    this.form_note == "";
+    this.navCtrl.navigateForward('/resident-market');
+  }
+  checkStatusButtonSend() {
+    if (this.form_type != "" && this.form_name != "") {
+      this.disable_button_send = "";
+    } else {
+      this.disable_button_send = "button-disable";
+    }
   }
 }
+

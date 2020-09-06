@@ -70,11 +70,12 @@ ion-toolbar{
     width: 100%;
     align-items: flex-end;
     display: inline-flex;
-    padding: 10px 10px;
+    padding: 0px 10px;
     font-size: 16px;
     line-height: 24px;
     color: #21313F;
     font-weight: 500;
+    margin-left: 10px;
 }
 .group-1-icon-place {
     margin-left: 10px;
@@ -88,7 +89,8 @@ ion-toolbar{
     text-align: center;
     vertical-align: middle;
     align-items: center;
-    padding-bottom: 5px;
+    margin-left: 10px;
+    margin-top: 10px;
 }
 .group-1-text-star {
     width: 100%;
@@ -98,52 +100,63 @@ ion-toolbar{
     text-align: center;
     vertical-align: middle;
     align-items: center;
-    padding-bottom: 10px;
+    margin-top: 10px;
+    margin-left: 10px;
 }
 .group-1-icon-star {
     margin-left: 8px;
     margin-right: 3px;
 }
 .group-1-icon-tag {
-    margin-left: 20px;
     margin-right: 8px;
 }
 
 .ion-item-class {
     border-bottom: 1px solid #F4F5F5;
-    margin: 0px 20px;
-    padding-bottom: 10px;
-    padding-top: 10px;
+    margin: 0px 17px;
+    padding: 20px 0px;
     --inner-border-width: 0px;
 }
 .class-label-rate {
-    width: 30px;
+    // width: 30px;
+    margin-left: 5px;
 }
 .div-logo {
-    margin-inline-end: 10px;
-    width: 90px;
+    border-radius: 8px;
+    overflow: hidden;
 }
 .note-1 {
     position: absolute;
     z-index: 99;
-    top: 10px;
+    top: 0px;
     left: 0;
     background-color: #EB5757;
     border-radius: 8px 0px;
     padding: 3px 10px;
     color: #fff;
     font-size: 12px;
-    line-height: 18px;
+    line-height: 15px;
 }
 .note-2 {
     position: absolute;
     z-index: 99;
-    top: 10px;
+    top: 0px;
     left: 0;
     background-color: #009AC9;
     border-radius: 8px 0px;
     padding: 3px 10px;
     color: #fff;
     font-size: 12px;
-    line-height: 18px;
+    line-height: 15px;
+}
+.width-100 {
+    width: 100%;
+}
+.group-1-text-star-1 {
+    width: 30%;
+    display: inline-flex;
+}
+.group-1-text-star-2 {
+    width: 70%;
+    display: inline-flex;
 }

@@ -18,7 +18,7 @@
         </ion-col>
         <ion-col class="ion-col-class group-2-col-2" size="8">
           <div class="div-title-col-2">
-            <ion-label class="">{{object.title}}</ion-label>
+            <ion-label class="font-weight-bold">{{object.title}}</ion-label>
           </div>
           <div class="div-note-col-2">
             <ion-label>{{ 'SEVICE_05.label_edit' | translate }}</ion-label>
@@ -28,7 +28,7 @@
           </div>
         </ion-col>
         <ion-col class="ion-col-class group-2-col-3" size="2">
-          <ion-label class="">{{object.money*object.number}}</ion-label>
+          <ion-label class="font-weight-bold">{{object.money_total}}</ion-label>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -36,17 +36,17 @@
       <label class="font-weight-500 margin-left-20 margin-top-20 margin-bottom-5">{{ 'SEVICE_05.group_1_title' | translate }}</label>
     </ion-item>
     <ion-item lines="none" class="margin-top-20">
-      <ion-item lines="none" class="item-common no-border margin-right-5" (click)="eventButton1(1)">
+      <ion-item lines="none" class="item-common no-border margin-right-5" (click)="eventButton1(0)">
         <div class="{{button_1_class}}"></div>
         <img class="image-button-payment" src="../assets/icon/pay-1.png"/>
         <label class="button-1-text padding-right-10">{{ 'SEVICE_05.button_1_text' | translate }}</label> 
-        <img *ngIf="button_active == 1" class="button-1-icon" src="../assets/icon/svg/Fill.svg"/>
+        <img *ngIf="button_active == 0" class="button-1-icon" src="../assets/icon/svg/Fill.svg"/>
       </ion-item>
-      <ion-item lines="none" class="item-common no-border margin-left-5" (click)="eventButton1(2)">
+      <ion-item lines="none" class="item-common no-border margin-left-5" (click)="eventButton1(1)">
         <div class="{{button_2_class}}"></div>
         <img class="image-button-payment" src="../assets/icon/money-1.png"/>
         <label class="button-1-text padding-right-10">{{ 'SEVICE_05.button_2_text' | translate }}</label> 
-        <img *ngIf="button_active == 2" class="button-1-icon" src="../assets/icon/svg/Fill.svg"/>
+        <img *ngIf="button_active == 1" class="button-1-icon" src="../assets/icon/svg/Fill.svg"/>
       </ion-item>
     </ion-item>
     <ion-item lines="none" class="margin-top-20 line-1">
@@ -99,7 +99,7 @@
     </ion-item>
     <ion-item lines="none" class="margin-top-20 margin-bottom-30">
       <ion-item lines="none" class="item-common">
-          <ion-textarea class="text-area-1" rows="4" cols="20" placeholder="{{ 'SEVICE_05.textarea_placeHolder_2' | translate }}"></ion-textarea>
+          <ion-textarea class="text-area-1" rows="4" cols="20" placeholder="{{ 'SEVICE_05.textarea_placeHolder_2' | translate }}" [(ngModel)]="form_note"></ion-textarea>
       </ion-item>
     </ion-item>
   </ion-list>
@@ -131,9 +131,5 @@
   </div>
 </ion-content>
 <section class="full-width function-section shadow-section">
-  <ion-item lines="none">
-    <ion-label class="text-total-left">{{ 'SEVICE_05.total_money' | translate }}</ion-label>
-    <ion-label class="text-total-right">{{total_money}}</ion-label>
-  </ion-item>
-  <ion-button (click)="eventButtonSend()" expand="block" class="amo-button-custom">{{ 'SEVICE_05.button_send' | translate }}</ion-button>
+  <ion-button (click)="eventButtonSend()" expand="block" class="amo-button-custom {{disable_button_send}}">{{ 'SEVICE_05.button_send' | translate }}{{total_money}}</ion-button>
 </section>

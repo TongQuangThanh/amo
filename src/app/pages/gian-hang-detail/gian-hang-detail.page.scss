@@ -10,6 +10,9 @@ ion-item {
 ion-header {
     position: fixed;
 }
+#sub-header {
+ background-color: #ffffff;
+}
 .ion-color-primary {
     --ion-color-base: #ffffff !important;
     --ion-color-base-rgb: var(--ion-color-primary-rgb, 56, 128, 255) !important;
@@ -48,44 +51,62 @@ super-tab-button {
     margin-right: 17px;
 }
 .title-1 {
-    font-weight: 500;
     font-size: 18px;
     line-height: 28px;
     margin-inline-end: 0px;
 }
 .group-1-text-title {
     width: 100%;
-    align-items: flex-end;
     display: inline-flex;
-    padding: 10px 10px;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 14px;
     color: #21313F;
-    font-weight: 500;
+    margin-top: 10px;
+}
+.group-1-text-title .div-1 {
+    width: calc(100%- 20px);
+}
+.group-1-text-title .div-2 {
+    width: 20px;
 }
 .group-1-icon-place {
-    margin-left: 2px;
     margin-right: 10px;
+    min-width: 10px;
+    margin-top: 1px;
+}
+.group-1-icon-info {
+    margin-top: 3px;
 }
 .group-1-text-place {
     width: 100%;
     display: inline-flex;
     font-size: 14px;
     color: #21313F;
-    text-align: center;
-    vertical-align: middle;
-    align-items: center;
-    padding-bottom: 5px;
+    margin-top: 10px;
 }
 .group-1-text-star {
-    width: 100%;
     display: inline-flex;
     font-size: 14px;
     color: #21313F;
     text-align: center;
     vertical-align: middle;
     align-items: center;
-    padding-bottom: 10px;
+    position: absolute;
+    bottom: 40px;
+    right: 18px;
+    border-radius: 100px;
+    padding: 1px 10px;
+    overflow: hidden;
+}
+.group-1-text-star img, .group-1-text-star ion-label {
+    z-index: 99;
+}
+.group-1-text-star div{
+    background: #FFFFFF;
+    opacity: 0.8;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
 }
 .group-1-icon-star {
     // margin-left: 8px;
@@ -104,7 +125,9 @@ super-tab-button {
     --inner-border-width: 0px;
 }
 .class-label-rate {
-    width: 30px;
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: 2px;
 }
 
 .function-section{
@@ -132,10 +155,6 @@ super-tab-button {
     font-size: 12px;
     line-height: 18px;
 }
-.div-logo {
-    margin-inline-end: 10px;
-    width: 70px;
-}
 .note-1 {
     position: absolute;
     z-index: 99;
@@ -161,9 +180,7 @@ super-tab-button {
     line-height: 18px;
 }
 .ion-grid-class {
-    margin-top: 20px;
-    margin-left: 17px;
-    margin-right: 17px;
+    padding: 0px;
 }
 .group-1-button-change-number {
     position: relative;
@@ -171,6 +188,9 @@ super-tab-button {
     height: 32px;
     text-align: center;
 
+}
+.text-white {
+    color: #FFFFFF;
 }
 .group-1-label-1 {
     line-height: 32px;
@@ -202,10 +222,13 @@ super-tab-button {
     margin-top: -1px;
 }
 .group-2-col-2 {
-    padding-left: 10px;
+    padding-left: 20px;
 }
 .group-2-col-3 ion-label{
     float: right;
+}
+.div-title-col-2 .col-4{
+    text-align: right;
 }
 .div-title-col-2 ion-label{
     font-weight: 400;
@@ -223,8 +246,9 @@ super-tab-button {
 .margin-bottom-30 {
     margin-bottom: 30px;
 }
-.margin-top-25 {
-    margin-bottom: 25px;
+.row-data-product {
+    border-bottom: 1px solid #F4F5F5;
+    padding: 20px 0px;
 }
 .col-group-2-image {
     height: 100%;
@@ -257,4 +281,222 @@ super-tab-button {
 }
 .shadow-section {
     box-shadow: 0px -20px 20px 0px rgb(37 34 77 / 10%);
+}
+.div-logo {
+    border-radius: 8px;
+    overflow: hidden;
+}
+.group-1-logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 30px;
+    overflow: hidden;
+    position: absolute;
+    left: 17px;
+    bottom: 0;
+}
+.col-1, 
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12 {
+    padding: 0;
+}
+.row {
+    margin: 0;
+}
+.button-disable {
+    --background: #D3D6D9 !important;
+    text-transform: none;
+    --background-activated: rgba(250, 114, 104,0.5);
+    border-radius: 8px;
+    --border-radius: 8px;
+    padding: 0px 16px 0px 16px;
+    pointer-events: none;
+}
+
+
+// promotion code
+.range-1 {
+    position: absolute;
+    background: #FFFFFF;
+    border-radius: 16px;
+    width: 50%;
+    height: 4px;
+}
+.range-2 {
+    background: #FFFFFF;
+    opacity: 0.3;
+    border-radius: 16px;
+    width: 100%;
+    height: 4px;
+}
+.div-promotion-code {
+    background: #97171B;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 10px 30px rgba(33, 49, 63, 0.1);
+    border-radius: 10px;
+}
+.div-promotion-code .img-responsive{
+    border-radius: 8px 0px 8px 0px;
+    overflow: hidden;
+}
+.promotion-code-1 .object_title {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+.object_money{
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 32px;
+    text-align: right;
+    color: #F4F5F5;
+}
+.promotion-code-2 {
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    white-space: normal;
+    margin-top: 10px;
+}
+.promotion-code-3 {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: right;
+    color: #FFFFFF;
+    display: block;
+}
+.promotion-code-4 {
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    margin-top: 5px;
+}
+.promotion-code-5 {
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #FFFFFF;
+    margin-top: 5px;
+}
+.promotion-code-6 {
+    font-size: 14px;
+    line-height: 20px;
+    text-align: right;
+    color: #FFFFFF;
+    margin-top: 5px;
+}
+.col-1, 
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12 {
+    padding: 0;
+}
+.row {
+    margin: 0;
+}
+.margin-top-5 {
+    margin-top: 5px;
+}
+.div-promotion-code ion-col {
+    padding: 0;
+}
+.promotion-code-3 .item-1{
+    vertical-align: initial;
+}
+.promotion-code-3 .item-2{
+    float: right;
+    margin-left: 5px;
+}
+
+// popup
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    outline: 0;
+    background-color: #00000005;
+}
+.modal-dialog {
+    position: absolute;
+    width: 100%;
+    margin: 0px;
+    pointer-events: none;
+    bottom: 0px;
+}
+@media (min-width: 576px) {
+    .modal-dialog {
+        max-width: unset;
+    }
+}
+.modal-content {
+    border-radius: 24px 24px 0px 0px;
+}
+.close {
+    float: left;
+    font-size: 1.5rem;
+    font-weight: normal;
+    line-height: 1;
+    color: #000;
+    text-shadow: 0 1px 0 #fff;
+    opacity: .5;
+}
+.modal-header {
+    border-bottom: 0;
+}
+.div-header-title .title{
+    font-size: 16px;
+    line-height: 24px
+}
+.modal-header .close {
+    padding: 1rem 1rem;
+    margin: -1rem -1rem -1rem -1rem;
+}
+.modal-body {
+    padding-top: 0;
+}
+.modal-body .title{
+    font-size: 16px;
+    line-height: 24px
+}
+.popup-ion-item {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    display: grid;
+}
+.popup-text-1 {
+    white-space: unset;
+    padding: 20px 15px;
+    font-size: 16px;
+    white-space: pre-line!important;
+}
+.popup-text-2 {
+    white-space: unset;
+    font-size: 14px;
+    color: #009AC9;
 }

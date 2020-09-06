@@ -56,5 +56,17 @@ export const EnvService = {
   countPostClick: environment.base + '/post/user-click/',
   countPopupConfigClick: environment.base + '/popup-config/user-click/',
   media_addFile: environment.base + '/media',
+
+  // vund5
+  servicePromotionCode: environment.base + '/promotion-code',
+  serviceShopProduct: environment.base + '/shop-product?',
+  serviceServiceGroup: environment.base + '/service-group',
+  getUserShop: environment.base + '/user-shop',
+  getShopProductCategory: environment.base + '/shop-product-category',
+  postRequestShopProduct: environment.base + '/request-shop-product',
+  getOrderHistory: environment.base + '/order-history',
+  getOrderHistoryById: environment.base + '/order-history/id',
+  getServiceLog: environment.base + '/service-log',
+  getServiceLogById: environment.base + '/service-log/id',
 };
 
