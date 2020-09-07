@@ -1,7 +1,15 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar id="header-toolbar" class="header-toolbar-post">
+<ion-header id="main-header-toolbar" class="ion-no-border" [ngStyle]="{'display': getStyleHeader(1)}">
+  <ion-toolbar>
     <ion-buttons slot="start" class="btn-header-back">
-      <ion-back-button text="" icon="arrow-back-outline"></ion-back-button>
+      <ion-back-button id="" text="" icon="chevron-back"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-header id="sub-header-toolbar" class="ion-no-border w3-animate-top" [ngStyle]="{'display': getStyleHeader(2)}">
+  <ion-toolbar>
+    <ion-title>{{articleTitle}}</ion-title>
+    <ion-buttons slot="start" class="btn-header-back">
+      <ion-back-button id="" text="" icon="chevron-back"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -11,13 +19,14 @@
         <ion-icon name="chatboxes"></ion-icon>
       </ion-fab-button>
   </ion-fab> -->
-  <ion-img src="{{thumbnail}}"></ion-img>
+  <ion-img *ngIf="thumbnail != null" src="{{thumbnail}}"></ion-img>       
+  <ion-img *ngIf="thumbnail == null" src="assets/common/no-thumbnail.png"></ion-img>  
   <ion-card button class="custom-card margin-none">
       <ion-item lines="none" style="margin-top: 10px;">
           <ion-card-title class="ion-text-wrap content-two-line">{{articleTitle}}</ion-card-title>
       </ion-item>
 
-      <div class="">
+      <div class="" id="content-noti">
         <ion-list class="text-node information-node">
           <ion-card class="ion-float-left padding-none card-bottom">
             <span class="image-caption-big" class="card-bottom-label"> {{formatString(createdAt)}} </span>

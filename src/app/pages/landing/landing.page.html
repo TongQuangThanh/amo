@@ -9,8 +9,8 @@
     <ion-item class="input-item" lines="none" [ngClass]="!errorInputPhone ? '' : 'error-input'">
       <ion-icon class="input-icon" name="custom-mobile" src="/assets/icon/custom-mobile.svg" slot="start"></ion-icon>
       <ion-label class="input-floating-label" position="floating">{{ 'LANDING.phone_number_text' | translate }}</ion-label>
-      <ion-input class="input-text" [(ngModel)]="phoneNumber" [ngClass]="!errorInputPhone ? '' : 'error-input'" type="tel"></ion-input>
-      <ion-icon class="clear-input check-default" name="close-circle" slot="end"></ion-icon>
+      <ion-input class="input-text" [(ngModel)]="phoneNumber" type="tel"></ion-input>
+      <!-- <ion-icon class="clear-input" name="close-circle" slot="end"></ion-icon> -->
     </ion-item>
     <ion-label color="danger" class="ion-text-wrap" *ngIf="errorMessage != ''">{{errorMessage}}</ion-label>
   </div>

@@ -62,7 +62,7 @@
     position: absolute;
     left: 4.27%;
     width: 91.46%;
-    top: 80%;
+    top: 80px;
     
 }
 
@@ -70,14 +70,14 @@
     position: absolute;
     left: 4.27%;
     width: 91.46%;
-    top: 80px;
+    top: 170px;
 }
 
 .noti-content {
     position: absolute;
     // left: 4.27%;
     width: 100%;
-    top: 160px;
+    top: 250px;
 }
 
 .new-content {
@@ -172,6 +172,9 @@
     margin-right: 4px;
     border-radius: 8px;
     box-shadow: 0px 10px 30px rgba(33, 49, 63, 0.1);
+}
+.card-content-custom:last-child {
+    margin-right: 16px;
 }
 
 .card-content-news {
@@ -482,22 +485,22 @@
 
 // custom header small
 .sub-header-toolbar {
-    --background: #FA7268; 
-    --min-height: 30px;
+    background: #FA7268; 
+    height: 30px;
     margin: 0;
 }
 .sub-amountPay-content {
     z-index: 1000;
     position: absolute;
     width: 100%;
-    top: 30px;
+    //top: 30px;
 }
 .sub-function-content-button {
     position: absolute;
     width:100%;
     --background: #ffffff;
     // top: 44px;
-    box-shadow: 0px 10px 30px rgba(33, 49, 63, 0.1);
+    box-shadow: 0px 10px 30px rgba(33, 49, 63, 0.2);
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
 }
@@ -536,5 +539,11 @@
     width: 24px;
     margin-top: 8px;
 }
+
+.custom-infinite-scroll {
+    --color: #FA7268;
+}
+
+.w3-animate-top{position:relative;animation:animatetop 0.4s}@keyframes animatetop{from{top:-300px;opacity:0} to{top:0;opacity:1}}
 
 

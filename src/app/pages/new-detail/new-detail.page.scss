@@ -132,3 +132,28 @@ ion-toolbar {
     margin-bottom: 13px;
     --box-shadow: none;
 }
+
+.w3-animate-top {
+    background: #FA7268;
+    ion-back-button {
+        color: #FFFFFF;
+    }
+    ion-title.ios {
+        color: #FFFFFF;
+        margin-left: 10px;
+    }
+    ion-title.md {
+        color: #FFFFFF;
+    }
+}
+@keyframes animatetop{from{top:-300px;opacity:0} to{top:0;opacity:1}}
+@keyframes fadeInDown {
+    0% {
+       opacity: 0;
+       transform: translateY(-20px);
+    }
+    100% {
+       opacity: 1;
+       transform: translateY(0);
+    }
+ } 

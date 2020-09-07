@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Directive, Input, Component, OnInit, ViewChild } from '@angular/core';
 import { Platform, NavController } from '@ionic/angular';
 import { ApiService } from '../../services/api/api.service';
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
@@ -8,6 +8,8 @@ import { LoadingService } from '../../services/loading/loading.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Subscription } from 'rxjs';
 import { RouterModule, Routes } from "@angular/router";
+import {ScrollingHeaderModule} from 'ionic-scrolling-header';
+import { IonContent } from '@ionic/angular';
 
 @Component({
   selector: 'app-home',
@@ -15,6 +17,7 @@ import { RouterModule, Routes } from "@angular/router";
   styleUrls: ['./home.page.scss'],
 })
 export class HomePage implements OnInit {
+  @ViewChild(IonContent) content: IonContent;
   imageDefault: string;
   heightScreen: number;
   // data
@@ -37,6 +40,7 @@ export class HomePage implements OnInit {
   screenID:string;
   tabIconEnable: boolean= false;
   iconSelected = "";
+  showHeader: number;
 
   constructor(
     private route: NavController,
@@ -81,6 +85,7 @@ export class HomePage implements OnInit {
   }
 
   ngOnInit() {
+    this.showHeader = 1;
     const params = {
       playerId: localStorage.getItem('playID')
     };
@@ -229,7 +234,7 @@ export class HomePage implements OnInit {
   }
   
   changePayment(){
-    this.navCtrl.navigateForward('/payment');
+    this.navCtrl.navigateForward('dashboard/payment');
   }
 
   goToNotification(){
@@ -241,23 +246,43 @@ export class HomePage implements OnInit {
     this.navCtrl.navigateForward('/news');
   }
 
-  onScroll(event) {
-    if(event.detail.currentY >= 0 && event.detail.currentY % 3 ==0){
-      const newHeight = 14 - event.detail.currentY/(20*2);
+  // onScroll(event) {
+  //   if(event.detail.currentY >= 0 && event.detail.currentY % 3 ==0){
+  //     const newHeight = 14 - event.detail.currentY/(20*2);
       
-      if(newHeight > 8){
-        document.getElementById('main-header').style.display = "";
-        document.getElementById('sub-header').style.display = "none";
-        this.heightScreen = this.platform.height() * 0.58 - 18 + event.detail.currentY/1.5;
-      }else{
-        document.getElementById('main-header').style.display = "none";
-        if (event.detail.deltaY > 0) {
-          document.getElementById('sub-header').style.display = "none";
-        } else {
-          document.getElementById('sub-header').style.display = "";
-        };
-        this.heightScreen = this.platform.height() * 0.72 - 18;
+  //     if(newHeight > 8){
+  //       document.getElementById('main-header').style.display = "";
+  //       document.getElementById('sub-header').style.display = "none";
+  //       this.heightScreen = this.platform.height() * 0.58 - 18 + event.detail.currentY/1.5;
+  //     }else{
+  //       document.getElementById('main-header').style.display = "none";
+  //       if (event.detail.deltaY > 0) {
+  //         document.getElementById('sub-header').style.display = "none";
+  //       } else {
+  //         document.getElementById('sub-header').style.display = "";
+  //       };
+  //       this.heightScreen = this.platform.height() * 0.72 - 18;
+  //     }
+  //   }
+  // }
+
+  onScroll(event) {
+    let position_y = document.getElementById('div-text-place').getClientRects()[0];
+    if(position_y['y'] < 25){
+      if (event.detail.deltaY > 0) {
+        this.showHeader = 1;
+      } else {
+        this.showHeader = 2;
       }
+    } else {
+      this.showHeader = 1;
+    }
+  }
+  getStyleHeader(index) {
+    if (index == this.showHeader) {
+      return '';
+    } else {
+      return 'none';
     }
   }
 

@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api/api.service';
 import { LoadingService } from '../../services/loading/loading.service';
+import { TranslateService } from '@ngx-translate/core';
 import { TranslateConfigService } from '../../translate-config.service';
 import { NavController } from '@ionic/angular';
+import { AlertService } from 'src/app/services/alert/alert.service';
 
 @Component({
   selector: 'app-my-account-detail',
@@ -27,7 +29,9 @@ export class MyAccountDetailPage implements OnInit {
     private loading: LoadingService,
     private apiService: ApiService,
     private navCtrl: NavController,
+    private translate: TranslateService,
     private translateConfigService: TranslateConfigService,
+    private alertService: AlertService,
   ) { 
     this.selectedLanguage = this.translateConfigService.getDefaultLanguage();
   }
@@ -58,5 +62,27 @@ export class MyAccountDetailPage implements OnInit {
 
   addHomeMember(){
     this.navCtrl.navigateForward('/add-home-member');
+  }
+
+  updateAccount(){
+    var self = this;
+    const params = {
+      email: self.email,
+      displayName: self.displayName,
+      gender: self.sex,
+      dateOfBirth: self.dateOfBirth,
+      personalLiscence: self.personalLiscence
+    };
+    this.loading.present();
+    this.apiService.updateUserProfile(params)
+      .subscribe(result => {
+        localStorage.setItem('profile', JSON.stringify(result.profile));
+        self.loading.dismiss()
+        self.alertService.presentToast(this.translate.instant('MY_ACCOUNT.message_update_sucess'));
+    },
+    error => {
+      self.loading.dismiss();
+      self.alertService.presentToast(this.translate.instant('MY_ACCOUNT.message_update_fail'));
+    });
   }
 }

@@ -19,7 +19,8 @@
   <ion-list>
     <ion-card class="info-card" button *ngFor="let item of listArticles" (click)="detailPage($event)" id="{{item._id}}">
       <div class="card-img">
-        <ion-img src="{{item.thumbnail}}"></ion-img>        
+        <ion-img *ngIf="item.thumbnail != null" src="{{item.thumbnail}}"></ion-img>       
+        <ion-img *ngIf="item.thumbnail == null" src="assets/common/no-thumbnail.png"></ion-img>  
         <ion-label class="badge-corner badge-corner-base">{{formatString(item.updatedAt)}}</ion-label>
         <ion-label class="badge-corner-right badge-corner-icon hide"><ion-icon class="custom-pined" name="custom-pined" src="assets/icon/custom-pined.svg"></ion-icon></ion-label>
       </div>

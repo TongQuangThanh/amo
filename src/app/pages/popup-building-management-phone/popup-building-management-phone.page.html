@@ -17,7 +17,7 @@
       <ion-button class="cancel-button">
         <ion-label class="cancel-button-label">{{ 'MY_ACCOUNT.copy_num' | translate }}</ion-label>
       </ion-button>
-      <ion-button class="delete-button">
+      <ion-button class="delete-button" (click)="callEmergency($event)"> 
         <ion-label class="delete-button-label">{{ 'MY_ACCOUNT.call' | translate }}</ion-label>
       </ion-button>
     </ion-toolbar>
