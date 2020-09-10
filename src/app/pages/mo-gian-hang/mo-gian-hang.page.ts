@@ -44,16 +44,16 @@ export class MoGianHangPage implements OnInit {
     this.disable_button_send = "button-disable";
   }
   ionViewWillEnter(){
-    this.getDataUserShop();
+    this.getDataShopProductCategory();
   }
-  getDataUserShop() {
+  getDataShopProductCategory() {
     const self = this;
     this.listType = [];
     
     this.loading.present();
     this.apiService.getDataShopProductCategory()
       .subscribe(result => {
-        self.listType = result.shopCategories;
+        self.listType = result.requestShopProductCategory;
         self.loading.dismiss();
     },
     error => {

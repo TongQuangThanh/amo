@@ -63,7 +63,7 @@ export class ServicesPage implements OnInit {
     this.listServiceLog = [];
     this.getServicePromotionCode();
     this.currentPageNoti = 1;
-    this.numberRecordOnPageNoti = ConstService.NUMBER_RECORD_ON_PAGE;
+    this.numberRecordOnPageNoti = 5;
     this.getDataUserShop(this.currentPageNoti, this.numberRecordOnPageNoti, '', null, true);
     this.getAllServiceSystem();
   }
@@ -94,6 +94,7 @@ export class ServicesPage implements OnInit {
           let deadline_convert = deadline == 0 ? "Khuyến mại" : "Còn " + deadline + "   ngày";
           let title = product.shopProduct.title;
           let slider_value = product.numberOrder*100/product.promotion2;
+          let range_position_value = product.promotion1*100/product.promotion2;
           let discount = 0;
           if (product.numberOrder >= product.promotion1 && product.numberOrder < product.promotion2) {
             discount = product.promotionPercent1 / 100;
@@ -101,32 +102,37 @@ export class ServicesPage implements OnInit {
             discount = product.promotionPercent2 / 100;
           }
           let money = self.convertFormatMoney(product.shopProduct.price - product.shopProduct.price * discount);
-          let detail = 'Cùng mua với bạn bè/hàng xóm để được nhận giảm giá cao nhất.';
+          let detail = product.title;
           let actual_order = product.numberOrder+"/"+product.promotion2;
-          
+          let stars = product.shopProduct.stars;
           let moc_1 = "-0%";
           let moc_2 = "-"+product.promotionPercent1+"%";
           let moc_3 = "-"+product.promotionPercent2+"%";
           let background_image = '';
-          if (product.thumbnail) {
+          if (product.type == "advertisement") {
             background_image = product.thumbnail;
           }
           let object = {
-            '_id' : product._id,
+            '_id' : product.shopProduct._id,
             'thumbnail': product.shopProduct.thumbnail,
             'bg_url': "../assets/images/services/1.png",
             'deadline' : deadline_convert,
             'title' : title,
             'money' : money,
             'detail' : detail,
+            'excerpt' : product.shopProduct.excerpt,
             'actual_order' : actual_order,
             'slider_value' : slider_value,
+            'range_position_value' : range_position_value,
             'moc_1' : moc_1,
             'moc_2' : moc_2,
             'moc_3' : moc_3,
+            'type' : product.type,
+            'stars' : stars,
+            'id_shop' : product.requestShopProduct._id,
             'background_image' : background_image
           }
-          self.list_data_range[product._id] = slider_value + '%';
+          self.list_data_range[product.shopProduct._id] = [slider_value + '%', range_position_value + '%'];
           this.list_data_silde_1.push(object);
         });
         console.log(result);
@@ -139,15 +145,16 @@ export class ServicesPage implements OnInit {
   getAllServiceSystem() {
     const self = this;
     this.loading.present();
-    this.apiService.getListServiceGroup()
+    this.apiService.getDataShopProductCategory()
       .subscribe(result => {
-        for(let i=0;i<result.serviceGroup.length;i+=4){
+        let data_catagory = result.requestShopProductCategory;
+        for(let i=0;i<data_catagory.length;i+=4){
           let arrayServiceGroupTmp = [];
-          if(i < result.serviceGroup.length){
-            arrayServiceGroupTmp.push(result.serviceGroup[i]);
+          if(i < data_catagory.length){
+            arrayServiceGroupTmp.push(data_catagory[i]);
           }
-          if(i + 1 < result.serviceGroup.length){
-            arrayServiceGroupTmp.push(result.serviceGroup[i + 1]);
+          if(i + 1 < data_catagory.length){
+            arrayServiceGroupTmp.push(data_catagory[i + 1]);
           }else{
             arrayServiceGroupTmp.push({
               _id: "",
@@ -155,8 +162,8 @@ export class ServicesPage implements OnInit {
               thumbnail: ""
             })
           }
-          if(i + 2 < result.serviceGroup.length){
-            arrayServiceGroupTmp.push(result.serviceGroup[i + 2]);
+          if(i + 2 < data_catagory.length){
+            arrayServiceGroupTmp.push(data_catagory[i + 2]);
           }else{
             arrayServiceGroupTmp.push({
               _id: "",
@@ -164,8 +171,8 @@ export class ServicesPage implements OnInit {
               thumbnail: ""
             })
           }
-          if(i + 3 < result.serviceGroup.length){
-            arrayServiceGroupTmp.push(result.serviceGroup[i + 3]);
+          if(i + 3 < data_catagory.length){
+            arrayServiceGroupTmp.push(data_catagory[i + 3]);
           }else{
             arrayServiceGroupTmp.push({
               _id: "",
@@ -207,20 +214,24 @@ export class ServicesPage implements OnInit {
         let data_shop_product = result.requestShopProducts;
         data_shop_product.forEach(product => {
           let title = product.title;
-          let text_note = "KM";
+          let text_note = product.promotionKM ? product.promotionKM : "";
+          if (text_note != 'KM' && text_note != '') {
+            text_note = '-'+text_note;
+          }
+          let type_note = product.promotionKM == "KM" ? 2 : 1;
           let text_place = product.apartment.title + ' - ' + product.apartment.campaign.title;
           let text_star_rate = product.stars;
           let text_tag = product.promotion ? product.promotion : "";
-          let thumbnail = product.thumbnail;
-          if (product.attachments && product.attachments.length > 0) {
-            thumbnail = product.attachments[0].url;
+          let thumbnail = '';
+          if (product.attachments && product.attachments.length > 1) {
+            thumbnail = product.attachments[1].url;
           }
           let object = {
             '_id' : product._id,
             'thumbnail': thumbnail,
             'title': title,
             'text_note': text_note,
-            'type_note': text_tag == "" ? 0 : 1,
+            'type_note': type_note,
             'text_place': text_place,
             'text_star_rate': text_star_rate,
             'text_tag': text_tag
@@ -238,8 +249,13 @@ export class ServicesPage implements OnInit {
     });
   }
 
-  detailPage(event) {
-    this.navCtrl.navigateForward('/service-list-by-category/' + event.currentTarget.id);
+  detailPage(event, modeView, id, name) {
+    if (modeView == "listView") {
+      this.navCtrl.navigateForward('/user-shop-by-category/' + id + '/' + name);
+    } else {
+      this.navCtrl.navigateForward('/repair-service');
+    }
+    // this.navCtrl.navigateForward('/service-list-by-category/' + event.currentTarget.id);
   }
 
   addNewService(event){
@@ -268,7 +284,9 @@ export class ServicesPage implements OnInit {
     this.navCtrl.navigateForward('/repair-service');
   }
   getStyleRange1(_id) {
-    return this.list_data_range[_id]
+    let range1 = this.list_data_range[_id][0];
+    let range2 = 'calc(' + this.list_data_range[_id][1] + ' - 18px)'; 
+    return [range1, range2];
   }
   convertFormatMoney(value) {
     value = value.toString();
@@ -287,5 +305,13 @@ export class ServicesPage implements OnInit {
       convert2 = convert2 + convert1[count2 - i];
     }
     return convert2;
+  }
+  eventClickGroupPon(object, type) {
+    if (type == "advertisement") {
+      this.navCtrl.navigateForward('/gian-hang-detail/' + object.id_shop);
+    } else {
+      localStorage.setItem('data-booking-product', JSON.stringify(object));
+      this.navCtrl.navigateForward('/booking-product/' + 'groupon');
+    }
   }
 }

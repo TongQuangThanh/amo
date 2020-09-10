@@ -483,7 +483,7 @@
     "SEVICE_05": {
         "title": "Sản phẩm",
         "group_1_title": "Phương thức thanh toán",
-        "group_2_title": "Giao hàng",
+        "group_2_title": "Chi tiết",
         "group_3_title": "Tổng tiền",
         "label_edit": "Chỉnh sửa",
         "label_note": "Lưu ý",
@@ -548,7 +548,7 @@
     "INBOX_56": {
         "title": "Sản phẩm",
         "group_1_title": "Phương thức thanh toán",
-        "group_2_title": "Giao hàng",
+        "group_2_title": "Chi tiết",
         "group_3_title": "Tổng tiền",
         "label_edit": "Chỉnh sửa",
         "label_note": "Lưu ý",
@@ -640,5 +640,8 @@
         "vehicle_numberID" : "Biển kiểm soát",
         "parking_time" : "Thời gian gửi",
         "vehicle_register_label" : "Chụp giấy đăng kí xe (rõ ràng 2 mặt, sắc nét)"
+    },
+    "BOOKING_PRODUCT" : {
+        "title" : "Mua chung nhận khuyến mại"
     }
 }
