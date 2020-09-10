@@ -1,6 +1,7 @@
 
 .tab-icon {
     width: 18px;
+    padding: 5px 0; 
 }
 .tab-label {
     font-family: Nunito Sans;
@@ -9,6 +10,7 @@
     font-size: 11px;
     line-height: 16px;
     text-align: center;
+    //margin-top: 7px;
 }
 .tab-selected {
     color: #FA7268;
@@ -17,4 +19,44 @@
 .ion-no-border {
     --border: none;
     box-shadow: 0px -10px 30px rgba(33, 49, 63, 0.1);
+}
+
+.noti.tab-selected span {
+    content: url(../../../assets/icon/custom-noti-active.svg);
+}
+.noti span {
+    content: url(../../../assets/icon/custom-noti.svg);
+}
+
+.home.tab-selected span {
+    content: url(../../../assets/icon/custom-home-active.svg);
+}
+.home span {
+    content: url(../../../assets/icon/custom-home.svg);
+}
+
+.payment.tab-selected span {
+    content: url(../../../assets/icon/custom-pay-active.svg);
+}
+.payment span {
+    content: url(../../../assets/icon/custom-pay.svg);
+}
+
+.request.tab-selected span {
+    content: url(../../../assets/icon/custom-request-active.svg);
+}
+.request span {
+    content: url(../../../assets/icon/custom-request.svg);
+}
+
+.service.tab-selected span {
+    content: url(../../../assets/icon/custom-service-active.svg);
+}
+.service span {
+    content: url(../../../assets/icon/custom-service.svg);
+}
+
+ion-tab-button {
+    --padding-start: 10px;
+    --padding-end: 10px;
 }

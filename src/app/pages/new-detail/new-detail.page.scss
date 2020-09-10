@@ -36,6 +36,9 @@ ion-toolbar {
     --background: transparent;
     --ion-color-base: transparent !important;
 }
+.btn-header-back.ios {
+    margin: 0 16px;
+}
 
 .function-section{
     position: absolute;
