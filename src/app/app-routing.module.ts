@@ -149,6 +149,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/resident-market/resident-market.module').then(m => m.ResidentMarketPageModule)
   },
   { 
+    path: 'user-shop-by-category/:category/:category_name', 
+    loadChildren: () => import('./pages/user-shop-by-category/user-shop-by-category.module').then(m => m.UserShopByCategoryPageModule)
+  },
+  { 
     path: 'mo-gian-hang', 
     loadChildren: () => import('./pages/mo-gian-hang/mo-gian-hang.module').then(m => m.MoGianHangPageModule)
   },
@@ -159,6 +163,10 @@ const routes: Routes = [
   { 
     path: 'gio-hang', 
     loadChildren: () => import('./pages/gio-hang/gio-hang.module').then(m => m.GioHangPageModule)
+  },
+  { 
+    path: 'booking-product/:type', 
+    loadChildren: () => import('./pages/booking-product/booking-product.module').then(m => m.BookingProductPageModule)
   },
   { 
     path: 'call-the-car', 

@@ -65,8 +65,8 @@ export class RegisterKeepVehiclePage implements OnInit {
       {phuongtien: 'Xe máy', hang_xe: 'Honda', model: 'Wave Alpha', bien_so: '29B1-666.66'},
       {phuongtien: 'Xe đạp', hang_xe: 'Mini', model: '', bien_so: ''}
     ];
-    this.image_select_url_1 = "../assets/images/inbox29/anh7.png";
-    this.image_select_url_2 = "../assets/images/inbox29/anh8.png";
+    this.image_select_url_1 = "";
+    this.image_select_url_2 = "";
   }
   getListApartment(){
     var self = this;

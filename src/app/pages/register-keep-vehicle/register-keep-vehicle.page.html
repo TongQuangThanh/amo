@@ -137,24 +137,24 @@
                   <ion-col class="ion-col-class padding-left-0" size="6" size-md>
                     <ion-item *ngIf="image_select_url_1 != ''" lines="none" class="ion-item-for-image" (click)="selectImage(1)">
                       <img class="image-class" src="{{image_select_url_1}}"/>
+                      <button type="button" class="close-image-icon" (click)="deleteImageForm(1)">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
                     </ion-item>
                     <ion-item *ngIf="image_select_url_1 == ''" lines="none" class="ion-item-for-image" (click)="selectImage(1)">
                       <img class="image-class-camera" src="../assets/icon/svg/Camera.svg"/>
                     </ion-item>
-                    <button *ngIf="image_select_url_1 != ''" type="button" class="close-image-icon" (click)="deleteImageForm(1)">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
                   </ion-col>
                   <ion-col class="ion-col-class padding-right-0" size="6" size-md>
                     <ion-item *ngIf="image_select_url_2 != ''" lines="none" class="ion-item-for-image" (click)="selectImage(2)">
                       <img class="image-class" src="{{image_select_url_2}}"/>
+                      <button type="button" class="close-image-icon" (click)="deleteImageForm(2)">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
                     </ion-item>
                     <ion-item *ngIf="image_select_url_2 == ''" lines="none" class="ion-item-for-image" (click)="selectImage(2)">
                       <img class="image-class-camera" src="../assets/icon/svg/Camera.svg"/>
                     </ion-item>
-                    <button *ngIf="image_select_url_2 != ''" type="button" class="close-image-icon" (click)="deleteImageForm(2)">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
                   </ion-col>
                 </ion-row>
               </ion-grid>

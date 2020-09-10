@@ -84,18 +84,6 @@ ion-toolbar{
 .group-2-label-2 {
     font-size: 14px;
 }
-.group-1-slider-title {
-    position: absolute;
-    z-index: 99;
-    top: 0;
-    left: 0;
-    background-color: #009AC9;
-    border-radius: 8px 0px;
-    padding: 2px 10px;
-    color: #fff;
-    font-size: 10px;
-    line-height: 15px;
-}
 .note-1 {
     position: absolute;
     z-index: 99;
@@ -103,7 +91,7 @@ ion-toolbar{
     left: 0;
     background-color: #EB5757;
     border-radius: 8px 0px;
-    padding: 3px 10px;
+    padding: 3px 20px;
     color: #fff;
     font-size: 12px;
     line-height: 15px;
@@ -115,7 +103,7 @@ ion-toolbar{
     left: 0;
     background-color: #009AC9;
     border-radius: 8px 0px;
-    padding: 3px 10px;
+    padding: 3px 20px;
     color: #fff;
     font-size: 12px;
     line-height: 15px;
@@ -175,47 +163,7 @@ ion-toolbar{
 .ion-grid-class {
     padding: 0;
 }
-.div-promotion-code {
-    background: #97171B;
-    width: 100%;
-    height: 100%;
-    box-shadow: 0px 10px 30px rgba(33, 49, 63, 0.1);
-    border-radius: 10px;
-}
-.div-promotion-code .img-responsive{
-    border-radius: 8px 0px 8px 0px;
-    overflow: hidden;
-}
-.range-1 {
-    position: absolute;
-    background: #FFFFFF;
-    border-radius: 16px;
-    width: 50%;
-    height: 4px;
-}
-.range-2 {
-    background: #FFFFFF;
-    opacity: 0.3;
-    border-radius: 16px;
-    width: 100%;
-    height: 4px;
-}
-.promotion-code-1 {
 
-}
-.promotion-code-1 .col-8 {
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 24px;
-    color: #FFFFFF;
-}
-.promotion-code-1 .col-4{
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: right;
-    color: #F4F5F5;
-}
 .col-1, 
 .col-2,
 .col-3,
@@ -232,54 +180,6 @@ ion-toolbar{
 }
 .row {
     margin: 0;
-}
-.promotion-code-2 {
-    font-size: 14px;
-    line-height: 20px;
-    color: #FFFFFF;
-    white-space: normal;
-    margin-top: 10px;
-}
-.promotion-code-3 {
-    font-weight: bold;
-    font-size: 14px;
-    line-height: 20px;
-    text-align: right;
-    color: #FFFFFF;
-    display: block;
-}
-.promotion-code-4 {
-    font-size: 14px;
-    line-height: 20px;
-    color: #FFFFFF;
-    margin-top: 5px;
-}
-.promotion-code-5 {
-    font-size: 14px;
-    line-height: 20px;
-    text-align: center;
-    color: #FFFFFF;
-    margin-top: 5px;
-}
-.promotion-code-6 {
-    font-size: 14px;
-    line-height: 20px;
-    text-align: right;
-    color: #FFFFFF;
-    margin-top: 5px;
-}
-.div-promotion-code ion-col {
-    padding: 0;
-}
-.promotion-code-3 .item-1{
-    vertical-align: initial;
-}
-.promotion-code-3 .item-2{
-    float: right;
-    margin-left: 5px;
-}
-.width-100 {
-    width: 100%;
 }
 .group-1-text-star-1 {
     width: 25%;
@@ -298,4 +198,114 @@ ion-toolbar{
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+}
+.border-radius-8 {
+    border-radius: 8px;
+}
+
+// css promotion-code
+.div-promotion-code {
+    background: #97171B;
+    width: 100%;
+    height: 100%;
+    box-shadow: 0px 10px 30px rgba(33, 49, 63, 0.1);
+    border-radius: 10px;
+}
+.div-promotion-code .img-responsive{
+    border-radius: 8px 0px 8px 0px;
+    overflow: hidden;
+}
+.div-promotion-code .range-1 {
+    position: absolute;
+    background: #FFFFFF;
+    border-radius: 16px;
+    width: 50%;
+    height: 4px;
+}
+.div-promotion-code .range-2 {
+    background: #FFFFFF;
+    opacity: 0.3;
+    border-radius: 16px;
+    width: 100%;
+    height: 4px;
+}
+.div-promotion-code .promotion-code-1 {
+
+}
+.div-promotion-code .promotion-code-1 .col-8 {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: #FFFFFF;
+}
+.div-promotion-code .promotion-code-1 .col-4{
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: right;
+    color: #F4F5F5;
+}
+.div-promotion-code .promotion-code-2 {
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    white-space: normal;
+    margin-top: 10px;
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    display: -webkit-box; 
+    -webkit-line-clamp: 3;
+    max-height: 60px; 
+    -webkit-box-orient: vertical;
+}
+.div-promotion-code .promotion-code-3 {
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: right;
+    color: #FFFFFF;
+    display: block;
+}
+.div-promotion-code .promotion-code-4 {
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    margin-top: 5px;
+}
+.div-promotion-code .promotion-code-5 {
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    margin-top: 5px;
+    position: absolute;
+}
+.div-promotion-code .promotion-code-6 {
+    font-size: 14px;
+    line-height: 20px;
+    color: #FFFFFF;
+    margin-top: 5px;
+    position: absolute;
+    right: 0;
+}
+.div-promotion-code .div-promotion-code ion-col {
+    padding: 0;
+}
+.div-promotion-code .promotion-code-3 .item-1{
+    vertical-align: initial;
+}
+.div-promotion-code .promotion-code-3 .item-2{
+    float: right;
+    margin-left: 5px;
+}
+.group-1-deadline {
+    position: absolute;
+    z-index: 99;
+    top: 0;
+    left: 0;
+    background-color: #009AC9;
+    border-radius: 8px 0px;
+    padding: 2px 10px;
+    color: #fff;
+    font-size: 12px;
+    line-height: 15px;
 }

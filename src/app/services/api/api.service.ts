@@ -395,7 +395,19 @@ export class ApiService {
       set('limit', limit.toString()).
       set('search', search).
       set('_v', (new Date()).getTime().toString());
-    return this.http.get(EnvService.getUserShop, {
+    return this.http.get(EnvService.getUserShopTopData, {
+      params
+    }).pipe(
+      map(results => results)
+    );
+  }
+  getDataUserShopByCategory(page: number, limit: number, category: any): Observable<any> {
+    const params = new HttpParams().
+      set('page', page.toString()).
+      set('limit', limit.toString()).
+      set('category', category).
+      set('_v', (new Date()).getTime().toString());
+    return this.http.get(EnvService.getUserShopByCategory, {
       params
     }).pipe(
       map(results => results)
@@ -419,11 +431,14 @@ export class ApiService {
       map(results => results)
     );
   }
-  postRequestionOrderProduct(orderInfor:any, paymentMode:any,customerInfor:any): Observable<any> {
+  postRequestionOrderProduct(orderInfor:any, paymentMode:any, appartment:any, timeDeliver:any, phone:any, note:any): Observable<any> {
     const params = {
       orderInfor,
       paymentMode,
-      customerInfor
+      appartment,
+      timeDeliver,
+      phone,
+      note
     }
     return this.http.post(EnvService.getOrderHistory, params).pipe(
       map(results => results)

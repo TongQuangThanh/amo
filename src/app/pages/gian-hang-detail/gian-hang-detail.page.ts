@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { Platform, NavController } from '@ionic/angular';
 import { ApiService } from '../../services/api/api.service';
 import { ConstService } from '../../utils/const.service'
@@ -7,6 +7,7 @@ import { LoadingService } from '../../services/loading/loading.service';
 import { AlertService } from '../../services/alert/alert.service'
 import { TranslateService } from '@ngx-translate/core';
 import { ActivatedRoute } from '@angular/router';
+import { SuperTabs } from '@ionic-super-tabs/angular';
 
 @Component({
   selector: 'app-gian-hang-detail',
@@ -20,7 +21,9 @@ export class GianHangDetailPage implements OnInit {
   list_data_range: any;
   heightScreen: number;
   showHeader:number;
+  position_product:number;
   flag_show_hide_popup: any;
+  active_tabs: any;
 
   constructor(
     private translate: TranslateService,
@@ -35,6 +38,7 @@ export class GianHangDetailPage implements OnInit {
       this.heightScreen = platform.height() * 0.58 - 18;
     });
   }
+  @ViewChild(SuperTabs) superTabs: SuperTabs;
   slideOpts = {
     initialSlide: 0,
     slidesPerView: 1.1,
@@ -49,10 +53,15 @@ export class GianHangDetailPage implements OnInit {
     this.total_money = "";
     this.disable_button_send = "button-disable";
     this.showHeader = 1;
+    this.position_product = 1;
     this.flag_show_hide_popup = false;
+    this.active_tabs = 1;
   }
   ionViewWillEnter(){
     
+  }
+  slideToIndex(index: number) {
+    this.superTabs.selectTab(index);
   }
   getShopProducts(_id) {
     const self = this;
@@ -71,17 +80,19 @@ export class GianHangDetailPage implements OnInit {
             self.data_gian_hang['text_place'] = product.requestShopProduct.apartment.title + ' - ' + product.requestShopProduct.apartment.campaign.title;
             self.data_gian_hang['text_star_rate'] = product.requestShopProduct.stars;
             let thumbnail = product.requestShopProduct.thumbnail;
-            if (product.requestShopProduct.attachments && product.requestShopProduct.attachments.length > 0) {
-              thumbnail = product.requestShopProduct.attachments[0].url;
+            let logo = product.requestShopProduct.thumbnail;
+            if (product.requestShopProduct.attachments && product.requestShopProduct.attachments.length > 1) {
+              logo = product.requestShopProduct.attachments[0].url;
+              thumbnail = product.requestShopProduct.attachments[1].url;
             }
             self.data_gian_hang['thumbnail'] = thumbnail;
-            self.data_gian_hang['logo'] = product.requestShopProduct.thumbnail;
+            self.data_gian_hang['logo'] = logo;
             let time_open = "Luôn mở cửa";
             if (product.requestShopProduct.timeOpen) {
               time_open = product.requestShopProduct.timeOpen;
             }
             self.data_gian_hang['time_open'] = time_open;
-            if (product.promotionCodes && product.promotionCodes.length > 0) {
+            if (product.promotionCodes && product.promotionCodes.length > 0 && product.promotionCodes[0].type == "groupon") {
               let promotionCodes = product.promotionCodes[0];
               let deadline_convert = '';
               if (promotionCodes.endAt) {
@@ -105,6 +116,7 @@ export class GianHangDetailPage implements OnInit {
               }
               
               let slider_value = (promotionCodes.numberOrder * 100) / promotionCodes.promotion2;
+              let range_position_value = promotionCodes.promotion1*100/promotionCodes.promotion2;
               let discount = 0;
               if (promotionCodes.numberOrder >= promotionCodes.promotion1 && promotionCodes.numberOrder < promotionCodes.promotion2) {
                 discount = promotionCodes.promotionPercent1 / 100;
@@ -112,28 +124,32 @@ export class GianHangDetailPage implements OnInit {
                 discount = promotionCodes.promotionPercent2 / 100;
               }
               money = money - money * discount;
-              let detail = 'Cùng mua với bạn bè/hàng xóm để được nhận giảm giá cao nhất.';
+              let detail = promotionCodes.title;
               let actual_order = promotionCodes.numberOrder + "/" + promotionCodes.promotion2;
               
               let moc_1 = "-0%";
               let moc_2 = "-" + promotionCodes.promotionPercent1 + "%";
               let moc_3 = "-" + promotionCodes.promotionPercent2 + "%";
+              let background_image = '';
               let object = {
-                'id' : product._id,
+                '_id' : product._id,
                 'thumbnail': product.thumbnail,
                 'bg_url': "../assets/images/services/1.png",
                 'deadline' : deadline_convert,
                 'title' : title,
                 'money' : self.convertFormatMoney(money),
                 'detail' : detail,
+                'excerpt' : product.excerpt,
                 'actual_order' : actual_order,
                 'slider_value' : slider_value,
+                'range_position_value' : range_position_value,
                 'moc_1' : moc_1,
                 'moc_2' : moc_2,
                 'moc_3' : moc_3,
-                'number': 0
+                'number': 0,
+                'background_image' : background_image
               }
-              self.list_data_range[product._id] = slider_value + '%';
+              self.list_data_range[product._id] = [slider_value + '%', range_position_value + '%'];
               self.data_gian_hang.group_1.push(object);
             } else {
               let index = self.getIndexCategoryInList(product.category._id);
@@ -145,7 +161,6 @@ export class GianHangDetailPage implements OnInit {
                 });
                 index = self.data_gian_hang['group_3'].length - 1;
               }
-              
               let title = product.title;
               let money = product.price;
               if (product.discountProducts && product.discountProducts.length > 0) {
@@ -157,7 +172,7 @@ export class GianHangDetailPage implements OnInit {
                 }
               }
               let object = {
-                id: product._id, 
+                _id: product._id, 
                 image: product.thumbnail, 
                 title: title, 
                 money: self.convertFormatMoney(money), 
@@ -175,12 +190,14 @@ export class GianHangDetailPage implements OnInit {
     });
   }
   getStyleRange1(_id) {
-    return this.list_data_range[_id]
+    let range1 = this.list_data_range[_id][0];
+    let range2 = 'calc(' + this.list_data_range[_id][1] + ' - 18px)'; 
+    return [range1, range2];
   }
   downNumberProduct(id) {
     var self = this;
     self.data_gian_hang.group_1.forEach(product => {
-      if (product.id == id && product.number > 0) {
+      if (product._id == id && product.number > 0) {
         product.number--;
       }
     });
@@ -189,7 +206,7 @@ export class GianHangDetailPage implements OnInit {
   upNumberProduct(id) {
     var self = this;
     self.data_gian_hang.group_1.forEach(product => {
-      if (product.id == id  && product.number < 10000) {
+      if (product._id == id  && product.number < 10000) {
         product.number++;
       }
     });
@@ -200,7 +217,7 @@ export class GianHangDetailPage implements OnInit {
     self.data_gian_hang.group_3.forEach(object => {
       if (object.id_tab == id_tab) {
         object.data.forEach(product => {
-          if (product.id == id && product.number > 0) {
+          if (product._id == id && product.number > 0) {
             product.number--;
           }
         });
@@ -213,7 +230,7 @@ export class GianHangDetailPage implements OnInit {
     self.data_gian_hang.group_3.forEach(object => {
       if (object.id_tab == id_tab) {
         object.data.forEach(product => {
-          if (product.id == id && product.number < 1000) {
+          if (product._id == id && product.number < 1000) {
             product.number++;
           }
         });
@@ -286,17 +303,29 @@ export class GianHangDetailPage implements OnInit {
   }
   onScroll(event) {
     let position_y = document.getElementById('div-text-place').getClientRects()[0];
+    let position_y_product = document.getElementById('group-data-product').getClientRects()[0];
     if(position_y['y'] > 45){
       this.showHeader = 1;
     }else{
       this.showHeader = 2;
     }
+    this.position_product = position_y_product['y'];
   }
   getStyleHeader(index) {
     if (index == this.showHeader) {
       return '';
     } else {
       return 'none';
+    }
+  }
+  getStyleHeaderPrduct() {
+    if (this.position_product > 250) {
+      return ['none', 0];
+    } else if (this.position_product < 250 && this.position_product > 100 ) {
+        let opacity = 1 - (this.position_product - 100) / 150;
+        return ['', opacity];
+    } else {
+      return ['', 1];
     }
   }
   getIndexCategoryInList(id_tab) {
@@ -316,5 +345,28 @@ export class GianHangDetailPage implements OnInit {
   }
   eventButtonShowPopup() {
     this.flag_show_hide_popup = true;
+    this.slideToIndex(1);
+  }
+  onScrollProduct(event) {
+    // let position_y = document.getElementById('div-text-place').getClientRects()[0];
+    // let position_y_product = document.getElementById('group-data-product').getClientRects()[0];
+    // if(position_y['y'] > 45){
+    //   this.showHeader = 1;
+    // }else{
+    //   this.showHeader = 2;
+    // }
+    // if(position_y_product['y'] > 45){
+    //   this.position_product = 1;
+    // }else{
+    //   this.position_product = 2;
+    // }
+  }
+  eventClickTabs(id_tab) {
+    document.getElementById(id_tab).scrollIntoView();
+    document.getElementById("content_page").scrollTop -= 100;
+  }
+  eventClickGroupPon(object) {
+    localStorage.setItem('data-booking-product', JSON.stringify(object));
+    this.navCtrl.navigateForward('/booking-product/' + 'groupon');
   }
 }

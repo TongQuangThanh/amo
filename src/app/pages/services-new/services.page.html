@@ -11,45 +11,45 @@
 <ion-content>
   <ion-slides [options]="slideOpts" class="margin-top-20">
     <ion-slide *ngFor="let object of list_data_silde_1">
-      <ion-item lines="none" class="ion-no-padding" id="{{object._id}}">
+      <ion-item lines="none" class="ion-no-padding" id="{{object._id}}" (click)="eventClickGroupPon(object, object.type)">
         <ion-img *ngIf="object.background_image != ''" src="{{object.background_image}}" class="img-responsive" alt=""></ion-img>
         <div *ngIf="object.background_image == ''" class="div-promotion-code">
           <ion-grid class="ion-grid-class">
             <ion-row class="">
-              <ion-col class="ion-col-class padding-right-5" size="3">
+              <ion-col class="ion-col-class padding-0 padding-right-5" size="3">
                 <ion-img src="{{object.thumbnail}}" class="img-responsive" alt=""></ion-img>
               </ion-col>
-              <ion-col class="ion-col-class padding-top-10 padding-left-20 padding-right-10" size="9">
+              <ion-col class="ion-col-class padding-top-10 padding-left-10 padding-right-10" size="9">
                 <div class="row col-12 promotion-code-1">
                   <div class="col-8"><ion-label>{{object.title}}</ion-label></div>
                   <div class="col-4"><ion-label>{{object.money}}đ</ion-label></div>
                 </div>
                 <div class="col-12">
-                  <ion-label class="promotion-code-2">{{ 'SEVICE_NEW.promotion_code_detail' | translate }}</ion-label>
+                  <ion-label class="promotion-code-2">{{object.detail}}</ion-label>
                 </div>
               </ion-col>
             </ion-row>
-            <ion-row class="padding-bottom-10 padding-top-10 padding-left-10 padding-right-10">
+            <ion-row class="padding-bottom-10 padding-left-10 padding-right-10">
               <ion-col class="ion-col-class" size="12">
                 <div class="col-12 promotion-code-3">
                   <img src="../assets/icon/svg/people.svg" class="item-1" alt=""/>
                   <ion-label class="item-2">{{object.actual_order}}</ion-label>
                 </div>
                 <div class="col-12">
-                  <div class="range-1" [ngStyle]="{'width': getStyleRange1(object._id)}"></div>
+                  <div class="range-1" [ngStyle]="{'width': getStyleRange1(object._id)[0]}"></div>
                   <div class="range-2"></div>
                 </div>
                 <div class="row col-12">
-                  <div class="col-4 promotion-code-4">{{object.moc_1}}</div>
-                  <div class="col-4 promotion-code-5">{{object.moc_2}}</div>
-                  <div class="col-4 promotion-code-6">{{object.moc_3}}</div>
+                  <div class="promotion-code-4">{{object.moc_1}}</div>
+                  <div class="promotion-code-5" [ngStyle]="{'left': getStyleRange1(object._id)[1]}">{{object.moc_2}}</div>
+                  <div class="promotion-code-6">{{object.moc_3}}</div>
                 </div>
               </ion-col>
             </ion-row>
           </ion-grid>
         </div>
         <!-- <img class="" src="{{object.url}}"/> -->
-        <div *ngIf="object.deadline != ''" class="group-1-slider-title">
+        <div *ngIf="object.deadline != ''" class="group-1-deadline">
           <ion-label>{{object.deadline}}</ion-label>
         </div>
       </ion-item>
@@ -58,8 +58,7 @@
   <ion-grid class="margin-top-20">
     <ion-row *ngFor="let arrayServiceGroup of listServiceCategory">
       <ion-col *ngFor="let item of arrayServiceGroup">
-       <!-- <ion-card *ngIf="item._id != ''" (click)="detailPage($event)" id="{{item._id}}"> -->
-        <div class="button-1" *ngIf="item._id != ''" (click)="detailPage($event)" id="{{item._id}}">
+        <div class="button-1" *ngIf="item._id != ''" (click)="detailPage($event, item.modeView, item._id, item.title)" id="{{item._id}}">
           <img class="class-image-button" src="{{item.thumbnail}}"/>
           <ion-row class="ion-no-padding">
             <ion-col class="ion-text-center service-text-custom text-button" >
@@ -71,60 +70,6 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <!-- <ion-grid class="ion-grid-class">
-    <ion-row class="margin-top-20">
-      <ion-col class="ion-col-class" size="3" (click)="moveCallTheCarPage()">
-        <div class="button-1">
-          <img class="class-image-button" src="../assets/icon/svg/service-button-1.svg"/>
-          <ion-label class="text-button">{{ 'SEVICE_NEW.button_title_1' | translate }}</ion-label>
-        </div>
-      </ion-col>
-      <ion-col class="ion-col-class" size="3">
-        <div class="button-1">
-          <img class="class-image-button" src="../assets/icon/svg/service-button-2.svg"/>
-          <ion-label class="text-button">{{ 'SEVICE_NEW.button_title_2' | translate }}</ion-label>
-        </div>
-      </ion-col>
-      <ion-col class="ion-col-class" size="3" (click)="moveRepairServicePage()">
-        <div class="button-1">
-          <img class="class-image-button" src="../assets/icon/svg/service-button-3.svg"/>
-          <ion-label class="text-button">{{ 'SEVICE_NEW.button_title_3' | translate }}</ion-label>
-        </div>
-      </ion-col>
-      <ion-col class="ion-col-class" size="3">
-        <div class="button-1">
-          <img class="class-image-button" src="../assets/icon/svg/service-button-4.svg"/>
-          <ion-label class="text-button">{{ 'SEVICE_NEW.button_title_4' | translate }}</ion-label>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row class="margin-top-20">
-      <ion-col class="ion-col-class" size="3">
-        <div class="button-1">
-          <img class="class-image-button" src="../assets/icon/svg/service-button-5.svg"/>
-          <ion-label class="text-button">{{ 'SEVICE_NEW.button_title_5' | translate }}</ion-label>
-        </div>
-      </ion-col>
-      <ion-col class="ion-col-class" size="3">
-        <div class="button-1">
-          <img class="class-image-button" src="../assets/icon/svg/service-button-6.svg"/>
-          <ion-label class="text-button">{{ 'SEVICE_NEW.button_title_6' | translate }}</ion-label>
-        </div>
-      </ion-col>
-      <ion-col class="ion-col-class" size="3">
-        <div class="button-1">
-          <img class="class-image-button" src="../assets/icon/svg/service-button-7.svg"/>
-          <ion-label class="text-button">{{ 'SEVICE_NEW.button_title_7' | translate }}</ion-label>
-        </div>
-      </ion-col>
-      <ion-col class="ion-col-class" size="3">
-        <div class="button-1">
-          <img class="class-image-button" src="../assets/icon/svg/service-button-8.svg"/>
-          <ion-label class="text-button">{{ 'SEVICE_NEW.button_title_8' | translate }}</ion-label>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid> -->
   <ion-grid class="group-2-style">
     <ion-row class="margin-top-10">
       <ion-col class="group-2-label-1 ion-align-self-start" size="6">
@@ -137,8 +82,8 @@
   </ion-grid>
   <ion-slides [options]="slideOpts_1">
     <ion-slide *ngFor="let object of list_data_silde_2">
-      <ion-card class="margin-right-5 margin-top-5" (click)="moveGianHangDetailPage($event)" id="{{object._id}}">
-        <ion-item lines="none" class="ion-no-padding">
+      <ion-card class="margin-right-5 margin-top-5 border-radius-8" (click)="moveGianHangDetailPage($event)" id="{{object._id}}">
+        <ion-item lines="none" class="ion-no-padding" *ngIf="object.thumbnail != ''">
           <ion-img src="{{object.thumbnail}}" class="img-responsive width-100" alt=""></ion-img>
           <div *ngIf="object.text_note != '' && object.type_note == 1" class="note-1">
             <ion-label>{{object.text_note}}</ion-label>
