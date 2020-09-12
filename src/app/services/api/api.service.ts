@@ -431,16 +431,35 @@ export class ApiService {
       map(results => results)
     );
   }
-  postRequestionOrderProduct(orderInfor:any, paymentMode:any, appartment:any, timeDeliver:any, phone:any, note:any): Observable<any> {
+  postRequestionOrderProduct(orderInfor:any, paymentMode:any, appartment:any, timeDeliver:any, phone:any, note:any, requestShopProduct: any): Observable<any> {
     const params = {
       orderInfor,
       paymentMode,
       appartment,
       timeDeliver,
       phone,
-      note
+      note,
+      requestShopProduct
     }
     return this.http.post(EnvService.getOrderHistory, params).pipe(
+      map(results => results)
+    );
+  }
+  putOrderProductRateStar(orderHistoryId:any, stars:any, userComment:any): Observable<any> {
+    const params = {
+      orderHistoryId,
+      stars,
+      userComment
+    }
+    return this.http.put(EnvService.putOrderHistoryRateStar, params).pipe(
+      map(results => results)
+    );
+  }
+  putOrderProductCancel(orderHistoryId:any): Observable<any> {
+    const params = {
+      orderHistoryId
+    }
+    return this.http.put(EnvService.putOrderHistoryCancel, params).pipe(
       map(results => results)
     );
   }
@@ -450,6 +469,21 @@ export class ApiService {
     return this.http.get(EnvService.getOrderHistory, {
       params
     }).pipe(
+      map(results => results)
+    );
+  }
+  getListOrderHistoryComment(orderHistoryId: any): Observable<any> {
+    const params = new HttpParams().
+      set('orderHistoryId', orderHistoryId).
+      set('_v', (new Date()).getTime().toString());
+    return this.http.get(EnvService.orderHistoryComment, {
+      params
+    }).pipe(
+      map(results => results)
+    );
+  }
+  postOrderHistoryComment(params: any): Observable<any> {
+    return this.http.post(EnvService.orderHistoryComment, params).pipe(
       map(results => results)
     );
   }

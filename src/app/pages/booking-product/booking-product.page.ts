@@ -177,6 +177,7 @@ export class BookingProductPage implements OnInit {
   eventButtonSend() {
     var self = this;
     self.orderInfor = [];
+    var requestShopProduct = "";
     self.list_product.forEach(product => {
       if (product.number > 0) {
         let money = parseInt(product.money.replace(/\./g, "").replace(/đ/g, ""));
@@ -185,6 +186,7 @@ export class BookingProductPage implements OnInit {
           price: money,
           number: product.number
         });
+        requestShopProduct = product._id_requestShopProduct;
       }
     });
     this.loading.present();
@@ -195,7 +197,8 @@ export class BookingProductPage implements OnInit {
       this.form_apartment_id, 
       this.form_start_time, 
       this.form_phone_number, 
-      this.form_note
+      this.form_note,
+      requestShopProduct
     ).subscribe(result => {
       self.loading.dismiss();
       self.flag_show_hide_popup = true;

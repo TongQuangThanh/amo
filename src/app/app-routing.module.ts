@@ -189,7 +189,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/chat-to-shop/chat-to-shop.module').then(m => m.ChatToShopPageModule)
   },
   { 
-    path: 'repair-service', 
+    path: 'repair-service/:category/:category_name', 
     loadChildren: () => import('./pages/repair-service/repair-service.module').then(m => m.RepairServicePageModule)
   },
   { 

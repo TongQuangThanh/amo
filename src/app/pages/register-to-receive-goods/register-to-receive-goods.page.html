@@ -23,7 +23,7 @@
       </ion-item>
       <ion-item lines="none" class="margin-top-20">
         <ion-item lines="none" class="item-common">
-            <ion-textarea class="text-area-1" rows="4" cols="20" placeholder="{{ 'INBOX_29.textarea_placeHolder_1' | translate }}"></ion-textarea>
+            <ion-textarea [(ngModel)]="receiverInfor" class="text-area-1" rows="4" cols="20" placeholder="{{ 'INBOX_29.textarea_placeHolder_1' | translate }}"></ion-textarea>
         </ion-item>
       </ion-item>
       <ion-item lines="none" class="margin-top-20">
@@ -116,12 +116,13 @@
       </ion-item>
       <ion-item lines="none" class="margin-top-20 line-1">
         <ion-item lines="none" class="item-common margin-top-20">
-            <ion-textarea class="text-area-1" rows="4" cols="20" placeholder="{{ 'INBOX_29.textarea_placeHolder_2' | translate }}"></ion-textarea>
+            <ion-textarea [(ngModel)]="form_note" class="text-area-1" rows="4" cols="20" placeholder="{{ 'INBOX_29.textarea_placeHolder_2' | translate }}"></ion-textarea>
         </ion-item>
       </ion-item>
     </ion-list>
     <section class="full-width function-section">
-      <ion-button expand="block" class="amo-button-custom">{{ 'INBOX_29.button_send' | translate }}</ion-button>
+      <ion-button expand="block" class="amo-button-custom inactive_button {{checkActiveButton()}}">{{ 'INBOX_29.button_send' | translate }}</ion-button>
+      <ion-button expand="block" class="amo-button-custom active_button {{checkActiveButton()}}" (click)="eventButtonRegisterNew()">{{ 'INBOX_29.button_send' | translate }}</ion-button>
     </section>
     <div *ngIf="show_popup_tip == true" class="modal-backdrop fade show"></div>
     <div *ngIf="show_popup_tip == true" class="modal" tabindex="-1" role="dialog">

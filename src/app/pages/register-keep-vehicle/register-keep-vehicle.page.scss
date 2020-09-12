@@ -429,3 +429,14 @@ ion-checkbox::part(container) {
     width: 100%;
     height: 100%;
 }
+
+.button-inactive {
+    --background: #D3D6D9 !important;
+    color: #ffffff !important;
+}
+.active_button.button-inactive {
+    display: none !important;
+}
+.inactive_button.button-active {
+    display: none !important;
+}

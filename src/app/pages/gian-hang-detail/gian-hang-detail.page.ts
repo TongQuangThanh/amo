@@ -76,6 +76,7 @@ export class GianHangDetailPage implements OnInit {
         let data_shop_product = result.shopProducts;
         data_shop_product.forEach(product => {
           if (product.requestShopProduct) {
+            self.data_gian_hang['_id'] = product.requestShopProduct._id;
             self.data_gian_hang['text_title'] = product.requestShopProduct.title;
             self.data_gian_hang['text_place'] = product.requestShopProduct.apartment.title + ' - ' + product.requestShopProduct.apartment.campaign.title;
             self.data_gian_hang['text_star_rate'] = product.requestShopProduct.stars;
@@ -133,6 +134,7 @@ export class GianHangDetailPage implements OnInit {
               let background_image = '';
               let object = {
                 '_id' : product._id,
+                '_id_requestShopProduct' : product.requestShopProduct._id,
                 'thumbnail': product.thumbnail,
                 'bg_url': "../assets/images/services/1.png",
                 'deadline' : deadline_convert,

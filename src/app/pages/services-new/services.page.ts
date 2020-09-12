@@ -114,6 +114,7 @@ export class ServicesPage implements OnInit {
           }
           let object = {
             '_id' : product.shopProduct._id,
+            '_id_requestShopProduct' : product.requestShopProduct._id,
             'thumbnail': product.shopProduct.thumbnail,
             'bg_url': "../assets/images/services/1.png",
             'deadline' : deadline_convert,
@@ -249,11 +250,11 @@ export class ServicesPage implements OnInit {
     });
   }
 
-  detailPage(event, modeView, id, name) {
+  detailPage(modeView, id, name) {
     if (modeView == "listView") {
       this.navCtrl.navigateForward('/user-shop-by-category/' + id + '/' + name);
     } else {
-      this.navCtrl.navigateForward('/repair-service');
+      this.navCtrl.navigateForward('/repair-service/' + id + '/' + name);
     }
     // this.navCtrl.navigateForward('/service-list-by-category/' + event.currentTarget.id);
   }

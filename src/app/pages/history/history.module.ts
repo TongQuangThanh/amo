@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-
 import { IonicModule } from '@ionic/angular';
 import { HistoryPage } from './history.page';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -24,6 +23,7 @@ const routes: Routes = [
     SuperTabsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [HistoryPage]
+  declarations: [HistoryPage],
+  providers: [DatePipe]
 })
 export class HistoryPageModule {}

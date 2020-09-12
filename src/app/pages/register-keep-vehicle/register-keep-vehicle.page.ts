@@ -4,6 +4,8 @@ import { ApiService } from '../../services/api/api.service';
 import { ActionSheetController, NavController } from '@ionic/angular';
 import { LoadingService } from '../../services/loading/loading.service';
 import { ModalController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
+import { AlertService } from '../../services/alert/alert.service';
 
 @Component({
   selector: 'app-register-keep-vehicle',
@@ -12,6 +14,7 @@ import { ModalController } from '@ionic/angular';
 })
 export class RegisterKeepVehiclePage implements OnInit {
   listDepartment: any;
+  listDepartmentByID: any;
   form_apartment_id:any;
   form_apartment_class:any;
   form_fullname: any;
@@ -32,6 +35,8 @@ export class RegisterKeepVehiclePage implements OnInit {
   image_select_url_1: any;
   image_select_url_2: any;
   list_vehicle:any;
+  form_note: any;
+  form_note_tab2: any;
 
   constructor(
     public modalController: ModalController,
@@ -39,7 +44,9 @@ export class RegisterKeepVehiclePage implements OnInit {
     public actionSheetController: ActionSheetController,
     private loading: LoadingService,
     private navCtrl: NavController,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private translate: TranslateService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -60,13 +67,12 @@ export class RegisterKeepVehiclePage implements OnInit {
     this.form_bien_kiem_soat_class = "";
     this.form_date_time = "";
     this.form_date_time_class = "";
-    this.list_vehicle = [
-      {phuongtien: 'Ô tô', hang_xe: 'Madza', model: 'CX-8', bien_so: '30F-888.88'},
-      {phuongtien: 'Xe máy', hang_xe: 'Honda', model: 'Wave Alpha', bien_so: '29B1-666.66'},
-      {phuongtien: 'Xe đạp', hang_xe: 'Mini', model: '', bien_so: ''}
-    ];
+    this.list_vehicle = [];
     this.image_select_url_1 = "";
     this.image_select_url_2 = "";
+    this.listDepartmentByID = {};
+    this.form_note = "";
+    this.form_note_tab2 = "";
   }
   getListApartment(){
     var self = this;
@@ -75,12 +81,99 @@ export class RegisterKeepVehiclePage implements OnInit {
       .subscribe(result => {
         console.log(result.userApartments);
         self.listDepartment = result.userApartments;
+        self.listDepartment.forEach(data =>{
+          self.listDepartmentByID[data.apartment ._id] = data;
+        })
         self.loading.dismiss()
     },
     error => {
       self.loading.dismiss();
     });
   }
+
+  eventButtonRegisterNew() {
+    var self = this;
+    let dataApartment = self.listDepartmentByID[this.form_apartment_id];
+    const params = {
+      // category: "",
+      title: this.translate.instant('INBOX_31.title'),
+      content: this.form_note,
+      campaign: dataApartment.campaign._id,
+      apartment: this.form_apartment_id,
+      // createdBy: "",
+      attachments: [],
+      type: "parking",
+      parkingFullName: this.form_fullname,
+      parkingType: this.form_vehicle_id,
+      parkingModel: this.form_model,
+      parkingBrand: this.form_hang_xe,
+      parkingLicense: this.form_bien_kiem_soat,
+      parkingDate: this.form_date_time,
+      parkingIdentityImageFront: this.image_select_url_1,
+      parkingIdentityImageBack: this.image_select_url_2,
+    };
+
+    this.loading.present();
+    this.apiService.addFeedback(params)
+      .subscribe(result => {
+        self.loading.dismiss();
+        self.alertService.presentToast(this.translate.instant('ADD_REQUEST.message_add_request_sucess'));
+        self.navCtrl.back();
+      },
+      error => {
+        self.loading.dismiss();
+        self.alertService.presentToast(this.translate.instant('ADD_REQUEST.message_add_request_fail'));
+      }
+    );
+  }
+
+  eventButtonRemoveVehicles() {
+    var self = this;
+    let dataApartment = self.listDepartmentByID[this.tab2_form_apartment_id];
+    let count = 0;
+    this.list_vehicle.forEach(data => {
+      if(data.checkbox == true) {
+        count++;
+      }
+    });
+    this.list_vehicle.forEach(data => {
+      if(data.checkbox == true) {
+        const params = {
+          // category: "",
+          title: this.translate.instant('INBOX_31.sub_title_2'),
+          content: this.form_note_tab2,
+          campaign: dataApartment.campaign._id,
+          apartment: this.tab2_form_apartment_id,
+          // createdBy: "",
+          attachments: [],
+          type: "cancel",
+          cancelType: data.vehicles.type,
+          cancelModel: data.vehicles.model,
+          cancelIdentity: data.vehicles.identity
+    
+        };
+        this.loading.present();
+        this.apiService.addFeedback(params)
+          .subscribe(result => {
+            count--;
+            if (count == 0) {
+              self.loading.dismiss();
+            }
+            self.alertService.presentToast(this.translate.instant('ADD_REQUEST.message_add_request_sucess'));
+            self.navCtrl.back();
+          },
+          error => {
+            count--;
+            if (count == 0) {
+              self.loading.dismiss();
+            }
+            self.alertService.presentToast(this.translate.instant('ADD_REQUEST.message_add_request_fail'));
+          }
+        );
+      }
+    });
+  }
+
   ionChangePulldown1(event){
     if (this.form_apartment_id != "") {
       this.form_apartment_class = 'has-input-value';
@@ -131,11 +224,43 @@ export class RegisterKeepVehiclePage implements OnInit {
     }
   }
   tab2_ionChangePulldown1(event){
+    var self = this;
     if (this.tab2_form_apartment_id != "") {
       this.tab2_form_apartment_class = 'has-input-value';
+      let dataApartment = self.listDepartmentByID[this.tab2_form_apartment_id];
+      self.list_vehicle = [];
+      dataApartment.apartment.vehicles.forEach(vehicles => {
+        let phuongtien = '';
+        if (vehicles.type == 'car') {
+          phuongtien = self.translate.instant('INBOX_31.pulldown_2_option_1');
+        } else if (vehicles.type == 'motorbike') {
+          phuongtien = self.translate.instant('INBOX_31.pulldown_2_option_2');
+        } else if (vehicles.type == 'bike') {
+          phuongtien = self.translate.instant('INBOX_31.pulldown_2_option_3');
+        } else {
+          phuongtien = self.translate.instant('INBOX_31.pulldown_2_option_4');
+        }
+        let object = {
+          _id: vehicles._id,
+          phuongtien: phuongtien, 
+          hang_xe: '', 
+          model: vehicles.model, 
+          bien_so: vehicles.identity,
+          checkbox: false,
+          vehicles: vehicles
+        };
+        self.list_vehicle.push(object);
+      });
     } else {
       this.tab2_form_apartment_class = "";
     }
+  }
+  ionChangeCheckBox(_id) {
+    this.list_vehicle.forEach(data => {
+      if (data._id == _id) {
+        data.checkbox = !data.checkbox;
+      }
+    })
   }
 
   convertListImage(_index) {
@@ -256,6 +381,22 @@ export class RegisterKeepVehiclePage implements OnInit {
     }
     if (_index == 2) {
       this.image_select_url_2 = "";
+    }
+  }
+  checkActiveButton() {
+    let count = 0;
+    this.list_vehicle.forEach(data => {
+      if(data.checkbox == true) {
+        count++;
+      }
+    });
+    if (this.tab2_form_apartment_id == '' 
+      || count == 0
+      || this.form_note_tab2 == ''
+    ) {
+      return 'button-inactive'
+    } else {
+      return "button-active";
     }
   }
 }
