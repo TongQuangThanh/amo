@@ -1,4 +1,4 @@
-<ion-header id="main-header" class="ion-no-border" >
+<!-- <ion-header id="main-header" class="ion-no-border" [ngStyle]="{'display': getStyleHeader(1)}">
     <ion-toolbar class="header-toolbar">
       <ion-buttons class="btn-account" slot="start" (click)="goToMyAccount()">
         <ion-avatar class="avatar-custom">
@@ -29,10 +29,11 @@
             </div>
         </div>
     </div>
-</ion-header>
-<ion-header id="sub-header" class="ion-no-border" style="display: none;">
-    <ion-toolbar class="sub-header-toolbar"></ion-toolbar>
+</ion-header> -->
+<ion-header id="sub-header" class="ion-no-border w3-animate-top" [ngStyle]="{'display': getStyleHeader(2)}">
+    <!-- <div class="sub-header-toolbar"></div> -->
     <div class="sub-amountPay-content">
+        <!-- <div class="sub-header-toolbar"></div> -->
         <div id="content-button-child" class="sub-function-content-button">
             <div class="ion-float-left div-avatar-content-item btn-pay_now ion-text-center" (click)="changePayment()">
                 <img class="img-avatar-small"  src="../../../assets/icon/pay_now.svg"/>
@@ -56,7 +57,39 @@
     </div>
 </ion-header>
 
-<ion-content [style.height.px]="heightScreen" [scrollEvents]="true" (ionScroll)="onScroll($event)">
+<ion-content #content [style.height.px]="heightScreen" [scrollEvents]="true" (ionScroll)="onScroll($event)">
+    <div id="main-header">
+        <ion-toolbar class="header-toolbar">
+            <ion-buttons class="btn-account" slot="start" (click)="goToMyAccount()">
+              <ion-avatar class="avatar-custom">
+                  <img src="{{avatar}}" />
+              </ion-avatar>
+              <ion-label class="avatar-content-title">{{userName}}</ion-label>
+            </ion-buttons>
+            <ion-chip slot="end" class="button-my-home" (click)="goToMyHome()">
+              <img width="12px" src="../../../assets/icon/home-icon.svg" />
+                <ion-label class="myhome-content-title">{{ 'HOME.my_home' | translate }}</ion-label>
+            </ion-chip>
+          </ion-toolbar>
+          <div class="amountPay-content">
+              <div id="content-button-child" class="function-content-button">
+                  <div class="ion-float-left div-avatar-content-big btn-paynow" (click)="changePayment()">
+                      <ion-item lines="none" class="content-item">
+                          <ion-icon item-start name="pay-now" class="content-icon" src="/assets/icon/pay_now.svg"></ion-icon>
+                          <span class="image-caption-pay">{{ 'HOME.pay_now' | translate }}</span>
+                      </ion-item>
+                      <ion-label class="amountPay-number">3.345.000 <span class="amountPay-unit">vnd</span></ion-label>
+                  </div>
+                  <div class="ion-float-right div-avatar-content-big btn-new-request" (click)="createRequest()">
+                      <ion-item lines="none" class="content-item">
+                          <ion-icon item-start name="request-icon" class="content-icon" src="/assets/icon/request_icon.svg"></ion-icon>
+                          <span class="image-caption-big">{{ 'HOME.create_request' | translate }}</span>
+                      </ion-item>
+                      <ion-label class="request-detail">{{ 'HOME.create_request_detail' | translate }}</ion-label>
+                  </div>
+              </div>
+          </div>
+    </div>
     <div id="function-content-big" class="function-content">
         <div class="ion-float-left div-avatar-content" (click)="changeCarBooking()">
             <img class="img-avatar"  src="../../../assets/icon/book-car.svg"/>
@@ -78,7 +111,7 @@
             <ion-label class="image-caption">{{ 'HOME.other' | translate }}</ion-label>
         </div>
     </div>
-    <div class="noti-content">
+    <div class="noti-content" id="div-text-place">
         <!-- noti-content -->
         <ion-label class="title-top-new">{{ 'HOME.top_notification' | translate }}</ion-label>
         <div class="ion-float-right" (click)="goToNotification()">
@@ -87,7 +120,8 @@
         <ion-list class="list-view-custom">
             <ion-card button class="card-content-custom" *ngFor="let item of listArticles" (click)="detailPageNoti($event)" id="{{item._id}}">                       
                 <div class="card-img">
-                    <ion-img src="{{item.thumbnail}}" class="img-responsive" alt=""></ion-img>
+                    <ion-img *ngIf="item.thumbnail != null" src="{{item.thumbnail}}" class="img-responsive" alt=""></ion-img>
+                    <ion-img *ngIf="item.thumbnail == null" src="assets/common/no-thumbnail.png" class="img-responsive" alt=""></ion-img>
                     <ion-label class="badge-corner badge-corner-base">{{formatString(item.updatedAt)}}</ion-label>
                     <ion-label class="badge-corner-right badge-corner-icon hide"><ion-icon class="custom-pined" name="custom-pined" src="assets/icon/custom-pined.svg"></ion-icon></ion-label>
                 </div>
@@ -109,8 +143,8 @@
                 </div>
                 <div class="ion-float-left">
                     <ion-item lines="none" class="card-bottom">
-                        <ion-icon item-start name="custom-share" class="card-bottom-icon" src="assets/icon/custom-share.svg"></ion-icon>
-                        <span class="card-bottom-label"> {{item.sharesCount}} </span>
+                        <ion-icon item-start name="custom-attach" class="card-bottom-icon" src="assets/icon/custom-attach.svg"></ion-icon>
+                        <span class="card-bottom-label"> {{item.attachments.length}} </span>
                     </ion-item>
                 </div>
             </ion-card>
@@ -120,7 +154,9 @@
         <ion-list class="list-view-news">
             <ion-card button class="card-content-news" *ngFor="let item of listNews" (click)="detailPage($event)" id="{{item._id}}">
                 <div class="card-img">
-                    <ion-img src="{{item.thumbnail}}" class="img-responsive" alt=""></ion-img>
+                    <!-- <ion-img src="{{item.thumbnail}}" class="img-responsive" alt=""></ion-img> -->
+                    <ion-img *ngIf="item.thumbnail != null" src="{{item.thumbnail}}" class="img-responsive"></ion-img>       
+                    <ion-img *ngIf="item.thumbnail == null" src="assets/common/no-thumbnail.png" class="img-responsive"></ion-img>
                     <ion-label class="badge-corner badge-corner-base">{{formatString(item.updatedAt)}}</ion-label>
                 </div>
                 <ion-item lines="none" style="margin-top: 10px;">

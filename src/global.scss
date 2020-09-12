@@ -397,6 +397,10 @@ ion-back-button {
     font-size: 18px;
     color: #51D2B5;
 }
+.check-default {
+    font-size: 18px;
+    color: #FFFFFF;
+}
 ion-label {
     text-transform: none;
 }
@@ -653,3 +657,8 @@ ion-item.textarea-item.item-has-focus {
     white-space: normal !important;
 }
 
+.btn-close-popup {
+    width: 30px;
+    height: 30px;
+    justify-content: center;
+}

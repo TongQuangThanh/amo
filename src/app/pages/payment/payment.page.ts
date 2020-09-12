@@ -21,7 +21,7 @@ export class PaymentPage implements OnInit {
   listPaymentBills: any;
   currentPage: number;
   numberRecordOnPage: number;
-  segmentModel: string = "service_fee";
+  segmentModel: string = "all";
 
   constructor(
     private translate: TranslateService,
@@ -56,6 +56,7 @@ export class PaymentPage implements OnInit {
     this.currentPage = 1;
     this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
     this.getPaymentLogs(this.currentPage, this.numberRecordOnPage, '', '', null, true);
+    
   }
 
   getPaymentLogs(page: number, limit: number, category: string, search: string, event: any, isRefresh: boolean) {
@@ -81,6 +82,7 @@ export class PaymentPage implements OnInit {
           }
         }
         
+        console.log('paymentbill'+self.listPaymentBills)
         if (event) {
           event.target.complete();
         }

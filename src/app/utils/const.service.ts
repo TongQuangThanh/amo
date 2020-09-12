@@ -1,7 +1,7 @@
 
 
 export const ConstService = {
-  NUMBER_RECORD_NOTI_ON_PAGE: 3,
+  NUMBER_RECORD_NOTI_ON_PAGE: 5,
   NUMBER_RECORD_ON_PAGE: 10,
   ANIMATION_OPTION_LEFT: {
     direction: 'left',

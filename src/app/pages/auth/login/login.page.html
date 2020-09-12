@@ -1,7 +1,7 @@
 <ion-header class="ion-no-border">
   <ion-toolbar class="header-toolbar">
     <ion-buttons slot="start">
-      <ion-back-button text="" icon="arrow-back-outline"></ion-back-button>
+      <ion-back-button text="" name="chevron-back"></ion-back-button>
     </ion-buttons>
     <ion-title>{{ 'LOGIN.title' | translate }}</ion-title>
   </ion-toolbar>
@@ -18,9 +18,9 @@
     <ion-item class="input-item" lines="none">
       <ion-icon class="input-icon" name="custom-locker" src="/assets/icon/custom-locker.svg" slot="start"></ion-icon>
       <ion-label class="input-floating-label" position="floating">{{ 'LOGIN.placeholder_pass' | translate }}</ion-label>
-      <ion-input class="input-text" [(ngModel)]="password" type="password" name="password"></ion-input>
+      <ion-input class="input-text" [type]="password_type" [(ngModel)]="password" name="password"></ion-input>
       <!-- <ion-icon class="clear-input check-default" name="close-circle" slot="end"></ion-icon> -->
-      <ion-icon class="pass-hide-icon" name="eye-off-outline" src="/assets/icon/eye-off-outline.svg" slot="end"></ion-icon>
+      <ion-icon class="pass-hide-icon" slot="end" [name]="passwordToggleIcon" (click)="togglePassword()"></ion-icon>
     </ion-item>
     <ion-label color="danger" class="ion-text-wrap" *ngIf="errorMessage != ''">{{errorMessage}}</ion-label>
   </div>

@@ -1,7 +1,7 @@
 <ion-header class="ion-no-border">
   <ion-toolbar class="header-toolbar">
     <ion-buttons slot="start">
-      <ion-back-button text="" icon="arrow-back-outline"></ion-back-button>
+      <ion-back-button text="" icon="chevron-back"></ion-back-button>
     </ion-buttons>
     <ion-title>{{titlePage}}</ion-title>
   </ion-toolbar>
@@ -20,7 +20,7 @@
   <section class="section-content margin-top-10">
     <ion-item lines="none" class="item-payment-date">
       <ion-label class="section-title">{{ 'PAYMENT_INFOR.payment_date' | translate }}</ion-label>
-      <ion-label class="due-date ion-float-right">{{formatString(paymentStartAt)}} - {{formatString(paymentEndAt)}}</ion-label>
+      <ion-label class="due-date ion-float-right">{{formatString(paymentEndAt)}}</ion-label>
     </ion-item>
   </section>
 
@@ -76,7 +76,7 @@
   </section>
   
   <ion-toolbar class="function-button">
-    <ion-button class="default-button two-button">{{ 'PAYMENT_INFOR.complain' | translate }}</ion-button>
+    <ion-button class="default-button two-button" (click)="paymentComplainModal()">{{ 'PAYMENT_INFOR.complain' | translate }}</ion-button>
     <ion-button class="amo-button two-button" *ngIf="paymentStatus == 'publish'" (click)="paymentSuccessModal()">{{ 'PAYMENT_INFOR.pay_now' | translate }}</ion-button>
   </ion-toolbar>
   

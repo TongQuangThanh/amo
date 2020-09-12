@@ -97,7 +97,7 @@ export class MyHomeDetailPage implements OnInit {
     this.navCtrl.navigateForward('/add-home-member');
   }
   addVehicle(){
-    this.navCtrl.navigateForward('/add-home-vehicle');
+    this.navCtrl.navigateForward('/register-keep-vehicle');
   }
 
 }

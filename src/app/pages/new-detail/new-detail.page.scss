@@ -132,3 +132,22 @@ ion-toolbar {
     margin-bottom: 13px;
     --box-shadow: none;
 }
+
+.w3-animate-top {
+    background: #FA7268;
+    //background: linear-gradient(#FA7268, transparent);
+    transition: transform 1s;
+    //opacity: 1;
+    ion-back-button {
+        color: #FFFFFF;
+    }
+    ion-title.ios {
+        color: #FFFFFF;
+        margin-left: 10px;
+    }
+    ion-title.md {
+        color: #FFFFFF;
+    }
+    animation:animatetop 0.5s;
+}
+@keyframes animatetop{from{opacity:0} to{opacity:1}}

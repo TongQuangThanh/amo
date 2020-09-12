@@ -141,10 +141,11 @@ super-tab-button.active {
 }
 .function-item {
     position: absolute;
-    bottom: 20px;
+    //top: 90%;
+    bottom: 0;
     left: 0;
     right: 0;
-    --background: transparent;
+    --background: #ffffff;
 }
 .delete-button{
     --background: #FEEAE8;
@@ -156,7 +157,7 @@ super-tab-button.active {
     --border-radius: 8px;
     width: 180px;
     height: 44px;
-    margin: 0 10px;
+    margin: 16px 10px 16px 10px;
     --box-shadow: none;
 
 }
@@ -179,7 +180,7 @@ super-tab-button.active {
     --border-radius: 8px;
     width: 180px;
     height: 44px;
-    margin: 0 10px;
+    margin: 16px 10px 16px 10px;
     --box-shadow: none;
 }
 .add-button-label {
