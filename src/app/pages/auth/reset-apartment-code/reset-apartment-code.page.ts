@@ -3,6 +3,7 @@ import { Validators, FormGroup, FormArray, FormControl, FormBuilder } from '@ang
 import { LoadingService } from '../../../services/loading/loading.service';
 import { ApiService } from '../../../services/api/api.service';
 import { TranslateConfigService } from '../../../translate-config.service';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-reset-apartment-code',
@@ -23,12 +24,137 @@ export class ResetApartmentCodePage implements OnInit {
   constructor(
     private apiService: ApiService,
     private loading: LoadingService,
-    private translateConfigService: TranslateConfigService
+    private modalController: ModalController,
   ) {
-    this.selectedLanguage = this.translateConfigService.getDefaultLanguage();
+    this.initiateBuilder();
   }
 
   ngOnInit() {
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    let stylebody = document.body.style;
+    if (changes.color != undefined) {
+      stylebody.setProperty('--borderColor', changes.color.currentValue);
+    }
+    if (changes.isHidden != undefined) {
+      if (changes.isHidden.currentValue == false) {
+        stylebody.setProperty('--charShape', 'none');
+      } else {
+        stylebody.setProperty('--charShape', 'disc');
+      }
+    }
+
+    this.initiateBuilder();
+
+  }
+
+  initiateBuilder() {
+    this.pinCodeFormGroup = new FormGroup({});
+
+    for (let i = 0; i < this.codeSize; i++) {
+      let formController: FormControl = new FormControl({ value: '', disabled: true }, [Validators.required]);
+      this.pinCodeFormGroup.addControl('codeFiled' + i, formController);
+    }
+
+    let v_pinCodeArray: any[] = [];
+    Object.keys(this.pinCodeFormGroup.value).forEach(function (key) {
+      v_pinCodeArray.push(key);
+    });
+
+    this.pinCodeArray = v_pinCodeArray;
+    this.pinCodeFormGroup.get('codeFiled0').enable();
+  }
+  ngAfterViewInit() {
+    let input: HTMLElement = document.querySelectorAll('.pinCodeInput').item(0) as HTMLElement;
+    input.focus();
+  }
+
+
+  onKeyUp($event: any, item: any, index: any) {
+    let v_index;
+
+    let reg = new RegExp("[A-Za-z0-9]");
+
+    if ($event.key == "Backspace") {
+      if (index == 0) {
+        v_index = 0;
+      } else {
+        v_index = index - 1;
+        this.pinCodeFormGroup.get('codeFiled' + index).disable();
+
+      }
+    } else {
+      if (reg.test($event.target.value)) {
+
+        if (index == this.codeSize - 1) {
+          v_index = this.codeSize - 1;
+        } else {
+          v_index = index + 1;
+          this.pinCodeFormGroup.get('codeFiled' + v_index).enable();
+
+        }
+      }
+    }
+
+    let input: HTMLElement = document.querySelectorAll('.pinCodeInput').item(v_index) as HTMLElement;
+    input.focus();
+
+
+    if (index == this.codeSize - 1 && $event.key != "Backspace") {
+      let pinCodeValue: string = '';
+      Object.keys(this.pinCodeFormGroup.value).forEach((key) => {
+        pinCodeValue += this.pinCodeFormGroup.value[key];
+      });
+
+      if (this.pinCodeFormGroup.valid) {
+        this.checkingPincode(pinCodeValue);
+      } else {
+      }
+    }
+  }
+
+  onKeyDown($event: any) {
+    if ($event.key != "Backspace") {
+
+      if ($event.target.value.length == 1) {
+        return false;
+      }
+
+    }
+  }
+
+  checkingPincode(pinCodeValue:string){
+    const self = this;
+    this.isChecking = true;
+    this.loading.present();
+    this.apiService.addApartmentToUser(pinCodeValue.toUpperCase())
+      .subscribe(result => {
+        self.isError = false;
+        self.loading.dismiss();
+        self.finishPinCode();
+    },
+    error => {
+      this.isError = true;
+      this.isChecking = false;
+      self.loading.dismiss();
+    });
+  }
+
+  async finishPinCode(){
+    const onClosedData = JSON.stringify({
+      result: "0",
+      message: "success",
+    });
+    await this.modalController.dismiss(onClosedData);
+  }
+
+  async closeModal() {
+    const onClosedData = JSON.stringify({
+      result: "1",
+      message: "cancel",
+    });
+    await this.modalController.dismiss(onClosedData);
   }
 
 }

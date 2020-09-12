@@ -1,8 +1,5 @@
 <ion-header class="ion-no-border">
   <ion-toolbar class="header-toolbar">
-    <!-- <ion-buttons slot="start">
-      <ion-back-button text="" icon="arrow-back-outline"></ion-back-button>
-    </ion-buttons> -->
     <ion-title class="title-info">{{ 'NOTIFICATION.title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -19,7 +16,8 @@
   <ion-list>
     <ion-card class="info-card" button *ngFor="let item of listArticles" (click)="detailPage($event)" id="{{item._id}}">
       <div class="card-img">
-        <ion-img src="{{item.thumbnail}}"></ion-img>        
+        <ion-img *ngIf="item.thumbnail != null" src="{{item.thumbnail}}"></ion-img>       
+        <ion-img *ngIf="item.thumbnail == null" src="assets/common/no-thumbnail.png"></ion-img>  
         <ion-label class="badge-corner badge-corner-base">{{formatString(item.updatedAt)}}</ion-label>
         <ion-label class="badge-corner-right badge-corner-icon hide"><ion-icon class="custom-pined" name="custom-pined" src="assets/icon/custom-pined.svg"></ion-icon></ion-label>
       </div>
@@ -27,30 +25,27 @@
       <ion-item lines="none">
         <ion-card-title class="ion-text-wrap content-two-line content-title">{{item.title}}</ion-card-title>
       </ion-item>
-      <!-- <ion-item lines="none">
-        <ion-label class="ion-text-wrap content-two-line content-sub">{{item.excerpt}}</ion-label>
-      </ion-item> -->
       
-        <div class="ion-float-left">
+      <div class="ion-float-left">
+        <ion-item lines="none" class="card-bottom">
+            <ion-icon item-start name="eye-outline" class="card-bottom-icon"></ion-icon>
+            <span class="image-caption-big" class="card-bottom-label"> {{item.readsCount}} </span>
+        </ion-item>
+      </div>
+      <div class="ion-float-left">
           <ion-item lines="none" class="card-bottom">
-              <ion-icon item-start name="eye-outline" class="card-bottom-icon"></ion-icon>
-              <span class="image-caption-big" class="card-bottom-label"> {{item.readsCount}} </span>
+              <ion-icon item-start name="custom-comment" class="card-bottom-icon" src="assets/icon/custom-comment.svg"></ion-icon>
+              <span class="image-caption-big" class="card-bottom-label"> {{item.commentsCount}} </span>
           </ion-item>
-        </div>
-        <div class="ion-float-left">
-            <ion-item lines="none" class="card-bottom">
-                <ion-icon item-start name="custom-comment" class="card-bottom-icon" src="assets/icon/custom-comment.svg"></ion-icon>
-                <span class="image-caption-big" class="card-bottom-label"> {{item.commentsCount}} </span>
-            </ion-item>
-        </div>
-        <div class="ion-float-left">
-            <ion-item lines="none" class="card-bottom">
-                <ion-icon item-start name="custom-attach" class="card-bottom-icon" src="assets/icon/custom-attach.svg"></ion-icon>
-                <span class="image-caption-big" class="card-bottom-label"> 2 </span>
-            </ion-item>
-        </div>
+      </div>
+      <div class="ion-float-left">
+          <ion-item lines="none" class="card-bottom">
+              <ion-icon item-start name="custom-attach" class="card-bottom-icon" src="assets/icon/custom-attach.svg"></ion-icon>
+              <span class="image-caption-big" class="card-bottom-label"> {{item.attachments.length}} </span>
+          </ion-item>
+      </div>
     </ion-card>
-    <ion-card class="info-card" button>
+    <ion-card class="info-card" style="display: none;">
       <div class="card-img">
         <ion-img src="assets/common/thumbtest.jpg"></ion-img>
         <ion-icon class="badge-corner badge-corner-base" name="eye-outline" src="assets/icon/custom-pined.svg"></ion-icon>

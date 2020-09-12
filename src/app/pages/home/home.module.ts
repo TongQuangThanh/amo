@@ -7,9 +7,11 @@ import { IonicModule } from '@ionic/angular';
 
 import { HomePage } from './home.page';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import {ScrollingHeaderModule} from 'ionic-scrolling-header';
 
 @NgModule({
   imports: [
+    ScrollingHeaderModule,
     CommonModule,
     FormsModule,
     IonicModule,

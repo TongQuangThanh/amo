@@ -199,7 +199,10 @@
         "place_holder_input": "Write a comment...",
         "pull_to_refresh": "Pull to refresh",
         "loadding_more": "Loading more data...",
-        "msg_apartment_not_correct" : "You haven't apartment information"
+        "msg_apartment_not_correct" : "You haven't apartment information",
+        "reply" : "Reply",
+        "reply_label" : "Reply to",
+        "cancel_label" : "Cancel"
     },
     "NOTIFICATION_POLL" : {
         "title" : "Khảo sát cư dân về các vấn đề ...",
