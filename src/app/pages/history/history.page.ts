@@ -4,6 +4,7 @@ import { ApiService } from '../../services/api/api.service';
 import { ActionSheetController, NavController } from '@ionic/angular';
 import { LoadingService } from '../../services/loading/loading.service';
 import { ModalController } from '@ionic/angular';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-history',
@@ -19,86 +20,64 @@ export class HistoryPage implements OnInit {
     public actionSheetController: ActionSheetController,
     private loading: LoadingService,
     private navCtrl: NavController,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private datePipe: DatePipe
   ) { }
 
   ngOnInit() {
-    this.data_history = [
-      {
-        id_tab: "0",
-        title: "Tất cả",
-        data: [
-          {
-            id: "1",
-            status: "1",
-            text_rate: "4.5",
-            title: "Miến trộn quán Cây Xoài - Đống Đa, Hà Nội",
-            money: "75.000 đ",
-            avatar: "../assets/images/services/6.png",
-            name: "Nguyễn Doãn Vũ",
-            role: "CEO",
-            code_orders: "68686",
-            date_time: "21/07/2020 - 02:14",
-          },
-          {
-            id: "2",
-            status: "2",
-            text_rate: "4.5",
-            title: "Điện tử, điện lạnh - Sửa chữa bảo dưỡng điều hòa",
-            money: "75.000 đ",
-            avatar: "../assets/images/services/6.png",
-            name: "Nguyễn Doãn Vũ",
-            role: "CEO",
-            code_orders: "68686",
-            date_time: "21/07/2020 - 02:14",
-          },
-          {
-            id: "3",
-            status: "3",
-            text_rate: "4.5",
-            title: "Điện tử, điện lạnh - Sửa chữa bảo dưỡng điều hòa",
-            money: "75.000 đ",
-            avatar: "../assets/images/services/6.png",
-            name: "Nguyễn Doãn Vũ",
-            role: "CEO",
-            code_orders: "68686",
-            date_time: "21/07/2020 - 02:14",
-          },
-          {
-            id: "3",
-            status: "3",
-            text_rate: "4.5",
-            title: "Điện tử, điện lạnh - Sửa chữa bảo dưỡng điều hòa",
-            money: "75.000 đ",
-            avatar: "../assets/images/services/6.png",
-            name: "Nguyễn Doãn Vũ",
-            role: "CEO",
-            code_orders: "68686",
-            date_time: "21/07/2020 - 02:14",
-          },
-          {
-            id: "3",
-            status: "3",
-            text_rate: "4.5",
-            title: "Điện tử, điện lạnh - Sửa chữa bảo dưỡng điều hòa",
-            money: "75.000 đ",
-            avatar: "../assets/images/services/6.png",
-            name: "Nguyễn Doãn Vũ",
-            role: "CEO",
-            code_orders: "68686",
-            date_time: "21/07/2020 - 02:14",
-          },
-        ]
-      }
-    ]
-    this.getAllOrderHistory();
-    // this.getAllServiceLog();
+    this.data_history = [];
+    this.getAllOrderHistoryComment();
   }
-  getAllOrderHistory() {
+  getAllOrderHistoryComment() {
     var self = this;
     this.apiService.getListOrderHistorys()
       .subscribe(result => {
-        // self.data_history = result.ordersHistory;
+        self.data_history = [];
+        result.ordersHistory.forEach(product => {
+          if (self.data_history.length == 0) {
+            self.data_history = [{
+              id_tab: "0",
+              title: "Tất cả",
+              data: []
+            }];
+          }
+          let index = self.getIndexCategoryInList(product.requestShopProduct.category._id);
+          if (index < 0) {
+            self.data_history.push({
+              id_tab: product.requestShopProduct.category._id,
+              title: product.requestShopProduct.category.title,
+              data: []
+            });
+            index = self.data_history.length - 1;
+          }
+          let money = 0;
+          if (product.orderInfor && product.orderInfor.length > 0) {
+            product.orderInfor.forEach(record => {
+              money = money + record.number * record.price;
+            })
+          }
+          let money_convert = self.convertFormatMoney(money);
+          var date = new Date(product.orderAt);
+          var date_convert = this.datePipe.transform(date,"dd/MM/yyyy hh:mm");
+          let object = {
+            _id: product._id,
+            status: product.status ? product.status : "",
+            text_rate: product.stars,
+            title: product.requestShopProduct ? product.requestShopProduct.title : "",
+            money: money_convert,
+            avatar: product.createdBy.avatar,
+            name: product.createdBy.displayName,
+            role: "CEO",
+            code_orders: product._id,
+            date_time: date_convert,
+            orderInfor: product.orderInfor,
+            createdBy: product.createdBy
+          }
+          self.data_history[index]['data'].push(object);
+
+          let index_all = self.getIndexCategoryInList("0");
+          self.data_history[index_all]['data'].push(object);
+        });
         self.loading.dismiss();
     },
     error => {
@@ -106,21 +85,42 @@ export class HistoryPage implements OnInit {
     });
   }
 
-
-  getAllServiceLog() {
-    var self = this;
-    this.apiService.getListServiceLogs()
-      .subscribe(result => {
-        self.data_history = result.serviceLogs;
-        self.loading.dismiss();
-    },
-    error => {
-      self.loading.dismiss();
-    });
-  }
-
-
-  gotoHistoryDetail() {
+  gotoHistoryDetail(object) {
+    localStorage.setItem('data-order-history', JSON.stringify(object));
     this.navCtrl.navigateForward('/history-detail');
+  }
+  convertFormatMoney(value) {
+    value = value.toString();
+    let convert1 = "";
+    let convert2 = "";
+    let count1 = value.length;
+    for(let i = 1; i <= count1; i++) {
+      if (i % 3 == 0 && i != count1) {
+        convert1 = convert1 + value[count1 - i] + '.';
+      } else {
+        convert1 = convert1 + value[count1 - i];
+      }
+    }
+    let count2 = convert1.length
+    for(let i = 1; i <= count2; i++) {
+      convert2 = convert2 + convert1[count2 - i];
+    }
+    return convert2;
+  }
+  getIndexCategoryInList(id_tab) {
+    var self = this;
+    let index = -1;
+    let index_value = -1;
+    self.data_history.forEach(object => {
+      index++;
+      if (object.id_tab == id_tab) {
+        index_value = index;
+      }
+    });
+    return index_value;
+  }
+  moveToChatToShopPage(object) {
+    localStorage.setItem('data-order-history', JSON.stringify(object));
+    this.navCtrl.navigateForward('/chat-to-shop');
   }
 }

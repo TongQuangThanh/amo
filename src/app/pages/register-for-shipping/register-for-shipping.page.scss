@@ -393,3 +393,13 @@ ion-checkbox {
     --padding-top: 25px; 
     --padding-bottom: 5px;
 }
+.button-inactive {
+    --background: #D3D6D9 !important;
+    color: #ffffff !important;
+}
+.active_button.button-inactive {
+    display: none !important;
+}
+.inactive_button.button-active {
+    display: none !important;
+}

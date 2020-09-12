@@ -200,13 +200,15 @@ export class GioHangPage implements OnInit {
     var self = this;
     this.loading.present();
     this.paymentMode = this.button_active;
+    var requestShopProduct = self.data_gian_hang._id;
     this.apiService.postRequestionOrderProduct(
       this.orderInfor, 
       this.paymentMode.toString(), 
       this.form_apartment_id, 
       this.form_start_time, 
       this.form_phone_number, 
-      this.form_note
+      this.form_note,
+      requestShopProduct
     ).subscribe(result => {
       self.loading.dismiss();
       self.flag_show_hide_popup = true;

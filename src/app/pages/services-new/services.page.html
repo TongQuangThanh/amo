@@ -58,7 +58,7 @@
   <ion-grid class="margin-top-20">
     <ion-row *ngFor="let arrayServiceGroup of listServiceCategory">
       <ion-col *ngFor="let item of arrayServiceGroup">
-        <div class="button-1" *ngIf="item._id != ''" (click)="detailPage($event, item.modeView, item._id, item.title)" id="{{item._id}}">
+        <div class="button-1" *ngIf="item._id != ''" (click)="detailPage(item.modeView, item._id, item.title)" id="{{item._id}}">
           <img class="class-image-button" src="{{item.thumbnail}}"/>
           <ion-row class="ion-no-padding">
             <ion-col class="ion-text-center service-text-custom text-button" >

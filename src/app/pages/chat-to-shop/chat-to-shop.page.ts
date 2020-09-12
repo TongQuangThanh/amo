@@ -4,6 +4,7 @@ import { ApiService } from '../../services/api/api.service';
 import { ActionSheetController, NavController, IonContent  } from '@ionic/angular';
 import { LoadingService } from '../../services/loading/loading.service';
 import { ModalController } from '@ionic/angular';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-chat-to-shop',
@@ -11,7 +12,7 @@ import { ModalController } from '@ionic/angular';
   styleUrls: ['./chat-to-shop.page.scss'],
 })
 export class ChatToShopPage implements OnInit {
-  @ViewChild(IonContent, { static: false }) content: IonContent;
+  @ViewChild('content') private content: any;
   data_history: any;
   data_chat: any;
   message_content: any;
@@ -23,44 +24,14 @@ export class ChatToShopPage implements OnInit {
     public actionSheetController: ActionSheetController,
     private loading: LoadingService,
     private navCtrl: NavController,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private route: ActivatedRoute,
   ) { }
 
   ngOnInit() {
-    this.data_history = {
-      id: "1",
-      status: "1",
-      text_rate: "4.5",
-      title: "Điện tử, điện lạnh - Sửa chữa bảo dưỡng điều hòa",
-      money: "75.000 đ",
-      avatar: "../assets/images/services/6.png",
-      distributor: "Rada Việt Nam",
-      name: "Nguyễn Doãn Vũ",
-      role: "CEO",
-      code_orders: "68686",
-      date_time: "21/07/2020 - 02:14",
-    }
+    this.data_history = JSON.parse(localStorage.getItem('data-order-history'));
+    
     this.data_chat = [
-      {type: 'left', avatar: "../assets/images/services/9.jpg", message: "Chào ban, chúng tôi có thể giúp gì được cho bạn", images: ""},
-      {type: 'left', avatar: "../assets/images/services/9.jpg", message: "", images: "../assets/images/services/9.jpg"},
-      {type: 'right', avatar: "../assets/images/services/9.jpg", message: "Tôi đặt hàng lâu rồi mà không thấy shop giao đến"},
-      {type: 'right', avatar: "../assets/images/services/9.jpg", message: "", images: "../assets/images/services/9.jpg"},
-      {type: 'left', avatar: "../assets/images/services/9.jpg", message: "Chào ban, chúng tôi có thể giúp gì được cho bạn", images: ""},
-      {type: 'left', avatar: "../assets/images/services/9.jpg", message: "", images: "../assets/images/services/9.jpg"},
-      {type: 'right', avatar: "../assets/images/services/9.jpg", message: "Tôi đặt hàng lâu rồi mà không thấy shop giao đến"},
-      {type: 'right', avatar: "../assets/images/services/9.jpg", message: "", images: "../assets/images/services/9.jpg"},
-      {type: 'left', avatar: "../assets/images/services/9.jpg", message: "Chào ban, chúng tôi có thể giúp gì được cho bạn", images: ""},
-      {type: 'left', avatar: "../assets/images/services/9.jpg", message: "", images: "../assets/images/services/9.jpg"},
-      {type: 'right', avatar: "../assets/images/services/9.jpg", message: "Tôi đặt hàng lâu rồi mà không thấy shop giao đến"},
-      {type: 'right', avatar: "../assets/images/services/9.jpg", message: "", images: "../assets/images/services/9.jpg"},
-      {type: 'left', avatar: "../assets/images/services/9.jpg", message: "Chào ban, chúng tôi có thể giúp gì được cho bạn", images: ""},
-      {type: 'left', avatar: "../assets/images/services/9.jpg", message: "", images: "../assets/images/services/9.jpg"},
-      {type: 'right', avatar: "../assets/images/services/9.jpg", message: "Tôi đặt hàng lâu rồi mà không thấy shop giao đến"},
-      {type: 'right', avatar: "../assets/images/services/9.jpg", message: "", images: "../assets/images/services/9.jpg"},
-      {type: 'left', avatar: "../assets/images/services/9.jpg", message: "Chào ban, chúng tôi có thể giúp gì được cho bạn", images: ""},
-      {type: 'left', avatar: "../assets/images/services/9.jpg", message: "", images: "../assets/images/services/9.jpg"},
-      {type: 'right', avatar: "../assets/images/services/9.jpg", message: "Tôi đặt hàng lâu rồi mà không thấy shop giao đến"},
-      {type: 'right', avatar: "../assets/images/services/9.jpg", message: "", images: "../assets/images/services/9.jpg"},
       {type: 'left', avatar: "../assets/images/services/9.jpg", message: "Chào ban, chúng tôi có thể giúp gì được cho bạn", images: ""},
       {type: 'left', avatar: "../assets/images/services/9.jpg", message: "", images: "../assets/images/services/9.jpg"},
       {type: 'right', avatar: "../assets/images/services/9.jpg", message: "Tôi đặt hàng lâu rồi mà không thấy shop giao đến"},
@@ -68,20 +39,70 @@ export class ChatToShopPage implements OnInit {
     ]
     this.message_content = "";
     this.list_image_select = [];
+    this.getAllOrderHistoryComment();
   }
   ionViewWillEnter(){
     this.content.scrollToBottom(0);
   }
-  getListApartment(){
-    
+  getAllOrderHistoryComment() {
+    var self = this;
+    this.data_chat = [];
+    this.loading.present();
+    this.apiService.getListOrderHistoryComment(this.data_history._id)
+      .subscribe(result => {
+        let listComment = result.orderHistoryComments;
+        listComment.forEach(product => {
+          let type = 'left';
+          if (product.createdBy._id == self.data_history.createdBy._id) {
+            type = 'right';
+          }
+          if (product.attachments.length > 0) {
+            product.attachments.forEach(attachments => {
+              let object = {
+                type: type, 
+                avatar: product.createdBy.avatar, 
+                message: "", 
+                images: attachments.url
+              }
+              self.data_chat.push(object);
+            })
+          } else {
+            let object = {
+              type: type, 
+              avatar: product.createdBy.avatar, 
+              message: product.content, 
+              images: ""
+            }
+            self.data_chat.push(object);
+          }
+        });
+        self.loading.dismiss();
+        self.content.scrollToBottom(300);
+    },
+    error => {
+      self.loading.dismiss();
+    });
   }
   eventButtonSendMessage() {
     var self = this;
-    this.data_chat.push(
-      {type: 'right', avatar: "../assets/images/services/9.jpg", message: self.message_content}
-    )
-    this.content.scrollToBottom(1000);
-    self.message_content = "";
+    var param = {
+      orderHistoryId: this.data_history._id,
+      attachments: [],
+      content: self.message_content
+    }
+    this.loading.present();
+    this.apiService.postOrderHistoryComment(param)
+      .subscribe(result => {
+        self.data_chat.push(
+          {type: 'right', avatar: "", message: self.message_content}
+        )
+        self.message_content = "";
+        self.loading.dismiss();
+        self.content.scrollToBottom(300);
+    },
+    error => {
+      self.loading.dismiss();
+    });
   }
 
   // select image

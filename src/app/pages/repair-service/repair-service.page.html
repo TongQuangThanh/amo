@@ -7,16 +7,20 @@
   </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-searchbar placeholder="{{ 'SEVICE_33.placeholder_textbox_1' | translate }}"></ion-searchbar>
+  <ion-searchbar placeholder="{{ 'SEVICE_33.placeholder_textbox_1' | translate }}" 
+    debounce="500" 
+    (ionChange)="eventSearchData()"
+    [(ngModel)]="search_value"
+  ></ion-searchbar>
   <ion-grid class="ion-grid-class">
-    <ion-row class="margin-top-25">
-      <ion-col class="ion-col-class" size="4">
-        <div class="div-button-1" (click)="moveRepairServiceDetailPage()">
-          <div class="div-1"><img class="class-image-button" src="../assets/icon/svg/repair-service-1.svg"/></div>
-          <div class="div-2"><ion-label class="text-button">{{ 'SEVICE_33.button_1' | translate }}</ion-label></div>
+    <ion-row class="margin-top-5">
+      <ion-col class="ion-col-class" size="4" *ngFor="let object of listDataMarket">
+        <div class="div-button-1" (click)="moveGianHangDetailPage(object._id)">
+          <div class="div-1"><img class="class-image-button" src="{{object.thumbnail}}"/></div>
+          <div class="div-2 margin-top-20"><ion-label class="text-button">{{object.title}}</ion-label></div>
         </div>
       </ion-col>
-      <ion-col class="ion-col-class" size="4">
+      <!-- <ion-col class="ion-col-class" size="4">
         <div class="div-button-1" (click)="moveRepairServiceDetailPage()">
             <div class="div-1"><img class="class-image-button" src="../assets/icon/svg/repair-service-2.svg"/></div>
             <div class="div-2"><ion-label class="text-button">{{ 'SEVICE_33.button_2' | translate }}</ion-label></div>
@@ -63,9 +67,15 @@
             <div class="div-1"><img class="class-image-button" src="../assets/icon/svg/repair-service-9.svg"/></div>
             <div class="div-2"><ion-label class="text-button">{{ 'SEVICE_33.button_9' | translate }}</ion-label></div>
         </div>
-      </ion-col>
+      </ion-col> -->
     </ion-row>
   </ion-grid>
+  <ion-infinite-scroll threshold="50px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content class="custom-infinite-scroll"
+    loadingSpinner="bubbles"
+    loadingText="{{ 'HOME.loadding_more' | translate }}">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
 
   

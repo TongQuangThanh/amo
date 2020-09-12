@@ -395,3 +395,13 @@ ion-checkbox::part(container) {
 .icon-add-image {
     padding: 24px 0;
 }
+.button-inactive {
+    --background: #D3D6D9 !important;
+    color: #ffffff !important;
+}
+.active_button.button-inactive {
+    display: none !important;
+}
+.inactive_button.button-active {
+    display: none !important;
+}
