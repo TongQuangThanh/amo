@@ -305,10 +305,24 @@ ion-header {
     border-radius: 0;
     box-shadow: none;
 }
+.super-tab-button-label {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    text-transform: none !important;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #7A838C;
+}
 .segment-toolbar {
     border-bottom: 1px solid #F4F5F5;
     background: transparent;
     box-shadow: none;
+}
+.segment-toolbar super-tab-button {
+    padding-left: 5px;
+    padding-right: 5px;
 }
 .segment-content {
     background: transparent;

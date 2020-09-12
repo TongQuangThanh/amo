@@ -11,6 +11,8 @@ import { NotificationCommentPage } from '../notification-comment/notification-co
 import { ModalController } from '@ionic/angular';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { AlertService } from 'src/app/services/alert/alert.service';
+import { TranslateService } from '@ngx-translate/core';
 // import { PreviewAnyFile } from '@ionic-native/preview-any-file';
 
 @Component({
@@ -20,7 +22,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 })
 export class NotificationDetailPage implements OnInit {
 
-  @ViewChild("chat_input") inputField: ElementRef;
+  @ViewChild("comment_input") inputField: ElementRef;
 
   heightScreen: number;
   articleTitle: string;
@@ -36,8 +38,14 @@ export class NotificationDetailPage implements OnInit {
   listArticlesComment: any;
   currentPage: number;
   profile: any;
+  showHeader: number;
+  apartment: string;
+  numberRecordOnPage: number;
+  editorMsg:any;
+  showReply: boolean;
 
   constructor(
+    private translate: TranslateService,
     private platform: Platform,
     private iab: InAppBrowser,
     // private previewAnyFile: PreviewAnyFile,
@@ -46,18 +54,41 @@ export class NotificationDetailPage implements OnInit {
     private navCtrl: NavController,
     private route: ActivatedRoute,
     private authService: AuthService,
+    private alertService: AlertService,
     public modalController: ModalController) { 
       this.profile = this.authService.getProfile();
       this.listArticlesComment = [];
       this.currentPage = 1;
+      this.apartment = "";
+      this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
     }
   ngOnInit() {
+    this.showHeader = 1;
+    this.showReply = false;
     this.articleID = this.route.snapshot.paramMap.get('id');
     this.articleTitle = "";
     this.articleContent = "";
     this.thumbnail = "../../../assets/common/no-thumbnail.png";
     
     this.getArticleDetail(this.articleID);
+    this.getDefaulUserDeparment();
+  }
+
+  getDefaulUserDeparment(){
+    this.loading.present();
+    const self = this;
+    this.apiService.getListUserApartment()
+      .subscribe(result => {
+        if(result.userApartments.length > 0){
+          self.apartment = result.userApartments[0]._id;
+        }
+        self.loading.dismiss();
+        console.log(result.userApartments);
+        self.getArticleComment(self.currentPage, self.numberRecordOnPage, self.articleID, '', null)
+    },
+    error => {
+      self.loading.dismiss();
+    });
   }
 
   getArticleDetail(articleID) {
@@ -98,7 +129,7 @@ export class NotificationDetailPage implements OnInit {
           event.target.complete();
         }
         self.loading.dismiss();
-        self.inputField.nativeElement.focus();
+        //self.inputField.nativeElement.focus();
     },
     error => {
       self.loading.dismiss();
@@ -142,21 +173,59 @@ export class NotificationDetailPage implements OnInit {
   }
 
   onScroll(event) {
-    if(event.detail.currentY >= 0 && event.detail.currentY % 3 ==0){
-      const newHeight = 14 - event.detail.currentY/(20*2);      
-      if(newHeight > 8){
-        document.getElementById('header-toolbar').style.background = "rgba(255, 255, 255, 0)";
-        document.getElementById('header-toolbar').style.boxShadow = "none";
-        //document.getElementById('header-toolbar').style.transition = "all 0.3s linear 0.3s";  
-        document.getElementById('header-toolbar').style.transition = "background 0.6s ease";
-        this.heightScreen = this.platform.height() * 0.58 - 18 + event.detail.currentY/1.5;
-      }else{
-        document.getElementById('header-toolbar').style.background = "rgba(250, 255, 255, 1)";
-        document.getElementById('header-toolbar').style.boxShadow = "0px 0px 20px rgba(0, 0, 0, 0.1)";
-        //document.getElementById('header-toolbar').style.transition = "all 0.3s linear 0.3s";    
-        document.getElementById('header-toolbar').style.transition = "background 0.6s ease";        
-        this.heightScreen = this.platform.height() * 0.72 - 18;
-      }
+    let position_y = document.getElementById('content-noti').getClientRects()[0];
+    if(position_y['y'] > 45){
+      this.showHeader = 1;
+    }else{
+      this.showHeader = 2;
+    }
+  }
+  getStyleHeader(index) {
+    if (index == this.showHeader) {
+      return '';
+    } else {
+      return 'none';
+    }
+  }
+
+  doRefresh(event) {
+    this.currentPage = 1;
+    this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
+    this.getArticleComment(this.currentPage, this.numberRecordOnPage, this.articleID, '', event);
+  }
+
+  sendMsg(){
+    if(this.apartment == ""){
+      this.alertService.presentToast(this.translate.instant('NOTIFICATION_COMMENT.msg_apartment_not_correct'));
+    }
+    this.loading.present();
+    const self = this;
+    const params = {
+      content: this.editorMsg,
+      apartment: this.apartment
+    }
+    this.apiService.sendArticleComment(params, this.articleID)
+      .subscribe(result => {
+        self.loading.dismiss();
+        self.editorMsg = "";
+        self.doRefresh(null);
+    },
+    error => {
+      self.editorMsg = "";
+      self.loading.dismiss();
+    });
+  }
+  
+  replyComment() {
+    var x = document.getElementById("reply-item");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    }
+  }
+  cancelReplyComment() {
+    var x = document.getElementById("reply-item");
+    if (x.style.display === "block") {
+      x.style.display = "none";
     }
   }
 }

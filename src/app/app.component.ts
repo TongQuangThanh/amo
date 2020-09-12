@@ -80,7 +80,7 @@ export class AppComponent{
 
   getButtonBackgroud(){
     var colorRGB = this.hex2Rgb(this.popupButtonBackgroud);
-    console.log(colorRGB);
+    //console.log(colorRGB);
     var resultColorString = 'rgb('+ colorRGB.r +', '+ colorRGB.g +', '+ colorRGB.b +')';
     return resultColorString;
   }

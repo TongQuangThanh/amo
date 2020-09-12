@@ -89,3 +89,11 @@
 .error-input {
     border: 1px solid #FA7268;
 }
+.clear-input {
+    color: #FFFFFF;
+}
+ion-item.item-has-value {
+    .clear-input {
+      color: #D3D6D9;
+    }
+  }

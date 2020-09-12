@@ -20,6 +20,12 @@ export class ChangePasswordPage implements OnInit {
   errorOldPass:Boolean = false;
   errorNewPass:Boolean = false;
   errorConfirmPass:Boolean = false;
+  password_type: string = 'password';
+  passwordToggleIcon = 'eye-off-outline';
+  passwordOld_type: string = 'password';
+  passwordOldToggleIcon = 'eye-off-outline';
+  passwordNew_type: string = 'password';
+  passwordNewToggleIcon = 'eye-off-outline';
 
   constructor(
     private translate: TranslateService,
@@ -30,6 +36,50 @@ export class ChangePasswordPage implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+
+  togglePassword(): void {
+    //this.showPassword != this.showPassword;
+    this.password_type = this.password_type === 'text' ? 'password' : 'text';
+    if (this.passwordToggleIcon == 'eye-outline') {
+      this.passwordToggleIcon = 'eye-off-outline';
+    } else {
+      this.passwordToggleIcon = 'eye-outline';
+    }
+  }
+
+  togglePasswordOld(): void {
+    //this.showPassword != this.showPassword;
+    this.passwordOld_type = this.passwordOld_type === 'text' ? 'password' : 'text';
+    if (this.passwordOldToggleIcon == 'eye-outline') {
+      this.passwordOldToggleIcon = 'eye-off-outline';
+    } else {
+      this.passwordOldToggleIcon = 'eye-outline';
+    }
+  }
+
+  togglePasswordNew(): void {
+    //this.showPassword != this.showPassword;
+    this.passwordNew_type = this.passwordNew_type === 'text' ? 'password' : 'text';
+    if (this.passwordNewToggleIcon == 'eye-outline') {
+      this.passwordNewToggleIcon = 'eye-off-outline';
+    } else {
+      this.passwordNewToggleIcon = 'eye-outline';
+    }
+  }
+
+  checkNewPassword() {
+    if (this.newPassword && this.newPassword.length >= 8) {
+      return true;
+    }
+    return false;
+  }
+
+  checkConfirmPassword() {
+    if (this.confirmPassword && this.confirmPassword.length >= 8 && this.newPassword && this.newPassword == this.confirmPassword) {
+      return true;
+    }
+    return false;
   }
 
   checkIsEnabled() {
