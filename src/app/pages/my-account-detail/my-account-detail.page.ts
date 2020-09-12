@@ -17,13 +17,15 @@ export class MyAccountDetailPage implements OnInit {
   displayName: string;
   email: string;
   timeOrder: any;
-  sex:any;
+  gender:any;
   nationality: any;
   dateOfBirth: any;
   personalLiscence: any;
   // listCountries:any;
   userName: string;
   phone: string;
+  male: string;
+  female: string;
 
   constructor(
     private loading: LoadingService,
@@ -38,6 +40,7 @@ export class MyAccountDetailPage implements OnInit {
   
   ngOnInit() {
     this.getUserProfile();
+    //this.updateAccount();
   }
 
   getUserProfile(){
@@ -48,7 +51,7 @@ export class MyAccountDetailPage implements OnInit {
         self.displayName = result.profile.displayName;
         self.email = result.profile.email;
         self.phone = result.profile.phone;
-        self.sex = result.profile.gender;
+        self.gender = result.profile.gender;
         self.nationality = result.profile.nationality;
         self.dateOfBirth = result.profile.dateOfBirth;
         self.personalLiscence = result.profile.personalLiscence;
@@ -69,7 +72,8 @@ export class MyAccountDetailPage implements OnInit {
     const params = {
       email: self.email,
       displayName: self.displayName,
-      gender: self.sex,
+      phone: self.phone,
+      gender: self.gender,
       dateOfBirth: self.dateOfBirth,
       personalLiscence: self.personalLiscence
     };

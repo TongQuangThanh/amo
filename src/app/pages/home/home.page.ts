@@ -7,7 +7,7 @@ import { UtilsService } from '../../utils/utils.service';
 import { LoadingService } from '../../services/loading/loading.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Subscription } from 'rxjs';
-import { RouterModule, Routes } from "@angular/router";
+import { RouterModule, Routes, ActivatedRoute } from "@angular/router";
 import {ScrollingHeaderModule} from 'ionic-scrolling-header';
 import { IonContent } from '@ionic/angular';
 
@@ -108,7 +108,6 @@ export class HomePage implements OnInit {
     this.getNews(this.currentPage, this.numberRecordOnPage, '', '', null, true);
     this.getArticles(this.currentPageNoti, this.numberRecordOnPageNoti, '', '', null, true);
   }
-
   // getConfigPopup() {
   //   const self = this;
   //   this.apiService.getPopupConfig()
@@ -226,11 +225,12 @@ export class HomePage implements OnInit {
     this.navCtrl.navigateForward('/repair-service');
   }
   changeHelper(){
-    this.navCtrl.navigateForward('/repair-service');
+    //this.navCtrl.navigateForward('/repair-service');
+    console.log('changeHelper')
   }
 
   changeOther(){
-    this.navCtrl.navigateForward('/repair-service');
+    this.navCtrl.navigateForward('dashboard/services');
   }
   
   changePayment(){
@@ -245,26 +245,6 @@ export class HomePage implements OnInit {
   goToNews(){
     this.navCtrl.navigateForward('/news');
   }
-
-  // onScroll(event) {
-  //   if(event.detail.currentY >= 0 && event.detail.currentY % 3 ==0){
-  //     const newHeight = 14 - event.detail.currentY/(20*2);
-      
-  //     if(newHeight > 8){
-  //       document.getElementById('main-header').style.display = "";
-  //       document.getElementById('sub-header').style.display = "none";
-  //       this.heightScreen = this.platform.height() * 0.58 - 18 + event.detail.currentY/1.5;
-  //     }else{
-  //       document.getElementById('main-header').style.display = "none";
-  //       if (event.detail.deltaY > 0) {
-  //         document.getElementById('sub-header').style.display = "none";
-  //       } else {
-  //         document.getElementById('sub-header').style.display = "";
-  //       };
-  //       this.heightScreen = this.platform.height() * 0.72 - 18;
-  //     }
-  //   }
-  // }
 
   onScroll(event) {
     let position_y = document.getElementById('div-text-place').getClientRects()[0];

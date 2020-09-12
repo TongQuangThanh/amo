@@ -66,9 +66,9 @@
         <ion-item class="input-item" lines="none">
           <ion-icon class="input-gender" name="custom-gift" src="/assets/icon/custom-gender.svg" slot="start"></ion-icon>
           <ion-label class="input-floating-label" position="floating">{{ 'MY_ACCOUNT_DETAIL.gender' | translate }}</ion-label>
-          <ion-select placeholder="Gender" class="input-text select-text" value="m" >
-            <ion-select-option value="f">{{ 'MY_ACCOUNT_DETAIL.female' | translate }}</ion-select-option>
-            <ion-select-option value="m">{{ 'MY_ACCOUNT_DETAIL.male' | translate }}</ion-select-option>
+          <ion-select class="input-text select-text" value="{{gender}}" >
+            <ion-select-option value="female">{{ 'MY_ACCOUNT_DETAIL.female' | translate }}</ion-select-option>
+            <ion-select-option value="male">{{ 'MY_ACCOUNT_DETAIL.male' | translate }}</ion-select-option>
           </ion-select>
         </ion-item>        
       </ion-col>

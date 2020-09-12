@@ -305,6 +305,10 @@ const routes: Routes = [
   {
     path: 'notification-poll',
     loadChildren: () => import('./pages/notification-poll/notification-poll.module').then( m => m.NotificationPollPageModule)
+  },
+  {
+    path: 'popup-complain',
+    loadChildren: () => import('./pages/popup-complain/popup-complain.module').then( m => m.PopupComplainPageModule)
   }
 ];
 

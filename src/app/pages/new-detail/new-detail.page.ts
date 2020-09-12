@@ -49,7 +49,9 @@ export class NewDetailPage implements OnInit {
     
     this.getNewDetail();
   }
-
+  ionViewWillEnter() {
+    console.log('ionViewWillEnter')
+  }
   getNewDetail() {
     this.loading.present();
     const self = this;

@@ -320,6 +320,10 @@ ion-header {
     background: transparent;
     box-shadow: none;
 }
+.segment-toolbar super-tab-button {
+    padding-left: 5px;
+    padding-right: 5px;
+}
 .segment-content {
     background: transparent;
     --background-checked: transparent;

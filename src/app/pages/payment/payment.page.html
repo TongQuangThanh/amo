@@ -17,10 +17,6 @@
   <div class="amountPay-content">
       <div class="function-content-button">
           <div class="ion-float-left div-amountPay-content-big">
-              <!-- <ion-item lines="none" class="content-item">
-                <span class="content-item-label">{{ 'PAYMENT.amount_to_pay' | translate }}</span>
-                <span class="amountPay-number">3.345.000 <span class="amountPay-unit">vnd</span></span>
-              </ion-item> -->
               <ion-row class="content-item">
                 <ion-col class="col-label">
                   <ion-label class="content-item-label">{{ 'PAYMENT.amount_to_pay' | translate }}</ion-label>
@@ -34,17 +30,6 @@
   </div>
   
   <super-tabs activeTabIndex="0" [config]="{ debug: true, sideMenu: 'both', allowElementScroll: false, nativeSmoothScroll: true }" class="super-tabs-content">
-    <!-- <super-tabs-toolbar no-border class="segment-toolbar" scrollable showIndicator="true" scrollablePadding="false">
-      <super-tab-button class="button-tab-custom">
-        <ion-label class="button-tab-label">{{ 'PAYMENT.all_payment' | translate }}</ion-label>
-      </super-tab-button>
-      <super-tab-button class="button-tab-custom">
-        <ion-label class="button-tab-label">{{ 'PAYMENT.electricity_fee' | translate }}</ion-label>
-      </super-tab-button>
-      <super-tab-button class="button-tab-custom">
-        <ion-label class="button-tab-label">{{ 'PAYMENT.service_fee' | translate }}</ion-label>
-      </super-tab-button>
-    </super-tabs-toolbar> -->
     <super-tabs-toolbar no-border class="segment-toolbar" >
       <super-tab-button>
         <ion-label class="super-tab-button-label">{{ 'PAYMENT.all_payment' | translate }}</ion-label>
@@ -59,23 +44,8 @@
   
     <super-tabs-container>      
       <super-tab class="ion-padding">
-        <ion-card *ngIf="segmentModel === 'service_fee'" class="segment-content-card" >
+        <ion-card *ngIf="segmentModel === 'all'" class="segment-content-card" >
           <ion-card-content class="segment-card-content" *ngFor="let item of listPaymentBills" (click)="detailPage($event)" id="{{item._id}}">
-            <!-- <ion-item lines="none" class="item-top">
-              <ion-badge slot="start" class="badge-danger"><span class="badge-danger-label">{{ 'PAYMENT.badge_outdate' | translate }}</span></ion-badge>
-              <ion-icon slot="end" name="ellipsis-horizontal" class="detail-icon ion-float-right"></ion-icon>
-            </ion-item>
-            <ion-item lines="none" class="item-top">
-              <ion-card-title class="segment-card-title" slot="start">{{item.payment == null ? "N/A" : item.payment.title}}</ion-card-title>
-              <ion-text class="payment-fee ion-float-right" slot="end">{{formatMoney(item.total)}}</ion-text>
-            </ion-item>
-            <ion-item lines="none" class="item-top">
-              <span class="image-caption-big" class="card-bottom-label">{{formatString(item.updatedAt)}}</span>
-              <ion-icon item-start name="custom-oval" class="card-bottom-icon custom-oval" src="assets/icon/custom-oval.svg"></ion-icon>
-              <span class="image-caption-big" class="card-bottom-label"> {{ 'PAYMENT.transfer' | translate }} </span>
-              <ion-button class="btn-payment ion-float-right" slot="end">{{ 'PAYMENT.pay_now' | translate }}</ion-button>
-            </ion-item> -->
-
             <ion-row>
               <ion-col>
                 <ion-badge class="badge-lightred" *ngIf="item.status == 'publish'">{{ 'PAYMENT.badge_outdate' | translate }}</ion-badge>
@@ -112,230 +82,55 @@
             </ion-row>
           </ion-card-content>
         </ion-card>
+        
       </super-tab>
 
       <super-tab>
         <ion-nav ></ion-nav>
       </super-tab>
-      <super-tab>
-        <ion-nav ></ion-nav>
+      <super-tab class="ion-padding">
+          <ion-card class="segment-content-card" >
+            <ion-card-content class="segment-card-content" *ngFor="let item of listPaymentBills" (click)="detailPage($event)" id="{{item._id}}">
+              <ion-row>
+                <ion-col>
+                  <ion-badge class="badge-lightred" *ngIf="item.status == 'publish'">{{ 'PAYMENT.badge_outdate' | translate }}</ion-badge>
+                  <ion-badge class="badge-primary" *ngIf="item.status == 'pending'">{{ 'PAYMENT.badge_sent' | translate }}</ion-badge>
+                  <ion-badge class="badge-primary" *ngIf="item.status == 'completed'">{{ 'PAYMENT.badge_paid' | translate }}</ion-badge>
+                </ion-col>
+                <ion-col size="auto">
+                  <ion-icon name="ellipsis-horizontal" class="ion-float-right"></ion-icon>
+                </ion-col>
+              </ion-row>
+              <ion-row>
+                <ion-col>
+                  <ion-card-title class="segment-card-title">{{item.payment == null ? "N/A" : item.payment.title}}</ion-card-title>
+                </ion-col>
+                <ion-col size="auto">
+                  <ion-label class="payment-fee ion-float-right">{{formatMoney(item.total)}}</ion-label>
+                </ion-col>
+              </ion-row>
+              <ion-row class="information-row">
+                <ion-col class="information-col">
+                  <ion-list class="text-node information-node">
+                    <ion-card class="ion-float-left card-bottom">
+                      <span class="image-caption-big" class="card-bottom-label">{{formatString(item.updatedAt)}}</span>
+                      <ion-icon item-start name="custom-oval" class="card-bottom-icon custom-oval" src="assets/icon/custom-oval.svg"></ion-icon>
+                    </ion-card>
+                    <ion-card class="ion-float-left card-bottom margin-left-0">
+                      <span class="image-caption-big" class="card-bottom-label"> {{ 'PAYMENT.transfer' | translate }} </span>
+                    </ion-card>
+                  </ion-list>
+                </ion-col>
+                <ion-col  size="auto" class="">
+                  <ion-button class="btn-payment ion-float-right" *ngIf="item.status != 'completed'" (click)="paymentClick($event)" id="{{item._id}}">{{ 'PAYMENT.pay_now' | translate }}</ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-card-content>
+          </ion-card>
       </super-tab>
     </super-tabs-container>
   </super-tabs>
-  <div class="function-content">
-    
-    <!-- <ion-segment [(ngModel)]="modeService" class="segment-content" scrollable="true">
-      <ion-segment-button checked class="button-tab-custom" value="All">
-        <ion-label class="margin-none">{{ 'PAYMENT.all_payment' | translate }}</ion-label>
-      </ion-segment-button>
-      <ion-segment-button class="button-tab-custom" value="electricity_fee">
-        <ion-label class="margin-none">{{ 'PAYMENT.electricity_fee' | translate }}</ion-label>
-      </ion-segment-button>
-      <ion-segment-button checked class="button-tab-custom" value="service_fee">
-        <ion-label class="margin-none">{{ 'PAYMENT.service_fee' | translate }}</ion-label>
-      </ion-segment-button>
-      <ion-segment-button class="button-tab-custom" value="management_fee">
-        <ion-label class="margin-none">{{ 'PAYMENT.management_fee' | translate }}</ion-label>
-      </ion-segment-button>
-      <ion-segment-button class="button-tab-custom" value="water_fee">
-        <ion-label class="margin-none">{{ 'PAYMENT.water_fee' | translate }}</ion-label>
-      </ion-segment-button>    
-      
-    </ion-segment> -->
-
-    <!-- <ion-toolbar class="segment-toolbar">
-      <ion-segment class="segment-content" value="all" scrollable="true" [(ngModel)]="segmentModel"  (ionChange)="segmentChanged($event)">
-        <ion-segment-button checked class="button-tab-custom" value="all">
-          <ion-label class="margin-none">{{ 'PAYMENT.all_payment' | translate }}</ion-label>
-        </ion-segment-button>
-
-        <ion-segment-button class="button-tab-custom" value="electricity_fee">
-          <ion-label class="margin-none">{{ 'PAYMENT.electricity_fee' | translate }}</ion-label>
-        </ion-segment-button>
-
-        <ion-segment-button checked class="button-tab-custom" value="service_fee">
-          <ion-label class="margin-none">{{ 'PAYMENT.service_fee' | translate }}</ion-label>
-        </ion-segment-button>
-
-        <ion-segment-button class="button-tab-custom" value="management_fee">
-          <ion-label class="margin-none">{{ 'PAYMENT.management_fee' | translate }}</ion-label>
-        </ion-segment-button>
-
-        <ion-segment-button class="button-tab-custom" value="water_fee">
-          <ion-label class="margin-none">{{ 'PAYMENT.water_fee' | translate }}</ion-label>
-        </ion-segment-button> 
-  
-      </ion-segment>
-      
-    </ion-toolbar> -->
-  </div>
-
-  <!-- <div class="function-content-tab">
-    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-      <ion-refresher-content
-      pullingIcon="arrow-dropdown"
-      pullingText="{{ 'PAYMENT.pull_to_refresh' | translate }}"
-      refreshingSpinner="circles"
-      refreshingText="Refreshing...">
-      </ion-refresher-content>
-    </ion-refresher>
-    <ion-card *ngIf="segmentModel === 'service_fee'" class="segment-content-card" >
-      <ion-card-content class="segment-card-content" *ngFor="let item of listPaymentBills" (click)="detailPage($event)" id="{{item._id}}">
-        <ion-row>
-          <ion-col>
-            <ion-badge class="badge-danger"><span class="badge-danger-label">{{ 'PAYMENT.badge_outdate' | translate }}</span></ion-badge>
-          </ion-col>
-          <ion-col size="auto">
-            <ion-icon name="ellipsis-horizontal" class="ion-float-right"></ion-icon>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-card-title class="segment-card-title">{{item.payment == null ? "N/A" : item.payment.title}}</ion-card-title>
-          </ion-col>
-          <ion-col size="auto">
-            <ion-label class="payment-fee ion-float-right">{{formatMoney(item.total)}}</ion-label>
-          </ion-col>
-        </ion-row>
-        <ion-row class="information-row">
-          <ion-col class="information-col">
-            <ion-list class="text-node information-node">
-              <ion-card class="ion-float-left card-bottom">
-                <span class="image-caption-big" class="card-bottom-label">{{formatString(item.updatedAt)}}</span>
-                <ion-icon item-start name="custom-oval" class="card-bottom-icon custom-oval" src="assets/icon/custom-oval.svg"></ion-icon>
-              </ion-card>
-              <ion-card class="ion-float-left card-bottom margin-left-0">
-                <span class="image-caption-big" class="card-bottom-label"> {{ 'PAYMENT.transfer' | translate }} </span>
-              </ion-card>
-            </ion-list>
-          </ion-col>
-          <ion-col  size="auto" class="">
-            <ion-button class="btn-payment ion-float-right">{{ 'PAYMENT.pay_now' | translate }}</ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-card-content>
-    
-      <ion-card-content class="segment-card-content" (click)="detailPage($event)">
-        <ion-row>
-          <ion-col>
-            <ion-badge class="badge-paid"><span class="badge-paid-label">{{ 'PAYMENT.badge_paid' | translate }}</span></ion-badge>
-          </ion-col>
-          <ion-col size="auto">
-            <ion-icon name="ellipsis-horizontal" class="ion-float-right"></ion-icon>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-card-title class="segment-card-title">Phí dịch vụ tháng 5/2019</ion-card-title>
-          </ion-col>
-          <ion-col size="auto">
-            <ion-label class="payment-fee ion-float-right">3.000.000</ion-label>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col class="information-col">
-            <ion-list class="text-node information-node">
-              <ion-card class="ion-float-left card-bottom">
-                <span class="image-caption-big" class="card-bottom-label"> 13/05/2020 </span>
-                <ion-icon item-start name="custom-oval" class="card-bottom-icon custom-oval" src="assets/icon/custom-oval.svg"></ion-icon>
-              </ion-card>
-              <ion-card class="ion-float-left card-bottom margin-left-0">
-                <span class="image-caption-big" class="card-bottom-label"> {{ 'PAYMENT.cash' | translate }} </span>
-              </ion-card>
-            </ion-list>
-          </ion-col>
-          <ion-col  size="auto" class="">
-          </ion-col>
-        </ion-row>
-      </ion-card-content>
-
-      <ion-card-content class="segment-card-content">
-        <ion-row>
-          <ion-col>
-            <ion-badge class="badge-sent"><span class="badge-sent-label">{{ 'PAYMENT.badge_sent' | translate }}</span></ion-badge>
-          </ion-col>
-          <ion-col size="auto">
-            <ion-icon name="ellipsis-horizontal" class="ion-float-right"></ion-icon>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-card-title class="segment-card-title">Phí dịch vụ tháng 4/2019</ion-card-title>
-          </ion-col>
-          <ion-col size="auto">
-            <ion-label class="payment-fee ion-float-right">2.350.000</ion-label>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col class="information-col">
-            <ion-list class="text-node information-node">
-              <ion-card class="ion-float-left card-bottom">
-                <span class="image-caption-big" class="card-bottom-label"> 04/06/2020 </span>
-                <ion-icon item-start name="custom-oval" class="card-bottom-icon custom-oval" src="assets/icon/custom-oval.svg"></ion-icon>
-              </ion-card>
-              <ion-card class="ion-float-left card-bottom margin-left-0">
-                <span class="image-caption-big" class="card-bottom-label"> {{ 'PAYMENT.cash' | translate }} </span>
-              </ion-card>
-            </ion-list>
-          </ion-col>
-          <ion-col  size="auto" class="">
-          </ion-col>
-        </ion-row>
-      </ion-card-content>
-    </ion-card>
-    
-    <ion-card *ngIf="segmentModel === 'electricity_fee'" class="segment-content-card">
-      <ion-card-header>
-        <ion-card-subtitle>Segment Content</ion-card-subtitle>
-        <ion-card-title>electricity_fee</ion-card-title>
-      </ion-card-header>
-    
-      <ion-card-content>
-        Keep close to Nature's heart... and break clear away, once in awhile,
-        and climb a mountain or spend a week in the woods. Wash your spirit clean.
-      </ion-card-content>
-    </ion-card>
-    
-    <ion-card *ngIf="segmentModel === 'all'" class="segment-content-card">
-      <ion-card-header>
-        <ion-card-subtitle>Segment Content</ion-card-subtitle>
-        <ion-card-title>service_fee</ion-card-title>
-      </ion-card-header>
-    
-      <ion-card-content>
-        Keep close to Nature's heart... and break clear away, once in awhile,
-        and climb a mountain or spend a week in the woods. Wash your spirit clean.
-      </ion-card-content>
-    </ion-card>
-  
-    <ion-card *ngIf="segmentModel === 'management_fee'" class="segment-content-card">
-      <ion-card-header>
-        <ion-card-subtitle>Segment Content</ion-card-subtitle>
-        <ion-card-title>management_fee</ion-card-title>
-      </ion-card-header>
-    
-      <ion-card-content>
-        Keep close to Nature's heart... and break clear away, once in awhile,
-        and climb a mountain or spend a week in the woods. Wash your spirit clean.
-      </ion-card-content>
-    </ion-card>
-  
-    <ion-card *ngIf="segmentModel === 'water_fee'" class="segment-content-card">
-      <ion-card-header>
-        <ion-card-subtitle>Segment Content</ion-card-subtitle>
-        <ion-card-title>water_fee</ion-card-title>
-      </ion-card-header>
-    
-      <ion-card-content>
-        Keep close to Nature's heart... and break clear away, once in awhile,
-        and climb a mountain or spend a week in the woods. Wash your spirit clean.
-      </ion-card-content>
-    </ion-card>
-    
-  </div> -->
-
-  
-  
+ 
 
   <!-- <div slot="fixed">
     <div class="balance-content">

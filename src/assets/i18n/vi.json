@@ -199,7 +199,10 @@
         "place_holder_input": "Viết bình luận...",
         "pull_to_refresh": "Kéo xuống để làm mới",
         "loadding_more": "Đang tải dữ liệu...",
-        "msg_apartment_not_correct" : "Bạn không có thông tin căn hộ"
+        "msg_apartment_not_correct" : "Bạn không có thông tin căn hộ",
+        "reply" : "Trả lời",
+        "reply_label" : "Đang trả lời",
+        "cancel_label" : "Hủy"
     },
     "NOTIFICATION_POLL" : {
         "title" : "Khảo sát cư dân về các vấn đề ...",

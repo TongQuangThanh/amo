@@ -135,6 +135,9 @@ ion-toolbar {
 
 .w3-animate-top {
     background: #FA7268;
+    //background: linear-gradient(#FA7268, transparent);
+    transition: transform 1s;
+    //opacity: 1;
     ion-back-button {
         color: #FFFFFF;
     }
@@ -145,15 +148,6 @@ ion-toolbar {
     ion-title.md {
         color: #FFFFFF;
     }
+    animation:animatetop 0.5s;
 }
-@keyframes animatetop{from{top:-300px;opacity:0} to{top:0;opacity:1}}
-@keyframes fadeInDown {
-    0% {
-       opacity: 0;
-       transform: translateY(-20px);
-    }
-    100% {
-       opacity: 1;
-       transform: translateY(0);
-    }
- } 
+@keyframes animatetop{from{opacity:0} to{opacity:1}}

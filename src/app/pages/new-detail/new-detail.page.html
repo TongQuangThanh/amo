@@ -14,7 +14,9 @@
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen [scrollEvents]="true" (ionScroll)="onScroll($event)">
-  <ion-img src="{{thumbnail}}"></ion-img>
+  <!-- <ion-img src="{{thumbnail}}"></ion-img> -->
+  <ion-img *ngIf="thumbnail != null" src="{{thumbnail}}"></ion-img>       
+  <ion-img *ngIf="thumbnail == null" src="assets/common/no-thumbnail.png"></ion-img>
   <ion-card button class="custom-card margin-none">
     <ion-item lines="none" style="margin-top: 10px;">
         <ion-card-title class="ion-text-wrap content-two-line">{{newTitle}}</ion-card-title>

@@ -15,6 +15,9 @@ export class LoginPage implements OnInit {
   phone: string;
   password: string;
   errorMessage:string;
+  showPassword = false;
+  password_type: string = 'password';
+  passwordToggleIcon = 'eye-off-outline';
 
   constructor(
     private authService: AuthService,
@@ -23,7 +26,16 @@ export class LoginPage implements OnInit {
     private loading: LoadingService,
   ) { 
   }
-
+  
+  togglePassword(): void {
+    //this.showPassword != this.showPassword;
+    this.password_type = this.password_type === 'text' ? 'password' : 'text';
+    if (this.passwordToggleIcon == 'eye-outline') {
+      this.passwordToggleIcon = 'eye-off-outline';
+    } else {
+      this.passwordToggleIcon = 'eye-outline';
+    }
+  }
   ngOnInit() {
     localStorage.removeItem('token');
     // this.route.queryParams.subscribe(params => {

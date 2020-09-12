@@ -12,6 +12,7 @@ import { PopupPaymentCashPage } from '../popup-payment-cash/popup-payment-cash.p
 import { PopupPaymentTransferPage } from '../popup-payment-transfer/popup-payment-transfer.page';
 import { PopupPaymentOnlinePage } from '../popup-payment-online/popup-payment-online.page';
 import { PopupPaymentSuccessPage } from '../popup-payment-success/popup-payment-success.page';
+import { PopupComplainPage } from '../popup-complain/popup-complain.page';
 
 @Component({
   selector: 'app-payment-infor',
@@ -125,6 +126,13 @@ export class PaymentInforPage implements OnInit {
     const modal = await this.modalController.create({
       component: PopupPaymentSuccessPage,
       cssClass: 'popupPaymentSuccess-page-custom'
+    });
+    return await modal.present();
+  }
+  async paymentComplainModal() {
+    const modal = await this.modalController.create({
+      component: PopupComplainPage,
+      cssClass: 'popupPaymentComplain-page-custom'
     });
     return await modal.present();
   }

@@ -33,7 +33,7 @@
 <ion-header id="sub-header" class="ion-no-border w3-animate-top" [ngStyle]="{'display': getStyleHeader(2)}">
     <!-- <div class="sub-header-toolbar"></div> -->
     <div class="sub-amountPay-content">
-        <div class="sub-header-toolbar"></div>
+        <!-- <div class="sub-header-toolbar"></div> -->
         <div id="content-button-child" class="sub-function-content-button">
             <div class="ion-float-left div-avatar-content-item btn-pay_now ion-text-center" (click)="changePayment()">
                 <img class="img-avatar-small"  src="../../../assets/icon/pay_now.svg"/>
@@ -143,8 +143,8 @@
                 </div>
                 <div class="ion-float-left">
                     <ion-item lines="none" class="card-bottom">
-                        <ion-icon item-start name="custom-share" class="card-bottom-icon" src="assets/icon/custom-share.svg"></ion-icon>
-                        <span class="card-bottom-label"> {{item.sharesCount}} </span>
+                        <ion-icon item-start name="custom-attach" class="card-bottom-icon" src="assets/icon/custom-attach.svg"></ion-icon>
+                        <span class="card-bottom-label"> {{item.attachments.length}} </span>
                     </ion-item>
                 </div>
             </ion-card>
@@ -154,7 +154,9 @@
         <ion-list class="list-view-news">
             <ion-card button class="card-content-news" *ngFor="let item of listNews" (click)="detailPage($event)" id="{{item._id}}">
                 <div class="card-img">
-                    <ion-img src="{{item.thumbnail}}" class="img-responsive" alt=""></ion-img>
+                    <!-- <ion-img src="{{item.thumbnail}}" class="img-responsive" alt=""></ion-img> -->
+                    <ion-img *ngIf="item.thumbnail != null" src="{{item.thumbnail}}" class="img-responsive"></ion-img>       
+                    <ion-img *ngIf="item.thumbnail == null" src="assets/common/no-thumbnail.png" class="img-responsive"></ion-img>
                     <ion-label class="badge-corner badge-corner-base">{{formatString(item.updatedAt)}}</ion-label>
                 </div>
                 <ion-item lines="none" style="margin-top: 10px;">

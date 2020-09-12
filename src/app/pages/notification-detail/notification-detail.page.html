@@ -42,11 +42,6 @@
             <ion-icon item-start name="custom-oval" class="card-bottom-icon custom-oval" src="assets/icon/custom-oval.svg"></ion-icon>
           </ion-card>
           <ion-card class="ion-float-left padding-none card-bottom margin-left-0">
-            <ion-icon item-start name="custom-comment" class="card-bottom-icon" src="assets/icon/custom-comment.svg"></ion-icon>
-            <span class="image-caption-big" class="card-bottom-label"> {{commentsCount}} </span>
-            <ion-icon item-start name="custom-oval" class="card-bottom-icon custom-oval" src="assets/icon/custom-oval.svg"></ion-icon>
-          </ion-card>
-          <ion-card class="ion-float-left padding-none card-bottom margin-left-0">
             <ion-icon item-start name="custom-share" class="card-bottom-icon" src="assets/icon/custom-share.svg"></ion-icon>
               <span class="image-caption-big" class="card-bottom-label"> {{sharesCount}} </span>
           </ion-card>
@@ -66,126 +61,70 @@
   <p [innerHTML]="articleContent" class="padding-left-right-card full-width article-content"></p>
 
   <ion-list class="list-chat-content">
-    <div class="message-wrap">
-      
-        <div class="message left">
-          <!-- <img class="user-img" *ngIf="item.createdBy" src="{{item.createdBy.avatar}}"/> -->
-          <img  class="user-img" src="../assets/icon/avatar-default.png"/>
-          <div class="msg-detail">
-            <ion-grid class="msg-grid">
-              <ion-row>
-                <div class="msg-info">
-                  <p>BQL tòa nhà</p>
-                </div>
-              </ion-row>
-              <ion-row>
-                <div class="msg-content">
-                  <p>Thật tuyệt vời</p>
-                </div>
-              </ion-row>
-              <ion-row>
-                <div class="msg-time">
-                  <p><span class="msg-time-label">3 ngày</span> <span class="btn-reply">Trả lời</span></p>
-                </div>
-              </ion-row>
-            </ion-grid>
-          </div>
+    <div class="message-wrap" *ngFor="let item of listArticlesComment.reverse()">      
+      <div class="message left">
+        <img class="user-img" *ngIf="item.createdBy" src="{{item.createdBy.avatar}}"/>
+        <img class="user-img" *ngIf="!item.createdBy" src="../assets/icon/avatar-default.png"/>
+        <div class="msg-detail">
+          <ion-grid class="msg-grid">
+            <ion-row>
+              <div class="msg-info">
+                <p>{{item.createdBy.displayName}}</p>
+              </div>
+            </ion-row>
+            <ion-row>
+              <div class="msg-content">
+                <p [innerHTML]="convertText(item.content)" ></p>
+              </div>
+            </ion-row>
+            <ion-row>
+              <div class="msg-time">
+                <p><span class="msg-time-label">{{formatString(item.createdAt)}}</span> <span class="btn-reply" (click)="replyComment()">{{ 'NOTIFICATION_COMMENT.reply' | translate }}</span></p>
+              </div>
+            </ion-row>
+          </ion-grid>
         </div>
-        <div class="message left reply">
-          <!-- <img class="user-img" *ngIf="itemRep.createdBy" src="{{itemRep.createdBy.avatar}}"/> -->
-          <img  class="user-img" src="../assets/icon/avatar-default.png"/>
-          <div class="msg-detail">
-            <ion-grid class="msg-grid">
-              <ion-row>
-                <div class="msg-info">
-                  <p>Cư dân 1</p>
-                </div>
-              </ion-row>
-              <ion-row>
-                <div class="msg-content">
-                  <p>Tôi đã dùng qua sản phẩm. Dịch vụ rất hữu ích, tiết kiệm thời gian</p>
-                </div>
-              </ion-row>
-              <ion-row>
-                <div class="msg-time">
-                  <p><span class="msg-time-label">3 ngày</span> <span class="btn-reply">Trả lời</span></p>
-                </div>
-              </ion-row>
-            </ion-grid>
-          </div>
+      </div>
+      <div class="message left reply" *ngFor="let itemRep of item.replies.reverse()">
+        <img class="user-img" *ngIf="itemRep.createdBy" src="{{itemRep.createdBy.avatar}}"/>
+        <img class="user-img" *ngIf="!itemRep.createdBy" src="../assets/icon/avatar-default.png"/>
+        <div class="msg-detail">
+          <ion-grid class="msg-grid">
+            <ion-row>
+              <div class="msg-info">
+                <p>{{itemRep.createdBy.displayName}}</p>
+              </div>
+            </ion-row>
+            <ion-row>
+              <div class="msg-content">
+                <p [innerHTML]="convertText(itemRep.content)" ></p>
+              </div>
+            </ion-row>
+            <ion-row>
+              <div class="msg-time">
+                <p><span class="msg-time-label">{{formatString(itemRep.createdAt)}}</span> <span class="btn-reply" (click)="replyComment()">{{ 'NOTIFICATION_COMMENT.reply' | translate }}</span></p>
+              </div>
+            </ion-row>
+          </ion-grid>
         </div>
-        <div class="message left">
-          <!-- <img class="user-img" *ngIf="item.createdBy" src="{{item.createdBy.avatar}}"/> -->
-          <img  class="user-img" src="../assets/icon/avatar-default.png"/>
-          <div class="msg-detail">
-            <ion-grid class="msg-grid">
-              <ion-row>
-                <div class="msg-info">
-                  <p>Cư dân 2</p>
-                </div>
-              </ion-row>
-              <ion-row>
-                <div class="msg-content">
-                  <p>Dịch vụ rất hữu ích, tiết kiệm thời gian</p>
-                </div>
-              </ion-row>
-              <ion-row>
-                <div class="msg-time">
-                  <p><span class="msg-time-label">3 ngày</span> <span class="btn-reply">Trả lời</span></p>
-                </div>
-              </ion-row>
-            </ion-grid>
-          </div>
-        </div>
-      
-      <!-- <div *ngFor="let item of listArticlesComment.reverse()">
-        <div *ngIf="item.status == 'approve' || item.createdBy.phone == profile.phone" class="message left">
-          <img class="user-img" *ngIf="item.createdBy" src="{{item.createdBy.avatar}}"/>
-          <img  class="user-img"*ngIf="!item.createdBy" src="../assets/icon/avatar-default.png"/>
-          <div class="msg-detail">
-            <div class="msg-info">
-              <p>{{item.createdBy.displayName}}</p>
-              <p>{{formatString(item.createdAt)}}</p>
-            </div>
-            <div class="msg-content">
-              <span class="triangle"></span>
-              <p [innerHTML]="convertText(item.content)" ></p>
-            </div>
-          </div>
-        </div>
-        <div *ngFor="let itemRep of item.replies.reverse()"
-            class="message right">
-          <img class="user-img" *ngIf="itemRep.createdBy" src="{{itemRep.createdBy.avatar}}"/>
-          <img  class="user-img"*ngIf="!itemRep.createdBy" src="../assets/icon/avatar-default.png"/>
-          <div class="msg-detail">
-            <div class="msg-info">
-              <p>{{itemRep.createdBy.displayName}}</p>
-              <p>{{formatString(itemRep.createdAt)}}</p>
-            </div>
-            <div class="msg-content">
-              <span class="triangle"></span>
-              <p [innerHTML]="convertText(itemRep.content)" ></p>
-            </div>
-          </div>
-        </div>
-      </div> -->
+      </div>
     </div>
   </ion-list>
 </ion-content>
 
 <ion-footer class="ion-no-border footer-content">
+  <ion-item id="reply-item" lines="none" class="reply-item" style="display: none;">
+    <ion-label class="reply-label">{{ 'NOTIFICATION_COMMENT.reply_label' | translate }} <span class="reply-name"> {{createBy}}</span></ion-label>
+    <ion-label class="cancel-label" (click)="cancelReplyComment()">{{ 'NOTIFICATION_COMMENT.cancel_label' | translate }} </ion-label>  
+  </ion-item>
   <ion-item lines="none" class="add-comment-item">
     <ion-icon name="image" slot="start" class="add-image-icon"></ion-icon>
-    <ion-textarea class="input-area" 
+    <ion-textarea #comment_input class="input-area" 
       rows="1"  
       auto-grow
+      [(ngModel)]="editorMsg"
       placeholder="{{ 'REQUEST_DETAIL.place_holder_input' | translate }}">
-      <ion-icon name="paper-plane" class="icon-send icon-send-default"></ion-icon>
+      <ion-icon name="paper-plane" class="icon-send icon-send-default" (click)="sendMsg()"></ion-icon>
     </ion-textarea>    
   </ion-item>
 </ion-footer>
-<!-- <ion-footer class="ion-no-border">
-  <ion-toolbar>
-    <button expand="block" fill="outline" class="comment-button" (click)="showListComment()">{{ 'NOTIFICATION_DETAIL.btn_comment' | translate }}</button>
-  </ion-toolbar>
-</ion-footer> -->
