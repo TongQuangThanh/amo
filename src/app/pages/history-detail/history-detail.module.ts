@@ -7,7 +7,6 @@ import { IonicModule } from '@ionic/angular';
 import { HistoryDetailPage } from './history-detail.page';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { SuperTabsModule } from '@ionic-super-tabs/angular';
-import { IonicRatingModule } from 'ionic-rating';
 
 const routes: Routes = [
   {
@@ -23,7 +22,6 @@ const routes: Routes = [
     IonicModule,
     TranslateModule,
     SuperTabsModule,
-    IonicRatingModule,
     RouterModule.forChild(routes)
   ],
   declarations: [HistoryDetailPage]
