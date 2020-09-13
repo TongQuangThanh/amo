@@ -13,11 +13,12 @@
         <ion-row class="ion-no-padding line-bottom-10 margin-top-5">
           <ion-col class="group-2-col-1 center-div" size="8">
             <div class="">
-              <ion-label *ngIf="data_history.status == 'order'" class="ion-label-1">{{ 'PAY_15.status_1' | translate }}</ion-label>
-              <ion-label *ngIf="data_history.status == 'prepare'" class="ion-label-2">{{ 'PAY_15.status_2' | translate }}</ion-label>
-              <ion-label *ngIf="data_history.status == 'delivery'" class="ion-label-3">{{ 'PAY_15.status_3' | translate }}</ion-label>
-              <ion-label *ngIf="data_history.status == 'cancel'" class="ion-label-4">{{ 'PAY_15.status_4' | translate }}</ion-label>
-              <ion-label *ngIf="data_history.status == 'close'" class="ion-label-5">{{ 'PAY_15.status_5' | translate }}</ion-label>
+              <ion-label *ngIf="data_history.status == 'processing'" class="ion-label-1">{{ 'PAY_15.status_processing' | translate }}</ion-label>
+              <ion-label *ngIf="data_history.status == 'accepted-provider'" class="ion-label-2">{{ 'PAY_15.status_accepted_provider' | translate }}</ion-label>
+              <ion-label *ngIf="data_history.status == 'accepted-user'" class="ion-label-3">{{ 'PAY_15.status_accepted_user' | translate }}</ion-label>
+              <ion-label *ngIf="data_history.status == 'finish'" class="ion-label-4">{{ 'PAY_15.status_finish' | translate }}</ion-label>
+              <ion-label *ngIf="data_history.status == 'cancel-user'" class="ion-label-5">{{ 'PAY_15.status_cancel_user' | translate }}</ion-label>
+              <ion-label *ngIf="data_history.status == 'cancel-provider'" class="ion-label-5">{{ 'PAY_15.status_cancel_provider' | translate }}</ion-label>
             </div>
           </ion-col>
           <ion-col size="4">
@@ -47,7 +48,7 @@
 
         <ion-row class="ion-no-padding line-top-10">
           <ion-col class="" size="5">
-            <ion-label class="label-left">{{ 'PAY_15.label_1' | translate }}</ion-label>
+            <ion-label class="label-left">{{ 'PAY_15.label_supplier_name' | translate }}</ion-label>
           </ion-col>
           <ion-col class="" size="7">
             <ion-item class="no-border item-avatar">
@@ -61,7 +62,7 @@
         </ion-row>
         <ion-row class="ion-no-padding margin-top-15">
           <ion-col class="" size="5">
-            <ion-label class="label-left">{{ 'PAY_15.label_2' | translate }}</ion-label>
+            <ion-label class="label-left">{{ 'PAY_15.label_code_order' | translate }}</ion-label>
           </ion-col>
           <ion-col class="" size="7">
             <ion-label class="label-right">{{data_history.code_orders}}</ion-label>
@@ -69,15 +70,15 @@
         </ion-row>
         <ion-row class="ion-no-padding margin-top-15">
           <ion-col class="" size="5">
-            <ion-label class="label-left">{{ 'PAY_15.label_3' | translate }}</ion-label>
+            <ion-label class="label-left">{{ 'PAY_15.label_time' | translate }}</ion-label>
           </ion-col>
           <ion-col class="" size="7">
             <ion-label class="label-right">{{data_history.date_time}}</ion-label>
           </ion-col>
         </ion-row>
-        <ion-row class="ion-no-padding margin-top-15" *ngIf="data_history.status == 'close' && data_history.text_rate != 0">
+        <ion-row class="ion-no-padding margin-top-15" *ngIf="data_history.status == 'finish' && data_history.text_rate != 0">
           <ion-col class="" size="5">
-            <ion-label class="label-left">{{ 'PAY_15.label_7' | translate }}</ion-label>
+            <ion-label class="label-left">{{ 'PAY_15.label_rating' | translate }}</ion-label>
           </ion-col>
           <ion-col class="" size="7">
             <ion-item class="group-1-text-star">
@@ -87,10 +88,10 @@
           </ion-col>
         </ion-row>
       </ion-grid>
-      <ion-grid class="ion-no-padding line-top-16" (click)="eventShowDialog()" *ngIf="data_history.status == 'close' && data_history.text_rate == 0">
+      <ion-grid class="ion-no-padding line-top-16" (click)="eventShowDialog()" *ngIf="data_history.status == 'finish' && data_history.text_rate == 0">
         <ion-row class="ion-no-padding">
           <ion-col class="" size="12">
-            <ion-label class="rate-label-left">{{ 'PAY_15.label_4' | translate }}</ion-label>
+            <ion-label class="rate-label-left">{{ 'PAY_15.label_rating_service' | translate }}</ion-label>
           </ion-col>
         </ion-row>
         <ion-row class="ion-no-padding padding-0 margin-top-10">
@@ -124,7 +125,7 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <ion-label class="rate-label-left font-weight-bold">{{ 'PAY_15.label_5' | translate }}</ion-label>
+            <ion-label class="rate-label-left font-weight-bold">{{ 'PAY_15.label_feedback' | translate }}</ion-label>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="eventButtonClosePopup()">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -135,7 +136,7 @@
                 <ion-grid class="ion-no-padding">
                   <ion-row class="ion-no-padding">
                     <ion-col class="" size="12">
-                      <ion-label class="rate-label-left">{{ 'PAY_15.label_4' | translate }}</ion-label>
+                      <ion-label class="rate-label-left">{{ 'PAY_15.label_rating_service' | translate }}</ion-label>
                     </ion-col>
                   </ion-row>
                   <ion-row class="ion-no-padding padding-0 margin-top-10">
@@ -168,14 +169,18 @@
                 </ion-grid>
                 <ion-item lines="none" class="margin-top-20 margin-bottom-30">
                   <ion-item lines="none" class="item-common width-100">
-                      <ion-textarea class="text-area-1" rows="4" cols="20" placeholder="{{ 'PAY_15.label_6' | translate }}" [(ngModel)]="form_note"></ion-textarea>
+                      <ion-textarea class="text-area-1" rows="4" cols="20" placeholder="{{ 'PAY_15.label_write_feedback' | translate }}" [(ngModel)]="form_note"></ion-textarea>
                   </ion-item>
                 </ion-item>
                 <ion-item lines="none" class="margin-top-20 margin-bottom-10">
-                  <ion-button *ngIf="rating_value_popup < 8" expand="block" class="amo-button-custom-4 font-weight-bold">{{ 'PAY_15.text_button_4' | translate }}</ion-button>
-                  <ion-button *ngIf="rating_value_popup >= 8 && rating_value_popup < 68 && form_note == ''" expand="block" class="amo-button-custom-4 font-weight-bold">{{ 'PAY_15.text_button_4' | translate }}</ion-button>
-                  <ion-button *ngIf="rating_value_popup >= 68" expand="block" class="amo-button-custom-41 font-weight-bold" (click)="eventSendRating()">{{ 'PAY_15.text_button_4' | translate }}</ion-button>
-                  <ion-button *ngIf="rating_value_popup >= 8 && form_note != ''" expand="block" class="amo-button-custom-41 font-weight-bold" (click)="eventSendRating()">{{ 'PAY_15.text_button_4' | translate }}</ion-button>
+                  <ion-button *ngIf="rating_value_popup < 8 
+                    || (rating_value_popup >= 8 && rating_value_popup < 68 && form_note == '')"
+                     expand="block" class="amo-button-custom-4 font-weight-bold">{{ 'PAY_15.text_button_send_feedback' | translate }}
+                  </ion-button>
+                  <ion-button *ngIf="rating_value_popup >= 68 
+                    || (rating_value_popup >= 8 && rating_value_popup < 68 && form_note != '')" 
+                    expand="block" class="amo-button-custom-41 font-weight-bold" (click)="eventSendRating()">{{ 'PAY_15.text_button_send_feedback' | translate }}
+                  </ion-button>
                 </ion-item>
             </ion-list>
           </div>
@@ -185,13 +190,13 @@
   </ion-content>
   <section class="full-width function-section shadow-section">
     <div class="col-6 padding-right-5">
-      <ion-button expand="block" class="amo-button-custom-1 padding-0 font-weight-bold">{{ 'PAY_15.text_button_1' | translate }}</ion-button>
+      <ion-button expand="block" class="amo-button-custom-1 padding-0 font-weight-bold">{{ 'PAY_15.text_button_complain' | translate }}</ion-button>
     </div>
-    <div class="col-6 padding-left-5" *ngIf="data_history.status == 'delivery' || data_history.status == 'cancel' || data_history.status == 'close'">
-      <ion-button expand="block" class="amo-button-custom-2 padding-0 font-weight-bold" (click)="moveToChatToShopPage()">{{ 'PAY_15.text_button_2' | translate }}</ion-button>
+    <div class="col-6 padding-left-5" *ngIf="data_history.status == 'accepted-user' || data_history.status == 'cancel-provider' || data_history.status == 'cancel-user' || data_history.status == 'finish'">
+      <ion-button expand="block" class="amo-button-custom-2 padding-0 font-weight-bold" (click)="moveToChatToShopPage()">{{ 'PAY_15.text_button_chat' | translate }}</ion-button>
     </div>
-    <div class="col-6 padding-left-5" *ngIf="data_history.status == 'order' || data_history.status == 'prepare'" (click)="eventButtonCancel()">
-      <ion-button expand="block" class="amo-button-custom-3 padding-0 font-weight-bold">{{ 'PAY_15.text_button_3' | translate }}</ion-button>
+    <div class="col-6 padding-left-5" *ngIf="data_history.status == 'processing' || data_history.status == 'accepted-provider'" (click)="eventButtonCancel()">
+      <ion-button expand="block" class="amo-button-custom-3 padding-0 font-weight-bold">{{ 'PAY_15.text_button_cancel' | translate }}</ion-button>
     </div>
   </section>
   

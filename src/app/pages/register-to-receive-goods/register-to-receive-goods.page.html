@@ -13,9 +13,9 @@
         <ion-item lines="none" class="item-common">
           <img class="icon-home" src="../assets/icon/svg/my-home.svg"/>
           <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg"/>
-          <label *ngIf="form_apartment_id != ''" class="pulldown-1-placeholder">{{ 'INBOX_29.pulldown_1_placeHolder_1' | translate }}</label>
+          <label *ngIf="form_apartment_id != ''" class="pulldown-1-placeholder">{{ 'INBOX_29.apartment_placeHolder_1' | translate }}</label>
           <div class="width-100 {{form_apartment_class}}">
-            <ion-select class="pulldown-apartment-select" placeholder="{{ 'INBOX_29.pulldown_1_placeHolder_2' | translate }}" interface="action-sheet" name="form_apartment_id" [(ngModel)]="form_apartment_id" (ionChange)="ionChangePulldown1($event)">
+            <ion-select class="pulldown-apartment-select" placeholder="{{ 'INBOX_29.apartment_placeHolder_2' | translate }}" interface="action-sheet" name="form_apartment_id" [(ngModel)]="form_apartment_id" (ionChange)="ionChangePulldown1($event)">
               <ion-select-option *ngFor="let item of listDepartment" value="{{item.apartment._id}}">{{item.apartment.title + ' - ' + item.campaign.title}}</ion-select-option>
             </ion-select>
           </div>
@@ -23,7 +23,24 @@
       </ion-item>
       <ion-item lines="none" class="margin-top-20">
         <ion-item lines="none" class="item-common">
-            <ion-textarea [(ngModel)]="receiverInfor" class="text-area-1" rows="4" cols="20" placeholder="{{ 'INBOX_29.textarea_placeHolder_1' | translate }}"></ion-textarea>
+            <ion-textarea [(ngModel)]="receiverInfor" class="text-area-1" rows="4" cols="20" placeholder="{{ 'INBOX_29.inf_product_placeHolder' | translate }}"></ion-textarea>
+        </ion-item>
+      </ion-item>
+      <ion-item lines="none" class="margin-top-20">
+        <ion-item lines="none" class="item-common">
+          <img class="icon-home" src="../assets/icon/svg/Calendar 2.svg"/>
+          <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg"/>
+          <label *ngIf="form_date_time != ''" class="pulldown-1-placeholder">{{ 'INBOX_29.date_time_placeHolder' | translate }}</label>
+          <div class="width-100 {{form_date_time_class}}">
+            <ion-datetime placeholder="{{ 'INBOX_29.date_time_placeHolder' | translate }}"
+              class="pulldown-apartment-select"
+              name="form_date_time" [(ngModel)]="form_date_time"
+              displayFormat="DD/MM/YYYY HH:mm"
+              (ionChange)="ionChangeDateTime($event)"
+              min="2000"
+              max="2050">
+            </ion-datetime>
+          </div>
         </ion-item>
       </ion-item>
       <ion-item lines="none" class="margin-top-20">
@@ -62,11 +79,11 @@
         <ion-item lines="none" class="item-common">
           <img *ngIf="check_box_1 == true" class="icon-dollar-active" src="../assets/icon/svg/icon-dollar.svg"/>
           <img *ngIf="check_box_1 == false" class="icon-dollar" src="../assets/icon/svg/icon-dollar.svg"/>
-          <label *ngIf="form_money_payment != ''" class="pulldown-1-placeholder">{{ 'INBOX_29.textbox_placeHolder_2' | translate }}</label>
+          <label *ngIf="form_money_payment != ''" class="pulldown-1-placeholder">{{ 'INBOX_29.input_payment_placeHolder_2' | translate }}</label>
           <div class="width-100 {{form_money_payment_class}}">
             <ion-input type="text" class="text-box-1" 
               type="number"
-              placeholder="{{ 'INBOX_29.textbox_placeHolder_1' | translate }}" 
+              placeholder="{{ 'INBOX_29.input_payment_placeHolder_1' | translate }}" 
               value="{{form_money_payment}}" 
               (ionChange)="ionchangTextBoxPayment1()"
               [(ngModel)]="form_money_payment"
@@ -116,7 +133,7 @@
       </ion-item>
       <ion-item lines="none" class="margin-top-20 line-1">
         <ion-item lines="none" class="item-common margin-top-20">
-            <ion-textarea [(ngModel)]="form_note" class="text-area-1" rows="4" cols="20" placeholder="{{ 'INBOX_29.textarea_placeHolder_2' | translate }}"></ion-textarea>
+            <ion-textarea [(ngModel)]="form_note" class="text-area-1" rows="4" cols="20" placeholder="{{ 'INBOX_29.note_placeHolder' | translate }}"></ion-textarea>
         </ion-item>
       </ion-item>
     </ion-list>
@@ -139,11 +156,11 @@
           <div class="modal-body">
             <ion-item lines="none" class="popup-item-input">
               <img class="icon-dollar-active" src="../assets/icon/svg/icon-dollar.svg"/>
-              <label *ngIf="form_money_tip != ''" class="pulldown-1-placeholder">{{ 'INBOX_29.textbox_2_placeHolder_2' | translate }}</label>
+              <label *ngIf="form_money_tip != ''" class="pulldown-1-placeholder">{{ 'INBOX_29.input_tip_placeHolder_2' | translate }}</label>
               <div class="width-100 {{form_money_tip_class}}">
                 <ion-input type="text" class="text-box-1" 
                   type="number"
-                  placeholder="{{ 'INBOX_29.textbox_2_placeHolder_1' | translate }}" 
+                  placeholder="{{ 'INBOX_29.input_tip_placeHolder_1' | translate }}" 
                   value="{{form_money_tip}}" 
                   (ionChange)="ionchangTextBoxTip1()"
                   [(ngModel)]="form_money_tip">

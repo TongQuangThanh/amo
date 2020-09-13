@@ -122,8 +122,8 @@
                     name="form_date_time" [(ngModel)]="form_date_time"
                     displayFormat="DD/MM/YYYY"
                     (ionChange)="ionChangeDateTime($event)"
-                    min="1900"
-                    max="2030">
+                    min="2000"
+                    max="2050">
                   </ion-datetime>
                 </div>
               </ion-item>
@@ -234,7 +234,7 @@
               </ion-item>
             </ion-item>
           </ion-list>
-          <section class="full-width function-section-1">
+          <section class="full-width function-section">
             <ion-button expand="block" class="amo-button-custom button-inactive padding-0 inactive_button {{checkActiveButton()}}">{{ 'INBOX_31.button_send' | translate }}</ion-button>
             <ion-button (click)="eventButtonRemoveVehicles()" expand="block" class="amo-button-custom padding-0 active_button {{checkActiveButton()}}">{{ 'INBOX_31.button_send' | translate }}</ion-button>
           </section>

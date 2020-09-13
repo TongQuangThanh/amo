@@ -10,12 +10,12 @@ import { ActivatedRoute } from '@angular/router';
 import { SuperTabs } from '@ionic-super-tabs/angular';
 
 @Component({
-  selector: 'app-gian-hang-detail',
-  templateUrl: './gian-hang-detail.page.html',
-  styleUrls: ['./gian-hang-detail.page.scss'],
+  selector: 'app-shop-house',
+  templateUrl: './shop-house.page.html',
+  styleUrls: ['./shop-house.page.scss'],
 })
-export class GianHangDetailPage implements OnInit {
-  data_gian_hang: any;
+export class ShopHousePage implements OnInit {
+  data_shop_house: any;
   total_money: any;
   disable_button_send: any;
   list_data_range: any;
@@ -47,7 +47,7 @@ export class GianHangDetailPage implements OnInit {
     autoplay:true
   };
   ngOnInit() {
-    // this.data_gian_hang = {}
+    // this.data_shop_house = {}
     const data_id = this.route.snapshot.paramMap.get('id');
     this.getShopProducts(data_id);
     this.total_money = "";
@@ -66,33 +66,32 @@ export class GianHangDetailPage implements OnInit {
   getShopProducts(_id) {
     const self = this;
     this.list_data_range = {};
-    this.data_gian_hang = {};
-    this.data_gian_hang['group_1'] = [];
-    this.data_gian_hang['group_2'] = [];
-    this.data_gian_hang['group_3'] = [];
+    this.data_shop_house = {};
+    this.data_shop_house['group_1'] = [];
+    this.data_shop_house['group_2'] = [];
     this.loading.present();
     this.apiService.getDataServiceShopProduct(_id)
       .subscribe(result => {
         let data_shop_product = result.shopProducts;
         data_shop_product.forEach(product => {
           if (product.requestShopProduct) {
-            self.data_gian_hang['_id'] = product.requestShopProduct._id;
-            self.data_gian_hang['text_title'] = product.requestShopProduct.title;
-            self.data_gian_hang['text_place'] = product.requestShopProduct.apartment.title + ' - ' + product.requestShopProduct.apartment.campaign.title;
-            self.data_gian_hang['text_star_rate'] = product.requestShopProduct.stars;
+            self.data_shop_house['_id'] = product.requestShopProduct._id;
+            self.data_shop_house['text_title'] = product.requestShopProduct.title;
+            self.data_shop_house['text_place'] = product.requestShopProduct.apartment.title + ' - ' + product.requestShopProduct.apartment.campaign.title;
+            self.data_shop_house['text_star_rate'] = product.requestShopProduct.stars;
             let thumbnail = product.requestShopProduct.thumbnail;
             let logo = product.requestShopProduct.thumbnail;
             if (product.requestShopProduct.attachments && product.requestShopProduct.attachments.length > 1) {
               logo = product.requestShopProduct.attachments[0].url;
               thumbnail = product.requestShopProduct.attachments[1].url;
             }
-            self.data_gian_hang['thumbnail'] = thumbnail;
-            self.data_gian_hang['logo'] = logo;
+            self.data_shop_house['thumbnail'] = thumbnail;
+            self.data_shop_house['logo'] = logo;
             let time_open = "Luôn mở cửa";
             if (product.requestShopProduct.timeOpen) {
               time_open = product.requestShopProduct.timeOpen;
             }
-            self.data_gian_hang['time_open'] = time_open;
+            self.data_shop_house['time_open'] = time_open;
             if (product.promotionCodes && product.promotionCodes.length > 0 && product.promotionCodes[0].type == "groupon") {
               let promotionCodes = product.promotionCodes[0];
               let deadline_convert = '';
@@ -152,16 +151,16 @@ export class GianHangDetailPage implements OnInit {
                 'background_image' : background_image
               }
               self.list_data_range[product._id] = [slider_value + '%', range_position_value + '%'];
-              self.data_gian_hang.group_1.push(object);
+              self.data_shop_house.group_1.push(object);
             } else {
               let index = self.getIndexCategoryInList(product.category._id);
               if (index < 0) {
-                self.data_gian_hang['group_3'].push({
+                self.data_shop_house['group_2'].push({
                   id_tab: product.category._id,
                   title: product.category.title,
                   data: []
                 });
-                index = self.data_gian_hang['group_3'].length - 1;
+                index = self.data_shop_house['group_2'].length - 1;
               }
               let title = product.title;
               let money = product.price;
@@ -181,7 +180,7 @@ export class GianHangDetailPage implements OnInit {
                 note: product.excerpt, 
                 number: 0
               }
-              self.data_gian_hang.group_3[index].data.push(object);
+              self.data_shop_house.group_2[index].data.push(object);
             }
           }
         });
@@ -198,7 +197,7 @@ export class GianHangDetailPage implements OnInit {
   }
   downNumberProduct(id) {
     var self = this;
-    self.data_gian_hang.group_1.forEach(product => {
+    self.data_shop_house.group_1.forEach(product => {
       if (product._id == id && product.number > 0) {
         product.number--;
       }
@@ -207,7 +206,7 @@ export class GianHangDetailPage implements OnInit {
   }
   upNumberProduct(id) {
     var self = this;
-    self.data_gian_hang.group_1.forEach(product => {
+    self.data_shop_house.group_1.forEach(product => {
       if (product._id == id  && product.number < 10000) {
         product.number++;
       }
@@ -216,7 +215,7 @@ export class GianHangDetailPage implements OnInit {
   }
   downNumberProduct_1(id_tab, id) {
     var self = this;
-    self.data_gian_hang.group_3.forEach(object => {
+    self.data_shop_house.group_2.forEach(object => {
       if (object.id_tab == id_tab) {
         object.data.forEach(product => {
           if (product._id == id && product.number > 0) {
@@ -229,7 +228,7 @@ export class GianHangDetailPage implements OnInit {
   }
   upNumberProduct_1(id_tab, id) {
     var self = this;
-    self.data_gian_hang.group_3.forEach(object => {
+    self.data_shop_house.group_2.forEach(object => {
       if (object.id_tab == id_tab) {
         object.data.forEach(product => {
           if (product._id == id && product.number < 1000) {
@@ -242,7 +241,7 @@ export class GianHangDetailPage implements OnInit {
   }
   selectAllEvent(id_tab) {
     var self = this;
-    self.data_gian_hang.group_3.forEach(object => {
+    self.data_shop_house.group_2.forEach(object => {
       if (object.id_tab == id_tab) {
         object.data.forEach(product => {
           if (product.number == 0) {
@@ -257,12 +256,12 @@ export class GianHangDetailPage implements OnInit {
     var self = this;
     this.total_money = "";
     var total = 0;
-    self.data_gian_hang.group_1.forEach(product => {
+    self.data_shop_house.group_1.forEach(product => {
       if (product.number > 0) {
         total = total + product.number * parseInt(product.money.replace(/\./g, "").replace(/đ/g, ""));
       }
     });
-    self.data_gian_hang.group_3.forEach(object => {
+    self.data_shop_house.group_2.forEach(object => {
       object.data.forEach(product => {
         if (product.number > 0) {
           total = total + product.number * parseInt(product.money.replace(/\./g, "").replace(/đ/g, ""));
@@ -281,9 +280,9 @@ export class GianHangDetailPage implements OnInit {
       this.disable_button_send = "button-disable";
     }
   }
-  goToPageGioHang() {
-    localStorage.setItem('data', JSON.stringify(this.data_gian_hang));
-    this.navCtrl.navigateForward('/gio-hang');
+  goToPageBookingShopHouse() {
+    localStorage.setItem('data-shop-house', JSON.stringify(this.data_shop_house));
+    this.navCtrl.navigateForward('/booking-shop-house');
   }
   convertFormatMoney(value) {
     value = value.toString();
@@ -306,12 +305,14 @@ export class GianHangDetailPage implements OnInit {
   onScroll(event) {
     let position_y = document.getElementById('div-text-place').getClientRects()[0];
     let position_y_product = document.getElementById('group-data-product').getClientRects()[0];
-    if(position_y['y'] > 45){
-      this.showHeader = 1;
-    }else{
-      this.showHeader = 2;
+    if (position_y && position_y_product) {
+      if(position_y['y'] > 45){
+        this.showHeader = 1;
+      }else{
+        this.showHeader = 2;
+      }
+      this.position_product = position_y_product['y'];
     }
-    this.position_product = position_y_product['y'];
   }
   getStyleHeader(index) {
     if (index == this.showHeader) {
@@ -334,7 +335,7 @@ export class GianHangDetailPage implements OnInit {
     var self = this;
     let index = -1;
     let index_value = -1;
-    self.data_gian_hang.group_3.forEach(object => {
+    self.data_shop_house.group_2.forEach(object => {
       index++;
       if (object.id_tab == id_tab) {
         index_value = index;

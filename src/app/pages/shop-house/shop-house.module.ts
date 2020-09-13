@@ -1,16 +1,18 @@
 import { NgModule } from '@angular/core';
-import { CommonModule, DatePipe } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
-import { GioHangPage } from './gio-hang.page';
+import { IonicModule } from '@ionic/angular';
+import { ShopHousePage } from './shop-house.page';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { MatTabsModule } from '@angular/material/tabs';
+import { SuperTabsModule } from '@ionic-super-tabs/angular';
 
 const routes: Routes = [
   {
     path: '',
-    component: GioHangPage
+    component: ShopHousePage
   }
 ];
 
@@ -20,9 +22,11 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     TranslateModule,
+    MatTabsModule,
+    SuperTabsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [GioHangPage],
-  providers: [DatePipe]
+  declarations: [ShopHousePage]
 })
-export class GioHangPageModule {}
+export class ShopHousePageModule {}
+

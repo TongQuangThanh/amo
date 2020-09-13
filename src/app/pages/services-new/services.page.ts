@@ -20,6 +20,7 @@ export class ServicesPage implements OnInit {
   listServiceCategory: any[];
   listServiceLog: any;
   heightScreen: number;
+  widthScreen: number;
   list_data_silde_1: any;
   list_data_silde_2: any;
   getShopProductSubscriber: Subscription;
@@ -38,6 +39,7 @@ export class ServicesPage implements OnInit {
   ) {
       platform.ready().then((readySource) => {
         this.heightScreen = platform.height() - 120 - 90;
+        this.widthScreen = platform.width();
       });
   }
   slideOpts = {
@@ -275,11 +277,14 @@ export class ServicesPage implements OnInit {
   moveCallTheCarPage() {
     this.navCtrl.navigateForward('/call-the-car');
   }
-  moveGianHangDetailPage(event) {
-    this.navCtrl.navigateForward('/gian-hang-detail/' + event.currentTarget.id);
+  moveShopHousePage(event) {
+    this.navCtrl.navigateForward('/shop-house/' + event.currentTarget.id);
   }
   moveHistoryPage() {
     this.navCtrl.navigateForward('/history');
+  }
+  moveManagementOrderPage() {
+    this.navCtrl.navigateForward('/management-order');
   }
   moveRepairServicePage() {
     this.navCtrl.navigateForward('/repair-service');
@@ -309,7 +314,7 @@ export class ServicesPage implements OnInit {
   }
   eventClickGroupPon(object, type) {
     if (type == "advertisement") {
-      this.navCtrl.navigateForward('/gian-hang-detail/' + object.id_shop);
+      this.navCtrl.navigateForward('/shop-house/' + object.id_shop);
     } else {
       localStorage.setItem('data-booking-product', JSON.stringify(object));
       this.navCtrl.navigateForward('/booking-product/' + 'groupon');

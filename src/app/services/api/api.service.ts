@@ -445,21 +445,39 @@ export class ApiService {
       map(results => results)
     );
   }
-  putOrderProductRateStar(orderHistoryId:any, stars:any, userComment:any): Observable<any> {
+  putOrderProductRateStarUser(orderHistoryId:any, stars:any, userComment:any): Observable<any> {
     const params = {
       orderHistoryId,
       stars,
       userComment
     }
-    return this.http.put(EnvService.putOrderHistoryRateStar, params).pipe(
+    return this.http.put(EnvService.putOrderHistoryRateStarUser, params).pipe(
       map(results => results)
     );
   }
-  putOrderProductCancel(orderHistoryId:any): Observable<any> {
+  putOrderProductRateStarShop(orderHistoryId:any, stars:any, provideComment:any): Observable<any> {
+    const params = {
+      orderHistoryId,
+      stars,
+      provideComment
+    }
+    return this.http.put(EnvService.putOrderHistoryRateStarShop, params).pipe(
+      map(results => results)
+    );
+  }
+  putOrderProductCancelUser(orderHistoryId:any): Observable<any> {
     const params = {
       orderHistoryId
     }
-    return this.http.put(EnvService.putOrderHistoryCancel, params).pipe(
+    return this.http.put(EnvService.putOrderHistoryCancelUser, params).pipe(
+      map(results => results)
+    );
+  }
+  putOrderProductCancelProvider(orderHistoryId:any): Observable<any> {
+    const params = {
+      orderHistoryId
+    }
+    return this.http.put(EnvService.putOrderHistoryCancelProvider, params).pipe(
       map(results => results)
     );
   }
@@ -467,6 +485,15 @@ export class ApiService {
     const params = new HttpParams().
       set('_v', (new Date()).getTime().toString());
     return this.http.get(EnvService.getOrderHistory, {
+      params
+    }).pipe(
+      map(results => results)
+    );
+  }
+  getListOrderHistorysByProvider(): Observable<any> {
+    const params = new HttpParams().
+      set('_v', (new Date()).getTime().toString());
+    return this.http.get(EnvService.getOrderHistoryByProvider, {
       params
     }).pipe(
       map(results => results)
