@@ -34,6 +34,8 @@ export class RegisterToReceiveGoodsPage implements OnInit {
   number_of_image: any;
   flag_show_all_image: any;
   form_note: any;
+  form_date_time: any;
+  form_date_time_class: any;
   
   constructor(
     public modalController: ModalController,
@@ -69,6 +71,8 @@ export class RegisterToReceiveGoodsPage implements OnInit {
     this.list_image = [];
     this.flag_show_all_image = false;
     this.form_note = "";
+    this.form_date_time = "";
+    this.form_date_time_class = "";
     
     this.breakListImage();
   }
@@ -159,6 +163,13 @@ export class RegisterToReceiveGoodsPage implements OnInit {
     this.show_popup_tip = false;
     this.form_money_tip_value = this.form_money_tip;
   }
+  ionChangeDateTime(event){
+    if (this.form_date_time != "") {
+      this.form_date_time_class = 'has-input-value';
+    } else {
+      this.form_date_time_class = "";
+    }
+  }
   convertListImage() {
     var self = this;
     for(var i=0;i<self.list_image_select.length;i++){
@@ -203,7 +214,7 @@ export class RegisterToReceiveGoodsPage implements OnInit {
       receiverPaymentHelpsValue: this.check_box_1 == true ? this.form_money_payment : 0,
       receiverPaymentTip: this.check_box_2 == false ? 'notPayment' : 'payment',
       receiverPaymentTipValue: this.check_box_2 == true ? tip_value : 0,
-      receiverDate: Date.now()
+      receiverDate: this.form_date_time
     };
 
     this.loading.present();
@@ -323,6 +334,7 @@ export class RegisterToReceiveGoodsPage implements OnInit {
     if (this.form_apartment_id == '' 
       || this.receiverInfor == ''
       || this.form_note == ''
+      || this.form_date_time == ''
       || (this.check_box_1 == true && this.form_money_payment == '') 
       || (this.check_box_2 == true && this.tip_value == 4 && this.form_money_tip_value == '')
     ) {

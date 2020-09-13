@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MoGianHangPage } from './mo-gian-hang.page';
+import { CreateShopHousePage } from './create-shop-house.page';
 
-describe('MoGianHangPage', () => {
-  let component: MoGianHangPage;
-  let fixture: ComponentFixture<MoGianHangPage>;
+describe('CreateShopHousePage', () => {
+  let component: CreateShopHousePage;
+  let fixture: ComponentFixture<CreateShopHousePage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MoGianHangPage ],
+      declarations: [ CreateShopHousePage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MoGianHangPage);
+    fixture = TestBed.createComponent(CreateShopHousePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

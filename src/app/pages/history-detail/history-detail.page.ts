@@ -118,7 +118,7 @@ export class HistoryDetailPage implements OnInit {
     } else {
       data_rate = 0;
     }
-    this.apiService.putOrderProductRateStar(
+    this.apiService.putOrderProductRateStarUser(
       self.data_history._id,
       data_rate,
       self.form_note
@@ -136,11 +136,11 @@ export class HistoryDetailPage implements OnInit {
   eventButtonCancel() {
     var self = this;
     this.loading.present();
-    this.apiService.putOrderProductCancel(
+    this.apiService.putOrderProductCancelUser(
       self.data_history._id
     ).subscribe(result => {
       self.loading.dismiss();
-      self.data_history.status = 'cancel';
+      self.data_history.status = 'cancel-user';
     },
     error => {
       self.loading.dismiss();

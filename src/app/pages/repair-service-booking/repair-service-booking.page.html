@@ -89,10 +89,10 @@
             placeholder="{{ 'INBOX_56.pulldown_2_placeHolder_1' | translate }}"
             class="datetime-commom"
             name="form_start_time" [(ngModel)]="form_start_time"
-            displayFormat="DD/MM/YYYY H:mm"
+            displayFormat="DD/MM/YYYY HH:mm"
             (ionChange)="ionChangeStartTime()"
-            min="1900"
-            max="2030">
+            min="2000"
+            max="2050">
           </ion-datetime>
         </div>
       </ion-item>

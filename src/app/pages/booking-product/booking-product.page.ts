@@ -13,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BookingProductPage implements OnInit {
   listDepartment: any;
+  listDepartmentByID: any;
   check_box_1: boolean;
   check_box_2: boolean;
   tip_value: any;
@@ -30,7 +31,7 @@ export class BookingProductPage implements OnInit {
   form_note:any;
 
 
-  data_gian_hang: any;
+  data_shop_house: any;
   form_phone_number:any;
   form_phone_number_class:any;
   flag_show_hide_popup: any;
@@ -55,6 +56,7 @@ export class BookingProductPage implements OnInit {
 
   ngOnInit() {
     const type_object = this.route.snapshot.paramMap.get('type');
+    this.listDepartmentByID = {};
     this.type_booking = type_object;
     this.getListApartment();
     this.button_active = 0;
@@ -78,7 +80,7 @@ export class BookingProductPage implements OnInit {
     };
     var data = JSON.parse(localStorage.getItem('data-booking-product'));
     data['number'] = 1;
-    this.data_gian_hang = [data];
+    this.data_shop_house = [data];
     this.form_phone_number = "";
     this.form_phone_number_class = "";
     this.getListProduct();
@@ -91,7 +93,7 @@ export class BookingProductPage implements OnInit {
     var self = this;
     this.list_product = [];
     this.orderInfor = [];
-    self.data_gian_hang.forEach(product => {
+    self.data_shop_house.forEach(product => {
       let money = parseInt(product.money.replace(/\./g, "").replace(/đ/g, ""));
       product['money_total'] = product.number * money;
       product['money_total'] = self.convertFormatMoney(product['money_total']);
@@ -142,6 +144,9 @@ export class BookingProductPage implements OnInit {
     this.apiService.getListUserApartment()
       .subscribe(result => {
         self.listDepartment = result.userApartments;
+        self.listDepartment.forEach(data =>{
+          self.listDepartmentByID[data.apartment ._id] = data;
+        });
         self.loading.dismiss()
     },
     error => {
@@ -176,6 +181,8 @@ export class BookingProductPage implements OnInit {
   }
   eventButtonSend() {
     var self = this;
+    let dataApartment = self.listDepartmentByID[this.form_apartment_id];
+    this.form_phone_number = dataApartment.apartment.owner.phone;
     self.orderInfor = [];
     var requestShopProduct = "";
     self.list_product.forEach(product => {
@@ -230,7 +237,7 @@ export class BookingProductPage implements OnInit {
     return convert2;
   }
   checkStatusButtonSend() {
-    if (this.form_apartment_id != "" && this.form_phone_number != "" && this.form_start_time != "") {
+    if (this.form_apartment_id != "" && this.form_start_time != "") {
       this.disable_button_send = "";
     } else {
       this.disable_button_send = "button-disable";
@@ -239,7 +246,7 @@ export class BookingProductPage implements OnInit {
   downNumberProduct(_id) {
     var self = this;
     self.list_product.forEach(product => {
-      if (product._id == _id && product.number > 0) {
+      if (product._id == _id && product.number > 1) {
         product.number--;
       }
     });

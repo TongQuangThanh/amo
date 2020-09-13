@@ -15,7 +15,7 @@
   <ion-grid class="ion-grid-class">
     <ion-row class="margin-top-5">
       <ion-col class="ion-col-class" size="4" *ngFor="let object of listDataMarket">
-        <div class="div-button-1" (click)="moveGianHangDetailPage(object._id)">
+        <div class="div-button-1" (click)="moveShopHousePage(object)">
           <div class="div-1"><img class="class-image-button" src="{{object.thumbnail}}"/></div>
           <div class="div-2 margin-top-20"><ion-label class="text-button">{{object.title}}</ion-label></div>
         </div>

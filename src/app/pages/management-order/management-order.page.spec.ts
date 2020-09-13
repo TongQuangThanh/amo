@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GioHangPage } from './gio-hang.page';
+import { ManagementOrderPage } from './management-order.page';
 
-describe('GioHangPage', () => {
-  let component: GioHangPage;
-  let fixture: ComponentFixture<GioHangPage>;
+describe('ManagementOrderPage', () => {
+  let component: ManagementOrderPage;
+  let fixture: ComponentFixture<ManagementOrderPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GioHangPage ],
+      declarations: [ ManagementOrderPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GioHangPage);
+    fixture = TestBed.createComponent(ManagementOrderPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

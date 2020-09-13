@@ -166,7 +166,6 @@ export class RegisterForShippingPage implements OnInit {
       // createdBy: "",
       attachments: [],
       type: "transfer",
-
       transferType: this.button_active == 1 ? 'income' : 'outcome',
       transferDateStart: this.form_start_time,
       transferDateEnd: this.form_end_time,
@@ -187,10 +186,18 @@ export class RegisterForShippingPage implements OnInit {
     );
   }
   checkActiveButton() {
+    var self = this;
+    let is_input_product = false;
+    self.list_product.forEach(product => {
+      if (product.name_product != '' && product.number_of_product > 0) {
+        is_input_product = true;
+      }
+    });
     if (this.form_apartment_id == '' 
       || this.form_start_time == ''
       || this.form_end_time == ''
       || this.form_note == ''
+      || is_input_product == false
     ) {
       return 'button-inactive'
     } else {

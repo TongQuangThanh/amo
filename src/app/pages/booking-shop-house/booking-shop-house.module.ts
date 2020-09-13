@@ -1,18 +1,16 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-
 import { IonicModule } from '@ionic/angular';
-import { GianHangDetailPage } from './gian-hang-detail.page';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { MatTabsModule } from '@angular/material/tabs';
-import { SuperTabsModule } from '@ionic-super-tabs/angular';
+
+import { BookingShopHousePage } from './booking-shop-house.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: GianHangDetailPage
+    component: BookingShopHousePage
   }
 ];
 
@@ -22,11 +20,9 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     TranslateModule,
-    MatTabsModule,
-    SuperTabsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [GianHangDetailPage]
+  declarations: [BookingShopHousePage],
+  providers: [DatePipe]
 })
-export class GianHangDetailPageModule {}
-
+export class BookingShopHousePageModule {}

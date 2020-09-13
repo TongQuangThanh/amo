@@ -1,22 +1,22 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GianHangDetailPage } from './gian-hang-detail.page';
+import { ShopHousePage } from './shop-house.page';
 
-describe('GianHangDetailPage', () => {
-  let component: GianHangDetailPage;
-  let fixture: ComponentFixture<GianHangDetailPage>;
+describe('ShopHousePage', () => {
+  let component: ShopHousePage;
+  let fixture: ComponentFixture<ShopHousePage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GianHangDetailPage ],
+      declarations: [ ShopHousePage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GianHangDetailPage);
+    fixture = TestBed.createComponent(ShopHousePage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

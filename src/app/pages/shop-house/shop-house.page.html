@@ -7,15 +7,15 @@
 </ion-header>
 <ion-header id="sub-header" class="ion-no-border" [ngStyle]="{'display': getStyleHeader(2)}">
   <ion-toolbar class="ion-sub-toolbar-1">
-    <ion-title>{{data_gian_hang.text_title}}</ion-title>
+    <ion-title>{{data_shop_house.text_title}}</ion-title>
     <ion-buttons slot="start">
       <ion-back-button text=""></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
-  <ion-toolbar *ngIf="data_gian_hang.group_3.length != 0" [ngStyle]="{'display': getStyleHeaderPrduct()[0], 'opacity': getStyleHeaderPrduct()[1]}" class="ion-sub-toolbar-2">
-    <super-tabs *ngIf="data_gian_hang.group_3.length != 0" class="class-super-tabs margin-top-10" activeTabIndex="0" [config]="{ debug: true, sideMenu: 'left', allowElementScroll: true, nativeSmoothScroll: true }">
+  <ion-toolbar *ngIf="data_shop_house.group_2.length != 0" [ngStyle]="{'display': getStyleHeaderPrduct()[0], 'opacity': getStyleHeaderPrduct()[1]}" class="ion-sub-toolbar-2">
+    <super-tabs *ngIf="data_shop_house.group_2.length != 0" class="class-super-tabs margin-top-10" activeTabIndex="0" [config]="{ debug: true, sideMenu: 'left', allowElementScroll: true, nativeSmoothScroll: true }">
       <super-tabs-toolbar slot="top" scrollable="true" scrollable-padding="false" >
-        <super-tab-button *ngFor="let object of data_gian_hang.group_3" (click)="eventClickTabs(object.id_tab)">
+        <super-tab-button *ngFor="let object of data_shop_house.group_2" (click)="eventClickTabs(object.id_tab)">
           <ion-label>{{object.title}}</ion-label>
         </super-tab-button>
       </super-tabs-toolbar>
@@ -25,41 +25,41 @@
 <ion-content id="content_page"  [scrollEvents]="true" (ionScroll)="onScroll($event)">
   <ion-list lines="full" class="ion-no-margin ion-no-padding">
     <ion-item lines="none" class="ion-no-padding">
-      <ion-img *ngIf="data_gian_hang.thumbnail" class="image-page padding-bottom-30" src="{{data_gian_hang.thumbnail}}"></ion-img>
-      <div class="group-1-text-star" *ngIf="data_gian_hang.text_star_rate">
+      <ion-img *ngIf="data_shop_house.thumbnail" class="image-page padding-bottom-30" src="{{data_shop_house.thumbnail}}"></ion-img>
+      <div class="group-1-text-star" *ngIf="data_shop_house.text_star_rate">
         <div></div>
         <ion-img class="group-1-icon-star" src="../assets/icon/svg/icon-star.svg"></ion-img>
-        <ion-label class="class-label-rate">{{data_gian_hang.text_star_rate}}</ion-label>
+        <ion-label class="class-label-rate">{{data_shop_house.text_star_rate}}</ion-label>
       </div>
-      <div class="group-1-logo" *ngIf="data_gian_hang.logo">
-        <ion-img class="" src="{{data_gian_hang.logo}}"></ion-img>
+      <div class="group-1-logo" *ngIf="data_shop_house.logo">
+        <ion-img class="" src="{{data_shop_house.logo}}"></ion-img>
       </div>
     </ion-item>
     <ion-item lines="none" class="">
       <ion-item lines="none" class="item-common">
         <div class="width-100">
-          <div class="group-1-text-title" *ngIf="data_gian_hang.text_title">
+          <div class="group-1-text-title" *ngIf="data_shop_house.text_title">
             <div class="div-1 width-100">
-              <ion-label class="ion-text-wrap title-1 font-weight-bold">{{data_gian_hang.text_title}}</ion-label>
+              <ion-label class="ion-text-wrap title-1 font-weight-bold">{{data_shop_house.text_title}}</ion-label>
             </div>
             <div class="div-2" (click)="eventButtonShowPopup()">
               <img slot="end" class="group-1-icon-info" src="../assets/icon/svg/Information-circle.svg"/>
             </div>
           </div>
-          <div id="div-text-place" class="group-1-text-place" *ngIf="data_gian_hang.text_place">
+          <div id="div-text-place" class="group-1-text-place" *ngIf="data_shop_house.text_place">
             <div class="group-1-icon-place">
               <ion-img src="../assets/icon/svg/icon-place.svg"></ion-img>
             </div>
             <div>
-              <ion-label class="white-space-normal">{{data_gian_hang.text_place}}</ion-label>
+              <ion-label class="white-space-normal">{{data_shop_house.text_place}}</ion-label>
             </div>
           </div>
         </div>
       </ion-item>
     </ion-item>
   </ion-list>
-  <ion-slides [options]="slideOpts" class="margin-top-10" *ngIf="data_gian_hang.group_1.length > 0">
-    <ion-slide *ngFor="let object of data_gian_hang.group_1">
+  <ion-slides [options]="slideOpts" class="margin-top-10" *ngIf="data_shop_house.group_1.length > 0">
+    <ion-slide *ngFor="let object of data_shop_house.group_1">
         <ion-item lines="none" class="ion-no-padding" id="{{object._id}}" (click)="eventClickGroupPon(object)">
             <ion-img *ngIf="object.background_image != ''" src="{{object.background_image}}" class="img-responsive" alt=""></ion-img>
             <div *ngIf="object.background_image == ''" class="div-promotion-code">
@@ -104,20 +104,20 @@
           </ion-item>
     </ion-slide>
   </ion-slides>
-  <!-- <super-tabs *ngIf="data_gian_hang.group_3.length != 0" class="line-1 class-super-tabs margin-top-10" activeTabIndex="0" [config]="{ debug: true, sideMenu: 'left', allowElementScroll: true, nativeSmoothScroll: true }">
+  <!-- <super-tabs *ngIf="data_shop_house.group_2.length != 0" class="line-1 class-super-tabs margin-top-10" activeTabIndex="0" [config]="{ debug: true, sideMenu: 'left', allowElementScroll: true, nativeSmoothScroll: true }">
     <super-tabs-toolbar slot="top" scrollable="true" scrollable-padding="false" >
-      <super-tab-button *ngFor="let object of data_gian_hang.group_3" (click)="eventClickTabs(object.id_tab)">
+      <super-tab-button *ngFor="let object of data_shop_house.group_2" (click)="eventClickTabs(object.id_tab)">
         <ion-label>{{object.title}}</ion-label>
       </super-tab-button>
     </super-tabs-toolbar> -->
     <!-- <super-tabs-container autoScrollTop>
-      <super-tab class="ion-padding hidden-overflow" *ngFor="let object of data_gian_hang.group_3">
+      <super-tab class="ion-padding hidden-overflow" *ngFor="let object of data_shop_house.group_2">
         
       </super-tab>
     </super-tabs-container> -->
   <!-- </super-tabs> -->
-  <div id="group-data-product" class="group-data line-1 margin-top-20" *ngIf="data_gian_hang.group_3.length > 0">
-    <ion-grid class="ion-no-padding pading-ion-grid" *ngFor="let object of data_gian_hang.group_3" data-id="{{object.id_tab}}">
+  <div id="group-data-product" class="group-data line-1 margin-top-20" *ngIf="data_shop_house.group_2.length > 0">
+    <ion-grid class="ion-no-padding pading-ion-grid" *ngFor="let object of data_shop_house.group_2" data-id="{{object.id_tab}}">
       <ion-row class="row-data-product" *ngFor="let data of object.data" id="{{data._id}}">
         <ion-col class="ion-col-class group-2-col-1" size="3">
           <div class="div-logo">
@@ -157,13 +157,13 @@
       <div class="modal-content">
         <div class="modal-header">
           <div class="div-header-title">
-              <ion-label class="title font-weight-bold">{{data_gian_hang.text_title}}</ion-label>
+              <ion-label class="title font-weight-bold">{{data_shop_house.text_title}}</ion-label>
               <div id="div-text-place" class="group-1-text-place">
                 <div class="group-1-icon-place">
                   <ion-img src="../assets/icon/svg/icon-place.svg"></ion-img>
                 </div>
                 <div>
-                  <ion-label class="white-space-normal">{{data_gian_hang.text_place}}</ion-label>
+                  <ion-label class="white-space-normal">{{data_shop_house.text_place}}</ion-label>
                 </div>
               </div>
           </div>
@@ -177,7 +177,7 @@
               <ion-label class="title font-weight-bold">Giờ hoạt động</ion-label>
             </div>
             <div class="row col-12 margin-bottom-15 padding-left-25">
-              <ion-label class="white-space-normal">{{data_gian_hang.time_open}}</ion-label>
+              <ion-label class="white-space-normal">{{data_shop_house.time_open}}</ion-label>
             </div>
           </div>
         </div>
@@ -186,5 +186,5 @@
   </div>
 </ion-content>
 <section class="full-width function-section shadow-section">
-  <ion-button expand="block" class="amo-button-custom padding-0 {{disable_button_send}}" (click)="goToPageGioHang()">{{ 'SEVICE_29.button_send' | translate }}{{total_money}}</ion-button>
+  <ion-button expand="block" class="amo-button-custom padding-0 {{disable_button_send}}" (click)="goToPageBookingShopHouse()">{{ 'SEVICE_29.button_send' | translate }}{{total_money}}</ion-button>
 </section>

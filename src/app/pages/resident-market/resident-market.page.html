@@ -4,7 +4,7 @@
     <ion-buttons slot="start">
       <ion-back-button text="" icon="arrow-back-outline"></ion-back-button>
     </ion-buttons>
-    <button class="button-add-new-market" (click)="moveToCreateGianHang()">
+    <button class="button-add-new-market" (click)="moveToCreateShopHouse()">
       <img class="icon-home" src="../assets/icon/svg/Add-circle-outline.svg"/>
       <ion-label class="font-weight-600">{{ 'INBOX_19.label_history' | translate }}</ion-label>
     </button>
@@ -13,7 +13,7 @@
   
 <ion-content [scrollEvents]="true">
   <ion-list class="list-view-custom">
-    <ion-item *ngFor="let object of listDataMarket" id="{{object._id}}" class="ion-item-class ion-no-padding" (click)="moveGianHangDetailPage($event)">
+    <ion-item *ngFor="let object of listDataMarket" id="{{object._id}}" class="ion-item-class ion-no-padding" (click)="moveShopHousePage(object)">
       <ion-grid class="ion-no-padding">
           <ion-row>
             <ion-col size="3" class="ion-no-padding" *ngIf="object.thumbnail != ''">

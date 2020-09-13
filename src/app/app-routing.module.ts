@@ -153,16 +153,16 @@ const routes: Routes = [
     loadChildren: () => import('./pages/user-shop-by-category/user-shop-by-category.module').then(m => m.UserShopByCategoryPageModule)
   },
   { 
-    path: 'mo-gian-hang', 
-    loadChildren: () => import('./pages/mo-gian-hang/mo-gian-hang.module').then(m => m.MoGianHangPageModule)
+    path: 'create-shop-house', 
+    loadChildren: () => import('./pages/create-shop-house/create-shop-house.module').then(m => m.CreateShopHousePageModule)
   },
   { 
-    path: 'gian-hang-detail/:id', 
-    loadChildren: () => import('./pages/gian-hang-detail/gian-hang-detail.module').then(m => m.GianHangDetailPageModule)
+    path: 'shop-house/:id', 
+    loadChildren: () => import('./pages/shop-house/shop-house.module').then(m => m.ShopHousePageModule)
   },
   { 
-    path: 'gio-hang', 
-    loadChildren: () => import('./pages/gio-hang/gio-hang.module').then(m => m.GioHangPageModule)
+    path: 'booking-shop-house', 
+    loadChildren: () => import('./pages/booking-shop-house/booking-shop-house.module').then(m => m.BookingShopHousePageModule)
   },
   { 
     path: 'booking-product/:type', 
@@ -183,6 +183,10 @@ const routes: Routes = [
   { 
     path: 'history-detail', 
     loadChildren: () => import('./pages/history-detail/history-detail.module').then(m => m.HistoryDetailPageModule)
+  },
+  { 
+    path: 'management-order', 
+    loadChildren: () => import('./pages/management-order/management-order.module').then(m => m.ManagementOrderPageModule)
   },
   { 
     path: 'chat-to-shop', 

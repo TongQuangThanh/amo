@@ -5,6 +5,8 @@ import { ActionSheetController, NavController } from '@ionic/angular';
 import { LoadingService } from '../../services/loading/loading.service';
 import { ModalController } from '@ionic/angular';
 import { DatePipe } from '@angular/common';
+import { TranslateService } from '@ngx-translate/core';
+import { AlertService } from '../../services/alert/alert.service';
 
 @Component({
   selector: 'app-history',
@@ -21,14 +23,16 @@ export class HistoryPage implements OnInit {
     private loading: LoadingService,
     private navCtrl: NavController,
     private apiService: ApiService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private translate: TranslateService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
     this.data_history = [];
-    this.getAllOrderHistoryComment();
+    this.getAllOrderHistorys();
   }
-  getAllOrderHistoryComment() {
+  getAllOrderHistorys() {
     var self = this;
     this.apiService.getListOrderHistorys()
       .subscribe(result => {
@@ -37,7 +41,7 @@ export class HistoryPage implements OnInit {
           if (self.data_history.length == 0) {
             self.data_history = [{
               id_tab: "0",
-              title: "Tất cả",
+              title: self.translate.instant('SERVICE_35.tab_all_title'),
               data: []
             }];
           }

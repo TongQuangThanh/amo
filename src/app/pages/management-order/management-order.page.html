@@ -1,0 +1,75 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar>
+      <ion-title>{{ 'SERVICE_45.title' | translate }}</ion-title>
+      <ion-buttons slot="start">
+        <ion-back-button text=""></ion-back-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+  
+  <ion-content>
+    <super-tabs class="class-super-tabs" activeTabIndex="0" [config]="{ debug: true, sideMenu: 'left', allowElementScroll: true, nativeSmoothScroll: true }">
+      <super-tabs-toolbar slot="top" scrollable="true" scrollable-padding="false">
+        <super-tab-button *ngFor="let object of data_history">
+          <ion-label class="font-weight-bold">{{object.title}}</ion-label>
+        </super-tab-button>
+      </super-tabs-toolbar>
+      <super-tabs-container autoScrollTop>
+        <super-tab class="ion-padding hidden-overflow" *ngFor="let object of data_history">
+          <ion-list lines="full" class="ion-no-margin ion-no-padding">
+            <ion-grid class="ion-no-padding scroll-class line-bottom" *ngFor="let data of object.data" id="{{data.id}}">
+              <ion-row class="ion-no-padding" (click)="gotoHistoryDetail(data)">
+                <ion-col class="group-2-col-1 center-div" size="8">
+                  <ion-item lines="none" class="ion-no-padding">
+                    <div>
+                      <ion-label *ngIf="data.status == 'processing'" class="ion-label-1">{{ 'SERVICE_45.status_processing' | translate }}</ion-label>
+                      <ion-label *ngIf="data.status == 'accepted-provider'" class="ion-label-2">{{ 'SERVICE_45.status_accepted_provider' | translate }}</ion-label>
+                      <ion-label *ngIf="data.status == 'accepted-user'" class="ion-label-3">{{ 'SERVICE_45.status_accepted_user' | translate }}</ion-label>
+                      <ion-label *ngIf="data.status == 'finish'" class="ion-label-4">{{ 'SERVICE_45.status_finish' | translate }}</ion-label>
+                      <ion-label *ngIf="data.status == 'cancel-user'" class="ion-label-5">{{ 'SERVICE_45.status_cancel_user' | translate }}</ion-label>
+                      <ion-label *ngIf="data.status == 'cancel-provider'" class="ion-label-5">{{ 'SERVICE_45.status_cancel_provider' | translate }}</ion-label>
+                    </div>
+                  </ion-item>
+                </ion-col>
+                <ion-col size="4">
+                  <ion-item class="item-date-time">
+                    <ion-label class="">{{data.date_time}}</ion-label>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+              <ion-row class="ion-no-padding" (click)="gotoHistoryDetail(data)">
+                <ion-col class="group-2-col-1" size="8">
+                  <div class="div-title-row-2-col-1">
+                    <ion-label class="font-weight-bold">{{data.title}}</ion-label>
+                  </div>
+                </ion-col>
+                <ion-col class="group-2-col-1" size="4">
+                  <div class="div-title-row-2-col-2">
+                    <ion-label class="font-weight-bold">{{data.money}}đ</ion-label>
+                  </div>
+                </ion-col>
+              </ion-row>
+              <ion-row class="ion-no-padding user-order-inf margin-top-10" (click)="gotoHistoryDetail(data)">
+                <ion-col class="" size="12">
+                  <ion-item class="no-border">
+                    <ion-avatar class="avatar-class" slot="start">
+                      <img src="{{data.avatar}}">
+                    </ion-avatar>
+                    <ion-label class="label-name">{{data.name}}</ion-label>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+              <ion-row class="ion-no-padding">
+                <ion-col size="12">
+                  <div class="div-col-1">
+                    <ion-label class="">{{ 'SERVICE_45.order_address' | translate }}: {{data.order_address}}</ion-label>
+                  </div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-list>
+        </super-tab>
+      </super-tabs-container>
+    </super-tabs>
+  </ion-content>
+  

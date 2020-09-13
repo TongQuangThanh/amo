@@ -14,7 +14,7 @@
         Chưa có dịch vụ nào được cung cấp
       </ion-label>
     </ion-item>
-    <ion-item *ngFor="let object of listDataMarket" id="{{object._id}}" class="ion-item-class ion-no-padding" (click)="moveGianHangDetailPage($event)">
+    <ion-item *ngFor="let object of listDataMarket" id="{{object._id}}" class="ion-item-class ion-no-padding" (click)="moveShopHousePage(object)">
       <ion-grid class="ion-no-padding">
           <ion-row>
             <ion-col size="3" class="ion-no-padding" *ngIf="object.thumbnail != ''">

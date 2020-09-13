@@ -1,10 +1,16 @@
 <ion-header class="ion-no-border">
   <ion-toolbar class="header-toolbar">
     <ion-title class="header-title">{{ 'SEVICE_NEW.title' | translate }}</ion-title>
-    <button class="button-history" (click)="moveHistoryPage()">
-      <img class="icon-home" src="../assets/icon/svg/History.svg"/>
-      <ion-label class="font-weight-bold">{{ 'SEVICE_NEW.label_history' | translate }}</ion-label>
-    </button>
+    <div class="group-button-header">
+      <button class="button-manager margin-right-10" (click)="moveManagementOrderPage()">
+        <img class="icon-home" src="../assets/icon/svg/Manager.svg"/>
+        <ion-label class="font-weight-bold">{{ 'SEVICE_NEW.label_management' | translate }}</ion-label>
+      </button>
+      <button class="button-history" (click)="moveHistoryPage()">
+        <img class="icon-home" src="../assets/icon/svg/History.svg"/>
+        <ion-label class="font-weight-bold">{{ 'SEVICE_NEW.label_history' | translate }}</ion-label>
+      </button>
+    </div>
   </ion-toolbar>
 </ion-header>
   
@@ -82,7 +88,7 @@
   </ion-grid>
   <ion-slides [options]="slideOpts_1">
     <ion-slide *ngFor="let object of list_data_silde_2">
-      <ion-card class="margin-right-5 margin-top-5 border-radius-8" (click)="moveGianHangDetailPage($event)" id="{{object._id}}">
+      <ion-card class="margin-right-5 margin-top-5 border-radius-8" (click)="moveShopHousePage($event)" id="{{object._id}}">
         <ion-item lines="none" class="ion-no-padding" *ngIf="object.thumbnail != ''">
           <ion-img src="{{object.thumbnail}}" class="img-responsive width-100" alt=""></ion-img>
           <div *ngIf="object.text_note != '' && object.type_note == 1" class="note-1">
