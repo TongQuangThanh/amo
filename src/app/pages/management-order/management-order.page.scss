@@ -105,6 +105,7 @@ ion-item{
     text-align: right;
     color: #21313F;
     font-weight: 500;
+    display: grid;
 }
 .item-date-time {
     float: right;
@@ -124,15 +125,16 @@ ion-item{
 .group-2-col-2 .div-text {
     padding-left: 10px;
 }
-.div-col-1, .div-col-2{
+.div-col-1 {
     font-size: 14px;
-    line-height: 24px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    line-height: 20px;
+    color: #7A838C;
+    margin-top: 4px;
+    display: flex;
 }
-.div-col-2 {
-    margin-top: 2px;
+.div-col-1 .order-address {
+    white-space: nowrap;
+    margin-right: 10px;
 }
 .center-div {
     display: inline-grid;
@@ -180,4 +182,10 @@ ion-item{
 }
 .user-order-inf ion-item{
     --min-height: 32px;
+}
+.label-number-product {
+    font-size: 14px;
+    line-height: 24px;
+    text-align: right;
+    color: #7A838C;
 }

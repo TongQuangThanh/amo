@@ -442,17 +442,11 @@
         "title" : "Tiện ích",
         "label_history" : "Lịch sử",
         "label_management" : "Quản lý",
-        "button_title_1": "Gọi xe",
-        "button_title_2": "Giúp việc",
-        "button_title_3": "Sửa chữa",
-        "button_title_4": "Đồ ăn",
-        "button_title_5": "Thiết bị thông minh",
-        "button_title_6": "Bảo trì căn hộ",
-        "button_title_7": "Dịch vụ AMO",
-        "button_title_8": "Khác",
-        "group_2_title_1": "Chợ cư dân",
-        "group_2_title_2": "Xem thêm",
-        "promotion_code_detail" : "Cùng mua với bạn bè/hàng xóm để được nhận giảm giá cao nhất."
+        "resident_market_title": "Chợ cư dân",
+        "see_more_labe": "Xem thêm",
+        "resident_market_label_1" : "Mở gian hàng của bạn",
+        "resident_market_label_2" : "Kinh doanh mọi lúc mọi nơi, không mất phí",
+        "resident_market_btn_create" : "Đăng ký ngay"
     },
     "INBOX_36": {
         "title" : "Dịch vụ xe",
@@ -549,7 +543,8 @@
         "status_cancel_user" : "Khách hàng hủy đơn",
         "status_cancel_provider" : "Nhà cc hủy đơn",
         "code_orders" : "Mã đơn hàng:",
-        "order_address" : "Địa chỉ đặt"
+        "order_address" : "Đ/c đặt",
+        "label_product" : "Sản phẩm"
     },
     "PAY_15": {
         "title" : "",

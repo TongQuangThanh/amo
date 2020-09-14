@@ -78,6 +78,7 @@ export class ManagementOrderPage implements OnInit {
             let money_convert = self.convertFormatMoney(money);
             var date = new Date(product.orderAt);
             var date_convert = this.datePipe.transform(date,"dd/MM/yyyy");
+            var order_address = product.appartment.title + ' - ' + product.appartment.campaign.title + ', ' + product.appartment.campaign.address
             let object = {
               _id: product._id,
               status: product.status ? product.status : "",
@@ -91,7 +92,7 @@ export class ManagementOrderPage implements OnInit {
               date_time: date_convert,
               orderInfor: product.orderInfor,
               createdBy: product.createdBy,
-              order_address: product.appartment.title
+              order_address: order_address
             }
             self.data_history[index]['data'].push(object);
             let index_all = self.getIndexCategoryInList("0");
@@ -105,9 +106,9 @@ export class ManagementOrderPage implements OnInit {
     });
   }
 
-  gotoHistoryDetail(object) {
-    // localStorage.setItem('data-order-history', JSON.stringify(object));
-    // this.navCtrl.navigateForward('/history-detail');
+  gotoManagementOrderDetail(object) {
+    // localStorage.setItem('data-management-order', JSON.stringify(object));
+    // this.navCtrl.navigateForward('/management-order-detail');
   }
   convertFormatMoney(value) {
     value = value.toString();
@@ -140,7 +141,7 @@ export class ManagementOrderPage implements OnInit {
     return index_value;
   }
   moveToChatToShopPage(object) {
-    localStorage.setItem('data-order-history', JSON.stringify(object));
+    localStorage.setItem('data-management-order', JSON.stringify(object));
     this.navCtrl.navigateForward('/chat-to-shop');
   }
 }

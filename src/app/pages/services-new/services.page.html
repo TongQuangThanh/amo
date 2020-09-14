@@ -19,7 +19,7 @@
     <ion-slide *ngFor="let object of list_data_silde_1">
       <ion-item lines="none" class="ion-no-padding" id="{{object._id}}" (click)="eventClickGroupPon(object, object.type)">
         <ion-img *ngIf="object.background_image != ''" src="{{object.background_image}}" class="img-responsive" alt=""></ion-img>
-        <div *ngIf="object.background_image == ''" class="div-promotion-code">
+        <div *ngIf="object.background_image == ''" class="div-promotion-code" [ngStyle]="{'height': getHeightSlider()}">
           <ion-grid class="ion-grid-class">
             <ion-row class="">
               <ion-col class="ion-col-class padding-0 padding-right-5" size="3">
@@ -79,14 +79,14 @@
   <ion-grid class="group-2-style">
     <ion-row class="margin-top-10">
       <ion-col class="group-2-label-1 ion-align-self-start" size="6">
-        <ion-label class="font-weight-bold">{{ 'SEVICE_NEW.group_2_title_1' | translate }}</ion-label>
+        <ion-label class="font-weight-bold">{{ 'SEVICE_NEW.resident_market_title' | translate }}</ion-label>
       </ion-col>
       <ion-col class="font-weight-bold group-2-label-2 ion-align-self-end" size="6" (click)="moveResidentMarketPage()">
-        <ion-label>{{ 'SEVICE_NEW.group_2_title_2' | translate }}</ion-label>
+        <ion-label *ngIf="list_data_silde_2.length != 0">{{ 'SEVICE_NEW.see_more_labe' | translate }}</ion-label>
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-slides [options]="slideOpts_1">
+  <ion-slides [options]="slideOpts_1" class="margin-bottom-20" *ngIf="list_data_silde_2.length > 0">
     <ion-slide *ngFor="let object of list_data_silde_2">
       <ion-card class="margin-right-5 margin-top-5 border-radius-8" (click)="moveShopHousePage($event)" id="{{object._id}}">
         <ion-item lines="none" class="ion-no-padding" *ngIf="object.thumbnail != ''">
@@ -118,6 +118,20 @@
           </div>
         </ion-card-content>
       </ion-card>
+    </ion-slide>
+  </ion-slides>
+  <ion-slides [options]="slideOpts_2" class="margin-bottom-20" *ngIf="list_data_silde_2.length == 0 && show_slider == true">
+    <ion-slide>
+      <ion-item lines="none" class="ion-no-padding width-100">
+        <div class="resident-market-no-data" >
+          <ion-img src="../assets/icon/svg/Store.svg" class="img-responsive" alt=""></ion-img>
+          <ion-label class="ion-label-1">{{ 'SEVICE_NEW.resident_market_label_1' | translate }}</ion-label>
+          <ion-label class="ion-label-2">{{ 'SEVICE_NEW.resident_market_label_2' | translate }}</ion-label>
+          <button class="" (click)="moveHistoryPage()">
+            <ion-label class="font-weight-bold">{{ 'SEVICE_NEW.resident_market_btn_create' | translate }}</ion-label>
+          </button>
+        </div>
+      </ion-item>
     </ion-slide>
   </ion-slides>
 </ion-content>

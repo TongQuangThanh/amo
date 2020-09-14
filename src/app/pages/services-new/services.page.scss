@@ -265,7 +265,7 @@ ion-toolbar{
     line-height: 20px;
     color: #FFFFFF;
     white-space: normal;
-    margin-top: 10px;
+    margin-top: 5px;
     overflow: hidden; 
     text-overflow: ellipsis; 
     display: -webkit-box; 
@@ -323,4 +323,44 @@ ion-toolbar{
     color: #fff;
     font-size: 12px;
     line-height: 15px;
+}
+
+
+.resident-market-no-data {
+    width: 100%;
+    background-color: #cce7ef;
+    border-radius: 8px;
+    text-align: center;
+}
+.resident-market-no-data ion-img{
+    width: 35%;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+.resident-market-no-data .ion-label-1{
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #21313F;
+}
+.resident-market-no-data .ion-label-2{
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+    color: #21313F;
+    margin-top: 3px;
+    margin-bottom: 13px;
+}
+.resident-market-no-data button{
+    background: #009AC9;
+    border-radius: 8px;
+    padding: 10px 30px;
+    color: #FFFFFF;
+    margin-bottom: 20px;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 24px;
 }
