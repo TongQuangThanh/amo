@@ -514,5 +514,14 @@ export class ApiService {
       map(results => results)
     );
   }
+  getDataCheckShopOwner(): Observable<any> {
+    const params = new HttpParams().
+      set('_v', (new Date()).getTime().toString());
+    return this.http.get(EnvService.getUserShopCheckShopOwner, {
+      params
+    }).pipe(
+      map(results => results)
+    );
+  }
 
 }

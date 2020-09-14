@@ -2,7 +2,7 @@
   <ion-toolbar class="header-toolbar">
     <ion-title class="header-title">{{ 'SEVICE_NEW.title' | translate }}</ion-title>
     <div class="group-button-header">
-      <button class="button-manager margin-right-10" (click)="moveManagementOrderPage()">
+      <button class="button-manager margin-right-10" (click)="moveManagementOrderPage()" *ngIf="display_button_management">
         <img class="icon-home" src="../assets/icon/svg/Manager.svg"/>
         <ion-label class="font-weight-bold">{{ 'SEVICE_NEW.label_management' | translate }}</ion-label>
       </button>

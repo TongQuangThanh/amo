@@ -29,6 +29,7 @@ export class ServicesPage implements OnInit {
   list_data_range: any;
   show_slider:any;
   height_slider_1: any;
+  display_button_management: any;
 
   constructor(
     private translate: TranslateService,
@@ -72,22 +73,31 @@ export class ServicesPage implements OnInit {
     this.listServiceCategory = [];
     this.listServiceLog = [];
     this.show_slider = false;
+    this.display_button_management = false;
     this.getServicePromotionCode();
     this.currentPageNoti = 1;
     this.numberRecordOnPageNoti = 5;
     this.getDataUserShop(this.currentPageNoti, this.numberRecordOnPageNoti, '', null, true);
     this.getAllServiceSystem();
+    this.getDataCheckShopOwner();
   }
 
-  ionViewWillEnter(){
-    // this.listServiceCategory = [];
-    // this.listServiceLog = [];
-    // this.getServicePromotionCode();
-    // this.currentPageNoti = 1;
-    // this.numberRecordOnPageNoti = ConstService.NUMBER_RECORD_ON_PAGE;
-    // this.getDataUserShop(this.currentPageNoti, this.numberRecordOnPageNoti, '', null, true);
-    // this.getAllServiceSystem();
+  ionViewWillEnter() {
     this.height_slider_1 = (this.widthScreen / 1.1) * (9 / 16);
+  }
+  getDataCheckShopOwner() {
+    var self = this;
+    this.apiService.getDataCheckShopOwner()
+      .subscribe(result => {
+        if (result.requestShopProducts && result.requestShopProducts.length > 0) {
+          self.display_button_management = true;
+        }
+        self.loading.dismiss();
+    },
+    error => {
+      self.loading.dismiss();
+      self.display_button_management = false;
+    });
   }
 
   getServicePromotionCode() {
