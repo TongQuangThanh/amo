@@ -18,7 +18,7 @@
         <super-tab class="ion-padding hidden-overflow" *ngFor="let object of data_history">
           <ion-list lines="full" class="ion-no-margin ion-no-padding">
             <ion-grid class="ion-no-padding scroll-class line-bottom" *ngFor="let data of object.data" id="{{data.id}}">
-              <ion-row class="ion-no-padding" (click)="gotoHistoryDetail(data)">
+              <ion-row class="ion-no-padding" (click)="gotoManagementOrderDetail(data)">
                 <ion-col class="group-2-col-1 center-div" size="8">
                   <ion-item lines="none" class="ion-no-padding">
                     <div>
@@ -37,32 +37,24 @@
                   </ion-item>
                 </ion-col>
               </ion-row>
-              <ion-row class="ion-no-padding" (click)="gotoHistoryDetail(data)">
+              <ion-row class="ion-no-padding" (click)="gotoManagementOrderDetail(data)">
                 <ion-col class="group-2-col-1" size="8">
                   <div class="div-title-row-2-col-1">
                     <ion-label class="font-weight-bold">{{data.title}}</ion-label>
+                  </div>
+                  <div class="div-col-1">
+                    <div class="order-address">
+                        <ion-label class="">{{ 'SERVICE_45.order_address' | translate }}:</ion-label>
+                    </div>
+                    <div>
+                        <ion-label class="">{{data.order_address}}</ion-label>
+                    </div>
                   </div>
                 </ion-col>
                 <ion-col class="group-2-col-1" size="4">
                   <div class="div-title-row-2-col-2">
                     <ion-label class="font-weight-bold">{{data.money}}đ</ion-label>
-                  </div>
-                </ion-col>
-              </ion-row>
-              <ion-row class="ion-no-padding user-order-inf margin-top-10" (click)="gotoHistoryDetail(data)">
-                <ion-col class="" size="12">
-                  <ion-item class="no-border">
-                    <ion-avatar class="avatar-class" slot="start">
-                      <img src="{{data.avatar}}">
-                    </ion-avatar>
-                    <ion-label class="label-name">{{data.name}}</ion-label>
-                  </ion-item>
-                </ion-col>
-              </ion-row>
-              <ion-row class="ion-no-padding">
-                <ion-col size="12">
-                  <div class="div-col-1">
-                    <ion-label class="">{{ 'SERVICE_45.order_address' | translate }}: {{data.order_address}}</ion-label>
+                    <ion-label class="label-number-product">{{data.orderInfor.length}} {{ 'SERVICE_45.label_product' | translate }}</ion-label>
                   </div>
                 </ion-col>
               </ion-row>

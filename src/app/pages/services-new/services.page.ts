@@ -27,6 +27,8 @@ export class ServicesPage implements OnInit {
   currentPageNoti: number;
   numberRecordOnPageNoti: number;
   list_data_range: any;
+  show_slider:any;
+  height_slider_1: any;
 
   constructor(
     private translate: TranslateService,
@@ -56,6 +58,12 @@ export class ServicesPage implements OnInit {
     spaceBetween: 0,
     autoplay:true
   };
+  slideOpts_2 = {
+    initialSlide: 0,
+    slidesPerView: 1.1,
+    centeredSlides: true,
+    spaceBetween: 0
+  };
 
   ngOnInit() {
     this.list_data_silde_1 = [];
@@ -63,6 +71,7 @@ export class ServicesPage implements OnInit {
     this.list_data_range = {};
     this.listServiceCategory = [];
     this.listServiceLog = [];
+    this.show_slider = false;
     this.getServicePromotionCode();
     this.currentPageNoti = 1;
     this.numberRecordOnPageNoti = 5;
@@ -78,6 +87,7 @@ export class ServicesPage implements OnInit {
     // this.numberRecordOnPageNoti = ConstService.NUMBER_RECORD_ON_PAGE;
     // this.getDataUserShop(this.currentPageNoti, this.numberRecordOnPageNoti, '', null, true);
     // this.getAllServiceSystem();
+    this.height_slider_1 = (this.widthScreen / 1.1) * (9 / 16);
   }
 
   getServicePromotionCode() {
@@ -246,8 +256,10 @@ export class ServicesPage implements OnInit {
           event.target.complete();
         }
         self.loading.dismiss();
+        self.show_slider = true;
     },
     error => {
+      self.show_slider = true;
       self.loading.dismiss();
     });
   }
@@ -319,5 +331,8 @@ export class ServicesPage implements OnInit {
       localStorage.setItem('data-booking-product', JSON.stringify(object));
       this.navCtrl.navigateForward('/booking-product/' + 'groupon');
     }
+  }
+  getHeightSlider() {
+    return this.height_slider_1 + "px";
   }
 }

@@ -189,6 +189,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/management-order/management-order.module').then(m => m.ManagementOrderPageModule)
   },
   { 
+    path: 'management-order-detail', 
+    loadChildren: () => import('./pages/management-order-detail/management-order-detail.module').then(m => m.ManagementOrderDetailPageModule)
+  },
+  { 
     path: 'chat-to-shop', 
     loadChildren: () => import('./pages/chat-to-shop/chat-to-shop.module').then(m => m.ChatToShopPageModule)
   },
