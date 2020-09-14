@@ -62,6 +62,7 @@ export const EnvService = {
   serviceShopProduct: environment.base + '/shop-product?',
   serviceServiceGroup: environment.base + '/service-group',
   getUserShop: environment.base + '/user-shop',
+  getUserShopCheckShopOwner: environment.base + '/user-shop/check-shop-owner',
   getUserShopByCategory: environment.base + '/user-shop?',
   getUserShopTopData: environment.base + '/user-shop/top/data',
   getShopProductCategory: environment.base + '/user-shop-category',
@@ -75,6 +76,6 @@ export const EnvService = {
   getServiceLog: environment.base + '/service-log',
   getServiceLogById: environment.base + '/service-log/id',
   orderHistoryComment: environment.base + '/order-history-comment',
-  getOrderHistoryByProvider: environment.base + '/order-history/find-by-provider',
+  getOrderHistoryByProvider: environment.base + '/order-history/find-by-provider'
 };
 
