@@ -6,79 +6,70 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
-  
   <ion-content>
     <ion-list lines="full" class="ion-no-margin ion-no-padding padding-bottom-20 ion-list-class">
       <ion-grid class="ion-no-padding scroll-class">
-        <ion-row class="ion-no-padding line-bottom-10 margin-top-5">
+        <ion-row class="ion-no-padding margin-top-5">
           <ion-col class="group-2-col-1 center-div" size="8">
             <div class="">
-              <ion-label *ngIf="data_history.status == 'processing'" class="ion-label-1">{{ 'PAY_15.status_processing' | translate }}</ion-label>
-              <ion-label *ngIf="data_history.status == 'accepted-provider'" class="ion-label-2">{{ 'PAY_15.status_accepted_provider' | translate }}</ion-label>
-              <ion-label *ngIf="data_history.status == 'accepted-user'" class="ion-label-3">{{ 'PAY_15.status_accepted_user' | translate }}</ion-label>
-              <ion-label *ngIf="data_history.status == 'finish'" class="ion-label-4">{{ 'PAY_15.status_finish' | translate }}</ion-label>
-              <ion-label *ngIf="data_history.status == 'cancel-user'" class="ion-label-5">{{ 'PAY_15.status_cancel_user' | translate }}</ion-label>
-              <ion-label *ngIf="data_history.status == 'cancel-provider'" class="ion-label-5">{{ 'PAY_15.status_cancel_provider' | translate }}</ion-label>
+                <ion-label *ngIf="data_history.status == 'processing'" class="ion-label-1">{{ 'SERVICE_46.status_processing' | translate }}</ion-label>
+                <ion-label *ngIf="data_history.status == 'confirm-user'" class="ion-label-3">{{ 'SERVICE_46.status_accepted_provider_groupon' | translate }}</ion-label>
+                <ion-label *ngIf="data_history.status == 'accepted-provider'" class="ion-label-4">{{ 'SERVICE_46.status_accepted_provider' | translate }}</ion-label>
+                <ion-label *ngIf="data_history.status == 'accepted-user'" class="ion-label-4">{{ 'SERVICE_46.status_accepted_user' | translate }}</ion-label>
+                <ion-label *ngIf="data_history.status == 'finish'" class="ion-label-4">{{ 'SERVICE_46.status_finish' | translate }}</ion-label>
+                <ion-label *ngIf="data_history.status == 'cancel-user'" class="ion-label-5">{{ 'SERVICE_46.status_cancel_user' | translate }}</ion-label>
+                <ion-label *ngIf="data_history.status == 'cancel-provider'" class="ion-label-5">{{ 'SERVICE_46.status_cancel_provider' | translate }}</ion-label>
             </div>
           </ion-col>
           <ion-col size="4">
+            <ion-item class="item-date-time">
+              <ion-label class="">{{data_history.date_time}}</ion-label>
+            </ion-item>
+            <!-- <div class="div-title-row-2-col-2">
+              <ion-label class="font-weight-bold">{{data_history.money}}đ</ion-label>
+            </div> -->
+          </ion-col>
+        </ion-row>
+        <ion-row class="ion-no-padding line-bottom-10">
+          <ion-col class="group-2-col-1" size="8">
+            <div class="div-title-row-2-col-1">
+              <ion-label class="font-weight-bold">{{data_history.title}}</ion-label>
+            </div>
+            <div class="div-col-1">
+              <div class="order-address">
+                  <ion-label class="">{{ 'SERVICE_46.order_address' | translate }}:</ion-label>
+              </div>
+              <div>
+                  <ion-label class="">{{data_history.order_address}}</ion-label>
+              </div>
+            </div>
+          </ion-col>
+          <ion-col class="group-2-col-1" size="4">
             <div class="div-title-row-2-col-2">
               <ion-label class="font-weight-bold">{{data_history.money}}đ</ion-label>
             </div>
           </ion-col>
         </ion-row>
-        
         <ion-row class="list_data_product" *ngFor="let object of data_history_order" id="{{object._id}}">
-          <ion-col class="ion-col-class {{object.class_border}}" size="2">
+          <ion-col class="ion-col-class" size="2">
             <ion-item class="css-ion-col-1">
               <ion-label class="margin-0">{{object.number}}x</ion-label>
             </ion-item>
           </ion-col>
-          <ion-col class="ion-col-class {{object.class_border}}" size="7">
+          <ion-col class="ion-col-class" size="7">
             <ion-item class="css-ion-col-2">
-              <ion-label class="font-weight-bold">{{object.title}}</ion-label>
+              <ion-label class="">{{object.title}}</ion-label>
             </ion-item>
           </ion-col>
-          <ion-col class="ion-col-class {{object.class_border}}" size="3">
+          <ion-col class="ion-col-class" size="3">
             <ion-item class="css-ion-col-3">
               <ion-label class="font-weight-bold">{{object.money}}đ</ion-label>
             </ion-item>
           </ion-col>
         </ion-row>
-
-        <ion-row class="ion-no-padding line-top-10">
+        <!-- <ion-row class="ion-no-padding margin-top-15" *ngIf="data_history.status == 'finish' && (data_history.text_rate != 0 && data_history.text_rate != '')">
           <ion-col class="" size="5">
-            <ion-label class="label-left">{{ 'PAY_15.label_supplier_name' | translate }}</ion-label>
-          </ion-col>
-          <ion-col class="" size="7">
-            <ion-item class="no-border item-avatar">
-              <ion-avatar class="avatar-class" slot="start">
-                <img src="{{data_history.avatar}}">
-              </ion-avatar>
-              <ion-label class="label-name">{{data_history.name}}</ion-label>
-            </ion-item>
-            <!-- <ion-label class="label-right">{{data_history.name}}</ion-label> -->
-          </ion-col>
-        </ion-row>
-        <ion-row class="ion-no-padding margin-top-15">
-          <ion-col class="" size="5">
-            <ion-label class="label-left">{{ 'PAY_15.label_code_order' | translate }}</ion-label>
-          </ion-col>
-          <ion-col class="" size="7">
-            <ion-label class="label-right">{{data_history.code_orders}}</ion-label>
-          </ion-col>
-        </ion-row>
-        <ion-row class="ion-no-padding margin-top-15">
-          <ion-col class="" size="5">
-            <ion-label class="label-left">{{ 'PAY_15.label_time' | translate }}</ion-label>
-          </ion-col>
-          <ion-col class="" size="7">
-            <ion-label class="label-right">{{data_history.date_time}}</ion-label>
-          </ion-col>
-        </ion-row>
-        <ion-row class="ion-no-padding margin-top-15" *ngIf="data_history.status == 'finish' && data_history.text_rate != 0">
-          <ion-col class="" size="5">
-            <ion-label class="label-left">{{ 'PAY_15.label_rating' | translate }}</ion-label>
+            <ion-label class="label-left">{{ 'SERVICE_46.label_rating' | translate }}</ion-label>
           </ion-col>
           <ion-col class="" size="7">
             <ion-item class="group-1-text-star">
@@ -86,12 +77,12 @@
               <ion-label class="class-label-rate">{{data_history.text_rate}}</ion-label>
             </ion-item>
           </ion-col>
-        </ion-row>
+        </ion-row> -->
       </ion-grid>
-      <ion-grid class="ion-no-padding line-top-16" (click)="eventShowDialog()" *ngIf="data_history.status == 'finish' && data_history.text_rate == 0">
+      <ion-grid class="ion-no-padding line-top-16" (click)="eventShowDialog()" *ngIf="data_history.status == 'finish' && (data_history.text_rate == 0 || data_history.text_rate == '')">
         <ion-row class="ion-no-padding">
           <ion-col class="" size="12">
-            <ion-label class="rate-label-left">{{ 'PAY_15.label_rating_service' | translate }}</ion-label>
+            <ion-label class="rate-label-left">{{ 'SERVICE_46.label_rating_service' | translate }}</ion-label>
           </ion-col>
         </ion-row>
         <ion-row class="ion-no-padding padding-0 margin-top-10">
@@ -119,13 +110,18 @@
           </ion-item>
         </ion-row>
       </ion-grid>
+      <ion-row class="ion-no-padding line-top-10">
+        <!-- <ion-item lines="none" class="item-common width-100">
+            <ion-textarea class="text-area-1" rows="4" cols="20" placeholder="{{ 'SERVICE_46.note_placeHolder' | translate }}" [(ngModel)]="form_note_provider"></ion-textarea>
+        </ion-item> -->
+      </ion-row>
     </ion-list>
     <div *ngIf="flag_show_hide_popup == true" class="modal-backdrop fade show"></div>
     <div *ngIf="flag_show_hide_popup == true" class="modal" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <ion-label class="rate-label-left font-weight-bold">{{ 'PAY_15.label_feedback' | translate }}</ion-label>
+            <ion-label class="rate-label-left font-weight-bold">{{ 'SERVICE_46.label_feedback' | translate }}</ion-label>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="eventButtonClosePopup()">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -136,7 +132,7 @@
                 <ion-grid class="ion-no-padding">
                   <ion-row class="ion-no-padding">
                     <ion-col class="" size="12">
-                      <ion-label class="rate-label-left">{{ 'PAY_15.label_rating_service' | translate }}</ion-label>
+                      <ion-label class="rate-label-left">{{ 'SERVICE_46.label_rating_service' | translate }}</ion-label>
                     </ion-col>
                   </ion-row>
                   <ion-row class="ion-no-padding padding-0 margin-top-10">
@@ -169,17 +165,17 @@
                 </ion-grid>
                 <ion-item lines="none" class="margin-top-20 margin-bottom-30">
                   <ion-item lines="none" class="item-common width-100">
-                      <ion-textarea class="text-area-1" rows="4" cols="20" placeholder="{{ 'PAY_15.label_write_feedback' | translate }}" [(ngModel)]="form_note"></ion-textarea>
+                      <ion-textarea class="text-area-1" rows="4" cols="20" placeholder="{{ 'SERVICE_46.label_write_feedback' | translate }}" [(ngModel)]="form_note"></ion-textarea>
                   </ion-item>
                 </ion-item>
                 <ion-item lines="none" class="margin-top-20 margin-bottom-10">
                   <ion-button *ngIf="rating_value_popup < 8 
                     || (rating_value_popup >= 8 && rating_value_popup < 68 && form_note == '')"
-                     expand="block" class="amo-button-custom-4 font-weight-bold">{{ 'PAY_15.text_button_send_feedback' | translate }}
+                     expand="block" class="amo-button-custom-4 font-weight-bold">{{ 'SERVICE_46.text_button_send_feedback' | translate }}
                   </ion-button>
                   <ion-button *ngIf="rating_value_popup >= 68 
                     || (rating_value_popup >= 8 && rating_value_popup < 68 && form_note != '')" 
-                    expand="block" class="amo-button-custom-41 font-weight-bold" (click)="eventSendRating()">{{ 'PAY_15.text_button_send_feedback' | translate }}
+                    expand="block" class="amo-button-custom-41 font-weight-bold" (click)="eventSendRating()">{{ 'SERVICE_46.text_button_send_feedback' | translate }}
                   </ion-button>
                 </ion-item>
             </ion-list>
@@ -189,14 +185,17 @@
     </div>
   </ion-content>
   <section class="full-width function-section shadow-section">
-    <div class="col-6 padding-right-5">
-      <ion-button expand="block" class="amo-button-custom-1 padding-0 font-weight-bold">{{ 'PAY_15.text_button_complain' | translate }}</ion-button>
+    <!-- <div class="col-6 padding-left-5" *ngIf="data_history.status == 'accepted-user' || data_history.status == 'cancel-provider' || data_history.status == 'cancel-user' || data_history.status == 'finish'">
+      <ion-button expand="block" class="amo-button-custom-2 padding-0 font-weight-bold" (click)="moveToChatToShopPage()">{{ 'SERVICE_46.text_button_chat' | translate }}</ion-button>
+    </div> -->
+    <div class="col-6 padding-left-5" *ngIf="data_history.status != 'finish' && data_history.status != 'cancel-user' && data_history.status != 'cancel-provider' " (click)="eventButtonCancel()">
+      <ion-button expand="block" class="amo-button-custom-3 padding-0 font-weight-bold">{{ 'SERVICE_46.text_button_cancel' | translate }}</ion-button>
     </div>
-    <div class="col-6 padding-left-5" *ngIf="data_history.status == 'accepted-user' || data_history.status == 'cancel-provider' || data_history.status == 'cancel-user' || data_history.status == 'finish'">
-      <ion-button expand="block" class="amo-button-custom-2 padding-0 font-weight-bold" (click)="moveToChatToShopPage()">{{ 'PAY_15.text_button_chat' | translate }}</ion-button>
+    <div class="col-6 padding-left-5" *ngIf="data_history.status == 'processing'" (click)="eventButtonConfirm()">
+      <ion-button expand="block" class="amo-button-custom-2 padding-0 font-weight-bold">{{ 'SERVICE_46.text_button_confirm' | translate }}</ion-button>
     </div>
-    <div class="col-6 padding-left-5" *ngIf="data_history.status == 'processing' || data_history.status == 'accepted-provider'" (click)="eventButtonCancel()">
-      <ion-button expand="block" class="amo-button-custom-3 padding-0 font-weight-bold">{{ 'PAY_15.text_button_cancel' | translate }}</ion-button>
+    <div class="col-6 padding-left-5" *ngIf="data_history.status == 'accepted-provider' || data_history.status == 'accepted-user'" (click)="eventButtonFinish()">
+      <ion-button expand="block" class="amo-button-custom-2 padding-0 font-weight-bold">{{ 'SERVICE_46.text_button_finish' | translate }}</ion-button>
     </div>
   </section>
   

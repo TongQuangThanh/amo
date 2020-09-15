@@ -4,6 +4,7 @@ import { ApiService } from '../../services/api/api.service';
 import { ActionSheetController, NavController } from '@ionic/angular';
 import { LoadingService } from '../../services/loading/loading.service';
 import { ModalController, AlertController  } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-management-order-detail',
@@ -17,6 +18,7 @@ export class ManagementOrderDetailPage implements OnInit {
   rating_value_popup: any;
   flag_show_hide_popup: any;
   form_note:any;
+  form_note_provider:any;
 
   constructor(
     public modalController: ModalController,
@@ -25,7 +27,8 @@ export class ManagementOrderDetailPage implements OnInit {
     private loading: LoadingService,
     private navCtrl: NavController,
     private apiService: ApiService,
-    public alertController: AlertController
+    public alertController: AlertController,
+    private translate: TranslateService,
   ) { }
 
   ngOnInit() {
@@ -35,13 +38,15 @@ export class ManagementOrderDetailPage implements OnInit {
     this.data_history_order = [];
     this.flag_show_hide_popup = false;
     this.form_note = "";
+    this.form_note_provider = "";
     this.getDataOrderHistory();
   }
-  async presentAlert() {
+  async presentAlert(message) {
+    var self = this;
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Thông báo',
-      message: 'Đánh giá dịch vụ thành công!',
+      header: self.translate.instant('COMMON.information'),
+      message: message,
       buttons: ['OK']
     });
     await alert.present();
@@ -118,7 +123,7 @@ export class ManagementOrderDetailPage implements OnInit {
     } else {
       data_rate = 0;
     }
-    this.apiService.putOrderProductRateStarUser(
+    this.apiService.putOrderProductRateStarShop(
       self.data_history._id,
       data_rate,
       self.form_note
@@ -127,7 +132,9 @@ export class ManagementOrderDetailPage implements OnInit {
       self.data_history.text_rate = data_rate;
       this.rating_value = this.rating_value_popup;
       self.flag_show_hide_popup = false;
-      self.presentAlert();
+      self.presentAlert(
+        self.translate.instant('COMMON.message_rate_success')
+      );
     },
     error => {
       self.loading.dismiss();
@@ -136,17 +143,49 @@ export class ManagementOrderDetailPage implements OnInit {
   eventButtonCancel() {
     var self = this;
     this.loading.present();
-    this.apiService.putOrderProductCancelUser(
+    this.apiService.putOrderProductCancelProvider(
       self.data_history._id
     ).subscribe(result => {
       self.loading.dismiss();
-      self.data_history.status = 'cancel-user';
+      self.data_history.status = 'cancel-provider';
+      self.presentAlert(
+        self.translate.instant('COMMON.message_cancel_success')
+      );
     },
     error => {
       self.loading.dismiss();
     });
   }
-  eventButtonChat() {
-
+  eventButtonConfirm() {
+    var self = this;
+    this.loading.present();
+    this.apiService.putOrderHistoryProviderConfirm(
+      self.data_history._id
+    ).subscribe(result => {
+      self.loading.dismiss();
+      self.data_history.status = 'accepted-provider';
+      self.presentAlert(
+        self.translate.instant('COMMON.message_confirm_success')
+      );
+    },
+    error => {
+      self.loading.dismiss();
+    });
+  }
+  eventButtonFinish() {
+    var self = this;
+    this.loading.present();
+    this.apiService.putOrderHistoryProviderFinish(
+      self.data_history._id
+    ).subscribe(result => {
+      self.loading.dismiss();
+      self.data_history.status = 'finish';
+      self.presentAlert(
+        self.translate.instant('COMMON.message_finish_success')
+      );
+    },
+    error => {
+      self.loading.dismiss();
+    });
   }
 }

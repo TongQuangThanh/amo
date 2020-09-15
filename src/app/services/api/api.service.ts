@@ -523,5 +523,29 @@ export class ApiService {
       map(results => results)
     );
   }
+  putOrderHistoryProviderFinish(orderHistoryId:any): Observable<any> {
+    const params = {
+      orderHistoryId
+    }
+    return this.http.put(EnvService.putOrderHistoryProviderFinish, params).pipe(
+      map(results => results)
+    );
+  }
+  putOrderHistoryProviderConfirm(orderHistoryId:any): Observable<any> {
+    const params = {
+      orderHistoryId
+    }
+    return this.http.put(EnvService.putOrderHistoryProviderConfirm, params).pipe(
+      map(results => results)
+    );
+  }
+  putOrderHistoryUserConfirm(orderHistoryId:any): Observable<any> {
+    const params = {
+      orderHistoryId
+    }
+    return this.http.put(EnvService.putOrderHistoryUserConfirm, params).pipe(
+      map(results => results)
+    );
+  }
 
 }

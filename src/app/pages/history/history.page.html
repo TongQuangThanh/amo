@@ -23,19 +23,16 @@
                   <ion-item lines="none" class="ion-no-padding">
                     <div>
                       <ion-label *ngIf="data.status == 'processing'" class="ion-label-1">{{ 'SERVICE_35.status_processing' | translate }}</ion-label>
-                      <ion-label *ngIf="data.status == 'accepted-provider'" class="ion-label-2">{{ 'SERVICE_35.status_accepted_provider' | translate }}</ion-label>
-                      <ion-label *ngIf="data.status == 'accepted-user'" class="ion-label-3">{{ 'SERVICE_35.status_accepted_user' | translate }}</ion-label>
+                      <ion-label *ngIf="data.status == 'accepted-provider'" class="ion-label-6">{{ 'SERVICE_35.status_accepted_provider' | translate }}</ion-label>
+                      <ion-label *ngIf="data.status == 'confirm-user'" class="ion-label-2">{{ 'SERVICE_35.status_accepted_provider_groupon' | translate }}</ion-label>
+                      <ion-label *ngIf="data.status == 'accepted-user'" class="ion-label-6">{{ 'SERVICE_35.status_accepted_user' | translate }}</ion-label>
                       <ion-label *ngIf="data.status == 'finish'" class="ion-label-4">{{ 'SERVICE_35.status_finish' | translate }}</ion-label>
                       <ion-label *ngIf="data.status == 'cancel-user'" class="ion-label-5">{{ 'SERVICE_35.status_cancel_user' | translate }}</ion-label>
                       <ion-label *ngIf="data.status == 'cancel-provider'" class="ion-label-5">{{ 'SERVICE_35.status_cancel_provider' | translate }}</ion-label>
                     </div>
                   </ion-item>
                 </ion-col>
-                <ion-col size="4" *ngIf="data.status == 'accepted-user' 
-                  || data.status == 'cancel-provider' 
-                  || data.status == 'cancel-user' 
-                  || data.status == 'finish'"
-                >
+                <ion-col size="4" *ngIf="data.status == 'finish' && data.text_rate != ''">
                   <ion-item class="group-1-text-star">
                     <img class="group-1-icon-star" src="../assets/icon/svg/icon-star.svg"/>
                     <ion-label class="class-label-rate">{{data.text_rate}}</ion-label>
@@ -65,7 +62,7 @@
                 </ion-col>
               </ion-row>
               <ion-row class="ion-no-padding">
-                <ion-col size="8" *ngIf="data.status == 'finish' || data.status == 'cancel-provider' || data.status == 'accepted-provider' || data.status == 'accepted-user'" (click)="gotoHistoryDetail(data)">
+                <ion-col (click)="gotoHistoryDetail(data)" size="8" *ngIf="data.status == 'finish' || data.status == 'cancel-provider' || data.status == 'accepted-provider' || data.status == 'accepted-user'">
                   <div class="div-col-1">
                     <ion-label class="">{{ 'SERVICE_35.code_orders' | translate }} {{data.code_orders}}</ion-label>
                   </div>
@@ -78,7 +75,7 @@
                     <img class="group-1-icon-star" src="../assets/icon/svg/button-chat.svg"/>
                   </div>
                 </ion-col>
-                <ion-col size="12" *ngIf="data.status != 'finish' && data.status != 'cancel-provider' && data.status != 'accepted-provider' && data.status != 'accepted-user'">
+                <ion-col (click)="gotoHistoryDetail(data)" size="12" *ngIf="data.status != 'finish' && data.status != 'cancel-provider' && data.status != 'accepted-provider' && data.status != 'accepted-user'">
                   <div class="div-col-1">
                     <ion-label class="">{{ 'SERVICE_35.code_orders' | translate }} {{data.code_orders}}</ion-label>
                   </div>
@@ -86,7 +83,6 @@
                     <ion-label class="">{{data.date_time}}</ion-label>
                   </div>
                 </ion-col>
-                
               </ion-row>
             </ion-grid>
           </ion-list>

@@ -38,49 +38,59 @@ export class HistoryPage implements OnInit {
       .subscribe(result => {
         self.data_history = [];
         result.ordersHistory.forEach(product => {
-          if (self.data_history.length == 0) {
-            self.data_history = [{
-              id_tab: "0",
-              title: self.translate.instant('SERVICE_35.tab_all_title'),
-              data: []
-            }];
-          }
-          let index = self.getIndexCategoryInList(product.requestShopProduct.category._id);
-          if (index < 0) {
-            self.data_history.push({
-              id_tab: product.requestShopProduct.category._id,
-              title: product.requestShopProduct.category.title,
-              data: []
-            });
-            index = self.data_history.length - 1;
-          }
-          let money = 0;
-          if (product.orderInfor && product.orderInfor.length > 0) {
-            product.orderInfor.forEach(record => {
-              money = money + record.number * record.price;
-            })
-          }
-          let money_convert = self.convertFormatMoney(money);
-          var date = new Date(product.orderAt);
-          var date_convert = this.datePipe.transform(date,"dd/MM/yyyy hh:mm");
-          let object = {
-            _id: product._id,
-            status: product.status ? product.status : "",
-            text_rate: product.stars,
-            title: product.requestShopProduct ? product.requestShopProduct.title : "",
-            money: money_convert,
-            avatar: product.createdBy.avatar,
-            name: product.createdBy.displayName,
-            role: "CEO",
-            code_orders: product._id,
-            date_time: date_convert,
-            orderInfor: product.orderInfor,
-            createdBy: product.createdBy
-          }
-          self.data_history[index]['data'].push(object);
+          if (product.requestShopProduct) {
+            if (self.data_history.length == 0) {
+              self.data_history = [{
+                id_tab: "0",
+                title: self.translate.instant('SERVICE_35.tab_all_title'),
+                data: []
+              }];
+            }
+            let index = self.getIndexCategoryInList(product.requestShopProduct.category._id);
+            if (index < 0) {
+              self.data_history.push({
+                id_tab: product.requestShopProduct.category._id,
+                title: product.requestShopProduct.category.title,
+                data: []
+              });
+              index = self.data_history.length - 1;
+            }
+            let money = 0;
+            if (product.orderInfor && product.orderInfor.length > 0) {
+              product.orderInfor.forEach(record => {
+                money = money + record.number * record.price;
+              })
+            }
+            let money_convert = self.convertFormatMoney(money);
+            var date = new Date(product.orderAt);
+            var date_convert = this.datePipe.transform(date,"dd/MM/yyyy hh:mm");
+            let is_groupon = false;
+            let message = "";
+            let product_status = product.status ? product.status : "processing";
+            if (product_status == "accepted-provider" && is_groupon) {
+              product_status = "confirm-user";
+              message = product.userPromotionCodeConfirmText;
+            }
+            let object = {
+              _id: product._id,
+              status: product_status,
+              text_rate: product.starsUser ? product.starsUser : "",
+              title: product.requestShopProduct ? product.requestShopProduct.title : "",
+              money: money_convert,
+              avatar: product.createdBy.avatar,
+              name: product.createdBy.displayName,
+              role: "CEO",
+              code_orders: product._id,
+              date_time: date_convert,
+              orderInfor: product.orderInfor,
+              createdBy: product.createdBy,
+              message: message
+            }
+            self.data_history[index]['data'].push(object);
 
-          let index_all = self.getIndexCategoryInList("0");
-          self.data_history[index_all]['data'].push(object);
+            let index_all = self.getIndexCategoryInList("0");
+            self.data_history[index_all]['data'].push(object);
+          }
         });
         self.loading.dismiss();
     },

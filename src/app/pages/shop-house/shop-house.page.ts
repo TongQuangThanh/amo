@@ -351,13 +351,13 @@ export class ShopHousePage implements OnInit {
     this.slideToIndex(1);
   }
   onScrollProduct(event) {
-    // let position_y = document.getElementById('div-text-place').getClientRects()[0];
-    // let position_y_product = document.getElementById('group-data-product').getClientRects()[0];
-    // if(position_y['y'] > 45){
-    //   this.showHeader = 1;
-    // }else{
-    //   this.showHeader = 2;
-    // }
+    let position_y = document.getElementById('div-text-place').getClientRects()[0];
+    let position_y_product = document.getElementById('group-data-product').getClientRects()[0];
+    if(position_y['y'] > 45){
+      this.showHeader = 1;
+    }else{
+      this.showHeader = 2;
+    }
     // if(position_y_product['y'] > 45){
     //   this.position_product = 1;
     // }else{
