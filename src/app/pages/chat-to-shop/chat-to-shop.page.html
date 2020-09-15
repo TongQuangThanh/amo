@@ -8,7 +8,7 @@
 </ion-header>
 <ion-content #content>
   <ion-list lines="full" class="ion-no-margin ion-no-padding padding-top-10 padding-bottom-20 ion-list-class">
-    <ion-item *ngFor="let message of data_chat" class="ion-item-message">
+    <ion-item *ngFor="let message of data_chat" class="ion-item-message {{getMarginTop(message)}}">
       <div *ngIf="message.type == 'left' && (message.message != '' || message.images != '')" class="div-avatar">
         <ion-avatar> <img src="{{message.avatar}}"></ion-avatar>
       </div>
