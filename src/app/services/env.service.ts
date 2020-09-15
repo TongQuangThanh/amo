@@ -76,6 +76,9 @@ export const EnvService = {
   getServiceLog: environment.base + '/service-log',
   getServiceLogById: environment.base + '/service-log/id',
   orderHistoryComment: environment.base + '/order-history-comment',
-  getOrderHistoryByProvider: environment.base + '/order-history/find-by-provider'
+  getOrderHistoryByProvider: environment.base + '/order-history/find-by-provider',
+  putOrderHistoryProviderFinish: environment.base + '/order-history/provide-finish',
+  putOrderHistoryProviderConfirm: environment.base + '/order-history/provide-confirm',
+  putOrderHistoryUserConfirm: environment.base + '/order-history/user-confirm',
 };
 

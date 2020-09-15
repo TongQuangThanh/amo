@@ -19,12 +19,13 @@
           <ion-list lines="full" class="ion-no-margin ion-no-padding">
             <ion-grid class="ion-no-padding scroll-class line-bottom" *ngFor="let data of object.data" id="{{data.id}}">
               <ion-row class="ion-no-padding" (click)="gotoManagementOrderDetail(data)">
-                <ion-col class="group-2-col-1 center-div" size="8">
+                <ion-col class="center-div" size="8">
                   <ion-item lines="none" class="ion-no-padding">
                     <div>
                       <ion-label *ngIf="data.status == 'processing'" class="ion-label-1">{{ 'SERVICE_45.status_processing' | translate }}</ion-label>
-                      <ion-label *ngIf="data.status == 'accepted-provider'" class="ion-label-2">{{ 'SERVICE_45.status_accepted_provider' | translate }}</ion-label>
-                      <ion-label *ngIf="data.status == 'accepted-user'" class="ion-label-3">{{ 'SERVICE_45.status_accepted_user' | translate }}</ion-label>
+                      <ion-label *ngIf="data.status == 'confirm-user'" class="ion-label-3">{{ 'SERVICE_45.status_accepted_provider_groupon' | translate }}</ion-label>
+                      <ion-label *ngIf="data.status == 'accepted-provider'" class="ion-label-4">{{ 'SERVICE_45.status_accepted_provider' | translate }}</ion-label>
+                      <ion-label *ngIf="data.status == 'accepted-user'" class="ion-label-4">{{ 'SERVICE_45.status_accepted_user' | translate }}</ion-label>
                       <ion-label *ngIf="data.status == 'finish'" class="ion-label-4">{{ 'SERVICE_45.status_finish' | translate }}</ion-label>
                       <ion-label *ngIf="data.status == 'cancel-user'" class="ion-label-5">{{ 'SERVICE_45.status_cancel_user' | translate }}</ion-label>
                       <ion-label *ngIf="data.status == 'cancel-provider'" class="ion-label-5">{{ 'SERVICE_45.status_cancel_provider' | translate }}</ion-label>
@@ -38,7 +39,7 @@
                 </ion-col>
               </ion-row>
               <ion-row class="ion-no-padding" (click)="gotoManagementOrderDetail(data)">
-                <ion-col class="group-2-col-1" size="8">
+                <ion-col class="" size="8">
                   <div class="div-title-row-2-col-1">
                     <ion-label class="font-weight-bold">{{data.title}}</ion-label>
                   </div>
@@ -51,7 +52,7 @@
                     </div>
                   </div>
                 </ion-col>
-                <ion-col class="group-2-col-1" size="4">
+                <ion-col class="" size="4">
                   <div class="div-title-row-2-col-2">
                     <ion-label class="font-weight-bold">{{data.money}}đ</ion-label>
                     <ion-label class="label-number-product">{{data.orderInfor.length}} {{ 'SERVICE_45.label_product' | translate }}</ion-label>

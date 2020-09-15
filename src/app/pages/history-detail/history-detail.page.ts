@@ -4,6 +4,7 @@ import { ApiService } from '../../services/api/api.service';
 import { ActionSheetController, NavController } from '@ionic/angular';
 import { LoadingService } from '../../services/loading/loading.service';
 import { ModalController, AlertController  } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-history-detail',
@@ -25,7 +26,8 @@ export class HistoryDetailPage implements OnInit {
     private loading: LoadingService,
     private navCtrl: NavController,
     private apiService: ApiService,
-    public alertController: AlertController
+    public alertController: AlertController,
+    private translate: TranslateService
   ) { }
 
   ngOnInit() {
@@ -37,11 +39,12 @@ export class HistoryDetailPage implements OnInit {
     this.form_note = "";
     this.getDataOrderHistory();
   }
-  async presentAlert() {
+  async presentAlert(message) {
+    var self = this;
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
-      header: 'Thông báo',
-      message: 'Đánh giá dịch vụ thành công!',
+      header: self.translate.instant('COMMON.information'),
+      message: message,
       buttons: ['OK']
     });
     await alert.present();
@@ -127,7 +130,9 @@ export class HistoryDetailPage implements OnInit {
       self.data_history.text_rate = data_rate;
       this.rating_value = this.rating_value_popup;
       self.flag_show_hide_popup = false;
-      self.presentAlert();
+      self.presentAlert(
+        self.translate.instant('COMMON.message_rate_user_success')
+      );
     },
     error => {
       self.loading.dismiss();
@@ -141,12 +146,28 @@ export class HistoryDetailPage implements OnInit {
     ).subscribe(result => {
       self.loading.dismiss();
       self.data_history.status = 'cancel-user';
+      self.presentAlert(
+        self.translate.instant('COMMON.message_cancel_success')
+      );
     },
     error => {
       self.loading.dismiss();
     });
   }
-  eventButtonChat() {
-
+  eventButtonConfirmUser() {
+    var self = this;
+    this.loading.present();
+    this.apiService.putOrderHistoryUserConfirm(
+      self.data_history._id
+    ).subscribe(result => {
+      self.loading.dismiss();
+      self.data_history.status = 'accepted-user';
+      self.presentAlert(
+        self.translate.instant('COMMON.message_confirm_success')
+      );
+    },
+    error => {
+      self.loading.dismiss();
+    });
   }
 }

@@ -36,38 +36,66 @@ export class ManagementOrderPage implements OnInit {
     var self = this;
     this.apiService.getListOrderHistorysByProvider()
       .subscribe(result => {
-        self.data_history = [];
-        result.ordersHistory.forEach(product => {
-          if (self.data_history.length == 0) {
-            self.data_history = [{
-              id_tab: "0",
-              title: self.translate.instant('SERVICE_45.tab_all_title'),
-              data: []
-            }];
+        self.data_history = [
+          {
+            id_tab: "0",
+            title: self.translate.instant('SERVICE_45.tab_all_title'),
+            data: []
+          },
+          {
+            id_tab: "processing",
+            title: self.translate.instant('SERVICE_45.tab_processing_title'),
+            data: []
+          },
+          {
+            id_tab: "confirm-user",
+            title: self.translate.instant('SERVICE_45.status_accepted_provider_groupon'),
+            data: []
+          },
+          {
+            id_tab: "accepted-user",
+            title: self.translate.instant('SERVICE_45.tab_accepted_user_title'),
+            data: []
+          },
+          {
+            id_tab: "finish",
+            title: self.translate.instant('SERVICE_45.tab_finish_title'),
+            data: []
+          },
+          {
+            id_tab: "cancel-provider",
+            title: self.translate.instant('SERVICE_45.tab_cancel_provider_title'),
+            data: []
+          },
+          {
+            id_tab: "cancel-user",
+            title: self.translate.instant('SERVICE_45.tab_cancel_user_title'),
+            data: []
           }
-          let index = self.getIndexCategoryInList(product.status);
+        ];
+        result.ordersHistory.forEach(product => {
+          var is_groupon = false;
+          let status_order = product.status;
           let status_order_translate = '';
-          if (product.status == 'processing') {
+          if (status_order == 'processing') {
             status_order_translate = self.translate.instant('SERVICE_45.tab_processing_title');
-          } else if (product.status == 'accepted-provider') {
-            status_order_translate = self.translate.instant('SERVICE_45.tab_accepted_provider_title');
-          } else if (product.status == 'accepted-user') {
+          } else if (status_order == 'accepted-provider') {
+            if (is_groupon) {
+              status_order = "confirm-user";
+              status_order_translate = self.translate.instant('SERVICE_45.status_accepted_provider_groupon');
+            } else {
+              status_order_translate = self.translate.instant('SERVICE_45.tab_accepted_provider_title');
+            }
+          } else if (status_order == 'accepted-user') {
             status_order_translate = self.translate.instant('SERVICE_45.tab_accepted_user_title');
-          } else if (product.status == 'finish') {
+          } else if (status_order == 'finish') {
             status_order_translate = self.translate.instant('SERVICE_45.tab_finish_title');
-          } else if (product.status == 'cancel-user') {
+          } else if (status_order == 'cancel-user') {
             status_order_translate = self.translate.instant('SERVICE_45.tab_cancel_user_title');
-          } else if (product.status == 'cancel-provider') {
+          } else if (status_order == 'cancel-provider') {
             status_order_translate = self.translate.instant('SERVICE_45.tab_cancel_provider_title');
           }
-          if (index < 0 && status_order_translate != '') {
-            self.data_history.push({
-              id_tab: product.status,
-              title: status_order_translate,
-              data: []
-            });
-            index = self.data_history.length - 1;
-          }
+          let index = self.getIndexCategoryInList(status_order);
           if (status_order_translate != '') {
             let money = 0;
             if (product.orderInfor && product.orderInfor.length > 0) {
@@ -78,11 +106,11 @@ export class ManagementOrderPage implements OnInit {
             let money_convert = self.convertFormatMoney(money);
             var date = new Date(product.orderAt);
             var date_convert = this.datePipe.transform(date,"dd/MM/yyyy");
-            var order_address = product.appartment.title + ' - ' + product.appartment.campaign.title + ', ' + product.appartment.campaign.address
+            var order_address = product.appartment.title + ' - ' + product.appartment.campaign.title + ', ' + product.appartment.campaign.address;
             let object = {
               _id: product._id,
-              status: product.status ? product.status : "",
-              text_rate: product.stars,
+              status: status_order,
+              text_rate: product.starsProvider,
               title: product.requestShopProduct ? product.requestShopProduct.title : "",
               money: money_convert,
               avatar: product.createdBy.avatar,
@@ -92,7 +120,8 @@ export class ManagementOrderPage implements OnInit {
               date_time: date_convert,
               orderInfor: product.orderInfor,
               createdBy: product.createdBy,
-              order_address: order_address
+              order_address: order_address,
+              is_groupon: is_groupon
             }
             self.data_history[index]['data'].push(object);
             let index_all = self.getIndexCategoryInList("0");
@@ -107,8 +136,8 @@ export class ManagementOrderPage implements OnInit {
   }
 
   gotoManagementOrderDetail(object) {
-    // localStorage.setItem('data-management-order', JSON.stringify(object));
-    // this.navCtrl.navigateForward('/management-order-detail');
+    localStorage.setItem('data-management-order', JSON.stringify(object));
+    this.navCtrl.navigateForward('/management-order-detail');
   }
   convertFormatMoney(value) {
     value = value.toString();

@@ -153,10 +153,13 @@ export class ServicesPage implements OnInit {
             'type' : product.type,
             'stars' : stars,
             'id_shop' : product.requestShopProduct._id,
-            'background_image' : background_image
+            'background_image' : background_image,
+            'id_groupon' : product._id
           }
-          self.list_data_range[product.shopProduct._id] = [slider_value + '%', range_position_value + '%'];
-          this.list_data_silde_1.push(object);
+          if (product.type != "advertisement") {
+            self.list_data_range[product._id] = [slider_value + '%', range_position_value + '%'];
+          }
+          self.list_data_silde_1.push(object);
         });
         console.log(result);
     },
