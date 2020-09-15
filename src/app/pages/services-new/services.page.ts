@@ -134,6 +134,8 @@ export class ServicesPage implements OnInit {
           if (product.type == "advertisement") {
             background_image = product.thumbnail;
           }
+          let color_text = "#FFFFFF";
+          let background_color = "#97171B";
           let object = {
             '_id' : product.shopProduct._id,
             '_id_requestShopProduct' : product.requestShopProduct._id,
@@ -157,7 +159,7 @@ export class ServicesPage implements OnInit {
             'id_groupon' : product._id
           }
           if (product.type != "advertisement") {
-            self.list_data_range[product._id] = [slider_value + '%', range_position_value + '%'];
+            self.list_data_range[product._id] = [slider_value + '%', range_position_value + '%', color_text, background_color];
           }
           self.list_data_silde_1.push(object);
         });
@@ -317,7 +319,9 @@ export class ServicesPage implements OnInit {
   getStyleRange1(_id) {
     let range1 = this.list_data_range[_id][0];
     let range2 = 'calc(' + this.list_data_range[_id][1] + ' - 18px)'; 
-    return [range1, range2];
+    let color = this.list_data_range[_id][2]; 
+    let background = this.list_data_range[_id][3]; 
+    return [range1, range2, color, background];
   }
   convertFormatMoney(value) {
     value = value.toString();

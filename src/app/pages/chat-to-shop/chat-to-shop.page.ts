@@ -17,6 +17,7 @@ export class ChatToShopPage implements OnInit {
   data_chat: any;
   message_content: any;
   list_image_select: any;
+  flag_user: any;
 
   constructor(
     public modalController: ModalController,
@@ -30,7 +31,7 @@ export class ChatToShopPage implements OnInit {
 
   ngOnInit() {
     this.data_history = JSON.parse(localStorage.getItem('data-order-history'));
-    
+    this.flag_user = "";
     this.data_chat = [
       {type: 'left', avatar: "../assets/images/services/9.jpg", message: "Chào ban, chúng tôi có thể giúp gì được cho bạn", images: ""},
       {type: 'left', avatar: "../assets/images/services/9.jpg", message: "", images: "../assets/images/services/9.jpg"},
@@ -43,6 +44,14 @@ export class ChatToShopPage implements OnInit {
   }
   ionViewWillEnter(){
     this.content.scrollToBottom(0);
+  }
+  getMarginTop(message) {
+    if (this.flag_user != message.type) {
+      this.flag_user = message.type;
+      return 'margin-top-20';
+    } else {
+      return '';
+    }
   }
   getAllOrderHistoryComment() {
     var self = this;
