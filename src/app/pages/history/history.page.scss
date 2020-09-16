@@ -33,25 +33,27 @@ ion-item{
     z-index: 99;
     top: 0;
     left: 0;
-    background-color: #fbe0de;
+    background-color: #fcf4db;
     border-radius: 4px;
     padding: 3px 15px;
     font-size: 12px;
     line-height: 18px;
     text-align: center;
-    color: #FA7268;
+    color: #F2C94C;
+    font-weight: bold;
 }
 .ion-label-2 {
     z-index: 99;
     top: 0;
     left: 0;
-    background-color: #dcf6f0;
+    background-color: #fcf4db;
     border-radius: 4px;
     padding: 3px 15px;
     font-size: 12px;
     line-height: 18px;
     text-align: center;
-    color: #51D2B5;
+    color: #F2C94C;
+    font-weight: bold;
 }
 .ion-label-3 {
     z-index: 99;
@@ -64,6 +66,46 @@ ion-item{
     line-height: 18px;
     text-align: center;
     color: #F2C94C;
+    font-weight: bold;
+}
+.ion-label-4 {
+    z-index: 99;
+    top: 0;
+    left: 0;
+    background-color: #dcf6f0;
+    border-radius: 4px;
+    padding: 3px 15px;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    color: #51D2B5;
+    font-weight: bold;
+}
+.ion-label-5 {
+    z-index: 99;
+    top: 0;
+    left: 0;
+    background-color: #fbe0de;
+    border-radius: 4px;
+    padding: 3px 15px;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    color: #FA7268;
+    font-weight: bold;
+}
+.ion-label-6 {
+    z-index: 99;
+    top: 0;
+    left: 0;
+    background-color: #D4EBF3;
+    border-radius: 4px;
+    padding: 3px 15px;
+    font-size: 12px;
+    line-height: 18px;
+    text-align: center;
+    color: #009AC9;
+    font-weight: bold;
 }
 .div-status {
     padding-bottom: 15px;
@@ -107,6 +149,9 @@ ion-item{
     overflow: hidden;
     text-overflow: ellipsis;
     height: 50%;
+}
+.div-col-2 {
+    margin-top: 2px;
 }
 
 .group-2-col-3 .div-col-1{
@@ -161,10 +206,14 @@ ion-item{
     font-size: 14px;
     line-height: 15px;
     color: #21313F;
+    margin: 0;
 }
 .no-border {
     --border-width: 0;
 }
 .div-button-chat {
     float: right;
+}
+.user-order-inf ion-item{
+    --min-height: 32px;
 }

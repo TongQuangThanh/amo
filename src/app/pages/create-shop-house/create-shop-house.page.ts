@@ -8,11 +8,11 @@ import { AlertService } from '../../services/alert/alert.service'
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-mo-gian-hang',
-  templateUrl: './mo-gian-hang.page.html',
-  styleUrls: ['./mo-gian-hang.page.scss'],
+  selector: 'app-create-shop-house',
+  templateUrl: './create-shop-house.page.html',
+  styleUrls: ['./create-shop-house.page.scss'],
 })
-export class MoGianHangPage implements OnInit {
+export class CreateShopHousePage implements OnInit {
 
   form_type: any;
   form_type_class: any;
@@ -44,16 +44,16 @@ export class MoGianHangPage implements OnInit {
     this.disable_button_send = "button-disable";
   }
   ionViewWillEnter(){
-    this.getDataUserShop();
+    this.getDataShopProductCategory();
   }
-  getDataUserShop() {
+  getDataShopProductCategory() {
     const self = this;
     this.listType = [];
     
     this.loading.present();
     this.apiService.getDataShopProductCategory()
       .subscribe(result => {
-        self.listType = result.shopCategories;
+        self.listType = result.requestShopProductCategory;
         self.loading.dismiss();
     },
     error => {

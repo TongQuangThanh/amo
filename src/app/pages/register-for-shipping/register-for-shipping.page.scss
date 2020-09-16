@@ -42,6 +42,9 @@ ion-toolbar{
 .has-input-value .pulldown-apartment-select {
     padding-top: 25px;
     padding-bottom: 5px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
 }
 .pulldown-apartment-select {
     width: 100%;
@@ -287,7 +290,7 @@ ion-checkbox {
     right: 5px;
     position: absolute;
 }
-.button-active {
+ion-item .button-active {
     background: #fbfbfb;
     border: 1px solid #009AC9;
     box-sizing: border-box;
@@ -314,6 +317,9 @@ ion-checkbox {
 .has-input-value .datetime-commom {
     padding-top: 25px;
     padding-bottom: 5px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
 }
 .datetime-commom {
     width: 100%;
@@ -392,4 +398,17 @@ ion-checkbox {
 .has-input-value .text-box-1{
     --padding-top: 25px; 
     --padding-bottom: 5px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+}
+.button-inactive {
+    --background: #D3D6D9 !important;
+    color: #ffffff !important;
+}
+.active_button.button-inactive {
+    display: none !important;
+}
+.inactive_button.button-active {
+    display: none !important;
 }

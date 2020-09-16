@@ -4,6 +4,8 @@ import { ApiService } from '../../services/api/api.service';
 import { ActionSheetController, Platform, NavController } from '@ionic/angular';
 import { LoadingService } from '../../services/loading/loading.service';
 import { ModalController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
+import { AlertService } from '../../services/alert/alert.service';
 
 @Component({
   selector: 'app-register-to-receive-goods',
@@ -12,7 +14,9 @@ import { ModalController } from '@ionic/angular';
 })
 export class RegisterToReceiveGoodsPage implements OnInit {
   heightScreen: number;
+  listDepartmentByID: any;
   listDepartment: any;
+  receiverInfor: any;
   check_box_1: boolean;
   check_box_2: boolean;
   tip_value: any;
@@ -29,6 +33,9 @@ export class RegisterToReceiveGoodsPage implements OnInit {
   list_image_1: any;
   number_of_image: any;
   flag_show_all_image: any;
+  form_note: any;
+  form_date_time: any;
+  form_date_time_class: any;
   
   constructor(
     public modalController: ModalController,
@@ -37,7 +44,9 @@ export class RegisterToReceiveGoodsPage implements OnInit {
     private loading: LoadingService,
     private platform: Platform,
     private navCtrl: NavController,
-    private apiService: ApiService
+    private apiService: ApiService,
+    private translate: TranslateService,
+    private alertService: AlertService
   ) { 
     platform.ready().then((readySource) => {
       this.heightScreen = platform.height() * 0.58 - 18;
@@ -45,6 +54,8 @@ export class RegisterToReceiveGoodsPage implements OnInit {
   }
 
   ngOnInit() {
+    this.listDepartmentByID = {};
+    this.receiverInfor = "";
     this.getListApartment();
     this.check_box_1 = false;
     this.check_box_2 = false;
@@ -59,6 +70,10 @@ export class RegisterToReceiveGoodsPage implements OnInit {
     this.form_money_tip_class = "";
     this.list_image = [];
     this.flag_show_all_image = false;
+    this.form_note = "";
+    this.form_date_time = "";
+    this.form_date_time_class = "";
+    
     this.breakListImage();
   }
   breakListImage() {
@@ -80,7 +95,6 @@ export class RegisterToReceiveGoodsPage implements OnInit {
     var self = this;
     this.list_image.forEach(element => {
       if (element.index == index) {
-        console.log(element);
         self.list_image.splice(index, 1);
       }
     });
@@ -119,8 +133,10 @@ export class RegisterToReceiveGoodsPage implements OnInit {
     this.loading.present();
     this.apiService.getListUserApartment()
       .subscribe(result => {
-        console.log(result.userApartments);
         self.listDepartment = result.userApartments;
+        self.listDepartment.forEach(data =>{
+          self.listDepartmentByID[data.apartment ._id] = data;
+        });
         self.loading.dismiss()
     },
     error => { 
@@ -147,15 +163,72 @@ export class RegisterToReceiveGoodsPage implements OnInit {
     this.show_popup_tip = false;
     this.form_money_tip_value = this.form_money_tip;
   }
+  ionChangeDateTime(event){
+    if (this.form_date_time != "") {
+      this.form_date_time_class = 'has-input-value';
+    } else {
+      this.form_date_time_class = "";
+    }
+  }
   convertListImage() {
     var self = this;
     for(var i=0;i<self.list_image_select.length;i++){
-      self.list_image.push(
-        {index:0, src: self.list_image_select[i].media.url}
-      );
+      self.list_image.push({
+        index:0, 
+        src: self.list_image_select[i].media.url,
+        media: self.list_image_select[i].media
+      });
     }
     self.list_image_select = [];
     self.breakListImage();
+  }
+
+  eventButtonRegisterNew() {
+    var self = this;
+    let dataApartment = self.listDepartmentByID[this.form_apartment_id];
+    let tip_value = 0;
+    if (self.tip_value == 1) {
+      tip_value = 10000;
+    } else if (self.tip_value == 2) {
+      tip_value = 20000;
+    } else if (self.tip_value == 3) {
+      tip_value = 30000;
+    } else if (self.tip_value == 4) {
+      tip_value = this.form_money_tip_value;
+    }
+    let list_attachment = [];
+    self.list_image.forEach(image => {
+      list_attachment.push(image.media);
+    })
+    const params = {
+      // category: "",
+      title: this.translate.instant('INBOX_29.title'),
+      content: this.form_note,
+      campaign: dataApartment.campaign._id,
+      apartment: this.form_apartment_id,
+      // createdBy: "",
+      attachments: list_attachment,
+      type: "receiver",
+      receiverInfor: this.receiverInfor,
+      receiverPaymentHelps: this.check_box_1 == false ? 'notPayment' : 'payment',
+      receiverPaymentHelpsValue: this.check_box_1 == true ? this.form_money_payment : 0,
+      receiverPaymentTip: this.check_box_2 == false ? 'notPayment' : 'payment',
+      receiverPaymentTipValue: this.check_box_2 == true ? tip_value : 0,
+      receiverDate: this.form_date_time
+    };
+
+    this.loading.present();
+    this.apiService.addFeedback(params)
+      .subscribe(result => {
+        self.loading.dismiss();
+        self.alertService.presentToast(this.translate.instant('ADD_REQUEST.message_add_request_sucess'));
+        self.navCtrl.back();
+      },
+      error => {
+        self.loading.dismiss();
+        self.alertService.presentToast(this.translate.instant('ADD_REQUEST.message_add_request_fail'));
+      }
+    );
   }
 
   // select image
@@ -256,5 +329,18 @@ export class RegisterToReceiveGoodsPage implements OnInit {
       meta,
       rawBase64
     };
+  }
+  checkActiveButton() {
+    if (this.form_apartment_id == '' 
+      || this.receiverInfor == ''
+      || this.form_note == ''
+      || this.form_date_time == ''
+      || (this.check_box_1 == true && this.form_money_payment == '') 
+      || (this.check_box_2 == true && this.tip_value == 4 && this.form_money_tip_value == '')
+    ) {
+      return 'button-inactive'
+    } else {
+      return "button-active";
+    }
   }
 }

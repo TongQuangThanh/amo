@@ -4,15 +4,14 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
-import { GianHangDetailPage } from './gian-hang-detail.page';
+import { ManagementOrderDetailPage } from './management-order-detail.page';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import { MatTabsModule } from '@angular/material/tabs';
 import { SuperTabsModule } from '@ionic-super-tabs/angular';
 
 const routes: Routes = [
   {
     path: '',
-    component: GianHangDetailPage
+    component: ManagementOrderDetailPage
   }
 ];
 
@@ -22,11 +21,9 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     TranslateModule,
-    MatTabsModule,
     SuperTabsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [GianHangDetailPage]
+  declarations: [ManagementOrderDetailPage]
 })
-export class GianHangDetailPageModule {}
-
+export class ManagementOrderDetailPageModule {}

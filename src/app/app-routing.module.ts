@@ -149,16 +149,24 @@ const routes: Routes = [
     loadChildren: () => import('./pages/resident-market/resident-market.module').then(m => m.ResidentMarketPageModule)
   },
   { 
-    path: 'mo-gian-hang', 
-    loadChildren: () => import('./pages/mo-gian-hang/mo-gian-hang.module').then(m => m.MoGianHangPageModule)
+    path: 'user-shop-by-category/:category/:category_name', 
+    loadChildren: () => import('./pages/user-shop-by-category/user-shop-by-category.module').then(m => m.UserShopByCategoryPageModule)
   },
   { 
-    path: 'gian-hang-detail/:id', 
-    loadChildren: () => import('./pages/gian-hang-detail/gian-hang-detail.module').then(m => m.GianHangDetailPageModule)
+    path: 'create-shop-house', 
+    loadChildren: () => import('./pages/create-shop-house/create-shop-house.module').then(m => m.CreateShopHousePageModule)
   },
   { 
-    path: 'gio-hang', 
-    loadChildren: () => import('./pages/gio-hang/gio-hang.module').then(m => m.GioHangPageModule)
+    path: 'shop-house/:id', 
+    loadChildren: () => import('./pages/shop-house/shop-house.module').then(m => m.ShopHousePageModule)
+  },
+  { 
+    path: 'booking-shop-house', 
+    loadChildren: () => import('./pages/booking-shop-house/booking-shop-house.module').then(m => m.BookingShopHousePageModule)
+  },
+  { 
+    path: 'booking-product/:type', 
+    loadChildren: () => import('./pages/booking-product/booking-product.module').then(m => m.BookingProductPageModule)
   },
   { 
     path: 'call-the-car', 
@@ -177,11 +185,19 @@ const routes: Routes = [
     loadChildren: () => import('./pages/history-detail/history-detail.module').then(m => m.HistoryDetailPageModule)
   },
   { 
+    path: 'management-order', 
+    loadChildren: () => import('./pages/management-order/management-order.module').then(m => m.ManagementOrderPageModule)
+  },
+  { 
+    path: 'management-order-detail', 
+    loadChildren: () => import('./pages/management-order-detail/management-order-detail.module').then(m => m.ManagementOrderDetailPageModule)
+  },
+  { 
     path: 'chat-to-shop', 
     loadChildren: () => import('./pages/chat-to-shop/chat-to-shop.module').then(m => m.ChatToShopPageModule)
   },
   { 
-    path: 'repair-service', 
+    path: 'repair-service/:category/:category_name', 
     loadChildren: () => import('./pages/repair-service/repair-service.module').then(m => m.RepairServicePageModule)
   },
   { 

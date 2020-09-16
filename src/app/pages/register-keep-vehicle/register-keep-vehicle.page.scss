@@ -55,6 +55,9 @@ super-tab-button.active ion-label{
 .has-input-value .pulldown-apartment-select {
     padding-top: 25px;
     padding-bottom: 5px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
 }
 .pulldown-apartment-select {
     width: 100%;
@@ -301,12 +304,18 @@ ion-checkbox {
 .has-input-value .text-box-1{
     --padding-top: 25px; 
     --padding-bottom: 5px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
 }
 .width-100 {
     width: 100%;
 }
 .has-input-value.label-1-active, .has-input-value.label-1 {
     top: 25px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
 }
 .ion-edit {
     pointer-events: none;
@@ -406,8 +415,8 @@ ion-checkbox::part(container) {
     position: absolute;
     z-index: 999;
     background-color: #009AC9;
-    top: 9px;
-    right: 9px;
+    top: 3px;
+    right: 3px;
     opacity: 1;
     border-radius: 8px;
     width: 16px;
@@ -424,4 +433,19 @@ ion-checkbox::part(container) {
 }
 .padding-right-0 {
     padding-right: 0;
+}
+.image-class {
+    width: 100%;
+    height: 100%;
+}
+
+.button-inactive {
+    --background: #D3D6D9 !important;
+    color: #ffffff !important;
+}
+.active_button.button-inactive {
+    display: none !important;
+}
+.inactive_button.button-active {
+    display: none !important;
 }

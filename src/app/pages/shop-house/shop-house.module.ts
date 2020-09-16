@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
-import { MoGianHangPage } from './mo-gian-hang.page';
+import { ShopHousePage } from './shop-house.page';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import { SuperTabsModule } from '@ionic-super-tabs/angular';
@@ -12,7 +12,7 @@ import { SuperTabsModule } from '@ionic-super-tabs/angular';
 const routes: Routes = [
   {
     path: '',
-    component: MoGianHangPage
+    component: ShopHousePage
   }
 ];
 
@@ -26,7 +26,7 @@ const routes: Routes = [
     SuperTabsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [MoGianHangPage]
+  declarations: [ShopHousePage]
 })
-export class MoGianHangPageModule {}
+export class ShopHousePageModule {}
 

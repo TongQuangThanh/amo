@@ -1,6 +1,6 @@
 <ion-header class="ion-no-border">
     <ion-toolbar>
-      <ion-title>{{ 'INBOX_35.title' | translate }}</ion-title>
+      <ion-title>{{ 'SERVICE_35.title' | translate }}</ion-title>
       <ion-buttons slot="start">
         <ion-back-button text=""></ion-back-button>
       </ion-buttons>
@@ -17,23 +17,29 @@
       <super-tabs-container autoScrollTop>
         <super-tab class="ion-padding hidden-overflow" *ngFor="let object of data_history">
           <ion-list lines="full" class="ion-no-margin ion-no-padding">
-            <ion-grid class="ion-no-padding scroll-class line-bottom" *ngFor="let data of object.data" id="{{data.id}}" (click)="gotoHistoryDetail()">
-              <ion-row class="ion-no-padding">
+            <ion-grid class="ion-no-padding scroll-class line-bottom" *ngFor="let data of object.data" id="{{data.id}}">
+              <ion-row class="ion-no-padding" (click)="gotoHistoryDetail(data)">
                 <ion-col class="group-2-col-1 center-div" size="8">
-                  <div class="">
-                    <ion-label *ngIf="data.status == 1" class="ion-label-1">{{ 'INBOX_35.status_1' | translate }}</ion-label>
-                    <ion-label *ngIf="data.status == 2" class="ion-label-2">{{ 'INBOX_35.status_2' | translate }}</ion-label>
-                    <ion-label *ngIf="data.status == 3" class="ion-label-3">{{ 'INBOX_35.status_3' | translate }}</ion-label>
-                  </div>
+                  <ion-item lines="none" class="ion-no-padding">
+                    <div>
+                      <ion-label *ngIf="data.status == 'processing'" class="ion-label-1">{{ 'SERVICE_35.status_processing' | translate }}</ion-label>
+                      <ion-label *ngIf="data.status == 'accepted-provider'" class="ion-label-6">{{ 'SERVICE_35.status_accepted_provider' | translate }}</ion-label>
+                      <ion-label *ngIf="data.status == 'confirm-user'" class="ion-label-2">{{ 'SERVICE_35.status_accepted_provider_groupon' | translate }}</ion-label>
+                      <ion-label *ngIf="data.status == 'accepted-user'" class="ion-label-6">{{ 'SERVICE_35.status_accepted_user' | translate }}</ion-label>
+                      <ion-label *ngIf="data.status == 'finish'" class="ion-label-4">{{ 'SERVICE_35.status_finish' | translate }}</ion-label>
+                      <ion-label *ngIf="data.status == 'cancel-user'" class="ion-label-5">{{ 'SERVICE_35.status_cancel_user' | translate }}</ion-label>
+                      <ion-label *ngIf="data.status == 'cancel-provider'" class="ion-label-5">{{ 'SERVICE_35.status_cancel_provider' | translate }}</ion-label>
+                    </div>
+                  </ion-item>
                 </ion-col>
-                <ion-col size="4">
+                <ion-col size="4" *ngIf="data.status == 'finish' && data.text_rate != ''">
                   <ion-item class="group-1-text-star">
                     <img class="group-1-icon-star" src="../assets/icon/svg/icon-star.svg"/>
                     <ion-label class="class-label-rate">{{data.text_rate}}</ion-label>
                   </ion-item>
                 </ion-col>
               </ion-row>
-              <ion-row class="ion-no-padding">
+              <ion-row class="ion-no-padding" (click)="gotoHistoryDetail(data)">
                 <ion-col class="group-2-col-1" size="8">
                   <div class="div-title-row-2-col-1">
                     <ion-label class="font-weight-bold">{{data.title}}</ion-label>
@@ -41,11 +47,11 @@
                 </ion-col>
                 <ion-col class="group-2-col-1" size="4">
                   <div class="div-title-row-2-col-2">
-                    <ion-label class="font-weight-bold">{{data.money}}</ion-label>
+                    <ion-label class="font-weight-bold">{{data.money}}đ</ion-label>
                   </div>
                 </ion-col>
               </ion-row>
-              <ion-row class="ion-no-padding">
+              <ion-row class="ion-no-padding user-order-inf margin-top-10" (click)="gotoHistoryDetail(data)">
                 <ion-col class="" size="12">
                   <ion-item class="no-border">
                     <ion-avatar class="avatar-class" slot="start">
@@ -56,17 +62,25 @@
                 </ion-col>
               </ion-row>
               <ion-row class="ion-no-padding">
-                <ion-col size="8">
+                <ion-col (click)="gotoHistoryDetail(data)" size="8" *ngIf="data.status == 'finish' || data.status == 'cancel-provider' || data.status == 'accepted-provider' || data.status == 'accepted-user'">
                   <div class="div-col-1">
-                    <ion-label class="">{{ 'INBOX_35.code_orders' | translate }} {{data.code_orders}}</ion-label>
+                    <ion-label class="">{{ 'SERVICE_35.code_orders' | translate }} {{data.code_orders}}</ion-label>
                   </div>
                   <div class="div-col-2">
                     <ion-label class="">{{data.date_time}}</ion-label>
                   </div>
                 </ion-col>
-                <ion-col class="group-2-col-3" size="4">
-                  <div class="div-button-chat">
+                <ion-col class="group-2-col-3" size="4" *ngIf="data.status == 'finish' || data.status == 'cancel-provider' || data.status == 'accepted-provider' || data.status == 'accepted-user'">
+                  <div class="div-button-chat" (click)="moveToChatToShopPage(data)">
                     <img class="group-1-icon-star" src="../assets/icon/svg/button-chat.svg"/>
+                  </div>
+                </ion-col>
+                <ion-col (click)="gotoHistoryDetail(data)" size="12" *ngIf="data.status != 'finish' && data.status != 'cancel-provider' && data.status != 'accepted-provider' && data.status != 'accepted-user'">
+                  <div class="div-col-1">
+                    <ion-label class="">{{ 'SERVICE_35.code_orders' | translate }} {{data.code_orders}}</ion-label>
+                  </div>
+                  <div class="div-col-2">
+                    <ion-label class="">{{data.date_time}}</ion-label>
                   </div>
                 </ion-col>
               </ion-row>

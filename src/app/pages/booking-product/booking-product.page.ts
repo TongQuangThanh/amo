@@ -3,15 +3,17 @@ import { ApiService } from '../../services/api/api.service';
 import { NavController } from '@ionic/angular';
 import { LoadingService } from '../../services/loading/loading.service';
 import { ModalController } from '@ionic/angular';
-import { DatePipe } from '@angular/common';
+import { DatePipe, Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: 'app-gio-hang',
-  templateUrl: './gio-hang.page.html',
-  styleUrls: ['./gio-hang.page.scss'],
+  selector: 'app-booking-product',
+  templateUrl: './booking-product.page.html',
+  styleUrls: ['./booking-product.page.scss'],
 })
-export class GioHangPage implements OnInit {
+export class BookingProductPage implements OnInit {
   listDepartment: any;
+  listDepartmentByID: any;
   check_box_1: boolean;
   check_box_2: boolean;
   tip_value: any;
@@ -29,7 +31,7 @@ export class GioHangPage implements OnInit {
   form_note:any;
 
 
-  data_gian_hang: any;
+  data_shop_house: any;
   form_phone_number:any;
   form_phone_number_class:any;
   flag_show_hide_popup: any;
@@ -39,16 +41,23 @@ export class GioHangPage implements OnInit {
   orderInfor: any;
   paymentMode: any;
   customerInfor: any;
+  type_booking:any;
+  list_data_range: any;
   
   constructor(
     public modalController: ModalController,
     private loading: LoadingService,
     private navCtrl: NavController,
     private apiService: ApiService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private route: ActivatedRoute,
+    private location: Location
   ) { }
 
   ngOnInit() {
+    const type_object = this.route.snapshot.paramMap.get('type');
+    this.listDepartmentByID = {};
+    this.type_booking = type_object;
     this.getListApartment();
     this.button_active = 0;
     this.check_class_button();
@@ -59,6 +68,7 @@ export class GioHangPage implements OnInit {
     this.form_end_time = "";
     this.form_end_time_class = "";
     this.form_note = "";
+    this.list_data_range = {};
 
     this.list_product = [];
     this.orderInfor = [];
@@ -68,9 +78,9 @@ export class GioHangPage implements OnInit {
       timeDeliver: '',
       note: '',
     };
-
-    var data = JSON.parse(localStorage.getItem('data'));
-    this.data_gian_hang = data;
+    var data = JSON.parse(localStorage.getItem('data-booking-product'));
+    data['number'] = 1;
+    this.data_shop_house = [data];
     this.form_phone_number = "";
     this.form_phone_number_class = "";
     this.getListProduct();
@@ -83,35 +93,12 @@ export class GioHangPage implements OnInit {
     var self = this;
     this.list_product = [];
     this.orderInfor = [];
-    self.data_gian_hang.group_1.forEach(product => {
-      if (product.number > 0) {
-        let money = parseInt(product.money.replace(/\./g, "").replace(/đ/g, ""));
-        product['money_total'] = product.number * money;
-        product['money_total'] = self.convertFormatMoney(product['money_total']);
-        self.list_product.push(product);
-        self.orderInfor.push({
-          shop_product: product.id,
-          shop_product_name: product.title,
-          price: money,
-          unit: product.number
-        });
-      }
-    });
-    self.data_gian_hang.group_3.forEach(object => {
-      object.data.forEach(product => {
-        if (product.number > 0) {
-          let money = parseInt(product.money.replace(/\./g, "").replace(/đ/g, ""));
-          product['money_total'] = product.number * money;
-          product['money_total'] = self.convertFormatMoney(product['money_total']);
-          self.list_product.push(product);
-          self.orderInfor.push({
-            shop_product: product.id,
-            shop_product_name: product.title,
-            price: money,
-            unit: product.number
-          });
-        }
-      });
+    self.data_shop_house.forEach(product => {
+      let money = parseInt(product.money.replace(/\./g, "").replace(/đ/g, ""));
+      product['money_total'] = product.number * money;
+      product['money_total'] = self.convertFormatMoney(product['money_total']);
+      self.list_product.push(product);
+      this.list_data_range[product._id] = [product.slider_value + '%', product.range_position_value + '%'];
     });
   }
   check_class_button (){
@@ -157,6 +144,9 @@ export class GioHangPage implements OnInit {
     this.apiService.getListUserApartment()
       .subscribe(result => {
         self.listDepartment = result.userApartments;
+        self.listDepartment.forEach(data =>{
+          self.listDepartmentByID[data.apartment ._id] = data;
+        });
         self.loading.dismiss()
     },
     error => {
@@ -176,17 +166,10 @@ export class GioHangPage implements OnInit {
     var self = this;
     this.total_money = "";
     var total = 0;
-    self.data_gian_hang.group_1.forEach(product => {
+    self.list_product.forEach(product => {
       if (product.number > 0) {
         total = total + product.number * parseInt(product.money.replace(/\./g, "").replace(/đ/g, ""));
       }
-    });
-    self.data_gian_hang.group_3.forEach(object => {
-      object.data.forEach(product => {
-        if (product.number > 0) {
-          total = total + product.number * parseInt(product.money.replace(/\./g, "").replace(/đ/g, ""));
-        }
-      });
     });
     if (total > 0) {
       this.total_money = ": " + this.convertFormatMoney(total) + 'đ';
@@ -198,14 +181,32 @@ export class GioHangPage implements OnInit {
   }
   eventButtonSend() {
     var self = this;
+    let dataApartment = self.listDepartmentByID[this.form_apartment_id];
+    this.form_phone_number = dataApartment.apartment.owner.phone;
+    self.orderInfor = [];
+    var requestShopProduct = "";
+    self.list_product.forEach(product => {
+      if (product.number > 0) {
+        let money = parseInt(product.money.replace(/\./g, "").replace(/đ/g, ""));
+        self.orderInfor.push({
+          shopProduct: product._id,
+          price: money,
+          number: product.number
+        });
+        requestShopProduct = product._id_requestShopProduct;
+      }
+    });
     this.loading.present();
     this.paymentMode = this.button_active;
-    this.customerInfor = {
-      appartment: this.form_apartment_id,
-      timeDeliver: this.form_start_time,
-      note: this.form_note,
-    };
-    this.apiService.postRequestionOrderProduct(this.orderInfor, this.paymentMode, this.customerInfor).subscribe(result => {
+    this.apiService.postRequestionOrderProduct(
+      this.orderInfor, 
+      this.paymentMode.toString(), 
+      this.form_apartment_id, 
+      this.form_start_time, 
+      this.form_phone_number, 
+      this.form_note,
+      requestShopProduct
+    ).subscribe(result => {
       self.loading.dismiss();
       self.flag_show_hide_popup = true;
     },
@@ -215,6 +216,7 @@ export class GioHangPage implements OnInit {
   }
   eventButtonClosePopup() {
     this.flag_show_hide_popup = false;
+    this.location.back();
   }
   convertFormatMoney(value) {
     value = value.toString();
@@ -235,15 +237,33 @@ export class GioHangPage implements OnInit {
     return convert2;
   }
   checkStatusButtonSend() {
-    if (this.form_apartment_id != "" && this.form_phone_number != "" && this.form_start_time != "") {
+    if (this.form_apartment_id != "" && this.form_start_time != "") {
       this.disable_button_send = "";
     } else {
       this.disable_button_send = "button-disable";
     }
   }
-  getDataOrderHistory() {
+  downNumberProduct(_id) {
     var self = this;
-
-    
+    self.list_product.forEach(product => {
+      if (product._id == _id && product.number > 1) {
+        product.number--;
+      }
+    });
+    this.getTotalMoney();
+  }
+  upNumberProduct(_id) {
+    var self = this;
+    self.list_product.forEach(product => {
+      if (product._id == _id && product.number < 1000) {
+        product.number++;
+      }
+    });
+    this.getTotalMoney();
+  }
+  getStyleRange1(_id) {
+    let range1 = this.list_data_range[_id][0];
+    let range2 = 'calc(' + this.list_data_range[_id][1] + ' - 18px)'; 
+    return [range1, range2];
   }
 }

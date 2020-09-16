@@ -5,12 +5,12 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 
-import { GioHangPage } from './gio-hang.page';
+import { BookingShopHousePage } from './booking-shop-house.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: GioHangPage
+    component: BookingShopHousePage
   }
 ];
 
@@ -22,7 +22,7 @@ const routes: Routes = [
     TranslateModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [GioHangPage],
+  declarations: [BookingShopHousePage],
   providers: [DatePipe]
 })
-export class GioHangPageModule {}
+export class BookingShopHousePageModule {}

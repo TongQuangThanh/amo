@@ -8,7 +8,6 @@ import { LoadingService } from '../../services/loading/loading.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Subscription } from 'rxjs';
 import { RouterModule, Routes, ActivatedRoute } from "@angular/router";
-import {ScrollingHeaderModule} from 'ionic-scrolling-header';
 import { IonContent } from '@ionic/angular';
 
 @Component({

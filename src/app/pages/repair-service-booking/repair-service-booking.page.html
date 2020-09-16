@@ -38,13 +38,13 @@
     <ion-item lines="none" class="margin-top-20">
       <ion-item lines="none" class="item-common no-border margin-right-5" (click)="eventButton1(1)">
         <div class="{{button_1_class}}"></div>
-        <img class="image-button-payment" src="../assets/icon/svg/pay-1.svg"/>
+        <img class="image-button-payment" src="../assets/icon/svg/money-1.svg"/>
         <label class="button-1-text padding-right-10">{{ 'INBOX_56.button_1_text' | translate }}</label> 
         <img *ngIf="button_active == 1" class="button-1-icon" src="../assets/icon/svg/Fill.svg"/>
       </ion-item>
       <ion-item lines="none" class="item-common no-border margin-left-5" (click)="eventButton1(2)">
         <div class="{{button_2_class}}"></div>
-        <img class="image-button-payment" src="../assets/icon/svg/money-1.svg"/>
+        <img class="image-button-payment" src="../assets/icon/svg/money-2.svg"/>
         <label class="button-1-text padding-right-10">{{ 'INBOX_56.button_2_text' | translate }}</label> 
         <img *ngIf="button_active == 2" class="button-1-icon" src="../assets/icon/svg/Fill.svg"/>
       </ion-item>
@@ -89,10 +89,10 @@
             placeholder="{{ 'INBOX_56.pulldown_2_placeHolder_1' | translate }}"
             class="datetime-commom"
             name="form_start_time" [(ngModel)]="form_start_time"
-            displayFormat="DD/MM/YYYY H:mm"
+            displayFormat="DD/MM/YYYY HH:mm"
             (ionChange)="ionChangeStartTime()"
-            min="1900"
-            max="2030">
+            min="2000"
+            max="2050">
           </ion-datetime>
         </div>
       </ion-item>

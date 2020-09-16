@@ -1,0 +1,79 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>{{category_name}}</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="arrow-back-outline"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content [scrollEvents]="true">
+  <ion-list class="list-view-custom">
+    <ion-item *ngIf="listDataMarket.length == 0" class="ion-item-class">
+      <ion-label>
+        Chưa có dịch vụ nào được cung cấp
+      </ion-label>
+    </ion-item>
+    <ion-item *ngFor="let object of listDataMarket" id="{{object._id}}" class="ion-item-class ion-no-padding" (click)="moveShopHousePage(object)">
+      <ion-grid class="ion-no-padding">
+          <ion-row>
+            <ion-col size="3" class="ion-no-padding" *ngIf="object.thumbnail != ''">
+              <div class="div-logo">
+                <ion-img src="{{object.thumbnail}}"></ion-img>
+                <div *ngIf="object.text_note != '' && object.type_note == 1" class="note-1">
+                  <ion-label>{{object.text_note}}</ion-label>
+                </div>
+                <div *ngIf="object.text_note != '' && object.type_note == 2" class="note-2">
+                  <ion-label>{{object.text_note}}</ion-label>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col size="9" class="ion-no-padding" *ngIf="object.thumbnail != ''">
+              <div class="group-1-text-title">
+                <ion-label class="font-weight-bold">{{object.title}}</ion-label>
+              </div>
+              <div class="group-1-text-place">
+                <img class="group-1-icon-place" src="../assets/icon/svg/icon-place.svg"/>
+                <ion-label>{{object.text_place}}</ion-label>
+              </div>
+              <div class="group-1-text-star">
+                <div class="group-1-text-star-1" *ngIf="object.text_star_rate != ''">
+                  <img class="group-1-icon-star" src="../assets/icon/svg/icon-star.svg"/>
+                  <ion-label class="class-label-rate">{{object.text_star_rate}}</ion-label>
+                </div>
+                <div class="group-1-text-star-2" *ngIf="object.text_tag != ''">
+                  <img class="group-1-icon-tag" src="../assets/icon/svg/icon-tag.svg"/>
+                  <ion-label>{{object.text_tag}}</ion-label>
+                </div>
+              </div>
+            </ion-col>
+            <ion-col size="12" class="ion-no-padding" *ngIf="object.thumbnail == ''">
+              <div class="group-1-text-title">
+                <ion-label class="font-weight-bold">{{object.title}}</ion-label>
+              </div>
+              <div class="group-1-text-place">
+                <img class="group-1-icon-place" src="../assets/icon/svg/icon-place.svg"/>
+                <ion-label>{{object.text_place}}</ion-label>
+              </div>
+              <div class="group-1-text-star">
+                <div class="group-1-text-star-1" *ngIf="object.text_star_rate != ''">
+                  <img class="group-1-icon-star" src="../assets/icon/svg/icon-star.svg"/>
+                  <ion-label class="class-label-rate">{{object.text_star_rate}}</ion-label>
+                </div>
+                <div class="group-1-text-star-2" *ngIf="object.text_tag != ''">
+                  <img class="group-1-icon-tag" src="../assets/icon/svg/icon-tag.svg"/>
+                  <ion-label>{{object.text_tag}}</ion-label>
+                </div>
+              </div>
+            </ion-col>
+          </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+  <ion-infinite-scroll threshold="50px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content class="custom-infinite-scroll"
+    loadingSpinner="bubbles"
+    loadingText="{{ 'HOME.loadding_more' | translate }}">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

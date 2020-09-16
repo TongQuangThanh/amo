@@ -4,6 +4,8 @@ import { NavController } from '@ionic/angular';
 import { LoadingService } from '../../services/loading/loading.service';
 import { ModalController } from '@ionic/angular';
 import { DatePipe } from '@angular/common';
+import { TranslateService } from '@ngx-translate/core';
+import { AlertService } from '../../services/alert/alert.service';
 
 @Component({
   selector: 'app-register-for-shipping',
@@ -12,6 +14,7 @@ import { DatePipe } from '@angular/common';
 })
 export class RegisterForShippingPage implements OnInit {
   listDepartment: any;
+  listDepartmentByID: any;
   check_box_1: boolean;
   check_box_2: boolean;
   tip_value: any;
@@ -26,16 +29,20 @@ export class RegisterForShippingPage implements OnInit {
   form_end_time: any;
   form_end_time_class: any;
   list_product: any;
+  form_note: any;
   
   constructor(
     public modalController: ModalController,
     private loading: LoadingService,
     private navCtrl: NavController,
     private apiService: ApiService,
-    private datePipe: DatePipe
+    private datePipe: DatePipe,
+    private translate: TranslateService,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
+    this.listDepartmentByID = {};
     this.getListApartment();
     this.button_active = 1;
     this.check_class_button();
@@ -45,7 +52,7 @@ export class RegisterForShippingPage implements OnInit {
     this.form_start_time_class = "";
     this.form_end_time = "";
     this.form_end_time_class = "";
-
+    this.form_note = "";
     this.list_product = [
       {'index': 1, 'name_product': '', 'number_of_product': 0, 'class': ''},
       {'index': 2, 'name_product': '', 'number_of_product': 0, 'class': ''}
@@ -93,6 +100,9 @@ export class RegisterForShippingPage implements OnInit {
       .subscribe(result => {
         console.log(result.userApartments);
         self.listDepartment = result.userApartments;
+        self.listDepartment.forEach(data =>{
+          self.listDepartmentByID[data.apartment ._id] = data;
+        });
         self.loading.dismiss()
     },
     error => {
@@ -135,5 +145,63 @@ export class RegisterForShippingPage implements OnInit {
       }
     });
   }
+  eventButtonRegisterNew() {
+    var self = this;
+    let dataApartment = self.listDepartmentByID[this.form_apartment_id];
+    let transferGoods = [];
+    self.list_product.forEach(product => {
+      if (product.number_of_product > 0) {
+        transferGoods.push({
+          name: product.name_product,
+          number: product.number_of_product
+        });
+      }
+    })
+    const params = {
+      // category: "",
+      title: this.translate.instant('INBOX_24.title'),
+      content: this.form_note,
+      campaign: dataApartment.campaign._id,
+      apartment: this.form_apartment_id,
+      // createdBy: "",
+      attachments: [],
+      type: "transfer",
+      transferType: this.button_active == 1 ? 'income' : 'outcome',
+      transferDateStart: this.form_start_time,
+      transferDateEnd: this.form_end_time,
+      transferGoods: transferGoods
+    };
 
+    this.loading.present();
+    this.apiService.addFeedback(params)
+      .subscribe(result => {
+        self.loading.dismiss();
+        self.alertService.presentToast(this.translate.instant('ADD_REQUEST.message_add_request_sucess'));
+        self.navCtrl.back();
+      },
+      error => {
+        self.loading.dismiss();
+        self.alertService.presentToast(this.translate.instant('ADD_REQUEST.message_add_request_fail'));
+      }
+    );
+  }
+  checkActiveButton() {
+    var self = this;
+    let is_input_product = false;
+    self.list_product.forEach(product => {
+      if (product.name_product != '' && product.number_of_product > 0) {
+        is_input_product = true;
+      }
+    });
+    if (this.form_apartment_id == '' 
+      || this.form_start_time == ''
+      || this.form_end_time == ''
+      || this.form_note == ''
+      || is_input_product == false
+    ) {
+      return 'button-inactive'
+    } else {
+      return "button-active";
+    }
+  }
 }

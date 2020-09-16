@@ -395,7 +395,19 @@ export class ApiService {
       set('limit', limit.toString()).
       set('search', search).
       set('_v', (new Date()).getTime().toString());
-    return this.http.get(EnvService.getUserShop, {
+    return this.http.get(EnvService.getUserShopTopData, {
+      params
+    }).pipe(
+      map(results => results)
+    );
+  }
+  getDataUserShopByCategory(page: number, limit: number, category: any): Observable<any> {
+    const params = new HttpParams().
+      set('page', page.toString()).
+      set('limit', limit.toString()).
+      set('category', category).
+      set('_v', (new Date()).getTime().toString());
+    return this.http.get(EnvService.getUserShopByCategory, {
       params
     }).pipe(
       map(results => results)
@@ -419,13 +431,53 @@ export class ApiService {
       map(results => results)
     );
   }
-  postRequestionOrderProduct(orderInfor:any, paymentMode:any,customerInfor:any): Observable<any> {
+  postRequestionOrderProduct(orderInfor:any, paymentMode:any, appartment:any, timeDeliver:any, phone:any, note:any, requestShopProduct: any): Observable<any> {
     const params = {
       orderInfor,
       paymentMode,
-      customerInfor
+      appartment,
+      timeDeliver,
+      phone,
+      note,
+      requestShopProduct
     }
     return this.http.post(EnvService.getOrderHistory, params).pipe(
+      map(results => results)
+    );
+  }
+  putOrderProductRateStarUser(orderHistoryId:any, stars:any, userComment:any): Observable<any> {
+    const params = {
+      orderHistoryId,
+      stars,
+      userComment
+    }
+    return this.http.put(EnvService.putOrderHistoryRateStarUser, params).pipe(
+      map(results => results)
+    );
+  }
+  putOrderProductRateStarShop(orderHistoryId:any, stars:any, provideComment:any): Observable<any> {
+    const params = {
+      orderHistoryId,
+      stars,
+      provideComment
+    }
+    return this.http.put(EnvService.putOrderHistoryRateStarShop, params).pipe(
+      map(results => results)
+    );
+  }
+  putOrderProductCancelUser(orderHistoryId:any): Observable<any> {
+    const params = {
+      orderHistoryId
+    }
+    return this.http.put(EnvService.putOrderHistoryCancelUser, params).pipe(
+      map(results => results)
+    );
+  }
+  putOrderProductCancelProvider(orderHistoryId:any): Observable<any> {
+    const params = {
+      orderHistoryId
+    }
+    return this.http.put(EnvService.putOrderHistoryCancelProvider, params).pipe(
       map(results => results)
     );
   }
@@ -435,6 +487,63 @@ export class ApiService {
     return this.http.get(EnvService.getOrderHistory, {
       params
     }).pipe(
+      map(results => results)
+    );
+  }
+  getListOrderHistorysByProvider(): Observable<any> {
+    const params = new HttpParams().
+      set('_v', (new Date()).getTime().toString());
+    return this.http.get(EnvService.getOrderHistoryByProvider, {
+      params
+    }).pipe(
+      map(results => results)
+    );
+  }
+  getListOrderHistoryComment(orderHistoryId: any): Observable<any> {
+    const params = new HttpParams().
+      set('orderHistoryId', orderHistoryId).
+      set('_v', (new Date()).getTime().toString());
+    return this.http.get(EnvService.orderHistoryComment, {
+      params
+    }).pipe(
+      map(results => results)
+    );
+  }
+  postOrderHistoryComment(params: any): Observable<any> {
+    return this.http.post(EnvService.orderHistoryComment, params).pipe(
+      map(results => results)
+    );
+  }
+  getDataCheckShopOwner(): Observable<any> {
+    const params = new HttpParams().
+      set('_v', (new Date()).getTime().toString());
+    return this.http.get(EnvService.getUserShopCheckShopOwner, {
+      params
+    }).pipe(
+      map(results => results)
+    );
+  }
+  putOrderHistoryProviderFinish(orderHistoryId:any): Observable<any> {
+    const params = {
+      orderHistoryId
+    }
+    return this.http.put(EnvService.putOrderHistoryProviderFinish, params).pipe(
+      map(results => results)
+    );
+  }
+  putOrderHistoryProviderConfirm(orderHistoryId:any): Observable<any> {
+    const params = {
+      orderHistoryId
+    }
+    return this.http.put(EnvService.putOrderHistoryProviderConfirm, params).pipe(
+      map(results => results)
+    );
+  }
+  putOrderHistoryUserConfirm(orderHistoryId:any): Observable<any> {
+    const params = {
+      orderHistoryId
+    }
+    return this.http.put(EnvService.putOrderHistoryUserConfirm, params).pipe(
       map(results => results)
     );
   }
