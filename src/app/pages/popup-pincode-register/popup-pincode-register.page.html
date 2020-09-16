@@ -5,11 +5,7 @@
         <ion-icon name="close"></ion-icon>
       </ion-buttons>
     </ion-item>
-    <ion-toolbar lines="none" class="ion-text-center">
-      <ion-icon name="log-out-outline" class="modal-icon"></ion-icon>
-    </ion-toolbar>
     <ion-toolbar class="ion-text-center modal-item">
-      <ion-content>
         <ion-item lines="none" class="image-item"> 
           <ion-img *ngIf="isChecking == false" class="image-icon-check" src="/assets/common/check-circle-o.png"></ion-img>
           <svg *ngIf="isChecking == true" class="image-icon-check" width="75px" height="75px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style="shape-rendering: auto; animation-play-state: running; animation-delay: 0s; background: none;"><g transform="translate(80,50)" style="animation-play-state: running; animation-delay: 0s;">
@@ -100,7 +96,7 @@
           </ion-buttons>
           <ion-label *ngIf="isError == true" slot="end" class="wrong-code">{{ 'PINCODE_PASSWORD.wrong_code' | translate }}</ion-label>
         </ion-item>
-      </ion-content>
+      
     </ion-toolbar>
     
   </div>

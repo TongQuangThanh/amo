@@ -42,54 +42,102 @@ root{
     color: #21313F;
     margin-bottom: 0;
 }
-.cancel-button {
-    width: 43.73%;
-    height: 44px;
-    --ion-toolbar-color: #D3D6D9;
-    --background-activated: #c5c7c9;
-    --background-focused: #c5c7c9;
-    --background-hover: #c5c7c9;
-    --border-radius: 8px;
-    margin: 0 10px;
-    --box-shadow: none !important;
+.col:last-child {
+    width:1% !important;
 }
-.cancel-button-label {
+
+.pinCodeInput {
+    background: #FFFFFF;
+    box-shadow: 0px 0px 20px rgba(23, 21, 48, 0.102546);
+    border-radius: 8px;
+    width: 100% !important;
+    min-height: 40px;
+    height: 100%;
+    border: 1px solid #c4c4c4;
+    font-size: 24px;
+    text-align: center;
+    -webkit-text-security:var(--charShape);
+    -moz-text-security: var(--charShape);
+}
+
+.pinCodeGrid{
+    direction: ltr;
+}
+
+.pinCodeInput[disabled]{
+   border-bottom: 2px solid #e3e3e3;
+   background-color: transparent;
+}
+
+.image-item {
+    --padding-start: 0px;
+    --inner-padding-end: 0px;
+}
+
+.image-icon-check {
+    height: 66px;
+    width: 66px;
+    left: 0;
+    right: 0;
+    margin:0 auto;
+}
+
+.form-class {
+    padding-left: 10%;
+    padding-right: 10%;
+}
+
+.note-style {
     font-family: Nunito Sans;
     font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
+    font-weight: normal;
+    font-size: 14px;
     line-height: 24px;
-    text-align: center;
-    color: #21313F;
-    text-transform: none;
+    /* or 171% */
+
+
+    color: #556080;
 }
-.delete-button {
-    width: 43.73%;
-    height: 44px;
-    --ion-toolbar-color: #FA7268;
-    --background-activated: #c5433a;
-    --background-focused: #c5433a;
-    --background-hover: #c5433a;
-    --border-radius: 8px;
-    margin: 0 10px;
-    --box-shadow: none !important;
-}
-.delete-button-label {
+
+.btn-resend{
     font-family: Nunito Sans;
     font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center;
-    color: #FFFFFF;
-    text-transform: none;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 19px;
+    /* identical to box height */
+
+
+    color: #556080;
+
 }
-.hotline-num {
+
+.btn-done{
     font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 28px;
-    text-align: center;
-    color: #21313F;
+font-style: normal;
+font-weight: bold;
+font-size: 24px;
+line-height: 33px;
+/* identical to box height */
+
+
+color: #556080;
+
+}
+
+.wrong-code{
+    font-family: Nunito Sans;
+font-style: normal;
+font-weight: normal;
+font-size: 14px;
+line-height: 19px;
+/* identical to box height */
+
+text-align: right;
+color: #FA7268;
+
+}
+
+.margin-top-16{
+    margin-top: 24px;
 }
