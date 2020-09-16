@@ -181,6 +181,10 @@ export class ShopHousePage implements OnInit {
                 number: 0
               }
               self.data_shop_house.group_2[index].data.push(object);
+              self.data_shop_house.group_2[index].data.push(object);
+              self.data_shop_house.group_2[index].data.push(object);
+              self.data_shop_house.group_2[index].data.push(object);
+              self.data_shop_house.group_2[index].data.push(object);
             }
           }
         });
@@ -350,23 +354,8 @@ export class ShopHousePage implements OnInit {
     this.flag_show_hide_popup = true;
     this.slideToIndex(1);
   }
-  onScrollProduct(event) {
-    let position_y = document.getElementById('div-text-place').getClientRects()[0];
-    let position_y_product = document.getElementById('group-data-product').getClientRects()[0];
-    if(position_y['y'] > 45){
-      this.showHeader = 1;
-    }else{
-      this.showHeader = 2;
-    }
-    // if(position_y_product['y'] > 45){
-    //   this.position_product = 1;
-    // }else{
-    //   this.position_product = 2;
-    // }
-  }
   eventClickTabs(id_tab) {
     document.getElementById(id_tab).scrollIntoView();
-    document.getElementById("content_page").scrollTop -= 100;
   }
   eventClickGroupPon(object) {
     localStorage.setItem('data-booking-product', JSON.stringify(object));

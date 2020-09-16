@@ -140,7 +140,7 @@ export class RegisterKeepVehiclePage implements OnInit {
       if(data.checkbox == true) {
         const params = {
           // category: "",
-          title: this.translate.instant('INBOX_31.sub_title_2'),
+          title: this.translate.instant('INBOX_31.title_tabs_cancel_registration'),
           content: this.form_note_tab2,
           campaign: dataApartment.campaign._id,
           apartment: this.tab2_form_apartment_id,
@@ -232,13 +232,13 @@ export class RegisterKeepVehiclePage implements OnInit {
       dataApartment.apartment.vehicles.forEach(vehicles => {
         let phuongtien = '';
         if (vehicles.type == 'car') {
-          phuongtien = self.translate.instant('INBOX_31.pulldown_2_option_1');
+          phuongtien = self.translate.instant('INBOX_31.vehicle_option_car');
         } else if (vehicles.type == 'motorbike') {
-          phuongtien = self.translate.instant('INBOX_31.pulldown_2_option_2');
+          phuongtien = self.translate.instant('INBOX_31.vehicle_option_motobike');
         } else if (vehicles.type == 'bike') {
-          phuongtien = self.translate.instant('INBOX_31.pulldown_2_option_3');
+          phuongtien = self.translate.instant('INBOX_31.vehicle_option_bike');
         } else {
-          phuongtien = self.translate.instant('INBOX_31.pulldown_2_option_4');
+          phuongtien = self.translate.instant('INBOX_31.vehicle_option_orther');
         }
         let object = {
           _id: vehicles._id,
