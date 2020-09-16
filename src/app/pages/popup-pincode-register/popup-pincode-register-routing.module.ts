@@ -1,12 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormGroup, FormControl } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-
-import { PincodeRegisterPage } from './pincode-register.page';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { PopupPincodeRegisterPage } from './popup-pincode-register.page';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: PopupPincodeRegisterPage
+  }
+];
 
 @NgModule({
   imports: [
@@ -14,8 +20,9 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
-    TranslateModule
+    TranslateModule,
+    RouterModule.forChild(routes)
   ],
-  declarations: [PincodeRegisterPage]
+  exports: [RouterModule],
 })
-export class PincodeRegisterPageModule {}
+export class PopupPincodeRegisterPageRoutingModule {}

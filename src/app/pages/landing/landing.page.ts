@@ -6,7 +6,7 @@ import { NavigationExtras } from '@angular/router';
 import { ApiService } from '../../services/api/api.service';
 import { LoadingService } from '../../services/loading/loading.service';
 import { ModalController } from '@ionic/angular';
-import { PincodeRegisterPage } from '../auth/pincode-register/pincode-register.page';
+import { PopupPincodeRegisterPage } from '../popup-pincode-register/popup-pincode-register.page';
 
 const PHONE_LENGTH_VN = 10;
 
@@ -96,12 +96,12 @@ export class LandingPage implements OnInit {
 
   async presentModal() {
     const modal = await this.modalController.create({
-      component: PincodeRegisterPage,
+      component: PopupPincodeRegisterPage,
       componentProps: {
         "phoneNumber": this.phoneNumber,
         "refCode": this.refCode
       },
-      cssClass: "custom-modal-wrapper"
+      cssClass: "pincode-modal-custom"
     });
 
     modal.onDidDismiss().then((dataReturned:any) => {
