@@ -8,52 +8,105 @@
 </ion-header>
 
 <ion-content>
-  <div class="owner-info">
-    <ion-item class="input-item" lines="none" (click)="selectApartmentModal()">
-      <ion-icon class="input-icon" name="custom-apartment" src="/assets/icon/custom-apartment.svg" slot="start"></ion-icon>
-      <ion-label class="input-floating-label" position="floating">{{ 'REGISTRATION_GUEST.apartment' | translate }}</ion-label>
-      <ion-input class="input-text" type="text" name="userName" value=""></ion-input>
-      <ion-icon class="select-icon" name="caret-down-outline" slot="end"></ion-icon>
+  <ion-list lines="full" class="ion-no-margin ion-no-padding margin-top-20">
+    <ion-item lines="none">
+      <ion-item lines="none" class="item-common">
+        <img class="icon-home" src="../assets/icon/svg/my-home.svg"/>
+        <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg"/>
+        <label *ngIf="form_apartment_id != ''" class="pulldown-1-placeholder">{{ 'REGISTRATION_GUEST.apartment' | translate }}</label>
+        <div class="width-100 {{form_apartment_class}}">
+          <ion-select class="pulldown-apartment-select" placeholder="{{ 'REGISTRATION_GUEST.apartment_placeholder' | translate }}" interface="action-sheet" name="form_apartment_id" [(ngModel)]="form_apartment_id" (ionChange)="ionChangePulldown1($event)">
+            <ion-select-option *ngFor="let item of listDepartment" value="{{item.apartment._id}}">{{item.apartment.title + ' - ' + item.campaign.title}}</ion-select-option>
+          </ion-select>
+        </div>
+      </ion-item>
     </ion-item>
-    <ion-item class="input-item" lines="none">
-      <ion-icon class="input-icon" name="custom-calendar" src="/assets/icon/custom-calendar.svg" slot="start"></ion-icon>
-      <ion-label class="input-floating-label" position="floating">{{ 'REGISTRATION_GUEST.arrival_time' | translate }}</ion-label>
-      <!-- <ion-input class="input-text" type="text" name="userEmail" value=""></ion-input> -->
-      <ion-datetime class="input-text input-text-50" displayFormat="MMM DD, YYYY HH:mm" value="" cancelText="Cancel" doneText="OK" pickerFormat="MMM DD HH:mm"></ion-datetime>
-      <ion-icon class="select-icon" name="caret-down-outline" slot="end"></ion-icon>
+    <ion-item lines="none" class="margin-top-20">
+      <ion-item lines="none" class="item-common">
+        <img class="icon-home" src="../assets/icon/svg/Calendar 2.svg"/>
+        <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg"/>
+        <label *ngIf="form_date_time != ''" class="pulldown-1-placeholder">{{ 'REGISTRATION_GUEST.arrival_time' | translate }}</label>
+        <div class="width-100 {{form_date_time_class}}">
+          <ion-datetime placeholder="{{ 'REGISTRATION_GUEST.arrival_time' | translate }}"
+            class="pulldown-apartment-select"
+            name="form_date_time" [(ngModel)]="form_date_time"
+            displayFormat="DD/MM/YYYY HH:mm"
+            (ionChange)="ionChangeDateTime($event)"
+            min="2000"
+            max="2050">
+          </ion-datetime>
+        </div>
+      </ion-item>
     </ion-item>
-  </div>
-  <div class="devider-line"></div>
-  <div class="guest-info">
-    <ion-item class="guest-quantity ion-no-padding" lines="none">
-      <ion-label class="quantity-title">{{ 'REGISTRATION_GUEST.guest_quantity' | translate }}</ion-label>
-      <ion-buttons class="quantity-buttons" slot="end">
-        <ion-button class="icon-button btn-minus"><ion-icon name="custom-minus" src="/assets/icon/custom-minus.svg"></ion-icon></ion-button>
-        <ion-label class="quantity">1</ion-label>
-        <ion-button class="icon-button btn-plus"><ion-icon name="custom-plus" src="/assets/icon/custom-plus.svg"></ion-icon></ion-button>
-      </ion-buttons>
-      
+    <div class="devider-line margin-top-20 margin-bottom-10"></div>
+    <ion-item class="ion-no-padding" lines="none">
+      <ion-item lines="none" class="item-common no-border">
+        <ion-label class="quantity-title">{{ 'REGISTRATION_GUEST.guest_quantity' | translate }}</ion-label>
+        <ion-buttons class="quantity-buttons" slot="end">
+          <ion-button (click)="downNumberProduct()" class="icon-button btn-minus"><ion-icon name="custom-minus" src="/assets/icon/custom-minus.svg"></ion-icon></ion-button>
+          <ion-label class="quantity">{{list_guest.guestsNumber}}</ion-label>
+          <ion-button (click)="upNumberProduct()" class="icon-button btn-plus"><ion-icon name="custom-plus" src="/assets/icon/custom-plus.svg"></ion-icon></ion-button>
+        </ion-buttons>
+      </ion-item>
     </ion-item>
-    <ion-item class="input-item" lines="none">
-      <ion-icon class="input-icon" name="custom-guest" src="/assets/icon/custom-guest.svg" slot="start"></ion-icon>
-      <ion-label class="input-floating-label" position="floating">{{ 'REGISTRATION_GUEST.guest_name' | translate }}</ion-label>
-      <ion-input class="input-text" type="text" name="userEmail" value=""></ion-input>
+    <div *ngFor="let guest of list_guest.data_guest">
+      <div class="devider-line-guest margin-top-20 margin-bottom-10" *ngIf="guest.line == 'has-line'"></div>
+      <ion-item lines="none" class="margin-top-20 {{guest.className}}">
+        <ion-item lines="none" class="item-common">
+          <img class="icon-home" src="/assets/icon/custom-guest.svg"/>
+          <label *ngIf="guest.guestsName != ''" class="pulldown-1-placeholder">{{ 'REGISTRATION_GUEST.guest_name' | translate }}</label>
+          <ion-input type="text" class="text-box-1" 
+            placeholder="{{ 'REGISTRATION_GUEST.guest_name' | translate }}" 
+            value="{{guest.guestsName}}" 
+            (ionChange)="ionchangTextBoxGuest()"
+            [(ngModel)]="guest.guestsName">
+          </ion-input>
+        </ion-item>
+      </ion-item>
+      <ion-item lines="none" class="margin-top-20 {{guest.classIdentity}}">
+        <ion-item lines="none" class="item-common">
+          <img class="icon-home" src="/assets/icon/custom-card.svg"/>
+          <label *ngIf="guest.guestsIdentity != ''" class="pulldown-1-placeholder">{{ 'REGISTRATION_GUEST.guest_ID' | translate }}</label>
+          <ion-input type="text" class="text-box-1" 
+            placeholder="{{ 'REGISTRATION_GUEST.guest_ID' | translate }}" 
+            value="{{guest.guestsIdentity}}" 
+            (ionChange)="ionchangTextBoxGuest()"
+            [(ngModel)]="guest.guestsIdentity">
+          </ion-input>
+        </ion-item>
+      </ion-item>
+    </div>
+    <div class="devider-line margin-top-20 margin-bottom-10"></div>
+    <ion-item lines="none" class="margin-top-20">
+      <ion-item lines="none" class="item-common">
+          <ion-textarea [(ngModel)]="form_note" class="text-area-1" rows="4" cols="20" placeholder="{{ 'REGISTRATION_GUEST.note' | translate }}"></ion-textarea>
+      </ion-item>
     </ion-item>
-    <ion-item class="input-item" lines="none">
-      <ion-icon class="input-icon" name="custom-card" src="/assets/icon/custom-card.svg" slot="start"></ion-icon>
-      <ion-label class="input-floating-label" position="floating">{{ 'REGISTRATION_GUEST.guest_ID' | translate }}</ion-label>
-      <ion-input class="input-text" type="text" name="userEmail" value=""></ion-input>
-    </ion-item>
-    
-  </div>
-  <div class="devider-line"></div>
-  <div class="guest-info">
-    <ion-item class="textarea-item" lines="none">
-      <ion-textarea class="note-content" rows="4" placeholder="{{ 'REGISTRATION_GUEST.note' | translate }}"></ion-textarea>
-    </ion-item>
-    <ion-button expand="block" class="button-common button-send" (click)="popupRegistrationSuccessModal()">
+    <ion-button expand="block" class="button-common button-send btn-inactive {{checkShowActiveButton()}}">
       <ion-label>{{ 'REGISTRATION_GUEST.btn_send' | translate }}</ion-label>
     </ion-button>
+    <ion-button expand="block" class="button-common button-send btn-active {{checkShowActiveButton()}}" (click)="eventButtonRegisterNew()">
+        <ion-label>{{ 'REGISTRATION_GUEST.btn_send' | translate }}</ion-label>
+      </ion-button>
+  </ion-list>
+  <div *ngIf="flag_show_hide_popup == true" class="modal-backdrop fade show"></div>
+  <div *ngIf="flag_show_hide_popup == true" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body padding-top-30 margin-top-30">
+          <ion-list lines="full" class="ion-no-margin ion-no-padding margin-top-10">
+            <ion-item lines="none" class="popup-ion-item" id="area-show-image">
+              <img class="" src="../assets/icon/svg/Outline.svg"/>
+            </ion-item>
+            <ion-item lines="none" class="popup-ion-item" id="area-show-image">
+              <ion-label class="popup-text-1">{{ 'REGISTRATION_GUEST.send_success_message' | translate }}</ion-label>
+            </ion-item>
+            <ion-item lines="none" class="popup-ion-item" id="area-show-image" (click)="eventButtonClosePopup()">
+              <ion-label class="popup-text-2">{{ 'REGISTRATION_GUEST.back_registration_tab' | translate }}</ion-label>
+            </ion-item>
+          </ion-list>
+        </div>
+      </div>
+    </div>
   </div>
-  
 </ion-content>
