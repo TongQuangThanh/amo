@@ -10,11 +10,14 @@ ion-toolbar{
     --ion-color-tint: var(--ion-color-primary-tint, #4c8dff) !important;
 }
 super-tab-button ion-label{
-    color: #7A838C;
     text-transform: unset;
+    font-size: 16px;
+    line-height: 24px;
+    color: #7A838C;
 }
 super-tab-button.active ion-label{
     color: #000000;
+    font-weight: bold;
 }
 .margin-top-20 {
     margin-top: 20px;
@@ -46,29 +49,16 @@ ion-item{
     z-index: 99;
     top: 0;
     left: 0;
-    background-color: #fcf4db;
+    background-color: #D4EBF3;
     border-radius: 4px;
     padding: 3px 15px;
     font-size: 12px;
     line-height: 18px;
     text-align: center;
-    color: #F2C94C;
+    color: #009AC9;
     font-weight: bold;
 }
 .ion-label-3 {
-    z-index: 99;
-    top: 0;
-    left: 0;
-    background-color: #fcf4db;
-    border-radius: 4px;
-    padding: 3px 15px;
-    font-size: 12px;
-    line-height: 18px;
-    text-align: center;
-    color: #F2C94C;
-    font-weight: bold;
-}
-.ion-label-4 {
     z-index: 99;
     top: 0;
     left: 0;
@@ -81,7 +71,7 @@ ion-item{
     color: #51D2B5;
     font-weight: bold;
 }
-.ion-label-5 {
+.ion-label-4 {
     z-index: 99;
     top: 0;
     left: 0;
@@ -94,18 +84,8 @@ ion-item{
     color: #FA7268;
     font-weight: bold;
 }
-.ion-label-6 {
-    z-index: 99;
-    top: 0;
-    left: 0;
-    background-color: #D4EBF3;
-    border-radius: 4px;
-    padding: 3px 15px;
-    font-size: 12px;
-    line-height: 18px;
-    text-align: center;
-    color: #009AC9;
-    font-weight: bold;
+.display-flex {
+    display: flex;
 }
 .div-status {
     padding-bottom: 15px;

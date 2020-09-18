@@ -82,7 +82,7 @@ export class RegisterForShippingPage implements OnInit {
       this.form_start_time_class = "";
     }
     // var date = new Date(this.form_start_time);
-    // this.form_start_time_label = this.datePipe.transform(date,"dd/MM/yyyy hh:mm");
+    // this.form_start_time_label = this.datePipe.transform(date,"dd/MM/yyyy HH:mm");
   }
   ionChangeEndTime(){
     if (this.form_end_time != '') {
@@ -91,7 +91,7 @@ export class RegisterForShippingPage implements OnInit {
       this.form_end_time_class = "";
     }
     // var date = new Date(this.form_end_time);
-    // this.form_end_time_label = this.datePipe.transform(date,"dd/MM/yyyy hh:mm");
+    // this.form_end_time_label = this.datePipe.transform(date,"dd/MM/yyyy HH:mm");
   }
   getListApartment(){
     var self = this;

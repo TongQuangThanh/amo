@@ -53,29 +53,16 @@ ion-item{
     z-index: 99;
     top: 0;
     left: 0;
-    background-color: #fcf4db;
+    background-color: #D4EBF3;
     border-radius: 4px;
     padding: 3px 15px;
     font-size: 12px;
     line-height: 18px;
     text-align: center;
-    color: #F2C94C;
+    color: #009AC9;
     font-weight: bold;
 }
 .ion-label-3 {
-    z-index: 99;
-    top: 0;
-    left: 0;
-    background-color: #fcf4db;
-    border-radius: 4px;
-    padding: 3px 15px;
-    font-size: 12px;
-    line-height: 18px;
-    text-align: center;
-    color: #F2C94C;
-    font-weight: bold;
-}
-.ion-label-4 {
     z-index: 99;
     top: 0;
     left: 0;
@@ -88,7 +75,7 @@ ion-item{
     color: #51D2B5;
     font-weight: bold;
 }
-.ion-label-5 {
+.ion-label-4 {
     z-index: 99;
     top: 0;
     left: 0;
@@ -99,20 +86,6 @@ ion-item{
     line-height: 18px;
     text-align: center;
     color: #FA7268;
-    font-weight: bold;
-}
-.ion-label-6 {
-    z-index: 99;
-    top: 0;
-    left: 0;
-    background-color: #F2C94C;
-    border-radius: 4px;
-    padding: 3px 15px;
-    font-size: 12px;
-    line-height: 18px;
-    text-align: center;
-    color: #ffffff;
-    float: right;
     font-weight: bold;
 }
 .avatar-class {
@@ -232,10 +205,9 @@ ion-item{
     bottom: 0px;
     width: 100%;
     padding: 10px 0px;
-    // background-color: #f4f5f5;
     display: flex;
-    padding-left: 17px;
-    padding-right: 17px;
+    padding-left: 12px;
+    padding-right: 12px;
 }
 .amo-button-custom-1 {
     --background: #D3D6D9;
@@ -456,5 +428,8 @@ ion-content {
     line-height: 20px;
     color: #7A838C;
     margin: 0;
+}
+.display-flex {
+    display: flex;
 }
 

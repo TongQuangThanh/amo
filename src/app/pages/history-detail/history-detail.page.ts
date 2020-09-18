@@ -17,7 +17,9 @@ export class HistoryDetailPage implements OnInit {
   rating_value: any;
   rating_value_popup: any;
   flag_show_hide_popup: any;
+  flag_show_hide_popup_complain: any;
   form_note:any;
+  form_user_complain:any;
 
   constructor(
     public modalController: ModalController,
@@ -36,7 +38,9 @@ export class HistoryDetailPage implements OnInit {
     this.rating_value_popup = 0;
     this.data_history_order = [];
     this.flag_show_hide_popup = false;
+    this.flag_show_hide_popup_complain = false;
     this.form_note = "";
+    this.form_user_complain = "";
     this.getDataOrderHistory();
   }
   async presentAlert(message) {
@@ -44,6 +48,16 @@ export class HistoryDetailPage implements OnInit {
     const alert = await this.alertController.create({
       cssClass: 'my-custom-class',
       header: self.translate.instant('COMMON.information'),
+      message: message,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
+  async presentAlertComplain(message) {
+    var self = this;
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: self.translate.instant('COMMON.complain'),
       message: message,
       buttons: ['OK']
     });
@@ -95,14 +109,25 @@ export class HistoryDetailPage implements OnInit {
   moveToChatToShopPage() {
     this.navCtrl.navigateForward('/chat-to-shop');
   }
-  eventButtonClosePopup() {
-    this.flag_show_hide_popup = false;
-    this.rating_value_popup = 0;
-  }
-  eventShowDialog() {
-    if (this.rating_value_popup == 0) {
-      this.flag_show_hide_popup = true;
+  eventButtonClosePopup(i) {
+    if (i == 1) {
+      this.flag_show_hide_popup = false;
+      this.rating_value_popup = 0;
+    } else {
+      this.flag_show_hide_popup_complain = false;
+      this.form_user_complain = "";
     }
+    
+  }
+  eventShowDialog(i) {
+    if (i == 1) {
+      if (this.rating_value_popup == 0) {
+        this.flag_show_hide_popup = true;
+      }
+    } else {
+      this.flag_show_hide_popup_complain = true;
+    }
+    
   }
   eventSendRating() {
     var self = this;
@@ -169,5 +194,25 @@ export class HistoryDetailPage implements OnInit {
     error => {
       self.loading.dismiss();
     });
+  }
+  eventButtonUserComplain() {
+    var self = this;
+    this.loading.present();
+    this.apiService.putOrderHistoryUserComplain(
+      self.data_history._id,
+      self.form_user_complain
+    ).subscribe(result => {
+      self.loading.dismiss();
+      self.presentAlert(
+        self.translate.instant('COMMON.message_complain_success')
+      );
+    },
+    error => {
+      self.loading.dismiss();
+    });
+  }
+  showComplainText(event, data) {
+    this.presentAlertComplain(data.userComplain);
+    event.preventDefault();
   }
 }

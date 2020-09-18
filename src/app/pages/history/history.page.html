@@ -11,29 +11,33 @@
     <super-tabs class="class-super-tabs" activeTabIndex="0" [config]="{ debug: true, sideMenu: 'left', allowElementScroll: true, nativeSmoothScroll: true }">
       <super-tabs-toolbar slot="top" scrollable="true" scrollable-padding="false">
         <super-tab-button *ngFor="let object of data_history">
-          <ion-label class="font-weight-bold">{{object.title}}</ion-label>
+          <ion-label class="">{{object.title}}</ion-label>
         </super-tab-button>
       </super-tabs-toolbar>
       <super-tabs-container autoScrollTop>
         <super-tab class="ion-padding hidden-overflow" *ngFor="let object of data_history">
           <ion-list lines="full" class="ion-no-margin ion-no-padding">
             <ion-grid class="ion-no-padding scroll-class line-bottom" *ngFor="let data of object.data" id="{{data.id}}">
-              <ion-row class="ion-no-padding" (click)="gotoHistoryDetail(data)">
+              <ion-row class="ion-no-padding">
                 <ion-col class="group-2-col-1 center-div" size="8">
                   <ion-item lines="none" class="ion-no-padding">
                     <div>
                       <ion-label *ngIf="data.status == 'processing'" class="ion-label-1">{{ 'SERVICE_35.status_processing' | translate }}</ion-label>
-                      <ion-label *ngIf="data.status == 'accepted-provider'" class="ion-label-6">{{ 'SERVICE_35.status_accepted_provider' | translate }}</ion-label>
-                      <ion-label *ngIf="data.status == 'confirm-user'" class="ion-label-2">{{ 'SERVICE_35.status_accepted_provider_groupon' | translate }}</ion-label>
-                      <ion-label *ngIf="data.status == 'accepted-user'" class="ion-label-6">{{ 'SERVICE_35.status_accepted_user' | translate }}</ion-label>
-                      <ion-label *ngIf="data.status == 'finish'" class="ion-label-4">{{ 'SERVICE_35.status_finish' | translate }}</ion-label>
-                      <ion-label *ngIf="data.status == 'cancel-user'" class="ion-label-5">{{ 'SERVICE_35.status_cancel_user' | translate }}</ion-label>
-                      <ion-label *ngIf="data.status == 'cancel-provider'" class="ion-label-5">{{ 'SERVICE_35.status_cancel_provider' | translate }}</ion-label>
+                      <ion-label *ngIf="data.status == 'accepted-provider'" class="ion-label-2">{{ 'SERVICE_35.status_accepted_provider' | translate }}</ion-label>
+                      <ion-label *ngIf="data.status == 'accepted-provider-groupon'" class="ion-label-2">{{ 'SERVICE_35.status_accepted_provider_grouppon' | translate }}</ion-label>
+                      <ion-label *ngIf="data.status == 'confirm-user'" class="ion-label-1">{{ 'SERVICE_35.status_wait_user_confirm' | translate }}</ion-label>
+                      <ion-label *ngIf="data.status == 'accepted-user'" class="ion-label-2">{{ 'SERVICE_35.status_accepted_user' | translate }}</ion-label>
+                      <ion-label *ngIf="data.status == 'finish'" class="ion-label-3">{{ 'SERVICE_35.status_finish' | translate }}</ion-label>
+                      <ion-label *ngIf="data.status == 'cancel-user'" class="ion-label-4">{{ 'SERVICE_35.status_cancel_user' | translate }}</ion-label>
+                      <ion-label *ngIf="data.status == 'cancel-provider'" class="ion-label-4">{{ 'SERVICE_35.status_cancel_provider' | translate }}</ion-label>
+                    </div>
+                    <div class="margin-left-10" *ngIf="data.userComplain != ''" (click)="showComplainText($event, data)">
+                      <ion-img src="../assets/icon/svg/complaint.svg" class="img-responsive" alt=""></ion-img>
                     </div>
                   </ion-item>
                 </ion-col>
-                <ion-col size="4" *ngIf="data.status == 'finish' && data.text_rate != ''">
-                  <ion-item class="group-1-text-star">
+                <ion-col size="4" (click)="gotoHistoryDetail(data)">
+                  <ion-item class="group-1-text-star" *ngIf="data.status == 'finish' && data.text_rate != ''">
                     <img class="group-1-icon-star" src="../assets/icon/svg/icon-star.svg"/>
                     <ion-label class="class-label-rate">{{data.text_rate}}</ion-label>
                   </ion-item>
