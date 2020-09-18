@@ -24,6 +24,7 @@ export class ShopHousePage implements OnInit {
   position_product:number;
   flag_show_hide_popup: any;
   active_tabs: any;
+  first_item: any;
 
   constructor(
     private translate: TranslateService,
@@ -56,6 +57,7 @@ export class ShopHousePage implements OnInit {
     this.position_product = 1;
     this.flag_show_hide_popup = false;
     this.active_tabs = 1;
+    this.first_item = '';
   }
   ionViewWillEnter(){
     
@@ -154,6 +156,9 @@ export class ShopHousePage implements OnInit {
               self.data_shop_house.group_1.push(object);
             } else {
               let index = self.getIndexCategoryInList(product.category._id);
+              if (self.first_item == '') {
+                self.first_item = product.category._id;
+              }
               if (index < 0) {
                 self.data_shop_house['group_2'].push({
                   id_tab: product.category._id,
@@ -180,10 +185,6 @@ export class ShopHousePage implements OnInit {
                 note: product.excerpt, 
                 number: 0
               }
-              self.data_shop_house.group_2[index].data.push(object);
-              self.data_shop_house.group_2[index].data.push(object);
-              self.data_shop_house.group_2[index].data.push(object);
-              self.data_shop_house.group_2[index].data.push(object);
               self.data_shop_house.group_2[index].data.push(object);
             }
           }
@@ -307,7 +308,7 @@ export class ShopHousePage implements OnInit {
     return convert2;
   }
   onScroll(event) {
-    let position_y = document.getElementById('div-text-place').getClientRects()[0];
+    let position_y = document.getElementById('div-element-place').getClientRects()[0];
     let position_y_product = document.getElementById('group-data-product').getClientRects()[0];
     if (position_y && position_y_product) {
       if(position_y['y'] > 45){
@@ -360,5 +361,12 @@ export class ShopHousePage implements OnInit {
   eventClickGroupPon(object) {
     localStorage.setItem('data-booking-product', JSON.stringify(object));
     this.navCtrl.navigateForward('/booking-product/' + 'groupon');
+  }
+  getClassLabelProduct(object) {
+    if (this.first_item == object.id_tab) {
+      return '';
+    } else {
+      return 'line-product padding-top-20';
+    }
   }
 }

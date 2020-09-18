@@ -143,6 +143,9 @@ super-tab-button {
 .line-1 {
     border-top: 6px solid #F4F5F5;
 }
+.line-product {
+    border-top: 6px solid #F4F5F5;
+}
 .group-1-slider-title {
     position: absolute;
     z-index: 99;
@@ -527,4 +530,10 @@ super-tab-button {
 .pading-ion-grid {
     margin-left: 17px;
     margin-right: 17px;
+}
+.title-shop-product {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: #7A838C;
 }

@@ -12,7 +12,7 @@
       <ion-back-button text=""></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
-  <ion-toolbar *ngIf="data_shop_house.group_2.length != 0" [ngStyle]="{'display': getStyleHeaderPrduct()[0], 'opacity': getStyleHeaderPrduct()[1]}" class="ion-sub-toolbar-2">
+  <!-- <ion-toolbar *ngIf="data_shop_house.group_2.length != 0" [ngStyle]="{'display': getStyleHeaderPrduct()[0], 'opacity': getStyleHeaderPrduct()[1]}" class="ion-sub-toolbar-2">
     <super-tabs *ngIf="data_shop_house.group_2.length != 0" class="class-super-tabs margin-top-10" activeTabIndex="0" [config]="{ debug: true, sideMenu: 'left', allowElementScroll: true, nativeSmoothScroll: true }">
       <super-tabs-toolbar slot="top" scrollable="true" scrollable-padding="false" >
         <super-tab-button *ngFor="let object of data_shop_house.group_2" (click)="eventClickTabs(object.id_tab)">
@@ -20,7 +20,7 @@
         </super-tab-button>
       </super-tabs-toolbar>
     </super-tabs>
-  </ion-toolbar>
+  </ion-toolbar> -->
 </ion-header>
 <ion-content id="content_page"  [scrollEvents]="true" (ionScroll)="onScroll($event)">
   <ion-list lines="full" class="ion-no-margin ion-no-padding">
@@ -46,7 +46,7 @@
               <img slot="end" class="group-1-icon-info" src="../assets/icon/svg/Information-circle.svg"/>
             </div>
           </div>
-          <div id="div-text-place" class="group-1-text-place" *ngIf="data_shop_house.text_place">
+          <div id="div-element-place" class="group-1-text-place" *ngIf="data_shop_house.text_place">
             <div class="group-1-icon-place">
               <ion-img src="../assets/icon/svg/icon-place.svg"></ion-img>
             </div>
@@ -97,28 +97,18 @@
                 </ion-row>
               </ion-grid>
             </div>
-            <!-- <img class="" src="{{object.url}}"/> -->
             <div *ngIf="object.deadline != ''" class="group-1-deadline">
               <ion-label>{{object.deadline}}</ion-label>
             </div>
           </ion-item>
     </ion-slide>
   </ion-slides>
-  <!-- <super-tabs *ngIf="data_shop_house.group_2.length != 0" class="line-1 class-super-tabs margin-top-10" activeTabIndex="0" [config]="{ debug: true, sideMenu: 'left', allowElementScroll: true, nativeSmoothScroll: true }">
-    <super-tabs-toolbar slot="top" scrollable="true" scrollable-padding="false" >
-      <super-tab-button *ngFor="let object of data_shop_house.group_2" (click)="eventClickTabs(object.id_tab)">
-        <ion-label>{{object.title}}</ion-label>
-      </super-tab-button>
-    </super-tabs-toolbar> -->
-    <!-- <super-tabs-container autoScrollTop>
-      <super-tab class="ion-padding hidden-overflow" *ngFor="let object of data_shop_house.group_2">
-        
-      </super-tab>
-    </super-tabs-container> -->
-  <!-- </super-tabs> -->
   <div id="group-data-product" class="group-data line-1 margin-top-20" *ngIf="data_shop_house.group_2.length > 0">
     <ion-grid class="ion-no-padding pading-ion-grid" *ngFor="let object of data_shop_house.group_2" data-id="{{object.id_tab}}">
-      <ion-row class="row-data-product" *ngFor="let data of object.data" id="{{data._id}}">
+      <ion-row class="margin-top-20 title-shop-product {{getClassLabelProduct(object)}}" id="{{object._id}}">
+        <ion-label>{{object.title}}</ion-label>
+      </ion-row>
+      <ion-row class="row-data-product" *ngFor="let data of object.data">
         <ion-col class="ion-col-class group-2-col-1" size="3">
           <div class="div-logo">
             <ion-img src="{{data.image}}"></ion-img>

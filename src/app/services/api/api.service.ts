@@ -547,5 +547,14 @@ export class ApiService {
       map(results => results)
     );
   }
+  putOrderHistoryUserComplain(orderHistoryId:any, userComplain: any): Observable<any> {
+    const params = {
+      orderHistoryId,
+      userComplain
+    }
+    return this.http.put(EnvService.putOrderHistoryUserComplain, params).pipe(
+      map(results => results)
+    );
+  }
 
 }

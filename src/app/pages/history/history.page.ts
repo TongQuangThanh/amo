@@ -3,7 +3,7 @@ import { Camera, CameraOptions, PictureSourceType } from '@ionic-native/Camera/n
 import { ApiService } from '../../services/api/api.service';
 import { ActionSheetController, NavController } from '@ionic/angular';
 import { LoadingService } from '../../services/loading/loading.service';
-import { ModalController } from '@ionic/angular';
+import { ModalController, AlertController } from '@ionic/angular';
 import { DatePipe } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
 import { AlertService } from '../../services/alert/alert.service';
@@ -25,12 +25,36 @@ export class HistoryPage implements OnInit {
     private apiService: ApiService,
     private datePipe: DatePipe,
     private translate: TranslateService,
+    public alertController: AlertController,
     private alertService: AlertService
   ) { }
 
   ngOnInit() {
+    
+  }
+  ionViewWillEnter() {
     this.data_history = [];
     this.getAllOrderHistorys();
+  }
+  async presentAlert(message) {
+    var self = this;
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: self.translate.instant('COMMON.information'),
+      message: message,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
+  async presentAlertComplain(message) {
+    var self = this;
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: self.translate.instant('COMMON.complain'),
+      message: message,
+      buttons: ['OK']
+    });
+    await alert.present();
   }
   getAllOrderHistorys() {
     var self = this;
@@ -63,13 +87,20 @@ export class HistoryPage implements OnInit {
             }
             let money_convert = self.convertFormatMoney(money);
             var date = new Date(product.orderAt);
-            var date_convert = this.datePipe.transform(date,"dd/MM/yyyy hh:mm");
+            var date_convert = this.datePipe.transform(date,"dd/MM/yyyy HH:mm");
             let is_groupon = false;
+            if (product.orderInfor.length == 1 && product.orderInfor[0].promotionCode) {
+              is_groupon = true;
+            }
             let message = "";
             let product_status = product.status ? product.status : "processing";
             if (product_status == "accepted-provider" && is_groupon) {
-              product_status = "confirm-user";
-              message = product.userPromotionCodeConfirmText;
+              if (product.userPromotionCodeConfirmText) {
+                product_status = "confirm-user";
+                message = product.userPromotionCodeConfirmText;
+              } else {
+                product_status = "accepted-provider-groupon";
+              }
             }
             let object = {
               _id: product._id,
@@ -80,11 +111,12 @@ export class HistoryPage implements OnInit {
               avatar: product.createdBy.avatar,
               name: product.createdBy.displayName,
               role: "CEO",
-              code_orders: product._id,
+              code_orders: product.orderCode ? product.orderCode : product._id,
               date_time: date_convert,
               orderInfor: product.orderInfor,
               createdBy: product.createdBy,
-              message: message
+              message: message,
+              userComplain: product.userComplain ? product.userComplain : ""
             }
             self.data_history[index]['data'].push(object);
 
@@ -136,5 +168,9 @@ export class HistoryPage implements OnInit {
   moveToChatToShopPage(object) {
     localStorage.setItem('data-order-history', JSON.stringify(object));
     this.navCtrl.navigateForward('/chat-to-shop');
+  }
+  showComplainText(event, data) {
+    this.presentAlertComplain(data.userComplain);
+    event.preventDefault();
   }
 }

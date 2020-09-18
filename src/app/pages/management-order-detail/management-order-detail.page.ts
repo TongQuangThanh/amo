@@ -51,6 +51,16 @@ export class ManagementOrderDetailPage implements OnInit {
     });
     await alert.present();
   }
+  async presentAlertComplain(message) {
+    var self = this;
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: self.translate.instant('COMMON.complain'),
+      message: message,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
   onRateChange(rating){
   }
   getDataOrderHistory(){
@@ -163,7 +173,15 @@ export class ManagementOrderDetailPage implements OnInit {
       self.data_history._id
     ).subscribe(result => {
       self.loading.dismiss();
-      self.data_history.status = 'accepted-provider';
+      if (self.data_history.status == 'processing' && self.data_history.is_groupon) {
+        if (self.data_history.messsage != '') {
+          self.data_history.status = 'confirm-user';
+        } else {
+          self.data_history.status = 'accepted-provider-groupon';
+        }
+      } else {
+        self.data_history.status = 'accepted-provider';
+      }
       self.presentAlert(
         self.translate.instant('COMMON.message_confirm_success')
       );
@@ -187,5 +205,9 @@ export class ManagementOrderDetailPage implements OnInit {
     error => {
       self.loading.dismiss();
     });
+  }
+  showComplainText(event, data) {
+    this.presentAlertComplain(data.userComplain);
+    event.preventDefault();
   }
 }

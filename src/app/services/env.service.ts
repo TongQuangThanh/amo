@@ -80,5 +80,6 @@ export const EnvService = {
   putOrderHistoryProviderFinish: environment.base + '/order-history/provide-finish',
   putOrderHistoryProviderConfirm: environment.base + '/order-history/provide-confirm',
   putOrderHistoryUserConfirm: environment.base + '/order-history/user-confirm',
+  putOrderHistoryUserComplain: environment.base + '/order-history/user-complain',
 };
 

@@ -3,7 +3,7 @@ import { Camera, CameraOptions, PictureSourceType } from '@ionic-native/Camera/n
 import { ApiService } from '../../services/api/api.service';
 import { ActionSheetController, NavController } from '@ionic/angular';
 import { LoadingService } from '../../services/loading/loading.service';
-import { ModalController } from '@ionic/angular';
+import { ModalController, AlertController } from '@ionic/angular';
 import { DatePipe } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
 import { AlertService } from '../../services/alert/alert.service';
@@ -25,12 +25,35 @@ export class ManagementOrderPage implements OnInit {
     private apiService: ApiService,
     private datePipe: DatePipe,
     private translate: TranslateService,
+    public alertController: AlertController,
     private alertService: AlertService
   ) { }
 
   ngOnInit() {
+  }
+  ionViewWillEnter() {
     this.data_history = [];
     this.getAllOrderHistorysByProvider();
+  }
+  async presentAlert(message) {
+    var self = this;
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: self.translate.instant('COMMON.information'),
+      message: message,
+      buttons: ['OK']
+    });
+    await alert.present();
+  }
+  async presentAlertComplain(message) {
+    var self = this;
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      header: self.translate.instant('COMMON.complain'),
+      message: message,
+      buttons: ['OK']
+    });
+    await alert.present();
   }
   getAllOrderHistorysByProvider() {
     var self = this;
@@ -48,13 +71,13 @@ export class ManagementOrderPage implements OnInit {
             data: []
           },
           {
-            id_tab: "confirm-user",
-            title: self.translate.instant('SERVICE_45.status_accepted_provider_groupon'),
+            id_tab: "groupon",
+            title: self.translate.instant('SERVICE_45.tab_groupon_title'),
             data: []
           },
           {
-            id_tab: "accepted-user",
-            title: self.translate.instant('SERVICE_45.tab_accepted_user_title'),
+            id_tab: "delivery",
+            title: self.translate.instant('SERVICE_45.tab_accepted_title'),
             data: []
           },
           {
@@ -63,40 +86,43 @@ export class ManagementOrderPage implements OnInit {
             data: []
           },
           {
-            id_tab: "cancel-provider",
-            title: self.translate.instant('SERVICE_45.tab_cancel_provider_title'),
-            data: []
-          },
-          {
-            id_tab: "cancel-user",
-            title: self.translate.instant('SERVICE_45.tab_cancel_user_title'),
+            id_tab: "cancel",
+            title: self.translate.instant('SERVICE_45.tab_cancel_title'),
             data: []
           }
         ];
         result.ordersHistory.forEach(product => {
           var is_groupon = false;
+          if (product.orderInfor.length == 1 && product.orderInfor[0].promotionCode) {
+            is_groupon = true;
+          }
           let status_order = product.status;
-          let status_order_translate = '';
+          let id_tab = 'processing';
+
           if (status_order == 'processing') {
-            status_order_translate = self.translate.instant('SERVICE_45.tab_processing_title');
+            id_tab = "processing";
           } else if (status_order == 'accepted-provider') {
             if (is_groupon) {
-              status_order = "confirm-user";
-              status_order_translate = self.translate.instant('SERVICE_45.status_accepted_provider_groupon');
+              id_tab = "groupon";
+              if (product.userPromotionCodeConfirmText) {
+                status_order = "confirm-user";
+              } else {
+                status_order = "accepted-provider-groupon";
+              }
             } else {
-              status_order_translate = self.translate.instant('SERVICE_45.tab_accepted_provider_title');
+              id_tab = "delivery";
             }
           } else if (status_order == 'accepted-user') {
-            status_order_translate = self.translate.instant('SERVICE_45.tab_accepted_user_title');
+            id_tab = "delivery";
           } else if (status_order == 'finish') {
-            status_order_translate = self.translate.instant('SERVICE_45.tab_finish_title');
+            id_tab = "finish";
           } else if (status_order == 'cancel-user') {
-            status_order_translate = self.translate.instant('SERVICE_45.tab_cancel_user_title');
+            id_tab = "cancel";
           } else if (status_order == 'cancel-provider') {
-            status_order_translate = self.translate.instant('SERVICE_45.tab_cancel_provider_title');
+            id_tab = "cancel";
           }
-          let index = self.getIndexCategoryInList(status_order);
-          if (status_order_translate != '') {
+          let index = self.getIndexCategoryInList(id_tab);
+          if (index > -1) {
             let money = 0;
             if (product.orderInfor && product.orderInfor.length > 0) {
               product.orderInfor.forEach(record => {
@@ -109,6 +135,7 @@ export class ManagementOrderPage implements OnInit {
             var order_address = product.appartment.title + ' - ' + product.appartment.campaign.title + ', ' + product.appartment.campaign.address;
             let object = {
               _id: product._id,
+              id_tab: id_tab,
               status: status_order,
               text_rate: product.starsProvider,
               title: product.requestShopProduct ? product.requestShopProduct.title : "",
@@ -121,7 +148,9 @@ export class ManagementOrderPage implements OnInit {
               orderInfor: product.orderInfor,
               createdBy: product.createdBy,
               order_address: order_address,
-              is_groupon: is_groupon
+              is_groupon: is_groupon,
+              message: product.userPromotionCodeConfirmText ? product.userPromotionCodeConfirmText : "",
+              userComplain: product.userComplain ? product.userComplain : ""
             }
             self.data_history[index]['data'].push(object);
             let index_all = self.getIndexCategoryInList("0");
@@ -172,5 +201,9 @@ export class ManagementOrderPage implements OnInit {
   moveToChatToShopPage(object) {
     localStorage.setItem('data-management-order', JSON.stringify(object));
     this.navCtrl.navigateForward('/chat-to-shop');
+  }
+  showComplainText(event, data) {
+    this.presentAlertComplain(data.userComplain);
+    event.preventDefault();
   }
 }
