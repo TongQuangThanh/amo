@@ -22,6 +22,7 @@ export class PaymentPage implements OnInit {
   currentPage: number;
   numberRecordOnPage: number;
   segmentModel: string = "all";
+  today: any;
 
   constructor(
     private translate: TranslateService,
@@ -43,6 +44,8 @@ export class PaymentPage implements OnInit {
     // this.currentPage = 1;
     // this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
     // this.getPaymentLogs(this.currentPage, this.numberRecordOnPage, '', '', null, false);
+    this.today = Date.now();
+    console.log(this.today + "is today")
   }
 
   segmentChanged(event){

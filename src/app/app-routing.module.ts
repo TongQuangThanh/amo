@@ -325,6 +325,10 @@ const routes: Routes = [
   {
     path: 'popup-complain',
     loadChildren: () => import('./pages/popup-complain/popup-complain.module').then( m => m.PopupComplainPageModule)
+  },
+  {
+    path: 'popup-pincode-register',
+    loadChildren: () => import('./pages/popup-pincode-register/popup-pincode-register.module').then( m => m.PopupPincodeRegisterPageModule)
   }
 ];
 
