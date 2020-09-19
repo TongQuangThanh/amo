@@ -5,24 +5,32 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-header id="sub-header" class="ion-no-border" [ngStyle]="{'display': getStyleHeader(2)}">
+<ion-header #sub_header id="sub-header" class="ion-no-border" [ngStyle]="{'display': getStyleHeader(2)}">
   <ion-toolbar class="ion-sub-toolbar-1">
     <ion-title>{{data_shop_house.text_title}}</ion-title>
     <ion-buttons slot="start">
       <ion-back-button text="" icon="arrow-back-outline"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
-  <!-- <ion-toolbar *ngIf="data_shop_house.group_2.length != 0" [ngStyle]="{'display': getStyleHeaderPrduct()[0], 'opacity': getStyleHeaderPrduct()[1]}" class="ion-sub-toolbar-2">
-    <super-tabs *ngIf="data_shop_house.group_2.length != 0" class="class-super-tabs margin-top-10" activeTabIndex="0" [config]="{ debug: true, sideMenu: 'left', allowElementScroll: true, nativeSmoothScroll: true }">
+  <ion-toolbar *ngIf="data_shop_house.group_2.length != 0" 
+    [ngStyle]="{'display': getStyleHeaderPrduct()[0], 'opacity': getStyleHeaderPrduct()[1]}" 
+    class="ion-sub-toolbar-2"
+  >
+    <super-tabs class="class-super-tabs margin-top-10" activeTabIndex="0" [config]="{ debug: false, sideMenu: 'left', allowElementScroll: false, nativeSmoothScroll: true }">
       <super-tabs-toolbar slot="top" scrollable="true" scrollable-padding="false" >
         <super-tab-button *ngFor="let object of data_shop_house.group_2" (click)="eventClickTabs(object.id_tab)">
           <ion-label>{{object.title}}</ion-label>
         </super-tab-button>
       </super-tabs-toolbar>
+      <super-tabs-container>
+        <super-tab *ngFor="let object of data_shop_house.group_2">
+        </super-tab>
+      </super-tabs-container>
     </super-tabs>
-  </ion-toolbar> -->
+    <div></div>
+  </ion-toolbar>
 </ion-header>
-<ion-content id="content_page"  [scrollEvents]="true" (ionScroll)="onScroll($event)">
+<ion-content id="content_page" #content  [scrollEvents]="true" (ionScroll)="onScroll($event)">
   <ion-list lines="full" class="ion-no-margin ion-no-padding">
     <ion-item lines="none" class="ion-no-padding">
       <ion-img *ngIf="data_shop_house.thumbnail" class="image-page padding-bottom-30" src="{{data_shop_house.thumbnail}}"></ion-img>
@@ -104,8 +112,8 @@
     </ion-slide>
   </ion-slides>
   <div id="group-data-product" class="group-data line-1 margin-top-20" *ngIf="data_shop_house.group_2.length > 0">
-    <ion-grid class="ion-no-padding pading-ion-grid" *ngFor="let object of data_shop_house.group_2" data-id="{{object.id_tab}}">
-      <ion-row class="margin-top-20 title-shop-product {{getClassLabelProduct(object)}}" id="{{object._id}}">
+    <ion-grid class="ion-no-padding pading-ion-grid padding-top-20 padding-bottom-20 {{getClassLabelProduct(object)}}" *ngFor="let object of data_shop_house.group_2" id="{{object.id_tab}}">
+      <ion-row class="title-shop-product">
         <ion-label>{{object.title}}</ion-label>
       </ion-row>
       <ion-row class="row-data-product" *ngFor="let data of object.data">

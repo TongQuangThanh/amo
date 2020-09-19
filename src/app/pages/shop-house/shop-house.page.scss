@@ -29,11 +29,14 @@ ion-header {
     --ion-color-tint: var(--ion-color-primary-tint, #4c8dff) !important;
 }
 super-tab-button ion-label{
-    color: #7A838C;
     text-transform: unset;
+    font-size: 16px;
+    line-height: 24px;
+    color: #7A838C;
 }
 super-tab-button.active ion-label{
     color: #000000;
+    font-weight: bold;
 }
 super-tabs-toolbar::after {
     background-image: unset;
@@ -542,5 +545,5 @@ super-tab-button {
     font-weight: bold;
     font-size: 16px;
     line-height: 24px;
-    color: #7A838C;
+    color: #000000;
 }

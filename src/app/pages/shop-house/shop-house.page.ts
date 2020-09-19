@@ -25,6 +25,7 @@ export class ShopHousePage implements OnInit {
   flag_show_hide_popup: any;
   active_tabs: any;
   first_item: any;
+  is_click_button: any;
 
   constructor(
     private translate: TranslateService,
@@ -39,6 +40,8 @@ export class ShopHousePage implements OnInit {
       this.heightScreen = platform.height() * 0.58 - 18;
     });
   }
+  @ViewChild('content') private content: any;
+  @ViewChild('sub_header') private sub_header: any;
   @ViewChild(SuperTabs) superTabs: SuperTabs;
   slideOpts = {
     initialSlide: 0,
@@ -58,9 +61,11 @@ export class ShopHousePage implements OnInit {
     this.flag_show_hide_popup = false;
     this.active_tabs = 1;
     this.first_item = '';
+    this.is_click_button = false;
+  }
+  ngAfterViewInit() {
   }
   ionViewWillEnter(){
-    
   }
   slideToIndex(index: number) {
     this.superTabs.selectTab(index);
@@ -315,22 +320,42 @@ export class ShopHousePage implements OnInit {
     if (document.getElementById('div-element-place')) {
       let position_y = document.getElementById('div-element-place').getClientRects()[0];
       if(position_y['y'] > 50){
+        this.slideToIndex(0);
         this.showHeader = 1;
       }else{
-        this.showHeader = 2;
+        if (this.showHeader == 1) {
+          this.showHeader = 2;
+          this.slideToIndex(0);
+        } else {
+          this.showHeader = 2;
+        }
       }
     }
     if (document.getElementById('group-data-product')) {
       let position_y_product = document.getElementById('group-data-product').getClientRects()[0];
       this.position_product = position_y_product['y'];
     }
-  }
-  getStyleHeader(index) {
-    if (index == this.showHeader) {
-      return '';
-    } else {
-      return 'none';
+    if (!this.is_click_button) {
+      this.checkActiveTabs(event);
     }
+  }
+  checkActiveTabs(event) {
+    var self = this;
+    var scrollTop = event.detail.scrollTop;
+    if (this.showHeader == 2) {
+      var index = 0;
+      var tabs = 0;
+      self.data_shop_house.group_2.forEach(object => {
+        let top = document.getElementById(object.id_tab).offsetTop;
+        let height_aphal = self.sub_header.el.offsetHeight
+        if (scrollTop + 100 > top - height_aphal) {
+          tabs = index;
+        }
+        index++;
+      });
+      self.slideToIndex(tabs);
+    }
+    
   }
   getStyleHeaderPrduct() {
     if (this.position_product > 250) {
@@ -340,6 +365,26 @@ export class ShopHousePage implements OnInit {
         return ['', opacity];
     } else {
       return ['', 1];
+    }
+  }
+  eventClickTabs(id_tab) {
+    var self = this;
+    if (this.is_click_button) {
+      return;
+    }
+    self.is_click_button = true;
+    let top = document.getElementById(id_tab).offsetTop;
+    let height_aphal = this.sub_header.el.offsetHeight
+    this.content.scrollToPoint(0, top - height_aphal, 300);
+    setTimeout(function(){
+      self.is_click_button = false;
+    }, 300);
+  }
+  getStyleHeader(index) {
+    if (index == this.showHeader) {
+      return '';
+    } else {
+      return 'none';
     }
   }
   getIndexCategoryInList(id_tab) {
@@ -361,9 +406,6 @@ export class ShopHousePage implements OnInit {
     this.flag_show_hide_popup = true;
     this.slideToIndex(1);
   }
-  eventClickTabs(id_tab) {
-    document.getElementById(id_tab).scrollIntoView();
-  }
   eventClickGroupPon(object) {
     localStorage.setItem('data-booking-product', JSON.stringify(object));
     this.navCtrl.navigateForward('/booking-product/' + 'groupon');
@@ -372,7 +414,7 @@ export class ShopHousePage implements OnInit {
     if (this.first_item == object.id_tab) {
       return '';
     } else {
-      return 'line-product padding-top-20';
+      return 'line-product';
     }
   }
 }
