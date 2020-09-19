@@ -58,6 +58,7 @@ export class HistoryPage implements OnInit {
   }
   getAllOrderHistorys() {
     var self = this;
+    this.loading.present();
     this.apiService.getListOrderHistorys()
       .subscribe(result => {
         self.data_history = [];

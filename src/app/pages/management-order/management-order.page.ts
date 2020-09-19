@@ -57,6 +57,7 @@ export class ManagementOrderPage implements OnInit {
   }
   getAllOrderHistorysByProvider() {
     var self = this;
+    this.loading.present();
     this.apiService.getListOrderHistorysByProvider()
       .subscribe(result => {
         self.data_history = [
