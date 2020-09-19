@@ -51,7 +51,7 @@
           </ion-col>
         </ion-row>
 
-        <ion-row class="ion-no-padding line-top-10">
+        <ion-row *ngIf="data_history.name != ''" class="ion-no-padding line-top-10">
           <ion-col class="" size="5">
             <ion-label class="label-left">{{ 'PAY_15.label_supplier_name' | translate }}</ion-label>
           </ion-col>

@@ -64,6 +64,7 @@ export class HistoryPage implements OnInit {
         self.data_history = [];
         result.ordersHistory.forEach(product => {
           if (product.requestShopProduct) {
+            var requestShopProduct = product.requestShopProduct;
             if (self.data_history.length == 0) {
               self.data_history = [{
                 id_tab: "0",
@@ -71,11 +72,11 @@ export class HistoryPage implements OnInit {
                 data: []
               }];
             }
-            let index = self.getIndexCategoryInList(product.requestShopProduct.category._id);
+            let index = self.getIndexCategoryInList(requestShopProduct.category._id);
             if (index < 0) {
               self.data_history.push({
-                id_tab: product.requestShopProduct.category._id,
-                title: product.requestShopProduct.category.title,
+                id_tab: requestShopProduct.category._id,
+                title: requestShopProduct.category.title,
                 data: []
               });
               index = self.data_history.length - 1;
@@ -107,10 +108,10 @@ export class HistoryPage implements OnInit {
               _id: product._id,
               status: product_status,
               text_rate: product.starsUser ? product.starsUser : "",
-              title: product.requestShopProduct ? product.requestShopProduct.title : "",
+              title: requestShopProduct ? requestShopProduct.title : "",
               money: money_convert,
-              avatar: product.createdBy.avatar,
-              name: product.createdBy.displayName,
+              avatar: requestShopProduct.thumbnail,
+              name: requestShopProduct.partner ? requestShopProduct.partner : "",
               role: "CEO",
               code_orders: product.orderCode ? product.orderCode : product._id,
               date_time: date_convert,
