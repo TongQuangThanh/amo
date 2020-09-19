@@ -24,7 +24,7 @@ export class ForgotPasswordPage implements OnInit {
   }
 
   checkIsEnabled() {
-    if (this.phoneNumber && this.phoneNumber.length >= ConstService.PHONE_LENGTH_VN) {
+    if (this.phoneNumber && this.phoneNumber.toString().length >= ConstService.PHONE_LENGTH_VN) {
       return true;
     }
     return false;
