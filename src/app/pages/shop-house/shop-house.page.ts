@@ -79,7 +79,11 @@ export class ShopHousePage implements OnInit {
           if (product.requestShopProduct) {
             self.data_shop_house['_id'] = product.requestShopProduct._id;
             self.data_shop_house['text_title'] = product.requestShopProduct.title;
-            self.data_shop_house['text_place'] = product.requestShopProduct.apartment.title + ' - ' + product.requestShopProduct.apartment.campaign.title;
+            let text_place = '';
+            try {
+              text_place = product.requestShopProduct.apartment.title + ' - ' + product.requestShopProduct.apartment.campaign.title;
+            } catch (e) {}
+            self.data_shop_house['text_place'] = text_place;
             self.data_shop_house['text_star_rate'] = product.requestShopProduct.stars;
             let thumbnail = product.requestShopProduct.thumbnail;
             let logo = product.requestShopProduct.thumbnail;
@@ -308,14 +312,16 @@ export class ShopHousePage implements OnInit {
     return convert2;
   }
   onScroll(event) {
-    let position_y = document.getElementById('div-element-place').getClientRects()[0];
-    let position_y_product = document.getElementById('group-data-product').getClientRects()[0];
-    if (position_y && position_y_product) {
-      if(position_y['y'] > 45){
+    if (document.getElementById('div-element-place')) {
+      let position_y = document.getElementById('div-element-place').getClientRects()[0];
+      if(position_y['y'] > 50){
         this.showHeader = 1;
       }else{
         this.showHeader = 2;
       }
+    }
+    if (document.getElementById('group-data-product')) {
+      let position_y_product = document.getElementById('group-data-product').getClientRects()[0];
       this.position_product = position_y_product['y'];
     }
   }
