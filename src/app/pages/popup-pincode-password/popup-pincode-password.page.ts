@@ -1,35 +1,54 @@
-import { Component, OnInit, SimpleChanges, Input, Output, EventEmitter, } from '@angular/core';
+import { Component, Input, Output, EventEmitter, SimpleChanges, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormArray, FormControl, FormBuilder } from '@angular/forms';
-import { LoadingService } from '../../../services/loading/loading.service';
-import { ApiService } from '../../../services/api/api.service';
-import { TranslateConfigService } from '../../../translate-config.service';
-import { ModalController } from '@ionic/angular';
+import { LoadingService } from '../../services/loading/loading.service';
+import { ApiService } from '../../services/api/api.service';
+import { ModalController, NavParams } from '@ionic/angular';
 
 @Component({
-  selector: 'app-reset-apartment-code',
-  templateUrl: './reset-apartment-code.page.html',
-  styleUrls: ['./reset-apartment-code.page.scss'],
+  selector: 'app-popup-pincode-password',
+  templateUrl: './popup-pincode-password.page.html',
+  styleUrls: ['./popup-pincode-password.page.scss'],
 })
-export class ResetApartmentCodePage implements OnInit {
-  selectedLanguage:string;
+export class PopupPincodePasswordPage implements OnInit {
+
   pinCodeArray: any[];
   pinCodeFormGroup: FormGroup;
+  phoneNumber: string;
   color: string="gray";
   isHidden: boolean = false;
-  codeSize: number = 6;
+  codeSize: number = 4;
   isChecking:boolean= false;
   isError:boolean=false;
-  refCode:string;
+  isEnableResentCode: boolean;
+  timmer:any;
+  timmerCount: number;
 
   constructor(
     private apiService: ApiService,
     private loading: LoadingService,
     private modalController: ModalController,
+    private navParams: NavParams
   ) {
     this.initiateBuilder();
   }
 
   ngOnInit() {
+    this.phoneNumber = this.navParams.data.phoneNumber;
+    this.setupPreventResentCode();
+  }
+
+  setupPreventResentCode(){
+    this.isEnableResentCode = false;
+    var self = this;
+    this.timmerCount = 30;
+    this.timmer = setInterval(() => {
+      if(self.timmerCount > 1){
+        self.timmerCount -=1;
+      }else{
+        self.timmerCount = 0;
+        self.isEnableResentCode = true;
+      }
+    }, 1000);
   }
 
   ngOnChanges(changes: SimpleChanges) {
@@ -74,7 +93,7 @@ export class ResetApartmentCodePage implements OnInit {
   onKeyUp($event: any, item: any, index: any) {
     let v_index;
 
-    let reg = new RegExp("[A-Za-z0-9]");
+    let reg = new RegExp("[0-9]");
 
     if ($event.key == "Backspace") {
       if (index == 0) {
@@ -124,15 +143,27 @@ export class ResetApartmentCodePage implements OnInit {
     }
   }
 
+  resentPinCode(){
+    if(!this.isEnableResentCode){
+      return;
+    }
+    this.apiService.forgotPassword(this.phoneNumber).subscribe(result => {
+    },
+    error => {
+    });
+    this.setupPreventResentCode();
+  }
+
   checkingPincode(pinCodeValue:string){
     const self = this;
     this.isChecking = true;
     this.loading.present();
-    this.apiService.addApartmentToUser(pinCodeValue.toUpperCase())
+    this.apiService.verifyTokenCode(this.phoneNumber, pinCodeValue)
       .subscribe(result => {
+        console.log(result);
         self.isError = false;
         self.loading.dismiss();
-        self.finishPinCode();
+        self.finishPinCode(pinCodeValue);
     },
     error => {
       this.isError = true;
@@ -141,10 +172,11 @@ export class ResetApartmentCodePage implements OnInit {
     });
   }
 
-  async finishPinCode(){
+  async finishPinCode(pinCodeValue:string){
     const onClosedData = JSON.stringify({
       result: "0",
       message: "success",
+      token: pinCodeValue
     });
     await this.modalController.dismiss(onClosedData);
   }
@@ -153,8 +185,8 @@ export class ResetApartmentCodePage implements OnInit {
     const onClosedData = JSON.stringify({
       result: "1",
       message: "cancel",
+      token:""
     });
     await this.modalController.dismiss(onClosedData);
   }
-
 }

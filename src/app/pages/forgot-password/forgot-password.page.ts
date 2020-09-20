@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ConstService } from '../../utils/const.service'
 import { ModalController } from '@ionic/angular';
-import { PincodePasswordPage } from '../pincode-password/pincode-password.page';
+import { PopupPincodePasswordPage } from '../popup-pincode-password/popup-pincode-password.page';
 import { ApiService } from '../../services/api/api.service';
 import { LoadingService } from '../../services/loading/loading.service';
 import { NavController } from '@ionic/angular';
@@ -44,11 +44,11 @@ export class ForgotPasswordPage implements OnInit {
 
   async presentModal() {
     const modal = await this.modalController.create({
-      component: PincodePasswordPage,
+      component: PopupPincodePasswordPage,
       componentProps: {
         "phoneNumber": this.phoneNumber,
       },
-      cssClass: "custom-modal-wrapper"
+      cssClass: "custom-pincode-wrapper"
     });
 
     modal.onDidDismiss().then((dataReturned:any) => {

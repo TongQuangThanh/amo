@@ -329,7 +329,11 @@ const routes: Routes = [
   {
     path: 'popup-pincode-register',
     loadChildren: () => import('./pages/popup-pincode-register/popup-pincode-register.module').then( m => m.PopupPincodeRegisterPageModule)
+  },  {
+    path: 'popup-pincode-password',
+    loadChildren: () => import('./pages/popup-pincode-password/popup-pincode-password.module').then( m => m.PopupPincodePasswordPageModule)
   }
+
 ];
 
 @NgModule({

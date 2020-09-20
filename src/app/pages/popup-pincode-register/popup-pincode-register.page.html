@@ -6,7 +6,7 @@
       </ion-buttons>
     </ion-item>
     <ion-toolbar class="ion-text-center modal-item">
-        <ion-item lines="none" class="image-item"> 
+        <!-- <ion-item lines="none" class="image-item"> 
           <ion-img *ngIf="isChecking == false" class="image-icon-check" src="/assets/common/check-circle-o.png"></ion-img>
           <svg *ngIf="isChecking == true" class="image-icon-check" width="75px" height="75px" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" style="shape-rendering: auto; animation-play-state: running; animation-delay: 0s; background: none;"><g transform="translate(80,50)" style="animation-play-state: running; animation-delay: 0s;">
               <g transform="rotate(0)" style="animation-play-state: running; animation-delay: 0s;">
@@ -65,8 +65,8 @@
               </circle>
               </g>
               </g></svg>
-        </ion-item>
-        <ion-item lines="none" class="form-class note-style">
+        </ion-item> -->
+        <ion-item lines="none" class="note-style">
           <ion-label class="ion-text-wrap label-text">{{ 'PINCODE_PASSWORD.pincode_note' | translate }}</ion-label>
         </ion-item>
         <ion-item lines="none" class="padding-none margin-none">
@@ -88,14 +88,26 @@
             </form>
           </ion-grid>
         </ion-item>
-        <ion-item lines="none" class="form-class margin-none margin-top-16">
+        <ion-label *ngIf="isError == true" slot="end" class="wrong-code">{{ 'PINCODE_PASSWORD.wrong_code' | translate }}</ion-label>
+        <ion-item lines="none" class="image-item"> 
+          <ion-spinner *ngIf="isChecking == true" name="crescent" class="image-icon-check"></ion-spinner>
+        </ion-item>
+        <ion-item lines="none" class="label-item ion-text-center">
+          <ion-label class="timecounter-label">{{ 'PINCODE_PASSWORD.timecounter' | translate }} <span *ngIf="isEnableResentCode == false" class="timecounter">{{ timmerCount }}</span><span>(s)</span></ion-label>
+        </ion-item>
+        <ion-toolbar class="label-item ion-text-center">
+          <ion-button class="btn-resend" (click)="resentPinCode()" disabled="!isEnableResentCode">
+            <ion-label class="btn-resend-label">{{ 'PINCODE_PASSWORD.btn_resend_code' | translate }} </ion-label>
+          </ion-button>        
+        </ion-toolbar>
+
+        <!-- <ion-item lines="none" class="form-class margin-none margin-top-16">
           <ion-buttons slot="start" class="white-color btn-save" (click)="resentPinCode()" class="btn-resend" disabled="!isEnableResentCode">
             <ion-label>{{ 'PINCODE_PASSWORD.btn_resend_code' | translate }}</ion-label>
             <ion-icon name="arrow-round-down"></ion-icon>
             <ion-label *ngIf="isEnableResentCode == false">({{ timmerCount }})</ion-label>
-          </ion-buttons>
-          <ion-label *ngIf="isError == true" slot="end" class="wrong-code">{{ 'PINCODE_PASSWORD.wrong_code' | translate }}</ion-label>
-        </ion-item>
+          </ion-buttons>          
+        </ion-item> -->
       
     </ion-toolbar>
     
