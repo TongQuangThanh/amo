@@ -34,6 +34,8 @@ export class RegisterKeepVehiclePage implements OnInit {
   list_image_select: any[] = [];
   image_select_url_1: any;
   image_select_url_2: any;
+  image_select_url_media_1: any;
+  image_select_url_media_2: any;
   list_vehicle:any;
   form_note: any;
   form_note_tab2: any;
@@ -70,6 +72,8 @@ export class RegisterKeepVehiclePage implements OnInit {
     this.list_vehicle = [];
     this.image_select_url_1 = "";
     this.image_select_url_2 = "";
+    this.image_select_url_media_1 = {};
+    this.image_select_url_media_2 = {};
     this.listDepartmentByID = {};
     this.form_note = "";
     this.form_note_tab2 = "";
@@ -94,6 +98,13 @@ export class RegisterKeepVehiclePage implements OnInit {
   eventButtonRegisterNew() {
     var self = this;
     let dataApartment = self.listDepartmentByID[this.form_apartment_id];
+    let listAttachments = [];
+    if (this.image_select_url_1 != "") {
+      listAttachments.push(this.image_select_url_media_1);
+    }
+    if (this.image_select_url_2 != "") {
+      listAttachments.push(this.image_select_url_media_2);
+    }
     const params = {
       // category: "",
       title: this.translate.instant('INBOX_31.title'),
@@ -101,7 +112,7 @@ export class RegisterKeepVehiclePage implements OnInit {
       campaign: dataApartment.campaign._id,
       apartment: this.form_apartment_id,
       // createdBy: "",
-      attachments: [],
+      attachments: listAttachments,
       type: "parking",
       parkingFullName: this.form_fullname,
       parkingType: this.form_vehicle_id,
@@ -268,9 +279,11 @@ export class RegisterKeepVehiclePage implements OnInit {
     if (self.list_image_select.length > 0) {
       if (_index == 1) {
         this.image_select_url_1 = self.list_image_select[0].media.url;
+        this.image_select_url_media_1 = self.list_image_select[0].media;
       }
       if (_index == 2) {
         this.image_select_url_2 = self.list_image_select[0].media.url;
+        this.image_select_url_media_2 = self.list_image_select[0].media;
       }
     }
   }
@@ -378,9 +391,11 @@ export class RegisterKeepVehiclePage implements OnInit {
   deleteImageForm (_index) {
     if (_index == 1) {
       this.image_select_url_1 = "";
+      this.image_select_url_media_1 = {};
     }
     if (_index == 2) {
       this.image_select_url_2 = "";
+      this.image_select_url_media_1 = {};
     }
   }
   checkActiveButton() {
