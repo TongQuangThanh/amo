@@ -114,6 +114,35 @@ export class ChatToShopPage implements OnInit {
     });
   }
 
+  eventSendImage() {
+    var self = this;
+    let listAttachments = [];
+    let data_chat = [];
+    for(var i=0;i<self.list_image_select.length;i++){
+      listAttachments.push(self.list_image_select[i].media);
+      data_chat.push({
+        type: 'right', avatar: "", message: "", images: self.list_image_select[i].media.url
+      });
+    }
+    var param = {
+      orderHistoryId: this.data_history._id,
+      attachments: listAttachments,
+      content: self.message_content
+    }
+    if (listAttachments.length == 0) return;
+    this.loading.present();
+    this.apiService.postOrderHistoryComment(param)
+      .subscribe(result => {
+        self.data_chat = self.data_history.concat(data_chat);
+        self.list_image_select = [];
+        self.loading.dismiss();
+        self.content.scrollToBottom(300);
+    },
+    error => {
+      self.loading.dismiss();
+    });
+  }
+
   // select image
   async selectImage() {
     const actionSheet = await this.actionSheetController.create({
@@ -171,6 +200,7 @@ export class ChatToShopPage implements OnInit {
         console.log(result);
         self.list_image_select = [];
         self.list_image_select.push(result);
+        self.eventSendImage();
       },
         error => {
       });
