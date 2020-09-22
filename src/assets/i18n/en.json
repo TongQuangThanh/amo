@@ -246,6 +246,7 @@
         "management_fee": "Management Fee",
         "badge_outdate": "Outdate",
         "badge_paid": "Paid",
+        "badge_unpaid": "Unpaid",
         "badge_sent": "Sent",
         "transfer": "Transfer",
         "cash": "Cash"

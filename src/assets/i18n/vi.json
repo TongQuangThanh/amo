@@ -235,7 +235,7 @@
         "top_up": "Nạp tiền",
         "complain": "Khiếu nại",
         "status_new": "Mới",
-        "status_pending": "Chờ xử lý",
+        "status_pending": "Đang xử lý",
         "status_done": "Hoàn thành",
         "pull_to_refresh": "Kéo xuống để làm mới",
         "loadding_more": "Đang tải dữ liệu...",
@@ -246,6 +246,7 @@
         "management_fee": "Phí quản lý",
         "badge_outdate": "Quá hạn",
         "badge_paid": "Đã t.toán",
+        "badge_unpaid": "Chưa t.toán",
         "badge_sent": "Đã gửi",
         "transfer": "Chuyển khoản",
         "cash": "Tiền mặt"

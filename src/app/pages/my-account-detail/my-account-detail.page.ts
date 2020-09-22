@@ -27,6 +27,33 @@ export class MyAccountDetailPage implements OnInit {
   male: string;
   female: string;
 
+  countryList = [
+    {
+      "name": "American Samoa",
+      "alpha2": "AS",
+      "alpha3": "ASM",
+      "numeric": 16
+    },
+    {
+      "name": "Afghanistan",
+      "alpha2": "AF",
+      "alpha3": "AFG",
+      "numeric": 4
+    },
+    {
+      "name": "Åland Islands",
+      "alpha2": "AX",
+      "alpha3": "ALA",
+      "numeric": 248
+    },
+    {
+      "name": "Albania",
+      "alpha2": "AL",
+      "alpha3": "ALB",
+      "numeric": 8
+    }
+  ];
+
   constructor(
     private loading: LoadingService,
     private apiService: ApiService,

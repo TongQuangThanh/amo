@@ -67,12 +67,32 @@ ion-toolbar ion-title.ios {
 
 .toolbar-button {
     position: sticky;
-    bottom: 14px;
+    bottom: 0;
     --background: transparent;
 }
-.toolbar-button.ios {
-    top: 14px;
+.add-button {
+    --background: #009AC9;
+    --ion-toolbar-color: #009AC9;
+    --background-activated: #048ab3;
+    --background-focused: #048ab3;
+    --background-hover: #048ab3;
+    margin: 14px 10px;
+    --box-shadow: 0px 10px 30px rgba(33, 49, 63, 0.1);
+    --color: #ffffff;
+    
+}
+.add-button-icon {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    //line-height: 24px;
+    text-align: center;
+    text-transform: none;
 }
 .normal-button {
-    width: 43.73%;
+    width: 60px;
+    height: 60px;
+    --border-radius: 50%;
+    float: right;
 }
