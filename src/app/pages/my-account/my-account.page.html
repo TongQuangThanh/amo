@@ -80,7 +80,7 @@
       <ion-label class="setting-item-label">{{ 'MY_ACCOUNT.guideline' | translate }}</ion-label>
       <ion-icon class="setting-item-forward" name="chevron-forward-outline" slot="end"></ion-icon>
     </ion-item>
-    <ion-item lines="inset">
+    <ion-item lines="inset" (click)="openToRateApp()">
       <ion-icon class="setting-item-icon" name="custom-star-outline" src="/assets/icon/custom-star-outline.svg" slot="start"></ion-icon>
       <ion-label class="setting-item-label">{{ 'MY_ACCOUNT.vote' | translate }}</ion-label>
       <ion-icon class="setting-item-forward" name="chevron-forward-outline" slot="end"></ion-icon>

@@ -190,4 +190,8 @@ export class MyAccountPage implements OnInit {
     });
     return await modal.present();
   }
+
+  openToRateApp(){
+
+  }
 }
