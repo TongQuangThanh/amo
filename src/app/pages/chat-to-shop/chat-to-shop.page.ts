@@ -130,7 +130,7 @@ export class ChatToShopPage implements OnInit {
     var param = {
       orderHistoryId: this.data_history._id,
       attachments: listAttachments,
-      content: self.message_content
+      content: " "
     }
     if (listAttachments.length == 0) return;
     this.loading.present();
