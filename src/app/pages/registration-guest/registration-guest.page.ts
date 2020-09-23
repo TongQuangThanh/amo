@@ -134,7 +134,7 @@ export class RegistrationGuestPage implements OnInit {
     const params = {
       // category: "",
       title: this.translate.instant('REGISTRATION_GUEST.title'),
-      content: this.form_note,
+      content: this.form_note != '' ? this.form_note : ' ',
       campaign: dataApartment.campaign._id,
       apartment: this.form_apartment_id,
       // createdBy: "",

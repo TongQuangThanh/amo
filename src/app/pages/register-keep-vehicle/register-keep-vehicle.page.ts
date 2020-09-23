@@ -98,31 +98,30 @@ export class RegisterKeepVehiclePage implements OnInit {
   eventButtonRegisterNew() {
     var self = this;
     let dataApartment = self.listDepartmentByID[this.form_apartment_id];
-    let listAttachments = [];
-    if (this.image_select_url_1 != "") {
-      listAttachments.push(this.image_select_url_media_1);
-    }
-    if (this.image_select_url_2 != "") {
-      listAttachments.push(this.image_select_url_media_2);
-    }
     const params = {
       // category: "",
       title: this.translate.instant('INBOX_31.title'),
-      content: this.form_note,
+      content: this.form_note != '' ? this.form_note : ' ',
       campaign: dataApartment.campaign._id,
       apartment: this.form_apartment_id,
       // createdBy: "",
-      attachments: listAttachments,
+      attachments: [],
       type: "parking",
       parkingFullName: this.form_fullname,
       parkingType: this.form_vehicle_id,
       parkingModel: this.form_model,
       parkingBrand: this.form_hang_xe,
       parkingLicense: this.form_bien_kiem_soat,
-      parkingDate: this.form_date_time,
-      parkingIdentityImageFront: this.image_select_url_1,
-      parkingIdentityImageBack: this.image_select_url_2,
+      parkingDate: this.form_date_time
     };
+    if (this.image_select_url_1 != "") {
+      params['parkingIdentityImageFront'] = this.image_select_url_media_1;
+      params.attachments.push(this.image_select_url_media_1);
+    }
+    if (this.image_select_url_2 != "") {
+      params['parkingIdentityImageBack'] = this.image_select_url_media_2;
+      params.attachments.push(this.image_select_url_media_2);
+    }
 
     this.loading.present();
     this.apiService.addFeedback(params)
@@ -152,7 +151,7 @@ export class RegisterKeepVehiclePage implements OnInit {
         const params = {
           // category: "",
           title: this.translate.instant('INBOX_31.title_tabs_cancel_registration'),
-          content: this.form_note_tab2,
+          content: this.form_note_tab2 != '' ? this.form_note_tab2 : ' ',
           campaign: dataApartment.campaign._id,
           apartment: this.tab2_form_apartment_id,
           // createdBy: "",
