@@ -120,10 +120,10 @@ export class ChatToShopPage implements OnInit {
   eventSendImage() {
     var self = this;
     let listAttachments = [];
-    let data_chat = [];
+    let data_chat_image = [];
     for(var i=0;i<self.list_image_select.length;i++){
       listAttachments.push(self.list_image_select[i].media);
-      data_chat.push({
+      data_chat_image.push({
         type: 'right', avatar: "", message: "", images: self.list_image_select[i].media.url
       });
     }
@@ -136,10 +136,10 @@ export class ChatToShopPage implements OnInit {
     this.loading.present();
     this.apiService.postOrderHistoryComment(param)
       .subscribe(result => {
-        self.data_chat = self.data_history.concat(data_chat);
+        self.data_chat = self.data_chat.concat(data_chat_image);
         self.list_image_select = [];
-        self.loading.dismiss();
         self.content.scrollToBottom(300);
+        self.loading.dismiss();
     },
     error => {
       self.loading.dismiss();
