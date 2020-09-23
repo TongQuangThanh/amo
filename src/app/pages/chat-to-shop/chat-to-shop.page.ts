@@ -5,6 +5,7 @@ import { ActionSheetController, NavController, IonContent  } from '@ionic/angula
 import { LoadingService } from '../../services/loading/loading.service';
 import { ModalController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
+import { AlertService } from '../../services/alert/alert.service';
 
 @Component({
   selector: 'app-chat-to-shop',
@@ -27,6 +28,7 @@ export class ChatToShopPage implements OnInit {
     private navCtrl: NavController,
     private apiService: ApiService,
     private route: ActivatedRoute,
+    private alertService: AlertService,
   ) { }
 
   ngOnInit() {
@@ -111,6 +113,7 @@ export class ChatToShopPage implements OnInit {
     },
     error => {
       self.loading.dismiss();
+      self.alertService.presentToast('Send message fail');
     });
   }
 
@@ -140,6 +143,7 @@ export class ChatToShopPage implements OnInit {
     },
     error => {
       self.loading.dismiss();
+      self.alertService.presentToast('Send image fail');
     });
   }
 
