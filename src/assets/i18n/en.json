@@ -246,6 +246,7 @@
         "management_fee": "Management Fee",
         "badge_outdate": "Outdate",
         "badge_paid": "Paid",
+        "badge_unpaid": "Unpaid",
         "badge_sent": "Sent",
         "transfer": "Transfer",
         "cash": "Cash"
@@ -295,7 +296,8 @@
         "pincode_note": "A text message with 4-digit verification code was just sent to your phone number",
         "btn_resend_code": "Resend",
         "btn_cancel": "Cancel",
-        "wrong_code": "Wrong code"
+        "wrong_code": "Mã xác nhận sai, vui lòng nhập lại.",
+        "timecounter" : "Mã còn hiệu lực trong : "
     },
     "REQUEST_DETAIL":{
         "title": "Request Detail",

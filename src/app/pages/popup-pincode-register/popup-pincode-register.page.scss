@@ -21,8 +21,8 @@ root{
     border-top-right-radius: 24px;
 }
 .modal-item {
-    margin: 24px 0;
-    padding: 0 45px;
+    margin: 10px 0;
+    padding: 0 10px;
 }
 .modal-toolbar {
     margin-top: 10px;
@@ -50,9 +50,8 @@ root{
     background: #FFFFFF;
     box-shadow: 0px 0px 20px rgba(23, 21, 48, 0.102546);
     border-radius: 8px;
-    width: 100% !important;
-    min-height: 40px;
-    height: 100%;
+    width: 40px;
+    height: 40px;
     border: 1px solid #c4c4c4;
     font-size: 24px;
     text-align: center;
@@ -75,8 +74,8 @@ root{
 }
 
 .image-icon-check {
-    height: 66px;
-    width: 66px;
+    height: 20px;
+    width: 20px;
     left: 0;
     right: 0;
     margin:0 auto;
@@ -87,57 +86,68 @@ root{
     padding-right: 10%;
 }
 
-.note-style {
+.note-style .label-text {
     font-family: Nunito Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 24px;
-    /* or 171% */
-
-
     color: #556080;
 }
 
-.btn-resend{
+.btn-done{
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 33px;
+    color: #556080;
+}
+
+.wrong-code{
     font-family: Nunito Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 14px;
     line-height: 19px;
-    /* identical to box height */
-
-
-    color: #556080;
-
-}
-
-.btn-done{
-    font-family: Nunito Sans;
-font-style: normal;
-font-weight: bold;
-font-size: 24px;
-line-height: 33px;
-/* identical to box height */
-
-
-color: #556080;
-
-}
-
-.wrong-code{
-    font-family: Nunito Sans;
-font-style: normal;
-font-weight: normal;
-font-size: 14px;
-line-height: 19px;
-/* identical to box height */
-
-text-align: right;
-color: #FA7268;
-
+    text-align: right;
+    color: #FA7268;
 }
 
 .margin-top-16{
     margin-top: 24px;
+}
+
+
+.btn-resend {
+    --background-focused:transparent;
+    --background-hover:transparent;
+    --background: transparent;
+    --ion-toolbar-color: transparent;
+    --box-shadow: none;
+}
+.btn-resend-label {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #009AC9;
+}
+.timecounter-label {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    color: #7A838C;
+}
+.timecounter {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 20px;
+    color: #21313F;
 }

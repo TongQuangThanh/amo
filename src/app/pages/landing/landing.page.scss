@@ -43,12 +43,16 @@
     padding-left: -16px;
 }
 .button-next {
-    position: absolute;
-    left: 4.27%;
-    width: 91.46%;
-    bottom: 65px;
-    padding: 0;
     --box-shadow: none;
+    --ion-toolbar-color: #D3D6D9;
+    opacity: 1;
+    margin-bottom: 20px;
+}
+.button-next.ios {
+    padding: 0 12px;
+}
+.button-next.md {
+    padding: 0 16px;
 }
 .button-next-label {
     font-family: Nunito Sans;
@@ -59,14 +63,28 @@
     text-align: center;
     color: #FFFFFF;
 }
+.button-common-active {
+    --ion-toolbar-color: #FA7268;
+    --background-focused: #df594f;
+    --background-hover:#df594f;
+    --background-activated: #df594f;
+}
+.bottom-toolbar {
+    position: fixed;
+    bottom: 0;
+}
 .button-skip {
-    position: absolute;
     height: 19px;
-    left: 30%;
-    // width: 40%;
-    bottom: 20px;
+    margin-bottom: 20px;
     border: 0px;
     --box-shadow: none;
+    --ion-toolbar-color: transparent;
+    --background-activated: var(--ion-color-primary-shade, #ffffff);
+    --background-focused: var(--ion-color-primary-shade, #ffffff);
+    --background-hover: var(--ion-color-primary-tint, #ffffff);
+    --background-activated-opacity: 0;
+    --background-focused-opacity: 0;
+    --background-hover-opacity: 0;
 }
 .button-skip-label {
     font-family: Nunito Sans;

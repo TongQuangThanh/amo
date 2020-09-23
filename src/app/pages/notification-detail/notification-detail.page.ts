@@ -129,7 +129,7 @@ export class NotificationDetailPage implements OnInit {
           event.target.complete();
         }
         self.loading.dismiss();
-        //self.inputField.nativeElement.focus();
+        self.inputField.nativeElement.focus();
     },
     error => {
       self.loading.dismiss();

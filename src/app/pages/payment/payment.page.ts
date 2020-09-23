@@ -23,6 +23,7 @@ export class PaymentPage implements OnInit {
   numberRecordOnPage: number;
   segmentModel: string = "all";
   today: any;
+  myDate: String = new Date().toISOString();
 
   constructor(
     private translate: TranslateService,

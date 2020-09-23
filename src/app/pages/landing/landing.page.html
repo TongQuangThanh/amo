@@ -15,12 +15,15 @@
     <ion-label color="danger" class="ion-text-wrap" *ngIf="errorMessage != ''">{{errorMessage}}</ion-label>
   </div>
   
-  <ion-button expand="block" class="" [ngClass]="!checkIsEnabled() ? 'button-common button-next' : 'button-common button-next button-common-active'" [disabled]="!checkIsEnabled()" (click)="ChangeLogin()">
-    <ion-label class="button-next-label">{{ 'LANDING.continue' | translate }}</ion-label>
-  </ion-button>
   
-  <ion-button expand="block" class="button-skip clear-background" (click)="SkipLogin()" routerDirection="forward">
+  <ion-toolbar class="bottom-toolbar clear-background">
+    <ion-button expand="block" class="" [ngClass]="!checkIsEnabled() ? 'button-common button-next' : 'button-common button-next button-common-active'" [disabled]="!checkIsEnabled()" (click)="ChangeLogin()">
+      <ion-label class="button-next-label">{{ 'LANDING.continue' | translate }}</ion-label>
+    </ion-button>
+    <ion-button expand="block" class="button-skip" (click)="SkipLogin()" routerDirection="forward">
       <ion-label class="button-skip-label">{{ 'LANDING.skip' | translate }}</ion-label>
       <ion-icon class="button-skip-icon" name="chevron-forward-outline"></ion-icon>
-  </ion-button>
+    </ion-button>
+  </ion-toolbar>
+  
 </div>

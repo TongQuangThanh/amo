@@ -235,7 +235,7 @@
         "top_up": "Nạp tiền",
         "complain": "Khiếu nại",
         "status_new": "Mới",
-        "status_pending": "Chờ xử lý",
+        "status_pending": "Đang xử lý",
         "status_done": "Hoàn thành",
         "pull_to_refresh": "Kéo xuống để làm mới",
         "loadding_more": "Đang tải dữ liệu...",
@@ -246,6 +246,7 @@
         "management_fee": "Phí quản lý",
         "badge_outdate": "Quá hạn",
         "badge_paid": "Đã t.toán",
+        "badge_unpaid": "Chưa t.toán",
         "badge_sent": "Đã gửi",
         "transfer": "Chuyển khoản",
         "cash": "Tiền mặt"
@@ -288,13 +289,14 @@
         "pincode_note": "Một tin nhắn văn bản gồm mã xác minh 4 chữ số đã được gửi đến số điện thoại của bạn",
         "btn_resend_code": "Gửi lại mã",
         "btn_cancel": "Huỷ",
-        "wrong_code": "Mã sai"
+        "wrong_code": "Mã xác nhận sai, vui lòng nhập lại.",
+        "timecounter" : "Mã còn hiệu lực trong : "
     },
     "APARTMENT_CODE_REGISTER":{
         "title" : "Mã căn hộ",
         "apartmentcode_note": "Mỗi căn hộ sẽ có một mã riêng gồm 6 ký tự. Nếu bạn chưa nhận được mã, vui lòng liên hệ Ban quản lý tòa nhà để được hỗ trợ. Hoặc quét mã QR Code dưới sảnh tòa nhà.",
         "btn_cancel": "Huỷ",
-        "wrong_code": "Mã sai",
+        "wrong_code": "Mã căn hộ chưa chính xác. Vui lòng nhập lại.",
         "btn_done" : "Xong"
     },
     "REQUEST_DETAIL":{

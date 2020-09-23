@@ -40,14 +40,16 @@
     --padding-start: 10px;
     color: #7A838C;
 }
-
+.bottom-toolbar {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+}
 .login-button{
-    position: absolute;
-    left: 4.27%;
-    width: 91.46%;
-    bottom: 65px;
-    padding: 0;
     --box-shadow: none;
+    --ion-toolbar-color: #D3D6D9;
+    opacity: 1;
+    margin-bottom: 20px;
     font-family: Nunito Sans;
     font-style: normal;
     font-weight: bold;
@@ -56,15 +58,26 @@
     text-align: center;
     color: #FFFFFF;
 }
+.login-button.ios {
+    padding: 0 12px;
+}
+.login-button.md {
+    padding: 0 16px;
+}
 .button-skip {
-    position: absolute;
     height: 19px;
-    left: 30%;
-    // width: 40%;
-    bottom: 0;
+    margin-bottom: 20px;
     border: 0px;
     --box-shadow: none;
-    text-transform: none;
+    --ion-toolbar-color: transparent;
+    --background-activated: var(--ion-color-primary-shade, #ffffff);
+    --background-focused: var(--ion-color-primary-shade, #ffffff);
+    --background-hover: var(--ion-color-primary-tint, #ffffff);
+    --background-activated-opacity: 0;
+    --background-focused-opacity: 0;
+    --background-hover-opacity: 0;
+}
+.button-skip-label {
     font-family: Nunito Sans;
     font-style: normal;
     font-weight: normal;
@@ -72,23 +85,6 @@
     line-height: 24px;
     color: #21313F;
 }
-.forgot-pass{
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 24px;
-    border: 0px;
-    --box-shadow: none;
-    color: #556080;
-    position: absolute;
-    height: 19px;
-    left: 30%;
-    bottom: 20px;
-    border: 0px;
-    text-transform: none;
-}
-
 .padding-content {
     padding-top: 50px;
 }
@@ -129,4 +125,12 @@
 }
 .input-clear-icon {
     --margin: 19px 13px 17px 2px;
+}
+
+
+.button-common-active {
+    --ion-toolbar-color: #FA7268;
+    --background-focused: #df594f;
+    --background-hover:#df594f;
+    --background-activated: #df594f;
 }

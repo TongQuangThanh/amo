@@ -83,7 +83,7 @@ export class ChangePasswordPage implements OnInit {
   }
 
   checkIsEnabled() {
-    if (this.oldPassword && this.newPassword.length >= 8 && this.newPassword && this.newPassword.length >= 8 && this.confirmPassword && this.confirmPassword.length >= 8) {
+    if (this.oldPassword && this.oldPassword.length >= 8 && this.newPassword && this.newPassword.length >= 8 && this.confirmPassword && this.confirmPassword.length >= 8) {
       return true;
     }
     return false;

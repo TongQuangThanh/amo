@@ -33,7 +33,6 @@
           <ion-icon class="input-icon" name="custom-company" src="/assets/icon/custom-company.svg" slot="start"></ion-icon>
           <ion-label class="input-floating-label" position="floating">{{ 'MY_HOME_DETAIL.active_code' | translate }}</ion-label>
           <ion-input class="input-text" type="text" name="activeCode" value="{{apartment.apartment.activeCode}}"></ion-input>
-          <!-- <ion-icon class="clear-input check-default" name="close-circle" slot="end"></ion-icon> -->
         </ion-item>
         <ion-item lines="none" class="custom-textarea custom-textarea-text">
           <ion-icon name="custom-location" class="input-icon" src="/assets/icon/custom-location.svg" slot="start"></ion-icon>
@@ -44,13 +43,11 @@
           <ion-icon class="input-icon" name="custom-area" src="/assets/icon/custom-area.svg" slot="start"></ion-icon>
           <ion-label class="input-floating-label" position="floating">{{ 'MY_HOME_DETAIL.area' | translate }}</ion-label>
           <ion-input class="input-text" type="text" name="area" value="{{apartment.apartment.area}} m2"></ion-input>
-          <!-- <ion-icon class="clear-input check-default" name="close-circle" slot="end"></ion-icon> -->
         </ion-item>
         <ion-item class="input-item" lines="none" disabled>
           <ion-icon class="input-icon" name="custom-flag" src="/assets/icon/custom-flag.svg" slot="start"></ion-icon>
           <ion-label class="input-floating-label" position="floating">{{ 'MY_HOME_DETAIL.apartment_type' | translate }}</ion-label>
           <ion-input class="input-text" type="text" name="status" value="{{apartment.apartment.status}}"></ion-input>
-          <!-- <ion-icon class="clear-input check-default" name="close-circle" slot="end"></ion-icon> -->
         </ion-item>
         <ion-item lines="none" class="function-item ion-text-center">
           <ion-button class="delete-button">
@@ -67,13 +64,11 @@
           <ion-icon class="input-icon" name="custom-user" src="/assets/icon/custom-user.svg" slot="start"></ion-icon>
           <ion-label class="input-floating-label" position="floating">{{ 'MY_HOME_DETAIL.apartment_owner' | translate }}</ion-label>
           <ion-input class="input-text" type="text" name="userName" value="{{apartment.apartment.owner.name}}"></ion-input>
-          <!-- <ion-icon class="clear-input check-valid" name="checkmark-circle" slot="end"></ion-icon> -->
         </ion-item>
         <ion-item class="input-item" lines="none">
           <ion-icon class="input-icon" name="custom-mail" src="/assets/icon/custom-mail.svg" slot="start"></ion-icon>
           <ion-label class="input-floating-label" position="floating">{{ 'MY_HOME_DETAIL.apartment_owner_email' | translate }}</ion-label>
           <ion-input class="input-text" type="text" name="userEmail" value=""></ion-input>
-          <!-- <ion-icon class="clear-input check-valid" name="checkmark-circle" slot="end"></ion-icon> -->
         </ion-item>    
         <ion-row>
           <ion-col class="no-padding padding-right-10" size="5">
@@ -100,9 +95,9 @@
             <ion-item class="input-item" lines="none">
               <ion-icon class="input-icon" name="custom-gift" src="/assets/icon/custom-gender.svg" slot="start"></ion-icon>
               <ion-label class="input-floating-label" position="floating">{{ 'MY_HOME_DETAIL.sex' | translate }}</ion-label>
-              <ion-select placeholder="{{ 'MY_HOME_DETAIL.sex' | translate }}" class="input-text select-text" value="m" >
-                <ion-select-option value="f">{{ 'MY_HOME_DETAIL.female' | translate }}</ion-select-option>
-                <ion-select-option value="m">{{ 'MY_HOME_DETAIL.male' | translate }}</ion-select-option>
+              <ion-select placeholder="{{ 'MY_HOME_DETAIL.sex' | translate }}" class="input-text select-text" value="male" >
+                <ion-select-option value="female">{{ 'MY_HOME_DETAIL.female' | translate }}</ion-select-option>
+                <ion-select-option value="male">{{ 'MY_HOME_DETAIL.male' | translate }}</ion-select-option>
               </ion-select>
             </ion-item>        
           </ion-col>
