@@ -53,7 +53,7 @@
           <ion-button class="delete-button">
             <ion-label class="delete-button-label">{{ 'MY_HOME_DETAIL.btn_delete' | translate }}</ion-label>
           </ion-button>
-          <ion-button class="add-button" (click)="resetApartmentCode()">
+          <ion-button class="add-button-apa" (click)="resetApartmentCode()">
             <ion-label class="add-button-label">{{ 'MY_HOME_DETAIL.btn_reset_code' | translate }}</ion-label>
           </ion-button>
         </ion-item>
@@ -153,9 +153,9 @@
           </ion-card>
         </ion-list>    
         <ion-toolbar lines="none" class="function-item ion-text-center">
-          <ion-button class="add-button margin-left-0" (click)="addMember()">
-            <ion-label class="add-button-label">{{ 'MY_HOME_DETAIL.btn_add_member' | translate }}</ion-label>
-          </ion-button>
+          <ion-fab-button class="add-button normal-button" (click)="addMember()">
+            <ion-icon name="add"></ion-icon>
+          </ion-fab-button>
         </ion-toolbar>    
       </super-tab>
       <!-- super-tab vehicles -->
@@ -207,9 +207,12 @@
           </ion-card>
         </ion-list>    
         <ion-toolbar lines="none" class="function-item ion-text-center">
-          <ion-button class="add-button margin-left-0" (click)="addVehicle()">
+          <!-- <ion-button class="add-button margin-left-0" (click)="addVehicle()">
             <ion-label class="add-button-label">{{ 'MY_HOME_DETAIL.btn_add_vehicle' | translate }}</ion-label>
-          </ion-button>
+          </ion-button> -->
+          <ion-fab-button class="add-button normal-button" (click)="addVehicle()">
+            <ion-icon name="add"></ion-icon>
+          </ion-fab-button>
         </ion-toolbar> 
       </super-tab>
       

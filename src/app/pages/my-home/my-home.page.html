@@ -8,6 +8,11 @@
 </ion-header>
 
 <ion-content>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button class="add-button normal-button" (click)="addNewHome()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
   <ion-list class="list-content">
     <ion-card class="card-content" *ngFor="let item of listDepartment; let i = index" (click)="detailPage($event)" id="{{item._id}}">
       <ion-text class="number-watermark ion-float-right">
@@ -29,10 +34,10 @@
     </ion-card>
   </ion-list>
 </ion-content>
-<ion-footer class="ion-no-border">
+<!-- <ion-footer class="ion-no-border">
   <ion-toolbar lines="none" class="ion-text-center">
     <ion-button class="add-button" (click)="addNewHome()">
       <ion-label class="add-button-label">{{ 'MY_HOME.button_add' | translate }}</ion-label>
     </ion-button>
   </ion-toolbar>
-</ion-footer>
+</ion-footer> -->

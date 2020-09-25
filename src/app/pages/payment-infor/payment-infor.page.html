@@ -10,9 +10,9 @@
 <ion-content class="payment-info-content">
   <section class="section-content">
     <ion-item lines="none">
-      <ion-badge class="badge-lightred" *ngIf="paymentStatus == 'publish'">{{ 'PAYMENT.badge_outdate' | translate }}</ion-badge>
-      <ion-badge class="badge-primary" *ngIf="paymentStatus == 'pending'">{{ 'PAYMENT.badge_sent' | translate }}</ion-badge>
-      <ion-badge class="badge-primary" *ngIf="paymentStatus == 'completed'">{{ 'PAYMENT.badge_paid' | translate }}</ion-badge>
+      <ion-badge class="badge-lightred" *ngIf="paymentStatus == 'publish'">{{ 'PAYMENT.badge_unpaid' | translate }}</ion-badge>
+      <ion-badge class="badge-primary" *ngIf="paymentStatus == 'pending'">{{ 'PAYMENT.status_pending' | translate }}</ion-badge>
+      <ion-badge class="badge-success" *ngIf="paymentStatus == 'completed'">{{ 'PAYMENT.status_done' | translate }}</ion-badge>
       <ion-label class="payment-fee ion-float-right" slot="end"><span class="amountPay-number">{{formatMoney(totalCash)}}đ</span></ion-label>
     </ion-item>
   </section>
