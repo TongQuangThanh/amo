@@ -69,7 +69,7 @@
           <ion-grid class="msg-grid">
             <ion-row>
               <div class="msg-info">
-                <p>{{item.createdBy.displayName}}</p>
+                <p *ngIf="item.createdBy">{{item.createdBy.displayName}}</p>
               </div>
             </ion-row>
             <ion-row>

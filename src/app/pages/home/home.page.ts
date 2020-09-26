@@ -247,11 +247,13 @@ export class HomePage implements OnInit {
 
   onScroll(event) {
     let position_y = document.getElementById('div-text-place').getClientRects()[0];
-    if(position_y['y'] < 25){
-      if (event.detail.deltaY > 0) {
-        this.showHeader = 1;
-      } else {
+    console.log(event);
+    console.log(position_y);
+    if(position_y.y < 25){
+      if (event.detail.currentY > 0) {
         this.showHeader = 2;
+      } else {
+        this.showHeader = 1;
       }
     } else {
       this.showHeader = 1;
