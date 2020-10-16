@@ -150,18 +150,32 @@ ion-card-header {
     margin-bottom: 20px;
     margin-right: 10px;
 }
-.add-button{
-    --background-focused: #bee6f3;
-    --background-hover:#bee6f3;
-    --background: #D4EBF3;
-    --ion-toolbar-color: #D4EBF3;
-    --background-activated: #bee6f3;
-    mix-blend-mode: normal;
-    --border-radius: 8px;
-    height: 44px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    --box-shadow: none;
+.add-button {
+    --background: #009AC9;
+    --ion-toolbar-color: #009AC9;
+    --background-activated: #048ab3;
+    --background-focused: #048ab3;
+    --background-hover: #048ab3;
+    opacity: 0.8;
+    margin: 14px 10px;
+    --box-shadow: 0px 10px 30px rgba(33, 49, 63, 0.1);
+    --color: #ffffff;
+    
+}
+.add-button-icon {
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    //line-height: 24px;
+    text-align: center;
+    text-transform: none;
+}
+.normal-button {
+    width: 60px;
+    height: 60px;
+    --border-radius: 50%;
+    float: right;
 }
 .add-button-label {
     font-family: Nunito Sans;

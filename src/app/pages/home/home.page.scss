@@ -431,6 +431,10 @@
 }
 .card-img {
     position: relative;
+    
+}
+.card-content-news .card-img {
+    height: 200px;
 }
 .badge-corner:empty {
     display: inline-block;

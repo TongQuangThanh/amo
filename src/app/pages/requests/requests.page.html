@@ -5,7 +5,11 @@
 </ion-header>
 
 <ion-content>
-  
+  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button class="add-button normal-button" (click)="addRequest()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
   <super-tabs activeTabIndex="0" [config]="{ debug: true, sideMenu: 'left', allowElementScroll: true, nativeSmoothScroll: true }" class="super-tabs-content">
     <super-tabs-toolbar no-border class="segment-toolbar">
       <super-tab-button>
@@ -33,9 +37,12 @@
           </ion-card>
         </ion-list>
         <ion-toolbar class="toolbar-button">
-          <ion-button class="add-button normal-button" (click)="addRequest()">
+          <!-- <ion-button class="add-button normal-button" (click)="addRequest()">
             <ion-icon class="add-button-icon" name="add"></ion-icon>
-          </ion-button>
+          </ion-button> -->
+          <ion-fab-button class="add-button normal-button" (click)="addRequest()">
+            <ion-icon name="add"></ion-icon>
+          </ion-fab-button>
         </ion-toolbar>
       </super-tab>
       <super-tab>
@@ -54,16 +61,14 @@
           </ion-card>
         </ion-list>
         <ion-toolbar class="toolbar-button">
-          <!-- <ion-button class="lightblue-button normal-button" (click)="registrationTypeModal()">{{ 'REQUEST.btn_add_new_registration' | translate }}</ion-button> -->
+          <!-- <ion-button class="lightblue-button normal-button" (click)="registrationTypeModal()">{{ 'REQUEST.btn_add_new_registration' | translate }}</ion-button>
           <ion-button class="add-button normal-button" (click)="registrationTypeModal()">
             <ion-icon class="add-button-icon" name="add"></ion-icon>
-          </ion-button>
-        </ion-toolbar>
-        <ion-fab vertical="top" horizontal="end" slot="fixed">
-          <ion-fab-button>
+          </ion-button> -->
+          <ion-fab-button class="add-button normal-button" (click)="registrationTypeModal()">
             <ion-icon name="add"></ion-icon>
           </ion-fab-button>
-        </ion-fab>
+        </ion-toolbar>
       </super-tab>
     </super-tabs-container>
   </super-tabs>

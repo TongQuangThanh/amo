@@ -48,8 +48,8 @@
           <ion-card-content class="segment-card-content" *ngFor="let item of listPaymentBills" (click)="detailPage($event)" id="{{item._id}}">
             <ion-row>
               <ion-col>
-                <ion-badge class="badge-lightred" *ngIf="item.status == 'pending'">{{ 'PAYMENT.status_pending' | translate }}</ion-badge>
-                <ion-badge class="badge-primary" *ngIf="item.status == 'publish'">{{ 'PAYMENT.badge_unpaid' | translate }}</ion-badge>
+                <ion-badge class="badge-primary" *ngIf="item.status == 'pending'">{{ 'PAYMENT.status_pending' | translate }}</ion-badge>
+                <ion-badge class="badge-lightred" *ngIf="item.status == 'publish'">{{ 'PAYMENT.badge_unpaid' | translate }}</ion-badge>
                 <ion-badge class="badge-success" *ngIf="item.status == 'completed'">{{ 'PAYMENT.status_done' | translate }}</ion-badge>
               </ion-col>
               <ion-col size="auto">
@@ -93,8 +93,8 @@
             <ion-card-content class="segment-card-content" *ngFor="let item of listPaymentBills" (click)="detailPage($event)" id="{{item._id}}">
               <ion-row>
                 <ion-col>
-                  <ion-badge class="badge-lightred" *ngIf="item.status == 'pending'">{{ 'PAYMENT.status_pending' | translate }}</ion-badge>
-                  <ion-badge class="badge-primary" *ngIf="item.status == 'publish'">{{ 'PAYMENT.badge_unpaid' | translate }}</ion-badge>
+                  <ion-badge class="badge-primary" *ngIf="item.status == 'pending'">{{ 'PAYMENT.status_pending' | translate }}</ion-badge>
+                  <ion-badge class="badge-lightred" *ngIf="item.status == 'publish'">{{ 'PAYMENT.badge_unpaid' | translate }}</ion-badge>
                   <ion-badge class="badge-success" *ngIf="item.status == 'completed'">{{ 'PAYMENT.status_done' | translate }}</ion-badge>
                 </ion-col>
                 <ion-col size="auto">
