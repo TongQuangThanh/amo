@@ -101,6 +101,7 @@ export class BookingProductPage implements OnInit {
       this.list_data_range[product._id] = [product.slider_value + '%', product.range_position_value + '%'];
     });
   }
+  
   check_class_button (){
     if (this.button_active == 0) {
       this.button_1_class = "button-active";
@@ -205,7 +206,9 @@ export class BookingProductPage implements OnInit {
       this.form_start_time, 
       this.form_phone_number, 
       this.form_note,
-      requestShopProduct
+      requestShopProduct,
+      dataApartment.campaign.title + " ," + dataApartment.campaign.address,
+      dataApartment.campaign.latlng
     ).subscribe(result => {
       self.loading.dismiss();
       self.flag_show_hide_popup = true;

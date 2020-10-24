@@ -431,7 +431,7 @@ export class ApiService {
       map(results => results)
     );
   }
-  postRequestionOrderProduct(orderInfor:any, paymentMode:any, appartment:any, timeDeliver:any, phone:any, note:any, requestShopProduct: any): Observable<any> {
+  postRequestionOrderProduct(orderInfor:any, paymentMode:any, appartment:any, timeDeliver:any, phone:any, note:any, requestShopProduct: any, address:any, latlng:any): Observable<any> {
     const params = {
       orderInfor,
       paymentMode,
@@ -439,7 +439,9 @@ export class ApiService {
       timeDeliver,
       phone,
       note,
-      requestShopProduct
+      requestShopProduct,
+      address,
+      latlng
     }
     return this.http.post(EnvService.getOrderHistory, params).pipe(
       map(results => results)

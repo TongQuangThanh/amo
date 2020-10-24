@@ -115,8 +115,8 @@ export class AppComponent{
     var self = this;
     this.platform.ready().then(() => {
       self.statusBar.styleDefault();
-      //self.setupPushOneSign();
-      self.checkCodePush();
+      self.setupPushOneSign();
+      // self.checkCodePush();
       self.translateConfigService.setLanguageDefault()
     });
   }
@@ -150,7 +150,8 @@ export class AppComponent{
     var self = this;
     this.oneSignal.startInit('712abf97-1cbe-442b-8c16-d10e29e292a4');
 
-    this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
+    // this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.Notification);
+    this.oneSignal.inFocusDisplaying(this.oneSignal.OSInFocusDisplayOption.InAppAlert);
 
     this.oneSignal.handleNotificationReceived().subscribe((event) => {
 
@@ -229,6 +230,8 @@ export class AppComponent{
     });
     this.oneSignal.endInit();
     this.oneSignal.getIds().then((id) => {
+      console.log("onesign id:");
+      console.log(id);
       localStorage.setItem('playID', id.userId);
     });
   }

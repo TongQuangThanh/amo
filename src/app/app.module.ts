@@ -72,7 +72,8 @@ export function LanguageLoader(http: HttpClient) {
     CodePush,
     {
       provide: RouteReuseStrategy,
-      useClass: IonicRouteStrategy },
+      useClass: IonicRouteStrategy 
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: TokenInterceptor,

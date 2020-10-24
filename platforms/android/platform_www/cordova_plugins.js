@@ -598,6 +598,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "merges": [
         "cordova.plugins.diagnostic.external_storage"
       ]
+    },
+    {
+      "id": "cordova-clipboard.Clipboard",
+      "file": "plugins/cordova-clipboard/www/clipboard.js",
+      "pluginId": "cordova-clipboard",
+      "clobbers": [
+        "cordova.plugins.clipboard"
+      ]
     }
   ];
   module.exports.metadata = {
@@ -625,6 +633,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-zip": "3.1.0",
     "cordova-plugin-inappbrowser": "3.1.0",
     "cordova-plugin-preview-any-file": "0.1.6",
-    "cordova.plugins.diagnostic": "5.0.2"
+    "cordova.plugins.diagnostic": "5.0.2",
+    "cordova-clipboard": "1.3.0"
   };
 });

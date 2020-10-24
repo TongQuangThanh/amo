@@ -164,4 +164,7 @@
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
     <preference name="CodePushDeploymentKey" value="uJ1FFXwN5lxTFxIXpkGg9nbJt4jNRo54Bwc0n" />
     <preference name="APP_SECRET" value="bfa4ab1f-4518-4dcb-86b5-a2bc4e072cdb" />
+    <feature name="Clipboard">
+        <param name="android-package" value="com.verso.cordova.clipboard.Clipboard" />
+    </feature>
 </widget>
