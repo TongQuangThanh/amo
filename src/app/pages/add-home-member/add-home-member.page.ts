@@ -33,6 +33,11 @@ export class AddHomeMemberPage implements OnInit {
       component: PopupOwnerRelationshipPage,
       cssClass: 'selectRelationship-page-custom'
     });
+    modal.onDidDismiss().then((dataReturned:any) => {
+      if (dataReturned !== null) {
+        const dataReturnedResult = JSON.parse(dataReturned.data);
+      }
+    });
     return await modal.present();
   }
 
