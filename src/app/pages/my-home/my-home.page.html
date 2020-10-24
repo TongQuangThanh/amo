@@ -25,9 +25,9 @@
         <ion-label class="home-address">{{item.campaign.address}}</ion-label>
         <ion-item lines="none" class="hotline-item">
           <ion-label class="hotline-title">{{ 'MY_HOME.hotline_label' | translate }}</ion-label>
-          <ion-button slot="end" class="hotline-number clear-background" (click)="buildingManagementPhoneModal($event)">
+          <ion-button slot="end" class="hotline-number clear-background" (click)="buildingManagementPhoneModal($event, item.campaign.phone)">
             <ion-icon class="hotline-icon" name="call-outline"></ion-icon>
-            (427) 253-7047
+            {{item.campaign.phone}}
           </ion-button>
         </ion-item>
       </ion-card-content>

@@ -43,7 +43,11 @@
         "place_holder_new_password": "New password",
         "place_holder_confirm_password": "Re-type new password",
         "btn_change_pass": "Save",
-        "message_change_pass_sucess": "Update password successfully"
+        "message_change_pass_sucess": "Update password successfully",
+        "error_length_old_password_message": "Please enter current password at least 8 character",
+        "error_length_new_password_message": "Please enter new password at least 8 character",
+        "error_length_confirm_password_message": "Please enter confirm password at least 8 character",
+        "error_not_match_password_message": "New password and confirm password does not match"
     },
     "DASHBOARD": {
         "tab_home": "Home",
@@ -177,7 +181,10 @@
         "place_holder_confirm_password": "Re-type new password",
         "btn_change_pass": "Save",
         "password_note": "Note: Password must be at least 8 character",
-        "message_change_pass_sucess": "Update password successfully"
+        "message_change_pass_sucess": "Update password successfully",
+        "error_length_new_password_message": "Please enter new password at least 8 character",
+        "error_length_confirm_password_message": "Please enter confirm password at least 8 character",
+        "error_not_match_password_message": "New password and confirm password does not match"
     },
     "REGISTER_PASSWORD":{
         "title": "Password",
@@ -346,6 +353,8 @@
         "maintain" : "Function maintainal",
         "information": "Thông báo",
         "complain": "Khiếu nại",
+        "message_success": "Successful!",
+        "message_fail": "Fail!",
         "message_rate_success": "Đánh giá thành công!",
         "message_rate_user_success": "Đánh giá dịch vụ thành công!",
         "message_confirm_success": "Xác nhận thành công!",

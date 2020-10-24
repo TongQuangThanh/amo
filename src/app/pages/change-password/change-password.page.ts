@@ -5,6 +5,7 @@ import { LoadingService } from '../../services/loading/loading.service';
 import { UtilsService } from '../../utils/utils.service';
 import { AlertService } from '../../services/alert/alert.service';
 import { TranslateService } from '@ngx-translate/core';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-change-password',
@@ -32,7 +33,8 @@ export class ChangePasswordPage implements OnInit {
     private alertService: AlertService,
     private loading: LoadingService,
     private apiService: ApiService,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private authService: AuthService
   ) { }
 
   ngOnInit() {
@@ -113,6 +115,9 @@ export class ChangePasswordPage implements OnInit {
           self.errorNewPass = false;
           self.errorConfirmPass = false;
           self.alertService.presentToast(this.translate.instant('CHANGE_PASSWORD.message_change_pass_sucess'));
+          setTimeout(function(){
+            self.logout();
+          }, 1500);
         }
     },
     error => {
@@ -129,7 +134,7 @@ export class ChangePasswordPage implements OnInit {
       this.errorOldPass = true;
       this.errorNewPass = false;
       this.errorConfirmPass = false;
-      this.errorMessage = "Please enter current password at least 8 character";
+      this.errorMessage = this.translate.instant('CHANGE_PASSWORD.error_length_old_password_message');
       return;
     }
 
@@ -137,7 +142,7 @@ export class ChangePasswordPage implements OnInit {
       this.errorOldPass = false;
       this.errorNewPass = true;
       this.errorConfirmPass = false;
-      this.errorMessage = "Please enter new password at least 8 character";
+      this.errorMessage = this.translate.instant('CHANGE_PASSWORD.error_length_new_password_message');
       return;
     }
 
@@ -145,18 +150,22 @@ export class ChangePasswordPage implements OnInit {
       this.errorOldPass = false;
       this.errorNewPass = false;
       this.errorConfirmPass = true;
-      this.errorMessage = "Please enter confirm password at least 8 character";
+      this.errorMessage = this.translate.instant('CHANGE_PASSWORD.error_length_confirm_password_message');
       return;
     }
 
     if(this.newPassword != this.confirmPassword){
       this.errorNewPass = true;
       this.errorConfirmPass = true;
-      this.errorMessage = "New password and confirm password does not match";
+      this.errorMessage = this.translate.instant('CHANGE_PASSWORD.error_not_match_password_message');
       return;
     }
 
     this.updateAccount();
+  }
+  logout(){
+    this.authService.logout();
+    this.navCtrl.navigateRoot('/landing');
   }
 
 }

@@ -13,18 +13,22 @@ import { CallNumber } from '@ionic-native/call-number/ngx';
 export class PopupBuildingManagementPhonePage implements OnInit {
   selectedLanguage:string;
   listDepartment: any;
+  phoneNumber: string;
 
   constructor(
     private translateConfigService: TranslateConfigService,
     private modalController: ModalController,
+    private navParams: NavParams,
     private loading: LoadingService,
     private callNumber: CallNumber,
-    private apiService: ApiService,
+    private apiService: ApiService
   ) {
     this.selectedLanguage = this.translateConfigService.getDefaultLanguage();
   }
 
   ngOnInit() {
+    this.phoneNumber = this.navParams.data.phoneNumber;
+    this.getListUserApar();
   }
 
   getListUserApar(){
@@ -39,22 +43,17 @@ export class PopupBuildingManagementPhonePage implements OnInit {
       self.loading.dismiss();
     });
   }
-
   callEmergency(event){
     if (event && event.stopPropagation) {
       event.stopPropagation();
     }
-    for(let item in this.listDepartment){
-      if (this.listDepartment[item]._id == event.currentTarget.parentElement.parentElement.parentElement.id){
-        const campaignPhone = this.listDepartment[item].campaign.phone;
-        this.callNumber.callNumber(campaignPhone, true)
-        .then(res => console.log('Launched dialer!', res))
-        .catch(err => console.log('Error launching dialer', err));
-        break;
-      }
-    }
+    const campaignPhone = this.phoneNumber;
+    this.callNumber.callNumber(campaignPhone, true)
+    .then(res => console.log('Launched dialer!', res))
+    .catch(err => console.log('Error launching dialer', err));
   }
-
+  copyNumberPhone() {
+  }
   closeModal() {
     this.modalController.dismiss();
   }
