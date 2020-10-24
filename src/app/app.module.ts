@@ -30,6 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SuperTabsModule } from '@ionic-super-tabs/angular';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatTabsModule } from '@angular/material/tabs';
+import { Clipboard } from '@ionic-native/clipboard/ngx';
 export function LanguageLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
@@ -79,7 +80,7 @@ export function LanguageLoader(http: HttpClient) {
       useClass: TokenInterceptor,
       multi: true
     },
-    
+    Clipboard
     // NativeStorage
   ],
   bootstrap: [AppComponent]

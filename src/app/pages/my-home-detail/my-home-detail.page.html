@@ -63,23 +63,23 @@
         <ion-item class="input-item" lines="none">
           <ion-icon class="input-icon" name="custom-user" src="/assets/icon/custom-user.svg" slot="start"></ion-icon>
           <ion-label class="input-floating-label" position="floating">{{ 'MY_HOME_DETAIL.apartment_owner' | translate }}</ion-label>
-          <ion-input class="input-text" type="text" name="userName" value="{{apartment.apartment.owner.name}}"></ion-input>
+          <ion-input class="input-text" type="text" name="userName" value="{{apartment.apartment.owner.name}}" [disabled]="true"></ion-input>
         </ion-item>
         <ion-item class="input-item" lines="none">
           <ion-icon class="input-icon" name="custom-mail" src="/assets/icon/custom-mail.svg" slot="start"></ion-icon>
           <ion-label class="input-floating-label" position="floating">{{ 'MY_HOME_DETAIL.apartment_owner_email' | translate }}</ion-label>
-          <ion-input class="input-text" type="text" name="userEmail" value=""></ion-input>
+          <ion-input class="input-text" type="text" name="userEmail" value="" [disabled]="true"></ion-input>
         </ion-item>    
         <ion-row>
           <ion-col class="no-padding padding-right-10" size="5">
             <ion-item class="input-item" lines="none">
               <ion-icon class="input-icon" name="flag-vn" src="/assets/icon/flag-vn.svg" slot="start"></ion-icon>
-              <ion-input class="input-text no-floating-label" type="text" name="region" value="+84"></ion-input>
+              <ion-input class="input-text no-floating-label" type="text" name="region" value="+84" [disabled]="true"></ion-input>
             </ion-item>
           </ion-col>
           <ion-col class="no-padding padding-left-10" size="7">
             <ion-item class="input-item" lines="none">
-              <ion-input class="input-text no-floating-label" type="number" value="{{apartment.apartment.owner.phone}}"></ion-input>
+              <ion-input class="input-text no-floating-label" type="number" value="{{apartment.apartment.owner.phone}}" [disabled]="true"></ion-input>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -88,14 +88,14 @@
             <ion-item class="input-item" lines="none">
               <ion-icon class="input-icon" name="custom-gift" src="/assets/icon/custom-gift.svg" slot="start"></ion-icon>
               <ion-label class="input-floating-label" position="floating">{{ 'MY_HOME_DETAIL.DOB' | translate }}</ion-label>
-              <ion-datetime class="input-text input-text-50" displayFormat="DD/MM/YYYY" value="1986-06-14"></ion-datetime>
+              <ion-datetime class="input-text input-text-50" displayFormat="DD/MM/YYYY" value="1986-06-14" [disabled]="true"></ion-datetime>
             </ion-item>
           </ion-col>
           <ion-col class="no-padding padding-left-10" size="6">
             <ion-item class="input-item" lines="none">
               <ion-icon class="input-icon" name="custom-gift" src="/assets/icon/custom-gender.svg" slot="start"></ion-icon>
               <ion-label class="input-floating-label" position="floating">{{ 'MY_HOME_DETAIL.sex' | translate }}</ion-label>
-              <ion-select placeholder="{{ 'MY_HOME_DETAIL.sex' | translate }}" class="input-text select-text" value="male" >
+              <ion-select placeholder="{{ 'MY_HOME_DETAIL.sex' | translate }}" class="input-text select-text" value="male" [disabled]="true">
                 <ion-select-option value="female">{{ 'MY_HOME_DETAIL.female' | translate }}</ion-select-option>
                 <ion-select-option value="male">{{ 'MY_HOME_DETAIL.male' | translate }}</ion-select-option>
               </ion-select>
