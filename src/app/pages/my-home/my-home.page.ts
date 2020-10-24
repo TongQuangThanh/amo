@@ -14,7 +14,6 @@ import { PopupBuildingManagementPhonePage } from '../popup-building-management-p
   styleUrls: ['./my-home.page.scss'],
 })
 export class MyHomePage implements OnInit {
-
   departmentID:string;
   listDepartment: any;
 
@@ -27,6 +26,8 @@ export class MyHomePage implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+  ionViewWillEnter() {
     this.getListUserApar();
   }
 
@@ -63,36 +64,38 @@ export class MyHomePage implements OnInit {
     }
   }
 
-  async addApartment() {
-    const modal = await this.modalController.create({
-      component: ApartmentCodeRegisterPage,
-      componentProps: {
-      },
-      cssClass: "custom-modal-wrapper"
-    });
+  // async addApartment() {
+  //   const modal = await this.modalController.create({
+  //     component: ApartmentCodeRegisterPage,
+  //     componentProps: {
+  //     },
+  //     cssClass: "custom-modal-wrapper"
+  //   });
 
-    modal.onDidDismiss().then((dataReturned:any) => {
-      if (dataReturned !== null) {
-        const dataReturnedResult = JSON.parse(dataReturned.data);
-        if(dataReturnedResult.result == '0'){
-          this.getListUserApar();
-        }else{
+  //   modal.onDidDismiss().then((dataReturned:any) => {
+  //     if (dataReturned !== null) {
+  //       const dataReturnedResult = JSON.parse(dataReturned.data);
+  //       if(dataReturnedResult.result == '0'){
+  //         this.getListUserApar();
+  //       }else{
 
-        }
-      }
-    });
-
-    return await modal.present();
-  }
+  //       }
+  //     }
+  //   });
+  //   return await modal.present();
+  // }
 
   addNewHome(){
     this.navCtrl.navigateForward('/add-home');
   }
 
-  async buildingManagementPhoneModal($event) {
+  async buildingManagementPhoneModal($event, phoneNumber) {
     $event.stopPropagation();
     const modal = await this.modalController.create({
       component: PopupBuildingManagementPhonePage,
+      componentProps: {
+        "phoneNumber": phoneNumber,
+      },
       cssClass: 'buildingManagementPhone-custom-class'
     });
     return await modal.present();

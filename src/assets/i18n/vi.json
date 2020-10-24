@@ -43,7 +43,11 @@
         "place_holder_new_password": "Mật khẩu mới",
         "place_holder_confirm_password": "Nhập lại mật khẩu mới",
         "btn_change_pass": "Lưu",
-        "message_change_pass_sucess": "Cập nhật mật khẩu thành công"
+        "message_change_pass_sucess": "Cập nhật mật khẩu thành công",
+        "error_length_old_password_message": "Vui lòng nhập mật khẩu hiện tại ít nhất 8 ký tự",
+        "error_length_new_password_message": "Vui lòng nhập mật khẩu mới ít nhất 8 ký tự",
+        "error_length_confirm_password_message": "Vui lòng nhập mật khẩu xác nhận ít nhất 8 ký tự",
+        "error_not_match_password_message": "Mật khẩu mới và mật khẩu xác nhận không khớp"
     },
     "DASHBOARD": {
         "tab_home": "Trang chủ",
@@ -177,7 +181,10 @@
         "place_holder_confirm_password": "Nhập lại mật khẩu mới",
         "btn_change_pass": "Lưu",
         "password_note": "Lưu ý: Mật khẩu phải bao gồm ít nhất 8 kí tự",
-        "message_change_pass_sucess": "Cập nhật mật khẩu thành công"
+        "message_change_pass_sucess": "Cập nhật mật khẩu thành công",
+        "error_length_new_password_message": "Vui lòng nhập mật khẩu mới ít nhất 8 ký tự",
+        "error_length_confirm_password_message": "Vui lòng nhập mật khẩu xác nhận ít nhất 8 ký tự",
+        "error_not_match_password_message": "Mật khẩu mới và mật khẩu xác nhận không khớp"
     },
     "REGISTER_PASSWORD":{
         "title": "Mật khẩu",
@@ -346,6 +353,8 @@
         "maintain" : "Chức năng đang bảo trì",
         "information": "Thông báo",
         "complain": "Khiếu nại",
+        "message_success": "Thành công!",
+        "message_fail": "Thất bại!",
         "message_rate_success": "Đánh giá thành công!",
         "message_rate_user_success": "Đánh giá dịch vụ thành công!",
         "message_confirm_success": "Xác nhận thành công!",

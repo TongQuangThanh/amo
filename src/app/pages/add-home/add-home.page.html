@@ -18,7 +18,7 @@
     </ion-item>
     <!-- <ion-label color="danger" class="ion-text-wrap" *ngIf="errorMessage != ''">{{errorMessage}}</ion-label> -->
   </div>
-  <ion-button expand="block" class="" [ngClass]="!checkIsEnabled() ? 'button-common login-button' : 'button-common login-button button-common-active'" [disabled]="!checkIsEnabled()">
+  <ion-button (click)="checkingPincode()" expand="block" class="" [ngClass]="!checkIsEnabled() ? 'button-common login-button' : 'button-common login-button button-common-active'" [disabled]="!checkIsEnabled()">
     <ion-label>{{ 'ADD_HOME.btn_done' | translate }}</ion-label>
   </ion-button>
 </ion-content>

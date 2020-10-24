@@ -112,21 +112,21 @@ export class NewPasswordPage implements OnInit {
     if(!this.newPassword || this.newPassword.length < 8){
       this.errorNewPass = true;
       this.errorConfirmPass = false;
-      this.errorMessage = "Please new password at least 8 character";
+      this.errorMessage = this.translate.instant('NEW_PASSWORD.error_length_new_password_message');
       return;
     }
 
     if(!this.confirmPassword || this.confirmPassword.length < 8){
       this.errorNewPass = false;
       this.errorConfirmPass = true;
-      this.errorMessage = "Please confirm password at least 8 character";
+      this.errorMessage = this.translate.instant('NEW_PASSWORD.error_length_confirm_password_message');
       return;
     }
 
     if(this.newPassword != this.confirmPassword){
       this.errorNewPass = true;
       this.errorConfirmPass = true;
-      this.errorMessage = "New password and confirm password does not match";
+      this.errorMessage = this.translate.instant('NEW_PASSWORD.error_not_match_password_message');
       return;
     }
 
