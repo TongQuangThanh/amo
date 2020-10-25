@@ -3,6 +3,7 @@ import { ModalController, NavParams } from '@ionic/angular';
 import { TranslateConfigService } from '../../translate-config.service';
 import { TranslateService } from '@ngx-translate/core';
 
+
 @Component({
   selector: 'app-popup-owner-relationship',
   templateUrl: './popup-owner-relationship.page.html',
@@ -10,9 +11,11 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class PopupOwnerRelationshipPage implements OnInit {
   selectedLanguage:string;
+  selectedOption: any;
 
   constructor(
     private translate: TranslateService,
+    private navParams: NavParams,
     private translateConfigService: TranslateConfigService,
     private modalController: ModalController
   ) {
@@ -20,6 +23,7 @@ export class PopupOwnerRelationshipPage implements OnInit {
   }
 
   ngOnInit() {
+    this.selectedOption = this.navParams.data.index;
   }
   selectOption(index) {
     var name = this.translate.instant('ADD_HOME_MEMBER.guest');
@@ -31,16 +35,16 @@ export class PopupOwnerRelationshipPage implements OnInit {
         name = this.translate.instant('ADD_HOME_MEMBER.husband');
         break;
       case 3:
-        name = this.translate.instant('ADD_HOME_MEMBER.son');
-        break;
-      case 4:
-        name = this.translate.instant('ADD_HOME_MEMBER.daughter');
-        break;
-      case 5:
         name = this.translate.instant('ADD_HOME_MEMBER.father');
         break;
-      case 6:
+      case 4:
         name = this.translate.instant('ADD_HOME_MEMBER.mother');
+        break;
+      case 5:
+        name = this.translate.instant('ADD_HOME_MEMBER.son');
+        break;
+      case 6:
+        name = this.translate.instant('ADD_HOME_MEMBER.daughter');
         break;
       case 7:
         name = this.translate.instant('ADD_HOME_MEMBER.brother');
@@ -52,10 +56,10 @@ export class PopupOwnerRelationshipPage implements OnInit {
         name = this.translate.instant('ADD_HOME_MEMBER.relative');
         break;
       case 10:
-        name = this.translate.instant('ADD_HOME_MEMBER.housemaid');
+        name = this.translate.instant('ADD_HOME_MEMBER.friend');
         break;
       case 11:
-        name = this.translate.instant('ADD_HOME_MEMBER.friend');
+        name = this.translate.instant('ADD_HOME_MEMBER.housemaid');
         break;
       case 12:
         name = this.translate.instant('ADD_HOME_MEMBER.guest');
@@ -72,5 +76,12 @@ export class PopupOwnerRelationshipPage implements OnInit {
   }
   closeModal() {
     this.modalController.dismiss();
+  }
+  checkOptionActive(index) {
+    if (this.selectedOption == index) {
+      return 'selected-color';
+    } else {
+      return '';
+    }
   }
 }

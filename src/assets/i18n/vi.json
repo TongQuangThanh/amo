@@ -135,7 +135,8 @@
         "emergency": "Khẩn cấp",
         "hotline_label": "Hotline Ban quản lý:",
         "button_delete": "Xóa căn hộ",
-        "button_add": "Thêm căn hộ"
+        "button_add": "Thêm căn hộ",
+        "message_copy": "Đã sao chép"
     },
     "MY_HOME_DETAIL":{
         "title": "Chi tiết căn hộ",
@@ -354,7 +355,7 @@
         "information": "Thông báo",
         "complain": "Khiếu nại",
         "message_success": "Thành công!",
-        "message_fail": "Thất bại!",
+        "message_fail": "Không thể thực hiện thao tác. Vui lòng thử lại sau!",
         "message_rate_success": "Đánh giá thành công!",
         "message_rate_user_success": "Đánh giá dịch vụ thành công!",
         "message_confirm_success": "Xác nhận thành công!",

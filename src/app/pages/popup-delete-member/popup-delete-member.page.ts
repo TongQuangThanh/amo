@@ -10,15 +10,7 @@ import { ModalController, NavParams } from '@ionic/angular';
   styleUrls: ['./popup-delete-member.page.scss'],
 })
 export class PopupDeleteMemberPage {
-
-  pinCodeArray: any[];
-  pinCodeFormGroup: FormGroup;
-  color: string="gray";
-  isHidden: boolean = false;
-  codeSize: number = 6;
-  isChecking:boolean= false;
-  isError:boolean=false;
-  refCode:string;
+  idMember: any;
   
   constructor(
     private apiService: ApiService,
@@ -30,10 +22,37 @@ export class PopupDeleteMemberPage {
   }
 
   ngOnInit() {
+    this.idMember = this.navParams.data.id;
+  }
+  deleteMember(){
+    var self = this;
+    const params = {
+      memberId: self.idMember
+    };
+    this.loading.present();
+    this.apiService.deleteApartmentMember(params)
+      .subscribe(result => {
+        self.loading.dismiss()
+        self.finishPinCode();
+    },
+    error => {
+      self.loading.dismiss();
+    });
+  }
+  async finishPinCode(){
+    const onClosedData = JSON.stringify({
+      result: "0",
+      message: "success"
+    });
+    await this.modalController.dismiss(onClosedData);
   }
 
-  closeModal() {
-    this.modalController.dismiss();
+  async closeModal() {
+    const onClosedData = JSON.stringify({
+      result: "1",
+      message: "cancel"
+    });
+    await this.modalController.dismiss(onClosedData);
   }
 
 }

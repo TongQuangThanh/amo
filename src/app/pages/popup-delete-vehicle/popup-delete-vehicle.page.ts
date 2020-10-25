@@ -1,26 +1,58 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, SimpleChanges } from '@angular/core';
+import { Validators, FormGroup, FormArray, FormControl, FormBuilder } from '@angular/forms';
+import { LoadingService } from '../../services/loading/loading.service';
+import { ApiService } from '../../services/api/api.service';
 import { ModalController, NavParams } from '@ionic/angular';
-import { TranslateConfigService } from '../../translate-config.service';
 
 @Component({
   selector: 'app-popup-delete-vehicle',
   templateUrl: './popup-delete-vehicle.page.html',
   styleUrls: ['./popup-delete-vehicle.page.scss'],
 })
-export class PopupDeleteVehiclePage implements OnInit {
+export class PopupDeleteVehiclePage {
   selectedLanguage:string;
+  idVehicle: any;
 
   constructor(
-    private translateConfigService: TranslateConfigService,
     private modalController: ModalController,
+    private apiService: ApiService,
+    private loading: LoadingService,
+    private navParams: NavParams
   ) {
-    this.selectedLanguage = this.translateConfigService.getDefaultLanguage();
   }
 
   ngOnInit() {
+    this.idVehicle = this.navParams.data.id;
   }
 
-  closeModal() {
-    this.modalController.dismiss();
+  deleteVehicle(){
+    var self = this;
+    const params = {
+      vehicleId: self.idVehicle
+    };
+    this.loading.present();
+    this.apiService.deleteApartmentVehicle(params)
+      .subscribe(result => {
+        self.loading.dismiss()
+        self.finishPinCode();
+    },
+    error => {
+      self.loading.dismiss();
+    });
+  }
+  async finishPinCode(){
+    const onClosedData = JSON.stringify({
+      result: "0",
+      message: "success"
+    });
+    await this.modalController.dismiss(onClosedData);
+  }
+
+  async closeModal() {
+    const onClosedData = JSON.stringify({
+      result: "1",
+      message: "cancel"
+    });
+    await this.modalController.dismiss(onClosedData);
   }
 }

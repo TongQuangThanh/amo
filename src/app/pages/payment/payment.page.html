@@ -22,7 +22,7 @@
                   <ion-label class="content-item-label">{{ 'PAYMENT.amount_to_pay' | translate }}</ion-label>
                 </ion-col>
                 <ion-col class="col-amount" size="auto">
-                  <ion-label class="amountPay-number ion-float-right">3.345.000 <span class="amountPay-unit">vnd</span></ion-label>
+                  <ion-label class="amountPay-number ion-float-right">{{formatMoney(totalPayment)}} <span class="amountPay-unit">vnd</span></ion-label>
                 </ion-col>
               </ion-row>
           </div>

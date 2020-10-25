@@ -135,7 +135,8 @@
         "emergency": "Emergency",
         "hotline_label": "Hotline:",
         "button_delete": "Delete apartment",
-        "button_add": "Add apartment"
+        "button_add": "Add apartment",
+        "message_copy": "Copy success!"
     },
     "MY_HOME_DETAIL":{
         "title": "My home detail",
@@ -350,17 +351,17 @@
         "subversion": "Build"
     },
     "COMMON": {
-        "maintain" : "Function maintainal",
-        "information": "Thông báo",
-        "complain": "Khiếu nại",
+        "maintain": "Function maintainal",
+        "information": "Notice",
+        "complain": "Complain",
         "message_success": "Successful!",
-        "message_fail": "Fail!",
-        "message_rate_success": "Đánh giá thành công!",
-        "message_rate_user_success": "Đánh giá dịch vụ thành công!",
-        "message_confirm_success": "Xác nhận thành công!",
-        "message_finish_success": "Hoàn thành đơn hàng!",
-        "message_cancel_success": "Hủy đơn hàng thành công!",
-        "message_complain_success": "Khiếu nại của bạn đã được gửi đến nhà cung cấp!"
+        "message_fail": "Cannot perform operation. Please try again later!",
+        "message_rate_success": "Evaluation of success!",
+        "message_rate_user_success": "Evaluation of service success!",
+        "message_confirm_success": "Confirm successful!",
+        "message_finish_success": "Complete Order!",
+        "message_cancel_success": "Cancel order successfully!",
+        "message_complain_success": "Your complaint has been sent to the provider!"
     },
     "APARTMENT_FAMILY":{
         "title": "FAMILY",

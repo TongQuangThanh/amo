@@ -19,8 +19,9 @@ import { PopupSelectApartmentPage } from '../popup-select-apartment/popup-select
 export class AddRequestPage implements OnInit {
   croppedImagepath = "";
   departmentID: string;
+  departmentName: string = "";
   listDepartment: any;
-  topicID: string;
+  userName: string;
   listTopic: any;
   title: string;
   message: string;
@@ -31,7 +32,7 @@ export class AddRequestPage implements OnInit {
   list_image_1: any;
   flag_show_all_image: any;
 
-  isErrorTopicID: boolean = false;
+  isErrorUserName: boolean = false;
   isErrorTitle: boolean = false;
   isErrorMessage: boolean = false;
   isErrorDepartmentID: boolean = false;
@@ -116,6 +117,7 @@ export class AddRequestPage implements OnInit {
         self.listDepartment = result.userApartments;
         if(self.listDepartment.length > 0){
           self.departmentID = self.listDepartment[0].apartment._id;
+          self.departmentName = self.listDepartment[0].apartment.title + " - " + self.listDepartment[0].campaign.title;
         }
         self.loading.dismiss();
       },
@@ -316,13 +318,12 @@ export class AddRequestPage implements OnInit {
     }
   }
 
-  addRequest(event) {
+  checkActiveButton() {
     var self = this;
-
-    if (this.topicID && this.topicID.length > 0) {
-      this.isErrorTopicID = false;
+    if (this.userName && this.userName.length > 0) {
+      this.isErrorUserName = false;
     } else {
-      this.isErrorTopicID = true;
+      this.isErrorUserName = true;
     }
 
     if (this.title && this.title.length > 0) {
@@ -343,10 +344,11 @@ export class AddRequestPage implements OnInit {
       this.isErrorDepartmentID = true;
     }
 
-    if (this.isErrorMessage || this.isErrorTopicID || this.isErrorTitle || this.isErrorDepartmentID) {
-      return;
+    if (this.isErrorMessage || this.isErrorUserName || this.isErrorTitle || this.isErrorDepartmentID) {
+      return false;
+    } else {
+      return true;
     }
-    this.pushRequestToServer();
   }
 
   pushRequestToServer() {
@@ -356,7 +358,7 @@ export class AddRequestPage implements OnInit {
       listAttachmentID.push(this.listImage[i].media._id)
     }
     const params = {
-      category: this.topicID,
+      // category: "",
       title: this.title,
       content: this.message,
       attachments: listAttachmentID,
@@ -376,9 +378,22 @@ export class AddRequestPage implements OnInit {
   }
 
   async selectApartmentModal() {
+    var self = this;
     const modal = await this.modalController.create({
       component: PopupSelectApartmentPage,
+      componentProps: {
+        idApartment: self.departmentID
+      },
       cssClass: 'popupSelectApartment-page-custom'
+    });
+    modal.onDidDismiss().then((dataReturned:any) => {
+      if (dataReturned && dataReturned.data) {
+        const dataReturnedResult = JSON.parse(dataReturned.data);
+        this.departmentID = dataReturnedResult.id;
+        this.departmentName = dataReturnedResult.name;
+        // self.formRelationship = dataReturnedResult.value;
+        // self.formRelationshipName = dataReturnedResult.name;
+      }
     });
     return await modal.present();
   }

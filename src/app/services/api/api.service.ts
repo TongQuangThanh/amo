@@ -559,4 +559,21 @@ export class ApiService {
     );
   }
 
+  addApartmentMember(params: any): Observable<any> {
+    return this.http.post(EnvService.apartmentMember, params).pipe(
+      map(results => results)
+    );
+  }
+  deleteApartmentMember(params: any): Observable<any> {
+    return this.http.delete(EnvService.apartmentMember, params).pipe(
+      map(results => results)
+    );
+  }
+
+  deleteApartmentVehicle(params: any): Observable<any> {
+    return this.http.delete(EnvService.apartmentVehicle, params).pipe(
+      map(results => results)
+    );
+  }
+
 }

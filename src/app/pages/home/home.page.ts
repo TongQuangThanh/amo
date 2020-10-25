@@ -40,6 +40,10 @@ export class HomePage implements OnInit {
   tabIconEnable: boolean= false;
   iconSelected = "";
   showHeader: number;
+  listPaymentBills: any;
+  totalPayment: any;
+  numberOfRecordPayment: any;
+  idRecordPayment: any;
 
   constructor(
     private route: NavController,
@@ -106,6 +110,7 @@ export class HomePage implements OnInit {
     this.numberRecordOnPageNoti = ConstService.NUMBER_RECORD_NOTI_ON_PAGE;
     this.getNews(this.currentPage, this.numberRecordOnPage, '', '', null, true);
     this.getArticles(this.currentPageNoti, this.numberRecordOnPageNoti, '', '', null, true);
+    this.getPaymentLogs(1, 1000, '', '', null, true);
   }
   // getConfigPopup() {
   //   const self = this;
@@ -233,7 +238,11 @@ export class HomePage implements OnInit {
   }
   
   changePayment(){
-    this.navCtrl.navigateForward('dashboard/payment');
+    if (this.numberOfRecordPayment == 1) {
+      this.gotoPaymentDetailPage();
+    } else {
+      this.navCtrl.navigateForward('dashboard/payment');
+    }
   }
 
   goToNotification(){
@@ -270,5 +279,59 @@ export class HomePage implements OnInit {
   formatString(stringDate: string) {
     return UtilsService.formatString(stringDate);
   }
-
+  getPaymentLogs(page: number, limit: number, category: string, search: string, event: any, isRefresh: boolean) {
+    this.loading.present();
+    const self = this;
+    this.apiService.getListPayment(page, limit, category, search)
+      .subscribe(result => {
+        if (isRefresh) {
+          ///self.listPaymentBills = result.paymentBills;
+          const listPaymentNoNull = [];
+          for(let i=0;i<result.paymentBills.length;i++){
+            if(result.paymentBills[i].payment){
+              listPaymentNoNull.push(result.paymentBills[i]);
+            }
+          }
+          self.listPaymentBills = listPaymentNoNull;
+        } else {
+          //self.listPaymentBills = self.listPaymentBills.concat(result.paymentBills);
+          for(let i=0;i<result.paymentBills.length;i++){
+            if(result.paymentBills[i].payment){
+              self.listPaymentBills.push(result.paymentBills[i]);
+            }
+          }
+        }
+        
+        console.log('paymentbill'+self.listPaymentBills)
+        if (event) {
+          event.target.complete();
+        }
+        self.loading.dismiss();
+        self.getTotalPayment();
+    },
+    error => {
+      self.loading.dismiss();
+    });
+  }
+  getTotalPayment() {
+    var self = this;
+    self.totalPayment = 0;
+    self.numberOfRecordPayment = 0;
+    this.listPaymentBills.forEach(element => {
+      if (element.status == 'publish') {
+        self.totalPayment += element.total;
+        self.numberOfRecordPayment++;
+        self.idRecordPayment = element._id;
+      }
+    });
+  }
+  formatMoney(stringValue) {
+    let n = parseInt(stringValue);
+    return n.toFixed(0).replace(/./g, function(c, i, a) {
+      return i > 0 && c !== "," && (a.length - i) % 3 === 0 ? "." + c : c;
+    });
+  }
+  gotoPaymentDetailPage() {
+    this.navCtrl.navigateForward('/payment-infor/' + this.idRecordPayment);
+  }
 }

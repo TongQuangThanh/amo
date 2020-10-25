@@ -12,21 +12,21 @@
     <ion-item class="input-item" lines="none" (click)="selectApartmentModal()">
       <ion-icon class="input-icon" name="custom-apartment" src="/assets/icon/custom-apartment.svg" slot="start"></ion-icon>
       <ion-label class="input-floating-label" position="floating">{{ 'ADD_REQUEST.apartment' | translate }}</ion-label>
-      <ion-input class="input-text" type="text" value="A1511 - Central Point Bắc Hà"></ion-input>
+      <ion-input class="input-text pointer-events-none" type="text" value="{{departmentName}}"></ion-input>
       <ion-icon class="select-icon" name="caret-down-outline" slot="end"></ion-icon>
     </ion-item>
     <ion-item class="input-item" lines="none">
       <ion-icon class="input-icon" name="custom-user" src="/assets/icon/custom-user.svg" slot="start"></ion-icon>
       <ion-label class="input-floating-label" position="floating">{{ 'ADD_REQUEST.name' | translate }}</ion-label>
-      <ion-input class="input-text" type="text" value=""></ion-input>
+      <ion-input [(ngModel)]="userName" class="input-text" type="text" value=""></ion-input>
     </ion-item>
     <ion-item class="input-item" lines="none">
       <ion-icon class="input-icon" name="custom-user" src="/assets/icon/custom-file.svg" slot="start"></ion-icon>
       <ion-label class="input-floating-label" position="floating">{{ 'ADD_REQUEST.title_request' | translate }}</ion-label>
-      <ion-input class="input-text" type="text" value=""></ion-input>
+      <ion-input [(ngModel)]="title" class="input-text" type="text" value=""></ion-input>
     </ion-item>
     <ion-item class="textarea-item" lines="none">
-      <ion-textarea class="note-content" rows="4" placeholder="{{ 'ADD_REQUEST.message_request' | translate }}"></ion-textarea>
+      <ion-textarea [(ngModel)]="message" class="note-content" rows="4" placeholder="{{ 'ADD_REQUEST.message_request' | translate }}"></ion-textarea>
     </ion-item>
     <ion-item class="guest-quantity ion-no-padding" lines="none">
       <ion-label class="add-image-title">{{ 'ADD_REQUEST.add_image_label' | translate }}</ion-label>
@@ -57,86 +57,15 @@
         <ion-icon name="camera" class="icon-camera"></ion-icon>
       </ion-item>
     </ion-item>
-
-    <!-- <ion-grid class="image-grid" lines="none">
-      <ion-row class="ion-align-items-center image-row">
-        <ion-col class="image-col padding-right-10">
-          <div class="image-content-icon">
-            <ion-icon class="item-icon" name="camera"></ion-icon>
-          </div>
-        </ion-col>
-        <ion-col class="image-col padding-left-10">
-          <div class="image-content-icon">
-            <ion-icon class="item-icon" name="camera"></ion-icon>
-          </div>
-        </ion-col>
-      </ion-row>
-    </ion-grid> -->
-    <ion-button expand="block" class="button-common button-send margin-top-40">
+    <ion-button expand="block" class="button-common button-send margin-top-40"
+      *ngIf="!checkActiveButton()"
+    >
+      <ion-label>{{ 'ADD_REQUEST.btn_submit' | translate }}</ion-label>
+    </ion-button>
+    <ion-button (click)="pushRequestToServer()" expand="block" class="button-common button-common-active button-send margin-top-40"
+      *ngIf="checkActiveButton()"
+    >
       <ion-label>{{ 'ADD_REQUEST.btn_submit' | translate }}</ion-label>
     </ion-button>
   </div>
-
-  <!-- <form (ngSubmit)="addRequest($event)">
-    <ion-list lines="full" class="ion-no-margin ion-no-padding">
-      <ion-item lines="none">
-        <ion-label position="stacked" class="stack-label">{{ 'ADD_REQUEST.apartment' | translate }}<ion-text color="danger">*</ion-text></ion-label>
-        <ion-select 
-          class="custom-common-input custom-common-input-text height-auto" [ngClass]="!isErrorDepartmentID ? '' : 'error-input'"
-          placeholder="{{ 'ADD_REQUEST.apartment' | translate }}"
-          interface="action-sheet"
-          name="departmentID" (ionChange)="changeValueDepartment($event)" [(ngModel)]="departmentID">
-          <ion-select-option *ngFor="let item of listDepartment" value="{{item.apartment._id}}">{{item.apartment.title + ' - ' + item.campaign.title}}</ion-select-option>
-        </ion-select>
-      </ion-item>
-
-      <ion-item lines="none">
-        <ion-label position="stacked" class="stack-label">{{ 'ADD_REQUEST.category' | translate }}<ion-text color="danger">*</ion-text></ion-label>
-        <ion-select 
-          class="custom-common-input custom-common-input-text height-auto" [ngClass]="!isErrorTopicID ? '' : 'error-input'"
-          placeholder="{{ 'ADD_REQUEST.category' | translate }}"
-          interface="action-sheet"
-          name="topicID" [(ngModel)]="topicID">
-          <ion-select-option *ngFor="let item of listTopic" value="{{item._id}}">{{item.title}}</ion-select-option>
-        </ion-select>
-      </ion-item>
-      <ion-item lines="none" class="file-input-container">
-        <ion-grid>
-          <ion-row class="height-item-button">
-            <ion-col>
-              <label (click)="selectImage()" class="label-upload">
-                Add Image
-              </label>
-            </ion-col>
-          </ion-row>
-          <ion-row>
-            <ion-row>
-              <ion-item no-lines>
-                <div scrollX="true" [style.width.px]="widthListScreen">
-                  <div *ngFor="let item1 of listImage" class="item-button">
-                    <ion-img  name="radio-button-on" src="{{item1.media.url}}" class="scroll-item selectable-icon"></ion-img>
-                    <img class="close" src="../assets/icon/close-icon.png" id="{{item1.media._id}}" (click)="removeImageAttachment($event)"/>
-                  </div>
-                </div>
-              </ion-item>
-            </ion-row>
-          </ion-row>
-        </ion-grid>
-      </ion-item>
-
-      <ion-item lines="none"> 
-        <ion-label position="stacked" class="stack-label">{{ 'ADD_REQUEST.title_request' | translate }}<ion-text color="danger">*</ion-text></ion-label>
-        <ion-input class="custom-common-input custom-common-input-text" placeholder="{{ 'ADD_REQUEST.title_request' | translate }}" [ngClass]="!isErrorTitle ? '' : 'error-input'" value="{{title}}" [(ngModel)]="title" name="title"></ion-input>
-      </ion-item>
-
-      <ion-item lines="none">
-        <ion-label position="stacked" class="stack-label">{{ 'ADD_REQUEST.message_request' | translate }}<ion-text color="danger">*</ion-text></ion-label>
-        <ion-textarea class="custom-common-input custom-common-input-text height-auto" placeholder="{{ 'ADD_REQUEST.message_request' | translate }}" [ngClass]="!isErrorMessage ? '' : 'error-input'" [(ngModel)]="message" rows="4" name="message"></ion-textarea>
-      </ion-item>
-    </ion-list>
-
-    <div class="ion-padding">
-      <ion-button expand="block" type="submit" class="amo-button-custom">{{ 'ADD_REQUEST.btn_submit' | translate }}</ion-button>
-    </div>
-  </form> -->
 </ion-content>

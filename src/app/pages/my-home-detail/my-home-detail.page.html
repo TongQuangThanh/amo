@@ -107,46 +107,13 @@
       <!-- super-tab members -->
       <super-tab class="no-padding">
         <ion-list class="list-content">
-          <!-- <ion-card class="member-card">
+          <ion-card class="card-content" *ngFor="let member of listMembers" id="{{member._id}}">
             <ion-row class="member-card-item">
               <ion-col class="content-col">
-                <p class="title-name">{{item.name}}</p>
-                <p class="title-content">{{item.gender}} - {{item.phone}} - {{formatString(item.dateOfBirth)}}</p>
+                <p class="title-name">{{member.name}}</p>
+                <p class="title-content">{{member.relationShip}} - {{member.phone}} - {{member.dateOfBirth}}</p>
               </ion-col>
-              <ion-col size="auto" class="border-left button-col">
-                <ion-label class="danger-text">{{ 'MY_HOME_DETAIL.delete' | translate }}</ion-label>
-              </ion-col>
-            </ion-row>
-          </ion-card> -->
-          <ion-card class="card-content">
-            <ion-row class="member-card-item">
-              <ion-col class="content-col">
-                <p class="title-name">Nguyễn Thùy Dung</p>
-                <p class="title-content">Vợ - 0986 145 876 - 20/1/1976</p>
-              </ion-col>
-              <ion-col size="auto" class="border-left button-col" (click)="deleteMemberModal()">
-                <ion-label class="danger-text">{{ 'MY_HOME_DETAIL.delete' | translate }}</ion-label>
-              </ion-col>
-            </ion-row>
-          </ion-card>
-          <ion-card class="card-content">
-            <ion-row class="member-card-item">
-              <ion-col class="content-col">
-                <p class="title-name">Nguyễn Hoàng Nam</p>
-                <p class="title-content">Con trai - 0947 633 765 - 20/1/1996</p>
-              </ion-col>
-              <ion-col size="auto" class="border-left button-col" (click)="deleteMemberModal()">
-                <ion-label class="danger-text">{{ 'MY_HOME_DETAIL.delete' | translate }}</ion-label>
-              </ion-col>
-            </ion-row>
-          </ion-card>
-          <ion-card class="card-content">
-            <ion-row class="member-card-item">
-              <ion-col class="content-col">
-                <p class="title-name">Nguyễn Hoàng Nam</p>
-                <p class="title-content">Con trai - 0947 633 765 - 20/1/1996</p>
-              </ion-col>
-              <ion-col size="auto" class="border-left button-col" (click)="deleteMemberModal()">
+              <ion-col size="auto" class="border-left button-col" (click)="deleteMemberModal(member._id)">
                 <ion-label class="danger-text">{{ 'MY_HOME_DETAIL.delete' | translate }}</ion-label>
               </ion-col>
             </ion-row>
@@ -161,46 +128,13 @@
       <!-- super-tab vehicles -->
       <super-tab class="no-padding">
         <ion-list class="list-content">
-          <ion-card class="card-content">
+          <ion-card class="card-content" *ngFor="let vehicle of listVehicle" id="{{vehicle._id}}">
             <ion-row class="member-card-item">
               <ion-col class="content-col">
-                <p class="title-name">Camry 2.5Q</p>
-                <p class="title-content">Oto - 30A-215.65 - Màu đen</p>
+                <p class="title-name">{{vehicle.model}}</p>
+                <p class="title-content">{{vehicle.type}} - {{vehicle.identity}}</p>
               </ion-col>
-              <ion-col size="auto" class="border-left button-col" (click)="deleteVehicleModal()">
-                <ion-label class="danger-text">{{ 'MY_HOME_DETAIL.delete' | translate }}</ion-label>
-              </ion-col>
-            </ion-row>
-          </ion-card>
-          <ion-card class="card-content">
-            <ion-row class="member-card-item">
-              <ion-col class="content-col">
-                <p class="title-name">Honda Wave Alpha</p>
-                <p class="title-content">Xe máy - 30B1-346.73 - Màu trắng</p>
-              </ion-col>
-              <ion-col size="auto" class="border-left button-col" (click)="deleteVehicleModal()">
-                <ion-label class="danger-text">{{ 'MY_HOME_DETAIL.delete' | translate }}</ion-label>
-              </ion-col>
-            </ion-row>
-          </ion-card>
-          <ion-card class="card-content">
-            <ion-row class="member-card-item">
-              <ion-col class="content-col">
-                <p class="title-name">Honda Lead</p>
-                <p class="title-content">Xe máy - 29B-126.35 - Màu bạc</p>
-              </ion-col>
-              <ion-col size="auto" class="border-left button-col" (click)="deleteVehicleModal()">
-                <ion-label class="danger-text">{{ 'MY_HOME_DETAIL.delete' | translate }}</ion-label>
-              </ion-col>
-            </ion-row>
-          </ion-card>
-          <ion-card class="card-content">
-            <ion-row class="member-card-item">
-              <ion-col class="content-col">
-                <p class="title-name">Mini</p>
-                <p class="title-content">Xe đạp - Màu hồng</p>
-              </ion-col>
-              <ion-col size="auto" class="border-left button-col" (click)="deleteVehicleModal()">
+              <ion-col size="auto" class="border-left button-col" (click)="deleteVehicleModal(vehicle._id)">
                 <ion-label class="danger-text">{{ 'MY_HOME_DETAIL.delete' | translate }}</ion-label>
               </ion-col>
             </ion-row>

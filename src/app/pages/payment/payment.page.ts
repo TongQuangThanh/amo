@@ -24,6 +24,7 @@ export class PaymentPage implements OnInit {
   segmentModel: string = "all";
   today: any;
   myDate: String = new Date().toISOString();
+  totalPayment: any;
 
   constructor(
     private translate: TranslateService,
@@ -58,7 +59,7 @@ export class PaymentPage implements OnInit {
   ionViewWillEnter(){
     this.listPaymentBills  = [];
     this.currentPage = 1;
-    this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
+    this.numberRecordOnPage = 1000;
     this.getPaymentLogs(this.currentPage, this.numberRecordOnPage, '', '', null, true);
     
   }
@@ -91,9 +92,20 @@ export class PaymentPage implements OnInit {
           event.target.complete();
         }
         self.loading.dismiss();
+        self.getTotalPayment();
     },
     error => {
       self.loading.dismiss();
+    });
+  }
+
+  getTotalPayment() {
+    var self = this;
+    self.totalPayment = 0;
+    this.listPaymentBills.forEach(element => {
+      if (element.status == 'publish') {
+        self.totalPayment += element.total;
+      }
     });
   }
 

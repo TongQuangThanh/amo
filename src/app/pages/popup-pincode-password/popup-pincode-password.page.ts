@@ -160,7 +160,6 @@ export class PopupPincodePasswordPage implements OnInit {
     this.loading.present();
     this.apiService.verifyTokenCode(this.phoneNumber, pinCodeValue)
       .subscribe(result => {
-        console.log(result);
         self.isError = false;
         self.loading.dismiss();
         self.finishPinCode(pinCodeValue);
