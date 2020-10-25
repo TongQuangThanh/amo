@@ -5,6 +5,8 @@ import { LoadingService } from '../../services/loading/loading.service';
 import { ApiService } from '../../services/api/api.service';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
+import { AlertService } from '../../services/alert/alert.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-popup-building-management-phone',
@@ -23,7 +25,9 @@ export class PopupBuildingManagementPhonePage implements OnInit {
     private loading: LoadingService,
     private callNumber: CallNumber,
     private apiService: ApiService,
-    private clipboard: Clipboard
+    private clipboard: Clipboard,
+    private translate: TranslateService,
+    private alertService: AlertService
   ) {
     this.selectedLanguage = this.translateConfigService.getDefaultLanguage();
   }
@@ -56,6 +60,8 @@ export class PopupBuildingManagementPhonePage implements OnInit {
   }
   copyNumberPhone() {
     this.clipboard.copy(this.phoneNumber);
+    this.alertService.presentToast(this.translate.instant('MY_HOME.message_copy'));
+    this.closeModal();
   }
   closeModal() {
     this.modalController.dismiss();

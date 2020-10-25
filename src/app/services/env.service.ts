@@ -81,5 +81,10 @@ export const EnvService = {
   putOrderHistoryProviderConfirm: environment.base + '/order-history/provide-confirm',
   putOrderHistoryUserConfirm: environment.base + '/order-history/user-confirm',
   putOrderHistoryUserComplain: environment.base + '/order-history/user-complain',
+
+  // fixbug
+  apartmentMember: environment.base + '/apartment/member',
+  apartmentVehicle: environment.base + '/apartment/vehicle',
+  
 };
 

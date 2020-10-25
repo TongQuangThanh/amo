@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe} from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { SuperTabsModule } from '@ionic-super-tabs/angular';
@@ -23,6 +23,7 @@ const routes: Routes = [
     SuperTabsModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [MyHomeDetailPage]
+  declarations: [MyHomeDetailPage],
+  providers: [DatePipe]
 })
 export class MyHomeDetailPageModule {}

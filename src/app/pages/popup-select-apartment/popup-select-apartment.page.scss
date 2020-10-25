@@ -21,6 +21,11 @@ ion-title.md {
     background: #ffffff;
     display: block;
     justify-content: end;
+    max-height: 70%;
+}
+.data-apartment {
+    overflow: auto;
+    height: calc(100% - 60px);
 }
 .header-item {
     border-top-left-radius: 24px;
