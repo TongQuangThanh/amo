@@ -101,7 +101,7 @@ export class RegisterForShippingPage implements OnInit {
         console.log(result.userApartments);
         self.listDepartment = result.userApartments;
         self.listDepartment.forEach(data =>{
-          self.listDepartmentByID[data.apartment ._id] = data;
+          self.listDepartmentByID[data.apartment._id] = data;
         });
         self.loading.dismiss()
     },

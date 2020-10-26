@@ -78,7 +78,7 @@
                           <ion-icon item-start name="pay-now" class="content-icon" src="/assets/icon/pay_now.svg"></ion-icon>
                           <span class="image-caption-pay">{{ 'HOME.pay_now' | translate }}</span>
                       </ion-item>
-                      <ion-label class="amountPay-number">3.345.000 <span class="amountPay-unit">vnd</span></ion-label>
+                      <ion-label class="amountPay-number">{{formatMoney(totalPayment)}} <span class="amountPay-unit">vnd</span></ion-label>
                   </div>
                   <div class="ion-float-right div-avatar-content-big btn-new-request" (click)="createRequest()">
                       <ion-item lines="none" class="content-item">
