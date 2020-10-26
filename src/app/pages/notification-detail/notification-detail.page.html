@@ -50,7 +50,7 @@
 
       <div class="clear-both attachments-div">
         <ion-list class="text-node attachments-node">
-          <ion-card *ngFor="let item of attachments" (click)="detailAttachment($event)" id="{{item._id}}" class="ion-float-left padding-none attachments-card">
+          <ion-card *ngFor="let item of attachments" id="{{item._id}}" class="ion-float-left padding-none attachments-card" (click)="detailAttachment($event)">
             <ion-label class="attachments-text"><ion-icon name="custom-attach-active" class="attachments-icon" src="assets/icon/custom-attach-active.svg"></ion-icon>{{item.fileName}}</ion-label>
           </ion-card>
         </ion-list>
