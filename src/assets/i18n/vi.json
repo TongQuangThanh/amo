@@ -220,6 +220,7 @@
     },
     "PAYMENT_COMMENT":{
         "title": "Khiếu nại",
+        "bql": "BQL Tòa nhà",
         "place_holder_input": "Nhập tin nhắn..."
     },
     "ORDER_SERVICE":{

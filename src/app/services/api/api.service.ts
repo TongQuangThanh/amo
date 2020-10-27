@@ -576,4 +576,10 @@ export class ApiService {
     );
   }
 
+  getListPaymentCategory(): Observable<any> {
+    return this.http.get(EnvService.paymentCategory, {}).pipe(
+      map(results => results)
+    );
+  }
+
 }
