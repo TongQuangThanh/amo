@@ -149,7 +149,7 @@ export class NotificationDetailPage implements OnInit {
   detailAttachment(event){
     console.log(event)
     this.attachments.forEach(element => {
-      if(element.id == event.target.id){
+      if(element.id == event.currentTarget.id){
         console.log(1111);
         let url_online= "";
         const fileExtensition = element.fileName.split('.').pop().toLowerCase();

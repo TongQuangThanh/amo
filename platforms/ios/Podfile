@@ -4,5 +4,5 @@ platform :ios, '11.0'
 
 target 'AMO' do
 	project 'AMO.xcodeproj'
-	pod 'OneSignal', '2.11.0'
+	pod 'OneSignal', '2.15.2'
 end

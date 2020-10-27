@@ -4,11 +4,37 @@
         <param name="android-package" value="com.telerik.plugins.nativepagetransitions.NativePageTransitions" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="Clipboard">
+        <param name="android-package" value="com.verso.cordova.clipboard.Clipboard" />
+    </feature>
+    <feature name="File">
+        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
+        <param name="onload" value="true" />
+    </feature>
+    <allow-navigation href="cdvfile:*" />
+    <feature name="CordovaHttpPlugin">
+        <param name="android-package" value="com.silkimen.cordovahttp.CordovaHttpPlugin" />
+    </feature>
     <feature name="Camera">
         <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
     </feature>
+    <feature name="Notification">
+        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
+    </feature>
     <feature name="Device">
         <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="FileTransfer">
+        <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
+    </feature>
+    <feature name="Geolocation">
+        <param name="android-package" value="org.apache.cordova.geolocation.Geolocation" />
+    </feature>
+    <feature name="InAppBrowser">
+        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
+    </feature>
+    <feature name="PreviewAnyFile">
+        <param name="android-package" value="com.mostafa.previewanyfile.PreviewAnyFile" />
     </feature>
     <feature name="SplashScreen">
         <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
@@ -25,49 +51,18 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
-    <feature name="Geolocation">
-        <param name="android-package" value="org.apache.cordova.geolocation.Geolocation" />
-    </feature>
-    <feature name="File">
-        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
-        <param name="onload" value="true" />
-    </feature>
-    <allow-navigation href="cdvfile:*" />
-    <feature name="OneSignalPush">
-        <param name="android-package" value="com.plugin.gcm.OneSignalPush" />
-    </feature>
     <feature name="CallNumber">
         <param name="android-package" value="mx.ferreyra.callnumber.CFCallNumber" />
     </feature>
-    <feature name="Notification">
-        <param name="android-package" value="org.apache.cordova.dialogs.Notification" />
-    </feature>
-    <feature name="AppCenterShared">
-        <param name="onload" value="true" />
-        <param name="android-package" value="com.microsoft.azure.mobile.cordova.AppCenterSharedPlugin" />
-    </feature>
-    <feature name="AppCenterAnalytics">
-        <param name="onload" value="true" />
-        <param name="android-package" value="com.microsoft.azure.mobile.cordova.AppCenterAnalyticsPlugin" />
-    </feature>
-    <feature name="AppCenterCrashes">
-        <param name="onload" value="true" />
-        <param name="android-package" value="com.microsoft.azure.mobile.cordova.AppCenterCrashesPlugin" />
-    </feature>
-    <feature name="CordovaHttpPlugin">
-        <param name="android-package" value="com.silkimen.cordovahttp.CordovaHttpPlugin" />
-    </feature>
-    <feature name="FileTransfer">
-        <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
-    </feature>
-    <feature name="InAppBrowser">
-        <param name="android-package" value="org.apache.cordova.inappbrowser.InAppBrowser" />
-    </feature>
-    <feature name="PreviewAnyFile">
-        <param name="android-package" value="com.mostafa.previewanyfile.PreviewAnyFile" />
+    <feature name="OneSignalPush">
+        <param name="android-package" value="com.plugin.gcm.OneSignalPush" />
     </feature>
     <feature name="Zip">
         <param name="android-package" value="org.apache.cordova.Zip" />
+    </feature>
+    <feature name="CodePush">
+        <param name="android-package" value="com.microsoft.cordova.CodePush" />
+        <param name="onload" value="true" />
     </feature>
     <feature name="CDVIonicKeyboard">
         <param name="android-package" onload="true" value="io.ionic.keyboard.CDVIonicKeyboard" />
@@ -77,10 +72,6 @@
     <allow-navigation href="ionic://*" />
     <feature name="IonicWebView">
         <param name="android-package" value="com.ionicframework.cordova.webview.IonicWebView" />
-    </feature>
-    <feature name="CodePush">
-        <param name="android-package" value="com.microsoft.cordova.CodePush" />
-        <param name="onload" value="true" />
     </feature>
     <feature name="Diagnostic">
         <param name="android-package" value="cordova.plugins.Diagnostic" />
@@ -152,7 +143,7 @@
     <preference name="loglevel" value="DEBUG" />
     <preference name="webView" value="com.ionicframework.cordova.webview.IonicWebViewEngine" />
     <preference name="ScrollEnabled" value="false" />
-    <preference name="android-minSdkVersion" value="19" />
+    <preference name="android-minSdkVersion" value="22" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashMaintainAspectRatio" value="true" />
     <preference name="FadeSplashScreenDuration" value="300" />
@@ -164,7 +155,4 @@
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
     <preference name="CodePushDeploymentKey" value="uJ1FFXwN5lxTFxIXpkGg9nbJt4jNRo54Bwc0n" />
     <preference name="APP_SECRET" value="bfa4ab1f-4518-4dcb-86b5-a2bc4e072cdb" />
-    <feature name="Clipboard">
-        <param name="android-package" value="com.verso.cordova.clipboard.Clipboard" />
-    </feature>
 </widget>

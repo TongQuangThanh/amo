@@ -27,24 +27,11 @@
 
 #import "AppDelegate.h"
 #import "MainViewController.h"
-//#import <OneSignal/OneSignal.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
-//    [OneSignal initWithLaunchOptions:launchOptions
-//                               appId:@"712abf97-1cbe-442b-8c16-d10e29e292a4"
-//                  handleNotificationAction:nil
-//                             settings:@{kOSSettingsKeyAutoPrompt: @false}];
-//    OneSignal.inFocusDisplayType = OSNotificationDisplayTypeNotification;
-//    
-//    // Recommend moving the below line to prompt for push after informing the user about
-//    //   how your app will use them.
-//    [OneSignal promptForPushNotificationsWithUserResponse:^(BOOL accepted) {
-//         NSLog(@"User accepted notifications: %d", accepted);
-//    }];
-    
     self.viewController = [[MainViewController alloc] init];
     return [super application:application didFinishLaunchingWithOptions:launchOptions];
 }
