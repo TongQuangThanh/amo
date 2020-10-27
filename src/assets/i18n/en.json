@@ -220,6 +220,7 @@
     },
     "PAYMENT_COMMENT":{
         "title": "Complain",
+        "bql": "Building Management",
         "place_holder_input": "Type a message..."
     },
     "ORDER_SERVICE":{

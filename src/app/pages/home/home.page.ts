@@ -327,9 +327,13 @@ export class HomePage implements OnInit {
   }
   formatMoney(stringValue) {
     let n = parseInt(stringValue);
-    return n.toFixed(0).replace(/./g, function(c, i, a) {
-      return i > 0 && c !== "," && (a.length - i) % 3 === 0 ? "." + c : c;
-    });
+    if (n) {
+      return n.toFixed(0).replace(/./g, function(c, i, a) {
+        return i > 0 && c !== "," && (a.length - i) % 3 === 0 ? "." + c : c;
+      });
+    } else {
+      return "-";
+    }
   }
   gotoPaymentDetailPage() {
     this.navCtrl.navigateForward('/payment-infor/' + this.idRecordPayment);

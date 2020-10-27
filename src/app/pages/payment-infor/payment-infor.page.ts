@@ -130,8 +130,12 @@ export class PaymentInforPage implements OnInit {
     return await modal.present();
   }
   async paymentComplainModal() {
+    var self = this;
     const modal = await this.modalController.create({
       component: PopupComplainPage,
+      componentProps: {
+        id: self.paymentID
+      },
       cssClass: 'popupPaymentComplain-page-custom'
     });
     return await modal.present();

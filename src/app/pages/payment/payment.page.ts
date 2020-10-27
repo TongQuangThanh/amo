@@ -19,12 +19,13 @@ export class PaymentPage implements OnInit {
   heightScreen: number;
   // data
   listPaymentBills: any;
+  listDataConvert: any;
   currentPage: number;
   numberRecordOnPage: number;
   segmentModel: string = "all";
   today: any;
   myDate: String = new Date().toISOString();
-  totalPayment: any;
+  totalPayment: string = "-";
 
   constructor(
     private translate: TranslateService,
@@ -42,18 +43,7 @@ export class PaymentPage implements OnInit {
   }
 
   ngOnInit() {
-    // this.listPaymentBills  = [];
-    // this.currentPage = 1;
-    // this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
-    // this.getPaymentLogs(this.currentPage, this.numberRecordOnPage, '', '', null, false);
-    this.today = Date.now();
-    console.log(this.today + "is today")
-  }
-
-  segmentChanged(event){
-    console.log(this.segmentModel);
-    
-    console.log(event);
+    this.listPaymentBills  = [];
   }
 
   ionViewWillEnter(){
@@ -61,7 +51,6 @@ export class PaymentPage implements OnInit {
     this.currentPage = 1;
     this.numberRecordOnPage = 1000;
     this.getPaymentLogs(this.currentPage, this.numberRecordOnPage, '', '', null, true);
-    
   }
 
   getPaymentLogs(page: number, limit: number, category: string, search: string, event: any, isRefresh: boolean) {
@@ -70,7 +59,6 @@ export class PaymentPage implements OnInit {
     this.apiService.getListPayment(page, limit, category, search)
       .subscribe(result => {
         if (isRefresh) {
-          ///self.listPaymentBills = result.paymentBills;
           const listPaymentNoNull = [];
           for(let i=0;i<result.paymentBills.length;i++){
             if(result.paymentBills[i].payment){
@@ -79,34 +67,71 @@ export class PaymentPage implements OnInit {
           }
           self.listPaymentBills = listPaymentNoNull;
         } else {
-          //self.listPaymentBills = self.listPaymentBills.concat(result.paymentBills);
           for(let i=0;i<result.paymentBills.length;i++){
             if(result.paymentBills[i].payment){
               self.listPaymentBills.push(result.paymentBills[i]);
             }
           }
         }
-        
-        console.log('paymentbill'+self.listPaymentBills)
         if (event) {
           event.target.complete();
         }
-        self.loading.dismiss();
+        self.convertDataPayment();
         self.getTotalPayment();
+        self.loading.dismiss();
     },
     error => {
       self.loading.dismiss();
     });
   }
 
-  getTotalPayment() {
+  convertDataPayment() {
     var self = this;
-    self.totalPayment = 0;
-    this.listPaymentBills.forEach(element => {
-      if (element.status == 'publish') {
-        self.totalPayment += element.total;
+    this.listDataConvert = [];
+    self.listPaymentBills.forEach(payment => {
+      if (self.listDataConvert.length == 0) {
+        self.listDataConvert = [{
+          id_tab: "0",
+          title: self.translate.instant('PAYMENT.all_payment'),
+          data: []
+        }];
+      }
+      let index = self.getIndexCategoryInList(payment.category._id);
+      if (index < 0) {
+        self.listDataConvert.push({
+          id_tab: payment.category._id,
+          title: payment.category.title,
+          data: []
+        });
+        index = self.listDataConvert.length - 1;
+      }
+      self.listDataConvert[index]['data'].push(payment);
+      let index_all = self.getIndexCategoryInList("0");
+      self.listDataConvert[index_all]['data'].push(payment);
+    });
+  }
+  getIndexCategoryInList(id_tab) {
+    var self = this;
+    let index = -1;
+    let index_value = -1;
+    self.listDataConvert.forEach(object => {
+      index++;
+      if (object.id_tab == id_tab) {
+        index_value = index;
       }
     });
+    return index_value;
+  }
+
+  getTotalPayment() {
+    var self = this;
+    var total = 0;
+    this.listPaymentBills.forEach(element => {
+      if (element.status == 'publish') {
+        total += element.total;
+      }
+    });
+    self.totalPayment = total.toString();
   }
 
   loadData(event) {
@@ -138,9 +163,13 @@ export class PaymentPage implements OnInit {
 
   formatMoney(stringValue) {
     let n = parseInt(stringValue);
-    return n.toFixed(0).replace(/./g, function(c, i, a) {
-      return i > 0 && c !== "," && (a.length - i) % 3 === 0 ? "." + c : c;
-    });
+    if (n) {
+      return n.toFixed(0).replace(/./g, function(c, i, a) {
+        return i > 0 && c !== "," && (a.length - i) % 3 === 0 ? "." + c : c;
+      });
+    } else {
+      return "-";
+    }
   }
 
   paymentNow(){
