@@ -302,7 +302,7 @@ export class HomePage implements OnInit {
           }
         }
         
-        console.log('paymentbill'+self.listPaymentBills)
+        // console.log('paymentbill'+self.listPaymentBills)
         if (event) {
           event.target.complete();
         }

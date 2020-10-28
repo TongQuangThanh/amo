@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, NavParams } from '@ionic/angular';
+import { ModalController, NavParams, NavController } from '@ionic/angular';
 import { TranslateConfigService } from '../../translate-config.service';
 
 @Component({
@@ -13,11 +13,19 @@ export class PopupPaymentSuccessPage implements OnInit {
   constructor(
     private translateConfigService: TranslateConfigService,
     private modalController: ModalController,
+    private navCtrl: NavController
   ) {
     this.selectedLanguage = this.translateConfigService.getDefaultLanguage();
   }
 
   ngOnInit() {
+  }
+  listPayment(){
+    var self = this;
+    this.closeModal();
+    setTimeout(function() {
+      self.navCtrl.navigateForward('dashboard/payment');
+    }, 300);
   }
 
   closeModal() {
