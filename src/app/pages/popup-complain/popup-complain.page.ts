@@ -148,7 +148,7 @@ export class PopupComplainPage implements OnInit {
       this.flag_user = message.type;
       return 'margin-top-20';
     } else {
-      return '';
+      return 'no-name';
     }
   }
 

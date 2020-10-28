@@ -67,11 +67,11 @@
       <ion-label class="section-title">{{ 'PAYMENT_INFOR.payment_method' | translate }}</ion-label>
     </ion-item>
     <ion-item lines="none" class="">
-      <input type="radio" name="radio1" id="payment_online" value="payment_online" disabled><label class="free-label one col online" for="payment_online">{{ 'PAYMENT_INFOR.payment_online' | translate }}</label>
+      <input type="radio" name="radio1" id="payment_online" value="payment_online" (click)="paymentOnlineModal()"><label class="free-label one col online" for="payment_online">{{ 'PAYMENT_INFOR.payment_online' | translate }}</label>
     </ion-item>
     <ion-item lines="none" class="">
-      <input type="radio" name="radio1" id="payment_transfer" value="payment_transfer"><label class="basic-label two col transfer" for="payment_transfer">{{ 'PAYMENT_INFOR.payment_transfer' | translate }}</label>
-      <input type="radio" name="radio1" id="payment_cash" value="payment_cash" checked><label class="premium-label two col cash" for="payment_cash">{{ 'PAYMENT_INFOR.payment_cash' | translate }}</label>
+      <input type="radio" name="radio1" id="payment_transfer" value="payment_transfer" (click)="paymentTransferModal()"><label class="basic-label two col transfer" for="payment_transfer">{{ 'PAYMENT_INFOR.payment_transfer' | translate }}</label>
+      <input type="radio" name="radio1" id="payment_cash" value="payment_cash" checked (click)="paymentCashModal()"><label class="premium-label two col cash" for="payment_cash">{{ 'PAYMENT_INFOR.payment_cash' | translate }}</label>
     </ion-item>
   </section>
   
