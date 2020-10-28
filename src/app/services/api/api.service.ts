@@ -582,4 +582,10 @@ export class ApiService {
     );
   }
 
+  postPayTheBill(params: any): Observable<any> {
+    return this.http.post(EnvService.paymentLog, params).pipe(
+      map(results => results)
+    );
+  }
+
 }

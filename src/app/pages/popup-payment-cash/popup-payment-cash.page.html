@@ -7,7 +7,10 @@
       </ion-buttons>
     </ion-item>
     <ion-item lines="none" class="ion-text-center modal-item">
-      <ion-text class="delete_message">{{ 'PAYMENT_INFOR.payment_cash_message' | translate }}</ion-text>
+      <div><ion-text class="delete_message">{{cash.description}}</ion-text></div>
+    </ion-item>
+    <ion-item lines="none" class="ion-text-center modal-item">
+      <div><ion-text class="delete_message"><ion-text class="delete_message">{{ 'PAYMENT_INFOR.payment_cash_message' | translate }} {{date}}</ion-text></ion-text></div>
     </ion-item>
   </div>
   

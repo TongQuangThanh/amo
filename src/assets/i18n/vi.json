@@ -284,7 +284,7 @@
         "payment_transfer": "Ch.khoản",
         "payment_cash": "Tiền mặt",
         "btn_copy" : "Sao chép",
-        "payment_cash_message" : "Quý cư dân vui lòng thanh toán phí dịch vụ tại sảnh của tòa nhà từ ngày 13/05/2020",
+        "payment_cash_message" : "Vui lòng thanh toán phí dịch vụ trước ngày:",
         "payment_online_message" : "",
         "payment_transfer_message" : "Quý cư dân vui lòng thanh toán phí dịch vụ qua tài khoản ngân hàng BQL với nội dung như sau:",
         "payment_transfer_subtitle" : "Tên căn hộ _ Phí dịch vụ tháng...",
