@@ -7,6 +7,10 @@ import { LoadingService } from '../../services/loading/loading.service';
 import { SelectorFlags } from '@angular/compiler/src/core';
 import { UtilsService } from '../../utils/utils.service';
 import { ModalController } from '@ionic/angular';
+import { Clipboard } from '@ionic-native/clipboard/ngx';
+import { AlertService } from '../../services/alert/alert.service';
+import { TranslateService } from '@ngx-translate/core';
+
 
 import { PopupPaymentCashPage } from '../popup-payment-cash/popup-payment-cash.page';
 import { PopupPaymentTransferPage } from '../popup-payment-transfer/popup-payment-transfer.page';
@@ -30,17 +34,22 @@ export class PaymentInforPage implements OnInit {
   paymentID: string;
   managementFeeEnable: any;
   paymentStatus: any;
+  paymentType: any;
+  paymentCategoryCash: any;
   constructor(
     public modalController: ModalController,
     private loading: LoadingService,
     private apiService: ApiService,
     private navCtrl: NavController,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private clipboard: Clipboard,
+    private translate: TranslateService,
+    private alertService: AlertService
   ) { }
   ngOnInit() {
     this.paymentID = this.route.snapshot.paramMap.get('id');
     this.listPaymentContent = [];
-
+    this.paymentType = "cash";
     this.getPaymentDetail(this.paymentID);
   }
 
@@ -53,6 +62,7 @@ export class PaymentInforPage implements OnInit {
         self.titlePage = result.paymentBill.payment.title;
         self.paymentStartAt = result.paymentBill.payment.paymentStartAt;
         self.paymentCategoryTranfer = result.paymentBill.category.transfer;
+        self.paymentCategoryCash = result.paymentBill.category.cash;
         self.paymentEndAt = result.paymentBill.payment.paymentEndAt;
         self.listPaymentContent = result.paymentBill.content;
         self.paymentStatus = result.paymentBill.status;
@@ -102,20 +112,32 @@ export class PaymentInforPage implements OnInit {
   }
 
   async paymentCashModal() {
+    this.paymentType = "cash";
+    var self = this;
     const modal = await this.modalController.create({
       component: PopupPaymentCashPage,
+      componentProps: {
+        cash: self.paymentCategoryCash,
+        date: self.formatString(self.paymentEndAt)
+      },
       cssClass: 'popupPaymentCash-page-custom'
     });
     return await modal.present();
   }
   async paymentTransferModal() {
+    this.paymentType = "transfer";
+    var self = this;
     const modal = await this.modalController.create({
       component: PopupPaymentTransferPage,
+      componentProps: {
+        transfer: self.paymentCategoryTranfer
+      },
       cssClass: 'popupPaymentTransfer-page-custom'
     });
     return await modal.present();
   }
   async paymentOnlineModal() {
+    this.paymentType = "online";
     const modal = await this.modalController.create({
       component: PopupPaymentOnlinePage,
       cssClass: 'popupPaymentOnline-page-custom'
@@ -139,5 +161,25 @@ export class PaymentInforPage implements OnInit {
       cssClass: 'popupPaymentComplain-page-custom'
     });
     return await modal.present();
+  }
+  payTheBill() {
+    this.loading.present();
+    const self = this;
+    const params = {
+      bill: this.paymentID,
+      type: this.paymentType,
+      bank: "",
+      amount: this.totalCash,
+      note: ""
+    }
+    this.apiService.postPayTheBill(params)
+      .subscribe(result => {
+        self.loading.dismiss();
+        self.paymentSuccessModal();
+    },
+    error => {
+      self.loading.dismiss();
+      self.alertService.presentToast(error.error.message);
+    });
   }
 }

@@ -9,15 +9,20 @@ import { TranslateConfigService } from '../../translate-config.service';
 })
 export class PopupPaymentCashPage implements OnInit {
   selectedLanguage:string;
+  date: any;
+  cash: any;
 
   constructor(
     private translateConfigService: TranslateConfigService,
     private modalController: ModalController,
+    private navParams: NavParams,
   ) {
     this.selectedLanguage = this.translateConfigService.getDefaultLanguage();
   }
 
   ngOnInit() {
+    this.date = this.navParams.data.date;
+    this.cash = this.navParams.data.cash;
   }
 
   closeModal() {
