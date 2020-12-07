@@ -114,7 +114,8 @@
         "send": "Send",
         "feeback_placeholder": "Send us your feedback...",
         "logout_message": "Are you sure you want to logout AMO account?",
-        "btn_cancel": "Cancel"
+        "btn_cancel": "Cancel",
+        "feedback_success": "Your comments have been sent to the building management"
     },
     "MY_ACCOUNT_DETAIL": {
         "title": "Account information",

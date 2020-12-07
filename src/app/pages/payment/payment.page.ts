@@ -105,6 +105,11 @@ export class PaymentPage implements OnInit {
         });
         index = self.listDataConvert.length - 1;
       }
+      let today = new Date();
+      let endAt = new Date(payment.payment.endAt);
+      if (today > endAt && payment.status == "publish") {
+        payment.status = "outdate";
+      }
       self.listDataConvert[index]['data'].push(payment);
       let index_all = self.getIndexCategoryInList("0");
       self.listDataConvert[index_all]['data'].push(payment);
@@ -153,7 +158,7 @@ export class PaymentPage implements OnInit {
 
   doRefresh(event) {
     this.currentPage = 1;
-    this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
+    this.numberRecordOnPage = 2000;
     this.getPaymentLogs(this.currentPage, this.numberRecordOnPage, '', '', event, true);
   }
 

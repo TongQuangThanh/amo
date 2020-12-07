@@ -67,7 +67,6 @@ export class RequestDetailPage implements OnInit, AfterViewInit {
     const self = this;
     this.apiService.getRequestDetail(requestID)
       .subscribe(result => {
-        console.log(result);
         self.requestTitle = result.feedback.title;
         self.requestContent = result.feedback.content;
         self.createdAt = result.feedback.createdAt;
@@ -79,7 +78,6 @@ export class RequestDetailPage implements OnInit, AfterViewInit {
         }
         self.updateSizeContent();
         self.getListMessage(self.feedbackID);
-        // console.log("content length : "+self.requestContent.length);
     },
     error => {
       self.loading.dismiss();
