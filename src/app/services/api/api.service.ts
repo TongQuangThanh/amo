@@ -565,13 +565,13 @@ export class ApiService {
     );
   }
   deleteApartmentMember(params: any): Observable<any> {
-    return this.http.delete(EnvService.apartmentMember, params).pipe(
+    return this.http.request('delete', EnvService.apartmentMember, { body: params }).pipe(
       map(results => results)
     );
   }
 
   deleteApartmentVehicle(params: any): Observable<any> {
-    return this.http.delete(EnvService.apartmentVehicle, params).pipe(
+    return this.http.request('delete', EnvService.apartmentVehicle, { body: params }).pipe(
       map(results => results)
     );
   }
