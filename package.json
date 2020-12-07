@@ -1,6 +1,6 @@
 {
   "name": "anhmo-mobile-new",
-  "version": "4.0.7",
+  "version": "4.0.8",
   "author": "AMO",
   "homepage": "http://amoapp.net/",
   "scripts": {
@@ -12,8 +12,8 @@
     "e2e": "ng e2e",
     "updateAndroid": "ionic cordova prepare android --prod --release",
     "updateIOS": "ionic cordova prepare ios --prod --release",
-    "buidlAndroid": "ionic cordova build android --prod --release",
-    "buidlIOS": "ionic cordova build ios --prod --release",
+    "buildAndroid": "ionic cordova build android --prod --release",
+    "buildIOS": "ionic cordova build ios --prod --release",
     "codePushAndroid": "appcenter codepush release-cordova -a amtechcom.dev/AMO_v4_android -d Production",
     "codePushIOS": "appcenter codepush release-cordova -a amtechcom.dev/AMO_v4_ios -d Production"
   },
@@ -33,7 +33,7 @@
     "@ionic-native/call-number": "^5.27.0",
     "@ionic-native/camera": "^5.29.0",
     "@ionic-native/clipboard": "^5.29.0",
-    "@ionic-native/code-push": "^5.27.0",
+    "@ionic-native/code-push": "^5.29.0",
     "@ionic-native/core": "^5.27.0",
     "@ionic-native/deeplinks": "^5.27.0",
     "@ionic-native/file": "^5.27.0",
@@ -53,7 +53,7 @@
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
     "call-number": "^1.0.1",
-    "code-push": "^3.1.5",
+    "code-push": "^3.0.1",
     "com.telerik.plugins.nativepagetransitions": "^0.6.5",
     "compare-func": "^2.0.0",
     "cordova-android": "^9.0.0",
@@ -133,7 +133,8 @@
       "cordova-plugin-preview-any-file": {},
       "cordova-plugin-advanced-http": {},
       "onesignal-cordova-plugin": {},
-      "cordova-clipboard": {}
+      "cordova-clipboard": {},
+      "cordova-plugin-code-push": {}
     },
     "platforms": [
       "android",

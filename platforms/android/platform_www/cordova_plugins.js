@@ -203,6 +203,11 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "pluginId": "cordova-plugin-advanced-http"
     },
     {
+      "id": "cordova-plugin-advanced-http.dependency-validator",
+      "file": "plugins/cordova-plugin-advanced-http/www/dependency-validator.js",
+      "pluginId": "cordova-plugin-advanced-http"
+    },
+    {
       "id": "cordova-plugin-advanced-http.error-codes",
       "file": "plugins/cordova-plugin-advanced-http/www/error-codes.js",
       "pluginId": "cordova-plugin-advanced-http"
@@ -235,6 +240,11 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     {
       "id": "cordova-plugin-advanced-http.messages",
       "file": "plugins/cordova-plugin-advanced-http/www/messages.js",
+      "pluginId": "cordova-plugin-advanced-http"
+    },
+    {
+      "id": "cordova-plugin-advanced-http.ponyfills",
+      "file": "plugins/cordova-plugin-advanced-http/www/ponyfills.js",
       "pluginId": "cordova-plugin-advanced-http"
     },
     {
@@ -314,6 +324,14 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "pluginId": "cordova-plugin-device",
       "clobbers": [
         "device"
+      ]
+    },
+    {
+      "id": "cordova-plugin-zip.Zip",
+      "file": "plugins/cordova-plugin-zip/zip.js",
+      "pluginId": "cordova-plugin-zip",
+      "clobbers": [
+        "zip"
       ]
     },
     {
@@ -480,110 +498,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
-      "id": "cordova-plugin-zip.Zip",
-      "file": "plugins/cordova-plugin-zip/zip.js",
-      "pluginId": "cordova-plugin-zip",
-      "clobbers": [
-        "zip"
-      ]
-    },
-    {
-      "id": "cordova.plugins.diagnostic.Diagnostic",
-      "file": "plugins/cordova.plugins.diagnostic/www/android/diagnostic.js",
-      "pluginId": "cordova.plugins.diagnostic",
-      "merges": [
-        "cordova.plugins.diagnostic"
-      ]
-    },
-    {
-      "id": "cordova.plugins.diagnostic.Diagnostic_Location",
-      "file": "plugins/cordova.plugins.diagnostic/www/android/diagnostic.location.js",
-      "pluginId": "cordova.plugins.diagnostic",
-      "merges": [
-        "cordova.plugins.diagnostic.location"
-      ]
-    },
-    {
-      "id": "cordova.plugins.diagnostic.Diagnostic_Bluetooth",
-      "file": "plugins/cordova.plugins.diagnostic/www/android/diagnostic.bluetooth.js",
-      "pluginId": "cordova.plugins.diagnostic",
-      "merges": [
-        "cordova.plugins.diagnostic.bluetooth"
-      ]
-    },
-    {
-      "id": "cordova.plugins.diagnostic.Diagnostic_Wifi",
-      "file": "plugins/cordova.plugins.diagnostic/www/android/diagnostic.wifi.js",
-      "pluginId": "cordova.plugins.diagnostic",
-      "merges": [
-        "cordova.plugins.diagnostic.wifi"
-      ]
-    },
-    {
-      "id": "cordova.plugins.diagnostic.Diagnostic_Camera",
-      "file": "plugins/cordova.plugins.diagnostic/www/android/diagnostic.camera.js",
-      "pluginId": "cordova.plugins.diagnostic",
-      "merges": [
-        "cordova.plugins.diagnostic.camera"
-      ]
-    },
-    {
-      "id": "cordova.plugins.diagnostic.Diagnostic_Notifications",
-      "file": "plugins/cordova.plugins.diagnostic/www/android/diagnostic.notifications.js",
-      "pluginId": "cordova.plugins.diagnostic",
-      "merges": [
-        "cordova.plugins.diagnostic.notifications"
-      ]
-    },
-    {
-      "id": "cordova.plugins.diagnostic.Diagnostic_Microphone",
-      "file": "plugins/cordova.plugins.diagnostic/www/android/diagnostic.microphone.js",
-      "pluginId": "cordova.plugins.diagnostic",
-      "merges": [
-        "cordova.plugins.diagnostic.microphone"
-      ]
-    },
-    {
-      "id": "cordova.plugins.diagnostic.Diagnostic_Contacts",
-      "file": "plugins/cordova.plugins.diagnostic/www/android/diagnostic.contacts.js",
-      "pluginId": "cordova.plugins.diagnostic",
-      "merges": [
-        "cordova.plugins.diagnostic.contacts"
-      ]
-    },
-    {
-      "id": "cordova.plugins.diagnostic.Diagnostic_Calendar",
-      "file": "plugins/cordova.plugins.diagnostic/www/android/diagnostic.calendar.js",
-      "pluginId": "cordova.plugins.diagnostic",
-      "merges": [
-        "cordova.plugins.diagnostic.calendar"
-      ]
-    },
-    {
-      "id": "cordova.plugins.diagnostic.Diagnostic_NFC",
-      "file": "plugins/cordova.plugins.diagnostic/www/android/diagnostic.nfc.js",
-      "pluginId": "cordova.plugins.diagnostic",
-      "merges": [
-        "cordova.plugins.diagnostic.nfc"
-      ]
-    },
-    {
-      "id": "cordova.plugins.diagnostic.Diagnostic_External_Storage",
-      "file": "plugins/cordova.plugins.diagnostic/www/android/diagnostic.external_storage.js",
-      "pluginId": "cordova.plugins.diagnostic",
-      "merges": [
-        "cordova.plugins.diagnostic.external_storage"
-      ]
-    },
-    {
-      "id": "mx.ferreyra.callnumber.CallNumber",
-      "file": "plugins/mx.ferreyra.callnumber/www/CallNumber.js",
-      "pluginId": "mx.ferreyra.callnumber",
-      "clobbers": [
-        "call"
-      ]
-    },
-    {
       "id": "onesignal-cordova-plugin.OneSignal",
       "file": "plugins/onesignal-cordova-plugin/www/OneSignal.js",
       "pluginId": "onesignal-cordova-plugin",
@@ -597,24 +511,22 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "com.telerik.plugins.nativepagetransitions": "0.6.5",
     "cordova-clipboard": "1.3.0",
     "cordova-plugin-file": "6.0.2",
-    "cordova-plugin-advanced-http": "2.2.0",
+    "cordova-plugin-advanced-http": "2.5.1",
     "cordova-plugin-camera": "5.0.0",
     "cordova-plugin-dialogs": "2.0.2",
-    "cordova-plugin-device": "2.0.2",
-    "cordova-plugin-code-push": "1.12.0",
+    "cordova-plugin-device": "2.0.3",
+    "cordova-plugin-zip": "3.1.0",
+    "cordova-plugin-code-push": "1.13.1",
     "cordova-plugin-file-transfer": "1.7.1",
     "cordova-plugin-geolocation": "4.0.2",
-    "cordova-plugin-inappbrowser": "3.1.0",
+    "cordova-plugin-inappbrowser": "3.2.0",
     "cordova-plugin-ionic-keyboard": "2.2.0",
-    "cordova-plugin-ionic-webview": "4.1.2",
+    "cordova-plugin-ionic-webview": "4.2.1",
     "cordova-plugin-preview-any-file": "0.1.6",
-    "cordova-plugin-splashscreen": "5.0.2",
-    "cordova-plugin-statusbar": "2.4.2",
+    "cordova-plugin-splashscreen": "5.0.4",
+    "cordova-plugin-statusbar": "2.4.3",
     "cordova-plugin-telerik-imagepicker": "2.3.3",
-    "cordova-plugin-whitelist": "1.3.3",
-    "cordova-plugin-zip": "3.1.0",
-    "cordova.plugins.diagnostic": "5.0.2",
-    "mx.ferreyra.callnumber": "0.0.2",
-    "onesignal-cordova-plugin": "2.6.0"
+    "cordova-plugin-whitelist": "1.3.4",
+    "onesignal-cordova-plugin": "2.11.1"
   };
 });

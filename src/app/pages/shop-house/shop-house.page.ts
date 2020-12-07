@@ -84,10 +84,12 @@ export class ShopHousePage implements OnInit {
           if (product.requestShopProduct) {
             self.data_shop_house['_id'] = product.requestShopProduct._id;
             self.data_shop_house['text_title'] = product.requestShopProduct.title;
-            let text_place = '';
-            try {
-              text_place = product.requestShopProduct.apartment.title + ' - ' + product.requestShopProduct.apartment.campaign.title;
-            } catch (e) {}
+            let text_place = 'AMO';
+            if(product.requestShopProduct.apartment){
+              try {
+                text_place = product.requestShopProduct.apartment.title + ' - ' + product.requestShopProduct.apartment.campaign.title;
+              } catch (e) {}
+            }
             self.data_shop_house['text_place'] = text_place;
             self.data_shop_house['text_star_rate'] = product.requestShopProduct.stars;
             let thumbnail = product.requestShopProduct.thumbnail;

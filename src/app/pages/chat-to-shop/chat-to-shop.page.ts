@@ -176,29 +176,40 @@ export class ChatToShopPage implements OnInit {
     this.pickImage(sourceType);
   }
 
+  blobToFile = (theBlob: Blob, fileName:string): any => {
+    var b: any = theBlob;
+    //A Blob() is almost a File() - it's just missing the two properties below which we will add
+    b.lastModifiedDate = new Date();
+    b.name = fileName;
+
+    //Cast to a File() type
+    return theBlob;
+  }
+
   pickImage(sourceType) {
     var self = this;
     const options: CameraOptions = {
       quality: 80,
       sourceType: sourceType,
       destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.PNG,
+      encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       targetWidth: 800,
       targetHeight: 800,
+      correctOrientation: true,
     }
     
     this.camera.getPicture(options).then((imageData) => {
-      console.log(imageData);
-      const base64 = 'data:image/png;base64,';
+    
+      const base64Define = 'data:image/jpeg;base64,';
+      var binaryBlob = this.convertBase64ToBlob(base64Define+imageData);
       const date = new Date().valueOf();
-      const imageName = date+ '.png';
-      var binaryBlob = this.convertBase64ToBlob(base64+imageData)
-      //var binaryBlob = atob(imageData);
-      //const imageFile = new File([binaryBlob], imageName, { type: 'image/png' });
+      const formData = new FormData();
+      var fileName = "amoapp" + date + ".jpg";
+      var myFile = self.blobToFile(binaryBlob, fileName);
       const payload = new FormData();
-      payload.append('media', binaryBlob, imageName);
-      
+      payload.append('media', binaryBlob, fileName);
+
       this.apiService.uploadImage(payload)
       .subscribe(result => {
         console.log(result);

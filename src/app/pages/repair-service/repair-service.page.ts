@@ -72,10 +72,12 @@ export class RepairServicePage implements OnInit {
             text_note = '-'+text_note;
           }
           let type_note = product.promotionKM == "KM" ? 2 : 1;
-          let text_place = '';
-          try {
-            text_place = product.apartment.title + ' - ' + product.apartment.campaign.title;
-          } catch (e) {}
+          let text_place = 'AMO';
+          if(product.apartment){
+            try {
+              text_place = product.apartment.title + ' - ' + product.apartment.campaign.title;
+            } catch (e) {}
+          }
           let text_star_rate = product.stars;
           let text_tag = product.promotion ? product.promotion : "";
           let object = {
@@ -142,7 +144,11 @@ export class RepairServicePage implements OnInit {
           if (product.requestShopProduct) {
             self.data_shop_house['_id'] = product.requestShopProduct._id;
             self.data_shop_house['text_title'] = product.requestShopProduct.title;
-            self.data_shop_house['text_place'] = product.requestShopProduct.apartment.title + ' - ' + product.requestShopProduct.apartment.campaign.title;
+            if(product.requestShopProduct.apartment){
+              self.data_shop_house['text_place'] = product.requestShopProduct.apartment.title + ' - ' + product.requestShopProduct.apartment.campaign.title;
+            } else {
+              self.data_shop_house['text_place'] = "AMO";
+            }
             self.data_shop_house['text_star_rate'] = product.requestShopProduct.stars;
             let thumbnail = product.requestShopProduct.thumbnail;
             let logo = product.requestShopProduct.thumbnail;

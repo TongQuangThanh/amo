@@ -191,27 +191,16 @@ export class AddRequestPage implements OnInit {
   checkPicturePermission(sourceType : PictureSourceType)
   {
     this.pickImage(sourceType);
-    // console.log("Should be checking permissions...");
-    // this.diagnostic.getPermissionAuthorizationStatus(this.diagnostic.permission.CAMERA).then((status)=>{
-    //   console.log('AuthorizationStatus');
-    //   console.log(status);
+  }
 
-    //   if (status !== this.diagnostic.permissionStatus.GRANTED){
-    //     this.diagnostic.requestRuntimePermission(this.diagnostic.permission.CAMERA).then((data)=>{
-    //       console.log('getCameraAuthorizationStatus');
-    //       console.log(data);
-    //       this.pickImage(sourceType);
-    //     })
-    //   }
-    //   else {
-    //     console.log("We have permission.");
-    //     this.pickImage(sourceType);
-    //   }
+  blobToFile = (theBlob: Blob, fileName:string): any => {
+    var b: any = theBlob;
+    //A Blob() is almost a File() - it's just missing the two properties below which we will add
+    b.lastModifiedDate = new Date();
+    b.name = fileName;
 
-    // }, (statusError)=>{
-    //   console.log("Error!");
-    //   console.log(statusError)
-    // });
+    //Cast to a File() type
+    return theBlob;
   }
 
   pickImage(sourceType) {
@@ -220,22 +209,22 @@ export class AddRequestPage implements OnInit {
       quality: 80,
       sourceType: sourceType,
       destinationType: this.camera.DestinationType.DATA_URL,
-      encodingType: this.camera.EncodingType.PNG,
+      encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE,
       targetWidth: 800,
       targetHeight: 800,
+      correctOrientation: true,
     }
     
     this.camera.getPicture(options).then((imageData) => {
-      console.log(imageData);
-      const base64 = 'data:image/png;base64,';
+      const base64Define = 'data:image/jpeg;base64,';
+      var binaryBlob = this.convertBase64ToBlob(base64Define+imageData);
       const date = new Date().valueOf();
-      const imageName = date+ '.png';
-      var binaryBlob = this.convertBase64ToBlob(base64+imageData)
-      //var binaryBlob = atob(imageData);
-      //const imageFile = new File([binaryBlob], imageName, { type: 'image/png' });
+      const formData = new FormData();
+      var fileName = "amoapp" + date + ".jpg";
+      var myFile = self.blobToFile(binaryBlob, fileName);
       const payload = new FormData();
-      payload.append('media', binaryBlob, imageName);
+      payload.append('media', binaryBlob, fileName);
       
       this.apiService.uploadImage(payload)
       .subscribe(result => {

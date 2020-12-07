@@ -1,6 +1,14 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
   module.exports = [
     {
+      "id": "code-push.AcquisitionManager",
+      "file": "plugins/code-push/script/acquisition-sdk.js",
+      "pluginId": "code-push",
+      "merges": [
+        "window"
+      ]
+    },
+    {
       "id": "com.telerik.plugins.nativepagetransitions.NativePageTransitions",
       "file": "plugins/com.telerik.plugins.nativepagetransitions/www/NativePageTransitions.js",
       "pluginId": "com.telerik.plugins.nativepagetransitions",
@@ -295,12 +303,104 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       ]
     },
     {
+      "id": "cordova-plugin-dialogs.notification",
+      "file": "plugins/cordova-plugin-dialogs/www/notification.js",
+      "pluginId": "cordova-plugin-dialogs",
+      "merges": [
+        "navigator.notification"
+      ]
+    },
+    {
       "id": "cordova-plugin-device.device",
       "file": "plugins/cordova-plugin-device/www/device.js",
       "pluginId": "cordova-plugin-device",
       "clobbers": [
         "device"
       ]
+    },
+    {
+      "id": "cordova-plugin-zip.Zip",
+      "file": "plugins/cordova-plugin-zip/zip.js",
+      "pluginId": "cordova-plugin-zip",
+      "clobbers": [
+        "zip"
+      ]
+    },
+    {
+      "id": "cordova-plugin-code-push.codePush",
+      "file": "plugins/cordova-plugin-code-push/bin/www/codePush.js",
+      "pluginId": "cordova-plugin-code-push",
+      "clobbers": [
+        "codePush"
+      ]
+    },
+    {
+      "id": "cordova-plugin-code-push.localPackage",
+      "file": "plugins/cordova-plugin-code-push/bin/www/localPackage.js",
+      "pluginId": "cordova-plugin-code-push",
+      "clobbers": [
+        "LocalPackage"
+      ]
+    },
+    {
+      "id": "cordova-plugin-code-push.remotePackage",
+      "file": "plugins/cordova-plugin-code-push/bin/www/remotePackage.js",
+      "pluginId": "cordova-plugin-code-push",
+      "clobbers": [
+        "RemotePackage"
+      ]
+    },
+    {
+      "id": "cordova-plugin-code-push.syncStatus",
+      "file": "plugins/cordova-plugin-code-push/bin/www/syncStatus.js",
+      "pluginId": "cordova-plugin-code-push",
+      "clobbers": [
+        "SyncStatus"
+      ]
+    },
+    {
+      "id": "cordova-plugin-code-push.installMode",
+      "file": "plugins/cordova-plugin-code-push/bin/www/installMode.js",
+      "pluginId": "cordova-plugin-code-push",
+      "clobbers": [
+        "InstallMode"
+      ]
+    },
+    {
+      "id": "cordova-plugin-code-push.codePushUtil",
+      "file": "plugins/cordova-plugin-code-push/bin/www/codePushUtil.js",
+      "pluginId": "cordova-plugin-code-push",
+      "runs": true
+    },
+    {
+      "id": "cordova-plugin-code-push.fileUtil",
+      "file": "plugins/cordova-plugin-code-push/bin/www/fileUtil.js",
+      "pluginId": "cordova-plugin-code-push",
+      "runs": true
+    },
+    {
+      "id": "cordova-plugin-code-push.httpRequester",
+      "file": "plugins/cordova-plugin-code-push/bin/www/httpRequester.js",
+      "pluginId": "cordova-plugin-code-push",
+      "runs": true
+    },
+    {
+      "id": "cordova-plugin-code-push.nativeAppInfo",
+      "file": "plugins/cordova-plugin-code-push/bin/www/nativeAppInfo.js",
+      "pluginId": "cordova-plugin-code-push",
+      "runs": true
+    },
+    {
+      "id": "cordova-plugin-code-push.package",
+      "file": "plugins/cordova-plugin-code-push/bin/www/package.js",
+      "pluginId": "cordova-plugin-code-push",
+      "runs": true
+    },
+    {
+      "id": "cordova-plugin-code-push.sdk",
+      "file": "plugins/cordova-plugin-code-push/bin/www/sdk.js",
+      "pluginId": "cordova-plugin-code-push",
+      "runs": true
     },
     {
       "id": "cordova-plugin-file-transfer.FileTransferError",
@@ -425,12 +525,16 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     }
   ];
   module.exports.metadata = {
+    "code-push": "3.0.1",
     "com.telerik.plugins.nativepagetransitions": "0.6.5",
     "cordova-clipboard": "1.3.0",
     "cordova-plugin-file": "6.0.2",
     "cordova-plugin-advanced-http": "2.5.1",
     "cordova-plugin-camera": "5.0.0",
+    "cordova-plugin-dialogs": "2.0.2",
     "cordova-plugin-device": "2.0.3",
+    "cordova-plugin-zip": "3.1.0",
+    "cordova-plugin-code-push": "1.13.1",
     "cordova-plugin-file-transfer": "1.7.1",
     "cordova-plugin-geolocation": "4.0.2",
     "cordova-plugin-inappbrowser": "3.2.0",
