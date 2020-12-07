@@ -59,7 +59,8 @@
     "FORGOT_PASSWORD":{
         "forgot_password_note": "A text message with a 4-digit verification code was just sent to your phone number",
         "title": "Forgot password",
-        "btn_text_me": "Continue"
+        "btn_text_me": "Continue",
+        "error_message": "This phone number is not registered on the system!"
     },
     "HOME":{
         "title": "Home",
