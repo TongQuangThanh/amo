@@ -12,6 +12,7 @@ import { ModalController, NavParams } from '@ionic/angular';
 export class PopupDeleteVehiclePage {
   selectedLanguage:string;
   idVehicle: any;
+  apartmentID: any;
 
   constructor(
     private modalController: ModalController,
@@ -23,11 +24,13 @@ export class PopupDeleteVehiclePage {
 
   ngOnInit() {
     this.idVehicle = this.navParams.data.id;
+    this.apartmentID = this.navParams.data.apartmentID;
   }
 
   deleteVehicle(){
     var self = this;
     const params = {
+      apartment: self.apartmentID,
       vehicleId: self.idVehicle
     };
     this.loading.present();

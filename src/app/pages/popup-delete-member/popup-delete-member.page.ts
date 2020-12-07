@@ -11,6 +11,7 @@ import { ModalController, NavParams } from '@ionic/angular';
 })
 export class PopupDeleteMemberPage {
   idMember: any;
+  apartmentID: any;
   
   constructor(
     private apiService: ApiService,
@@ -23,10 +24,12 @@ export class PopupDeleteMemberPage {
 
   ngOnInit() {
     this.idMember = this.navParams.data.id;
+    this.apartmentID = this.navParams.data.apartmentID;
   }
   deleteMember(){
     var self = this;
     const params = {
+      apartment: self.apartmentID,
       memberId: self.idMember
     };
     this.loading.present();

@@ -588,4 +588,16 @@ export class ApiService {
     );
   }
 
+  postUserComment(params: any): Observable<any> {
+    return this.http.post(EnvService.userComment, params).pipe(
+      map(results => results)
+    );
+  }
+
+  postUpdateAvatar(params: any): Observable<any> {
+    return this.http.post(EnvService.updateAvatar, params).pipe(
+      map(results => results)
+    );
+  }
+
 }

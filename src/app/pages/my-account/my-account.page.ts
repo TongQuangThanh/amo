@@ -10,6 +10,8 @@ import { ActionSheetController } from '@ionic/angular';
 import { TranslateConfigService } from '../../translate-config.service';
 import { ModalController } from '@ionic/angular';
 
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+
 import { PopupHotlinePage } from '../popup-hotline/popup-hotline.page';
 import { PopupFeedbackPage } from '../popup-feedback/popup-feedback.page';
 import { PopupLogoutPage } from '../popup-logout/popup-logout.page';
@@ -46,7 +48,7 @@ export class MyAccountPage implements OnInit {
     private authService: AuthService,
     public actionSheetController: ActionSheetController,
     private translateConfigService: TranslateConfigService,
-    
+    private iab: InAppBrowser
   ) { 
     // this.listCountries = ConstService.LIST_COUNTRIES;
     this.selectedLanguage = this.translateConfigService.getDefaultLanguage();
@@ -152,11 +154,19 @@ export class MyAccountPage implements OnInit {
   }
 
   changeToTerms(){
-    this.navCtrl.navigateForward('/terms');
+    const browser = this.iab.create("https://amoapp.com.vn/dieu-khoan-su-dung/",'_system', 'location=yes, enableviewportscale=yes');
+    browser.show();
+    // this.navCtrl.navigateForward('/terms');
   }
 
   changeToGuideline(){
-    this.navCtrl.navigateForward('/guideline');
+    const browser = this.iab.create("https://amoapp.com.vn/vestibulum-rutrum-mi-nec-elementum/",'_system', 'location=yes, enableviewportscale=yes');
+    browser.show();
+    // this.navCtrl.navigateForward('/guideline');
+  }
+  openToRateApp(){
+    const browser = this.iab.create("http://onelink.to/umn6f2", "_system", "location=yes, enableviewportscale=yes");
+    browser.show();
   }
 
   async hotlineModal() {
@@ -189,9 +199,5 @@ export class MyAccountPage implements OnInit {
       cssClass: 'changepass-page-custom'
     });
     return await modal.present();
-  }
-
-  openToRateApp(){
-
   }
 }

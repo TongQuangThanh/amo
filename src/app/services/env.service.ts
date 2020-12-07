@@ -85,6 +85,7 @@ export const EnvService = {
   // fixbug
   apartmentMember: environment.base + '/apartment/member',
   apartmentVehicle: environment.base + '/apartment/vehicle',
+  userComment: environment.base + '/user-comment',
   
 };
 

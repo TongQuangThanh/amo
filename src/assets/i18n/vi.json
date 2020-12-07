@@ -114,7 +114,8 @@
         "send": "Gửi",
         "feeback_placeholder": "Viết góp ý cho chúng tôi...",
         "logout_message": "Bạn có chắc chắn muốn đăng xuất khỏi tài khoản AMO?",
-        "btn_cancel": "Huỷ"
+        "btn_cancel": "Huỷ",
+        "feedback_success": "Góp ý của bạn đã được gửi đến ban quản lý tòa nhà"
     },
     "MY_ACCOUNT_DETAIL": {
         "title": "Thông tin tài khoản",

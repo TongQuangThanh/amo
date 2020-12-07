@@ -66,6 +66,11 @@ export class PaymentInforPage implements OnInit {
         self.paymentEndAt = result.paymentBill.payment.paymentEndAt;
         self.listPaymentContent = result.paymentBill.content;
         self.paymentStatus = result.paymentBill.status;
+        let today = new Date();
+        let endAt = new Date(result.paymentBill.payment.paymentEndAt);
+        if (today > endAt && self.paymentStatus  == "publish") {
+          self.paymentStatus = "outdate";
+        }
         self.managementFeeEnable = new Array(self.listPaymentContent.length).fill(false);
         self.loading.dismiss()
     },
