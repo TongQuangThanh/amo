@@ -59,7 +59,8 @@
     "FORGOT_PASSWORD":{
         "forgot_password_note": "Nhập số điện thoại lấy mã xác nhận, tạo mật khẩu mới.",
         "title": "Quên mật khẩu",
-        "btn_text_me": "Tiếp tục"
+        "btn_text_me": "Tiếp tục",
+        "error_message": "Số điện thoại này chưa được đăng ký trên hệ thống!"
     },
     "HOME":{
         "title": "Home",
