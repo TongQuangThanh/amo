@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { TranslateConfigService } from '../../translate-config.service';
 import { NavController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
-import { ConstService } from '../../utils/const.service'
+import { ConstService } from '../../utils/const.service';
 import { LoadingService } from '../../services/loading/loading.service';
 import { AlertService } from '../../services/alert/alert.service';
 import { ApiService } from '../../services/api/api.service';
 import { TranslateService } from '@ngx-translate/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { PopupOwnerRelationshipPage } from '../popup-owner-relationship/popup-owner-relationship.page';
 
@@ -17,6 +18,7 @@ import { PopupOwnerRelationshipPage } from '../popup-owner-relationship/popup-ow
 })
 export class AddHomeMemberPage implements OnInit {
   selectedLanguage:string;
+  apartmentID: any;
   formName:string = "";
   formRelationship: any;
   formRelationshipName: any = "";
@@ -37,15 +39,17 @@ export class AddHomeMemberPage implements OnInit {
     private navCtrl: NavController,
     private apiService: ApiService,
     private loading: LoadingService,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private route: ActivatedRoute,
   ) {
     this.selectedLanguage = this.translateConfigService.getDefaultLanguage();
   }
 
   ngOnInit() {
+    this.apartmentID = this.route.snapshot.paramMap.get('apartmentID');
     this.formRelationship = 0;
     this.listCountry = ConstService.LIST_COUNTRIES;
-    this.countryAlpha2 = "vn"
+    this.countryAlpha2 = "vn";
     this.avatarCountry = "https://lipis.github.io/flag-icon-css/flags/4x3/vn.svg";
   }
 
@@ -83,6 +87,7 @@ export class AddHomeMemberPage implements OnInit {
   addMember() {
     var self = this;
     const params = {
+      apartment: this.apartmentID,
       name: this.formName,
       phone: this.formPhoneNumber,
       email: "",

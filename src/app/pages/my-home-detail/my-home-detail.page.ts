@@ -25,6 +25,7 @@ export class MyHomeDetailPage implements OnInit {
   listMembers:any;
   apartmentTitle:string;
   memberEnable: boolean= false;
+  _userApartmentID: any;
   _apartmentID: any;
   // profile:any;
   constructor(
@@ -42,15 +43,15 @@ export class MyHomeDetailPage implements OnInit {
   }
 
   ngOnInit() {
-    const apartmentID = this.route.snapshot.paramMap.get('id');
-    this._apartmentID = apartmentID;
-    this.getListUserApar(apartmentID);
+    const userApartmentID = this.route.snapshot.paramMap.get('id');
+    this._userApartmentID = userApartmentID;
+    this.getListUserApar(userApartmentID);
   }
 
-  getListUserApar(apartmentID: string){
+  getListUserApar(userApartmentID: string){
     var self = this;
     this.loading.present();
-    this.apiService.getUserApartment(apartmentID)
+    this.apiService.getUserApartment(userApartmentID)
       .subscribe(result => {
         self.apartment = result.userApartment;
         self.listVehicle = self.apartment.apartment.vehicles;
@@ -162,6 +163,7 @@ export class MyHomeDetailPage implements OnInit {
     const modal = await this.modalController.create({
       component: PopupDeleteMemberPage,
       componentProps: {
+        apartmentID: self.apartment.apartment._id,
         id
       },
       cssClass: 'delete-member-custom-class'
@@ -170,7 +172,7 @@ export class MyHomeDetailPage implements OnInit {
       if (dataReturned && dataReturned.data) {
         const dataReturnedResult = JSON.parse(dataReturned.data);
         if (dataReturnedResult.message == "success") {
-          self.getListUserApar(self._apartmentID);
+          self.getListUserApar(self._userApartmentID);
         }
       }
     });
@@ -182,6 +184,7 @@ export class MyHomeDetailPage implements OnInit {
     const modal = await this.modalController.create({
       component: PopupDeleteVehiclePage,
       componentProps: {
+        apartmentID: self.apartment.apartment._id,
         id
       },
       cssClass: 'delete-vehicle-custom-class'
@@ -190,7 +193,7 @@ export class MyHomeDetailPage implements OnInit {
       if (dataReturned && dataReturned.data) {
         const dataReturnedResult = JSON.parse(dataReturned.data);
         if (dataReturnedResult.message == "success") {
-          self.getListUserApar(self._apartmentID);
+          self.getListUserApar(self._userApartmentID);
         }
       }
     });
@@ -202,7 +205,7 @@ export class MyHomeDetailPage implements OnInit {
   }
 
   addMember(){
-    this.navCtrl.navigateForward('/add-home-member');
+    this.navCtrl.navigateForward('/add-home-member/'  + this.apartment.apartment._id);
   }
   addVehicle(){
     this.navCtrl.navigateForward('/register-keep-vehicle');

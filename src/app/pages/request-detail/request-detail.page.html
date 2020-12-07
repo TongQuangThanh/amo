@@ -8,44 +8,35 @@
 </ion-header>
 <ion-content>
   <ion-card class="card-content">
-    <!-- <div lines="none" *ngIf="listImage.length > 0" class="grid">
-      <div *ngFor="let item1 of listImage" class="griditem">
-        <ion-img  name="radio-button-on" src="{{item1.url}}" id="{{item1._id}}" class=""></ion-img>
-      </div>
-    </div> -->
-
     <ion-grid class="image-grid">
       <ion-row class="image-row">
-        <ion-col class="image-col" size="8">
-          <img class="image-col-1 image-col-left" src="assets/common/img_test_1.jpg" />
+        <ion-col class="image-col" size="12" *ngIf="listImage.length == 1">
+          <img class="image-col-1 image-col-left" src="{{listImage[0].url}}" />
         </ion-col>
-        <ion-col class="image-col" size="4">
-          <img class="image-col-2 image-col-right-top" src="assets/common/img_test_2.jpg" />
+        <ion-col class="image-col" size="6" *ngIf="listImage.length == 2">
+          <img class="image-col-1 image-col-left" src="{{listImage[0].url}}" />
+        </ion-col>
+        <ion-col class="image-col" size="6" *ngIf="listImage.length == 2">
+          <img class="image-col-1 image-col-left" src="{{listImage[1].url}}" />
+        </ion-col>
+        <ion-col class="image-col" size="8" *ngIf="listImage.length > 2">
+          <img class="image-col-1 image-col-left" src="{{listImage[0].url}}" />
+        </ion-col>
+        <ion-col class="image-col" size="4" *ngIf="listImage.length > 2">
+          <img class="image-col-2 image-col-right-top" src="{{listImage[1].url}}" />
           <div class="image-container">
-            <img class="image-col-2 image-col-right-bottom" src="assets/common/img_test_3.jpg" />
-            <ion-label class="centered">+1</ion-label>
+            <img class="image-col-2 image-col-right-top" src="{{listImage[2].url}}" *ngIf="listImage.length == 3"/>
+            <img class="image-col-2 image-col-right-bottom" src="{{listImage[2].url}}" *ngIf="listImage.length > 3"/>
+            <ion-label class="centered" *ngIf="listImage.length > 3">+{{listImage.length - 3}}</ion-label>
           </div>          
         </ion-col>
       </ion-row>      
-    </ion-grid>    
-
+    </ion-grid>
     <ion-card-content class="box">
       <input type="checkbox" id="expanded">
       <p [innerHTML]="requestContent" #contentRequest class="text-content"></p>
       <label *ngIf="requestContent.length > 200" for="expanded" role="button">{{ 'REQUEST_DETAIL.read_more' | translate }}</label>
     </ion-card-content>
-
-    <!-- <ion-card-content class="group-box">
-      <div>
-        <div *ngIf="!showMore">
-          {{trimString(requestContent,100)}}
-        </div>
-        <div *ngIf="showMore">
-          {{requestContent}}
-        </div>
-        <a (click)="showMore = !showMore">Show <span [innerHtml]="showMore ? 'less' : 'More'"></span></a>
-      </div>
-    </ion-card-content> -->
   </ion-card>  
   <div class="devider-line"></div>
   <ion-content #content class="list-chat-content" [style.height.px]="heightScreen">
@@ -56,11 +47,9 @@
             [class.left]=" msg.createdBy._id !== currentUser._id "
             [class.right]=" msg.createdBy._id === currentUser._id ">
         <img class="user-img" [src]="msg.createdBy.avatar" alt="" />
-        <!-- <ion-spinner name="dots" *ngIf="msg.status === 'pending'"></ion-spinner> -->
         <div class="msg-detail">
           <div class="msg-info">
             <p>{{msg.createdBy.displayName}}</p>
-            <!-- <p>{{formatStringFull(msg.createdAt)}}</p> -->
           </div>
           <div class="msg-content">
             <p class="line-breaker">{{msg.content}}</p>
@@ -69,34 +58,15 @@
       </div>
     </div>
   </ion-content>
-  <!-- <div class="input-wrap"> -->
-    <!-- <button ion-button clear icon-only item-right (click)="switchEmojiPicker()">
-      <ion-icon name="md-happy"></ion-icon>
-    </button> -->
-    <!-- <ion-textarea #chat_input
-              placeholder="{{ 'REQUEST_DETAIL.place_holder_input' | translate }}"
-              [(ngModel)]="editorMsg"
-              (keyup.enter)="sendMsg()"
-              (focusin)="onFocus()">
-    </ion-textarea>
-    <ion-button class="button-send" item-right (click)="sendMsg()">
-      <ion-icon name="ios-send" ios="ios-send" md="md-send"></ion-icon>
-    </ion-button> -->
-  <!-- </div> -->
-  <!-- <emoji-picker [(ngModel)]="editorMsg"></emoji-picker> -->
 </ion-content>
 <ion-footer class="ion-no-border">
   <ion-item lines="none" class="add-comment-item">
     <ion-icon name="image" slot="start" class="add-image-icon"></ion-icon>
-    <!-- <div class="input-comment"> -->
     <ion-textarea class="input-area" 
       rows="1"  
       auto-grow
       placeholder="{{ 'REQUEST_DETAIL.place_holder_input' | translate }}">
       <ion-icon name="paper-plane" class="icon-send icon-send-default"></ion-icon>
     </ion-textarea>
-      <!-- <ion-icon name="paper-plane" class="icon-send icon-send-default"></ion-icon> -->
-    <!-- </div> -->
-    
   </ion-item>
 </ion-footer>

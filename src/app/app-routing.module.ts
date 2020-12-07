@@ -262,7 +262,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/add-home/add-home.module').then( m => m.AddHomePageModule)
   },
   {
-    path: 'add-home-member',
+    path: 'add-home-member/:apartmentID',
     loadChildren: () => import('./pages/add-home-member/add-home-member.module').then( m => m.AddHomeMemberPageModule)
   },
   {
@@ -329,7 +329,8 @@ const routes: Routes = [
   {
     path: 'popup-pincode-register',
     loadChildren: () => import('./pages/popup-pincode-register/popup-pincode-register.module').then( m => m.PopupPincodeRegisterPageModule)
-  },  {
+  },
+  {
     path: 'popup-pincode-password',
     loadChildren: () => import('./pages/popup-pincode-password/popup-pincode-password.module').then( m => m.PopupPincodePasswordPageModule)
   }

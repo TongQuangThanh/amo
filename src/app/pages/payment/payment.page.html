@@ -7,6 +7,14 @@
 </ion-header>
 
 <ion-content [scrollEvents]="false" class="no-scroll" slot="fixed">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+    pullingIcon="arrow-dropdown"
+    pullingText="{{ 'PAYMENT.pull_to_refresh' | translate }}"
+    refreshingSpinner="circles"
+    refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
   <div class="header-infor">
     <div class="title-content">
       <ion-chip class="title-chip">
@@ -44,6 +52,7 @@
                 <ion-badge class="badge-primary" *ngIf="item.status == 'pending'">{{ 'PAYMENT.status_pending' | translate }}</ion-badge>
                 <ion-badge class="badge-lightred" *ngIf="item.status == 'publish'">{{ 'PAYMENT.badge_unpaid' | translate }}</ion-badge>
                 <ion-badge class="badge-success" *ngIf="item.status == 'completed'">{{ 'PAYMENT.status_done' | translate }}</ion-badge>
+                <ion-badge class="badge-lightred" *ngIf="item.status == 'outdate'">{{ 'PAYMENT.badge_outdate' | translate }}</ion-badge>
               </ion-col>
               <ion-col size="auto">
                 <ion-icon name="ellipsis-horizontal" class="ion-float-right"></ion-icon>
@@ -142,11 +151,7 @@
           </ion-label>
         </ion-item>
       </ion-list>
-      <ion-infinite-scroll threshold="50px" (ionInfinite)="loadData($event)">
-        <ion-infinite-scroll-content class="custom-infinite-scroll" loadingSpinner="bubbles"
-          loadingText="{{ 'PAYMENT.loadding_more' | translate }}">
-        </ion-infinite-scroll-content>
-      </ion-infinite-scroll>
+      
     </ion-content>
   </div> -->
 </ion-content>

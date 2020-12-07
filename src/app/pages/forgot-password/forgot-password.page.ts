@@ -5,6 +5,8 @@ import { PopupPincodePasswordPage } from '../popup-pincode-password/popup-pincod
 import { ApiService } from '../../services/api/api.service';
 import { LoadingService } from '../../services/loading/loading.service';
 import { NavController } from '@ionic/angular';
+import { AlertService } from '../../services/alert/alert.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-forgot-password',
@@ -17,6 +19,8 @@ export class ForgotPasswordPage implements OnInit {
     private loading: LoadingService,
     public modalController: ModalController,
     private navCtrl: NavController,
+    private alertService: AlertService,
+    private translate: TranslateService,
     private apiService: ApiService) {
   }
 
@@ -39,6 +43,7 @@ export class ForgotPasswordPage implements OnInit {
     },
     error => {
       self.loading.dismiss();
+      self.alertService.presentToast(this.translate.instant('FORGOT_PASSWORD.error_message'));
     });
   }
 

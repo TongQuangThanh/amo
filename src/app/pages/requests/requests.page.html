@@ -5,11 +5,13 @@
 </ion-header>
 
 <ion-content>
-  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button class="add-button normal-button" (click)="addRequest()">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab> -->
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content
+      pullingText="{{ 'NOTIFICATION.pull_to_refresh' | translate }}"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+      </ion-refresher-content>
+  </ion-refresher>
   <super-tabs activeTabIndex="0" [config]="{ debug: true, sideMenu: 'left', allowElementScroll: true, nativeSmoothScroll: true }" class="super-tabs-content">
     <super-tabs-toolbar no-border class="segment-toolbar">
       <super-tab-button>

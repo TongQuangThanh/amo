@@ -12,7 +12,7 @@
 </ion-header>
 
 <ion-content>
-  <div class="avatar">
+  <div class="avatar" (click)="selectImage()">
     <ion-avatar class="account-avatar">
       <img src="{{avatar}}"/>
       <!-- <img src="/assets/common/img_test_2.jpg"/> -->
@@ -42,10 +42,20 @@
     </ion-item>
 
     <ion-row>
-      <ion-col class="no-padding padding-right-10" size="5">
+      <!-- <ion-col class="no-padding padding-right-10" size="5">
         <ion-item class="input-item" lines="none">
           <ion-icon class="input-icon" name="flag-vn" src="/assets/icon/flag-vn.svg" slot="start"></ion-icon>
           <ion-input class="input-text no-floating-label" type="text" name="region" value="+84"></ion-input>
+        </ion-item>
+      </ion-col> -->
+      <ion-col class="no-padding padding-right-10" size="5">
+        <ion-item class="input-item" lines="none">
+          <ion-icon class="input-icon" name="flag-vn" src="{{avatarCountry}}" slot="start"></ion-icon>
+          <ion-label class="label-phone-code">+{{formPhoneCode}}</ion-label>
+          <ion-select (ionChange)="onChangeCountry()" class="input-text select-text opacity-0" value="male" [(ngModel)]="countryAlpha2">
+            <ion-select-option *ngFor="let object of listCountry" value="{{object.alpha2}}">{{object.name}}</ion-select-option>
+          </ion-select>
+          <!-- <ion-input class="input-text no-floating-label" type="text" name="region" value="+84"></ion-input> -->
         </ion-item>
       </ion-col>
       <ion-col class="no-padding padding-left-10">

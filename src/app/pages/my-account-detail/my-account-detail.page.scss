@@ -135,3 +135,21 @@ ion-select.ios {
 .margin-left-0 {
     margin-left: 0 !important;
 }
+.pointer-events-none {
+    pointer-events: none;
+}
+.label-phone-code{
+    font-family: Nunito Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    color: #21313F;
+    overflow: auto;
+    text-overflow: initial;
+    pointer-events: none;
+    position: absolute;
+}
+.opacity-0 {
+    opacity: 0;
+}

@@ -565,13 +565,13 @@ export class ApiService {
     );
   }
   deleteApartmentMember(params: any): Observable<any> {
-    return this.http.delete(EnvService.apartmentMember, params).pipe(
+    return this.http.request('delete', EnvService.apartmentMember, { body: params }).pipe(
       map(results => results)
     );
   }
 
   deleteApartmentVehicle(params: any): Observable<any> {
-    return this.http.delete(EnvService.apartmentVehicle, params).pipe(
+    return this.http.request('delete', EnvService.apartmentVehicle, { body: params }).pipe(
       map(results => results)
     );
   }
@@ -584,6 +584,18 @@ export class ApiService {
 
   postPayTheBill(params: any): Observable<any> {
     return this.http.post(EnvService.paymentLog, params).pipe(
+      map(results => results)
+    );
+  }
+
+  postUserComment(params: any): Observable<any> {
+    return this.http.post(EnvService.userComment, params).pipe(
+      map(results => results)
+    );
+  }
+
+  postUpdateAvatar(params: any): Observable<any> {
+    return this.http.post(EnvService.updateAvatar, params).pipe(
       map(results => results)
     );
   }
