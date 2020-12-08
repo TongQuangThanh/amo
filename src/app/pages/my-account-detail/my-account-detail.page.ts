@@ -135,21 +135,21 @@ export class MyAccountDetailPage implements OnInit {
    // select image
    async selectImage() {
     const actionSheet = await this.actionSheetController.create({
-      header: "Select Image source",
+      header: this.translate.instant('COMMON.form_select_image_title'),
       buttons: [{
-        text: 'Load from Library',
+        text: this.translate.instant('COMMON.form_select_image_library'),
         handler: () => {
           this.checkPicturePermission(this.camera.PictureSourceType.PHOTOLIBRARY);
         }
       },
       {
-        text: 'Use Camera',
+        text: this.translate.instant('COMMON.form_select_image_camera'),
         handler: () => {
           this.checkPicturePermission(this.camera.PictureSourceType.CAMERA);
         }
       },
       {
-        text: 'Cancel',
+        text: this.translate.instant('COMMON.form_select_image_cancel'),
         role: 'cancel'
       }
       ]

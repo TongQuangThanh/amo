@@ -290,21 +290,21 @@ export class RegisterKeepVehiclePage implements OnInit {
   // select image
   async selectImage(_index) {
     const actionSheet = await this.actionSheetController.create({
-      header: "Select Image source",
+      header: this.translate.instant('COMMON.form_select_image_title'),
       buttons: [{
-        text: 'Load from Library',
+        text: this.translate.instant('COMMON.form_select_image_library'),
         handler: () => {
           this.checkPicturePermission(this.camera.PictureSourceType.PHOTOLIBRARY, _index);
         }
       },
       {
-        text: 'Use Camera',
+        text: this.translate.instant('COMMON.form_select_image_camera'),
         handler: () => {
           this.checkPicturePermission(this.camera.PictureSourceType.CAMERA, _index);
         }
       },
       {
-        text: 'Cancel',
+        text: this.translate.instant('COMMON.form_select_image_cancel'),
         role: 'cancel'
       }
       ]

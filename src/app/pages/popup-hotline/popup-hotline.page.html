@@ -18,10 +18,10 @@
       <p class="hotline-num">(024) 3836 3456</p>
     </ion-toolbar>
     <ion-toolbar lines="none" class="ion-text-center modal-toolbar">
-      <ion-button class="cancel-button">
+      <ion-button class="cancel-button" (click)="copyNumberPhone()">
         <ion-label class="cancel-button-label">{{ 'MY_ACCOUNT.copy_num' | translate }}</ion-label>
       </ion-button>
-      <ion-button class="delete-button">
+      <ion-button class="delete-button" (click)="callEmergency($event)">
         <ion-label class="delete-button-label">{{ 'MY_ACCOUNT.call' | translate }}</ion-label>
       </ion-button>
     </ion-toolbar>
