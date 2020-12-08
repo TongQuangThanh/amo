@@ -17,11 +17,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>4.0.7</string>
+	<string>4.0.8</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>4.0.7</string>
+	<string>4.0.8</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -29,18 +29,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
-	<key>NSCameraUsageDescription</key>
-	<string>need camera access to take pictures</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>need location access to find things nearby</string>
 	<key>NSMainNibFile</key>
-	<string></string>
+	<string/>
 	<key>NSMainNibFile~ipad</key>
-	<string></string>
-	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>need photo library access to save pictures there</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>need get image to upload</string>
+	<string/>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
@@ -60,5 +52,13 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>need photo library access to get pictures from there</string>
+	<key>NSCameraUsageDescription</key>
+	<string>need camera access to take pictures</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>need location access to find things nearby</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>need photo library access to save pictures there</string>
 </dict>
 </plist>

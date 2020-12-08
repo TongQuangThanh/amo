@@ -247,7 +247,7 @@ export class ServicesPage implements OnInit {
             text_note = '-'+text_note;
           }
           let type_note = product.promotionKM == "KM" ? 2 : 1;
-          let text_place = "";
+          let text_place = "AMO";
           if (product.apartment) {
             text_place = product.apartment.title + ' - ' + product.apartment.campaign.title;
           }

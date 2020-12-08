@@ -4,6 +4,8 @@
     "ImageIO.framework": 1,
     "CoreLocation.framework": 2,
     "AVFoundation.framework": 1,
+    "AudioToolbox.framework": 1,
+    "libz.dylib": 1,
     "WebKit.framework": 1,
     "Accelerate.framework": 1,
     "Photos.framework": 1,

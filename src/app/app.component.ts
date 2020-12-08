@@ -116,7 +116,7 @@ export class AppComponent{
     this.platform.ready().then(() => {
       self.statusBar.styleDefault();
       self.setupPushOneSign();
-      // self.checkCodePush();
+      self.checkCodePush();
       self.translateConfigService.setLanguageDefault()
     });
   }

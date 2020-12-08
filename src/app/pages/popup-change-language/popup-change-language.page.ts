@@ -28,6 +28,7 @@ export class PopupChangeLanguagePage implements OnInit {
     this.selectedLanguage = language;
     this.translateConfigService.setLanguage(this.selectedLanguage);
     localStorage.setItem('lang', language);
+    this.modalController.dismiss();
   }
 
 }
