@@ -149,6 +149,7 @@
 		FF2F70388C5F4D9AA2CEC7A2 /* zh-Hans.lproj in Resources */ = {isa = PBXBuildFile; fileRef = EC293ED5166B4E6E9B0FAFB4 /* zh-Hans.lproj */; };
 		FFAD1C62C0334F3CAF311C15 /* NativePageTransitions.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C73A0F01EB4254AD3074C0 /* NativePageTransitions.m */; };
 		FFF67113F2984F64A014E567 /* aeskey.c in Sources */ = {isa = PBXBuildFile; fileRef = 58632A10D3314FF5860BA233 /* aeskey.c */; };
+		227B6716E44348C48947004A /* CFCallNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = D1551739793C494FA1CC1C91 /* CFCallNumber.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -481,6 +482,8 @@
 		FCA07E8CD33047FD831E5352 /* es.lproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; path = es.lproj; sourceTree = "<group>"; };
 		FD4B7D4D21E346E5A0E23D29 /* TextRequestSerializer.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = TextRequestSerializer.h; path = "cordova-plugin-advanced-http/TextRequestSerializer.h"; sourceTree = "<group>"; };
 		FE67091334C047018226CAF7 /* NativePageTransitions.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = NativePageTransitions.h; path = com.telerik.plugins.nativepagetransitions/NativePageTransitions.h; sourceTree = "<group>"; };
+		D1551739793C494FA1CC1C91 /* CFCallNumber.m */ = {isa = PBXFileReference; name = "CFCallNumber.m"; path = "mx.ferreyra.callnumber/CFCallNumber.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		85362DA2C549412E874DD969 /* CFCallNumber.h */ = {isa = PBXFileReference; name = "CFCallNumber.h"; path = "mx.ferreyra.callnumber/CFCallNumber.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -859,6 +862,8 @@
 				85FB6169B9E74E20AECD7E87 /* GMPHAsset.h */,
 				6183E45DB0884F939685E6E3 /* OneSignalPush.m */,
 				DF8669A967AD4AC090FA0DB1 /* OneSignalPush.h */,
+				D1551739793C494FA1CC1C91 /* CFCallNumber.m */,
+				85362DA2C549412E874DD969 /* CFCallNumber.h */,
 			);
 			name = Plugins;
 			path = AMO/Plugins;
@@ -1069,6 +1074,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0C75E8732566D0A500F94EF5 /* NotificationService.m in Sources */,
+				227B6716E44348C48947004A /* CFCallNumber.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
