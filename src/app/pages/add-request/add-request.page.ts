@@ -130,24 +130,18 @@ export class AddRequestPage implements OnInit {
     this.getFeedbackCategory(event.detail.value);
   }
 
-  // readFile(file: any) {
-  //   const reader = new FileReader();
-  //   reader.onloadend = () => {
-  //     const imgBlob = new Blob([reader.result], {
-  //       type: file.type
-  //     });
-  //     const formData = new FormData();
-  //     formData.append("media", imgBlob);
-  //     console.log("build from data");
-  //     this.apiService.uploadImage(formData)
-  //     .subscribe(result => {
-  //       console.log(result);
-  //     },
-  //       error => {
-  //     });
-  //   };
-  //   reader.readAsArrayBuffer(file);
-  // }
+  convertListImage() {
+    var self = this;
+    for(var i=0;i<self.list_image_select.length;i++){
+      self.list_image.push({
+        index:0, 
+        src: self.list_image_select[i].media.url,
+        media: self.list_image_select[i].media
+      });
+    }
+    self.list_image_select = [];
+    self.breakListImage();
+  }
 
   dataURItoBlob(dataURI) {
     const byteString = window.atob(dataURI);
@@ -160,58 +154,10 @@ export class AddRequestPage implements OnInit {
    return blob;
   }
 
-  // openCameraGallary(type) {
-  //   //this.loading.autoHide(1000);
-
-  //   let source = this.camera.PictureSourceType.CAMERA;
-  //   if (type == 'gallery')
-  //     source = this.camera.PictureSourceType.PHOTOLIBRARY;
-
-  //   const options: CameraOptions = {
-  //     quality: 100,
-  //     sourceType: source,
-  //     destinationType: this.camera.DestinationType.DATA_URL,
-  //     encodingType: this.camera.EncodingType.JPEG,
-  //     mediaType: this.camera.MediaType.PICTURE,
-  //     allowEdit: true,
-  //     targetWidth: 1000,
-  //     targetHeight: 1000,
-  //     saveToPhotoAlbum: false,
-  //     correctOrientation: true
-  //   }
-
-  //   this.platform.ready().then(() => {
-  //     this.camera.getPicture(options).then((imageData) => {
-
-  //       this.picture = 'data:image/jpeg;base64,' + imageData;
-  //     }, (err) => { });
-  //   });
-  // }
 
   checkPicturePermission(sourceType : PictureSourceType)
   {
     this.pickImage(sourceType);
-    // console.log("Should be checking permissions...");
-    // this.diagnostic.getPermissionAuthorizationStatus(this.diagnostic.permission.CAMERA).then((status)=>{
-    //   console.log('AuthorizationStatus');
-    //   console.log(status);
-
-    //   if (status !== this.diagnostic.permissionStatus.GRANTED){
-    //     this.diagnostic.requestRuntimePermission(this.diagnostic.permission.CAMERA).then((data)=>{
-    //       console.log('getCameraAuthorizationStatus');
-    //       console.log(data);
-    //       this.pickImage(sourceType);
-    //     })
-    //   }
-    //   else {
-    //     console.log("We have permission.");
-    //     this.pickImage(sourceType);
-    //   }
-
-    // }, (statusError)=>{
-    //   console.log("Error!");
-    //   console.log(statusError)
-    // });
   }
 
   pickImage(sourceType) {
@@ -239,8 +185,8 @@ export class AddRequestPage implements OnInit {
       
       this.apiService.uploadImage(payload)
       .subscribe(result => {
-        console.log(result);
-        self.listImage.push(result);
+        self.list_image_select.push(result);
+        self.convertListImage();
       },
         error => {
       });
@@ -308,14 +254,6 @@ export class AddRequestPage implements OnInit {
     await actionSheet.present();
   }
 
-  removeImageAttachment(event) {
-    for(var i=0;i<this.listImage.length;i++){
-      if(this.listImage[i].media._id == event.currentTarget.id){
-        this.listImage.splice(i, 1);
-      }
-    }
-  }
-
   checkActiveButton() {
     var self = this;
     if (this.userName && this.userName.length > 0) {
@@ -351,15 +289,17 @@ export class AddRequestPage implements OnInit {
 
   pushRequestToServer() {
     var self = this;
-    var listAttachmentID = [];
-    for(var i=0;i<this.listImage.length;i++){
-      listAttachmentID.push(this.listImage[i].media._id)
-    }
+
+    let list_attachment = [];
+    self.list_image.forEach(image => {
+      list_attachment.push(image.media);
+    })
+    
     const params = {
       // category: "",
       title: this.title,
       content: this.message,
-      attachments: listAttachmentID,
+      attachments: list_attachment,
       apartment: this.departmentID
     };
     this.loading.present();
