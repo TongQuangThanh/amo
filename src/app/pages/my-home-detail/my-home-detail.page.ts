@@ -45,7 +45,10 @@ export class MyHomeDetailPage implements OnInit {
   ngOnInit() {
     const userApartmentID = this.route.snapshot.paramMap.get('id');
     this._userApartmentID = userApartmentID;
-    this.getListUserApar(userApartmentID);
+  }
+
+  ionViewWillEnter() {
+    this.getListUserApar(this._userApartmentID);
   }
 
   getListUserApar(userApartmentID: string){

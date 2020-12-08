@@ -364,7 +364,11 @@
         "message_confirm_success": "Xác nhận thành công!",
         "message_finish_success": "Hoàn thành đơn hàng!",
         "message_cancel_success": "Hủy đơn hàng thành công!",
-        "message_complain_success": "Khiếu nại của bạn đã được gửi đến nhà cung cấp!"
+        "message_complain_success": "Khiếu nại của bạn đã được gửi đến nhà cung cấp!",
+        "form_select_image_title" : "Chọn nguồn hình ảnh",
+        "form_select_image_library" : "Tải từ thư viện",
+        "form_select_image_camera" : "Sử dụng máy ảnh",
+        "form_select_image_cancel" : "Hủy bỏ"
     },
     "APARTMENT_FAMILY":{
         "title": "Thành viên gia đình",

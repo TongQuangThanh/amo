@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
-
+import { CallNumber } from '@ionic-native/call-number/ngx';
 import { IonicModule } from '@ionic/angular';
 
 import { MyAccountPage } from './my-account.page';
@@ -22,6 +22,7 @@ const routes: Routes = [
     TranslateModule,
     RouterModule.forChild(routes)
   ],
+  providers: [CallNumber],
   declarations: [MyAccountPage]
 })
 export class MyAccountPageModule {}

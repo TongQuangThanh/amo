@@ -364,7 +364,11 @@
         "message_confirm_success": "Confirm successful!",
         "message_finish_success": "Complete Order!",
         "message_cancel_success": "Cancel order successfully!",
-        "message_complain_success": "Your complaint has been sent to the provider!"
+        "message_complain_success": "Your complaint has been sent to the provider!",
+        "form_select_image_title" : "Select Image source",
+        "form_select_image_library" : "Load from Library",
+        "form_select_image_camera" : "Use Camera",
+        "form_select_image_cancel" : "Cancel"
     },
     "APARTMENT_FAMILY":{
         "title": "FAMILY",

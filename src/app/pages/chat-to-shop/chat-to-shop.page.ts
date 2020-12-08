@@ -6,6 +6,7 @@ import { LoadingService } from '../../services/loading/loading.service';
 import { ModalController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { AlertService } from '../../services/alert/alert.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-chat-to-shop',
@@ -28,6 +29,7 @@ export class ChatToShopPage implements OnInit {
     private navCtrl: NavController,
     private apiService: ApiService,
     private route: ActivatedRoute,
+    private translate: TranslateService,
     private alertService: AlertService,
   ) { }
 
@@ -150,21 +152,21 @@ export class ChatToShopPage implements OnInit {
   // select image
   async selectImage() {
     const actionSheet = await this.actionSheetController.create({
-      header: "Select Image source",
+      header: this.translate.instant('COMMON.form_select_image_title'),
       buttons: [{
-        text: 'Load from Library',
+        text: this.translate.instant('COMMON.form_select_image_library'),
         handler: () => {
           this.checkPicturePermission(this.camera.PictureSourceType.PHOTOLIBRARY);
         }
       },
       {
-        text: 'Use Camera',
+        text: this.translate.instant('COMMON.form_select_image_camera'),
         handler: () => {
           this.checkPicturePermission(this.camera.PictureSourceType.CAMERA);
         }
       },
       {
-        text: 'Cancel',
+        text: this.translate.instant('COMMON.form_select_image_cancel'),
         role: 'cancel'
       }
       ]
