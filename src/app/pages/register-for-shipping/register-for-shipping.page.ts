@@ -173,7 +173,7 @@ export class RegisterForShippingPage implements OnInit {
     };
 
     this.loading.present();
-    this.apiService.addFeedback(params)
+    this.apiService.addFeedbackNew(params)
       .subscribe(result => {
         self.loading.dismiss();
         self.alertService.presentToast(this.translate.instant('ADD_REQUEST.message_add_request_sucess'));

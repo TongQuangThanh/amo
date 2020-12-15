@@ -145,7 +145,7 @@ export class RegistrationGuestPage implements OnInit {
       guestsDate: this.form_date_time
     };
     this.loading.present();
-    this.apiService.addFeedback(params)
+    this.apiService.addFeedbackNew(params)
       .subscribe(result => {
         self.loading.dismiss();
         self.flag_show_hide_popup = true;

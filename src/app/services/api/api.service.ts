@@ -152,6 +152,12 @@ export class ApiService {
     );
   }
 
+  addFeedbackNew(params: any): Observable<any> {
+    return this.http.post(EnvService.feedbacknew_addnew, params).pipe(
+      map(results => results)
+    );
+  }
+
   getRequestDetail(requestID: string): Observable<any> {
     return this.http.get(EnvService.feedbacksDetail + requestID).pipe(
       map(results => results)

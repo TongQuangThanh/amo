@@ -124,7 +124,7 @@ export class RegisterKeepVehiclePage implements OnInit {
     }
 
     this.loading.present();
-    this.apiService.addFeedback(params)
+    this.apiService.addFeedbackNew(params)
       .subscribe(result => {
         self.loading.dismiss();
         self.alertService.presentToast(this.translate.instant('ADD_REQUEST.message_add_request_sucess'));
@@ -163,7 +163,7 @@ export class RegisterKeepVehiclePage implements OnInit {
     
         };
         this.loading.present();
-        this.apiService.addFeedback(params)
+        this.apiService.addFeedbackNew(params)
           .subscribe(result => {
             count--;
             if (count == 0) {

@@ -25,6 +25,7 @@ export const EnvService = {
   apartmentDetail: environment.base + '/account/apartments/',
   apartmentUser: environment.base + '/apartment/user',
   feedback_addnew: environment.base + '/feedback',
+  feedbacknew_addnew: environment.base + '/feedbacknew',
   language: environment.base + '/category/language',
   paymentBank: environment.base + '/payment-bank',
   paymentLog: environment.base + '/payment-log',
