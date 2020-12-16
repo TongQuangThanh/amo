@@ -32,10 +32,12 @@ export class AddRequestPage implements OnInit {
   list_image_1: any;
   flag_show_all_image: any;
   list_image_select: any[] = [];
-  isErrorUserName: boolean = false;
+  isErrorFormType: boolean = false;
   isErrorTitle: boolean = false;
   isErrorMessage: boolean = false;
   isErrorDepartmentID: boolean = false;
+  form_type: any;
+  form_type_class: any;
 
   imagePickerOptions = {
     maximumImagesCount: 1,
@@ -62,10 +64,19 @@ export class AddRequestPage implements OnInit {
   }
 
   ngOnInit() {
+    this.form_type = "";
+    this.form_type_class = "";
     this.getUserApar();
     this.list_image = [];
     this.flag_show_all_image = false;
     this.breakListImage();
+  }
+  ionChangePulldown1(event) {
+    if (this.form_type != '') {
+      this.form_type_class = 'has-input-value';
+    } else {
+      this.form_type_class = '';
+    }
   }
   breakListImage() {
     var self = this; 
@@ -118,16 +129,13 @@ export class AddRequestPage implements OnInit {
         if(self.listDepartment.length > 0){
           self.departmentID = self.listDepartment[0].apartment._id;
           self.departmentName = self.listDepartment[0].apartment.title + " - " + self.listDepartment[0].campaign.title;
+          self.getFeedbackCategory(self.departmentID);
         }
         self.loading.dismiss();
       },
         error => {
           self.loading.dismiss();
         });
-  }
-
-  changeValueDepartment(event) {
-    this.getFeedbackCategory(event.detail.value);
   }
 
   convertListImage() {
@@ -266,10 +274,10 @@ export class AddRequestPage implements OnInit {
 
   checkActiveButton() {
     var self = this;
-    if (this.userName && this.userName.length > 0) {
-      this.isErrorUserName = false;
+    if (this.form_type && this.form_type.length > 0) {
+      this.isErrorFormType = false;
     } else {
-      this.isErrorUserName = true;
+      this.isErrorFormType = true;
     }
 
     if (this.title && this.title.length > 0) {
@@ -290,7 +298,7 @@ export class AddRequestPage implements OnInit {
       this.isErrorDepartmentID = true;
     }
 
-    if (this.isErrorMessage || this.isErrorUserName || this.isErrorTitle || this.isErrorDepartmentID) {
+    if (this.isErrorMessage || this.isErrorFormType || this.isErrorTitle || this.isErrorDepartmentID) {
       return false;
     } else {
       return true;
@@ -306,7 +314,7 @@ export class AddRequestPage implements OnInit {
     })
     
     const params = {
-      // category: "",
+      category: this.form_type,
       title: this.title,
       content: this.message,
       attachments: list_attachment,
@@ -339,6 +347,9 @@ export class AddRequestPage implements OnInit {
         const dataReturnedResult = JSON.parse(dataReturned.data);
         this.departmentID = dataReturnedResult.id;
         this.departmentName = dataReturnedResult.name;
+        this.getFeedbackCategory(this.departmentID);
+        this.form_type = "";
+        this.form_type_class = "";
         // self.formRelationship = dataReturnedResult.value;
         // self.formRelationshipName = dataReturnedResult.name;
       }

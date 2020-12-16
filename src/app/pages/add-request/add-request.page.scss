@@ -279,3 +279,54 @@ ion-textarea {
 .pointer-events-none {
     pointer-events: none;
 }
+
+// pulldown
+ion-select::part(icon) {
+    display: none;
+    opacity: 1;
+}
+.pulldown-customize {
+    width: 100%;
+    max-width: 100%;
+    padding-left: 40px;
+    // background: #fbfbfb;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    padding-right: 17px;
+    height: 100%;
+
+    --placeholder-opacity: 0.7;
+    font-size: 16px !important;
+    --color: #7A838C !important;
+}
+.has-input-value .pulldown-customize {
+    padding-top: 25px;
+    padding-bottom: 5px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+}
+.icon-pulldown-left {
+    z-index: 999;
+    pointer-events: none;
+    // margin-left: 17px;
+    position: absolute;
+}
+.icon-pulldown-down {
+    z-index: 999;
+    pointer-events: none;
+    position: absolute;
+    right: 20px;
+}
+.pulldown-customize-placeholder {
+    position: absolute;
+    opacity: 0.6;
+    z-index: 999;
+    font-size: 14px;
+    margin-left: 40px;
+    top: 1px;
+    pointer-events: none;
+    font-family: Nunito Sans !important;
+    font-style: normal;
+    font-weight: normal;
+}

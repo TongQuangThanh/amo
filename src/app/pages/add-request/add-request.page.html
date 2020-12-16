@@ -16,10 +16,20 @@
       <ion-icon class="select-icon" name="caret-down-outline" slot="end"></ion-icon>
     </ion-item>
     <ion-item class="input-item" lines="none">
+      <img class="icon-pulldown-left" src="../assets/icon/svg/Category.svg"/>
+      <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg"/>
+      <label *ngIf="form_type != ''" class="pulldown-customize-placeholder">{{ 'ADD_REQUEST.category' | translate }}</label>
+      <div class="width-100 {{form_type_class}}">
+        <ion-select class="pulldown-customize" placeholder="{{ 'ADD_REQUEST.category' | translate }}" interface="action-sheet" name="form_type" [(ngModel)]="form_type" (ionChange)="ionChangePulldown1($event)">
+          <ion-select-option *ngFor="let item of listTopic" value="{{item._id}}">{{item.title}}</ion-select-option>
+        </ion-select>
+      </div>
+    </ion-item>
+    <!-- <ion-item class="input-item" lines="none">
       <ion-icon class="input-icon" name="custom-user" src="/assets/icon/custom-user.svg" slot="start"></ion-icon>
       <ion-label class="input-floating-label" position="floating">{{ 'ADD_REQUEST.name' | translate }}</ion-label>
       <ion-input [(ngModel)]="userName" class="input-text" type="text" value=""></ion-input>
-    </ion-item>
+    </ion-item> -->
     <ion-item class="input-item" lines="none">
       <ion-icon class="input-icon" name="custom-user" src="/assets/icon/custom-file.svg" slot="start"></ion-icon>
       <ion-label class="input-floating-label" position="floating">{{ 'ADD_REQUEST.title_request' | translate }}</ion-label>
