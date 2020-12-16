@@ -44,10 +44,10 @@
     <div class="message-wrap">
       <div *ngFor="let msg of msgList"
             class="message"
-            [class.left]=" msg.createdBy._id !== currentUser._id "
-            [class.right]=" msg.createdBy._id === currentUser._id ">
-        <img class="user-img" [src]="msg.createdBy.avatar" alt="" />
-        <div class="msg-detail">
+            [class.left]=" msg.createdBy && msg.createdBy._id !== currentUser._id "
+            [class.right]=" msg.createdBy && msg.createdBy._id === currentUser._id ">
+        <img *ngIf="msg.createdBy" class="user-img" [src]="msg.createdBy.avatar" alt="" />
+        <div class="msg-detail" *ngIf="msg.createdBy">
           <div class="msg-info">
             <p>{{msg.createdBy.displayName}}</p>
           </div>
@@ -61,12 +61,14 @@
 </ion-content>
 <ion-footer class="ion-no-border">
   <ion-item lines="none" class="add-comment-item">
-    <ion-icon name="image" slot="start" class="add-image-icon"></ion-icon>
+    <ion-icon name="image" slot="start" class="add-image-icon" (click)="selectImage()"></ion-icon>
     <ion-textarea class="input-area" 
       rows="1"  
       auto-grow
-      placeholder="{{ 'REQUEST_DETAIL.place_holder_input' | translate }}">
-      <ion-icon name="paper-plane" class="icon-send icon-send-default"></ion-icon>
+      placeholder="{{ 'REQUEST_DETAIL.place_holder_input' | translate }}"
+      [(ngModel)]="editorMsg"
+    >
+      <ion-icon name="paper-plane" class="icon-send icon-send-default" (click)="sendMsg()"></ion-icon>
     </ion-textarea>
   </ion-item>
 </ion-footer>
