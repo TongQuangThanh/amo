@@ -105,6 +105,20 @@ export class ApiService {
     );
   }
 
+  getListRequestRegister(page: number, limit: number, category: string, search: string): Observable<any> {
+    const params = new HttpParams().
+      set('page', page.toString()).
+      set('limit', limit.toString()).
+      set('category', category).
+      set('search', search).
+      set('_v', (new Date()).getTime().toString());
+    return this.http.get(EnvService.feedbacksnew, {
+      params
+    }).pipe(
+      map(results => results)
+    );
+  }
+
   getPopupConfig(): Observable<any> {
     const params = new HttpParams().
       set('_v', (new Date()).getTime().toString());

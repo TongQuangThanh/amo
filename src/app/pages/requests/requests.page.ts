@@ -19,12 +19,15 @@ export class RequestsPage implements OnInit {
 
   modeService: string = "All";
   listRequestAll: any;
-  listRequestRegistion: any;
   currentPage: number;
   numberRecordOnPage: number;
+  listRequestRegistion: any;
+  currentPageRegistion: number;
+  numberRecordOnPageRegistion: number;
   heightScreen: number;
   heightScreenSub: number;
   getRequestSubscriber: Subscription;
+  getRequestSubscriberRegistion: Subscription;
 
   constructor(
     public modalController: ModalController,
@@ -54,11 +57,13 @@ export class RequestsPage implements OnInit {
     this.listRequestRegistion = [];
     this.currentPage = 1;
     this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
+    this.currentPageRegistion = 1;
+    this.numberRecordOnPageRegistion = ConstService.NUMBER_RECORD_ON_PAGE;
     this.getRequestAll(this.currentPage, this.numberRecordOnPage, '', '', null, true);
+    this.getRequestRegisterAll(this.currentPageRegistion, this.numberRecordOnPageRegistion, '', '', null, true);
   }
 
   getRequestAll(page: number, limit: number, category: string, search: string, event: any, isRefresh: boolean) {
-    
     const self = this;
     if (this.getRequestSubscriber) {
       this.getRequestSubscriber.unsubscribe();
@@ -82,9 +87,35 @@ export class RequestsPage implements OnInit {
     });
   }
 
+  getRequestRegisterAll(page: number, limit: number, category: string, search: string, event: any, isRefresh: boolean) {
+    const self = this;
+    if (this.getRequestSubscriberRegistion) {
+      this.getRequestSubscriberRegistion.unsubscribe();
+    }
+    this.loading.present();
+    this.getRequestSubscriberRegistion = this.apiService.getListRequestRegister(page, limit, category, search)
+      .subscribe(result => {
+        if (isRefresh) {
+          self.listRequestRegistion = result.feedbacknews;
+        } else {
+          self.listRequestRegistion = self.listRequestRegistion.concat(result.feedbacknews);
+        }
+        if (event) {
+          event.target.complete();
+        }
+
+        self.loading.dismiss();
+    },
+    error => {
+      self.loading.dismiss();
+    });
+  }
+
   loadData(event) {
     this.currentPage++;
+    this.currentPageRegistion++;
     this.getRequestAll(this.currentPage, this.numberRecordOnPage, '', '', event, false);
+    this.getRequestRegisterAll(this.currentPageRegistion, this.numberRecordOnPageRegistion, '', '', event, false);
   }
 
   detailPage(event) {
@@ -104,7 +135,10 @@ export class RequestsPage implements OnInit {
   doRefresh(event) {
     this.currentPage = 1;
     this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
+    this.currentPageRegistion = 1;
+    this.numberRecordOnPageRegistion = ConstService.NUMBER_RECORD_ON_PAGE;
     this.getRequestAll(this.currentPage, this.numberRecordOnPage, '', '', event, true);
+    this.getRequestRegisterAll(this.currentPageRegistion, this.numberRecordOnPageRegistion, '', '', event, true);
   }
 
   async registrationTypeModal() {
