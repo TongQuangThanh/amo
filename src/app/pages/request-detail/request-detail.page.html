@@ -51,8 +51,11 @@
           <div class="msg-info">
             <p>{{msg.createdBy.displayName}}</p>
           </div>
-          <div class="msg-content">
+          <div class="msg-content" *ngIf="!msg.attachments || msg.attachments.length == 0">
             <p class="line-breaker">{{msg.content}}</p>
+          </div>
+          <div class="msg-content msg-images" *ngIf="msg.attachments && msg.attachments.length > 0">
+            <img *ngFor="let attachments of msg.attachments" class="" src="{{attachments.url}}"/>
           </div>
         </div>
       </div>
