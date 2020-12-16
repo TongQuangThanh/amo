@@ -1,7 +1,18 @@
 <ion-header class="ion-no-border">
   <ion-toolbar class="header-toolbar">
-    <ion-title class="header-title">{{ 'SEVICE_NEW.title' | translate }}</ion-title>
-    <div class="group-button-header">
+    <ion-title class="header-title" slot="start">{{ 'SEVICE_NEW.title' | translate }}</ion-title>
+    <div class="group-button-header" slot="end">
+      <ion-chip slot="end" class="button-manager margin-right-10" (click)="moveManagementOrderPage()" *ngIf="display_button_management">
+        <img class="icon-home" src="../assets/icon/svg/Manager.svg"/>
+        <ion-label class="font-weight-bold">{{ 'SEVICE_NEW.label_management' | translate }}</ion-label>
+      </ion-chip>
+      <ion-chip slot="end" class="button-history" (click)="moveHistoryPage()" *ngIf="display_button_management">
+        <img class="icon-home" src="../assets/icon/svg/History.svg"/>
+        <ion-label class="font-weight-bold">{{ 'SEVICE_NEW.label_history' | translate }}</ion-label>
+      </ion-chip>
+    </div>
+
+    <!-- <div class="group-button-header" slot="end">
       <button class="button-manager margin-right-10" (click)="moveManagementOrderPage()" *ngIf="display_button_management">
         <img class="icon-home" src="../assets/icon/svg/Manager.svg"/>
         <ion-label class="font-weight-bold">{{ 'SEVICE_NEW.label_management' | translate }}</ion-label>
@@ -10,7 +21,7 @@
         <img class="icon-home" src="../assets/icon/svg/History.svg"/>
         <ion-label class="font-weight-bold">{{ 'SEVICE_NEW.label_history' | translate }}</ion-label>
       </button>
-    </div>
+    </div> -->
   </ion-toolbar>
 </ion-header>
   

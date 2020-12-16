@@ -173,7 +173,11 @@ ion-item.item-has-value {
   color: #21313F;
 
 }
-
+.msg-images {
+  background-color: unset !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+}
 // custom image gallery
 .image-grid {
   padding: 0;
