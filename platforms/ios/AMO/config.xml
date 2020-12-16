@@ -191,4 +191,7 @@
     <preference name="AndroidPersistentFileLocation" value="Compatibility" />
     <preference name="CodePushDeploymentKey" value="8MsBKrKTc64T1rurHG6oTnjwbL2Rw1le3TdTl" />
     <preference name="APP_SECRET" value="8efc5133-c8a2-4a12-846d-22a0e814d7d5" />
+    <feature name="CallNumber">
+        <param name="ios-package" value="CFCallNumber" />
+    </feature>
 </widget>

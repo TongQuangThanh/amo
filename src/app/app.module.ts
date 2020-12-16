@@ -28,6 +28,7 @@ import { File } from '@ionic-native/file/ngx';
 import { HTTP } from '@ionic-native/http/ngx';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SuperTabsModule } from '@ionic-super-tabs/angular';
+import { CallNumber } from '@ionic-native/call-number/ngx';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatTabsModule } from '@angular/material/tabs';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
@@ -68,6 +69,7 @@ export function LanguageLoader(http: HttpClient) {
     OneSignal,
     InAppBrowser,
     Camera,
+    CallNumber,
     HTTP,
     File,
     CodePush,
