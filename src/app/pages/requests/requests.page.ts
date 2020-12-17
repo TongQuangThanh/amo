@@ -123,6 +123,11 @@ export class RequestsPage implements OnInit {
     this.navCtrl.navigateForward('/request-detail/' + event.currentTarget.id);
   }
 
+  detailRegisterPage(event) {
+    //// this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
+    this.navCtrl.navigateForward('/request-register-detail/' + event.currentTarget.id);
+  }
+
   addRequest(){
     //// this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
     this.navCtrl.navigateForward('/add-request');

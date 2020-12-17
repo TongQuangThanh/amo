@@ -1,0 +1,77 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar class="header-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button text="" icon="chevron-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{requestTitle}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card class="card-content">
+    <ion-grid class="image-grid">
+      <ion-row class="image-row">
+        <ion-col class="image-col" size="12" *ngIf="listImage.length == 1">
+          <img class="image-col-1 image-col-left" src="{{listImage[0].url}}" />
+        </ion-col>
+        <ion-col class="image-col" size="6" *ngIf="listImage.length == 2">
+          <img class="image-col-1 image-col-left" src="{{listImage[0].url}}" />
+        </ion-col>
+        <ion-col class="image-col" size="6" *ngIf="listImage.length == 2">
+          <img class="image-col-1 image-col-left" src="{{listImage[1].url}}" />
+        </ion-col>
+        <ion-col class="image-col" size="8" *ngIf="listImage.length > 2">
+          <img class="image-col-1 image-col-left" src="{{listImage[0].url}}" />
+        </ion-col>
+        <ion-col class="image-col" size="4" *ngIf="listImage.length > 2">
+          <img class="image-col-2 image-col-right-top" src="{{listImage[1].url}}" />
+          <div class="image-container">
+            <img class="image-col-2 image-col-right-top" src="{{listImage[2].url}}" *ngIf="listImage.length == 3"/>
+            <img class="image-col-2 image-col-right-bottom" src="{{listImage[2].url}}" *ngIf="listImage.length > 3"/>
+            <ion-label class="centered" *ngIf="listImage.length > 3">+{{listImage.length - 3}}</ion-label>
+          </div>          
+        </ion-col>
+      </ion-row>      
+    </ion-grid>
+    <ion-card-content class="box">
+      <input type="checkbox" id="expanded">
+      <p [innerHTML]="requestContent" #contentRequest class="text-content"></p>
+      <label *ngIf="requestContent.length > 200" for="expanded" role="button">{{ 'REQUEST_DETAIL.read_more' | translate }}</label>
+    </ion-card-content>
+  </ion-card>  
+  <div class="devider-line"></div>
+  <ion-content #content class="list-chat-content" [style.height.px]="heightScreen">
+    <ion-label class="chat-title">{{ 'REQUEST_DETAIL.chat_title' | translate }}</ion-label>
+    <div class="message-wrap">
+      <div *ngFor="let msg of msgList"
+            class="message"
+            [class.left]=" msg.createdBy && msg.createdBy._id !== currentUser._id "
+            [class.right]=" msg.createdBy && msg.createdBy._id === currentUser._id ">
+        <img *ngIf="msg.createdBy" class="user-img" [src]="msg.createdBy.avatar" alt="" />
+        <div class="msg-detail" *ngIf="msg.createdBy">
+          <div class="msg-info">
+            <p>{{msg.createdBy.displayName}}</p>
+          </div>
+          <div class="msg-content" *ngIf="!msg.attachments || msg.attachments.length == 0">
+            <p class="line-breaker">{{msg.content}}</p>
+          </div>
+          <div class="msg-content msg-images" *ngIf="msg.attachments && msg.attachments.length > 0">
+            <img *ngFor="let attachments of msg.attachments" class="" src="{{attachments.url}}"/>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-item lines="none" class="add-comment-item">
+    <ion-icon name="image" slot="start" class="add-image-icon" (click)="selectImage()"></ion-icon>
+    <ion-textarea class="input-area" 
+      rows="1"  
+      auto-grow
+      placeholder="{{ 'REQUEST_DETAIL.place_holder_input' | translate }}"
+      [(ngModel)]="editorMsg"
+    >
+      <ion-icon name="paper-plane" class="icon-send icon-send-default" (click)="sendMsg()"></ion-icon>
+    </ion-textarea>
+  </ion-item>
+</ion-footer>
