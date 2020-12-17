@@ -178,6 +178,12 @@ export class ApiService {
     );
   }
 
+  getRequestNewDetail(requestID: string): Observable<any> {
+    return this.http.get(EnvService.feedbacksNewDetail + requestID).pipe(
+      map(results => results)
+    );
+  }
+
   getListServiceGroup(): Observable<any> {
     const params = new HttpParams().
       set('_v', (new Date()).getTime().toString());
@@ -369,8 +375,23 @@ export class ApiService {
     );
   }
 
+  getListFeedbackNewReply(feedbackID:string): Observable<any>{
+    const params = new HttpParams().
+      set('page', "1").
+      set('limit', "20").
+      set('_v', (new Date()).getTime().toString());
+    return this.http.get(EnvService.feedbacknew_reply + feedbackID, {params}).pipe(
+      map(results => results)
+    );
+  }
+
   addFeedbackReply(feedbackID:string, params:any): Observable<any>{
     return this.http.post(EnvService.feedback_reply + feedbackID, params).pipe(
+      map(results => results)
+    );
+  }
+  addFeedbackNewReply(feedbackID:string, params:any): Observable<any>{
+    return this.http.post(EnvService.feedbacknew_reply + feedbackID, params).pipe(
       map(results => results)
     );
   }

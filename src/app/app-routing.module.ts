@@ -78,6 +78,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   { 
+    path: 'request-register-detail/:id',
+    loadChildren: () => import('./pages/request-register-detail/request-register-detail.module').then(m => m.RequestRegisterDetailPageModule),
+    canActivate: [AuthGuard]
+  },
+  { 
     path: 'service-detail/:id',
     loadChildren: () => import('./pages/service-detail/service-detail.module').then(m => m.ServiceDetailPageModule),
     canActivate: [AuthGuard]

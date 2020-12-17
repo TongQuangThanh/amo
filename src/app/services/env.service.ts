@@ -49,10 +49,12 @@ export const EnvService = {
   feedbacks: environment.base + '/feedback?',
   feedbacksnew: environment.base + '/feedbacknew?',
   feedbacksDetail: environment.base + '/feedback/',
+  feedbacksNewDetail: environment.base + '/feedbacknew/',
   feedbacksCategory: environment.base + '/feedback-category/',
   userStatistic: environment.base + '/user-statistic/',
 
   feedback_reply: environment.base + '/feedback-reply/',
+  feedbacknew_reply: environment.base + '/feedbacknew-reply/',
   popupConfig: environment.base + '/popup-config',
   countNotificationConfig: environment.base + '/notification-common/count-user-click/',
   countPostClick: environment.base + '/post/user-click/',
