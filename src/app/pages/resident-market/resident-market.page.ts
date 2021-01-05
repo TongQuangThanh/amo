@@ -59,12 +59,12 @@ export class ResidentMarketPage implements OnInit {
             text_note = '-'+text_note;
           }
           let type_note = product.promotionKM == "KM" ? 2 : 1;
-          let text_place = product.apartment.title + ' - ' + product.apartment.campaign.title;
+          let text_place = product.apartment != null ? (product.apartment.title + ' - ' + product.apartment.campaign.title): "";
           let text_star_rate = product.stars;
           let text_tag = product.promotion ? product.promotion : "";
           let object = {
             '_id' : product._id,
-            'thumbnail': product.thumbnail ? product.thumbnail : '',
+            'thumbnail': product.thumbnail ? product.thumbnail : "/assets/images/no-image.png",
             'title': title,
             'text_note': text_note,
             'type_note': type_note,
@@ -125,9 +125,9 @@ export class ResidentMarketPage implements OnInit {
           if (product.requestShopProduct) {
             self.data_shop_house['_id'] = product.requestShopProduct._id;
             self.data_shop_house['text_title'] = product.requestShopProduct.title;
-            self.data_shop_house['text_place'] = product.requestShopProduct.apartment.title + ' - ' + product.requestShopProduct.apartment.campaign.title;
+            self.data_shop_house['text_place'] = product.requestShopProduct.apartment != null ? (product.requestShopProduct.apartment.title + ' - ' + product.requestShopProduct.apartment.campaign.title) : "";
             self.data_shop_house['text_star_rate'] = product.requestShopProduct.stars;
-            let thumbnail = product.requestShopProduct.thumbnail;
+            let thumbnail = product.requestShopProduct.thumbnail != null ? product.requestShopProduct.thumbnail : "/assets/images/no-image.png";
             let logo = product.requestShopProduct.thumbnail;
             if (product.requestShopProduct.attachments && product.requestShopProduct.attachments.length > 1) {
               logo = product.requestShopProduct.attachments[0].url;
@@ -182,7 +182,7 @@ export class ResidentMarketPage implements OnInit {
               let object = {
                 '_id' : product._id,
                 '_id_requestShopProduct' : product.requestShopProduct._id,
-                'thumbnail': product.thumbnail,
+                'thumbnail': product.thumbnail != null ? product.thumbnail: "/assets/images/no-image.png",
                 'bg_url': "../assets/images/services/1.png",
                 'deadline' : deadline_convert,
                 'title' : title,

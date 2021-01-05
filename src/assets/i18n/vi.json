@@ -294,7 +294,8 @@
         "select_wallet" : "Chọn ví",
         "btn_continue" : "Tiếp tục",
         "payment_success_message" : "Thanh toán thành công",
-        "payment_another" : "Thanh toán hóa đơn khác"
+        "payment_another" : "Thanh toán hóa đơn khác",
+        "payment_appartment" : "Căn hộ"
     },
     "PINCODE_PASSWORD":{
         "pincode_note": "Một tin nhắn văn bản gồm mã xác minh 4 chữ số đã được gửi đến số điện thoại của bạn",

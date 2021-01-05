@@ -77,7 +77,9 @@ export class PaymentPage implements OnInit {
           event.target.complete();
         }
         self.convertDataPayment();
-        self.getTotalPayment();
+        if(page == 1){
+          self.getTotalPayment();
+        }
         self.loading.dismiss();
     },
     error => {
@@ -131,12 +133,19 @@ export class PaymentPage implements OnInit {
   getTotalPayment() {
     var self = this;
     var total = 0;
-    this.listPaymentBills.forEach(element => {
-      if (element.status == 'publish') {
-        total += element.total;
-      }
-    });
-    self.totalPayment = total.toString();
+    // this.listPaymentBills.forEach(element => {
+    //   var dateCreatePayment = new Date(element.createdAt);
+    //   var currentDate = new Date();
+    //   var startMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1, 0, 0, 0, 0);
+    //   var previous = new Date(startMonth.setMonth(startMonth.getMonth()-1))
+
+    //   if (element.status == 'publish' && (previous <= dateCreatePayment && dateCreatePayment <= currentDate)) {
+    //     total += element.total;
+    //   }
+    // });
+    if(this.listPaymentBills.length > 0){
+      self.totalPayment = this.listPaymentBills[0].total;
+    }
   }
 
   loadData(event) {

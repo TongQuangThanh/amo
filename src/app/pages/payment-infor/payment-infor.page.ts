@@ -36,6 +36,7 @@ export class PaymentInforPage implements OnInit {
   paymentStatus: any;
   paymentType: any;
   paymentCategoryCash: any;
+  appartmentInfor: any;
   constructor(
     public modalController: ModalController,
     private loading: LoadingService,
@@ -66,6 +67,7 @@ export class PaymentInforPage implements OnInit {
         self.paymentEndAt = result.paymentBill.payment.paymentEndAt;
         self.listPaymentContent = result.paymentBill.content;
         self.paymentStatus = result.paymentBill.status;
+        self.appartmentInfor = result.paymentBill.apartment.title + " - " + result.paymentBill.campaign.title;
         let today = new Date();
         let endAt = new Date(result.paymentBill.payment.paymentEndAt);
         if (today > endAt && self.paymentStatus  == "publish") {

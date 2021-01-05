@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { NavController, Platform, IonInput } from '@ionic/angular';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
@@ -11,6 +11,7 @@ import { LoadingService } from '../../../services/loading/loading.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  @ViewChild('inputPhone')  inputPhoneElement: IonInput;
 
   phone: string;
   password: string;
@@ -24,7 +25,18 @@ export class LoginPage implements OnInit {
     private navCtrl: NavController,
     private route: ActivatedRoute,
     private loading: LoadingService,
+    private platform: Platform
   ) { 
+    this.platform.keyboardDidShow.subscribe(ev => {
+      const { keyboardHeight } = ev;
+      // Do something with the keyboard height such as translating an input above the keyboard.
+      const login = document.getElementById('login_input');
+      const input = document.querySelector('ion-input');
+    });
+  
+    this.platform.keyboardDidHide.subscribe(() => {
+      // Move input back to original location
+    });
   }
   
   togglePassword(): void {
@@ -71,5 +83,15 @@ export class LoginPage implements OnInit {
 
   changeToForgotPass(){
     this.navCtrl.navigateForward('/forgot-password');
+  }
+
+  onEnter(){
+    this.login();
+  }
+
+  onFocusPassword(){
+    setTimeout(() => {
+      this.inputPhoneElement.setFocus();
+ }, 400);
   }
 }

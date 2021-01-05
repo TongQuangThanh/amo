@@ -104,7 +104,7 @@
     </ion-item>
   </ion-list>
   <div *ngIf="flag_show_hide_popup == true" class="modal-backdrop fade show"></div>
-  <div *ngIf="flag_show_hide_popup == true" class="modal" tabindex="-1" role="dialog">
+  <div *ngIf="flag_show_hide_popup == true" class="modal topModel" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <!-- <div class="modal-header">
@@ -130,6 +130,6 @@
     </div>
   </div>
 </ion-content>
-<section class="full-width function-section shadow-section">
+<section *ngIf="flag_show_hide_popup != true" class="full-width function-section shadow-section">
   <ion-button (click)="eventButtonSend()" expand="block" class="amo-button-custom {{checkStatusButtonSend()}}">{{ 'SEVICE_05.button_send' | translate }}{{total_money}}</ion-button>
 </section>

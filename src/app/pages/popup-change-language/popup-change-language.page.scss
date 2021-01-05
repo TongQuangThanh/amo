@@ -12,7 +12,7 @@ ion-title.md {
     --background: rgba(33,49,63,0);
 }
 .content-container {
-    position: fixed;
+    position: absolute;
     width: 100%;
     height: auto;
     bottom: 0;
@@ -21,6 +21,7 @@ ion-title.md {
     background: #ffffff;
     display: block;
     justify-content: end;
+    z-index: 9999;
 }
 .header-item {
     border-top-left-radius: 24px;

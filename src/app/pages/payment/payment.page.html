@@ -48,15 +48,15 @@
         <ion-card class="segment-content-card" >
           <ion-card-content class="segment-card-content" *ngFor="let item of data_tabs.data" (click)="detailPage($event)" id="{{item._id}}">
             <ion-row>
-              <ion-col>
+              <!-- <ion-col>
                 <ion-badge class="badge-primary" *ngIf="item.status == 'pending'">{{ 'PAYMENT.status_pending' | translate }}</ion-badge>
                 <ion-badge class="badge-lightred" *ngIf="item.status == 'publish'">{{ 'PAYMENT.badge_unpaid' | translate }}</ion-badge>
                 <ion-badge class="badge-success" *ngIf="item.status == 'completed'">{{ 'PAYMENT.status_done' | translate }}</ion-badge>
                 <ion-badge class="badge-lightred" *ngIf="item.status == 'outdate'">{{ 'PAYMENT.badge_outdate' | translate }}</ion-badge>
-              </ion-col>
-              <ion-col size="auto">
+              </ion-col> -->
+              <!-- <ion-col size="auto">
                 <ion-icon name="ellipsis-horizontal" class="ion-float-right"></ion-icon>
-              </ion-col>
+              </ion-col> -->
             </ion-row>
             <ion-row>
               <ion-col>
@@ -71,16 +71,22 @@
                 <ion-list class="text-node information-node">
                   <ion-card class="ion-float-left card-bottom">
                     <span class="image-caption-big" class="card-bottom-label">{{formatString(item.updatedAt)}}</span>
-                    <ion-icon item-start name="custom-oval" class="card-bottom-icon custom-oval" src="assets/icon/custom-oval.svg"></ion-icon>
+                    <!-- <ion-icon item-start name="custom-oval" class="card-bottom-icon custom-oval" src="assets/icon/custom-oval.svg"></ion-icon> -->
                   </ion-card>
                   <ion-card class="ion-float-left card-bottom margin-left-0">
                     <span class="image-caption-big" class="card-bottom-label"> {{ formatMoney(item.paidAmount) }} </span>
                   </ion-card>
+                  <ion-card class="ion-float-left card-bottom margin-left-0">
+                    <span class="image-caption-big" class="card-bottom-label"> {{ item.apartment.title }} </span>
+                  </ion-card>
+                  <ion-card class="ion-float-left card-bottom margin-left-0">
+                    <span class="image-caption-big" class="card-bottom-label"> {{ item.campaign.title }} </span>
+                  </ion-card>
                 </ion-list>
               </ion-col>
-              <ion-col  size="auto" class="">
+              <!-- <ion-col  size="auto" class="">
                 <ion-button class="btn-payment ion-float-right" *ngIf="item.status == 'publish'">{{ 'PAYMENT.pay_now' | translate }}</ion-button>
-              </ion-col>
+              </ion-col> -->
             </ion-row>
           </ion-card-content>
         </ion-card>

@@ -150,7 +150,6 @@ ext {
 apply from: "../cordova-plugin-code-push/anhmo-build-extras.gradle"
 apply from: "../cordova-plugin-telerik-imagepicker/anhmo-ignorelinterrors.gradle"
 apply from: "../cordova-plugin-telerik-imagepicker/anhmo-androidtarget.gradle"
-apply from: "../onesignal-cordova-plugin/anhmo-build-extras-onesignal.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras1 = file('build-extras.gradle').exists()
@@ -358,8 +357,7 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp-urlconnection:3.10.0"
     implementation "com.android.support:support-v4:27.+"
     implementation "com.android.support:support-annotations:27.+"
-    implementation "com.android.support:appcompat-v7:23+"
-    implementation "com.onesignal:OneSignal:3.15.3"
+    implementation "com.android.support:appcompat-v7:28+"
     // SUB-PROJECT DEPENDENCIES END
 }
 

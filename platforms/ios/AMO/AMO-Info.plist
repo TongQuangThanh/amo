@@ -17,11 +17,11 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>4.0.8</string>
+	<string>4.1.0</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>4.0.8</string>
+	<string>4.1.0</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -53,12 +53,12 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>need photo library access to get pictures from there</string>
+	<string>App need camera access to take pictures for upload avatar or comment</string>
 	<key>NSCameraUsageDescription</key>
-	<string>need camera access to take pictures</string>
+	<string>App need camera access to take pictures for upload avatar or comment</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>need location access to find things nearby</string>
+	<string>App need location access to get your location request service</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>need photo library access to save pictures there</string>
+	<string>App need accept photo library to upload image to app or write image</string>
 </dict>
 </plist>

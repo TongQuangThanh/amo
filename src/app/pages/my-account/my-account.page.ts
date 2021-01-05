@@ -193,10 +193,11 @@ export class MyAccountPage implements OnInit {
     return await modal.present();
   }
 
-  async changePasswordModal() {
+  async changeLanguageModal() {
     const modal = await this.modalController.create({
       component: PopupChangeLanguagePage,
-      cssClass: 'changepass-page-custom'
+      cssClass: 'changepass-page-custom',
+      backdropDismiss: true,
     });
     return await modal.present();
   }

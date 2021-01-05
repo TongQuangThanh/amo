@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-packageName="com.george.anhmo" id="com.george.anhmo" ios-CFBundleIdentifier="vn.amtechcom.anhmo" version="4.0.8" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget android-packageName="com.george.anhmo" id="com.george.anhmo" ios-CFBundleIdentifier="vn.amtechcom.anhmo" version="4.1.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>AMO</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework.com" href="http://ionicframework.com/">Ionic Framework Team</author>
@@ -101,16 +101,16 @@
         <splash height="2436" src="resources/ios/splash/Default-2436h.png" width="1125" />
         <splash height="2732" src="resources/ios/splash/Default@2x~universal~anyany.png" width="2732" />
         <config-file mode="merge" overwrite="true" parent="NSPhotoLibraryUsageDescription" platform="ios" target="*-Info.plist">
-            <string>need photo library access to get pictures from there</string>
+            <string>App need camera access to take pictures for upload avatar or comment</string>
         </config-file>
         <config-file mode="merge" overwrite="true" parent="NSCameraUsageDescription" platform="ios" target="*-Info.plist">
-            <string>need camera access to take pictures</string>
+            <string>App need camera access to take pictures for upload avatar or comment</string>
         </config-file>
         <config-file mode="merge" overwrite="true" parent="NSLocationWhenInUseUsageDescription" platform="ios" target="*-Info.plist">
-            <string>need location access to find things nearby</string>
+            <string>App need location access to get your location request service</string>
         </config-file>
         <config-file mode="merge" overwrite="true" parent="NSPhotoLibraryAddUsageDescription" platform="ios" target="*-Info.plist">
-            <string>need photo library access to save pictures there</string>
+            <string>App need accept photo library to upload image to app or write image</string>
         </config-file>
         <preference name="CodePushDeploymentKey" value="8MsBKrKTc64T1rurHG6oTnjwbL2Rw1le3TdTl" />
         <preference name="APP_SECRET" value="8efc5133-c8a2-4a12-846d-22a0e814d7d5" />

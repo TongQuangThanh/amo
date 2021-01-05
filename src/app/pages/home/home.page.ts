@@ -110,7 +110,7 @@ export class HomePage implements OnInit {
     this.numberRecordOnPageNoti = ConstService.NUMBER_RECORD_NOTI_ON_PAGE;
     this.getNews(this.currentPage, this.numberRecordOnPage, '', '', null, true);
     this.getArticles(this.currentPageNoti, this.numberRecordOnPageNoti, '', '', null, true);
-    this.getPaymentLogs(1, 1000, '', '', null, true);
+    this.getPaymentLogs(1, 20, '', '', null, true);
   }
   // getConfigPopup() {
   //   const self = this;
@@ -305,7 +305,9 @@ export class HomePage implements OnInit {
           event.target.complete();
         }
         self.loading.dismiss();
-        self.getTotalPayment();
+        if(page == 1){
+          self.getTotalPayment();
+        }
     },
     error => {
       self.loading.dismiss();
@@ -315,13 +317,21 @@ export class HomePage implements OnInit {
     var self = this;
     self.totalPayment = 0;
     self.numberOfRecordPayment = 0;
-    this.listPaymentBills.forEach(element => {
-      if (element.status == 'publish') {
-        self.totalPayment += element.total;
-        self.numberOfRecordPayment++;
-        self.idRecordPayment = element._id;
-      }
-    });
+    // this.listPaymentBills.forEach(element => {
+    //   var dateCreatePayment = new Date(element.createdAt);
+    //   var currentDate = new Date();
+    //   var startMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1, 0, 0, 0, 0);
+    //   var previous = new Date(startMonth.setMonth(startMonth.getMonth()-1));
+
+    //   if (element.status == 'publish' && (previous <= dateCreatePayment && dateCreatePayment <= currentDate)) {
+    //     self.totalPayment += element.total;
+    //     self.numberOfRecordPayment++;
+    //     self.idRecordPayment = element._id;
+    //   }
+    // });
+    if(this.listPaymentBills.length > 0){
+      self.totalPayment = this.listPaymentBills[0].total;
+    }
   }
   formatMoney(stringValue) {
     let n = parseInt(stringValue);

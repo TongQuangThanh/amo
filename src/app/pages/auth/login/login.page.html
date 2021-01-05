@@ -12,13 +12,13 @@
     <ion-item class="input-item" lines="none">
       <ion-icon class="input-icon" name="custom-mobile" src="/assets/icon/custom-mobile.svg" slot="start"></ion-icon>
       <ion-label class="input-floating-label" position="floating">{{ 'LOGIN.placeholder_phone' | translate }}</ion-label>
-      <ion-input class="input-text" [(ngModel)]="phone" type="tel" name="phone"></ion-input>
+      <ion-input id="login_input" class="input-text" #inputPhone (keyup.enter)="onFocusPassword()" [(ngModel)]="phone" inputmode="numeric" type="tel" name="phone"></ion-input>
       <!-- <ion-icon class="clear-input check-default" name="close-circle" slot="end"></ion-icon> -->
     </ion-item>
     <ion-item class="input-item" lines="none">
       <ion-icon class="input-icon" name="custom-locker" src="/assets/icon/custom-locker.svg" slot="start"></ion-icon>
       <ion-label class="input-floating-label" position="floating">{{ 'LOGIN.placeholder_pass' | translate }}</ion-label>
-      <ion-input class="input-text" [type]="password_type" [(ngModel)]="password" name="password"></ion-input>
+      <ion-input id="password_input" (keyup.enter)="onEnter()" class="input-text" [type]="password_type" enterkeyhint="enter" [(ngModel)]="password" name="password"></ion-input>
       <!-- <ion-icon class="clear-input check-default" name="close-circle" slot="end"></ion-icon> -->
       <ion-icon class="pass-hide-icon" slot="end" [name]="passwordToggleIcon" (click)="togglePassword()"></ion-icon>
     </ion-item>

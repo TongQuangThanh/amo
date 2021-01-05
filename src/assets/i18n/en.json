@@ -294,7 +294,8 @@
         "select_wallet" : "Select E-wallet",
         "btn_continue" : "Continue",
         "payment_success_message" : "Payment successfully",
-        "payment_another" : "Payment another bill"
+        "payment_another" : "Payment another bill",
+        "payment_appartment" : "Appartment"
     },
     "APARTMENT_CODE_REGISTER":{
         "title" : "Apartment code",

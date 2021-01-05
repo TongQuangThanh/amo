@@ -91,9 +91,6 @@ export class AppComponent{
     return resultColorString;
   }
 
-  
-  
-
   addCountPopupConfigClick(){
     this.apiService.countUserPopupConfigClick(this.popupConfigId).subscribe(result => {
       console.log(result);

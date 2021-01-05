@@ -41,9 +41,10 @@
     color: #7A838C;
 }
 .bottom-toolbar {
-    position: fixed;
-    bottom: 0;
+    position: absolute;
+    // bottom: 10px;
     right: 0;
+    z-index: 9999;
 }
 .login-button{
     --box-shadow: none;

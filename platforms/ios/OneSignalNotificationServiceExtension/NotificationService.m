@@ -1,10 +1,3 @@
-//
-//  NotificationService.m
-//  OneSignalNotificationServiceExtension
-//
-//  Created by Dinh Nam on 2020/11/19.
-//
-
 #import <OneSignal/OneSignal.h>
 
 #import "NotificationService.h"

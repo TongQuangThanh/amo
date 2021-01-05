@@ -477,3 +477,7 @@ ion-col {
 .no-scroll {
     --overflow: hidden;
 }
+
+.disable-row{
+    pointer-events: none;
+}
