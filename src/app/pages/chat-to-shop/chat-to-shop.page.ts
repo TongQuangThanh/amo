@@ -61,19 +61,20 @@ export class ChatToShopPage implements OnInit {
     var self = this;
     this.data_chat = [];
     this.loading.present();
-    this.apiService.getListOrderHistoryComment(this.data_history._id)
+    this.apiService.getcommentOrderV2(this.data_history._id)
       .subscribe(result => {
-        let listComment = result.orderHistoryComments;
-        listComment.forEach(product => {
+        const listComment = result.orderHistoryCommentsV2;
+        listComment.forEach(comment => {
           let type = 'left';
-          if (product.createdBy._id == self.data_history.createdBy._id) {
+          if (comment.createdBy._id == self.data_history.createdBy._id) {
             type = 'right';
           }
-          if (product.attachments.length > 0) {
-            product.attachments.forEach(attachments => {
+          if (comment.attachments.length > 0) {
+            comment.attachments.forEach(attachments => {
               let object = {
                 type: type, 
-                avatar: product.createdBy.avatar, 
+                avatar: comment.createdBy.avatar,
+                name: comment.createdBy.displayName,
                 message: "", 
                 images: attachments.url
               }
@@ -82,15 +83,19 @@ export class ChatToShopPage implements OnInit {
           } else {
             let object = {
               type: type, 
-              avatar: product.createdBy.avatar, 
-              message: product.content, 
+              avatar: comment.createdBy.avatar,
+              name: comment.createdBy.displayName,
+              message: comment.content, 
               images: ""
             }
             self.data_chat.push(object);
           }
         });
         self.loading.dismiss();
-        self.content.scrollToBottom(300);
+        setTimeout(() => {
+          self.content.scrollToBottom(100);
+        }, 200);
+        
     },
     error => {
       self.loading.dismiss();
@@ -104,14 +109,16 @@ export class ChatToShopPage implements OnInit {
       content: self.message_content
     }
     this.loading.present();
-    this.apiService.postOrderHistoryComment(param)
+    this.apiService.postCommentOrderV2(param)
       .subscribe(result => {
         self.data_chat.push(
           {type: 'right', avatar: "", message: self.message_content}
         )
         self.message_content = "";
         self.loading.dismiss();
-        self.content.scrollToBottom(300);
+        setTimeout(() => {
+          self.content.scrollToBottom(100);
+        }, 200);
     },
     error => {
       self.loading.dismiss();
@@ -136,12 +143,14 @@ export class ChatToShopPage implements OnInit {
     }
     if (listAttachments.length == 0) return;
     this.loading.present();
-    this.apiService.postOrderHistoryComment(param)
+    this.apiService.postCommentOrderV2(param)
       .subscribe(result => {
         self.data_chat = self.data_chat.concat(data_chat_image);
         self.list_image_select = [];
-        self.content.scrollToBottom(300);
         self.loading.dismiss();
+        setTimeout(() => {
+          self.content.scrollToBottom(100);
+        }, 300);
     },
     error => {
       self.loading.dismiss();
@@ -214,17 +223,13 @@ export class ChatToShopPage implements OnInit {
 
       this.apiService.uploadImage(payload)
       .subscribe(result => {
-        console.log(result);
         self.list_image_select = [];
         self.list_image_select.push(result);
         self.eventSendImage();
       },
         error => {
       });
-    }, (err) => {
-      // Handle error
-      // alert(err);
-    });
+    }, (err) => {});
   }
 
   private convertBase64ToBlob(base64: string) {

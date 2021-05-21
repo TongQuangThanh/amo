@@ -120,7 +120,6 @@ export class RepairServiceBookingPage implements OnInit {
     this.loading.present();
     this.apiService.getListUserApartment()
       .subscribe(result => {
-        console.log(result.userApartments);
         self.listDepartment = result.userApartments;
         self.loading.dismiss()
     },

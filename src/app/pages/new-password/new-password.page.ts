@@ -34,7 +34,6 @@ export class NewPasswordPage implements OnInit {
     private navCtrl: NavController,
     private route: ActivatedRoute
   ) { 
-    console.log(111);
     this.phoneNumber = this.route.snapshot.paramMap.get('phone');
     this.tokenCode = this.route.snapshot.paramMap.get('token');
   }

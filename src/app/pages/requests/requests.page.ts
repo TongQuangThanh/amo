@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Platform, NavController } from '@ionic/angular';
 import { ApiService } from '../../services/api/api.service';
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
-import { ConstService } from '../../utils/const.service'
-import { UtilsService } from '../../utils/utils.service'
+import { ConstService } from '../../utils/const.service';
+import { UtilsService } from '../../utils/utils.service';
 import { LoadingService } from '../../services/loading/loading.service';
 import { Subscription } from 'rxjs';
 import { ModalController } from '@ionic/angular';
@@ -16,18 +16,20 @@ import { PopupRegistrationTypePage } from '../popup-registration-type/popup-regi
   styleUrls: ['./requests.page.scss'],
 })
 export class RequestsPage implements OnInit {
+  modeService: string = 'All';
+  listRequestAll = [];
+  listRequestNew = [];
+  listRequestProcessing = [];
+  listRequestCompleted = [];
+  currentPageAll = 1;
+  currentPageNew = 1;
+  currentPageProcess = 1;
+  currentPageComplate = 1;
 
-  modeService: string = "All";
-  listRequestAll: any;
-  currentPage: number;
   numberRecordOnPage: number;
-  listRequestRegistion: any;
-  currentPageRegistion: number;
-  numberRecordOnPageRegistion: number;
   heightScreen: number;
   heightScreenSub: number;
-  getRequestSubscriber: Subscription;
-  getRequestSubscriberRegistion: Subscription;
+  activeTabIndex = 0;
 
   constructor(
     public modalController: ModalController,
@@ -35,101 +37,92 @@ export class RequestsPage implements OnInit {
     private apiService: ApiService,
     private navCtrl: NavController,
     private platform: Platform,
-    private nativePageTransitions: NativePageTransitions) {
-      const self = this;
-      platform.ready().then((readySource) => {
-        self.heightScreen = platform.height() - 120 - 90;
-        self.heightScreenSub = self.heightScreen;
-      });
+    private nativePageTransitions: NativePageTransitions
+  ) {
+    const self = this;
+    platform.ready().then((readySource) => {
+      self.heightScreen = platform.height() - 120 - 90;
+      self.heightScreenSub = self.heightScreen;
+    });
   }
 
   ngOnInit() {
-    // this.listRequestAll  = [];
-    // this.listRequestRegistion = [];
-    // this.currentPage = 1;
-    // this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
-    // this.getRequestAll(this.currentPage, this.numberRecordOnPage, '', '', null, false);
-  }
-
-  ionViewWillEnter(){
-    this.modeService = "All";
-    this.listRequestAll  = [];
-    this.listRequestRegistion = [];
-    this.currentPage = 1;
+    this.modeService = 'All';
     this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
-    this.currentPageRegistion = 1;
-    this.numberRecordOnPageRegistion = ConstService.NUMBER_RECORD_ON_PAGE;
-    this.getRequestAll(this.currentPage, this.numberRecordOnPage, '', '', null, true);
-    this.getRequestRegisterAll(this.currentPageRegistion, this.numberRecordOnPageRegistion, '', '', null, true);
+    this.getListRequestRegister(this.currentPageAll, this.numberRecordOnPage, '', '', null, true);
   }
 
-  getRequestAll(page: number, limit: number, category: string, search: string, event: any, isRefresh: boolean) {
+  ionViewWillEnter() {}
+
+  getListRequestRegister(page: number, limit: number, category: string, search: string, event: any, isRefresh: boolean, status: string = '') {
     const self = this;
-    if (this.getRequestSubscriber) {
-      this.getRequestSubscriber.unsubscribe();
-    }
     this.loading.present();
-    this.getRequestSubscriber = this.apiService.getListRequest(page, limit, category, search)
-      .subscribe(result => {
-        if (isRefresh) {
-          self.listRequestAll = result.feedbacks;
-        } else {
-          self.listRequestAll = self.listRequestAll.concat(result.feedbacks);
-        }
+    if (event) {
+      event.target.complete();
+    }
+    this.apiService.getListRequestRegister(page, limit, category, search, status).subscribe(
+      (result) => {
+        self.loading.dismiss();
+        const feedbacks = result.feedbacknews;
+        this.pushDataRequest(feedbacks, isRefresh);
+      },
+      (error) => {
+        self.loading.dismiss();
+      },
+      () => {
+        self.loading.dismiss();
         if (event) {
           event.target.complete();
         }
-
-        self.loading.dismiss();
-    },
-    error => {
-      self.loading.dismiss();
-    });
+      }
+    );
   }
-
-  getRequestRegisterAll(page: number, limit: number, category: string, search: string, event: any, isRefresh: boolean) {
-    const self = this;
-    if (this.getRequestSubscriberRegistion) {
-      this.getRequestSubscriberRegistion.unsubscribe();
-    }
-    this.loading.present();
-    this.getRequestSubscriberRegistion = this.apiService.getListRequestRegister(page, limit, category, search)
-      .subscribe(result => {
+  pushDataRequest(data, isRefresh) {
+    switch (this.activeTabIndex) {
+      case 1:
         if (isRefresh) {
-          self.listRequestRegistion = result.feedbacknews;
+          this.listRequestNew = data;
         } else {
-          self.listRequestRegistion = self.listRequestRegistion.concat(result.feedbacknews);
+          this.listRequestNew.push(...data);
         }
-        if (event) {
-          event.target.complete();
+        break;
+      case 2:
+        if (isRefresh) {
+          this.listRequestProcessing = data;
+        } else {
+          this.listRequestProcessing.push(...data);
         }
-
-        self.loading.dismiss();
-    },
-    error => {
-      self.loading.dismiss();
-    });
+        break;
+      case 3:
+        if (isRefresh) {
+          this.listRequestCompleted = data;
+        } else {
+          this.listRequestCompleted.push(...data);
+        }
+        break;
+      default:
+        if (isRefresh) {
+          this.listRequestAll = data;
+        } else {
+          this.listRequestAll.push(...data);
+        }
+        break;
+    }
   }
 
-  loadData(event) {
-    this.currentPage++;
-    this.currentPageRegistion++;
-    this.getRequestAll(this.currentPage, this.numberRecordOnPage, '', '', event, false);
-    this.getRequestRegisterAll(this.currentPageRegistion, this.numberRecordOnPageRegistion, '', '', event, false);
+  loadData($event) {
+    this.allApiRequest($event, true);
   }
 
   detailPage(event) {
-    //// this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
     this.navCtrl.navigateForward('/request-detail/' + event.currentTarget.id);
   }
 
   detailRegisterPage(event) {
-    //// this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
     this.navCtrl.navigateForward('/request-register-detail/' + event.currentTarget.id);
   }
 
-  addRequest(){
-    //// this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
+  addRequest() {
     this.navCtrl.navigateForward('/add-request');
   }
 
@@ -138,19 +131,68 @@ export class RequestsPage implements OnInit {
   }
 
   doRefresh(event) {
-    this.currentPage = 1;
-    this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
-    this.currentPageRegistion = 1;
-    this.numberRecordOnPageRegistion = ConstService.NUMBER_RECORD_ON_PAGE;
-    this.getRequestAll(this.currentPage, this.numberRecordOnPage, '', '', event, true);
-    this.getRequestRegisterAll(this.currentPageRegistion, this.numberRecordOnPageRegistion, '', '', event, true);
+    this.listRequestAll = [];
+    this.listRequestNew = [];
+    this.listRequestProcessing = [];
+    this.listRequestCompleted = [];
+    this.currentPageAll = 1;
+    this.currentPageNew = 1;
+    this.currentPageProcess = 1;
+    this.currentPageComplate = 1;
+    this.allApiRequest(event, false);
   }
 
   async registrationTypeModal() {
     const modal = await this.modalController.create({
       component: PopupRegistrationTypePage,
-      cssClass: 'popupRegistrationType-page-custom'
+      cssClass: 'popupRegistrationType-page-custom',
     });
     return await modal.present();
+  }
+
+  registrationNavigate(route: string) {
+    this.navCtrl.navigateForward(route);
+  }
+
+  onTabChange($event) {
+    this.activeTabIndex = $event.detail.index;
+    this.allApiRequest(null);
+  }
+
+  allApiRequest(event, isLoadMore = false) {
+    switch (this.activeTabIndex) {
+      case 1:
+        if (!isLoadMore && this.listRequestNew.length == 0) {
+          this.getListRequestRegister(this.currentPageNew, this.numberRecordOnPage, '', '', event, false, 'new');
+        } else if (isLoadMore) {
+          this.currentPageNew++;
+          this.getListRequestRegister(this.currentPageNew, this.numberRecordOnPage, '', '', event, false, 'new');
+        }
+        break;
+      case 2:
+        if (!isLoadMore && this.listRequestProcessing.length == 0) {
+          this.getListRequestRegister(this.currentPageProcess, this.numberRecordOnPage, '', '', event, false, 'processing');
+        } else if (isLoadMore) {
+          this.currentPageProcess++;
+          this.getListRequestRegister(this.currentPageProcess, this.numberRecordOnPage, '', '', event, false, 'processing');
+        }
+        break;
+      case 3:
+        if (!isLoadMore && this.listRequestCompleted.length == 0) {
+          this.getListRequestRegister(this.currentPageComplate, this.numberRecordOnPage, '', '', event, false, 'completed');
+        } else if (isLoadMore) {
+          this.currentPageComplate++;
+          this.getListRequestRegister(this.currentPageComplate, this.numberRecordOnPage, '', '', event, false, 'completed');
+        }
+        break;
+      default:
+        if (!isLoadMore && this.listRequestAll.length == 0) {
+          this.getListRequestRegister(this.currentPageAll, this.numberRecordOnPage, '', '', event, false);
+        } else if (isLoadMore) {
+          this.currentPageAll++;
+          this.getListRequestRegister(this.currentPageAll, this.numberRecordOnPage, '', '', event, false);
+        }
+        break;
+    }
   }
 }

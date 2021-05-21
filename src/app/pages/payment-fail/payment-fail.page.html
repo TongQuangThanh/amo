@@ -1,0 +1,15 @@
+<ion-content [scrollEvents]="false" slot="fixed" class="payment-fail-container no-scroll">
+  <ion-img class="icon-fail" src="../assets/icon/payment/payment-fail.svg"></ion-img>
+  <ion-card class="payment-fail-card">
+    <ion-item lines="none" class="payment-card-item padding-top-item">
+      <ion-label class="payment-fail-title">{{ 'PAYMENT_RESULT.fail_title' | translate }}</ion-label>
+    </ion-item>
+    <ion-item lines="none" class="payment-card-item padding-bottom-item">
+      <ion-text class="payment-fail-error">{{ 'PAYMENT_RESULT.fail_error' | translate }}</ion-text>
+    </ion-item>
+    <ion-button class="fail-redo-btn" expand="block" (click)="goBack()">{{ 'PAYMENT_RESULT.fail_redo_btn' | translate }}</ion-button>
+    <ion-item lines="none" class="payment-card-item padding-bottom-item">
+      <ion-label class="go-back-home" (click)="goBackHome()">{{ 'PAYMENT_RESULT.fail_back_home' | translate }}</ion-label>
+    </ion-item>
+  </ion-card>
+</ion-content>

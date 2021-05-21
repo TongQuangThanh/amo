@@ -1,0 +1,68 @@
+root {
+  --borderColor: gray;
+  --charShape: none;
+}
+ion-buttons.md {
+  margin-left: 0;
+}
+ion-title.md {
+  padding-inline-end: 0;
+}
+.content-wrap {
+  --background: rgba(33, 49, 63, 0);
+}
+.content-container {
+  position: fixed;
+  width: 100%;
+  height: auto;
+  bottom: 0;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  background: #ffffff;
+  display: block;
+  justify-content: end;
+}
+.header-item {
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  display: flex;
+  height: 60px;
+  border-bottom: 1px solid #f4f5f5;
+}
+.popup-title {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 28px;
+  text-align: center;
+  color: #21313f;
+}
+
+.close {
+  float: left;
+  font-size: 1.5rem;
+  font-weight: normal;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.5;
+}
+.popup-ion-item {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: grid;
+}
+.popup-text-1 {
+  white-space: unset;
+  padding: 20px 0px;
+  font-size: 16px;
+  white-space: pre-line !important;
+}
+.popup-text-2 {
+  white-space: unset;
+  font-size: 14px;
+  color: #009ac9;
+  padding-bottom: 30px;
+}

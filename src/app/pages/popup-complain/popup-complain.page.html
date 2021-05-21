@@ -6,7 +6,7 @@
         <ion-icon name="close"></ion-icon>
       </ion-buttons>
     </ion-item>
-    <ion-content #content class="list-chat-content" [style.height.px]="heightScreen">
+    <ion-content #content class="list-chat-content">
       <ion-list lines="full" class="ion-no-margin ion-no-padding padding-top-10 padding-bottom-20 ion-list-class">
         <ion-item *ngFor="let message of data_chat" class="ion-item-message {{getMarginTop(message)}}">
           <div *ngIf="message.type == 'left' && (message.message != '' || message.images != '')" class="div-avatar">
@@ -31,19 +31,19 @@
         </ion-item>
       </ion-list>
     </ion-content>
-    <ion-footer class="ion-no-border">
-      <ion-item lines="none" class="add-comment-item">
-        <div class="div-select-image" (click)="selectImage()">
-          <ion-icon name="image" slot="start" class="add-image-icon"></ion-icon>
-        </div>
-        <ion-textarea class="input-area" 
-          rows="1" 
-          [(ngModel)]="editorMsg" 
-          auto-grow
-          placeholder="{{ 'REQUEST_DETAIL.place_holder_input' | translate }}">
-          <ion-icon name="paper-plane" class="icon-send icon-send-default" (click)="sendMsg()"></ion-icon>
-        </ion-textarea>    
-      </ion-item>
-    </ion-footer>
   </div>
 </ion-content>
+<ion-footer class="ion-no-border footer-content">
+  <ion-item lines="none" class="add-comment-item">
+    <div class="div-select-image" (click)="selectImage()">
+      <ion-icon name="image" slot="start" class="add-image-icon"></ion-icon>
+    </div>
+    <ion-textarea class="input-area" #chat_input
+      rows="1" wrap="soft" maxlength="500"
+      [(ngModel)]="editorMsg" 
+      auto-grow
+      placeholder="{{ 'REQUEST_DETAIL.place_holder_input' | translate }}">
+      <ion-icon name="paper-plane" class="icon-send icon-send-default" (click)="sendMsg()"></ion-icon>
+    </ion-textarea>    
+  </ion-item>
+</ion-footer>

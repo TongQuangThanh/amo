@@ -1,0 +1,36 @@
+<ion-content [scrollEvents]="false" slot="fixed" class="payment-success-container no-scroll">
+  <ion-header class="ion-no-border payment-success-header">
+    <ion-img class="icon-history" src="../assets/icon/payment/payment-success.svg"></ion-img>
+    <ion-label class="header-title">{{ 'PAYMENT_RESULT.success_title' | translate }}</ion-label>
+  </ion-header>
+  <ion-card class="payment-success-card">
+    <ion-item lines="none" class="payment-item-money">
+      <ion-label class="success-money">{{formatMoney('150000')}}đ</ion-label>
+    </ion-item>
+
+    <div class="devider-line-payment"></div>
+
+    <ion-item lines="none" class="payment-card-item padding-top-item">
+      <ion-label class="label-left">{{ 'PAYMENT_RESULT.success_resource' | translate }}</ion-label>
+      <ion-label class="label-right">Ví AMOPAY</ion-label>
+    </ion-item>
+    <ion-item lines="none" class="payment-card-item">
+      <ion-label class="label-left">{{ 'PAYMENT_RESULT.success_time' | translate }}</ion-label>
+      <ion-label class="label-right">31/12/2020</ion-label>
+    </ion-item>
+    <ion-item lines="none" class="payment-card-item">
+      <ion-label class="label-left">{{ 'PAYMENT_RESULT.success_code' | translate }}</ion-label>
+      <ion-label class="label-right">#123456</ion-label>
+    </ion-item>
+    <ion-item lines="none" class="payment-card-item padding-bottom-item">
+      <ion-label class="label-left">{{ 'PAYMENT_RESULT.success_content' | translate }}</ion-label>
+      <ion-text class="label-right label-text">Phí dịch vụ chung cư tháng 10/2020</ion-text>
+    </ion-item>
+    <ion-item lines="none" class="ion-item-back">
+      <ion-button class="default-button btn-default" (click)="goBackHome()">
+        {{ 'PAYMENT_RESULT.success_back_btn' | translate }}
+      </ion-button>
+    </ion-item>
+
+  </ion-card>
+</ion-content>

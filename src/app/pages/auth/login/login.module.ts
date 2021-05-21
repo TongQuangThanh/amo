@@ -8,6 +8,7 @@ import { IonicModule } from '@ionic/angular';
 import { LoginPage } from './login.page';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 // import { RegisterPage } from '../register/register.page';
+import { Mask } from '../../../components/mask';
 
 const routes: Routes = [
   {
@@ -24,6 +25,9 @@ const routes: Routes = [
     TranslateModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [LoginPage],
+  declarations: [
+    Mask,
+    LoginPage
+  ],
 })
 export class LoginPageModule {}

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, NavigationExtras } from '@angular/router';
 import { ApiService } from '../../services/api/api.service';
 import { LoadingService } from '../../services/loading/loading.service';
 import { UtilsService } from '../../utils/utils.service';
@@ -8,8 +8,6 @@ import { NavController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AlertService } from '../../services/alert/alert.service';
 import { DatePipe, Location } from '@angular/common';
-
-import { PopupDeleteMemberPage } from '../popup-delete-member/popup-delete-member.page';
 import { PopupDeleteVehiclePage } from '../popup-delete-vehicle/popup-delete-vehicle.page';
 
 @Component({
@@ -18,13 +16,12 @@ import { PopupDeleteVehiclePage } from '../popup-delete-vehicle/popup-delete-veh
   styleUrls: ['./my-home-detail.page.scss'],
 })
 export class MyHomeDetailPage implements OnInit {
-
   apartment: any;
   listVehicle: any;
-  vehicleEnable: boolean= false;
-  listMembers:any;
-  apartmentTitle:string;
-  memberEnable: boolean= false;
+  vehicleEnable: boolean = false;
+  listMembers: any;
+  apartmentTitle: string;
+  memberEnable: boolean = false;
   _userApartmentID: any;
   _apartmentID: any;
   // profile:any;
@@ -36,9 +33,8 @@ export class MyHomeDetailPage implements OnInit {
     private route: ActivatedRoute,
     private translate: TranslateService,
     private alertService: AlertService,
-    private datePipe: DatePipe,
-
-  ) { 
+    private datePipe: DatePipe
+  ) {
     // this.profile = this.authService.getProfile();
   }
 
@@ -51,17 +47,17 @@ export class MyHomeDetailPage implements OnInit {
     this.getListUserApar(this._userApartmentID);
   }
 
-  getListUserApar(userApartmentID: string){
+  getListUserApar(userApartmentID: string) {
     var self = this;
     this.loading.present();
-    this.apiService.getUserApartment(userApartmentID)
-      .subscribe(result => {
+    this.apiService.getUserApartment(userApartmentID).subscribe(
+      (result) => {
         self.apartment = result.userApartment;
         self.listVehicle = self.apartment.apartment.vehicles;
         self.apartmentTitle = self.apartment.campaign.title;
         self.listMembers = self.apartment.apartment.members;
         // check data
-        self.listVehicle.forEach(element => {
+        self.listVehicle.forEach((element) => {
           if (element.type && element.type != null) {
             element.type = self.getNameVehicle(element.type);
           } else {
@@ -69,31 +65,32 @@ export class MyHomeDetailPage implements OnInit {
           }
         });
         // check data
-        self.listMembers.forEach(element => {
+        self.listMembers.forEach((element) => {
           if (element.relationShip && element.relationShip != null) {
             element.relationShip = self.getNameRelationShip(element.relationShip);
           } else {
             element.relationShip = self.getNameRelationShip(0);
           }
           if (element.dateOfBirth && element.dateOfBirth != null) {
-            element.dateOfBirth = this.datePipe.transform(element.dateOfBirth,"dd/MM/yyyy");
+            element.dateOfBirth = this.datePipe.transform(element.dateOfBirth, 'dd/MM/yyyy');
           } else {
-            element.dateOfBirth = "N/A";
+            element.dateOfBirth = 'N/A';
           }
         });
         self.loading.dismiss();
-    },
-    error => {
-      self.loading.dismiss();
-    });
+      },
+      (error) => {
+        self.loading.dismiss();
+      }
+    );
   }
   getNameVehicle(type) {
     var name = this.translate.instant('INBOX_31.vehicle_option_orther');
-    switch(type) {
+    switch (type) {
       case 'motorbike':
         name = this.translate.instant('INBOX_31.vehicle_option_motobike');
         break;
-      case 'car': 
+      case 'car':
         name = this.translate.instant('INBOX_31.vehicle_option_car');
         break;
       case 'bike':
@@ -104,11 +101,11 @@ export class MyHomeDetailPage implements OnInit {
   }
   getNameRelationShip(index) {
     var name = this.translate.instant('ADD_HOME_MEMBER.guest');
-    switch(index) {
+    switch (index) {
       case 1:
         name = this.translate.instant('ADD_HOME_MEMBER.wife');
         break;
-      case 2: 
+      case 2:
         name = this.translate.instant('ADD_HOME_MEMBER.husband');
         break;
       case 3:
@@ -145,41 +142,20 @@ export class MyHomeDetailPage implements OnInit {
     return name;
   }
 
-  toggleGroupVehicle(){
+  toggleGroupVehicle() {
     this.vehicleEnable = !this.vehicleEnable;
   }
 
-  isGroupVehicleShown(){
+  isGroupVehicleShown() {
     return this.vehicleEnable;
   }
 
-  isGroupVehicleMember(){
+  isGroupVehicleMember() {
     return this.memberEnable;
   }
 
   formatString(stringDate: string) {
     return UtilsService.formatString(stringDate);
-  }
-
-  async deleteMemberModal(id) {
-    var self = this;
-    const modal = await this.modalController.create({
-      component: PopupDeleteMemberPage,
-      componentProps: {
-        apartmentID: self.apartment.apartment._id,
-        id
-      },
-      cssClass: 'delete-member-custom-class'
-    });
-    modal.onDidDismiss().then((dataReturned:any) => {
-      if (dataReturned && dataReturned.data) {
-        const dataReturnedResult = JSON.parse(dataReturned.data);
-        if (dataReturnedResult.message == "success") {
-          self.getListUserApar(self._userApartmentID);
-        }
-      }
-    });
-    return await modal.present();
   }
 
   async deleteVehicleModal(id) {
@@ -203,15 +179,25 @@ export class MyHomeDetailPage implements OnInit {
     return await modal.present();
   }
 
-  resetApartmentCode(){
+  resetApartmentCode() {
     this.navCtrl.navigateForward('/reset-apartment-code');
   }
 
-  addMember(){
-    this.navCtrl.navigateForward('/add-home-member/'  + this.apartment.apartment._id);
+  addMember() {
+    this.navCtrl.navigateForward('/add-home-member/' + this.apartment.apartment._id);
   }
-  addVehicle(){
-    this.navCtrl.navigateForward('/register-keep-vehicle');
+  
+  deleteMember(member) {
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        member: JSON.stringify(member),
+        apartmentID: this.apartment.apartment._id,
+      },
+    };
+    this.navCtrl.navigateForward(['delete-home-member'], navigationExtras);
   }
 
+  addVehicle() {
+    this.navCtrl.navigateForward('/register-keep-vehicle');
+  }
 }

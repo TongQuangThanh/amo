@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Camera, CameraOptions, PictureSourceType } from '@ionic-native/Camera/ngx';
 // import { File, IWriteOptions, FileEntry } from '@ionic-native/file/ngx';
-import { ActionSheetController, Platform, NavController, ModalController} from '@ionic/angular';
+import { ActionSheetController, Platform, NavController, ModalController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ApiService } from '../../services/api/api.service';
 import { LoadingService } from '../../services/loading/loading.service';
@@ -17,9 +17,10 @@ import { PopupSelectApartmentPage } from '../popup-select-apartment/popup-select
   styleUrls: ['./add-request.page.scss'],
 })
 export class AddRequestPage implements OnInit {
-  croppedImagepath = "";
-  departmentID: string;
-  departmentName: string = "";
+  croppedImagepath = '';
+  departmentID = '';
+  departmentName: string = '';
+  form_apartment_class = '';
   listDepartment: any;
   userName: string;
   listTopic: any;
@@ -41,7 +42,7 @@ export class AddRequestPage implements OnInit {
 
   imagePickerOptions = {
     maximumImagesCount: 1,
-    quality: 50
+    quality: 50,
   };
 
   hasBaseDropZoneOver: boolean = false;
@@ -57,15 +58,16 @@ export class AddRequestPage implements OnInit {
     private apiService: ApiService,
     private loading: LoadingService,
     private authService: AuthService,
-    private alertService: AlertService) {
-      platform.ready().then((readySource) => {
-        this.widthListScreen = platform.width() * 0.8;
-      });
+    private alertService: AlertService
+  ) {
+    platform.ready().then((readySource) => {
+      this.widthListScreen = platform.width() * 0.8;
+    });
   }
 
   ngOnInit() {
-    this.form_type = "";
-    this.form_type_class = "";
+    this.form_type = '';
+    this.form_type_class = '';
     this.getUserApar();
     this.list_image = [];
     this.flag_show_all_image = false;
@@ -79,25 +81,22 @@ export class AddRequestPage implements OnInit {
     }
   }
   breakListImage() {
-    var self = this; 
+    var self = this;
     var index = 0;
     this.list_image_1 = [];
     this.number_of_image = self.list_image.length;
-    for(var i = 0; i < self.number_of_image; i++) {
+    for (var i = 0; i < self.number_of_image; i++) {
       self.list_image[i].index = index;
       index++;
       if (index < 5) {
-        self.list_image_1.push(
-          self.list_image[i]
-        );
+        self.list_image_1.push(self.list_image[i]);
       }
     }
   }
   deleteImageToList(index) {
     var self = this;
-    this.list_image.forEach(element => {
+    this.list_image.forEach((element) => {
       if (element.index == index) {
-        console.log(element);
         self.list_image.splice(index, 1);
       }
     });
@@ -110,41 +109,44 @@ export class AddRequestPage implements OnInit {
   getFeedbackCategory(apartmentID: string) {
     var self = this;
     this.loading.present();
-    this.apiService.getFeedbackCategory(apartmentID)
-      .subscribe(result => {
+    this.apiService.getFeedbackCategory(apartmentID).subscribe(
+      (result) => {
         self.listTopic = result.feedbackCategories;
         self.loading.dismiss();
       },
-        error => {
-          self.loading.dismiss();
-        });
+      (error) => {
+        self.loading.dismiss();
+      }
+    );
   }
 
   getUserApar() {
     var self = this;
     this.loading.present();
-    this.apiService.getListUserApartment()
-      .subscribe(result => {
+    this.apiService.getListUserApartment().subscribe(
+      (result) => {
         self.listDepartment = result.userApartments;
-        if(self.listDepartment.length > 0){
+        if (self.listDepartment.length > 0) {
           self.departmentID = self.listDepartment[0].apartment._id;
-          self.departmentName = self.listDepartment[0].apartment.title + " - " + self.listDepartment[0].campaign.title;
+          self.departmentName = self.listDepartment[0].apartment.title + ' - ' + self.listDepartment[0].campaign.title;
+          this.form_apartment_class = 'has-input-value';
           self.getFeedbackCategory(self.departmentID);
         }
         self.loading.dismiss();
       },
-        error => {
-          self.loading.dismiss();
-        });
+      (error) => {
+        self.loading.dismiss();
+      }
+    );
   }
 
   convertListImage() {
     var self = this;
-    for(var i=0;i<self.list_image_select.length;i++){
+    for (var i = 0; i < self.list_image_select.length; i++) {
       self.list_image.push({
-        index:0, 
+        index: 0,
         src: self.list_image_select[i].media.url,
-        media: self.list_image_select[i].media
+        media: self.list_image_select[i].media,
       });
     }
     self.list_image_select = [];
@@ -157,18 +159,16 @@ export class AddRequestPage implements OnInit {
     const int8Array = new Uint8Array(arrayBuffer);
     for (let i = 0; i < byteString.length; i++) {
       int8Array[i] = byteString.charCodeAt(i);
-     }
-    const blob = new Blob([int8Array], { type: 'image/jpeg' });    
-   return blob;
+    }
+    const blob = new Blob([int8Array], { type: 'image/jpeg' });
+    return blob;
   }
 
-
-  checkPicturePermission(sourceType : PictureSourceType)
-  {
+  checkPicturePermission(sourceType: PictureSourceType) {
     this.pickImage(sourceType);
   }
 
-  blobToFile = (theBlob: Blob, fileName:string): any => {
+  blobToFile = (theBlob: Blob, fileName: string): any => {
     var b: any = theBlob;
     //A Blob() is almost a File() - it's just missing the two properties below which we will add
     b.lastModifiedDate = new Date();
@@ -176,7 +176,7 @@ export class AddRequestPage implements OnInit {
 
     //Cast to a File() type
     return theBlob;
-  }
+  };
 
   pickImage(sourceType) {
     var self = this;
@@ -189,29 +189,32 @@ export class AddRequestPage implements OnInit {
       targetWidth: 800,
       targetHeight: 800,
       correctOrientation: true,
-    }
-    
-    this.camera.getPicture(options).then((imageData) => {
-      const base64Define = 'data:image/jpeg;base64,';
-      var binaryBlob = this.convertBase64ToBlob(base64Define+imageData);
-      const date = new Date().valueOf();
-      const formData = new FormData();
-      var fileName = "amoapp" + date + ".jpg";
-      var myFile = self.blobToFile(binaryBlob, fileName);
-      const payload = new FormData();
-      payload.append('media', binaryBlob, fileName);
-      
-      this.apiService.uploadImage(payload)
-      .subscribe(result => {
-        self.list_image_select.push(result);
-        self.convertListImage();
+    };
+
+    this.camera.getPicture(options).then(
+      (imageData) => {
+        const base64Define = 'data:image/jpeg;base64,';
+        var binaryBlob = this.convertBase64ToBlob(base64Define + imageData);
+        const date = new Date().valueOf();
+        const formData = new FormData();
+        var fileName = 'amoapp' + date + '.jpg';
+        var myFile = self.blobToFile(binaryBlob, fileName);
+        const payload = new FormData();
+        payload.append('media', binaryBlob, fileName);
+
+        this.apiService.uploadImage(payload).subscribe(
+          (result) => {
+            self.list_image_select.push(result);
+            self.convertListImage();
+          },
+          (error) => {}
+        );
       },
-        error => {
-      });
-    }, (err) => {
-      // Handle error
-      // alert(err);
-    });
+      (err) => {
+        // Handle error
+        // alert(err);
+      }
+    );
   }
 
   private convertBase64ToBlob(base64: string) {
@@ -244,30 +247,31 @@ export class AddRequestPage implements OnInit {
       mime,
       extension,
       meta,
-      rawBase64
+      rawBase64,
     };
   }
 
   async selectImage() {
     const actionSheet = await this.actionSheetController.create({
       header: this.translate.instant('COMMON.form_select_image_title'),
-      buttons: [{
-        text: this.translate.instant('COMMON.form_select_image_library'),
-        handler: () => {
-          this.checkPicturePermission(this.camera.PictureSourceType.PHOTOLIBRARY);
-        }
-      },
-      {
-        text: this.translate.instant('COMMON.form_select_image_camera'),
-        handler: () => {
-          this.checkPicturePermission(this.camera.PictureSourceType.CAMERA);
-        }
-      },
-      {
-        text: this.translate.instant('COMMON.form_select_image_cancel'),
-        role: 'cancel'
-      }
-      ]
+      buttons: [
+        {
+          text: this.translate.instant('COMMON.form_select_image_library'),
+          handler: () => {
+            this.checkPicturePermission(this.camera.PictureSourceType.PHOTOLIBRARY);
+          },
+        },
+        {
+          text: this.translate.instant('COMMON.form_select_image_camera'),
+          handler: () => {
+            this.checkPicturePermission(this.camera.PictureSourceType.CAMERA);
+          },
+        },
+        {
+          text: this.translate.instant('COMMON.form_select_image_cancel'),
+          role: 'cancel',
+        },
+      ],
     });
     await actionSheet.present();
   }
@@ -309,51 +313,67 @@ export class AddRequestPage implements OnInit {
     var self = this;
 
     let list_attachment = [];
-    self.list_image.forEach(image => {
+    self.list_image.forEach((image) => {
       list_attachment.push(image.media);
-    })
-    
+    });
+
+    const department = this.listDepartment.find(item => item.apartment._id == this.departmentID);
     const params = {
       category: this.form_type,
       title: this.title,
       content: this.message,
       attachments: list_attachment,
-      apartment: this.departmentID
+      apartment: this.departmentID,
+      type: 'None',
+      campaign: department.campaign._id,
     };
+
     this.loading.present();
-    this.apiService.addFeedback(params)
+    this.apiService.addFeedbackNew(params)
       .subscribe(result => {
         self.loading.dismiss();
         self.alertService.presentToast(this.translate.instant('ADD_REQUEST.message_add_request_sucess'));
         self.navCtrl.back();
       },
-        error => {
-          self.loading.dismiss();
-          self.alertService.presentToast(this.translate.instant('ADD_REQUEST.message_add_request_fail'));
-        });
+      error => {
+        self.loading.dismiss();
+        self.alertService.presentToast(this.translate.instant('ADD_REQUEST.message_add_request_fail'));
+      }
+    );
   }
 
-  async selectApartmentModal() {
-    var self = this;
-    const modal = await this.modalController.create({
-      component: PopupSelectApartmentPage,
-      componentProps: {
-        idApartment: self.departmentID
-      },
-      cssClass: 'popupSelectApartment-page-custom'
-    });
-    modal.onDidDismiss().then((dataReturned:any) => {
-      if (dataReturned && dataReturned.data) {
-        const dataReturnedResult = JSON.parse(dataReturned.data);
-        this.departmentID = dataReturnedResult.id;
-        this.departmentName = dataReturnedResult.name;
-        this.getFeedbackCategory(this.departmentID);
-        this.form_type = "";
-        this.form_type_class = "";
-        // self.formRelationship = dataReturnedResult.value;
-        // self.formRelationshipName = dataReturnedResult.name;
-      }
-    });
-    return await modal.present();
+  // async selectApartmentModal() {
+  //   var self = this;
+  //   const modal = await this.modalController.create({
+  //     component: PopupSelectApartmentPage,
+  //     componentProps: {
+  //       idApartment: self.departmentID
+  //     },
+  //     cssClass: 'popupSelectApartment-page-custom'
+  //   });
+  //   modal.onDidDismiss().then((dataReturned:any) => {
+  //     if (dataReturned && dataReturned.data) {
+  //       const dataReturnedResult = JSON.parse(dataReturned.data);
+  //       this.departmentID = dataReturnedResult.id;
+  //       this.departmentName = dataReturnedResult.name;
+  //       this.getFeedbackCategory(this.departmentID);
+  //       this.form_type = "";
+  //       this.form_type_class = "";
+  //       // self.formRelationship = dataReturnedResult.value;
+  //       // self.formRelationshipName = dataReturnedResult.name;
+  //     }
+  //   });
+  //   return await modal.present();
+  // }
+
+  ionChangePulldownDepartment(event) {
+    if (this.departmentID != '') {
+      this.form_apartment_class = 'has-input-value';
+    } else {
+      this.form_apartment_class = '';
+    }
+    this.getFeedbackCategory(this.departmentID);
+    this.form_type = '';
+    this.form_type_class = '';
   }
 }

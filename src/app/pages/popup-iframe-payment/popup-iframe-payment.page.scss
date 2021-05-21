@@ -1,0 +1,25 @@
+root{
+    --borderColor:gray;
+    --charShape:none;
+}
+ion-content {
+    --overflow: hidden;
+}
+.content-container {
+    position: fixed;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+    background: #ffffff;
+    display: block;
+    justify-content: end;
+}
+.header-item {
+    border-top-left-radius: 24px;
+    border-top-right-radius: 24px;
+}
+.header-item.ios {
+    --inner-padding-end: 0;
+}

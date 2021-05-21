@@ -1,93 +1,87 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar class="header-toolbar">
-    <ion-buttons slot="start">
-      <ion-back-button text="" icon="chevron-back"></ion-back-button>
-    </ion-buttons>
-    <ion-title>{{ 'REGISTRATION_GUEST.title' | translate }}</ion-title>
-  </ion-toolbar>
+<ion-header class="ion-no-border ">
+  <ion-buttons class="back-button">
+    <ion-back-button color="light" text="" icon="chevron-back" class="ion-back-button"></ion-back-button>
+  </ion-buttons>
+  <ion-label class="header-title">{{ 'REGISTRATION_GUEST.title' | translate }}</ion-label>
+  <ion-label class="header-sub-title">{{ 'REGISTRATION_GUEST.sub_title' | translate }}</ion-label>
 </ion-header>
 
-<ion-content>
-  <ion-list lines="full" class="ion-no-margin ion-no-padding margin-top-20">
+<ion-content class="register-guest-content">
+  <ion-list lines="full" class="ion-no-margin ion-no-padding margin-top-10">
     <ion-item lines="none">
       <ion-item lines="none" class="item-common">
-        <img class="icon-home" src="../assets/icon/svg/my-home.svg"/>
-        <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg"/>
+        <img class="icon-home" src="../assets/icon/request/home.svg" />
+        <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg" />
         <label *ngIf="form_apartment_id != ''" class="pulldown-1-placeholder">{{ 'REGISTRATION_GUEST.apartment' | translate }}</label>
         <div class="width-100 {{form_apartment_class}}">
-          <ion-select class="pulldown-apartment-select" placeholder="{{ 'REGISTRATION_GUEST.apartment_placeholder' | translate }}" interface="action-sheet" name="form_apartment_id" [(ngModel)]="form_apartment_id" (ionChange)="ionChangePulldown1($event)">
-            <ion-select-option *ngFor="let item of listDepartment" value="{{item.apartment._id}}">{{item.apartment.title + ' - ' + item.campaign.title}}</ion-select-option>
+          <ion-select class="pulldown-apartment-select" placeholder="{{ 'REGISTRATION_GUEST.apartment_placeholder' | translate }}"
+            interface="action-sheet" name="form_apartment_id" [(ngModel)]="form_apartment_id" (ionChange)="ionChangePulldown1($event)">
+            <ion-select-option *ngFor="let item of listDepartment" value="{{item.apartment._id}}">{{item.apartment.title + ' - ' +
+              item.campaign.title}}</ion-select-option>
           </ion-select>
         </div>
       </ion-item>
     </ion-item>
-    <ion-item lines="none" class="margin-top-20">
+    <ion-item lines="none">
       <ion-item lines="none" class="item-common">
-        <img class="icon-home" src="../assets/icon/svg/Calendar 2.svg"/>
-        <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg"/>
+        <img class="icon-home" src="../assets/icon/request/time.svg" />
+        <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg" />
         <label *ngIf="form_date_time != ''" class="pulldown-1-placeholder">{{ 'REGISTRATION_GUEST.arrival_time' | translate }}</label>
         <div class="width-100 {{form_date_time_class}}">
-          <ion-datetime placeholder="{{ 'REGISTRATION_GUEST.arrival_time' | translate }}"
-            class="pulldown-apartment-select"
-            name="form_date_time" [(ngModel)]="form_date_time"
-            displayFormat="DD/MM/YYYY HH:mm"
-            (ionChange)="ionChangeDateTime($event)"
-            min="2000"
-            max="2050">
+          <ion-datetime placeholder="{{ 'REGISTRATION_GUEST.arrival_time' | translate }}" class="pulldown-apartment-select"
+            name="form_date_time" [(ngModel)]="form_date_time" displayFormat="DD/MM/YYYY HH:mm" (ionChange)="ionChangeDateTime($event)"
+            min="2000" max="2050">
           </ion-datetime>
         </div>
       </ion-item>
     </ion-item>
-    <div class="devider-line margin-top-20 margin-bottom-10"></div>
+    <div class="devider-line-guest margin-top-10"></div>
     <ion-item class="ion-no-padding" lines="none">
       <ion-item lines="none" class="item-common no-border">
         <ion-label class="quantity-title">{{ 'REGISTRATION_GUEST.guest_quantity' | translate }}</ion-label>
         <ion-buttons class="quantity-buttons" slot="end">
-          <ion-button (click)="downNumberProduct()" class="icon-button btn-minus"><ion-icon name="custom-minus" src="/assets/icon/custom-minus.svg"></ion-icon></ion-button>
+          <ion-button (click)="downNumberProduct()" class="icon-button btn-minus">
+            <ion-icon name="custom-minus" src="/assets/icon/custom-minus.svg"></ion-icon>
+          </ion-button>
           <ion-label class="quantity">{{list_guest.guestsNumber}}</ion-label>
-          <ion-button (click)="upNumberProduct()" class="icon-button btn-plus"><ion-icon name="custom-plus" src="/assets/icon/custom-plus.svg"></ion-icon></ion-button>
+          <ion-button (click)="upNumberProduct()" class="icon-button btn-plus">
+            <ion-icon name="custom-plus" src="/assets/icon/custom-plus.svg"></ion-icon>
+          </ion-button>
         </ion-buttons>
       </ion-item>
     </ion-item>
     <div *ngFor="let guest of list_guest.data_guest">
-      <div class="devider-line-guest margin-top-20 margin-bottom-10" *ngIf="guest.line == 'has-line'"></div>
-      <ion-item lines="none" class="margin-top-20 {{guest.className}}">
+      <ion-item lines="none" class="{{guest.className}}">
         <ion-item lines="none" class="item-common">
-          <img class="icon-home" src="/assets/icon/custom-guest.svg"/>
+          <img class="icon-home" src="/assets/icon/request/user.svg" />
           <label *ngIf="guest.guestsName != ''" class="pulldown-1-placeholder">{{ 'REGISTRATION_GUEST.guest_name' | translate }}</label>
-          <ion-input type="text" class="text-box-1" 
-            placeholder="{{ 'REGISTRATION_GUEST.guest_name' | translate }}" 
-            value="{{guest.guestsName}}" 
-            (ionChange)="ionchangTextBoxGuest()"
-            [(ngModel)]="guest.guestsName">
+          <ion-input type="text" class="text-box-1" placeholder="{{ 'REGISTRATION_GUEST.guest_name' | translate }}"
+            value="{{guest.guestsName}}" (ionChange)="ionchangTextBoxGuest()" [(ngModel)]="guest.guestsName">
           </ion-input>
         </ion-item>
       </ion-item>
-      <ion-item lines="none" class="margin-top-20 {{guest.classIdentity}}">
+      <ion-item lines="none" class="{{guest.classIdentity}}">
         <ion-item lines="none" class="item-common">
-          <img class="icon-home" src="/assets/icon/custom-card.svg"/>
+          <img class="icon-home" src="/assets/icon/request/passport.svg" />
           <label *ngIf="guest.guestsIdentity != ''" class="pulldown-1-placeholder">{{ 'REGISTRATION_GUEST.guest_ID' | translate }}</label>
-          <ion-input type="text" class="text-box-1" 
-            placeholder="{{ 'REGISTRATION_GUEST.guest_ID' | translate }}" 
-            value="{{guest.guestsIdentity}}" 
-            (ionChange)="ionchangTextBoxGuest()"
-            [(ngModel)]="guest.guestsIdentity">
+          <ion-input type="text" class="text-box-1" placeholder="{{ 'REGISTRATION_GUEST.guest_ID' | translate }}"
+            value="{{guest.guestsIdentity}}" (ionChange)="ionchangTextBoxGuest()" [(ngModel)]="guest.guestsIdentity">
           </ion-input>
         </ion-item>
       </ion-item>
     </div>
-    <div class="devider-line margin-top-20 margin-bottom-10"></div>
-    <ion-item lines="none" class="margin-top-20">
-      <ion-item lines="none" class="item-common">
-          <ion-textarea [(ngModel)]="form_note" class="text-area-1" rows="4" cols="20" placeholder="{{ 'REGISTRATION_GUEST.note' | translate }}"></ion-textarea>
-      </ion-item>
-    </ion-item>
+    <!-- <ion-item lines="none" class="margin-top-20">
+        <ion-item lines="none" class="item-common">
+          <ion-textarea [(ngModel)]="form_note" class="text-area-1" rows="4" cols="20"
+            placeholder="{{ 'REGISTRATION_GUEST.note' | translate }}"></ion-textarea>
+        </ion-item>
+      </ion-item> -->
     <ion-button expand="block" class="button-common button-send btn-inactive {{checkShowActiveButton()}}">
       <ion-label>{{ 'REGISTRATION_GUEST.btn_send' | translate }}</ion-label>
     </ion-button>
     <ion-button expand="block" class="button-common button-send btn-active {{checkShowActiveButton()}}" (click)="eventButtonRegisterNew()">
-        <ion-label>{{ 'REGISTRATION_GUEST.btn_send' | translate }}</ion-label>
-      </ion-button>
+      <ion-label>{{ 'REGISTRATION_GUEST.btn_send' | translate }}</ion-label>
+    </ion-button>
   </ion-list>
   <div *ngIf="flag_show_hide_popup == true" class="modal-backdrop fade show"></div>
   <div *ngIf="flag_show_hide_popup == true" class="modal" tabindex="-1" role="dialog">
@@ -96,7 +90,7 @@
         <div class="modal-body padding-top-30 margin-top-30">
           <ion-list lines="full" class="ion-no-margin ion-no-padding margin-top-10">
             <ion-item lines="none" class="popup-ion-item" id="area-show-image">
-              <img class="" src="../assets/icon/svg/Outline.svg"/>
+              <img class="" src="../assets/icon/svg/Outline.svg" />
             </ion-item>
             <ion-item lines="none" class="popup-ion-item" id="area-show-image">
               <ion-label class="popup-text-1">{{ 'REGISTRATION_GUEST.send_success_message' | translate }}</ion-label>

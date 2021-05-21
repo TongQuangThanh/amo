@@ -1,245 +1,262 @@
-<ion-header class="ion-no-border">
-    <ion-toolbar>
-      <ion-title>{{ 'INBOX_31.title' | translate }}</ion-title>
-      <ion-buttons slot="start">
-        <ion-back-button text=""></ion-back-button>
+<ion-content class="register-keep-vehicle-content">
+  <super-tabs activeTabIndex="0" [config]="{ debug: true, sideMenu: 'center', allowElementScroll: true, nativeSmoothScroll: true }">
+    <ion-header class="ion-no-border ">
+      <ion-buttons class="back-button">
+        <ion-back-button color="light" text="" icon="chevron-back" class="ion-back-button"></ion-back-button>
       </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-content>
-    <super-tabs activeTabIndex="0" [config]="{ debug: true, sideMenu: 'center', allowElementScroll: true, nativeSmoothScroll: true }">
-      <super-tabs-toolbar slot="top" scrollable="false" scrollable-padding="false">
-        <super-tab-button>
-          <ion-label>{{ 'INBOX_31.title_tabs_register' | translate }}</ion-label>
-        </super-tab-button>
-        <super-tab-button>
-          <ion-label>{{ 'INBOX_31.title_tabs_cancel_registration' | translate }}</ion-label>
-        </super-tab-button>
-      </super-tabs-toolbar>
-  
-      <super-tabs-container autoScrollTop>
-        <super-tab class="ion-padding">
-          <ion-list lines="full" class="ion-no-margin ion-no-padding margin-top-10">
-            <ion-item lines="none">
-              <ion-item lines="none" class="item-common">
-                <img class="icon-home" src="../assets/icon/svg/my-home.svg"/>
-                <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg"/>
-                <label *ngIf="form_apartment_id != ''" class="pulldown-1-placeholder">{{ 'INBOX_31.apartment_label' | translate }}</label>
-                <div class="width-100 {{form_apartment_class}}">
-                  <ion-select class="pulldown-apartment-select pulldown-1" placeholder="{{ 'INBOX_31.apartment_placeHolder' | translate }}" interface="action-sheet" name="form_apartment_id" [(ngModel)]="form_apartment_id" (ionChange)="ionChangePulldown1($event)">
-                    <ion-select-option *ngFor="let item of listDepartment" value="{{item.apartment._id}}">{{item.apartment.title + ' - ' + item.campaign.title}}</ion-select-option>
-                  </ion-select>
-                </div>
-              </ion-item>
+      <ion-label class="header-title">{{ 'INBOX_31.title' | translate }}</ion-label>
+    </ion-header>
+    <super-tabs-toolbar slot="top" scrollable="false" no-border scrollable-padding="false" class="super-tabs-toolbar">
+      <super-tab-button class="super-tab-button">
+        <ion-label>{{ 'INBOX_31.title_tabs_register' | translate }}</ion-label>
+        <ion-label class="under_line"></ion-label>
+      </super-tab-button>
+      <super-tab-button class="super-tab-button">
+        <ion-label>{{ 'INBOX_31.title_tabs_cancel_registration' | translate }}</ion-label>
+        <ion-label class="under_line"></ion-label>
+      </super-tab-button>
+    </super-tabs-toolbar>
+    <super-tabs-container autoScrollTop>
+      <super-tab class="ion-padding">
+        <ion-list lines="full" class="ion-no-margin ion-no-padding">
+          <ion-item lines="none">
+            <ion-item lines="none" class="item-common">
+              <img class="icon-home" src="../assets/icon/request/home.svg" />
+              <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg" />
+              <label *ngIf="form_apartment_id != ''" class="pulldown-1-placeholder">{{ 'INBOX_31.apartment_label' | translate }}</label>
+              <div class="width-100 {{form_apartment_class}}">
+                <ion-select class="pulldown-apartment-select pulldown-1" placeholder="{{ 'INBOX_31.apartment_placeHolder' | translate }}"
+                  interface="action-sheet" name="form_apartment_id" [(ngModel)]="form_apartment_id"
+                  (ionChange)="ionChangePulldown1($event)">
+                  <ion-select-option *ngFor="let item of listDepartment" value="{{item.apartment._id}}">{{item.apartment.title + ' - ' +
+                    item.campaign.title}}</ion-select-option>
+                </ion-select>
+              </div>
             </ion-item>
-            <ion-item lines="none" class="margin-top-20">
-              <ion-item lines="none" class="item-common">
-                <img class="icon-dollar-active" src="../assets/icon/svg/User.svg"/>
-                <label *ngIf="form_fullname != ''" class="pulldown-1-placeholder">{{ 'INBOX_31.fullname_placeHolder' | translate }}</label>
-                <div class="width-100 {{form_fullname_class}}">
-                  <ion-input type="text" class="text-box-1" 
-                    type="text"
-                    placeholder="{{ 'INBOX_31.fullname_placeHolder' | translate }}" 
-                    value="{{form_fullname}}" 
-                    (ionChange)="ionChangeTextBox1()"
-                    [(ngModel)]="form_fullname">
-                  </ion-input>
-                </div>
-              </ion-item>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-item lines="none" class="item-common">
+              <img class="icon-dollar-active" src="../assets/icon/request/user.svg" />
+              <label *ngIf="form_fullname != ''" class="pulldown-1-placeholder">{{ 'INBOX_31.fullname_placeHolder' | translate }}</label>
+              <div class="width-100 {{form_fullname_class}}">
+                <ion-input type="text" class="text-box-1" type="text" placeholder="{{ 'INBOX_31.fullname_placeHolder' | translate }}"
+                  value="{{form_fullname}}" (ionChange)="ionChangeTextBox1()" [(ngModel)]="form_fullname">
+                </ion-input>
+              </div>
             </ion-item>
-            <ion-item lines="none" class="margin-top-20 line-1">
-              <label class="font-weight-600 margin-top-10 margin-left-10">{{ 'INBOX_31.vehicle_title' | translate }}</label>
+          </ion-item>
+          <div class="devider-line-custom margin-top-10"></div>
+          <ion-item lines="none" class="margin-top-10">
+            <label class="vehicle-title-block">{{ 'INBOX_31.vehicle_title' | translate }}</label>
+          </ion-item>
+          <ion-item lines="none" class="pointer-events-all">
+            <ion-item lines="none" class="item-common">
+              <img class="icon-home" src="../assets/icon/request/sports-car.svg" />
+              <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg" />
+              <label *ngIf="form_vehicle_id != ''" class="pulldown-1-placeholder">{{ 'INBOX_31.vehicle_label' | translate }}</label>
+              <div class="width-100 {{form_vehicle_class}}">
+                <ion-select data-text="" class="pulldown-apartment-select pulldown-vehicle"
+                  placeholder="{{ 'INBOX_31.vehicle_placeHolder' | translate }}" interface="action-sheet" name="form_vehicle_id"
+                  [(ngModel)]="form_vehicle_id" (ionChange)="ionChangePulldown2($event)">
+                  <ion-select-option value="car">{{ 'INBOX_31.vehicle_option_car' | translate }}</ion-select-option>
+                  <ion-select-option value="motorbike">{{ 'INBOX_31.vehicle_option_motobike' | translate }}</ion-select-option>
+                  <ion-select-option value="bike">{{ 'INBOX_31.vehicle_option_bike' | translate }}</ion-select-option>
+                  <ion-select-option value="other">{{ 'INBOX_31.vehicle_option_orther' | translate }}</ion-select-option>
+                </ion-select>
+              </div>
             </ion-item>
-            <ion-item lines="none" class="pointer-events-all margin-top-10">
-              <ion-item lines="none" class="item-common">
-                <img class="icon-home" src="../assets/icon/svg/Category.svg"/>
-                <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg"/>
-                <label *ngIf="form_vehicle_id != ''" class="pulldown-1-placeholder">{{ 'INBOX_31.vehicle_label' | translate }}</label>
-                <div class="width-100 {{form_vehicle_class}}">
-                  <ion-select data-text="" class="pulldown-apartment-select pulldown-vehicle" placeholder="{{ 'INBOX_31.vehicle_placeHolder' | translate }}" interface="action-sheet" name="form_vehicle_id" [(ngModel)]="form_vehicle_id" (ionChange)="ionChangePulldown2($event)">
-                    <ion-select-option value="car">{{ 'INBOX_31.vehicle_option_car' | translate }}</ion-select-option>
-                    <ion-select-option value="motorbike">{{ 'INBOX_31.vehicle_option_motobike' | translate }}</ion-select-option>
-                    <ion-select-option value="bike">{{ 'INBOX_31.vehicle_option_bike' | translate }}</ion-select-option>
-                    <ion-select-option value="other">{{ 'INBOX_31.vehicle_option_orther' | translate }}</ion-select-option>
-                  </ion-select>
-                </div>
-              </ion-item>
-            </ion-item>
-            <ion-item lines="none" class="margin-top-20">
-              <ion-item lines="none" class="item-common">
-                <img class="icon-dollar-active" src="../assets/icon/svg/Car.svg"/>
-                <label *ngIf="form_hang_xe != ''" class="pulldown-1-placeholder">{{ 'INBOX_31.type_vihicle_placeHolder' | translate }}</label>
-                <div class="width-100 {{form_hang_xe_class}}">
-                  <ion-input type="text" class="text-box-1" 
-                    type="text"
-                    placeholder="{{ 'INBOX_31.type_vihicle_placeHolder' | translate }}" 
-                    value="{{form_hang_xe}}" 
-                    (ionChange)="ionChangeTextBox2()"
-                    [(ngModel)]="form_hang_xe">
-                  </ion-input>
-                </div>
-              </ion-item>
-            </ion-item>
-            <ion-item lines="none" class="margin-top-20">
-              <ion-item lines="none" class="item-common">
-                <img class="icon-dollar-active" src="../assets/icon/svg/Model.svg"/>
-                <label *ngIf="form_model != ''" class="pulldown-1-placeholder">{{ 'INBOX_31.model_vihicle_placeHolder' | translate }}</label>
-                <div class="width-100 {{form_model_class}}">
-                  <ion-input type="text" class="text-box-1" 
-                    type="text"
-                    placeholder="{{ 'INBOX_31.model_vihicle_placeHolder' | translate }}" 
-                    value="{{form_model}}" 
-                    (ionChange)="ionChangeTextBox3()"
-                    [(ngModel)]="form_model">
-                  </ion-input>
-                </div>
-              </ion-item>
-            </ion-item>
-            <ion-item lines="none" class="margin-top-20">
-              <ion-item lines="none" class="item-common">
-                <img class="icon-dollar-active" src="../assets/icon/svg/NoCar.svg"/>
-                <label *ngIf="form_bien_kiem_soat != ''" class="pulldown-1-placeholder">{{ 'INBOX_31.license_plates_placeHolder' | translate }}</label>
-                <div class="width-100 {{form_bien_kiem_soat_class}}">
-                  <ion-input type="text" class="text-box-1" 
-                    type="text"
-                    placeholder="{{ 'INBOX_31.license_plates_placeHolder' | translate }}" 
-                    value="{{form_bien_kiem_soat}}" 
-                    (ionChange)="ionChangeTextBox4()"
-                    [(ngModel)]="form_bien_kiem_soat">
-                  </ion-input>
-                </div>
-              </ion-item>
-            </ion-item>
-            <ion-item lines="none" class="margin-top-20">
-              <ion-item lines="none" class="item-common">
-                <img class="icon-home" src="../assets/icon/svg/Calendar 2.svg"/>
-                <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg"/>
-                <label *ngIf="form_date_time != ''" class="pulldown-1-placeholder">{{ 'INBOX_31.datetime_placeHolder' | translate }}</label>
-                <div class="width-100 {{form_date_time_class}}">
-                  <ion-datetime placeholder="{{ 'INBOX_31.datetime_placeHolder' | translate }}"
-                    class="pulldown-apartment-select"
-                    name="form_date_time" [(ngModel)]="form_date_time"
-                    displayFormat="DD/MM/YYYY"
-                    (ionChange)="ionChangeDateTime($event)"
-                    min="2000"
-                    max="2050">
-                  </ion-datetime>
-                </div>
-              </ion-item>
-            </ion-item>
-
-            <ion-item lines="none" class="margin-top-20 line-1">
-              <label class="font_weight_bold margin-top-10">{{ 'INBOX_31.area_image_title' | translate }}</label>
-            </ion-item>
-            <ion-item lines="none">
-              <ion-grid class="ion-grid-class">
-                <ion-row>
-                  <ion-col class="ion-col-class padding-left-0" size="6" size-md>
-                    <ion-item *ngIf="image_select_url_1 != ''" lines="none" class="ion-item-for-image" (click)="selectImage(1)">
-                      <img class="image-class" src="{{image_select_url_1}}"/>
-                      <button type="button" class="close-image-icon" (click)="deleteImageForm(1)">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-grid class="ion-grid-class">
+              <ion-row>
+                <ion-col class="padding-left-0" size="6" size-md>
+                  <ion-item lines="none">
+                    <ion-item lines="none" class="item-common">
+                      <label *ngIf="form_hang_xe != ''" class="pulldown-1-placeholder pulldown-placeholder-input ">{{
+                        'INBOX_31.type_vihicle_placeHolder' | translate
+                        }}</label>
+                      <div class="width-100 {{form_hang_xe_class}}">
+                        <ion-input type="text" class="text-box-1 text-box-input" type="text"
+                          placeholder="{{ 'INBOX_31.type_vihicle_placeHolder' | translate }}" value="{{form_hang_xe}}"
+                          (ionChange)="ionChangeTextBox2()" [(ngModel)]="form_hang_xe">
+                        </ion-input>
+                      </div>
                     </ion-item>
-                    <ion-item *ngIf="image_select_url_1 == ''" lines="none" class="ion-item-for-image" (click)="selectImage(1)">
-                      <img class="image-class-camera" src="../assets/icon/svg/Camera.svg"/>
+                  </ion-item>
+                </ion-col>
+                <ion-col class="padding-right-0" size="6" size-md>
+                  <ion-item lines="none">
+                    <ion-item lines="none" class="item-common">
+                      <label *ngIf="form_model != ''" class="pulldown-1-placeholder pulldown-placeholder-input ">{{
+                        'INBOX_31.model_vihicle_placeHolder' | translate
+                        }}</label>
+                      <div class="width-100 {{form_model_class}}">
+                        <ion-input type="text" class="text-box-1 text-box-input" type="text"
+                          placeholder="{{ 'INBOX_31.model_vihicle_placeHolder' | translate }}" value="{{form_model}}"
+                          (ionChange)="ionChangeTextBox3()" [(ngModel)]="form_model">
+                        </ion-input>
+                      </div>
                     </ion-item>
-                  </ion-col>
-                  <ion-col class="ion-col-class padding-right-0" size="6" size-md>
-                    <ion-item *ngIf="image_select_url_2 != ''" lines="none" class="ion-item-for-image" (click)="selectImage(2)">
-                      <img class="image-class" src="{{image_select_url_2}}"/>
-                      <button type="button" class="close-image-icon" (click)="deleteImageForm(2)">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </ion-item>
-                    <ion-item *ngIf="image_select_url_2 == ''" lines="none" class="ion-item-for-image" (click)="selectImage(2)">
-                      <img class="image-class-camera" src="../assets/icon/svg/Camera.svg"/>
-                    </ion-item>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-
-
-              <!-- <ion-item lines="none" class="item-common background-fbfbfb margin-right-10" (click)="selectImage()">
-                <img class="icon-camera" src="../assets/icon/svg/Camera.svg"/>
-              </ion-item>
-              <ion-item lines="none" class="item-common background-fbfbfb margin-left-10" (click)="selectImage()">
-                <img class="icon-camera" src="../assets/icon/svg/Camera.svg"/>
-              </ion-item> -->
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-item lines="none" class="item-common">
+              <img class="icon-dollar-active" src="../assets/icon/request/license-plate.svg" />
+              <label *ngIf="form_bien_kiem_soat != ''" class="pulldown-1-placeholder">{{ 'INBOX_31.license_plates_placeHolder' | translate
+                }}</label>
+              <div class="width-100 {{form_bien_kiem_soat_class}}">
+                <ion-input type="text" class="text-box-1" type="text" placeholder="{{ 'INBOX_31.license_plates_placeHolder' | translate }}"
+                  value="{{form_bien_kiem_soat}}" (ionChange)="ionChangeTextBox4()" [(ngModel)]="form_bien_kiem_soat">
+                </ion-input>
+              </div>
             </ion-item>
-
-            <ion-item lines="none" class="margin-top-20 line-1">
-              <ion-item lines="none" class="item-common margin-top-20">
-                  <ion-textarea [(ngModel)]="form_note" class="text-area-1" rows="4" cols="20" placeholder="{{ 'INBOX_31.textarea_note' | translate }}"></ion-textarea>
-              </ion-item>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-item lines="none" class="item-common">
+              <img class="icon-home" src="../assets/icon/request/calendar.svg" />
+              <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg" />
+              <label *ngIf="form_date_time != ''" class="pulldown-1-placeholder">{{ 'INBOX_31.datetime_placeHolder' | translate }}</label>
+              <div class="width-100 {{form_date_time_class}}">
+                <ion-datetime placeholder="{{ 'INBOX_31.datetime_placeHolder' | translate }}" class="pulldown-apartment-select"
+                  name="form_date_time" [(ngModel)]="form_date_time" displayFormat="DD/MM/YYYY" (ionChange)="ionChangeDateTime($event)"
+                  min="2000" max="2050">
+                </ion-datetime>
+              </div>
             </ion-item>
-          </ion-list>
-          
-          <section class="full-width function-section">
-            <ion-button expand="block" class="amo-button-custom button-inactive padding-0"
-              *ngIf="form_apartment_id == '' 
+          </ion-item>
+          <div class="devider-line-custom margin-top-10 margin-bottom-10"></div>
+          <ion-item lines="none">
+            <label class="vehicle-title-block">{{ 'INBOX_31.area_image_title' | translate }}</label>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-grid class="ion-grid-class">
+              <ion-row>
+                <ion-col class="ion-col-class padding-left-0" size="6" size-md>
+                  <ion-item *ngIf="image_select_url_1 != ''" lines="none" class="ion-item-for-image" (click)="selectImage(1)">
+                    <img class="image-class" src="{{image_select_url_1}}" />
+                    <button type="button" class="close-image-icon" (click)="deleteImageForm(1)">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </ion-item>
+                  <ion-item *ngIf="image_select_url_1 == ''" lines="none" class="ion-item-for-image" (click)="selectImage(1)">
+                    <div class="icon-camera-container">
+                      <img src="../assets/icon/request/image.svg" />
+                      <ion-label class="camera-label">{{ 'INBOX_31.image_before_label' | translate }}</ion-label>
+                    </div>
+                  </ion-item>
+                </ion-col>
+                <ion-col class="ion-col-class padding-right-0" size="6" size-md>
+                  <ion-item *ngIf="image_select_url_2 != ''" lines="none" class="ion-item-for-image" (click)="selectImage(2)">
+                    <img class="image-class" src="{{image_select_url_2}}" />
+                    <button type="button" class="close-image-icon" (click)="deleteImageForm(2)">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </ion-item>
+                  <ion-item *ngIf="image_select_url_2 == ''" lines="none" class="ion-item-for-image" (click)="selectImage(2)">
+                    <div class="icon-camera-container">
+                      <img src="../assets/icon/request/image.svg" />
+                      <ion-label class="camera-label">{{ 'INBOX_31.image_after_label' | translate }}</ion-label>
+                    </div>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+
+          <!-- <ion-item lines="none">
+            <ion-item lines="none" class="item-common margin-top-20">
+              <ion-textarea [(ngModel)]="form_note" class="text-area-1" rows="4" cols="20"
+                placeholder="{{ 'INBOX_31.textarea_note' | translate }}"></ion-textarea>
+            </ion-item>
+          </ion-item> -->
+        </ion-list>
+
+        <section class="full-width function-section">
+          <ion-button expand="block" class="amo-button-custom button-inactive padding-0" *ngIf="form_apartment_id == '' 
               || form_fullname == '' 
               || form_vehicle_id == '' 
               || form_hang_xe == '' 
               || form_model == '' 
               || form_bien_kiem_soat == '' 
-              || form_date_time == ''
-              || form_note == ''"
-            >
-              {{ 'INBOX_31.button_send' | translate }}
-            </ion-button>
-            <ion-button *ngIf="form_apartment_id != '' 
+              || form_date_time == ''">
+            {{ 'INBOX_31.button_send' | translate }}
+          </ion-button>
+          <ion-button *ngIf="form_apartment_id != '' 
               && form_fullname != '' 
               && form_vehicle_id != '' 
               && form_hang_xe != '' 
               && form_model != '' 
               && form_bien_kiem_soat != '' 
-              && form_date_time != ''
-              && form_note != ''"
-            expand="block" class="amo-button-custom padding-0"
-            (click)="eventButtonRegisterNew()"
-          >
+              && form_date_time != ''" expand="block" class="amo-button-custom padding-0" (click)="eventButtonRegisterNew()">
             {{ 'INBOX_31.button_send' | translate }}
           </ion-button>
-          </section>
-        </super-tab>
-        <super-tab class="ion-padding">
-          <ion-list lines="full" class="ion-no-margin ion-no-padding margin-top-10">
-            <ion-item lines="none">
-              <ion-item lines="none" class="item-common">
-                <img class="icon-home" src="../assets/icon/svg/my-home.svg"/>
-                <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg"/>
-                <label *ngIf="tab2_form_apartment_id != ''" class="pulldown-1-placeholder">{{ 'INBOX_31.apartment_label' | translate }}</label>
-                <div class="width-100 {{tab2_form_apartment_class}}">
-                  <ion-select class="pulldown-apartment-select pulldown-1" placeholder="{{ 'INBOX_31.apartment_placeHolder' | translate }}" interface="action-sheet" name="tab2_form_apartment_id" [(ngModel)]="tab2_form_apartment_id" (ionChange)="tab2_ionChangePulldown1($event)">
-                    <ion-select-option *ngFor="let item of listDepartment" value="{{item.apartment._id}}">{{item.apartment.title + ' - ' + item.campaign.title}}</ion-select-option>
-                  </ion-select>
+        </section>
+      </super-tab>
+      <super-tab class="ion-padding delete-keep-vehicle-tab">
+        <ion-list lines="full" class="ion-no-margin ion-no-padding">
+          <!-- <ion-item lines="none">
+            <ion-item lines="none" class="item-common">
+              <img class="icon-home" src="../assets/icon/request/home.svg" />
+              <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg" />
+              <label *ngIf="tab2_form_apartment_id != ''" class="pulldown-1-placeholder">{{ 'INBOX_31.apartment_label' | translate
+                }}</label>
+              <div class="width-100 {{tab2_form_apartment_class}}">
+                <ion-select class="pulldown-apartment-select pulldown-1" placeholder="{{ 'INBOX_31.apartment_placeHolder' | translate }}"
+                  interface="action-sheet" name="tab2_form_apartment_id" [(ngModel)]="tab2_form_apartment_id"
+                  (ionChange)="tab2_ionChangePulldown1($event)">
+                  <ion-select-option *ngFor="let item of listDepartment" value="{{item.apartment._id}}">{{item.apartment.title + ' - ' +
+                    item.campaign.title}}</ion-select-option>
+                </ion-select>
+              </div>
+            </ion-item>
+          </ion-item>
+          <ion-item lines="none" *ngIf="list_vehicle.length > 0">
+            <label class="font_weight_bold margin-top-10">{{ 'INBOX_31.list_vehicel_title' | translate }}</label>
+          </ion-item> -->
+          <ion-card-content *ngFor="let item of listDepartment" lines="none"
+            class="margin-top-10 margin-bottom-10 item-delete-keep-vehicle">
+            <div class="number-home">{{item.apartment.title}} - {{item.apartment?.campaign?.title}}</div>
+            <div class="address-home">{{item.apartment?.campaign?.address}}</div>
+            <div class="devider-line-custom margin-top-10"></div>
+            <div *ngFor="let vehicle of item.apartment.vehicles">
+              <div *ngIf="item.isExpand">
+                <div class="vehicle-name-block">
+                  <ion-checkbox class="checkbox-common" color="secondary" mode="md" (ionChange)="vehicle.isDelete = !vehicle.isDelete">
+                  </ion-checkbox>
+                  <ng-container [ngSwitch]="vehicle.type">
+                    <label class="vehicle-name" *ngSwitchCase="'car'">{{"INBOX_31.vehicle_option_car" | translate}}</label>
+                    <label class="vehicle-name" *ngSwitchCase="'motorbike'">{{"INBOX_31.vehicle_option_motobike" | translate}}</label>
+                    <label class="vehicle-name" *ngSwitchCase="'bike'">{{"INBOX_31.vehicle_option_bike" | translate}}</label>
+                    <label class="vehicle-name" *ngSwitchDefault>{{"INBOX_31.vehicle_option_orther" | translate}}</label>
+                  </ng-container>
                 </div>
-              </ion-item>
+                <label class="vehicle-info">{{vehicle.model}}/{{vehicle.identity}}</label>
+                <div class="devider-line-custom"></div>
+              </div>
+            </div>
+            <div class="button-expand" (click)="item.isExpand = !item.isExpand">
+              <img [src]="!item.isExpand ? '../assets/icon/svg/Down.svg' : '../assets/icon/svg/up.svg'" />
+            </div>
+          </ion-card-content>
+          
+          <!-- <ion-item lines="none" *ngIf="list_vehicle.length > 0">
+            <ion-item lines="none" class="item-delete-keep-vehicle margin-top-20">
+              <ion-textarea [(ngModel)]="form_note_tab2" class="text-area-1" rows="4" cols="20"
+                placeholder="{{ 'INBOX_31.textarea_note' | translate }}"></ion-textarea>
             </ion-item>
-            <ion-item lines="none" class="margin-top-20" *ngIf="list_vehicle.length > 0">
-              <label class="font_weight_bold margin-top-10">{{ 'INBOX_31.list_vehicel_title' | translate }}</label>
-            </ion-item>
-            <ion-item *ngFor="let item of list_vehicle" lines="none" class="margin-top-10 margin-bottom-10">
-              <ion-item lines="none" class="item-common no-border">
-                <ion-checkbox class="checkbox-common" color="secondary" mode="md" (ionChange)="ionChangeCheckBox(item._id)"></ion-checkbox>
-                <label class="label-top">{{item.phuongtien}}</label>
-                <label class="label-bottom">{{item.hang_xe}} {{item.model}}/{{item.bien_so}}</label>
-              </ion-item>
-            </ion-item>
-            <ion-item lines="none" class="margin-top-20 line-1" *ngIf="list_vehicle.length > 0">
-              <ion-item lines="none" class="item-common margin-top-20">
-                  <ion-textarea [(ngModel)]="form_note_tab2" class="text-area-1" rows="4" cols="20" placeholder="{{ 'INBOX_31.textarea_note' | translate }}"></ion-textarea>
-              </ion-item>
-            </ion-item>
-          </ion-list>
-          <section class="full-width function-section">
-            <ion-button expand="block" class="amo-button-custom button-inactive padding-0 inactive_button {{checkActiveButton()}}">{{ 'INBOX_31.button_send' | translate }}</ion-button>
-            <ion-button (click)="eventButtonRemoveVehicles()" expand="block" class="amo-button-custom padding-0 active_button {{checkActiveButton()}}">{{ 'INBOX_31.button_send' | translate }}</ion-button>
-          </section>
-        </super-tab>
-      </super-tabs-container>
-    </super-tabs>
-  </ion-content>
-  
+          </ion-item> -->
+        </ion-list>
+        <section class="full-width function-section">
+          <ion-button expand="block" class="amo-button-custom button-inactive padding-0 inactive_button {{checkActiveButton()}}">{{
+            'INBOX_31.button_send' | translate }}</ion-button>
+          <ion-button (click)="eventButtonRemoveVehicles()" expand="block"
+            class="amo-button-custom padding-0 active_button {{checkActiveButton()}}">{{ 'INBOX_31.button_send' | translate }}
+          </ion-button>
+        </section>
+      </super-tab>
+    </super-tabs-container>
+  </super-tabs>
+</ion-content>

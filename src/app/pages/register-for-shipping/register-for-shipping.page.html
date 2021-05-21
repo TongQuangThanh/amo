@@ -1,115 +1,182 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-title>{{ 'INBOX_24.title' | translate }}</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button text=""></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
+<ion-header class="ion-no-border ">
+  <ion-buttons class="back-button">
+    <ion-back-button color="light" text="" icon="chevron-back" class="ion-back-button"></ion-back-button>
+  </ion-buttons>
+  <ion-label class="header-title">{{ 'INBOX_24.title' | translate }}</ion-label>
+  <ion-label class="header-sub-title">{{ 'INBOX_24.sub_title' | translate }}</ion-label>
 </ion-header>
 
-<ion-content>
-  <ion-list lines="full" class="ion-no-margin ion-no-padding margin-top-20">
-    <ion-item lines="none">
+<ion-content class="register-tranfer-content">
+  <ion-list lines="full" class="ion-no-margin ion-no-padding">
+    <ion-item lines="none" class="margin-top-10 ">
       <ion-item lines="none" class="item-common">
-        <img class="icon-home" src="../assets/icon/svg/my-home.svg"/>
-        <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg"/>
+        <img class="icon-home" src="../assets/icon/request/home.svg" />
+        <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg" />
         <label *ngIf="form_apartment_id != ''" class="pulldown-1-placeholder">{{ 'INBOX_24.apartment_placeHolder_1' | translate }}</label>
         <div class="width-100 {{form_apartment_class}}">
-          <ion-select class="pulldown-apartment-select" placeholder="{{ 'INBOX_24.apartment_placeHolder_2' | translate }}" interface="action-sheet" name="form_apartment_id" [(ngModel)]="form_apartment_id" (ionChange)="ionChangePulldown1($event)">
-            <ion-select-option *ngFor="let item of listDepartment" value="{{item.apartment._id}}">{{item.apartment.title + ' - ' + item.campaign.title}}</ion-select-option>
+          <ion-select class="pulldown-apartment-select" placeholder="{{ 'INBOX_24.apartment_placeHolder_2' | translate }}"
+            interface="action-sheet" name="form_apartment_id" [(ngModel)]="form_apartment_id" (ionChange)="ionChangePulldown1($event)">
+            <ion-select-option *ngFor="let item of listDepartment" value="{{item.apartment._id}}">{{item.apartment.title + ' - ' +
+              item.campaign.title}}</ion-select-option>
           </ion-select>
         </div>
       </ion-item>
     </ion-item>
-    <ion-item lines="none" class="margin-top-20">
-      <ion-item lines="none" class="item-common no-border margin-right-5" (click)="eventButton1(1)">
-        <div class="{{button_1_class}}"></div>
-        <label class="button-1-text">{{ 'INBOX_24.transfer_income' | translate }}</label> 
-        <img *ngIf="button_active == 1" class="button-1-icon" src="../assets/icon/svg/Fill.svg"/>
-      </ion-item>
-      <ion-item lines="none" class="item-common no-border margin-left-5" (click)="eventButton1(2)">
-        <div class="{{button_2_class}}"></div>
-        <label class="button-1-text">{{ 'INBOX_24.transfer_outcome' | translate }}</label> 
-        <img *ngIf="button_active == 2" class="button-1-icon" src="../assets/icon/svg/Fill.svg"/>
-      </ion-item>
-    </ion-item>
-    <ion-item lines="none" class="margin-top-20">
+    <!-- <ion-item lines="none">
+        <ion-item lines="none" class="item-common no-border margin-right-5" (click)="eventButton1(1)">
+          <div class="{{button_1_class}}"></div>
+          <label class="button-1-text">{{ 'INBOX_24.transfer_income' | translate }}</label>
+          <img *ngIf="button_active == 1" class="button-1-icon" src="../assets/icon/svg/Fill.svg" />
+        </ion-item>
+        <ion-item lines="none" class="item-common no-border margin-left-5" (click)="eventButton1(2)">
+          <div class="{{button_2_class}}"></div>
+          <label class="button-1-text">{{ 'INBOX_24.transfer_outcome' | translate }}</label>
+          <img *ngIf="button_active == 2" class="button-1-icon" src="../assets/icon/svg/Fill.svg" />
+        </ion-item>
+      </ion-item> -->
+    <ion-item lines="none">
       <ion-item lines="none" class="item-common">
-        <img class="icon-home" src="../assets/icon/svg/Clock.svg"/>
-        <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg"/>
-        <label *ngIf="form_start_time != ''" class="pulldown-1-placeholder">{{ 'INBOX_24.datetime_start_placeHolder' | translate }}</label>
+        <img class="icon-home" src="../assets/icon/request/time.svg" />
+        <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg" />
+        <label *ngIf="form_start_time != ''" class="pulldown-1-placeholder">{{ 'INBOX_24.datetime_start_placeHolder' | translate
+          }}</label>
         <div class="width-100 {{form_start_time_class}}">
-          <ion-datetime 
-            placeholder="{{ 'INBOX_24.datetime_start_placeHolder' | translate }}"
-            class="datetime-commom"
-            name="form_start_time" [(ngModel)]="form_start_time"
-            displayFormat="DD/MM/YYYY HH:mm"
-            (ionChange)="ionChangeStartTime()"
-            min="2000"
-            max="2050">
+          <ion-datetime placeholder="{{ 'INBOX_24.datetime_start_placeHolder' | translate }}" class="datetime-commom" name="form_start_time"
+            [(ngModel)]="form_start_time" displayFormat="DD/MM/YYYY HH:mm" (ionChange)="ionChangeStartTime()" min="2000" max="2050">
           </ion-datetime>
         </div>
       </ion-item>
     </ion-item>
-    <ion-item lines="none" class="margin-top-20">
-      <ion-item lines="none" class="item-common">
-        <img class="icon-home" src="../assets/icon/svg/Clock.svg"/>
-        <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg"/>
-        <label *ngIf="form_end_time != ''" class="pulldown-1-placeholder">{{ 'INBOX_24.datetime_end_placeHolder' | translate }}</label>
-        <div class="width-100 {{form_end_time_class}}">
-        <ion-datetime placeholder="{{ 'INBOX_24.datetime_end_placeHolder' | translate }}"
-            class="datetime-commom"
-            name="form_end_time" [(ngModel)]="form_end_time"
-            displayFormat="DD/MM/YYYY HH:mm"
-            (ionChange)="ionChangeEndTime()"
-            min="2000"
-            max="2050">
-          </ion-datetime>
-        </div>
-      </ion-item>
-    </ion-item>
-    <ion-item lines="none" class="margin-top-20 line-1">
-      <label class="font-weight-600 margin-left-20 margin-top-20 margin-bottom-5">{{ 'INBOX_24.product_detail_title' | translate }}</label>
-    </ion-item>
-    <div *ngFor="let product of list_product" class="{{product.class}}">
-      <ion-item lines="none" class="margin-top-20">
+    <!-- <ion-item lines="none">
         <ion-item lines="none" class="item-common">
-          <img class="icon-home" src="../assets/icon/svg/Archiver.svg"/>
-          <label *ngIf="product.name_product != ''" class="pulldown-1-placeholder">{{ 'INBOX_24.product_placeHolder' | translate }} {{product.index}}</label>
-          <ion-input type="text" class="text-box-1" 
-            placeholder="{{ 'INBOX_24.product_placeHolder' | translate }} {{product.index}}..." 
-            value="{{product.name_product}}" 
-            (ionChange)="ionchangGroup1TextBox()"
-            [(ngModel)]="product.name_product">
-          </ion-input>
-        </ion-item>
-      </ion-item>
-      <ion-item lines="none" class="margin-top-10">
-        <ion-item lines="none" class="item-common no-border">
-          <div>
-            <label class="margin-0">{{ 'INBOX_24.product_number_title' | translate }}</label>
-          </div>
-          <div class="group-1-button-change-number">
-            <button class="button-3-1" (click)="downNumberProduct(product.index)"><img class="icon-button-3" src="../assets/icon/svg/tru.svg"/></button>
-            <label class="group-1-label-1">{{product.number_of_product}}</label>
-            <button class="button-3-2" (click)="upNumberProduct(product.index)"><img class="icon-button-3" src="../assets/icon/svg/plus.svg"/></button>
+          <img class="icon-home" src="../assets/icon/svg/Clock.svg" />
+          <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg" />
+          <label *ngIf="form_end_time != ''" class="pulldown-1-placeholder">{{ 'INBOX_24.datetime_end_placeHolder' | translate }}</label>
+          <div class="width-100 {{form_end_time_class}}">
+            <ion-datetime placeholder="{{ 'INBOX_24.datetime_end_placeHolder' | translate }}" class="datetime-commom" name="form_end_time"
+              [(ngModel)]="form_end_time" displayFormat="DD/MM/YYYY HH:mm" (ionChange)="ionChangeEndTime()" min="2000" max="2050">
+            </ion-datetime>
           </div>
         </ion-item>
-      </ion-item>
-    </div>
-    <ion-item lines="none" class="margin-top-20">
-      <ion-item lines="none" class="item-common no-border">
-        <ion-button expand="block" class="group-1-button-custom" (click)="addProduct()">{{ 'INBOX_24.btn_add_product' | translate }}</ion-button>
+      </ion-item> -->
+    <!-- <ion-item lines="none" class="line-1">
+        <label class="font-weight-600 margin-left-20 margin-top-20 margin-bottom-5">{{ 'INBOX_24.product_detail_title' | translate
+          }}</label>
+      </ion-item> -->
+    <ion-item lines="none">
+      <ion-item lines="none" class="item-text-area">
+        <ion-textarea [(ngModel)]="form_note" class="text-area-1" rows="4" cols="20"
+          placeholder="{{ 'INBOX_24.inf_product_placeHolder' | translate }}"></ion-textarea>
       </ion-item>
     </ion-item>
-    <ion-item lines="none" class="margin-top-20 line-1">
-      <ion-item lines="none" class="item-common margin-top-20">
-          <ion-textarea [(ngModel)]="form_note" class="text-area-1" rows="4" cols="20" placeholder="{{ 'INBOX_24.note_placeHolder' | translate }}"></ion-textarea>
+    <!-- <div *ngFor="let product of list_product" class="{{product.class}}">
+        <ion-item lines="none">
+          <ion-item lines="none" class="item-common">
+            <img class="icon-home" src="../assets/icon/svg/Archiver.svg" />
+            <label *ngIf="product.name_product != ''" class="pulldown-1-placeholder">{{ 'INBOX_24.product_placeHolder' | translate }}
+              {{product.index}}</label>
+            <ion-input type="text" class="text-box-1" placeholder="{{ 'INBOX_24.product_placeHolder' | translate }} {{product.index}}..."
+              value="{{product.name_product}}" (ionChange)="ionchangGroup1TextBox()" [(ngModel)]="product.name_product">
+            </ion-input>
+          </ion-item>
+        </ion-item>
+        <ion-item lines="none" class="margin-top-10">
+          <ion-item lines="none" class="item-common no-border">
+            <div>
+              <label class="margin-0">{{ 'INBOX_24.product_number_title' | translate }}</label>
+            </div>
+            <div class="group-1-button-change-number">
+              <button class="button-3-1" (click)="downNumberProduct(product.index)"><img class="icon-button-3"
+                  src="../assets/icon/svg/tru.svg" /></button>
+              <label class="group-1-label-1">{{product.number_of_product}}</label>
+              <button class="button-3-2" (click)="upNumberProduct(product.index)"><img class="icon-button-3"
+                  src="../assets/icon/svg/plus.svg" /></button>
+            </div>
+          </ion-item>
+        </ion-item>
+      </div>
+      <ion-item lines="none">
+        <ion-item lines="none" class="item-common no-border">
+          <ion-button expand="block" class="group-1-button-custom" (click)="addProduct()">{{ 'INBOX_24.btn_add_product' | translate }}
+          </ion-button>
+        </ion-item>
+      </ion-item> -->
+    <!-- <ion-item lines="none" class="line-1">
+        <ion-item lines="none" class="item-common margin-top-20">
+          <ion-textarea [(ngModel)]="form_note" class="text-area-1" rows="4" cols="20"
+            placeholder="{{ 'INBOX_24.note_placeHolder' | translate }}"></ion-textarea>
+        </ion-item>
+      </ion-item> -->
+    <ion-item lines="none">
+      <ion-grid *ngIf="number_of_image != 0" class="ion-grid-class">
+        <ion-row>
+          <ion-col class="ion-col-class" *ngFor="let image of list_image_1" size="4" size-md>
+            <ion-item lines="none" class="ion-item-for-image">
+              <img class="image-class" src="{{image.src}}" />
+            </ion-item>
+            <button type="button" class="close-image-icon" (click)="deleteImageToList(image.index)">
+              <span aria-hidden="true">&times;</span>
+            </button>
+            <div *ngIf="number_of_image > 4 && image.index == 3" class="mask-multiple-image" (click)="showAllImage()">
+              <label>+{{number_of_image - 4}}</label>
+            </div>
+          </ion-col>
+          <ion-col class="ion-col-class" size="4" size-md>
+            <ion-item lines="none" class="ion-item-for-image" (click)="selectImage()">
+              <img class="image-class" src="../assets/icon/svg/add-item.svg" />
+            </ion-item>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-item lines="none" class="ion-no-padding item-photo-grap background-fbfbfb" *ngIf="number_of_image == 0" (click)="selectImage()">
+        <div class="icon-camera-container">
+          <ion-icon class="icon-camera" src="../assets/icon/request/image.svg"></ion-icon>
+          <ion-label class="camera-label">{{ 'INBOX_29.add_image_label' | translate }}</ion-label>
+          <ion-label class="camera-sub-label">{{ 'INBOX_29.add_image_sub_label' | translate }}</ion-label>
+        </div>
       </ion-item>
     </ion-item>
   </ion-list>
   <section class="full-width function-section">
-    <ion-button expand="block" class="amo-button-custom inactive_button {{checkActiveButton()}}">{{ 'INBOX_24.button_send' | translate }}</ion-button>
-    <ion-button expand="block" class="amo-button-custom active_button {{checkActiveButton()}}" (click)="eventButtonRegisterNew()">{{ 'INBOX_24.button_send' | translate }}</ion-button>
+    <ion-button expand="block" class="amo-button-custom inactive_button {{checkActiveButton()}}">{{ 'INBOX_24.button_send' | translate }}
+    </ion-button>
+    <ion-button expand="block" class="amo-button-custom active_button {{checkActiveButton()}}" (click)="eventButtonRegisterNew()">{{
+      'INBOX_24.button_send' | translate }}</ion-button>
   </section>
+  <div *ngIf="flag_show_all_image == true" class="modal-backdrop fade show"></div>
+  <div *ngIf="flag_show_all_image == true" class="modal popup-show-full-image" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="eventButtonClosePopupImage()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="div-header-title">
+            <!-- <label>{{ 'INBOX_29.popup_header_title' | translate }}</label> -->
+          </div>
+        </div>
+        <div class="modal-body">
+          <ion-item lines="none" class="area-show-image" id="area-show-image">
+            <ion-grid>
+              <ion-row>
+                <ion-col class="ion-col-class" *ngFor="let image of list_image" size="6" size-md>
+                  <ion-item lines="none" class="ion-item-for-image">
+                    <img class="image-class" src="{{image.src}}" />
+                  </ion-item>
+                  <button type="button" class="close-image-icon" (click)="deleteImageToList(image.index)">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </ion-col>
+                <ion-col class="ion-col-class" size="6" size-md>
+                  <ion-item lines="none" class="ion-item-for-image" (click)="selectImage()">
+                    <img class="image-class icon-add-image" src="../assets/icon/svg/add-item.svg" />
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>

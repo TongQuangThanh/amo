@@ -1,186 +1,139 @@
-<!-- <ion-header id="main-header" class="ion-no-border" [ngStyle]="{'display': getStyleHeader(1)}">
-    <ion-toolbar class="header-toolbar">
-      <ion-buttons class="btn-account" slot="start" (click)="goToMyAccount()">
-        <ion-avatar class="avatar-custom">
-            <img src="{{avatar}}" />
-        </ion-avatar>
-        <ion-label class="avatar-content-title">{{userName}}</ion-label>
-      </ion-buttons>
-      <ion-chip slot="end" class="button-my-home" (click)="goToMyHome()">
-        <img width="12px" src="../../../assets/icon/home-icon.svg" />
-          <ion-label class="myhome-content-title">{{ 'HOME.my_home' | translate }}</ion-label>
-      </ion-chip>
-    </ion-toolbar>
-    <div class="amountPay-content">
-        <div id="content-button-child" class="function-content-button">
-            <div class="ion-float-left div-avatar-content-big btn-paynow" (click)="changePayment()">
-                <ion-item lines="none" class="content-item">
-                    <ion-icon item-start name="pay-now" class="content-icon" src="/assets/icon/pay_now.svg"></ion-icon>
-                    <span class="image-caption-pay">{{ 'HOME.pay_now' | translate }}</span>
-                </ion-item>
-                <ion-label class="amountPay-number">3.345.000 <span class="amountPay-unit">vnd</span></ion-label>
-            </div>
-            <div class="ion-float-right div-avatar-content-big btn-new-request" (click)="createRequest()">
-                <ion-item lines="none" class="content-item">
-                    <ion-icon item-start name="request-icon" class="content-icon" src="/assets/icon/request_icon.svg"></ion-icon>
-                    <span class="image-caption-big">{{ 'HOME.create_request' | translate }}</span>
-                </ion-item>
-                <ion-label class="request-detail">{{ 'HOME.create_request_detail' | translate }}</ion-label>
-            </div>
-        </div>
-    </div>
-</ion-header> -->
-<ion-header id="sub-header" class="ion-no-border w3-animate-top" [ngStyle]="{'display': getStyleHeader(2)}">
-    <!-- <div class="sub-header-toolbar"></div> -->
-    <div class="">
-        <!-- <div class="sub-header-toolbar"></div> -->
-        <div id="content-button-child" class="sub-function-content-button">
-            <div class="ion-float-left div-avatar-content-item btn-pay_now ion-text-center" (click)="changePayment()">
-                <img class="img-avatar-small"  src="../../../assets/icon/pay_now.svg"/>
-            </div>
-            <div class="ion-float-left div-avatar-content-item btn-request_icon ion-text-center" (click)="createRequest()">
-                <img class="img-avatar-small"  src="../../../assets/icon/request_icon.svg"/>
-            </div>
-            <div class="ion-float-left div-avatar-content-item btn-book-car ion-text-center" (click)="changeCarBooking()">
-                <img class="img-avatar-small"  src="../../../assets/icon/custom-taxi.svg"/>
-            </div>
-            <div class="ion-float-left div-avatar-content-item btn-helper ion-text-center" (click)="changeHelper()">
-                <img class="img-avatar-small"  src="../../../assets/icon/custom-maid.svg"/>
-            </div>
-            <div class="ion-float-left div-avatar-content-item btn-repairing ion-text-center" (click)="changeReparing()">
-                <img class="img-avatar-small"  src="../../../assets/icon/custom-repair.svg"/>
-            </div>
-            <div class="ion-float-left div-avatar-content-item btn-other ion-text-center" (click)="changeOther()">
-                <img class="img-avatar-small"  src="../../../assets/icon/custom-more.svg"/>
-            </div>
-        </div>
-    </div>
+<ion-header class="ion-no-border home-header">
+	<div id="main-header">
+		<ion-buttons class="btn-account" slot="start" (click)="goToMyAccount()">
+			<ion-avatar class="avatar-custom">
+				<img src="{{avatar}}" />
+			</ion-avatar>
+
+			<div class="user-name-wrapper">
+				<ion-label class="hello-text" *ngIf="todatHours <= 12">{{ 'HOME.hello_morning' | translate }}</ion-label>
+				<ion-label class="hello-text" *ngIf="todatHours > 12 && todatHours <= 18">{{ 'HOME.hello_afternoon' | translate
+					}}
+				</ion-label>
+				<ion-label class="hello-text" *ngIf="todatHours > 18">{{ 'HOME.hello_evening' | translate }}</ion-label>
+				<ion-label class="avatar-content-title">{{userName}}</ion-label>
+			</div>
+		</ion-buttons>
+		<ion-button class="button-wallet" *ngIf="!epayUserInfo" (click)="registrationNavigate('register-wallet')">
+			<img class="icon-wallet" src="../assets/icon/home/wallet.svg" />
+			<ion-label class="no_wallet_title">{{ 'HOME.no_wallet_title' | translate }}</ion-label>
+		</ion-button>
+		<ion-button class="button-wallet" *ngIf="epayUserInfo">
+			<img class="icon-wallet" src="../assets/icon/home/wallet.svg" />
+			<ion-label class="wallet_money_title">{{ 'HOME.wallet_money_title' | translate }}</ion-label>
+			<ion-label class="wallet_money">{{formatMoney(epayUserInfo?.user_info?.balance)}}đ</ion-label>
+		</ion-button>
+	</div>
+
+	<div class="notification-block">
+		<div class="notification-header">
+			<div class="notification-header-text" *ngIf="firstDepartment">
+				<ion-label class="header-text-1">{{firstDepartment?.apartment?.title + ' - ' + firstDepartment?.campaign.title}}
+				</ion-label>
+				<ion-label class="header-text-2">{{firstDepartment?.campaign?.address}}</ion-label>
+			</div>
+			<div class="notification-header-text" *ngIf="!firstDepartment">
+				{{"HOME.not_department_message" | translate }}
+			</div>
+			<ion-button expand="block" fill="clear" shape="round" (click)="goToMyHome()" class="notification-header-button">
+				<ion-icon name="chevron-forward-outline" class="notification-expand"></ion-icon>
+			</ion-button>
+		</div>
+		<div class="notification-list">
+			<ion-list class="list-notifications">
+				<ion-item class="notification" *ngFor="let item of listArticles;let isLast=last" (click)="detailPageNoti($event)"
+					id="{{item._id}}" lines="{{isLast ? 'none' : ''}}">
+					<ion-icon name="notifications" class="notification-icon"></ion-icon>
+					<ion-label class="notification-text">{{item.title}}</ion-label>
+				</ion-item>
+				<ion-item lines="none" class="notification" *ngIf="!listArticles || listArticles.length == 0">
+					<ion-label class="notification-not-data">{{"HOME.not_noti_message" | translate }}</ion-label>
+				</ion-item>
+			</ion-list>
+		</div>
+	</div>
 </ion-header>
 
-<ion-content #content [style.height.px]="heightScreen" [scrollEvents]="true" (ionScroll)="onScroll($event)">
-    <div id="main-header">
-        <ion-toolbar class="header-toolbar">
-            <ion-buttons class="btn-account" slot="start" (click)="goToMyAccount()">
-              <ion-avatar class="avatar-custom">
-                  <img src="{{avatar}}" />
-              </ion-avatar>
-              <ion-label class="avatar-content-title">{{userName}}</ion-label>
-            </ion-buttons>
-            <ion-chip slot="end" class="button-my-home" (click)="goToMyHome()">
-              <img width="12px" src="../../../assets/icon/home-icon.svg" />
-                <ion-label class="myhome-content-title">{{ 'HOME.my_home' | translate }}</ion-label>
-            </ion-chip>
-          </ion-toolbar>
-          <div class="amountPay-content">
-              <div id="content-button-child" class="function-content-button">
-                  <div class="ion-float-left div-avatar-content-big btn-paynow" (click)="changePayment()">
-                      <ion-item lines="none" class="content-item">
-                          <ion-icon item-start name="pay-now" class="content-icon" src="/assets/icon/pay_now.svg"></ion-icon>
-                          <span class="image-caption-pay">{{ 'HOME.pay_now' | translate }}</span>
-                      </ion-item>
-                      <ion-label class="amountPay-number">{{formatMoney(totalPayment)}} <span class="amountPay-unit">vnd</span></ion-label>
-                  </div>
-                  <div class="ion-float-right div-avatar-content-big btn-new-request" (click)="createRequest()">
-                      <ion-item lines="none" class="content-item">
-                          <ion-icon item-start name="request-icon" class="content-icon" src="/assets/icon/request_icon.svg"></ion-icon>
-                          <span class="image-caption-big">{{ 'HOME.create_request' | translate }}</span>
-                      </ion-item>
-                      <ion-label class="request-detail">{{ 'HOME.create_request_detail' | translate }}</ion-label>
-                  </div>
-              </div>
-          </div>
-    </div>
-    <div id="function-content-big" class="function-content">
-        <div class="ion-float-left div-avatar-content" (click)="changeCarBooking()">
-            <img class="img-avatar"  src="../../../assets/icon/book-car.svg"/>
-            <ion-label class="image-caption">{{ 'HOME.book_car' | translate }}</ion-label>
-        </div>
-        <!-- <div class="ion-float-left clear-avatar-rect"></div> -->
-        <div class="ion-float-left div-avatar-content" (click)="changeHelper()">
-            <img class="img-avatar"  src="../../../assets/icon/helper.svg"/>
-            <ion-label class="image-caption">{{ 'HOME.helper' | translate }}</ion-label>
-        </div>
-        <!-- <div class="ion-float-left clear-avatar-rect"></div> -->
-        <div class="ion-float-left div-avatar-content" (click)="changeReparing()">
-            <img class="img-avatar"  src="../../../assets/icon/reparing.svg"/>
-            <ion-label class="image-caption">{{ 'HOME.reparing' | translate }}</ion-label>
-        </div>
-        <!-- <div class="ion-float-left clear-avatar-rect"></div> -->
-        <div class="ion-float-left div-avatar-content" (click)="changeOther()">
-            <img class="img-avatar"  src="../../../assets/icon/others.svg"/>
-            <ion-label class="image-caption">{{ 'HOME.other' | translate }}</ion-label>
-        </div>
-    </div>
-    <div class="noti-content" id="div-text-place">
-        <!-- noti-content -->
-        <ion-label class="title-top-new">{{ 'HOME.top_notification' | translate }}</ion-label>
-        <div class="ion-float-right" (click)="goToNotification()">
-            <ion-label class="view-all-label">{{ 'HOME.view_all' | translate }}</ion-label>
-        </div>
-        <ion-list class="list-view-custom">
-            <ion-card button class="card-content-custom" *ngFor="let item of listArticles" (click)="detailPageNoti($event)" id="{{item._id}}">                       
-                <div class="card-img">
-                    <ion-img *ngIf="item.thumbnail != null" src="{{item.thumbnail}}" class="img-responsive" alt=""></ion-img>
-                    <ion-img *ngIf="item.thumbnail == null" src="assets/common/no-thumbnail.png" class="img-responsive" alt=""></ion-img>
-                    <ion-label class="badge-corner badge-corner-base">{{formatString(item.updatedAt)}}</ion-label>
-                    <ion-label class="badge-corner-right badge-corner-icon hide"><ion-icon class="custom-pined" name="custom-pined" src="assets/icon/custom-pined.svg"></ion-icon></ion-label>
-                </div>
-                
-                <ion-item lines="none" style="margin-top: 10px;">
-                    <ion-card-title class="ion-text-wrap content-two-line content-title">{{item.title}}</ion-card-title>
-                </ion-item>
-                <div class="ion-float-left">
-                    <ion-item lines="none" class="card-bottom">
-                        <ion-icon item-start name="eye-outline" class="card-bottom-icon"></ion-icon>
-                        <span class="card-bottom-label">{{item.readsCount}}</span>
-                    </ion-item>
-                </div>
-                <div class="ion-float-left">
-                    <ion-item lines="none" class="card-bottom">
-                        <ion-icon item-start name="custom-comment" class="card-bottom-icon" src="assets/icon/custom-comment.svg"></ion-icon>
-                        <span class="card-bottom-label"> {{item.commentsCount}} </span>
-                    </ion-item>
-                </div>
-                <div class="ion-float-left">
-                    <ion-item lines="none" class="card-bottom">
-                        <ion-icon item-start name="custom-attach" class="card-bottom-icon" src="assets/icon/custom-attach.svg"></ion-icon>
-                        <span class="card-bottom-label"> {{item.attachments.length}} </span>
-                    </ion-item>
-                </div>
-            </ion-card>
-        </ion-list> 
-        <!-- news-content -->
-        <ion-label class="title-top-new">{{ 'HOME.top_news' | translate }}</ion-label>
-        <ion-list class="list-view-news">
-            <ion-card button class="card-content-news" *ngFor="let item of listNews" (click)="detailPage($event)" id="{{item._id}}">
-                <div class="card-img">
-                    <!-- <ion-img src="{{item.thumbnail}}" class="img-responsive" alt=""></ion-img> -->
-                    <ion-img *ngIf="item.thumbnail != null" src="{{item.thumbnail}}" class="img-responsive"></ion-img>       
-                    <ion-img *ngIf="item.thumbnail == null" src="assets/common/no-thumbnail.png" class="img-responsive"></ion-img>
-                    <ion-label class="badge-corner badge-corner-base">{{formatString(item.updatedAt)}}</ion-label>
-                </div>
-                <ion-item lines="none" style="margin-top: 10px;">
-                    <ion-card-title class="ion-text-wrap content-two-line content-title">{{item.title}}</ion-card-title>
-                </ion-item>
-                <div class="ion-float-left">
-                    <ion-item lines="none" class="card-bottom">
-                        <ion-icon item-start name="eye-outline" class="card-bottom-icon"></ion-icon>
-                        <ion-label class="card-bottom-label"> {{item.totalViewers}} </ion-label>
-                    </ion-item>
-                </div>
-                <div class="ion-float-left">
-                    <ion-item lines="none" class="card-bottom">
-                        <ion-icon item-start name="person-circle-outline" class="card-bottom-icon"></ion-icon>
-                        <ion-label class="card-bottom-label"> {{item.createdBy.displayName}} </ion-label>
-                    </ion-item>
-                </div>
-            </ion-card>
-        </ion-list>
-        <ion-infinite-scroll threshold="50px" (ionInfinite)="loadData($event)">
-            <ion-infinite-scroll-content class="custom-infinite-scroll"
-            loadingSpinner="bubbles"
-            loadingText="{{ 'HOME.loadding_more' | translate }}">
-            </ion-infinite-scroll-content>
-        </ion-infinite-scroll>
-    </div>
+<ion-content #content [style.height.px]="heightScreen" [scrollEvents]="true" class="home-page">
+	<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+		<ion-refresher-content pullingText="{{ 'NOTIFICATION.pull_to_refresh' | translate }}" refreshingSpinner="circles"
+			refreshingText="Refreshing...">
+		</ion-refresher-content>
+	</ion-refresher>
+
+	<div class="request-category">
+		<div class="notification-overdue-bill" *ngIf="overDateBill.length > 0 && isShowBill">
+			<div class="noti-detail">
+				<ion-label class="noti-total-bill"> {{ 'HOME.noti_payment_message' | translate: { billCount: overDateBill.length} }} </ion-label>
+				<div class="noti-bill-item" *ngFor="let bill of overDateBill; let idx = index">
+					<ion-label *ngIf="idx < 2"> - {{bill.payment.title}} </ion-label>
+				</div>
+				<div class="three-dots" *ngIf="overDateBill.length >= 3"> ... </div>
+			</div>
+			<div class="noti-image">
+				<img class="image" src="../../../assets/icon/overdue-bill.png" />
+			</div>
+			<div class="pay-bill-button">
+				<button class="button-pay" (click)="registrationNavigate('/dashboard/payment')"> {{ 'HOME.noti_btn_pay' | translate }} </button>
+			</div>
+			<div class="close-noti-bill" (click)="isShowBill = false">
+				<img src="../../../assets/icon/close-noti-bill-icon.png" class="close-icon">
+			</div>
+		</div>
+		<div class="notifi-not-overdue-bill" *ngIf="!overDateBill || overDateBill.length == 0 || !isShowBill"></div>
+		
+		<ion-label class="request-category-title">{{ 'HOME.request_title' | translate }}</ion-label>
+		<ion-grid class="request-categories-wrapper">
+			<ion-row class="ion-align-items-center">
+				<ion-col size="3" class="item-icon-col" (click)="registrationNavigate('/register-to-receive-goods')">
+					<ion-badge class="item-icon-content">
+						<img name="custom-archive" class="item-icon" src="assets/icon/request/delivery-box.svg" />
+					</ion-badge>
+					<ion-label class="cate-title">{{ 'REGISTRATION_TYPE.receive' | translate }}</ion-label>
+				</ion-col>
+				<ion-col size="3" class="item-icon-col" (click)="registrationNavigate('/registration-guest')">
+					<ion-badge class="item-icon-content">
+						<img name="custom-archive" class="item-icon" src="assets/icon/request/user.svg" />
+					</ion-badge>
+					<ion-label class="cate-title">{{ 'REGISTRATION_TYPE.guest' | translate }}</ion-label>
+				</ion-col>
+				<ion-col size="3" class="item-icon-col" (click)="registrationNavigate('/register-for-shipping')">
+					<ion-badge class="item-icon-content">
+						<img name="custom-archive" class="item-icon" src="assets/icon/request/cart.svg" />
+					</ion-badge>
+					<ion-label class="cate-title">{{ 'REGISTRATION_TYPE.shipping' | translate }}</ion-label>
+				</ion-col>
+				<ion-col size="3" class="item-icon-col">
+					<ion-badge class="item-icon-content" (click)="registrationNavigate('/add-request')">
+						<img name="custom-archive" class="item-icon" src="assets/icon/home/request.svg" />
+					</ion-badge>
+					<ion-label class="cate-title">{{ 'HOME.complain_title' | translate }}</ion-label>
+				</ion-col>
+			</ion-row>
+		</ion-grid>
+
+		<div class="function-title-block">
+			<ion-label class="funtions-title">{{ 'HOME.home-service' | translate }}</ion-label>
+			<ion-label class="funtions-title-2">{{ 'HOME.home-service-2' | translate }}</ion-label>
+		</div>
+		<div class="function-list">
+			<div class="ion-float-left div-avatar-content" *ngFor="let item of listServiceCategory"
+				(click)="goToServices(item)">
+				<img class="img-avatar" src="{{item.thumbnail}}" />
+				<div class="cate-title">{{item.title}}</div>
+			</div>
+			<div class="ion-float-left div-avatar-content" (click)="changeOther()">
+				<img class="img-avatar" src="../../../assets/icon/home/puzzle.svg" />
+				<ion-label class="cate-title">{{ 'HOME.other' | translate }}</ion-label>
+			</div>
+		</div>
+
+		<div class="banner-content">
+			<img src="../../../assets/images/banner.jpg" />
+		</div>
+
+		<ion-footer class="footer-content">
+			<img src="assets/common/frame.png" />
+		</ion-footer>
+	</div>
 </ion-content>

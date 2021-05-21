@@ -6,26 +6,27 @@
         <ion-icon name="close"></ion-icon>
       </ion-buttons>
     </ion-item>
-    <ion-item lines="none" class="ion-text-center modal-header">
+    <ion-icon [src]="'../assets/icon/payment/money2.svg'" class="dialog-icon-money"></ion-icon>
+    <ion-item lines="none" class="modal-item">
+      <ion-text class="ion-text-title">{{ 'PAYMENT_INFOR.payment_transfer_title' | translate }}</ion-text>
+    </ion-item>
+    <ion-item lines="none" class="modal-item">
+      <ion-text class="ion-text-message">{{ 'PAYMENT_INFOR.payment_transfer_message' | translate }}</ion-text>
+    </ion-item>
+    <!-- <ion-item lines="none" class="ion-text-center modal-header">
       <ion-text class="normal_message">
         <p class="no-margin-bottom">{{dataTransfer.description}}</p>
-        <!-- <p class="no-margin-bottom">{{ 'PAYMENT_INFOR.payment_transfer_message' | translate }}</p> -->
-        <!-- <p>({{ 'PAYMENT_INFOR.payment_transfer_subtitle' | translate }})</p> -->
       </ion-text>
-    </ion-item>
-    <ion-item lines="none" class="ion-text-center modal-item">
-      <ion-label class="small_message">{{ 'PAYMENT_INFOR.bank_account_management' | translate }}</ion-label>
-    </ion-item>
-    <ion-item lines="none" class="ion-text-center modal-item">
+    </ion-item> -->
+   
+    <ion-item lines="none" class="ion-info-bank_account">
+      <ion-label class="bank_account_title">{{ 'PAYMENT_INFOR.bank_account_management' | translate }}</ion-label>
       <ion-label class="back_account">{{dataTransfer.bankAccountNumber}}</ion-label>
-      <ion-button slot="end" class="button-save" (click)="copyBankNumber()">
-          <ion-icon name="copy-outline" slot="start" class="icon-save"></ion-icon>
-          <ion-label class="button-save-label">{{ 'PAYMENT_INFOR.btn_copy' | translate }}</ion-label>
+      <ion-button slot="end" class="button-copy" (click)="copyBankNumber()">
+          <ion-icon name="copy-outline" slot="start" class="icon-copy"></ion-icon>
+          <ion-label class="button-copy-label">{{ 'PAYMENT_INFOR.btn_copy' | translate }}</ion-label>
       </ion-button>
+      <ion-text class="bank-account-holder">{{dataTransfer.bankAccountHolder}} - {{dataTransfer.bankName}}</ion-text>
     </ion-item>
-    <div lines="none" class="ion-text-center ion-text-justify modal-footer">
-      <p class="small_message">{{dataTransfer.bankAccountHolder}} - {{dataTransfer.bankName}}</p>
-    </div>
   </div>
-  
 </ion-content>

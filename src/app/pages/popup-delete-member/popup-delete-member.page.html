@@ -16,11 +16,11 @@
       <p class="delete_message">{{ 'MY_HOME_DETAIL.delete_message' | translate }}</p>
     </ion-toolbar>
     <ion-toolbar lines="none" class="ion-text-center modal-toolbar">
-      <ion-button class="cancel-button" (click)="closeModal()">
-        <ion-label class="cancel-button-label">{{ 'MY_HOME_DETAIL.exit' | translate }}</ion-label>
-      </ion-button>
       <ion-button class="delete-button" (click)="deleteMember()">
-        <ion-label class="delete-button-label">{{ 'MY_HOME_DETAIL.delete' | translate }}</ion-label>
+        <ion-label class="delete-button-label">{{ 'MY_HOME_DETAIL.delete_member' | translate }}</ion-label>
+      </ion-button>
+      <ion-button class="cancel-button" (click)="closeModal()">
+        <ion-label class="cancel-button-label">{{ 'MY_HOME_DETAIL.exit_delete_member' | translate }}</ion-label>
       </ion-button>
     </ion-toolbar>
   </div>

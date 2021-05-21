@@ -63,7 +63,11 @@ export class RegistrationGuestPage implements OnInit {
     this.apiService.getListUserApartment()
       .subscribe(result => {
         self.listDepartment = result.userApartments;
-        self.listDepartment.forEach(data =>{
+        self.listDepartment.forEach((data, index) =>{
+          if(index == 0) {
+            this.form_apartment_id = data.apartment._id;
+            this.form_apartment_class = 'has-input-value';
+          }
           self.listDepartmentByID[data.apartment._id] = data;
         });
         self.loading.dismiss()
@@ -90,20 +94,20 @@ export class RegistrationGuestPage implements OnInit {
     var self = this;
     if (self.list_guest.guestsNumber > 1) {
       self.list_guest.guestsNumber--;
-      this.list_guest.data_guest.pop();
+      // this.list_guest.data_guest.pop();
     }
   }
   upNumberProduct() {
     var self = this;
     if (self.list_guest.guestsNumber < 100) {
       self.list_guest.guestsNumber++;
-      this.list_guest.data_guest.push({
-        guestsName: '',
-        guestsIdentity: '',
-        className: '',
-        classIdentity: '',
-        line: 'has-line'
-      });
+      // this.list_guest.data_guest.push({
+      //   guestsName: '',
+      //   guestsIdentity: '',
+      //   className: '',
+      //   classIdentity: '',
+      //   line: 'has-line'
+      // });
     }
   }
   ionchangTextBoxGuest() {

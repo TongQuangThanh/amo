@@ -1,0 +1,31 @@
+<ion-content class="content-wrap">
+  <div class="content-container">
+    <ion-item lines="none" class="header-item ion-no-padding">
+      <ion-title class="popup-title">{{ 'CHANGE_TIME_DELIVER_ORDER.title' | translate }}</ion-title>
+      <ion-buttons slot="end" (click)="closeModal()" class="btn-close-popup">
+        <ion-icon name="close"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-item lines="none" class="margin-top-10 item-time-select">
+      <ion-item lines="none" class="item-time">
+        <img class="icon-home" src="../assets/icon/request/time.svg" />
+        <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg" />
+        <label *ngIf="timeDeliver != ''" class="pulldown-1-placeholder">{{ 'PAYMENT_INFOR.payment_confirm_time_receive' | translate
+          }}</label>
+        <div class="width-100 {{time_deliver_class}}">
+          <ion-datetime placeholder="{{ 'CHANGE_TIME_DELIVER_ORDER.time_placeHolder' | translate }}" class="datetime-commom" name="timeDeliver"
+            [(ngModel)]="timeDeliver" displayFormat="DD/MM/YYYY HH:mm" (ionChange)="ionChangeStartTime()" min="{{dateNow}}" max="2050">
+          </ion-datetime>
+        </div>
+      </ion-item>
+    </ion-item>
+    <ion-toolbar lines="none" class="ion-text-center modal-toolbar">
+      <ion-button class="change-time-button"  *ngIf="!timeDeliver">
+        <ion-label class="change-time-button-label">{{ 'CHANGE_TIME_DELIVER_ORDER.btn_send' | translate }}</ion-label>
+      </ion-button>
+      <ion-button class="change-time-button" *ngIf="timeDeliver"  (click)="eventSendRating()">
+        <ion-label class="change-time-button-label">{{ 'CHANGE_TIME_DELIVER_ORDER.btn_send' | translate }}</ion-label>
+      </ion-button>
+    </ion-toolbar>
+  </div>
+</ion-content>

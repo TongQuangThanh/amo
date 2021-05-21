@@ -1,4 +1,3 @@
-<!-- <ion-backdrop></ion-backdrop> -->
 <ion-content class="content-wrap">
   <div class="content-container">
     <ion-item lines="none" class="header-item">
@@ -6,12 +5,12 @@
         <ion-icon name="close"></ion-icon>
       </ion-buttons>
     </ion-item>
-    <ion-item lines="none" class="ion-text-center modal-item">
-      <div><ion-text class="delete_message">{{cash.description}}</ion-text></div>
+    <ion-icon [src]="'../assets/icon/payment/money1.svg'" class="dialog-icon-money"></ion-icon>
+    <ion-item lines="none" class="modal-item">
+      <ion-text class="ion-text-title">{{ 'PAYMENT_INFOR.payment_cash_title' | translate }}</ion-text>
     </ion-item>
-    <ion-item lines="none" class="ion-text-center modal-item">
-      <div><ion-text class="delete_message"><ion-text class="delete_message">{{ 'PAYMENT_INFOR.payment_cash_message' | translate }} {{date}}</ion-text></ion-text></div>
+    <ion-item lines="none" class="modal-item">
+      <ion-text class="ion-text-message">{{ 'PAYMENT_INFOR.payment_cash_message' | translate }} {{date}}</ion-text>
     </ion-item>
   </div>
-  
 </ion-content>

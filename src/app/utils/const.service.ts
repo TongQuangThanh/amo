@@ -10,6 +10,8 @@ export const ConstService = {
     iosdelay: 50
   },
   PHONE_LENGTH_VN: 10,
+  PHONE_AMO: '024.3836.3456',
+  ADDRESS_AMO: 'Số 24, LK 28, KĐT Văn Phú, phường Phú La, quận Hà Đông, Hà Nội',
   LIST_COUNTRIES: [{
       "name": "Afghanistan",
       "alpha2": "AF",

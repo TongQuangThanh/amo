@@ -1,0 +1,25 @@
+
+<ion-header class="cate-service-header">
+  <ion-buttons class="back-button">
+    <ion-back-button color="light" text="" icon="chevron-back" class="ion-back-button"></ion-back-button>
+  </ion-buttons>
+  <ion-label class="header-title">{{ category_name }}</ion-label>
+  <ion-label class="header-sub-title">{{ 'SEVICE_CATEGORY.sub_title' | translate }}</ion-label>
+</ion-header>
+
+<ion-content class="screen-content">
+  <div class="list-view-custom">
+  <ion-grid class="ion-grid-class">
+    <ion-row>
+      <ion-col class="ion-col-class" size="6" *ngFor="let item of listCategories">
+        <div class="div-button-1" (click)="redirectToCategory(item.category._id, item.category.title, item._id)">
+          <div class="div-1"><img class="class-image-button" src="{{ item.thumbnail }}"/></div>
+          <div class="div-2">
+            <ion-item lines="none"><ion-label class="cate-title">{{ item.title }}</ion-label></ion-item></div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+</ion-content>
+

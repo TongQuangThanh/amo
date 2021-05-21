@@ -1,296 +1,330 @@
-.owner-info {
-    margin: 10px 17px 0 17px;
-}
-.guest-info {
-    margin: 10px 17px 0 17px;
-}
-.devider-line {
-    height: 6px;
-    background: #F4F5F5;
-    width: 100%;
-}
 .devider-line-guest {
-    height: 1px;
-    background: #F5F5F5;
-    width: 100%;
-    margin-left: 17px;
-    margin-right: 17px;
+  border: 1px dashed #e9e9e9;
+  margin-left: 15px;
+  margin-right: 15px;
 }
 
 .input-text-50 {
-    --padding-end: 0;
-    --padding-bottom: 6px;
+  --padding-end: 0;
+  --padding-bottom: 6px;
 }
 .no-padding {
-    padding: 0;
+  padding: 0;
 }
 .padding-left-10 {
-    padding-left: 10px;
+  padding-left: 10px;
 }
 .padding-right-10 {
-    padding-right: 10px;
+  padding-right: 10px;
 }
 .margin-left-0 {
-    margin-left: 0 !important;
+  margin-left: 0 !important;
 }
 
 .select-icon {
-    font-size: 14px;
-    color: #21313F;
+  font-size: 14px;
+  color: #21313f;
 }
 
 // custom datetime picker
-.picker-wrapper.sc-ion-picker-ios .picker-toolbar{
-    --border-radius: 24px !important;
+.picker-wrapper.sc-ion-picker-ios .picker-toolbar {
+  --border-radius: 24px !important;
 }
 
-.quantity-buttons {
-    position: absolute;
-    right: 0;
-}
-.quantity-title {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 24px;
-    color: #21313F;
-}
-.icon-button {
-    margin-left: 20px;
-    color: #FA7268;
-    background: #FBFBFB;
-    border: 1px solid #D3D6D9;
-    border-radius: 8px;
-    width: 30px;
-    
-}
-.btn-minus {
-    font-size: 7px;
-}
-.btn-plus {
-    font-size: 10px;
-}
-.quantity {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 24px;
-    color: #21313F;
-    margin-left: 20px;
-}
 .textarea-item {
-    border: 1px solid #D3D6D9;
-    border-radius: 8px;
+  border: 1px solid #d3d6d9;
+  border-radius: 8px;
 }
 ion-textarea {
-    --placeholder-font-size: 16px;
-    --placeholder-font-family: Nunito Sans;
+  --placeholder-font-size: 16px;
+  --placeholder-font-family: Open Sans;
 }
 .note-content {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 24px;
-    color: #21313F;
-    mix-blend-mode: normal;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #21313f;
+  mix-blend-mode: normal;
 }
 .button-send {
-    margin-top: 40px;
-    margin-left: 17px;
-    margin-right: 17px;
-    margin-bottom: 20px;
+  margin-top: 40px;
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-bottom: 10px;
 }
 .button-send.btn-active {
-    --background: #FA7268 !important;
-    font-weight: 800;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center;
-    color: #FFFFFF !important;
+  --background: #E64037 !important;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #ffffff !important;
 }
 
 .active_button.btn-inactive {
-    display: none !important;
+  display: none !important;
 }
 .inactive_button.btn-active {
-    display: none !important;
+  display: none !important;
 }
-
-
 
 ion-item {
-    --inner-padding-end: 0px;
-    --padding-start: 0px;
+  --inner-padding-end: 0px;
+  --padding-start: 0px;
 }
 .no-border {
-    border: 0px !important;
+  border: 0px !important;
 }
 .item-common {
-    /* Backgroundbox */
-    width: 100%;
-    background: #FBFBFB;
-    mix-blend-mode: normal;
-    /* Text/Placeholder */
-    border: 1px solid #D3D6D9;
-    box-sizing: border-box;
-    border-radius: 8px;
-    margin-left: 17px;
-    margin-right: 17px;
+  width: 100%;
+  display: flex;
+  border: 1px solid #d3d6d9;
+  border-radius: 8px;
+  height: 60px;
+  margin: 0px 15px 10px 15px;
+  --background: transparent !important;
 }
 .item-apartment-pulldown {
-    /* Backgroundbox */
-    width: 100%;
-    background: #FBFBFB;
-    mix-blend-mode: normal;
-    /* Text/Placeholder */
-    border: 1px solid #D3D6D9;
-    box-sizing: border-box;
-    border-radius: 8px;
-    margin-left: 20px;
-    margin-right: 20px;
+  /* Backgroundbox */
+  width: 100%;
+  background: #fbfbfb;
+  mix-blend-mode: normal;
+  /* Text/Placeholder */
+  border: 1px solid #d3d6d9;
+  box-sizing: border-box;
+  border-radius: 8px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .icon-home {
-    z-index: 999;
-    pointer-events: none;
-    margin-left: 17px;
-    position: absolute;
+  z-index: 999;
+  pointer-events: none;
+  margin-left: 15px;
+  position: absolute;
 }
 .icon-pulldown-down {
-    z-index: 999;
-    pointer-events: none;
-    position: absolute;
-    right: 15px;
+  z-index: 999;
+  pointer-events: none;
+  position: absolute;
+  right: 15px;
 }
 .has-input-value .pulldown-apartment-select {
-    padding-top: 25px;
-    padding-bottom: 5px;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
+  padding-top: 25px;
+  padding-bottom: 5px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
 }
 .pulldown-apartment-select {
-    width: 100%;
-    max-width: 100%;
-    padding-left: 50px;
-    background: #fbfbfb;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-right: 17px;
-    height: 100%;
+  width: 100%;
+  max-width: 100%;
+  padding-left: 50px;
+  background: #fbfbfb;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 17px;
+  height: 100%;
 }
 .pulldown-1-placeholder {
-    position: absolute;
-    opacity: 0.5;
-    z-index: 999;
-    font-size: 12px;
-    margin-left: 50px;
-    top: 7px;
-    pointer-events: none;
+  position: absolute;
+  opacity: 0.5;
+  z-index: 999;
+  font-size: 12px;
+  margin-left: 50px;
+  top: 7px;
+  pointer-events: none;
 }
 ion-select::part(icon) {
-    display: none;
-    opacity: 1;
+  display: none;
+  opacity: 1;
 }
 .pulldown-1-placeholder-init {
-    position: absolute;
-    opacity: 0.5;
-    z-index: 999;
-    margin-left: 50px;
-    pointer-events: none;
+  position: absolute;
+  opacity: 0.5;
+  z-index: 999;
+  margin-left: 50px;
+  pointer-events: none;
 }
-.pulldown-1-text-select{
-    padding-left: 50px;
-    padding-top: 20px;
-    padding-bottom: 0px;
-    padding-right: 17px;
-    position: absolute;
-    z-index: 99;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width: 100%;
-    overflow: hidden;
-    pointer-events: none;
+.pulldown-1-text-select {
+  padding-left: 50px;
+  padding-top: 20px;
+  padding-bottom: 0px;
+  padding-right: 17px;
+  position: absolute;
+  z-index: 99;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  pointer-events: none;
 }
 .text-box-1 {
-    --padding-start: 50px !important;
-    --padding-end: 20px !important;
-    background-color: #FBFBFB;
-    --padding-top: 15px;
-    --padding-bottom: 15px;
+  --padding-start: 50px !important;
+  --padding-end: 20px !important;
+  background-color: #fbfbfb;
+  --padding-top: 15px;
+  --padding-bottom: 15px;
 }
-.has-input-value .text-box-1{
-    --padding-top: 25px; 
-    --padding-bottom: 5px;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
+.has-input-value .text-box-1 {
+  --padding-top: 25px;
+  --padding-bottom: 5px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
 }
 .text-area-1 {
-    --padding-start: 17px !important;
-    background: #fbfbfb;
-    margin-top: 0px;
+  --padding-start: 17px !important;
+  background: #fbfbfb;
+  margin-top: 0px;
 }
 
-// popup 
+// popup
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1050;
-    display: block;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    outline: 0;
-    background-color: #00000005;
-    z-index: 9999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
+  background-color: #00000005;
 }
 
 .modal-dialog {
-    position: absolute;
-    width: 100%;
-    margin: 0px;
-    pointer-events: none;
-    bottom: 0px;
+  position: absolute;
+  width: 100%;
+  margin: 0px;
+  pointer-events: none;
+  bottom: 0px;
 }
 @media (min-width: 576px) {
-    .modal-dialog {
-        max-width: unset;
-    }
+  .modal-dialog {
+    max-width: unset;
+  }
 }
 .modal-content {
-    border-radius: 24px 24px 0px 0px;
+  border-radius: 24px 24px 0px 0px;
 }
 .close {
-    float: left;
-    font-size: 1.5rem;
-    font-weight: normal;
-    line-height: 1;
-    color: #000;
-    text-shadow: 0 1px 0 #fff;
-    opacity: .5;
+  float: left;
+  font-size: 1.5rem;
+  font-weight: normal;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.5;
 }
 .modal-header .close {
-    padding: 1rem 1rem;
-    margin: -1rem -1rem -1rem -1rem;
+  padding: 1rem 1rem;
+  margin: -1rem -1rem -1rem -1rem;
 }
 .popup-ion-item {
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    display: grid;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: grid;
 }
 .popup-text-1 {
-    white-space: unset;
-    padding: 20px 15px;
-    font-size: 16px;
-    white-space: pre-line!important;
+  white-space: unset;
+  padding: 20px 15px;
+  font-size: 16px;
+  white-space: pre-line !important;
 }
 .popup-text-2 {
-    white-space: unset;
+  white-space: unset;
+  font-size: 14px;
+  color: #009ac9;
+}
+
+// new css =========================
+.ion-no-border {
+  background-color: #E64037;
+  height: 156px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .back-button {
+    position: absolute;
+    left: 10px;
+    top: 60px;
+    .ion-back-button {
+      --icon-font-size: 22px;
+      margin-left: 0;
+      width: 25px;
+    }
+  }
+  .header-title {
+    text-align: center;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    top: 57px;
+    font-size: 28px;
+    line-height: 41px;
+    color: #ffffff;
+  }
+  .header-sub-title {
+    position: absolute;
+    height: 22px;
+    left: 15px;
+    right: 15px;
+    top: 97px;
+    font-family: Open Sans;
+    font-style: normal;
     font-size: 14px;
-    color: #009AC9;
+    line-height: 22px;
+    text-align: center;
+    color: #ffffff;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 25px;
+    left: -1px;
+    right: -1px;
+    box-shadow: 0 30px 0 0 #ffffff;
+    height: 20px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+  }
+}
+
+.register-guest-content {
+  font-family: Open Sans;
+
+  .quantity-buttons {
+    position: absolute;
+    right: 0;
+    .icon-button {
+      margin-left: 20px;
+      --background: linear-gradient(180deg, #ea7a6e 0%, #e23a28 100%);
+      border: 1px solid #d3d6d9;
+      border-radius: 5px;
+      width: 20px;
+      height: 20px;
+      font-size: 7px;
+    }
+    .quantity {
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 24px;
+      color: #21313f;
+      margin-left: 20px;
+    }
+  }
+  .quantity-title {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    color: #221c1e;
+  }
 }

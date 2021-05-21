@@ -1,16 +1,109 @@
-.login-button{
-    margin: 15px 0;
+.login-button {
+  margin: 15px 0;
+  position: absolute;
+  left: 4.27%;
+  width: 91.46%;
+  bottom: 0;
+  padding: 0;
+  --box-shadow: none;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #ffffff;
+}
+
+.add-home-header {
+  background-color: #E64037;
+  height: 156px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .back-button {
     position: absolute;
-    left: 4.27%;
-    width: 91.46%;
-    bottom: 0;
-    padding: 0;
-    --box-shadow: none;
-    font-family: Nunito Sans;
+    left: 10px;
+    top: 60px;
+    .ion-back-button {
+      --icon-font-size: 22px;
+      margin-left: 0;
+      width: 25px;
+    }
+  }
+  .header-title {
+    text-align: center;
+    font-family: Open Sans;
     font-style: normal;
     font-weight: bold;
-    font-size: 16px;
-    line-height: 24px;
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    top: 57px;
+    font-size: 28px;
+    line-height: 41px;
+    color: #ffffff;
+  }
+  .header-sub-title {
+    position: absolute;
+    height: 22px;
+    left: 15px;
+    right: 15px;
+    top: 97px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 22px;
     text-align: center;
-    color: #FFFFFF;
+    color: #ffffff;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 25px;
+    left: -1px;
+    right: -1px;
+    box-shadow: 0 30px 0 0 #ffffff;
+    height: 20px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+  }
+}
+
+.ion-item-pincode {
+  --padding-start: 0;
+  --padding-end: 0;
+  margin: 0 auto;
+  max-width: 350px;
+  --inner-padding-end: 0px;
+  .pinCodeInput {
+    background: #ffffff;
+    box-shadow: 0px 0px 20px rgba(23, 21, 48, 0.102546);
+    border-radius: 8px;
+    min-width: 40px;
+    min-height: 40px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #c4c4c4;
+    font-size: 24px;
+    text-align: center;
+    -webkit-text-security: var(--charShape);
+    -moz-text-security: var(--charShape);
+  }
+
+  .pinCodeGrid {
+    direction: ltr;
+  }
+
+  .pinCodeInput[disabled] {
+    border: 1px solid #e3e3e3;
+    background-color: transparent;
+  }
+  .pincode-col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }

@@ -1,212 +1,285 @@
-.pading-margin-none {
-    padding: 0;
-    margin: 0;
-}
-
-.button-call {
+.my-home-header {
+  background-color: #E64037;
+  height: 156px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .back-button {
+    position: absolute;
+    left: 10px;
+    top: 60px;
+    .ion-back-button {
+      --icon-font-size: 22px;
+      margin-left: 0;
+      width: 25px;
+    }
+  }
+  .header-title {
+    text-align: center;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    top: 57px;
+    font-size: 28px;
+    line-height: 41px;
+    color: #ffffff;
+  }
+  .header-sub-title {
+    position: absolute;
+    height: 22px;
+    left: 15px;
+    right: 15px;
+    top: 97px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+    color: #ffffff;
+  }
+  .header-radius {
+    position: absolute;
+    bottom: -5px;
     width: 100%;
-    height:100%;
-    --background: #556080;
-    --background-activated: #556080;
-    --background-checked: #556080;
-    --background-hover: #556080;
-}
-.custom-row{
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
+    height: 20px;
+    background: #ffffff;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+  }
 }
 
+.main-content {
+}
+.pading-margin-none {
+  padding: 0;
+  margin: 0;
+}
+.button-call {
+  width: 100%;
+  height: 100%;
+  --background: #556080;
+  --background-activated: #556080;
+  --background-checked: #556080;
+  --background-hover: #556080;
+}
+.custom-row {
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
 .custom-col-9 {
-    -ms-flex: 0 0 75%;
-    flex: 0 0 75%;
-    max-width: 75%;
+  -ms-flex: 0 0 75%;
+  flex: 0 0 75%;
+  max-width: 75%;
 }
 .custom-col-3 {
-    -ms-flex: 0 0 25%;
-    flex: 0 0 25%;
-    max-width: 25%;
+  -ms-flex: 0 0 25%;
+  flex: 0 0 25%;
+  max-width: 25%;
 }
 
 .home-title {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 24px;
-    color: #21313F;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  color: #221c1e;
 }
 .home-content {
-    padding-bottom: 0;
+  padding-bottom: 0;
 }
 .home-infor {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 19px;
-    /* identical to box height */
-    color: #556080;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  /* identical to box height */
+  color: #556080;
 }
 .home-address {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 20px;
-    color: #7A838C;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  color: #221c1e;
+  opacity: 0.6;
 }
-.content-two-line{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
+.content-two-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
 
 .button-call-text {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 16px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
 
-    color: #FFFFFF;
-
+  color: #ffffff;
 }
 
-.button-call-icon{
-    color: #FFFFFF;
+.button-call-icon {
+  color: #ffffff;
 }
 
 ion-card-header {
-    padding: 16px 20px 5px 20px;
+  padding: 5px 15px 0px 15px;
 }
 .hotline-item {
-    --padding-start: 0;
-    --padding-end: 0;
-    --inner-padding-end: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+  --inner-padding-end: 0;
+  --min-height: 35px;
 }
 .hotline-title {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 20px;
-    color: #21313F;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  color: #221c1e;
+  opacity: 0.6;
 }
 .hotline-icon {
-    font-size: 14px;
-    color: #009AC9;
-    margin-right: 10px;
+  font-size: 14px;
+  color: #009ac9;
+  margin-right: 10px;
 }
 .hotline-number {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 20px;
-    text-align: right;
-    text-decoration-line: underline;
-    color: #009AC9;
-    margin-right: 0;
-    margin-left: 0;
-    --box-shadow: none !important;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: right;
+  text-decoration-line: underline;
+  color: #E64037;
+  margin-right: 0;
+  margin-left: 0;
+  --box-shadow: none !important;
 }
 .clear-background {
-    // --color-activated:#556080;
-    --background: transparent;
-    --background-activated: transparent;
+  // --color-activated:#556080;
+  --background: transparent;
+  --background-activated: transparent;
 }
 .function-item {
-    position: fixed;
-    bottom: 0;
-    --background: transparent;
-    // --padding-start: 0;
-    // --padding-end: 0;
-    // --inner-padding-end: 0;
-    // right: 16px;
-    // left: 16px;
+  position: fixed;
+  bottom: 0;
+  --background: transparent;
+  // --padding-start: 0;
+  // --padding-end: 0;
+  // --inner-padding-end: 0;
+  // right: 16px;
+  // left: 16px;
 }
-.delete-button{
-    background: rgba(250, 114, 104, 0.15);
-    --background-focused: rgba(250, 114, 104, 0.45);
-    --background-hover:rgba(250, 114, 104, 0.45);
-    --background: rgba(250, 114, 104, 0.15);
-    --background-activated: rgba(250, 114, 104, 0.45);
-    mix-blend-mode: normal;
-    border-radius: 5px;
-    left: 16px;
-    width: 100%;
-    height: 44px;
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center;
-    color: #FA7268;
-    margin-top: 10px;
-    margin-bottom: 20px;
-    margin-right: 10px;
+.delete-button {
+  background: rgba(250, 114, 104, 0.15);
+  --background-focused: rgba(250, 114, 104, 0.45);
+  --background-hover: rgba(250, 114, 104, 0.45);
+  --background: rgba(250, 114, 104, 0.15);
+  --background-activated: rgba(250, 114, 104, 0.45);
+  mix-blend-mode: normal;
+  border-radius: 5px;
+  left: 16px;
+  width: 100%;
+  height: 44px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #E64037;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  margin-right: 10px;
 }
 .add-button {
-    --background: #009AC9;
-    --ion-toolbar-color: #009AC9;
-    --background-activated: #048ab3;
-    --background-focused: #048ab3;
-    --background-hover: #048ab3;
-    opacity: 0.8;
-    margin: 14px 10px;
-    --box-shadow: 0px 10px 30px rgba(33, 49, 63, 0.1);
-    --color: #ffffff;
-    
+  --background: #009ac9;
+  --ion-toolbar-color: #009ac9;
+  --background-activated: #048ab3;
+  --background-focused: #048ab3;
+  --background-hover: #048ab3;
+  opacity: 0.8;
+  margin: 14px 10px;
+  --box-shadow: 0px 10px 30px rgba(33, 49, 63, 0.1);
+  --color: #ffffff;
 }
 .add-button-icon {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 40px;
-    //line-height: 24px;
-    text-align: center;
-    text-transform: none;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 40px;
+  //line-height: 24px;
+  text-align: center;
+  text-transform: none;
 }
 .normal-button {
-    width: 60px;
-    height: 60px;
-    --border-radius: 50%;
-    float: right;
+  width: 60px;
+  height: 60px;
+  --border-radius: 50%;
+  float: right;
 }
 .add-button-label {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center;
-    color: #009AC9;
-    padding: 10px 20px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #009ac9;
+  padding: 10px 20px;
 }
 .number-watermark {
-    position: absolute;
-    right: 10px;
+  position: absolute;
+  right: 10px;
 }
 .number-watermark-text {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: 900;
-    font-size: 50px;
-    line-height: 75px;
-    color: #F4F5F5;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 50px;
+  line-height: 75px;
+  color: #f4f5f5;
 }
 
-// custom list apartments 
-.list-content.md {
-    // margin: 10px 16px;
-    padding: 0;
+// custom list apartments
+.list-content {
+  // margin: 10px 16px;
+  padding: 0;
+  border-radius: 20px 20px 0px 0px;
+  background-color: #f9fcff;
+  height: 100%;
 }
 .card-content {
-    margin: 20px 16px 20px 16px;
-    box-shadow: 0px 10px 30px rgba(33, 49, 63, 0.1);
-    border-radius: 8px;
+  margin: 20px 16px 20px 16px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 10x;
+}
+.modify-icon {
+  margin-left: auto;
+  margin-right: 0;
+}
+.header-toolbar {
+  background-color: transparent;
+}
+.title {
+  background-color: transparent;
+}
+.card-content-ios {
+  padding-inline-start: 15px;
+  padding-inline-end: 15px;
 }

@@ -29,6 +29,7 @@ import { HTTP } from '@ionic-native/http/ngx';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SuperTabsModule } from '@ionic-super-tabs/angular';
 import { CallNumber } from '@ionic-native/call-number/ngx';
+import { mdTransitionAnimation } from '@ionic/core';
 //import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatTabsModule } from '@angular/material/tabs';
 import { Clipboard } from '@ionic-native/clipboard/ngx';
@@ -41,7 +42,10 @@ export function LanguageLoader(http: HttpClient) {
   entryComponents: [],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({
+      mode: 'ios',
+      navAnimation: mdTransitionAnimation
+    }),
     AppRoutingModule,
     SuperTabsModule.forRoot(),
     PincodePasswordPageModule,
@@ -51,7 +55,6 @@ export function LanguageLoader(http: HttpClient) {
     MatTabsModule,
     HttpClientModule,
     //NgbModule, 
-    SuperTabsModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

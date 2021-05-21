@@ -4,7 +4,7 @@ ion-toolbar{
 .ion-color-primary {
     --ion-color-base: #ffffff !important;
     --ion-color-base-rgb: var(--ion-color-primary-rgb, 56, 128, 255) !important;
-    --ion-color-contrast: #fa7268 !important;
+    --ion-color-contrast: #E64037 !important;
     --ion-color-contrast-rgb: var(--ion-color-primary-contrast-rgb, 255, 255, 255) !important;
     --ion-color-shade: var(--ion-color-primary-shade, #3171e0) !important;
     --ion-color-tint: var(--ion-color-primary-tint, #4c8dff) !important;
@@ -85,7 +85,7 @@ ion-item{
     font-size: 12px;
     line-height: 18px;
     text-align: center;
-    color: #FA7268;
+    color: #E64037;
     font-weight: bold;
 }
 .avatar-class {
@@ -253,9 +253,9 @@ ion-item{
     --box-shadow: 0;
 }
 .amo-button-custom-3 {
-    --background: #FA7268;
+    --background: #E64037;
     text-transform: none;
-    --background-activated: #FA7268;
+    --background-activated: #E64037;
     border-radius: 5px;
     padding: 0px 16px 0px 8px;
     --border-radius: 8px;
@@ -277,9 +277,9 @@ ion-item{
     --box-shadow: 0;
 }
 .amo-button-custom-41 {
-    --background: #FA7268;
+    --background: #E64037;
     text-transform: none;
-    --background-activated: #FA7268;
+    --background-activated: #E64037;
     border-radius: 5px;
     padding: 0px;
     --border-radius: 8px;
@@ -376,7 +376,6 @@ ion-content {
     overflow: hidden;
     outline: 0;
     background-color: #00000005;
-    z-index: 9999;
 }
 
 .modal-dialog {
@@ -443,6 +442,6 @@ ion-content {
     line-height: 24px;
     padding-top: 20px;
     padding-bottom: 20px;
-    color: #FA7268;
+    color: #E64037;
     text-align: center;
 }

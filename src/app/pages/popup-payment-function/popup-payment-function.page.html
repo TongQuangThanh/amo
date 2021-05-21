@@ -1,0 +1,48 @@
+<!-- <ion-backdrop></ion-backdrop> -->
+<ion-content class="modal-content-wrap">
+  <div class="modal-content-container">
+    <ion-item lines="none" class="header-item">
+      <ion-buttons slot="end" class="" (click)="closeModal()" class="btn-close-popup">
+        <ion-icon name="close"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-toolbar lines="none" class="modal-title">
+      <ion-label>{{'PAYMENT_INFOR.modal_change_title' | translate}}</ion-label>
+    </ion-toolbar>
+    <ng-container *ngFor="let item of paymentMethodList">
+      <ion-item lines="none" class="ion-no-padding modal-ion-item {{item.isSelected ? 'modal-ion-item-active' : ''}}"
+        (click)="changeBanksMethod(item.key)">
+        <ion-icon [src]="'../assets/icon/payment/wallet.svg'" class="item-icon"></ion-icon>
+        <ion-label class="item-title">{{item.name}}</ion-label>
+        <ion-text class="item-sub-title">{{item.content}}</ion-text>
+        <ion-label class="item-right" *ngIf="item.isSelected">
+          <ion-icon [src]="'../assets/icon/payment/selected.svg'"></ion-icon>
+          {{"PAYMENT_INFOR.modal_change_selected" | translate}}
+        </ion-label>
+      </ion-item>
+    </ng-container>
+    <ion-label class="other-bank">{{"PAYMENT_INFOR.modal_change_other" | translate}}</ion-label>
+
+    <ion-card class="ion-no-padding modal-card-item">
+      <ion-item lines="none" class="card-ion-item">
+        <ion-icon [src]="'../assets/icon/payment/money2.svg'" class="card-item-icon" slot="start"></ion-icon>
+        <ion-label class="card-item-title">
+          {{"PAYMENT_INFOR.modal_change_account_number" | translate}}{{paymentCate?.transfer?.bankAccountNumber}}
+        </ion-label>
+        <ion-icon [src]="'../assets/icon/payment/copy.svg'" class="card-icon-copy" (click)="copyBankNumber()"></ion-icon>
+      </ion-item>
+      <ion-text>
+        <p class="card-item-sub-title">{{paymentCate?.transfer?.bankAccountHolder}} - {{paymentCate?.transfer?.bankName}}</p>
+      </ion-text>
+    </ion-card>
+    <ion-card class="ion-no-padding modal-card-item">
+      <ion-item lines="none" class="card-ion-item">
+        <ion-icon [src]="'../assets/icon/payment/money1.svg'" class="card-item-icon" slot="start"></ion-icon>
+        <ion-label class="card-item-title">{{"PAYMENT_INFOR.modal_change_cash" | translate}}</ion-label>
+      </ion-item>
+      <ion-text>
+        <p class="card-item-sub-title">{{paymentCate?.cash?.description}}</p>
+      </ion-text>
+    </ion-card>
+  </div>
+</ion-content>

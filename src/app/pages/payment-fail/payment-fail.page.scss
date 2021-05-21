@@ -1,0 +1,55 @@
+.no-scroll {
+  --overflow: hidden;
+}
+
+.padding-top-item {
+  --padding-top: 15px !important;
+}
+
+.padding-bottom-item {
+  --padding-bottom: 15px !important;
+}
+
+.payment-fail-container {
+  font-family: Open Sans;
+  --background: #E64037;
+  .icon-fail {
+    width: 194px;
+    height: 180px;
+    margin: 0 auto;
+    margin-top: 100px;
+  }
+  .payment-fail-card {
+    --background: #E64037;
+    box-shadow: unset;
+    border-radius: unset;
+    .payment-card-item {
+      --background: #E64037;
+    }
+    .payment-fail-title {
+      font-weight: bold;
+      font-size: 22px;
+      line-height: 36px;
+      text-align: center;
+      color: #ffffff;
+    }
+    .payment-fail-error {
+      font-size: 14px;
+      line-height: 22px;
+      text-align: center;
+      color: #ffffff;
+    }
+  }
+  .fail-redo-btn {
+    --background: #ffffff;
+    --border-radius: 10px;
+    --color: #E64037;
+  }
+  .go-back-home {
+    font-size: 16px;
+    line-height: 100%;
+    text-align: center;
+    text-decoration-line: underline;
+    color: #ffffff;
+  }
+}

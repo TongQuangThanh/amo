@@ -1,12 +1,22 @@
-<ion-header class="ion-no-border">
+<!-- <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-title>{{ 'SEVICE_33.title' | translate }}</ion-title>
     <ion-buttons slot="start">
       <ion-back-button text=""></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
+</ion-header> -->
+
+<ion-header class="ion-no-border">
+  <ion-buttons class="back-button">
+    <ion-back-button color="light" text="" icon="chevron-back"></ion-back-button>
+  </ion-buttons>
+  <ion-label class="service-header-title">{{ 'SEVICE_33.title' | translate }}</ion-label>
+  <ion-label class="service-header-sub-title">{{ 'SEVICE_NEW.sub_title' | translate }}</ion-label>
 </ion-header>
-<ion-content>
+
+<ion-content class="screen-content">
+  <div class="list-view-custom">
   <ion-searchbar placeholder="{{ 'SEVICE_33.placeholder_textbox_1' | translate }}" 
     debounce="500" 
     (ionChange)="eventSearchData()"
@@ -14,7 +24,7 @@
   ></ion-searchbar>
   <ion-grid class="ion-grid-class">
     <ion-row class="margin-top-5">
-      <ion-col class="ion-col-class" size="4" *ngFor="let object of listDataMarket">
+      <ion-col class="ion-col-class" size="6" *ngFor="let object of listDataMarket">
         <div class="div-button-1" (click)="moveShopHousePage(object)">
           <div class="div-1"><img class="class-image-button" src="{{object.thumbnail}}"/></div>
           <div class="div-2 margin-top-20"><ion-label class="text-button">{{object.title}}</ion-label></div>
@@ -76,6 +86,7 @@
     loadingText="{{ 'HOME.loadding_more' | translate }}">
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
+</div>
 </ion-content>
 
   

@@ -24,7 +24,7 @@ export class RequestDetailPage implements OnInit, AfterViewInit {
   thumbnail: string;
   createdAt: string;
   createBy: string;
-  editorMsg:any;
+  editorMsg = '';
   msgList:any;
   showEmojiPicker = false;
   currentUser: any;
@@ -35,6 +35,8 @@ export class RequestDetailPage implements OnInit, AfterViewInit {
   widthListScreen:number;
   showMore : false;
   list_image_select: any;
+  detailRequest: any = {};
+  isExpand = false;
 
   constructor(
     private camera: Camera,
@@ -48,7 +50,7 @@ export class RequestDetailPage implements OnInit, AfterViewInit {
       var self = this;
       platform.ready().then((readySource) => {
         self.widthListScreen = platform.width() * 0.8;
-        self.heightScreen = platform.height() * 0.63;
+        self.heightScreen = platform.height() * 0.80;
         self.defineHeightScreen = this.heightScreen;
       });
       UtilsService.requestDetailComponentShare = this;
@@ -70,18 +72,19 @@ export class RequestDetailPage implements OnInit, AfterViewInit {
   getArticleDetail(requestID) {
     this.loading.present();
     const self = this;
-    this.apiService.getRequestDetail(requestID)
+    this.apiService.getRequestNewDetail(requestID)
       .subscribe(result => {
-        self.requestTitle = result.feedback.title;
-        self.requestContent = result.feedback.content;
-        self.createdAt = result.feedback.createdAt;
-        self.createBy = result.feedback.createdBy != null ? result.feedback.createdBy.displayName : "";
-        self.feedbackID = result.feedback._id;
-        self.listImage = result.feedback.attachments;
+        this.detailRequest = result.feedbacknew;
+        self.requestTitle = result.feedbacknew.title;
+        self.requestContent = result.feedbacknew.content;
+        self.createdAt = result.feedbacknew.createdAt;
+        self.createBy = result.feedbacknew.createdBy != null ? result.feedbacknew.createdBy.displayName : "";
+        self.feedbackID = result.feedbacknew._id;
+        self.listImage = result.feedbacknew.attachments;
         if(self.listImage.length > 0){
           this.heightScreen = self.defineHeightScreen - 100;
         }
-        self.updateSizeContent();
+        // self.updateSizeContent();
         self.getListMessage(self.feedbackID);
     },
     error => {
@@ -91,9 +94,9 @@ export class RequestDetailPage implements OnInit, AfterViewInit {
 
   getListMessage(feedbackID, isRefresh= false){
     const self = this;
-    this.apiService.getListFeedbackReply(feedbackID)
+    this.apiService.getListFeedbackNewReply(feedbackID)
     .subscribe(result => {
-      self.msgList = result.feedbackReplies.slice().reverse();
+      self.msgList = result.feedbacknewReplies.slice().reverse();
       self.scrollToBottom();
       if(isRefresh){
         self.focus();
@@ -140,9 +143,6 @@ export class RequestDetailPage implements OnInit, AfterViewInit {
   updateSizeContent(){
     var self = this;
     setTimeout(() => {
-      // console.log(self.contentRequest);
-      // console.log(self.content);
-      // console.log(self.messageInput);
       self.heightScreen = self.messageInput.nativeElement.getBoundingClientRect().top - self.contentRequest.nativeElement.getBoundingClientRect().bottom - 2;
     }, 400);
   }
@@ -173,7 +173,7 @@ export class RequestDetailPage implements OnInit, AfterViewInit {
       content: newMsg.content
     };
 
-    this.apiService.addFeedbackReply(self.feedbackID, params)
+    this.apiService.addFeedbackNewReply(self.feedbackID, params)
     .subscribe(result => {
       let index = this.getMsgIndexById(id);
         if (index !== -1) {
@@ -217,7 +217,7 @@ export class RequestDetailPage implements OnInit, AfterViewInit {
       attachments: listAttachments
     };
 
-    this.apiService.addFeedbackReply(self.feedbackID, params)
+    this.apiService.addFeedbackNewReply(self.feedbackID, params)
     .subscribe(result => {
       self.list_image_select = [];
       let index = this.getMsgIndexById(id);
@@ -336,7 +336,6 @@ export class RequestDetailPage implements OnInit, AfterViewInit {
 
       this.apiService.uploadImage(payload)
       .subscribe(result => {
-        console.log(result);
         self.list_image_select = [];
         self.list_image_select.push(result);
         self.sendAttachmentImage();

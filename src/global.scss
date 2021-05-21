@@ -10,148 +10,147 @@
  */
 
 /* Core CSS required for Ionic components to work properly */
-@import "~@ionic/angular/css/core.css";
+@import '~@ionic/angular/css/core.css';
 
 /* Basic CSS for apps built with Ionic */
-@import "~@ionic/angular/css/normalize.css";
-@import "~@ionic/angular/css/structure.css";
-@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
 @import '~@ionic/angular/css/display.css';
 
 /* Optional CSS utils that can be commented out */
-@import "~@ionic/angular/css/padding.css";
-@import "~@ionic/angular/css/float-elements.css";
-@import "~@ionic/angular/css/text-alignment.css";
-@import "~@ionic/angular/css/text-transformation.css";
-@import "~@ionic/angular/css/flex-utils.css";
-
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
 
 /* Set variables for all modes */
 :root {
-    /* Set the font family of the entire app */
-    --ion-font-family: "Nunito Sans", -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Roboto", sans-serif;
-    --ion-toolbar-color: #556080;
+  /* Set the font family of the entire app */
+  --ion-font-family: 'Open Sans', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Roboto', sans-serif;
+  --ion-toolbar-color: #556080;
 }
 
 .button-common {
-    --background-focused: #D3D6D9;
-    --background-hover:#D3D6D9;
-    --background: #D3D6D9;
-    --background-activated: #D3D6D9;
-    mix-blend-mode: normal;
-    --border-radius: 8px;
-    height: 44px;
-    margin: 0;
-    --box-shadow: none;
+  --background-focused: #d3d6d9;
+  --background-hover: #d3d6d9;
+  --background: #d3d6d9;
+  --background-activated: #d3d6d9;
+  mix-blend-mode: normal;
+  --border-radius: 8px;
+  height: 44px;
+  margin: 0;
+  --box-shadow: none;
 }
 
 .button-common-active {
-    --background-focused: #FA7268;
-    --background-hover:#FA7268;
-    --background: #FA7268;
+  --background-focused: #E64037;
+  --background-hover: #E64037;
+  --background: #E64037;
 }
 
 .button-common {
-    ion-label {
-        font-family: Nunito Sans;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 16px;
-        line-height: 24px;
-        text-align: center;
-        color: #FFFFFF;
-    }    
+  ion-label {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #ffffff;
+  }
 }
 .button-common-bottom {
-    position: absolute;
-    bottom: 20px;
-    width: 91%;
+  position: absolute;
+  bottom: 20px;
+  width: 91%;
 }
 .default-button {
-    // width: 43.73%;
-    height: 44px;
-    --background: #D3D6D9;
-    --ion-toolbar-color: #D3D6D9;
-    --background-activated: #c5c7c9;
-    --background-focused: #c5c7c9;
-    --background-hover: #c5c7c9;
-    --border-radius: 8px;
-    margin: 0 10px;
-    --box-shadow: none !important;
-    --color: #21313F;
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center;
-    text-transform: none;
+  // width: 43.73%;
+  height: 44px;
+  --background: #d3d6d9;
+  --ion-toolbar-color: #d3d6d9;
+  --background-activated: #c5c7c9;
+  --background-focused: #c5c7c9;
+  --background-hover: #c5c7c9;
+  --border-radius: 8px;
+  margin: 0 10px;
+  --box-shadow: none !important;
+  --color: #21313f;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  text-transform: none;
 }
 .amo-button {
-    // width: 43.73%;
-    height: 44px;
-    --ion-toolbar-color: #FA7268;
-    --background-activated: #c5433a;
-    --background-focused: #c5433a;
-    --background-hover: #c5433a;
-    --border-radius: 8px;
-    margin: 0 10px;
-    --box-shadow: none !important;
-    --color: #FFFFFF;
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center;
-    text-transform: none;
+  // width: 43.73%;
+  height: 44px;
+  --ion-toolbar-color: #E64037;
+  --background-activated: #c5433a;
+  --background-focused: #c5433a;
+  --background-hover: #c5433a;
+  --border-radius: 8px;
+  margin: 0 10px;
+  --box-shadow: none !important;
+  --color: #ffffff;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  text-transform: none;
 }
 .lightblue-button {
-    // width: 43.73%;
-    height: 44px;
-    --background: #D4EBF3;
-    --ion-toolbar-color: #D4EBF3;
-    --background-activated: #bee6f3;
-    --background-focused: #bee6f3;
-    --background-hover: #bee6f3;
-    --border-radius: 8px;
-    margin: 0 10px;
-    --box-shadow: none !important;
-    --color: #009AC9;
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center;
-    text-transform: none;
+  // width: 43.73%;
+  height: 44px;
+  --background: #d4ebf3;
+  --ion-toolbar-color: #d4ebf3;
+  --background-activated: #bee6f3;
+  --background-focused: #bee6f3;
+  --background-hover: #bee6f3;
+  --border-radius: 8px;
+  margin: 0 10px;
+  --box-shadow: none !important;
+  --color: #009ac9;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  text-transform: none;
 }
 .small-button {
-    height: 32px;
+  height: 32px;
 }
 
-ion-refresher { 
-    z-index: 0;
+ion-refresher {
+  z-index: 0;
 }
 
 .text-node {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 16px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 16px;
 
-    color: #BBBFCC;
+  color: #bbbfcc;
 }
 
 .padding-left-right-card {
-    padding: 0px 16px 0px 16px;
-    display: inline-block;
+  padding: 0px 16px 0px 16px;
+  display: inline-block;
 }
 
 .note-video-clip {
-    width: 100% !important;
-    height: auto !important;
+  width: 100% !important;
+  height: auto !important;
 }
 
 video,
@@ -161,504 +160,572 @@ iframe {
 }
 
 .full-width {
-    width: 100%;
+  width: 100%;
 }
 
 .full-height {
-    height: 100%;
+  height: 100%;
 }
 
 .amo-button-custom {
-    --background: #FA7268;
-    text-transform: none;
-    --background-activated: rgba(250, 114, 104,0.5);
+  --background: #E64037;
+  text-transform: none;
+  --background-activated: rgba(250, 114, 104, 0.5);
+  border-radius: 8px;
+  --border-radius: 8px;
+  padding: 0px 16px 0px 16px;
+  .button-native {
     border-radius: 8px;
     --border-radius: 8px;
-    padding: 0px 16px 0px 16px;
-    .button-native {
-        border-radius: 8px;
-        --border-radius: 8px;
-    }
+  }
 }
 
-.width-100{
-    width: 100%;
+.amo-button-tracking-status {
+  --background: #fff;
+  text-transform: none;
+  --background-activated: rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  --border-radius: 10px;
+  padding: 0px 16px 0px 16px;
+  color: #e64037;
+  .button-native {
+    border-radius: 10px;
+    --border-radius: 10px;
+  }
 }
 
-.custom-common-input{
-    // position: absolute;
-    // left: 4.27%;
-    // width: 84.46%;
-    // top: 17.24%;
-    height: 3.5em;
-    // height : 40px;
-    mix-blend-mode: normal;
-    // opacity: 0.15;
-    border: 1px solid  rgba(85, 96, 128, 0.15);
-    box-sizing: border-box;
-    box-shadow: 0px 0px 20px rgba(23, 21, 48, 0.102546);
-    border-radius: 8px;
+.width-100 {
+  width: 100%;
+}
+
+.custom-common-input {
+  // position: absolute;
+  // left: 4.27%;
+  // width: 84.46%;
+  // top: 17.24%;
+  height: 3.5em;
+  // height : 40px;
+  mix-blend-mode: normal;
+  // opacity: 0.15;
+  border: 1px solid rgba(85, 96, 128, 0.15);
+  box-sizing: border-box;
+  box-shadow: 0px 0px 20px rgba(23, 21, 48, 0.102546);
+  border-radius: 8px;
 }
 
 .custom-common-input-text {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 19px;
-    /* identical to box height */
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 19px;
+  /* identical to box height */
 
-    --padding-start: 10px !important;
-    color: #556080;
+  --padding-start: 10px !important;
+  color: #556080;
 }
 
 .margin-top-10 {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
-.height-auto{
-    height: auto;
+.height-auto {
+  height: auto;
 }
 
 .padding-none {
-    padding: 0;
+  padding: 0;
 }
 
 .margin-none {
-    margin: 0;
+  margin: 0;
 }
 
-ion-title{
-    // margin-left: 20px;
-    font-size: 18px;
-    color: #21313F;
+ion-title {
+  // margin-left: 20px;
+  font-size: 18px;
+  color: #21313f;
 }
 
 body {
-    font-family: Nunito Sans !important;
+  font-family: Open Sans !important;
 }
 
 ion-toolbar {
-    ion-title.ios {
-        text-align: left;
-        padding-inline-start: 35px;
-        padding-inline-end: 20px;
-        font-family: Nunito Sans;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 18px;
-        line-height: 28px;
-        color: #21313F;
-    }
+  ion-title.ios {
+    text-align: left;
+    padding-inline-start: 35px;
+    padding-inline-end: 20px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 28px;
+    color: #21313f;
+  }
 }
 ion-toolbar {
-    ion-title.md {
-        text-align: left;
-        padding-inline-start: 0;
-        padding-inline-end: 20px;
-        font-family: Nunito Sans;
-        font-style: normal;
-        font-weight: bold;
-        font-size: 18px;
-        line-height: 28px;
-        color: #21313F;
-    }
+  ion-title.md {
+    text-align: left;
+    padding-inline-start: 0;
+    padding-inline-end: 20px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 28px;
+    color: #21313f;
+  }
 }
 .header-toolbar.ios {
-    margin: 0 16px;
+  margin: 0 16px;
+  height: 20%;
 }
 
 @font-face {
-    font-family: Nunito Sans;
-    src: url(assets/font/NunitoSans-Regular.ttf);
-    font-weight: normal;
-}
-@font-face {
-    font-family: Nunito Sans;
-    src: url(assets/font/NunitoSans-Black.ttf);
-    font-weight: 900;
-}
-@font-face {
-    font-family: Nunito Sans;
-    src: url(assets/font/NunitoSans-Bold.ttf);
-    font-weight: bold;
+  font-family: Open Sans;
+  src: url(assets/font/OpenSans-Regular.ttf);
+  font-weight: normal;
 }
 
+@font-face {
+  font-family: Open Sans;
+  src: url(assets/font/OpenSans-Bold.ttf);
+  font-weight: bold;
+}
 ion-back-button {
-    --icon-font-size: 30px;
-    margin-left: 5px;
-    color: #21313F;
+  --icon-font-size: 22px;
+  margin-left: 10px;
+  color: #21313f;
+  width: 25px;
 }
 
 // badge style
 .badge-danger {
-    background: rgba(250, 114, 104, 0.2);
-    border-radius: 4px;
-    padding: 2px 15px;
+  background: rgba(250, 114, 104, 0.2);
+  border-radius: 4px;
+  padding: 2px 15px;
 }
 .badge-danger-label {
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 18px;
-    text-align: center;
-    color: #FA7268;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  color: #E64037;
 }
 .badge-paid {
-    background: rgba(81, 210, 181, 0.2);
-    border-radius: 4px;
-    padding: 2px 15px;
+  background: rgba(81, 210, 181, 0.2);
+  border-radius: 4px;
+  padding: 2px 15px;
 }
 .badge-paid-label {
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 18px;
-    text-align: center;
-    color: #51D2B5;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  color: #51d2b5;
 }
 .badge-sent {
-    background: rgba(0, 154, 201, 0.2);
-    border-radius: 4px;
-    padding: 2px 15px;
+  background: rgba(0, 154, 201, 0.2);
+  border-radius: 4px;
+  padding: 2px 15px;
 }
 .badge-sent-label {
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 18px;
-    text-align: center;
-    color: #009AC9;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  color: #009ac9;
 }
 .badge-lightred {
-    background: rgba(250, 114, 104, 0.2);
-    border-radius: 4px;
-    padding: 2px 15px;
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 18px;
-    text-align: center;
-    color: #FA7268;
+  background: rgba(250, 114, 104, 0.2);
+  border-radius: 4px;
+  padding: 2px 15px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  color: #E64037;
 }
 .badge-primary {
-    background: rgba(0, 154, 201, 0.2);
-    border-radius: 4px;
-    padding: 2px 15px;
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 18px;
-    text-align: center;
-    color: #009AC9;
+  background: rgba(0, 154, 201, 0.2);
+  border-radius: 4px;
+  padding: 2px 15px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  color: #009ac9;
 }
 .badge-success {
-    background: rgba(81, 210, 181, 0.2);
-    border-radius: 4px;
-    padding: 2px 15px;
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 18px;
-    text-align: center;
-    color: #51D2B5;
+  background: rgba(81, 210, 181, 0.2);
+  border-radius: 4px;
+  padding: 2px 15px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  color: #51d2b5;
 }
 .badge-cancel {
-    background: #D3D6D9;
-    border-radius: 4px;
-    padding: 2px 15px;
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 18px;
-    text-align: center;
-    color: #FFFFFF;
+  background: #d3d6d9;
+  border-radius: 4px;
+  padding: 2px 15px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  color: #ffffff;
 }
 
 // validate input
 .pass-hide-icon {
-    font-size: 18px;
-    color: #21313F;
+  font-size: 18px;
+  color: #21313f;
 }
 .clear-input {
-    font-size: 18px;
-    color: #D3D6D9;
+  font-size: 18px;
+  color: #d3d6d9;
 }
 .check-valid {
-    font-size: 18px;
-    color: #009AC9;
+  font-size: 18px;
+  color: #009ac9;
 }
 .check-unvalid {
-    font-size: 18px;
-    color: #FA7268;
+  font-size: 18px;
+  color: #E64037;
 }
 .check-success {
-    font-size: 18px;
-    color: #51D2B5;
+  font-size: 18px;
+  color: #51d2b5;
 }
 .check-default {
-    font-size: 18px;
-    color: #FFFFFF;
+  font-size: 18px;
+  color: #ffffff;
 }
 ion-label {
-    text-transform: none;
+  text-transform: none;
 }
 
 // custom floating input
 .input-item {
-    display: flex;
-    align-items: center !important;
-    align-content: center !important;
-    border: 1px solid #D3D6D9;
-    border-radius: 8px;
-    height: 60px;
-    margin-bottom: 20px;
-    --background: transparent !important;
+  display: flex;
+  align-items: center !important;
+  align-content: center !important;
+  border: 1px solid #d3d6d9;
+  border-radius: 8px;
+  height: 60px;
+  margin-bottom: 20px;
+  --background: transparent !important;
 }
 .input-icon {
-    font-size: 20px;
-    color: #21313F;
-    margin-right: 20px;
+  font-size: 20px;
+  color: #21313f;
+  margin-right: 20px;
 }
 .input-text {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 24px;
-    color: #21313F;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  color: #21313f;
 }
 .input-floating-label {
-    font-family: Nunito Sans !important;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px !important;
-    --color: #7A838C !important;
+  font-family: Open Sans !important;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px !important;
+  --color: #7a838c !important;
 }
 .input-text.ios {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 .input-text.ios.no-floating-label {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 .label-floating.sc-ion-label-ios-h {
-    transform: translate3d(0, 10px, 0);
-    margin-top: 14px;
+  transform: translate3d(0, 10px, 0);
+  margin-top: 14px;
 }
 .item-has-value .label-floating.sc-ion-label-ios-h {
-    transform: translate3d(0, 0, 0) scale(0.82);
+  transform: translate3d(0, 0, 0) scale(0.82);
 }
 .item-has-focus .label-floating.sc-ion-label-ios-h {
-    transform: translate3d(0, 0, 0) scale(0.82);
+  transform: translate3d(0, 0, 0) scale(0.82);
 }
 .input-item input.native-input.sc-ion-input-ios {
-    padding-bottom: 0 !important;
-    padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  padding-top: 0 !important;
 }
 ion-item.input-item.item-has-focus {
-    border: 1px solid #009AC9;
+  border: 1px solid #009ac9;
 }
 ion-item.textarea-item.item-has-focus {
-    border: 1px solid #009AC9;
+  border: 1px solid #009ac9;
 }
 
 // custom common text
 .message_text {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 24px;
-    color: #21313F;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #21313f;
 }
 
 .no-padding-end {
-    --inner-padding-end: 0px;
+  --inner-padding-end: 0px;
 }
 
 // custom popup background transparent
 .sc-ion-modal-md-h {
-    --background: none !important;
-    --ion-background-color: none !important;
+  --background: none !important;
+  --ion-background-color: none !important;
 }
 .sc-ion-modal-ios-h {
-    --background: none !important;
-    --ion-background-color: none !important;
+  --background: none !important;
+  --ion-background-color: none !important;
 }
 
 // custom datetime picker
 .picker-wrapper.sc-ion-picker-ios {
-    border-top-left-radius: 24px !important;
-    border-top-right-radius: 24px !important;
+  border-top-left-radius: 24px !important;
+  border-top-right-radius: 24px !important;
 }
 .margin-0 {
-    margin: 0px !important;
+  margin: 0px !important;
 }
 .margin-top-5 {
-    margin-top: 5px !important;
+  margin-top: 5px !important;
 }
 .margin-top-10 {
-    margin-top: 10px !important;
+  margin-top: 10px !important;
 }
 .margin-top-15 {
-    margin-top: 15px !important;
+  margin-top: 15px !important;
 }
 .margin-top-20 {
-    margin-top: 20px !important;
+  margin-top: 20px !important;
 }
 .margin-top-25 {
-    margin-top: 25px !important;
+  margin-top: 25px !important;
 }
 .margin-top-30 {
-    margin-top: 30px !important;
+  margin-top: 30px !important;
 }
 
 .margin-left-5 {
-    margin-left: 5px !important;
+  margin-left: 5px !important;
 }
 .margin-left-10 {
-    margin-left: 10px !important;
+  margin-left: 10px !important;
 }
 .margin-left-15 {
-    margin-left: 15px !important;
+  margin-left: 15px !important;
 }
 .margin-left-20 {
-    margin-left: 20px !important;
+  margin-left: 20px !important;
 }
 .margin-left-25 {
-    margin-left: 25px !important;
+  margin-left: 25px !important;
 }
 .margin-left-30 {
-    margin-left: 30px !important;
+  margin-left: 30px !important;
 }
 
 .margin-right-5 {
-    margin-right: 5px !important;
+  margin-right: 5px !important;
 }
 .margin-right-10 {
-    margin-right: 10px !important;
+  margin-right: 10px !important;
 }
 .margin-right-15 {
-    margin-right: 15px !important;
+  margin-right: 15px !important;
 }
 .margin-right-20 {
-    margin-right: 20px !important;
+  margin-right: 20px !important;
 }
 .margin-right-25 {
-    margin-right: 25px !important;
+  margin-right: 25px !important;
 }
 .margin-right-30 {
-    margin-right: 30px !important;
+  margin-right: 30px !important;
 }
 
 .margin-bottom-5 {
-    margin-bottom: 5px !important;
+  margin-bottom: 5px !important;
 }
 .margin-bottom-10 {
-    margin-bottom: 10px !important;
+  margin-bottom: 10px !important;
 }
 .margin-bottom-15 {
-    margin-bottom: 15px !important;
+  margin-bottom: 15px !important;
 }
 .margin-bottom-20 {
-    margin-bottom: 20px !important;
+  margin-bottom: 20px !important;
 }
 .margin-bottom-25 {
-    margin-bottom: 25px !important;
+  margin-bottom: 25px !important;
 }
 .margin-bottom-30 {
-    margin-bottom: 30px !important;
+  margin-bottom: 30px !important;
 }
 // padding
 .padding-0 {
-    padding: 0 !important;
+  padding: 0 !important;
 }
 
 .padding-top-5 {
-    padding-top: 5px !important;
+  padding-top: 5px !important;
 }
 .padding-top-10 {
-    padding-top: 10px !important;
+  padding-top: 10px !important;
 }
 .padding-top-15 {
-    padding-top: 15px !important;
+  padding-top: 15px !important;
 }
 .padding-top-20 {
-    padding-top: 20px !important;
+  padding-top: 20px !important;
 }
 .padding-top-25 {
-    padding-top: 25px !important;
+  padding-top: 25px !important;
 }
 .padding-top-30 {
-    padding-top: 30px !important;
+  padding-top: 30px !important;
 }
 
 .padding-left-5 {
-    padding-left: 5px !important;
+  padding-left: 5px !important;
 }
 .padding-left-10 {
-    padding-left: 10px !important;
+  padding-left: 10px !important;
 }
 .padding-left-15 {
-    padding-left: 15px !important;
+  padding-left: 15px !important;
 }
 .padding-left-20 {
-    padding-left: 20px !important;
+  padding-left: 20px !important;
 }
 .padding-left-25 {
-    padding-left: 25px !important;
+  padding-left: 25px !important;
 }
 .padding-left-30 {
-    padding-left: 30px !important;
+  padding-left: 30px !important;
 }
 
 .padding-right-5 {
-    padding-right: 5px !important;
+  padding-right: 5px !important;
 }
 .padding-right-10 {
-    padding-right: 10px !important;
+  padding-right: 10px !important;
 }
 .padding-right-15 {
-    padding-right: 15px !important;
+  padding-right: 15px !important;
 }
 .padding-right-20 {
-    padding-right: 20px !important;
+  padding-right: 20px !important;
 }
 .padding-right-25 {
-    padding-right: 25px !important;
+  padding-right: 25px !important;
 }
 .padding-right-30 {
-    padding-right: 30px !important;
+  padding-right: 30px !important;
 }
 
 .padding-bottom-5 {
-    padding-bottom: 5px !important;
+  padding-bottom: 5px !important;
 }
 .padding-bottom-10 {
-    padding-bottom: 10px !important;
+  padding-bottom: 10px !important;
 }
 .padding-bottom-15 {
-    padding-bottom: 15px !important;
+  padding-bottom: 15px !important;
 }
 .padding-bottom-20 {
-    padding-bottom: 20px !important;
+  padding-bottom: 20px !important;
 }
 .padding-bottom-25 {
-    padding-bottom: 25px !important;
+  padding-bottom: 25px !important;
 }
 .padding-bottom-30 {
-    padding-bottom: 30px !important;
+  padding-bottom: 30px !important;
 }
 .width-100 {
-    width: 100%;
+  width: 100%;
 }
 .white-space-normal {
-    white-space: normal !important;
+  white-space: normal !important;
 }
 
 .btn-close-popup {
-    width: 30px;
-    height: 30px;
-    justify-content: center;
+  width: 30px;
+  height: 30px;
+  justify-content: center;
+}
+
+.main-header {
+  display: inline-flex;
+
+  .avatar-custom {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.add-new-button {
+  margin: 20px 16px 20px 16px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+  background-color: #ebf8ff;
+  border: 1px dashed #a7dff4;
+  box-sizing: border-box;
+  border-radius: 5px;
+  height: 80px;
+}
+.add-new-icon {
+  margin: auto;
+  width: 100%;
+  text-align: center;
+}
+.add-new-label {
+  font-size: 11px;
+  font-weight: bold;
+  line-height: 15px;
+  text-align: center;
+  color: #01aeef;
+}
+ion-button {
+  text-transform: none;
+}
+
+.booking-shop-house-modal-css {
+  .modal-wrapper {
+    height: 90vh;
+    top: 10vh;
+    position: absolute;
+    display: block;
+    border-radius: 10px 10px 0px 0px;
+  }
+  .modal-shadow {
+    opacity: 0.8 !important;
+    background: #000000 !important;
+  }
+}
+
+ion-content {
+  // --offset-bottom: auto!important;
+  // --overflow: hidden;
+  overflow: auto;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 }

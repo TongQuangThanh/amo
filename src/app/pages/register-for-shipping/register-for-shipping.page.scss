@@ -1,415 +1,591 @@
-ion-toolbar{
-    --border-width: 0px !important;
+ion-toolbar {
+  --border-width: 0px !important;
 }
-.function-section{
-    margin-bottom: 20px;
-    margin-top: 45px;
-}
-.item-common {
-    width: 100%;
-    background: #FBFBFB;
-    mix-blend-mode: normal;
-    border: 1px solid #D3D6D9;
-    box-sizing: border-box;
-    border-radius: 8px;
-    margin-left: 17px;
-    margin-right: 17px;
+.function-section {
+  padding-bottom: 20px;
+  margin-top: 45px;
 }
 .item-apartment-pulldown {
-    /* Backgroundbox */
-    width: 100%;
-    background: #FBFBFB;
-    mix-blend-mode: normal;
-    /* Text/Placeholder */
-    border: 1px solid #D3D6D9;
-    box-sizing: border-box;
-    border-radius: 8px;
-    margin-left: 20px;
-    margin-right: 20px;
+  /* Backgroundbox */
+  width: 100%;
+  background: #fbfbfb;
+  mix-blend-mode: normal;
+  /* Text/Placeholder */
+  border: 1px solid #d3d6d9;
+  box-sizing: border-box;
+  border-radius: 8px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .icon-home {
-    z-index: 999;
-    pointer-events: none;
-    margin-left: 17px;
-    position: absolute;
+  z-index: 999;
+  pointer-events: none;
+  margin-left: 15px;
+  position: absolute;
 }
 .icon-pulldown-down {
-    z-index: 999;
-    pointer-events: none;
-    position: absolute;
-    right: 15px;
+  z-index: 999;
+  pointer-events: none;
+  position: absolute;
+  right: 15px;
 }
 .has-input-value .pulldown-apartment-select {
-    padding-top: 25px;
-    padding-bottom: 5px;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
+  padding-top: 25px;
+  padding-bottom: 5px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
 }
 .pulldown-apartment-select {
-    width: 100%;
-    max-width: 100%;
-    padding-left: 50px;
-    background: #fbfbfb;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-right: 17px;
-    height: 100%;
+  width: 100%;
+  max-width: 100%;
+  padding-left: 50px;
+  background: #fbfbfb;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 17px;
+  height: 100%;
 }
 ion-select::part(icon) {
-    display: none;
-    opacity: 1;
+  display: none;
+  opacity: 1;
 }
 .pulldown-1-placeholder {
-    position: absolute;
-    opacity: 0.5;
-    z-index: 999;
-    font-size: 12px;
-    margin-left: 50px;
-    top: 7px;
-    pointer-events: none;
+  position: absolute;
+  opacity: 0.5;
+  z-index: 999;
+  font-size: 12px;
+  margin-left: 50px;
+  top: 7px;
+  pointer-events: none;
 }
 
 .pulldown-1-placeholder-init {
-    position: absolute;
-    opacity: 0.5;
-    z-index: 999;
-    margin-left: 50px;
-    pointer-events: none;
+  position: absolute;
+  opacity: 0.5;
+  z-index: 999;
+  margin-left: 50px;
+  pointer-events: none;
 }
-.pulldown-1-text-select{
-    padding-left: 50px;
-    padding-top: 20px;
-    padding-bottom: 0px;
-    padding-right: 17px;
-    position: absolute;
-    z-index: 99;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width: 100%;
-    overflow: hidden;
-    pointer-events: none;
+.pulldown-1-text-select {
+  padding-left: 50px;
+  padding-top: 20px;
+  padding-bottom: 0px;
+  padding-right: 17px;
+  position: absolute;
+  z-index: 99;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  pointer-events: none;
 }
 
 .margin-top-20 {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 .margin-top-10 {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 .margin-left-10 {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 .item-native {
-    background-color: #FBFBFB;
+  background-color: #fbfbfb;
 }
-ion-item{
-    --inner-padding-end: 0px;
-    --padding-start:0px
+ion-item {
+  --inner-padding-end: 0px;
+  --padding-start: 0px;
 }
 
-.text-area-1 {
-    --padding-start: 17px !important;
-    background: #fbfbfb;
-    margin-top: 0px;
-}
-.font_weight_bold {
-    // font-weight: bold;
-}
 .margin-left-20 {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 .text-box-1 {
-    --padding-start: 50px !important;
-    --padding-end: 20px !important;
-    background-color: #FBFBFB;
-    --padding-top: 15px;
-    --padding-bottom: 15px;
+  --padding-start: 50px !important;
+  --padding-end: 20px !important;
+  background-color: #fbfbfb;
+  --padding-top: 15px;
+  --padding-bottom: 15px;
 }
 ion-checkbox {
-    --border-width:1px;
+  --border-width: 1px;
 }
 .icon-dollar {
-    z-index: 999;
-    pointer-events: none;
-    margin-left: 15px;
-    position: absolute;
-    opacity: 0.5;
+  z-index: 999;
+  pointer-events: none;
+  margin-left: 15px;
+  position: absolute;
+  opacity: 0.5;
 }
 .icon-dollar-active {
-    z-index: 999;
-    pointer-events: none;
-    margin-left: 15px;
-    position: absolute;
+  z-index: 999;
+  pointer-events: none;
+  margin-left: 15px;
+  position: absolute;
 }
-.label-1{
-    position: absolute;
-    z-index: 999;
-    right: 15px;
-    opacity: 0.5;
+.label-1 {
+  position: absolute;
+  z-index: 999;
+  right: 15px;
+  opacity: 0.5;
 }
-.label-1-active{
-    position: absolute;
-    z-index: 999;
-    right: 15px;
+.label-1-active {
+  position: absolute;
+  z-index: 999;
+  right: 15px;
 }
 .pointer-events-all {
-    pointer-events:all;
+  pointer-events: all;
 }
 .line-1 {
-    padding-top: 6px;
-    background: #F4F5F5;
+  padding-top: 6px;
+  background: #f4f5f5;
 }
 .no-border {
-    border: 0px;
+  border: 0px;
 }
 .item-tip {
-    /* Backgroundbox */
-    width: 100%;
-    background: #FBFBFB;
-    mix-blend-mode: normal;
-    /* Text/Placeholder */
-    border: 1px solid #D3D6D9;
-    box-sizing: border-box;
-    border-radius: 8px;
-    margin-left: 20px;
+  /* Backgroundbox */
+  width: 100%;
+  background: #fbfbfb;
+  mix-blend-mode: normal;
+  /* Text/Placeholder */
+  border: 1px solid #d3d6d9;
+  box-sizing: border-box;
+  border-radius: 8px;
+  margin-left: 20px;
 }
 .button-tip {
-    background-color: #FBFBFB !important;
-    border: 1px solid #D3D6D9;
-    border-radius: 8px;
-    margin-right: 15px;
-    padding: 10px;
+  background-color: #fbfbfb !important;
+  border: 1px solid #d3d6d9;
+  border-radius: 8px;
+  margin-right: 15px;
+  padding: 10px;
 }
 .button-tip-active {
-    background-color: #009AC9 !important;
-    color: #ffffff;
-    border: 1px solid #D3D6D9;
-    border-radius: 8px;
-    margin-right: 15px;
-    padding: 10px;
+  background-color: #009ac9 !important;
+  color: #ffffff;
+  border: 1px solid #d3d6d9;
+  border-radius: 8px;
+  margin-right: 15px;
+  padding: 10px;
 }
 .button-tip label {
-    margin: 0px;
+  margin: 0px;
 }
 .button-tip-active label {
-    margin: 0px;
+  margin: 0px;
 }
 .group-button-tip {
-    overflow-x: auto;
-    display: flex;
+  overflow-x: auto;
+  display: flex;
 }
-.checkbox-common{
-    --background-checked:#009AC9;
+.checkbox-common {
+  --background-checked: #009ac9;
 }
 
-
-// popup 
-
+// popup
 
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1050;
-    display: block;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    outline: 0;
-    background-color: #00000005;
-    z-index: 9999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
+  background-color: #00000005;
 }
 
 .modal-dialog {
-    position: absolute;
-    width: 100%;
-    margin: 0px;
-    pointer-events: none;
-    bottom: 0px;
+  position: absolute;
+  width: 100%;
+  margin: 0px;
+  pointer-events: none;
+  bottom: 0px;
 }
 @media (min-width: 576px) {
-    .modal-dialog {
-        max-width: unset;
-    }
+  .modal-dialog {
+    max-width: unset;
+  }
 }
 .modal-content {
-    border-radius: 24px 24px 0px 0px;
+  border-radius: 24px 24px 0px 0px;
 }
 .close {
-    float: left;
-    font-size: 1.5rem;
-    font-weight: normal;
-    line-height: 1;
-    color: #000;
-    text-shadow: 0 1px 0 #fff;
-    opacity: .5;
+  float: left;
+  font-size: 1.5rem;
+  font-weight: normal;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.5;
 }
 .modal-header .close {
-    padding: 1rem 1rem;
-    margin: -1rem -1rem -1rem -1rem;
+  padding: 1rem 1rem;
+  margin: -1rem -1rem -1rem -1rem;
 }
 .popup-item-input {
-    background: #FBFBFB;
-    mix-blend-mode: normal;
-    border: 1px solid #D3D6D9;
-    box-sizing: border-box;
-    border-radius: 8px;
+  background: #fbfbfb;
+  mix-blend-mode: normal;
+  border: 1px solid #d3d6d9;
+  box-sizing: border-box;
+  border-radius: 8px;
 }
-.modal-header {
-    // border-bottom: 1px solid #F4F5F5;
-}
+
 .modal-body {
-    border-bottom: 0px solid #F4F5F5;
+  border-bottom: 0px solid #f4f5f5;
 }
 .modal-header label {
-    margin-bottom: 0rem;
+  margin-bottom: 0rem;
 }
 .div-header-title {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 .modal-footer {
-    border-top: 0px solid #dee2e6;
+  border-top: 0px solid #dee2e6;
 }
 .popup-btn-ok {
-    background: #d9f0f7;
-    border-radius: 8px;
-    color: #009AC9;
-    width: 160px;
-    height: 44px;
-    margin: 0 auto;
+  background: #d9f0f7;
+  border-radius: 8px;
+  color: #009ac9;
+  width: 160px;
+  height: 44px;
+  margin: 0 auto;
 }
 
 .button-1-text {
-    margin: 0 auto;
-    z-index: 99;
+  margin: 0 auto;
+  z-index: 99;
 }
 .button-1-icon {
-    z-index: 999;
-    pointer-events: none;
-    top: 5px;
-    right: 5px;
-    position: absolute;
+  z-index: 999;
+  pointer-events: none;
+  top: 5px;
+  right: 5px;
+  position: absolute;
 }
 ion-item .button-active {
-    background: #fbfbfb;
-    border: 1px solid #009AC9;
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    border-radius: 8px;
-    position: absolute;
+  background: #fbfbfb;
+  border: 1px solid #009ac9;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  position: absolute;
 }
 .button-unactive {
-    background: #fbfbfb;
-    border: 1px solid #D3D6D9;
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    border-radius: 8px;
-    position: absolute;
+  background: #fbfbfb;
+  border: 1px solid #d3d6d9;
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  position: absolute;
 }
 .margin-right-5 {
-    margin-right: 5px;
+  margin-right: 5px;
 }
 .margin-left-5 {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 .has-input-value .datetime-commom {
-    padding-top: 25px;
-    padding-bottom: 5px;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
+  padding-top: 25px;
+  padding-bottom: 5px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
 }
 .datetime-commom {
-    width: 100%;
-    max-width: 100%;
-    padding-left: 50px;
-    background: #fbfbfb;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-right: 17px;
-    height: 100%;
+  width: 100%;
+  max-width: 100%;
+  padding-left: 50px;
+  background: #fbfbfb;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 17px;
+  height: 100%;
 }
 .button-3-1 {
-    background: #FBFBFB;
-    mix-blend-mode: normal;
-    border: 1px solid #D3D6D9;
-    box-sizing: border-box;
-    border-radius: 8px;
-    width: 32px;
-    height: 32px;
-    position: absolute;
-    left: 0;
+  background: #fbfbfb;
+  mix-blend-mode: normal;
+  border: 1px solid #d3d6d9;
+  box-sizing: border-box;
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  left: 0;
 }
 .button-3-2 {
-    background: #FBFBFB;
-    mix-blend-mode: normal;
-    border: 1px solid #D3D6D9;
-    box-sizing: border-box;
-    border-radius: 8px;
-    width: 32px;
-    height: 32px;
-    position: absolute;
-    right: 0;
+  background: #fbfbfb;
+  mix-blend-mode: normal;
+  border: 1px solid #d3d6d9;
+  box-sizing: border-box;
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  right: 0;
 }
 .icon-button-3 {
-    margin-top: -1px;
+  margin-top: -1px;
 }
 .group-1-label-1 {
-    vertical-align: sub;
-    margin-top: 5px;
+  vertical-align: sub;
+  margin-top: 5px;
 }
 .margin-0 {
-    margin: 0;
+  margin: 0;
 }
 .group-1-button-change-number {
-    position: absolute;
-    right: 0;
-    width: 120px;
-    height: 32px;
-    text-align: center;
-
+  position: absolute;
+  right: 0;
+  width: 120px;
+  height: 32px;
+  text-align: center;
 }
-.margin-bottom-15{
-    margin-bottom: 15px;
+.margin-bottom-15 {
+  margin-bottom: 15px;
 }
-.margin-top-15{
-    margin-top: 15px;
+.margin-top-15 {
+  margin-top: 15px;
 }
 .margin-bottom-5 {
-    margin-bottom: 5px;
+  margin-bottom: 5px;
 }
 .group-1-button-custom {
-    --background: #D4EBF3;
-    border-radius: 8px;
-    --background-activated: #D4EBF3;
-    width: 100%;
-    height: 100%;
-    font-weight: 800;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center;
-    color: #009AC9;
+  --background: #d4ebf3;
+  border-radius: 8px;
+  --background-activated: #d4ebf3;
+  width: 100%;
+  height: 100%;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #009ac9;
 }
 .font-weight-600 {
-    font-weight: 600;
+  font-weight: 600;
 }
-.has-input-value .text-box-1{
-    --padding-top: 25px; 
-    --padding-bottom: 5px;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
+.has-input-value .text-box-1 {
+  --padding-top: 25px;
+  --padding-bottom: 5px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
 }
 .button-inactive {
-    --background: #D3D6D9 !important;
-    color: #ffffff !important;
+  --background: #d3d6d9 !important;
+  color: #ffffff !important;
 }
 .active_button.button-inactive {
-    display: none !important;
+  display: none !important;
 }
 .inactive_button.button-active {
-    display: none !important;
+  display: none !important;
 }
+
+// new css =========================
+.ion-no-border {
+  background-color: #E64037;
+  height: 156px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .back-button {
+    position: absolute;
+    left: 10px;
+    top: 60px;
+    .ion-back-button {
+      --icon-font-size: 22px;
+      margin-left: 0;
+      width: 25px;
+    }
+  }
+  .header-title {
+    text-align: center;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    top: 57px;
+    font-size: 28px;
+    line-height: 41px;
+    color: #ffffff;
+  }
+  .header-sub-title {
+    position: absolute;
+    height: 22px;
+    left: 15px;
+    right: 15px;
+    top: 97px;
+    font-family: Open Sans;
+    font-style: normal;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+    color: #ffffff;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 25px;
+    left: -1px;
+    right: -1px;
+    box-shadow: 0 30px 0 0 #ffffff;
+    height: 20px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+  }
+}
+
+.register-tranfer-content {
+  font-family: Open Sans;
+
+  .item-text-area {
+    width: 100%;
+    border: 1px solid #d3d6d9;
+    border-radius: 8px;
+    margin: 0px 15px 10px 15px;
+    --background: transparent !important;
+    .text-area-1 {
+      --padding-start: 17px !important;
+      background: #fbfbfb;
+      margin-top: 0px;
+    }
+  }
+  .ion-grid-class {
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 0;
+  }
+
+  .ion-col-class {
+    // border: 1px solid #D3D6D9;
+    box-sizing: border-box;
+    border-radius: 8px;
+    padding: 5px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // margin: 5px;
+  }
+  .item-photo-grap {
+    width: 100%;
+    mix-blend-mode: normal;
+    background: #ebf8ff;
+    border: 1px dashed #a7dff4;
+    box-sizing: border-box;
+    border-radius: 5px;
+    margin: 0px 15px;
+
+    .icon-camera-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-flow: column;
+      padding: 20px 0;
+
+      .icon-camera {
+        margin: 0 auto;
+        font-size: 24px;
+      }
+      .camera-label {
+        font-weight: bold;
+        font-size: 11px;
+        line-height: 15px;
+        color: #01aeef;
+        margin-top: 5px;
+      }
+      .camera-sub-label {
+        font-size: 11px;
+        line-height: 15px;
+        color: #01aeef;
+      }
+    }
+  }
+  .ion-item-for-image {
+    border: 1px solid #d3d6d9;
+    box-sizing: border-box;
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+  .ion-item-for-image img {
+    margin: 0 auto;
+  }
+  .close-image-icon {
+    font-size: 13px;
+    font-weight: normal;
+    line-height: 0;
+    color: #fff;
+    position: absolute;
+    z-index: 999;
+    background-color: #009ac9;
+    top: 9px;
+    right: 9px;
+    opacity: 1;
+    border-radius: 8px;
+    width: 16px;
+    height: 16px;
+    text-shadow: none;
+    padding: 0;
+  }
+  .mask-multiple-image {
+    position: absolute;
+    width: calc(100% - 10px);
+    height: calc(100% - 10px);
+    background-color: #000000;
+    z-index: 99999;
+    opacity: 0.5;
+    top: 5px;
+    bottom: 5px;
+    left: 5px;
+    right: 5px;
+    border-radius: 8px;
+    color: #ffffff;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+  .area-show-image {
+    overflow: auto;
+    height: 400px;
+  }
+  .popup-show-full-image .modal-body {
+    padding-top: 0;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  .icon-add-image {
+    padding: 24px 0;
+  }
+
+  .item-common {
+    width: 100%;
+    display: flex;
+    border: 1px solid #d3d6d9;
+    border-radius: 8px;
+    height: 60px;
+    margin: 0px 15px 10px 15px;
+    --background: transparent !important;
+  }
+}
+

@@ -1,0 +1,66 @@
+<ion-header class="ion-no-border payment-confirm-header">
+  <ion-buttons class="back-button">
+    <ion-back-button color="light" text="" icon="chevron-back" class="ion-back-button"></ion-back-button>
+  </ion-buttons>
+  <ion-label class="header-title">{{ 'PAYMENT_INFOR.payment_confirm_title' | translate }}</ion-label>
+  <ion-label class="header-sub-title">{{ 'PAYMENT_INFOR.payment_confirm_sub_title' | translate }}</ion-label>
+</ion-header>
+
+<ion-content class="payment-confirm-content">
+  <ion-label class="confirm_detail_title">{{ 'PAYMENT_INFOR.payment_confirm_detail_title' | translate }}</ion-label>
+  <section class="section-content margin-top-10">
+    <ion-item lines="none" class="fee-item confirm-bill-title">
+      <ion-text>{{titlePage}}</ion-text>
+    </ion-item>
+    <div class="devider-line-confirm-item"></div>
+
+    <ion-list *ngFor="let item of listPaymentContent; let i = index;" class="section-content-fee">
+      <ion-item lines="none" class="fee-item ion-no-padding">
+        <ion-icon [src]="'../assets/icon/payment/bag.svg'" class="icon-parking"></ion-icon>
+        <ion-label class="fee-title">{{item.type.title}}</ion-label>
+        <ion-label class="amount-number ion-float-right">{{formatMoney(item.amount)}} </ion-label>
+      </ion-item>
+      <ion-item lines="none" class="item-fee-detail ion-no-padding">
+        <p [innerHTML]="convertText(item.description)" class="fee-detail"></p>
+      </ion-item>
+      <div class="devider-line-confirm-item"></div>
+    </ion-list>
+    <ion-list class="section-content-fee">
+      <ion-item lines="none" class="fee-item ion-no-padding">
+        <ion-label class="fee-detail">{{"PAYMENT_INFOR.payment_confirm_amount" | translate}}</ion-label>
+        <ion-label class="amount-number-total ion-float-right">{{formatMoney(totalCash)}}đ </ion-label>
+      </ion-item>
+      <ion-item lines="none" class="fee-item ion-no-padding">
+        <ion-label class="fee-detail">{{"PAYMENT_INFOR.payment_confirm_promotion" | translate}}</ion-label>
+        <ion-label class="promotion-value ion-float-right">{{formatMoney(promotionMoney)}}đ </ion-label>
+      </ion-item>
+      <div class="devider-line-confirm-item"></div>
+      <ion-item lines="none" class="fee-item ion-no-padding">
+        <ion-label class="fee-detail">{{"PAYMENT_INFOR.payment_confirm_total" | translate}}</ion-label>
+        <ion-label class="amount-number ion-float-right">{{formatMoney(totalCash - promotionMoney)}}đ </ion-label>
+      </ion-item>
+    </ion-list>
+  </section>
+
+  <ion-toolbar class="ion-toolbar-payment">
+    <ion-item lines="none" class="payment-funtion" *ngIf="paymentSelected">
+      <ion-icon [src]="'../assets/icon/payment/wallet.svg'" class="wallet-icon"></ion-icon>
+      <ion-label class="wallet-title">{{paymentSelected.name}}</ion-label>
+      <ion-text class="wallet-money">
+        {{paymentSelected.content}}
+        <span *ngIf="paymentSelected.money && paymentSelected.money < totalCash" class="money-insufficient">- {{'PAYMENT_INFOR.payment_wallet_insufficient'| translate }}</span>
+      </ion-text>
+      <ion-label class="wallet-change" (click)="changePaymentModal()">{{"PAYMENT_INFOR.payment_wallet_change" | translate}}</ion-label>
+    </ion-item>
+    <ion-item lines="none" class="payment-funtion" *ngIf="!paymentSelected">
+      <ion-icon [src]="'../assets/icon/payment/wallet.svg'" class="wallet-icon"></ion-icon>
+      <ion-label class="wallet-title">{{"PAYMENT_INFOR.payment_wallet_title" | translate}}</ion-label>
+      <ion-text class="wallet-money">
+        {{"PAYMENT_INFOR.payment_wallet_not_register" | translate}}
+      </ion-text>
+      <ion-label class="wallet-change" (click)="changePaymentModal()">{{"PAYMENT_INFOR.payment_wallet_change" | translate}}</ion-label>
+    </ion-item>
+    <ion-button class="amo-button btn-default" (click)="openPayment()" *ngIf="paymentSelected && paymentSelected.money >= (totalCash - promotionMoney)">{{'PAYMENT_INFOR.pay_now' | translate }}</ion-button>
+    <ion-button class="btn-default btn-pay-not-active" *ngIf="!paymentSelected || paymentSelected.money < (totalCash - promotionMoney)">{{'PAYMENT_INFOR.pay_now' | translate }}</ion-button>
+  </ion-toolbar>
+</ion-content>

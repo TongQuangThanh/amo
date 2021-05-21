@@ -1,0 +1,77 @@
+<!-- <ion-backdrop></ion-backdrop> -->
+<ion-content class="content-wrap">
+  <div class="content-container" no-bounce>
+    <ion-item lines="none" class="header-item">
+      <ion-buttons slot="start" class="" (click)="closeModal()" class="btn-close-popup">
+        <ion-icon name="chevron-back" color="#666666"></ion-icon>
+      </ion-buttons>
+      <ion-label class="header-comments-count">{{commentsCount}} {{ 'NOTIFICATION.commented' | translate }}</ion-label>
+      <ion-buttons slot="end" class="share-info-title" [ngClass]="{'liked': isLiked}" (click)="postLike()">
+        <ion-icon name="heart" class="header-heart"></ion-icon>
+        <ion-label class="header-like">{{ 'NOTIFICATION.like_text' | translate }}
+        </ion-label>
+      </ion-buttons>
+    </ion-item>
+
+    <!-- CONVERSATION -->
+    <ion-content #ionContent>
+      <div class="conversation-wrapper" *ngFor="let item of listArticlesComment">
+        <div class="conversation-item">
+          <ion-avatar class="user-avatar-wrapper">
+            <ion-img class="user-avatar" *ngIf="item.createdBy" src="{{item.createdBy.avatar}}"></ion-img>
+            <ion-img class="user-avatar" *ngIf="!item.createdBy" src="../assets/icon/avatar-default.png"></ion-img>
+          </ion-avatar>
+
+          <div class="user-text-wrapper">
+            <ion-label class="user-name">{{ item?.createdBy?.displayName || '' }}</ion-label>
+            <ion-label class="conversation-text">{{ item.content }}</ion-label>
+          </div>
+        </div>
+        <div class="conversation-actions">
+          <ion-label class="action-time">{{ time_ago(item.createdAt) }}</ion-label>
+          <ion-label class="action-seperator">|</ion-label>
+          <ion-label class="action-reply" (click)="replyComment(item._id, item?.createdBy?.displayName)">{{ 'NOTIFICATION_COMMENT.reply' | translate }}</ion-label>
+        </div>
+
+        <!-- CONVERSETION REPLY -->
+        <div class="conversation-reply" *ngFor="let reply of item.replies.reverse()">
+          <div class="conversation-item">
+            <ion-avatar class="user-avatar-wrapper">
+              <ion-img class="user-avatar" *ngIf="reply.createdBy" src="{{reply.createdBy.avatar}}"></ion-img>
+              <ion-img class="user-avatar" *ngIf="!reply.createdBy" src="../assets/icon/avatar-default.png"></ion-img>
+            </ion-avatar>
+            <div class="user-text-reply">
+              <ion-label class="user-name">{{reply.createdBy ? reply.createdBy.displayName : ''}}</ion-label>
+              <ion-label class="conversation-text">{{reply.content}}</ion-label>
+            </div>
+          </div>
+        </div>
+        <!-- END CONVERSETION REPLY -->
+      </div>
+      <ion-infinite-scroll class="infinite-scroll" threshold="50px" (ionInfinite)="loadData($event)">
+        <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="{{ 'NOTIFICATION.loadding_more' | translate }}">
+        </ion-infinite-scroll-content>
+      </ion-infinite-scroll>
+    </ion-content>
+    <!-- END CONVERSATION -->
+  </div>
+ 
+</ion-content>
+<ion-footer class="ion-no-border footer-content share-info">
+  <ion-item id="reply-item" lines="none" class="reply-item" *ngIf="replyId !== null">
+    <ion-label class="reply-label">{{ 'NOTIFICATION_COMMENT.reply_label' | translate }} <span
+        class="reply-name">{{ replyName }}</span></ion-label>
+    <ion-label class="cancel-label" (click)="cancelReplyComment()">{{ 'NOTIFICATION_COMMENT.cancel_label' | translate }}
+    </ion-label>
+  </ion-item>
+  <ion-item lines="none" class="add-comment-item">
+    <ion-item class="comment-textarea">
+      <ion-textarea #chat_input class="input-area" rows="1" wrap="soft" maxlength="500" auto-grow id="reply-item"
+        [(ngModel)]="editorMsg" placeholder="{{ 'REQUEST_DETAIL.place_holder_input' | translate }}">
+      </ion-textarea>
+    </ion-item>
+    <ion-item lines="none" class="ion-item-send-image">
+      <img src="../assets/common/send.svg" class="icon-send icon-send-default" (click)="sendMsg()" />
+    </ion-item>
+  </ion-item>
+</ion-footer>

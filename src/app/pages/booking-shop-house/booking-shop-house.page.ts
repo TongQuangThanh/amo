@@ -3,7 +3,6 @@ import { ApiService } from '../../services/api/api.service';
 import { NavController } from '@ionic/angular';
 import { LoadingService } from '../../services/loading/loading.service';
 import { ModalController } from '@ionic/angular';
-import { DatePipe, Location } from '@angular/common';
 
 @Component({
   selector: 'app-booking-shop-house',
@@ -36,24 +35,24 @@ export class BookingShopHousePage implements OnInit {
   form_phone_number_class:any;
   flag_show_hide_popup: any;
   total_money: any;
+  shop_info: any;
 
   orderInfor: any;
   paymentMode: any;
   customerInfor: any;
+  dateNow = new Date().toJSON();
   
   constructor(
     public modalController: ModalController,
     private loading: LoadingService,
     private navCtrl: NavController,
     private apiService: ApiService,
-    private datePipe: DatePipe,
-    private location: Location
   ) { }
 
   ngOnInit() {
     this.listDepartmentByID = {};
     this.getListApartment();
-    this.button_active = 0;
+    // this.button_active = 0;
     this.check_class_button();
     this.form_apartment_id = "";
     this.form_apartment_class = "";
@@ -71,7 +70,8 @@ export class BookingShopHousePage implements OnInit {
       note: '',
     };
 
-    var data = JSON.parse(localStorage.getItem('data-shop-house'));
+    let data = JSON.parse(localStorage.getItem('data-shop-house'));
+    
     if (data.carServiceType && data.carServiceType == 'oneTurn') {
       this.is_change_number = false;
     } else {
@@ -86,8 +86,10 @@ export class BookingShopHousePage implements OnInit {
     this.getTotalMoney();
   }
   getListProduct() {
-    var self = this;
+    let self = this;
     this.list_product = [];
+    self.shop_info = self.data_shop_house.shopInfo;
+    console.warn(self.shop_info);
     self.data_shop_house.group_2.forEach(object => {
       object.data.forEach(product => {
         if (product.number > 0) {
@@ -102,8 +104,11 @@ export class BookingShopHousePage implements OnInit {
     if (this.button_active == 0) {
       this.button_1_class = "button-active";
       this.button_2_class = "button-unactive";
-    } else {
+    } else if(this.button_active == 1) {
       this.button_2_class = "button-active";
+      this.button_1_class = "button-unactive";
+    } else {
+      this.button_2_class = "button-unactive";
       this.button_1_class = "button-unactive";
     }
   }
@@ -116,7 +121,7 @@ export class BookingShopHousePage implements OnInit {
     this.checkStatusButtonSend();
   }
   downNumberProduct(id) {
-    var self = this;
+    let self = this;
     self.list_product.forEach(object => {
       if (object._id == id && object.number > 0) {
         object.number--;
@@ -125,7 +130,7 @@ export class BookingShopHousePage implements OnInit {
     this.getTotalMoney();
   }
   upNumberProduct(id) {
-    var self = this;
+    let self = this;
     self.list_product.forEach(object => {
       if (object._id == id && object.number < 1000) {
         object.number++;
@@ -140,7 +145,7 @@ export class BookingShopHousePage implements OnInit {
       this.form_start_time_class = "";
     }
     this.checkStatusButtonSend();
-    // var date = new Date(this.form_start_time);
+    // let date = new Date(this.form_start_time);
     // this.form_start_time_label = this.datePipe.transform(date,"dd/MM/yyyy HH:mm");
   }
   ionChangeEndTime(){
@@ -150,16 +155,19 @@ export class BookingShopHousePage implements OnInit {
       this.form_end_time_class = "";
     }
     this.checkStatusButtonSend();
-    // var date = new Date(this.form_end_time);
+    // let date = new Date(this.form_end_time);
     // this.form_end_time_label = this.datePipe.transform(date,"dd/MM/yyyy HH:mm");
   }
   getListApartment(){
-    var self = this;
+    let self = this;
     this.loading.present();
     this.apiService.getListUserApartment()
       .subscribe(result => {
         self.listDepartment = result.userApartments;
-        self.listDepartment.forEach(data =>{
+        self.listDepartment.forEach((data, index) =>{
+          if(index == 0) {
+            this.form_apartment_id = data.apartment._id;
+          }
           self.listDepartmentByID[data.apartment._id] = data;
         });
         self.loading.dismiss()
@@ -178,16 +186,16 @@ export class BookingShopHousePage implements OnInit {
     this.checkStatusButtonSend();
   }
   getTotalMoney(){
-    var self = this;
+    let self = this;
     this.total_money = "";
-    var total = 0;
+    let total = 0;
     self.list_product.forEach(object => {
       if (object.number > 0) {
         total = total + object.number * parseInt(object.money.replace(/\./g, "").replace(/đ/g, ""));
       }
     });
     if (total > 0) {
-      this.total_money = ": " + this.convertFormatMoney(total) + 'đ';
+      this.total_money =  this.convertFormatMoney(total) + 'đ';
     }
   }
   eventButton1(value) {
@@ -195,12 +203,12 @@ export class BookingShopHousePage implements OnInit {
     this.check_class_button();
   }
   eventButtonSend() {
-    var self = this;
+    let self = this;
     let dataApartment = self.listDepartmentByID[this.form_apartment_id];
     this.form_phone_number = dataApartment.apartment.owner.phone;
     this.loading.present();
     this.paymentMode = this.button_active;
-    var requestShopProduct = self.data_shop_house._id;
+    // let requestShopProduct = self.data_shop_house._id;
     this.orderInfor = [];
     self.list_product.forEach(object => {
       if (object.number > 0) {
@@ -212,28 +220,38 @@ export class BookingShopHousePage implements OnInit {
         });
       }
     });
-    this.apiService.postRequestionOrderProduct(
-      this.orderInfor, 
-      this.paymentMode.toString(), 
-      this.form_apartment_id, 
-      this.form_start_time, 
-      this.form_phone_number, 
-      this.form_note,
-      requestShopProduct,
-      dataApartment.campaign.title + " ," + dataApartment.campaign.address,
-      dataApartment.campaign.latlng
-    ).subscribe(result => {
+    const params = {
+      orderInfor: this.orderInfor,
+      timeDeliver: this.form_start_time,
+      note:  this.form_note,
+      phone:  this.form_phone_number,
+      address: dataApartment.campaign.title + " ," + dataApartment.campaign.address,
+      location: dataApartment.campaign.latlng,
+      paymentMode: this.paymentMode.toString(),
+      appartment: this.form_apartment_id,
+      shopHouse: this.data_shop_house.shopInfo._id
+    };
+    this.apiService.requestionOrderProductV2(params).subscribe(result => {
       self.loading.dismiss();
-      self.flag_show_hide_popup = true;
+      this.modalController.dismiss();
+      this.navCtrl.navigateForward('order-service-success');
     },
     error => {
       self.loading.dismiss();
     });
   }
-  eventButtonClosePopup() {
-    this.flag_show_hide_popup = false;
-    this.location.back();
-  }
+  // eventButtonClosePopup() {
+  //   this.flag_show_hide_popup = false;
+  //   this.location.back();
+  // }
+
+  // async orderResultModal() {
+  //   const modal = await this.modalController.create({
+  //     component: PopupShopOrderResultPage,
+  //   });
+  //   return await modal.present();
+  // }
+
   convertFormatMoney(value) {
     value = value.toString();
     let convert1 = "";
@@ -253,10 +271,14 @@ export class BookingShopHousePage implements OnInit {
     return convert2;
   }
   checkStatusButtonSend() {
-    if (this.form_apartment_id != "" && this.form_start_time != "" && this.total_money != "") {
+    if (this.form_apartment_id != "" && this.form_start_time != "" && this.total_money != "" && (this.button_active === 1 || this.button_active === 0)) {
       return "";
     } else {
       return "button-disable";
     }
+  }
+
+  goBack() {
+    this.modalController.dismiss();
   }
 }

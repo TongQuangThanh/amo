@@ -1,84 +1,60 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar class="header-toolbar">
-    <ion-title class="title-info">{{ 'NOTIFICATION.title' | translate }}</ion-title>
+<ion-header class="page-header ion-no-border">
+  <ion-toolbar color="#E64037" class="ion-toolbar-title">
+    <ion-title class="page-header-title">{{ 'NEWS.top' | translate }}</ion-title>
   </ion-toolbar>
+  <div class="custum-tab">
+    <div class="tab-btn tab-btn-left" [class]="isNews == 1 ? 'active': '' " (click)="toNews($event)">
+      <ion-label>{{ 'NEWS.title' | translate }}</ion-label>
+    </div>
+    <div class="tab-btn tab-btn-right" [class]="isNews != 1 ? 'active': '' " (click)="toNot($event)">
+      <ion-label>{{ 'NOTIFICATION.title' | translate }}</ion-label>
+    </div>
+  </div>
 </ion-header>
-
-<ion-content>
+<ion-content class="main-content" >
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-      <ion-refresher-content
-      pullingIcon="arrow-dropdown"
-      pullingText="{{ 'NOTIFICATION.pull_to_refresh' | translate }}"
-      refreshingSpinner="circles"
-      refreshingText="Refreshing...">
-      </ion-refresher-content>
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="{{ 'NOTIFICATION.pull_to_refresh' | translate }}"
+      refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
   </ion-refresher>
-  <ion-list>
-    <ion-card class="info-card" button *ngFor="let item of listArticles" (click)="detailPage($event)" id="{{item._id}}">
+  <ion-list class="news" *ngIf="isNews == 1">
+    <ion-card class="info-card" button *ngFor="let item of listArticlesNew" (click)="detailPage(item)" id="{{item._id}}">
       <div class="card-img">
-        <ion-img *ngIf="item.thumbnail != null" src="{{item.thumbnail}}"></ion-img>       
-        <ion-img *ngIf="item.thumbnail == null" src="assets/common/no-thumbnail.png"></ion-img>  
+        <ion-img *ngIf="item.thumbnail != null" src="{{item.thumbnail}}"></ion-img>
+        <ion-img *ngIf="item.thumbnail == null" src="assets/common/no-thumbnail.png"></ion-img>
         <ion-label class="badge-corner badge-corner-base">{{formatString(item.updatedAt)}}</ion-label>
-        <ion-label class="badge-corner-right badge-corner-icon hide"><ion-icon class="custom-pined" name="custom-pined" src="assets/icon/custom-pined.svg"></ion-icon></ion-label>
+        <ion-label class="badge-corner-right badge-corner-icon hide">
+          <ion-icon class="custom-pined" name="custom-pined" src="assets/icon/custom-pined.svg"></ion-icon>
+        </ion-label>
       </div>
-           
       <ion-item lines="none">
         <ion-card-title class="ion-text-wrap content-two-line content-title">{{item.title}}</ion-card-title>
       </ion-item>
-      
-      <div class="ion-float-left">
-        <ion-item lines="none" class="card-bottom">
-            <ion-icon item-start name="eye-outline" class="card-bottom-icon"></ion-icon>
-            <span class="image-caption-big" class="card-bottom-label"> {{item.readsCount}} </span>
-        </ion-item>
-      </div>
-      <div class="ion-float-left">
-          <ion-item lines="none" class="card-bottom">
-              <ion-icon item-start name="custom-comment" class="card-bottom-icon" src="assets/icon/custom-comment.svg"></ion-icon>
-              <span class="image-caption-big" class="card-bottom-label"> {{item.commentsCount}} </span>
-          </ion-item>
-      </div>
-      <div class="ion-float-left">
-          <ion-item lines="none" class="card-bottom">
-              <ion-icon item-start name="custom-attach" class="card-bottom-icon" src="assets/icon/custom-attach.svg"></ion-icon>
-              <span class="image-caption-big" class="card-bottom-label"> {{item.attachments.length}} </span>
-          </ion-item>
-      </div>
-    </ion-card>
-    <ion-card class="info-card" style="display: none;">
-      <div class="card-img">
-        <ion-img src="assets/common/thumbtest.jpg"></ion-img>
-        <ion-icon class="badge-corner badge-corner-base" name="eye-outline" src="assets/icon/custom-pined.svg"></ion-icon>
-      </div>
-           
-      <ion-item lines="none">
-        <ion-card-title class="ion-text-wrap content-two-line content-title">Khảo sát cư dân về các vấn đề sinh hoạt phí trong chung cư</ion-card-title>
-      </ion-item>
-      
-        <div class="ion-float-left">
-          <ion-item lines="none" class="card-bottom">
-              <!-- <ion-icon item-start name="eye-outline" class="card-bottom-icon"></ion-icon> -->
-              <span class="image-caption-big" class="card-bottom-label"> Hết hạn: 11/06/2020 </span>
-          </ion-item>
-        </div>
-        <div class="ion-float-left">
-            <ion-item lines="none" class="card-bottom">
-                <!-- <ion-icon item-start name="custom-comment" class="card-bottom-icon" src="assets/icon/custom-comment.svg"></ion-icon> -->
-                <span class="image-caption-big" class="card-bottom-label"> BQL Tòa nhà </span>
-            </ion-item>
-        </div>
-        <div class="ion-float-left">
-            <ion-item lines="none" class="card-bottom">
-                <ion-icon item-start name="custom-attach" class="card-bottom-icon" src="assets/icon/custom-attach.svg"></ion-icon>
-                <span class="image-caption-big" class="card-bottom-label"> 112 </span>
-            </ion-item>
-        </div>
     </ion-card>
   </ion-list>
-  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
-    <ion-infinite-scroll-content
-      loadingSpinner="bubbles"
-      loadingText="{{ 'NOTIFICATION.loadding_more' | translate }}">
+
+
+  <ion-list class="news" *ngIf="isNews != 1">
+    <ion-card class="info-card" button *ngFor="let item of listArticlesNoti" (click)="detailPage(item)" id="{{item._id}}">
+      <div class="card-img">
+        <ion-img *ngIf="item.thumbnail != null" src="{{item.thumbnail}}"></ion-img>
+        <ion-img *ngIf="item.thumbnail == null" src="assets/common/no-thumbnail.png"></ion-img>
+        <ion-label class="badge-corner badge-corner-base">{{formatString(item.updatedAt)}}</ion-label>
+        <ion-label class="badge-corner-right badge-corner-icon hide">
+          <ion-icon class="custom-pined" name="custom-pined" src="assets/icon/custom-pined.svg"></ion-icon>
+        </ion-label>
+      </div>
+      <ion-item lines="none">
+        <ion-card-title class="ion-text-wrap content-two-line content-title">{{item.title}}</ion-card-title>
+      </ion-item>
+    </ion-card>
+  </ion-list>
+  <ion-infinite-scroll class="infinite-scroll" threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="{{ 'NOTIFICATION.loadding_more' | translate }}">
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
+  <div class="bottom-frame-wrapper">
+    <div class="bottom-frame">
+    </div>
+  </div>
 </ion-content>

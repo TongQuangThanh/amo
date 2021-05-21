@@ -1,367 +1,451 @@
-.content-two-line{
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    // max-height: 44px;
-    -webkit-box-orient: vertical;
+.sub-header-toolbar {
+  height: 20%;
+}
+.content-two-line {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  // max-height: 44px;
+  -webkit-box-orient: vertical;
 
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 18px;
-    line-height: 28px;
-    color: #21313F;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 22px;
+  color: #221c1e;
+}
+.ion-item-title {
+  --padding-start: 15px;
+  --inner-padding-end: 15px;
+  margin-top: 15px;
+  --min-height: 25px;
 }
 
 .row-height-note {
-    height: 2.5em;
+  height: 2.5em;
 }
 
 .custom-card {
-    -webkit-box-shadow: none;
-    box-shadow: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
 
-    -webkit-margin-start: 0px;
-    margin-inline-start: 0px;
-    -webkit-margin-end: 0px;
-    margin-inline-end: 0px;
+  -webkit-margin-start: 0px;
+  margin-inline-start: 0px;
+  -webkit-margin-end: 0px;
+  margin-inline-end: 0px;
 }
 
 .btn-back-custom {
-    position: absolute;
-    left: 4.27%;
-    right: 92%;
-    top: 6.3%;
-    bottom: 91.9%;
+  position: absolute;
+  left: 4.27%;
+  right: 92%;
+  top: 6.3%;
+  bottom: 91.9%;
 }
 
 .margin-left-10 {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 ion-header {
-    position: fixed;
+  position: fixed;
 }
 
 ion-toolbar {
-    --background: rgba(255, 255, 255, 0);
-    --ion-color-base: transparent !important;
+  --background: rgba(255, 255, 255, 0);
+  --ion-color-base: transparent !important;
 }
-.btn-header-back.ios {
-    margin: 0 16px;
+
+.back-button {
+  margin-top: 20px;
+  ion-back-button {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    padding-right: 5px;
+  }
 }
-.comment-button{
-    --background: transparent;
-    text-transform: none;
-    --background-activated: rgba(196, 196, 196,0.5);
-    border-radius: 5px;
-    --border-radius: 5px;
-    padding: 0px 16px 0px 16px;
+.comment-button {
+  --background: transparent;
+  text-transform: none;
+  --background-activated: rgba(196, 196, 196, 0.5);
+  border-radius: 5px;
+  --border-radius: 5px;
+  padding: 0px 16px 0px 16px;
 }
 
 .padding5 {
-    padding-bottom: 8px;
+  padding-bottom: 8px;
 }
-.attachments-node{
-    display: block;
+.attachments-node {
+  display: block;
 }
 
 .attachments-div {
-    margin-left: 5px;
+  margin-left: 5px;
 }
 .attachments-card {
-    background: none;
-    margin-top: 0;
-    margin-bottom: 5px; 
-    box-shadow: none;
-    width: 100%;
+  background: none;
+  margin-top: 0;
+  margin-bottom: 5px;
+  box-shadow: none;
+  width: 100%;
 }
-.attachments-text{
-    color: #009AC9;
-    font-style: italic;
-    text-decoration: underline;
+.attachments-text {
+  color: #009ac9;
+  font-style: italic;
+  text-decoration: underline;
 }
 .attachments-icon {
-    font-size: 10px;
-    margin-right: 5px;
+  font-size: 10px;
+  margin-right: 5px;
 }
 .middle-dot {
-    font-size: 4px;
-    margin-bottom: 2px;
+  font-size: 4px;
+  margin-bottom: 2px;
 }
 .text-node {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 20px;
-    color: #7A838C;
-    margin-bottom: 15px;
-    padding-top: 10px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  color: #7a838c;
+  margin-bottom: 5px;
+  padding-top: 10px;
 }
 .information-node {
-    display: block;
-    margin-left: 20px;
+  display: block;
+  margin-left: 15px;
 }
 .margin-left-0 {
-    margin-left: 0;
+  margin-left: 0;
 }
 .card-bottom {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 20px;
-    color: #7A838C; 
-    background: none;
-    margin-top: 0;
-    margin-bottom: 5px; 
-    margin-right: 10px;
-    margin-left: 0;
-    box-shadow: none;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  color: #221c1e;
+  background: none;
+  margin-top: 0;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  margin-left: 0;
+  box-shadow: none;
 }
 .card-bottom-icon {
-    font-size: 14px;
-    vertical-align: middle;
+  font-size: 14px;
+  vertical-align: middle;
 }
 .card-bottom-label {
-    // margin-left: 5px;
-    font-size: 14px;
+  // margin-left: 5px;
+  font-size: 14px;
 }
 .custom-margin-10 {
-    margin-left: -10px !important;
+  margin-left: -10px !important;
 }
 .custom-oval {
-    font-size: 4px;
-    margin-left: 10px;
-    vertical-align: middle;
+  font-size: 4px;
+  margin-left: 10px;
+  vertical-align: middle;
 }
 .clear-both {
-    clear: both;
+  clear: both;
 }
 .image-caption-big {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 20px;
-    color: #7A838C;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  color: #7a838c;
 }
 .article-content {
-    border-top: 5px solid #F4F5F5;
-    border-bottom: 5px solid #F4F5F5;
-    padding-top: 15px;
+  padding: 15px;
+  display: inline-block;
+  font-family: Open Sans;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 22px;
+  color: #666666;
+}
+.line-break-content {
+  border-top: 1px dashed #c4c4c4;
+  margin: 0 15px;
 }
 ion-footer > ion-toolbar {
-    background: #FFFFFF;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
-    text-align: center;
+  background: #ffffff;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
 }
-.comment-button{
-    background: #FA7268;
-    --background-focused: #FA7268;
-    --background-hover:#FA7268;
-    --background: #FA7268;
-    --background-activated: #c5433a;
-    mix-blend-mode: normal;
-    border-radius: 5px;
-    left: 4.27%;
-    width: 91.46%;
-    height: 44px;
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center;
-    color: #FFFFFF;
-    margin-top: 13px;
-    margin-bottom: 13px;
+.comment-button {
+  background: #E64037;
+  --background-focused: #E64037;
+  --background-hover: #E64037;
+  --background: #E64037;
+  --background-activated: #c5433a;
+  mix-blend-mode: normal;
+  border-radius: 5px;
+  left: 4.27%;
+  width: 91.46%;
+  height: 44px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #ffffff;
+  margin-top: 13px;
+  margin-bottom: 13px;
 }
 
 // custom comment display
 .message-wrap {
-    padding: 0 16px; 
+  padding: 0 16px;
 }
 .msg-grid {
-    --ion-grid-padding: 0;
+  --ion-grid-padding: 0;
 }
 .message-wrap .message {
-    position: relative;
-    padding: 7px 0; 
+  position: relative;
+  padding: 7px 0;
 }
 .message-wrap .message .user-img {
-    position: absolute;
-    border-radius: 45px;
-    width: 24px;
-    height: 24px;
-    box-shadow: 0 0 2px rgba(0, 0, 0, 0.36); 
+  position: absolute;
+  border-radius: 45px;
+  width: 24px;
+  height: 24px;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.36);
 }
 .message-wrap .message .msg-detail {
-    width: 100%;
-    display: inline-block; 
+  width: 100%;
+  display: inline-block;
 }
 .message-wrap .message .msg-detail p {
-    margin: 0; 
+  margin: 0;
 }
 .message-wrap .message .msg-detail .msg-info p {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 18px;
-    color: #21313F; 
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 18px;
+  color: #21313f;
 }
 .message-wrap .message .msg-detail .msg-content {
-    display: block;
-    position: relative;
-    margin-top: 5px;
-    border-radius: 8px;
-    padding: 8px;
-    // border: 1px solid #ddd;
-    color: #fff;
-    width: auto;
-    max-width: 100%; 
+  display: block;
+  position: relative;
+  margin-top: 5px;
+  border-radius: 8px;
+  padding: 8px;
+  // border: 1px solid #ddd;
+  color: #fff;
+  width: auto;
+  max-width: 100%;
 }
 .message-wrap .message .msg-detail .msg-time {
-    display: block;
-    position: relative;
-    padding: 0;
-    width: auto;
-    max-width: 100%; 
+  display: block;
+  position: relative;
+  padding: 0;
+  width: auto;
+  max-width: 100%;
 }
 .message-wrap .message.left .msg-content {
-    background: #F4F5F5;
-    float: left; 
+  background: #f4f5f5;
+  float: left;
 }
 .message-wrap .message.left .msg-time {
-    float: left; 
+  float: left;
 }
 .message-wrap .message.left .msg-detail {
-    padding-left: 34px; 
+  padding-left: 34px;
 }
 .message-wrap .message.left .user-img {
-    left: 0; 
+  left: 0;
 }
 .message-wrap .message.left .msg-detail .msg-content {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 24px;
-    color: #21313F; 
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #21313f;
 }
 .message-wrap .message.left .msg-detail .msg-time {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 24px;
-    color: #21313F; 
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #21313f;
 }
 .message-wrap .reply {
-    margin-left: 34px; 
+  margin-left: 34px;
 }
 .msg-time-label {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 18px;
-    color: #7A838C;
-    margin-right: 30px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 18px;
+  color: #7a838c;
+  margin-right: 30px;
 }
 .btn-reply {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 18px;    
-    color: #21313F;
-    margin-right: 30px;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 18px;
+  color: #21313f;
+  margin-right: 30px;
 }
 
 // custom add comment //
 .add-comment-item {
-    align-items: center;
-    margin-bottom: 8px;
-    margin-right: 6px;
-    margin-top: 10px;
-  }
-  .add-image-icon {
-    font-size: 24px;
-    color: #21313F;
-    margin-right: 18px;
-  }
+  align-items: center;
+  margin-bottom: 8px;
+  margin-right: 6px;
+  margin-top: 10px;
+}
+.add-image-icon {
+  font-size: 24px;
+  color: #21313f;
+  margin-right: 18px;
+}
+.icon-send {
+  font-size: 24px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: #d3d6d9;
+}
+ion-item.item-has-value {
   .icon-send {
-    font-size: 24px;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    color: #D3D6D9;
+    color: #009ac9;
   }
-  ion-item.item-has-value {
-    .icon-send {
-      color: #009AC9;
+}
+ion-item.item-has-focus {
+  border: none;
+}
+.input-area {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 24px;
+  color: #21313f;
+  background: #f4f5f5;
+  border-radius: 8px;
+  padding: 0 30px 0 15px;
+  max-height: 110px;
+}
+.input-area.md {
+  margin-top: 0;
+}
+
+.footer-content {
+  background: #ffffff;
+  box-shadow: 0px -10px 30px rgba(33, 49, 63, 0.1);
+}
+.reply-label {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 18px;
+  color: #21313f;
+}
+.reply-name {
+  font-weight: bold;
+}
+.cancel-label {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 12px;
+  line-height: 18px;
+  color: #7a838c;
+  text-align: end;
+}
+
+.w3-animate-top {
+  background-color: #ffffff;
+  color: #221c1e;
+  animation: animatetop 0.5s;
+}
+.share-info {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  box-shadow: 0px 1px 10px rgba(234, 122, 110, 0.25);
+  background: #ffffff;
+
+  &-item {
+    width: 50%;
+  }
+  &-img {
+    height: 100%;
+    width: 16px;
+    display: block;
+    margin: auto;
+  }
+  &-title {
+    font-weight: bold;
+    line-height: 20px;
+    font-size: 14px;
+    color: #666666;
+
+    &.liked {
+      color: #e64037;
     }
   }
-  ion-item.item-has-focus {
-    border: none;
+  &-text {
+    line-height: 20px;
+    font-size: 10px;
+    color: #666666;
   }
-  .input-area {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 24px;
-    color: #21313F;
-    background: #F4F5F5;
-    border-radius: 8px;   
-    padding: 0 30px 0 15px;
-    max-height: 110px;
+  .ion-col-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 40px;
   }
-  .input-area.md {
-      margin-top: 0;
+  .footer-grid-col {
+    max-height: 50px;
   }
+  .ion-col-break {
+    max-width: 1px;
+    background: #eae9e9;
+    padding: 0px;
+    height: 40px;
+  }
+}
 
-  .footer-content {
-    background: #FFFFFF;
-    box-shadow: 0px -10px 30px rgba(33, 49, 63, 0.1);
-  }
-  .reply-label {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 18px;
-    color: #21313F;
-  }
-  .reply-name {
-    font-weight: bold;
-  }
-  .cancel-label {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 18px;
-    color: #7A838C;
-    text-align: end;
-  }
+.header-splash {
+  border-bottom: 0.5px solid #c4c4c4;
+}
+.footer-area {
+  background-color: #ffffff;
+  bottom: 0px;
+}
 
-  .w3-animate-top {
-      background: #FA7268;
-      ion-back-button {
-          color: #FFFFFF;
-      }
-      ion-title.ios {
-          color: #FFFFFF;
-          margin-left: 10px;
-      }
-      ion-title.md {
-          color: #FFFFFF;
-      }
-      animation:animatetop 0.5s;
+.liked {
+  // color: ;
+}
+
+@keyframes animatetop {
+  from {
+    opacity: 0;
   }
-  @keyframes animatetop{from{opacity:0} to{opacity:1}}
+  to {
+    opacity: 1;
+  }
+}

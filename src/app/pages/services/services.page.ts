@@ -33,15 +33,13 @@ export class ServicesPage implements OnInit {
   }
 
   ngOnInit() {
-    // this.listServiceCategory = [];
-    // this.listServiceLog = [];
-    // this.getRequestAll();
-  }
-
-  ionViewWillEnter(){
     this.listServiceCategory = [];
     this.listServiceLog = [];
     this.getRequestAll();
+  }
+
+  ionViewWillEnter(){
+   
   }
 
   getRequestAll() {

@@ -1,388 +1,433 @@
-ion-toolbar{
-    --border-width: 0px !important;
+ion-toolbar {
+  --border-width: 0px !important;
 }
 .ion-color-primary {
-    --ion-color-base: #ffffff !important;
-    --ion-color-base-rgb: var(--ion-color-primary-rgb, 56, 128, 255) !important;
-    --ion-color-contrast: #fa7268 !important;
-    --ion-color-contrast-rgb: var(--ion-color-primary-contrast-rgb, 255, 255, 255) !important;
-    --ion-color-shade: var(--ion-color-primary-shade, #3171e0) !important;
-    --ion-color-tint: var(--ion-color-primary-tint, #4c8dff) !important;
+  --ion-color-base: #ffffff !important;
+  --ion-color-base-rgb: var(--ion-color-primary-rgb, 56, 128, 255) !important;
+  --ion-color-contrast: #E64037 !important;
+  --ion-color-contrast-rgb: var(--ion-color-primary-contrast-rgb, 255, 255, 255) !important;
+  --ion-color-shade: var(--ion-color-primary-shade, #3171e0) !important;
+  --ion-color-tint: var(--ion-color-primary-tint, #4c8dff) !important;
 }
-super-tab-button ion-label{
-    color: #7A838C;
-    text-transform: unset;
+
+.function-section {
+  margin-bottom: 20px;
+  margin-top: 45px;
 }
-super-tab-button.active ion-label{
-    color: #000000;
-}
-.function-section{
-    margin-bottom: 20px;
-    margin-top: 45px;
-}
-.item-common {
-    width: 100%;
-    background: #FBFBFB;
-    mix-blend-mode: normal;
-    border: 1px solid #D3D6D9;
-    box-sizing: border-box;
-    border-radius: 8px;
-    // margin-left: 20px;
-    // margin-right: 20px;
-}
+
 .item-apartment-pulldown {
-    width: 100%;
-    background: #FBFBFB;
-    mix-blend-mode: normal;
-    border: 1px solid #D3D6D9;
-    box-sizing: border-box;
-    border-radius: 8px;
-    margin-left: 20px;
-    margin-right: 20px;
+  width: 100%;
+  background: #fbfbfb;
+  mix-blend-mode: normal;
+  border: 1px solid #d3d6d9;
+  box-sizing: border-box;
+  border-radius: 8px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .icon-home {
-    z-index: 999;
-    pointer-events: none;
-    margin-left: 17px;
-    position: absolute;
+  z-index: 999;
+  pointer-events: none;
+  margin-left: 17px;
+  position: absolute;
 }
 .icon-pulldown-down {
-    z-index: 999;
-    pointer-events: none;
-    position: absolute;
-    right: 15px;
+  z-index: 999;
+  pointer-events: none;
+  position: absolute;
+  right: 15px;
 }
 .has-input-value .pulldown-apartment-select {
-    padding-top: 25px;
-    padding-bottom: 5px;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
+  padding-top: 25px;
+  padding-bottom: 5px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
 }
 .pulldown-apartment-select {
-    width: 100%;
-    max-width: 100%;
-    padding-left: 50px;
-    background: #fbfbfb;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    padding-right: 17px;
-    height: 100%;
+  width: 100%;
+  max-width: 100%;
+  padding-left: 50px;
+  background: #fbfbfb;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 17px;
+  height: 100%;
 }
 ion-select::part(icon) {
-    display: none;
-    opacity: 1;
+  display: none;
+  opacity: 1;
 }
 .pulldown-1-placeholder {
-    position: absolute;
-    opacity: 0.5;
-    z-index: 999;
-    font-size: 12px;
-    margin-left: 50px;
-    top: 7px;
-    pointer-events: none;
+  position: absolute;
+  opacity: 0.5;
+  z-index: 999;
+  font-size: 12px;
+  margin-left: 50px;
+  top: 7px;
+  pointer-events: none;
 }
 
 .pulldown-1-placeholder-init {
-    position: absolute;
-    opacity: 0.5;
-    z-index: 999;
-    margin-left: 50px;
-    pointer-events: none;
+  position: absolute;
+  opacity: 0.5;
+  z-index: 999;
+  margin-left: 50px;
+  pointer-events: none;
 }
-.pulldown-1-text-select{
-    padding-left: 50px;
-    padding-top: 20px;
-    padding-bottom: 0px;
-    padding-right: 17px;
-    position: absolute;
-    z-index: 99;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    width: 100%;
-    overflow: hidden;
-    pointer-events: none;
+.pulldown-1-text-select {
+  padding-left: 50px;
+  padding-top: 20px;
+  padding-bottom: 0px;
+  padding-right: 17px;
+  position: absolute;
+  z-index: 99;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  overflow: hidden;
+  pointer-events: none;
 }
 
 .margin-top-20 {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 .margin-top-10 {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 .margin-left-10 {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 .item-native {
-    background-color: #FBFBFB;
+  background-color: #fbfbfb;
 }
-ion-item{
-    --inner-padding-end: 0px;
-    --padding-start:0px
+ion-item {
+  --inner-padding-end: 0px;
+  --padding-start: 0px;
 }
 
 .text-area-1 {
-    --padding-start: 17px !important;
-    background: #fbfbfb;
-    margin-top: 0px;
+  --padding-start: 17px !important;
+  background: #fbfbfb;
+  margin-top: 0px;
 }
-.font_weight_bold {
-    // font-weight: bold;
-}
+
 .margin-left-20 {
-    margin-left: 20px;
+  margin-left: 20px;
 }
-.text-box-1 {
-    --padding-start: 50px !important;
-    --padding-end: 15px !important;
-    background-color: #FBFBFB;
-    --padding-top: 15px;
-    --padding-bottom: 15px;
-}
+
 ion-checkbox {
-    --border-width:1px;
+  --border-width: 1px;
 }
 .icon-dollar {
-    z-index: 999;
-    pointer-events: none;
-    margin-left: 17px;
-    position: absolute;
-    opacity: 0.5;
+  z-index: 999;
+  pointer-events: none;
+  margin-left: 17px;
+  position: absolute;
+  opacity: 0.5;
 }
 .icon-dollar-active {
-    z-index: 999;
-    pointer-events: none;
-    margin-left: 17px;
-    position: absolute;
+  z-index: 999;
+  pointer-events: none;
+  margin-left: 17px;
+  position: absolute;
 }
-.label-1{
-    position: absolute;
-    z-index: 999;
-    right: 15px;
-    opacity: 0.5;
-    margin: 0;
+.label-1 {
+  position: absolute;
+  z-index: 999;
+  right: 15px;
+  opacity: 0.5;
+  margin: 0;
 }
-.label-1-active{
-    position: absolute;
-    z-index: 999;
-    right: 15px;
-    margin: 0;
+.label-1-active {
+  position: absolute;
+  z-index: 999;
+  right: 15px;
+  margin: 0;
 }
 .pointer-events-all {
-    pointer-events:all;
+  pointer-events: all;
 }
-.line-1 {
-    padding-top: 6px;
-    background: #F4F5F5;
-}
+
 .no-border {
-    border: 0px;
+  border: 0px;
 }
 .item-tip {
-    /* Backgroundbox */
-    width: 100%;
-    background: #FBFBFB;
-    mix-blend-mode: normal;
-    /* Text/Placeholder */
-    border: 1px solid #D3D6D9;
-    box-sizing: border-box;
-    border-radius: 8px;
-    margin-left: 20px;
+  /* Backgroundbox */
+  width: 100%;
+  background: #fbfbfb;
+  mix-blend-mode: normal;
+  /* Text/Placeholder */
+  border: 1px solid #d3d6d9;
+  box-sizing: border-box;
+  border-radius: 8px;
+  margin-left: 20px;
 }
 .button-tip {
-    background-color: #FBFBFB !important;
-    border: 1px solid #D3D6D9;
-    border-radius: 8px;
-    margin-right: 15px;
-    padding: 10px 5px;
-    display: flex;
+  background-color: #fbfbfb !important;
+  border: 1px solid #d3d6d9;
+  border-radius: 8px;
+  margin-right: 15px;
+  padding: 10px 5px;
+  display: flex;
 }
 .button-tip-active {
-    background-color: #FBFBFB !important;
-    border: 1px solid #009AC9;
-    border-radius: 8px;
-    margin-right: 15px;
-    padding: 10px 5px;
-    display: flex;
+  background-color: #fbfbfb !important;
+  border: 1px solid #009ac9;
+  border-radius: 8px;
+  margin-right: 15px;
+  padding: 10px 5px;
+  display: flex;
 }
 .button-tip label {
-    margin: 0px;
+  margin: 0px;
 }
 .button-tip-active label {
-    margin: 0px;
+  margin: 0px;
 }
 .group-button-tip {
-    overflow-x: auto;
-    display: flex;
+  overflow-x: auto;
+  display: flex;
 }
-.checkbox-common{
-    --background-checked:#009AC9;
-}
-
-
-// popup 
-
+// popup
 
 .modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1050;
-    display: block;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    outline: 0;
-    background-color: #00000005;
-    z-index: 9999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  outline: 0;
+  background-color: #00000005;
 }
 
 .modal-dialog {
-    position: absolute;
-    width: 100%;
-    margin: 0px;
-    pointer-events: none;
-    bottom: 0px;
+  position: absolute;
+  width: 100%;
+  margin: 0px;
+  pointer-events: none;
+  bottom: 0px;
 }
 @media (min-width: 576px) {
-    .modal-dialog {
-        max-width: unset;
-    }
+  .modal-dialog {
+    max-width: unset;
+  }
 }
 .modal-content {
-    border-radius: 24px 24px 0px 0px;
+  border-radius: 24px 24px 0px 0px;
 }
 .close {
-    float: left;
-    font-size: 1.5rem;
-    font-weight: normal;
-    line-height: 1;
-    color: #000;
-    text-shadow: 0 1px 0 #fff;
-    opacity: .5;
+  float: left;
+  font-size: 1.5rem;
+  font-weight: normal;
+  line-height: 1;
+  color: #000;
+  text-shadow: 0 1px 0 #fff;
+  opacity: 0.5;
 }
 .modal-header .close {
-    padding: 1rem 1rem;
-    margin: -1rem -1rem -1rem -1rem;
+  padding: 1rem 1rem;
+  margin: -1rem -1rem -1rem -1rem;
 }
 .popup-item-input {
-    background: #FBFBFB;
-    mix-blend-mode: normal;
-    border: 1px solid #D3D6D9;
-    box-sizing: border-box;
-    border-radius: 8px;
+  background: #fbfbfb;
+  mix-blend-mode: normal;
+  border: 1px solid #d3d6d9;
+  box-sizing: border-box;
+  border-radius: 8px;
 }
-.modal-header {
-    // border-bottom: 1px solid #F4F5F5;
-}
+
 .modal-body {
-    border-bottom: 0px solid #F4F5F5;
+  border-bottom: 0px solid #f4f5f5;
 }
 .modal-header label {
-    margin-bottom: 0rem;
+  margin-bottom: 0rem;
 }
 .div-header-title {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 .modal-footer {
-    border-top: 0px solid #dee2e6;
+  border-top: 0px solid #dee2e6;
 }
 .popup-btn-ok {
-    background: #d9f0f7;
-    border-radius: 8px;
-    color: #009AC9;
-    width: 160px;
-    height: 44px;
-    margin: 0 auto;
+  background: #d9f0f7;
+  border-radius: 8px;
+  color: #009ac9;
+  width: 160px;
+  height: 44px;
+  margin: 0 auto;
 }
 .icon-camera {
-    margin: 0 auto;
-    padding: 15px 0px;
+  margin: 0 auto;
+  padding: 15px 0px;
 }
 .background-fbfbfb {
-    --background: #fbfbfb;
+  --background: #fbfbfb;
 }
-.has-input-value .text-box-1{
-    --padding-top: 25px; 
-    --padding-bottom: 5px;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
+.has-input-value .text-box-1 {
+  --padding-top: 25px;
+  --padding-bottom: 5px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
 }
 .width-100 {
-    width: 100%;
+  width: 100%;
 }
-.has-input-value.label-1-active, .has-input-value.label-1 {
-    top: 25px;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 16px;
+.has-input-value.label-1-active,
+.has-input-value.label-1 {
+  top: 25px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
 }
 .ion-edit {
-    pointer-events: none;
-    margin-left: 15px;
+  pointer-events: none;
+  margin-left: 15px;
 }
 .group-active .ion-edit {
-    opacity: 1;
+  opacity: 1;
 }
 .group-inactive .ion-edit {
-    opacity: 0.5;
+  opacity: 0.5;
 }
-.button-tip-active label, .button-tip label {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+.button-tip-active label,
+.button-tip label {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .icon-camera {
-    margin: 0 auto;
-    padding: 35px 0px;
+  margin: 0 auto;
+  padding: 35px 0px;
 }
 .background-fbfbfb {
-    --background: #fbfbfb;
+  --background: #fbfbfb;
 }
 .margin-right-10 {
-    margin-right: 10px;
+  margin-right: 10px;
 }
-.function-section-1{
-    position: absolute;
-    bottom: 16px;
-    width: calc(100% - 32px);
+.function-section-1 {
+  position: absolute;
+  bottom: 16px;
+  width: calc(100% - 32px);
 }
 .padding-0 {
-    padding: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px;
 }
 .label-top {
-    position: absolute;
-    top: 3px;
-    left: 45px;
-    margin: 0;
+  position: absolute;
+  top: 3px;
+  left: 45px;
+  margin: 0;
 }
 .label-bottom {
-    position: absolute;
-    bottom: 1px;
-    left: 45px;
-    margin: 0;
-    color: #7A838C;
-    font-size: 14px;
+  position: absolute;
+  bottom: 1px;
+  left: 45px;
+  margin: 0;
+  color: #7a838c;
+  font-size: 14px;
 }
 .margin-top-30 {
-    margin-top: 30px;
+  margin-top: 30px;
 }
 ion-checkbox::part(container) {
-    padding: 2px;
+  padding: 2px;
 }
 .font-weight-600 {
-    font-weight: 600;
+  font-weight: 600;
 }
-// select image
 
-.ion-grid-class {
-    // margin-left: 15px;
-    // margin-right: 15px;
-    padding: 0;
+// new css =========================
+.ion-no-border {
+  background-color: #E64037;
+  height: 195px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .back-button {
+    position: absolute;
+    left: 10px;
+    top: 60px;
+    .ion-back-button {
+      --icon-font-size: 22px;
+      margin-left: 0;
+      display: block;
+      width: 25px;
+    }
+  }
+  .header-title {
+    text-align: center;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    top: 57px;
+    font-size: 28px;
+    line-height: 41px;
+    color: #ffffff;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 25px;
+    left: -1px;
+    right: -1px;
+    box-shadow: 0 30px 0 0 #ffffff;
+    height: 20px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+  }
 }
-.ion-col-class {
-    // border: 1px solid #D3D6D9;
+
+.register-keep-vehicle-content {
+  font-family: Open Sans;
+  .super-tabs-toolbar {
+    position: absolute;
+    z-index: 999;
+    top: 107px;
+    --background: red;
+    --super-tabs-toolbar-background: #E64037;
+    .super-tab-button {
+      height: 30px;
+      --st-label-color-active: #ffffff;
+      --st-label-color-inactive: #fffefe8f;
+      .under_line {
+        width: 60px;
+        height: 2px;
+        margin-top: 5px;
+      }
+    }
+    .super-tab-button.active {
+      .under_line {
+        background: #ffffff;
+      }
+    }
+  }
+  .item-text-area {
+    width: 100%;
+    border: 1px solid #d3d6d9;
+    border-radius: 8px;
+    margin: 0px 15px 10px 15px;
+    --background: transparent !important;
+    .text-area-1 {
+      --padding-start: 17px !important;
+      background: #fbfbfb;
+      margin-top: 0px;
+    }
+  }
+  .ion-grid-class {
+    padding: 0 !important;
+  }
+  .ion-col-class {
     box-sizing: border-box;
     border-radius: 8px;
     padding: 5px;
@@ -391,62 +436,187 @@ ion-checkbox::part(container) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // margin: 5px;
+  }
+  .item-common {
+    width: 100%;
+    display: flex;
+    border: 1px solid #d3d6d9;
+    border-radius: 8px;
+    height: 60px;
+    margin-bottom: 10px;
+    --background: transparent !important;
+  }
+  .vehicle-title-block {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+    color: #221c1e;
+  }
+}
+.devider-line-custom {
+  border: 1px dashed #e9e9e9;
+}
+.text-box-1 {
+  --padding-start: 50px !important;
+  --padding-end: 15px !important;
+  background-color: #fbfbfb;
+  --padding-top: 15px;
+  --padding-bottom: 15px;
+}
+.text-box-input {
+  --padding-start: 20px !important;
+}
+.pulldown-placeholder-input {
+  margin-left: 20px !important;
+}
+.ion-grid-input {
+  padding: 0 !important;
+}
+// select image
+.ion-col-class {
+  // border: 1px solid #D3D6D9;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding: 5px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // margin: 5px;
 }
 .ion-item-for-image {
-    border: 1px solid #D3D6D9;
-    box-sizing: border-box;
-    border-radius: 8px;
-    overflow: hidden;
+  --background: #ebf8ff;
+  border: 2px dashed #a7dff4;
+  box-sizing: border-box;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+
+  .icon-camera-container {
+    width: 100%;
+    height: 100px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    height: 100%;
+    flex-flow: column;
+    padding: 20px 0;
+
+    .icon-camera {
+      margin: 0 auto;
+      font-size: 24px;
+    }
+    .camera-label {
+      font-weight: bold;
+      font-size: 11px;
+      line-height: 15px;
+      color: #01aeef;
+      margin-top: 5px;
+    }
+  }
 }
-.ion-item-for-image img{
-    margin: 0 auto;
+.ion-item-for-image img {
+  margin: 0 auto;
 }
 .close-image-icon {
-    font-size: 13px;
-    font-weight: normal;
-    line-height: 0;
-    color: #fff;
-    position: absolute;
-    z-index: 999;
-    background-color: #009AC9;
-    top: 3px;
-    right: 3px;
-    opacity: 1;
-    border-radius: 8px;
-    width: 16px;
-    height: 16px;
-    text-shadow: none;
-    padding: 0;
-}
-.image-class-camera {
-    margin: 0 auto;
-    padding: 30px 0;
+  font-size: 15px;
+  font-weight: normal;
+  line-height: 0;
+  color: #fff;
+  position: absolute;
+  z-index: 999;
+  background-color: #009ac9;
+  top: 3px;
+  right: 3px;
+  opacity: 1;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-shadow: none;
+  padding: 0;
 }
 .padding-left-0 {
-    padding-left: 0;
+  padding-left: 0;
 }
 .padding-right-0 {
-    padding-right: 0;
+  padding-right: 0;
 }
 .image-class {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .button-inactive {
-    --background: #D3D6D9 !important;
-    color: #ffffff !important;
+  --background: #d3d6d9 !important;
+  color: #ffffff !important;
 }
 .active_button.button-inactive {
-    display: none !important;
+  display: none !important;
 }
 .inactive_button.button-active {
-    display: none !important;
+  display: none !important;
+}
+
+.delete-keep-vehicle-tab {
+  font-family: Open Sans;
+  padding-top: 0px;
+  .item-delete-keep-vehicle {
+    width: 100%;
+    border: 1px solid #d3d6d9;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    --background: transparent !important;
+    padding: 10px;
+    padding-bottom: 0px;
+    .number-home {
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 24px;
+      color: #221c1e;
+      margin-bottom: 5px;
+    }
+    .address-home {
+      font-size: 14px;
+      line-height: 20px;
+      color: #221c1e;
+      opacity: 0.6;
+    }
+    .vehicle-name-block {
+      display: flex;
+      align-items: center;
+      margin-top: 10px;
+    }
+    .vehicle-name {
+      font-weight: bold;
+      font-size: 16px;
+      line-height: 24px;
+      color: #221c1e;
+      margin: 0px;
+      margin-left: 10px;
+    }
+    .checkbox-common {
+      --background-checked: linear-gradient(180deg, #EA7A6E 0%, #E23A28 100%);;
+      margin: 0px;
+    }
+    .vehicle-info {
+      font-size: 14px;
+      line-height: 20px;
+      color: #221c1e;
+      opacity: 0.6;
+      margin-left: 25px;
+    }
+    .button-expand {
+      height: 30px;
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      text-align: center;
+    }
+
+    
+  }
 }

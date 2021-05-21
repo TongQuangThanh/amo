@@ -1,109 +1,77 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar class="header-toolbar">
-    <ion-buttons slot="start">
-      <ion-back-button text="" icon="chevron-back"></ion-back-button>
-    </ion-buttons>
-    <ion-title>{{ 'MY_ACCOUNT.title' | translate }}</ion-title>
-    <!-- <ion-buttons slot="end" class="white-color btn-save" (click)="updateAccount()">
-      <ion-label>{{ 'MY_ACCOUNT.btn_save' | translate }}</ion-label>
-    </ion-buttons> -->
-  </ion-toolbar>
+<ion-header class="ion-no-border my-account-header">
+  <ion-buttons class="back-button">
+    <ion-back-button color="light" text="" icon="chevron-back" class="ion-back-button"></ion-back-button>
+  </ion-buttons>
+  <ion-avatar class="account-avatar">
+    <img src="{{avatar}}" />
+  </ion-avatar>
+  <ion-label class="account-name">{{userName}}</ion-label>
+  <ion-label class="account-phone">{{phone}}</ion-label>
+  <ion-button class="ion-button-edit" (click)="changeToMyAccountDetail()">{{'MY_ACCOUNT.btn_edit' | translate}}</ion-button>
 </ion-header>
 
-<ion-content>
-  <ion-item lines="none" class="avatar-content">
-    <ion-row class="row-avatar" (click)="changeToMyAccountDetail()">
-      <ion-col class="col-avatar"  size="2">
-        <ion-avatar class="account-avatar">
-          <img src="{{avatar}}"/>
-        </ion-avatar>
-      </ion-col>
-      <ion-col class="col-user" size="9">
-        <ion-label class="account-name">{{userName}}</ion-label>
-        <ion-label class="account-phone">{{phone}}</ion-label>
-        <ion-icon name="chevron-back" slot="end"></ion-icon>
-      </ion-col>
-      <ion-col class="col-link" size="1">
-        <ion-icon name="chevron-forward-outline"></ion-icon>
-      </ion-col>
-    </ion-row>
-  </ion-item>
-    
-  <ion-item lines="none" class="item-content">
-    <div class="setting-content">
-      <ion-label class="setting-label">{{ 'MY_ACCOUNT.setting' | translate }}</ion-label>
-    </div>
-  </ion-item>
-
-  <ion-list>
-    <ion-item lines="inset" id="setting-language" (click)="changeLanguageModal()">
-      <ion-icon class="setting-item-icon" name="language-outline" slot="start"></ion-icon>
+<ion-content class="my-account-content">
+  <ion-label class="setting-label">{{ 'MY_ACCOUNT.setting' | translate }}</ion-label>
+  <ion-list class="ion-list">
+    <ion-item lines="inset" class="ion-list-item" id="setting-language" (click)="changePasswordModal()">
+      <ion-icon class="setting-item-icon" [src]="'../assets/icon/account/translate.svg'" slot="start"></ion-icon>
       <ion-label class="setting-item-label">{{ 'MY_ACCOUNT.language' | translate }}</ion-label>
-      <ion-icon class="setting-item-forward" name="chevron-forward-outline" slot="end"></ion-icon>
+      <ion-icon class="setting-item-forward" [src]="'../assets/icon/account/arrow-down.svg'" slot="end"></ion-icon>
     </ion-item>
-    <ion-item lines="inset">
-      <ion-icon class="setting-item-icon" name="notifications-outline" slot="start"></ion-icon>
+    <ion-item lines="inset" class="ion-list-item">
+      <ion-icon class="setting-item-icon" [src]="'../assets/icon/account/notification.svg'" slot="start"></ion-icon>
       <ion-label class="setting-item-label">{{ 'MY_ACCOUNT.app_notification' | translate }}</ion-label>
-      <ion-toggle class="setting-item-toggle" slot="end" checked disabled="true"></ion-toggle>
+      <ion-toggle class="setting-item-toggle" slot="end" checked></ion-toggle>
     </ion-item>
-    <ion-item lines="inset" (click)="changePassword()">
-      <ion-icon class="setting-item-icon" name="lock-open-outline" slot="start"></ion-icon>
+    <ion-item lines="inset" class="ion-list-item" (click)="changePassword()">
+      <ion-icon class="setting-item-icon" [src]="'../assets/icon/account/lock.svg'" slot="start"></ion-icon>
       <ion-label class="setting-item-label">{{ 'MY_ACCOUNT.change_password' | translate }}</ion-label>
-      <ion-icon class="setting-item-forward" name="chevron-forward-outline" slot="end"></ion-icon>
+      <ion-icon class="setting-item-forward" [src]="'../assets/icon/account/arrow-down.svg'" slot="end"></ion-icon>
     </ion-item>
   </ion-list>
 
-  <ion-item lines="none" class="item-content">
-    <div class="setting-content">
-      <ion-label class="setting-label">{{ 'MY_ACCOUNT.app_infomation' | translate }}</ion-label>
-    </div>
-  </ion-item>
-
-  <ion-list>
-    <ion-item lines="inset" (click)="hotlineModal()">
-      <ion-icon class="setting-item-icon" name="call-outline" slot="start"></ion-icon>
+  <ion-label class="setting-label">{{ 'MY_ACCOUNT.app_infomation' | translate }}</ion-label>
+  <ion-list class="ion-list">
+    <ion-item lines="inset" class="ion-list-item" (click)="hotlineModal()">
+      <ion-icon class="setting-item-icon"  [src]="'../assets/icon/account/calling.svg'" slot="start"></ion-icon>
       <ion-label class="setting-item-label">{{ 'MY_ACCOUNT.contact' | translate }}</ion-label>
-      <ion-icon class="setting-item-forward" name="chevron-forward-outline" slot="end"></ion-icon>
+      <ion-icon class="setting-item-forward" [src]="'../assets/icon/account/arrow-down.svg'" slot="end"></ion-icon>
     </ion-item>
-    <ion-item lines="inset" (click)="feedbackModal()">
-      <ion-icon class="setting-item-icon" name="chatbox-ellipses-outline" slot="start"></ion-icon>
+    <ion-item lines="inset" class="ion-list-item" (click)="feedbackModal()">
+      <ion-icon class="setting-item-icon"  [src]="'../assets/icon/account/chat.svg'" slot="start"></ion-icon>
       <ion-label class="setting-item-label">{{ 'MY_ACCOUNT.feedback' | translate }}</ion-label>
-      <ion-icon class="setting-item-forward" name="chevron-forward-outline" slot="end"></ion-icon>
+      <ion-icon class="setting-item-forward" [src]="'../assets/icon/account/arrow-down.svg'" slot="end"></ion-icon>
     </ion-item>
-    <ion-item lines="inset" (click)="changeToTerms()">
-      <ion-icon class="setting-item-icon" name="custom-terms" src="/assets/icon/custom-terms.svg" slot="start"></ion-icon>
+    <ion-item lines="inset" class="ion-list-item" (click)="changeToTerms()">
+      <ion-icon class="setting-item-icon" [src]="'../assets/icon/account/document.svg'" src="/assets/icon/custom-terms.svg" slot="start"></ion-icon>
       <ion-label class="setting-item-label">{{ 'MY_ACCOUNT.terms' | translate }}</ion-label>
-      <ion-icon class="setting-item-forward" name="chevron-forward-outline" slot="end"></ion-icon>
+      <ion-icon class="setting-item-forward" [src]="'../assets/icon/account/arrow-down.svg'" slot="end"></ion-icon>
     </ion-item>
-    <ion-item lines="inset" (click)="changeToGuideline()">
-      <ion-icon class="setting-item-icon" name="book-outline" slot="start"></ion-icon>
+    <ion-item lines="inset" class="ion-list-item" (click)="changeToGuideline()">
+      <ion-icon class="setting-item-icon" [src]="'../assets/icon/account/work.svg'" slot="start"></ion-icon>
       <ion-label class="setting-item-label">{{ 'MY_ACCOUNT.guideline' | translate }}</ion-label>
-      <ion-icon class="setting-item-forward" name="chevron-forward-outline" slot="end"></ion-icon>
+      <ion-icon class="setting-item-forward" [src]="'../assets/icon/account/arrow-down.svg'" slot="end"></ion-icon>
     </ion-item>
-    <ion-item lines="inset" (click)="openToRateApp()">
-      <ion-icon class="setting-item-icon" name="custom-star-outline" src="/assets/icon/custom-star-outline.svg" slot="start"></ion-icon>
+    <ion-item lines="inset" class="ion-list-item" (click)="openToRateApp()">
+      <ion-icon class="setting-item-icon"  [src]="'../assets/icon/account/star.svg'" slot="start"></ion-icon>
       <ion-label class="setting-item-label">{{ 'MY_ACCOUNT.vote' | translate }}</ion-label>
-      <ion-icon class="setting-item-forward" name="chevron-forward-outline" slot="end"></ion-icon>
+      <ion-icon class="setting-item-forward" [src]="'../assets/icon/account/arrow-down.svg'" slot="end"></ion-icon>
     </ion-item>
   </ion-list>
 
 
-  <ion-item lines="none" class="item-content">
+  <!-- <ion-item lines="none" class="item-content">
     <div class="setting-content-none">
     </div>
-  </ion-item>
+  </ion-item> -->
 
-  <ion-item lines="inset" class="" (click)="logoutModal()">
-    <ion-icon class="setting-item-icon logout-icon" name="log-out-outline" slot="start"></ion-icon>
+  <ion-item lines="none" class="ion-item-logout" (click)="logoutModal()">
+    <ion-icon class="setting-item-icon logout-icon" [src]="'../assets/icon/account/logout.svg'" slot="start"></ion-icon>
     <ion-label class="setting-item-label logout-label">{{ 'MY_ACCOUNT.btn_log_out' | translate }}</ion-label>
   </ion-item>
 
-  <ion-item lines="none" class="item-content">
-    <div class="version-content">
-      <ion-label class="version-label">AMO app 5.0.0</ion-label>
-    </div>
+  <ion-item lines="none" class="version-item-content">
+    <ion-label class="version-label">AMO app 5.0.0</ion-label>
   </ion-item>
 
 </ion-content>
-
-

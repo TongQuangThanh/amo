@@ -1,49 +1,82 @@
 .account-info {
-    margin: 30px 17px 0 17px;
+  margin: 30px 17px 0 17px;
 }
 ion-datetime.ios {
-    padding-bottom: 5px !important;
-    padding-top: 0 !important;
+  padding-bottom: 5px !important;
+  padding-top: 0 !important;
 }
 ion-select.ios {
-    padding-bottom: 5px !important;
-    padding-top: 0 !important;
+  padding-bottom: 5px !important;
+  padding-top: 0 !important;
 }
 .input-text-50 {
-    --padding-end: 0;
-    --padding-bottom: 6px;
+  --padding-end: 0;
+  --padding-bottom: 6px;
 }
 .no-padding {
-    padding: 0;
+  padding: 0;
 }
 .padding-left-10 {
-    padding-left: 10px;
+  padding-left: 10px;
 }
 .padding-right-10 {
-    padding-right: 10px;
+  padding-right: 10px;
 }
 .margin-left-0 {
-    margin-left: 0 !important;
+  margin-left: 0 !important;
 }
 .select-icon {
-    font-size: 14px;
-    color: #21313F;
+  font-size: 14px;
+  color: #21313f;
 }
 .pointer-events-none {
-    pointer-events: none;
+  pointer-events: none;
 }
-.label-phone-code{
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 16px;
-    line-height: 24px;
-    color: #21313F;
-    overflow: auto;
-    text-overflow: initial;
-    pointer-events: none;
-    position: absolute;
+.label-phone-code {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  color: #21313f;
+  overflow: auto;
+  text-overflow: initial;
+  pointer-events: none;
+  position: absolute;
 }
 .opacity-0 {
-    opacity: 0;
+  opacity: 0;
+}
+
+.add-home-member-header {
+  background-color: #E64037;
+  height: 100px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .back-button {
+    position: absolute;
+    left: 10px;
+    top: 45px;
+    .ion-back-button {
+      --icon-font-size: 22px;
+      margin-left: 0;
+      display: block;
+      width: 25px;
+    }
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 25px;
+    left: -1px;
+    right: -1px;
+    box-shadow: 0 30px 0 0 #f8f9fa;
+    height: 20px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+  }
 }

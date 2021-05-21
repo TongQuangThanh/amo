@@ -1,79 +1,76 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-title>{{ 'INBOX_21.title' | translate }}</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button text="" icon="chevron-back"></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
+<ion-header class="ion-no-border create-market-header">
+  <ion-buttons class="back-button">
+    <ion-back-button color="light" text="" icon="chevron-back" class="ion-back-button"></ion-back-button>
+  </ion-buttons>
+  <ion-label class="header-title">{{ 'INBOX_21.title' | translate }}</ion-label>
 </ion-header>
-  
+
 <ion-content>
   <ion-list lines="full" class="ion-no-margin ion-no-padding margin-top-10">
-    <ion-item lines="none" class="margin-top-20">
+
+    <ion-item lines="none" class="margin-top-10">
       <ion-item lines="none" class="item-common">
-        <img class="icon-pulldown-left" src="../assets/icon/svg/Category.svg"/>
-        <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg"/>
+        <img class="icon-pulldown-left" src="../assets/icon/request/home.svg" />
+        <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg" />
+        <label *ngIf="apartmentId != ''" class="pulldown-customize-placeholder">{{ 'INBOX_21.apartment_placeHolder_2' | translate
+          }}</label>
+        <div class="width-100 {{apartmentIdClass}}">
+          <ion-select class="pulldown-customize" placeholder="{{ 'INBOX_21.apartment_placeHolder_1' | translate }}"
+            interface="action-sheet" name="apartmentId" [(ngModel)]="apartmentId" (ionChange)="ionChangeApartment($event)">
+            <ion-select-option *ngFor="let item of listApartment" value="{{item.apartmentId}}">{{item.apartmentTitle}}</ion-select-option>
+          </ion-select>
+        </div>
+      </ion-item>
+    </ion-item>
+
+    <ion-item lines="none" class="margin-top-15">
+      <ion-item lines="none" class="item-common">
+        <img class="icon-pulldown-left" src="../assets/icon/market/group_cate.svg" />
+        <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg" />
+        <label *ngIf="formGroupCate != ''" class="pulldown-customize-placeholder">{{ 'INBOX_21.group_cate_placeHolder_2' | translate
+          }}</label>
+        <div class="width-100 {{formGroupCateClass}}">
+          <ion-select class="pulldown-customize" placeholder="{{ 'INBOX_21.group_cate_placeHolder_1' | translate }}"
+            interface="action-sheet" name="formGroupCate" [(ngModel)]="formGroupCate" (ionChange)="ionChangeGroupCate($event)">
+            <ion-select-option *ngFor="let item of listServiceCategory" value="{{item._id}}">{{item.title}}</ion-select-option>
+          </ion-select>
+        </div>
+      </ion-item>
+    </ion-item>
+    <ion-item lines="none" class="margin-top-15">
+      <ion-item lines="none" class="item-common">
+        <img class="icon-pulldown-left" src="../assets/icon/market/Category.svg" />
+        <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg" />
         <label *ngIf="form_type != ''" class="pulldown-customize-placeholder">{{ 'INBOX_21.pulldown_1_placeHolder_2' | translate }}</label>
         <div class="width-100 {{form_type_class}}">
-          <ion-select class="pulldown-customize" placeholder="{{ 'INBOX_21.pulldown_1_placeHolder_1' | translate }}" interface="action-sheet" name="form_type" [(ngModel)]="form_type" (ionChange)="ionChangePulldown1($event)">
+          <ion-select class="pulldown-customize" placeholder="{{ 'INBOX_21.pulldown_1_placeHolder_1' | translate }}"
+            interface="action-sheet" name="form_type" [(ngModel)]="form_type" (ionChange)="ionChangePulldown1($event)">
             <ion-select-option *ngFor="let item of listType" value="{{item._id}}">{{item.title}}</ion-select-option>
           </ion-select>
         </div>
       </ion-item>
     </ion-item>
-    <ion-item lines="none" class="margin-top-20">
+    <ion-item lines="none" class="margin-top-15">
       <ion-item lines="none" class="item-common">
-        <img class="icon-text-box-active" src="../assets/icon/svg/Marketplace.svg"/>
+        <img class="icon-text-box-active" src="../assets/icon/market/Marketplace.svg" />
         <label *ngIf="form_name != ''" class="text-box-placeholder">{{ 'INBOX_21.textbox_1_placeHolder_2' | translate }}</label>
         <div class="width-100 {{form_name_class}}">
-          <ion-input type="text" class="text-box-1" 
-            type="text"
-            placeholder="{{ 'INBOX_21.textbox_1_placeHolder_1' | translate }}" 
-            value="{{form_name}}" 
-            (ionChange)="ionChangeTextBox1()"
-            [(ngModel)]="form_name">
+          <ion-input type="text" class="text-box-1" type="text" placeholder="{{ 'INBOX_21.textbox_1_placeHolder_1' | translate }}"
+            value="{{form_name}}" (ionChange)="ionChangeTextBox1()" [(ngModel)]="form_name">
           </ion-input>
         </div>
       </ion-item>
     </ion-item>
-    <ion-item lines="none" class="margin-top-20">
+    <ion-item lines="none" class="margin-top-15">
       <ion-item lines="none" class="item-common">
-        <ion-textarea 
-          class="text-area-1" 
-          rows="4" cols="20" 
-          placeholder="{{ 'INBOX_21.textarea_placeHolder_1' | translate }}"
-          [(ngModel)]="form_note"
-          ></ion-textarea>
+        <ion-textarea class="text-area-1" rows="4" cols="20" placeholder="{{ 'INBOX_21.textarea_placeHolder_1' | translate }}"
+          [(ngModel)]="form_note"></ion-textarea>
       </ion-item>
     </ion-item>
+    <section class="full-width function-section">
+      <ion-button (click)="eventButtonSend()" expand="block" class="amo-button-custom padding-0 {{disable_button_send}}">{{
+        'INBOX_21.button_send' | translate }}</ion-button>
+    </section>
   </ion-list>
-  <section class="full-width function-section">
-    <ion-button (click)="eventButtonSend()" expand="block" class="amo-button-custom padding-0 {{disable_button_send}}">{{ 'INBOX_21.button_send' | translate }}</ion-button>
-  </section>
-  <div *ngIf="flag_show_hide_popup == true" class="modal-backdrop fade show"></div>
-  <div *ngIf="flag_show_hide_popup == true" class="modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="eventButtonClosePopup()">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <div class="div-header-title"></div>
-        </div>
-        <div class="modal-body">
-          <ion-list lines="full" class="ion-no-margin ion-no-padding margin-top-10">
-            <ion-item lines="none" class="popup-ion-item" id="area-show-image">
-              <img class="" src="../assets/icon/svg/Outline.svg"/>
-            </ion-item>
-            <ion-item lines="none" class="popup-ion-item" id="area-show-image">
-              <ion-label class="popup-text-1">{{ 'INBOX_21.popup_text_1' | translate }}</ion-label>
-            </ion-item>
-            <ion-item lines="none" class="popup-ion-item" id="area-show-image" (click)="eventButtonClosePopup()">
-              <ion-label class="popup-text-2">{{ 'INBOX_21.popup_text_2' | translate }}</ion-label>
-            </ion-item>
-          </ion-list>
-        </div>
-      </div>
-    </div>
-  </div>
+
 </ion-content>

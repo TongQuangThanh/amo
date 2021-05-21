@@ -30,7 +30,7 @@ ion-title.md {
     border-bottom: 1px solid #F4F5F5;
 }
 .popup-title {
-    font-family: Nunito Sans;
+    font-family: Open Sans;
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
@@ -42,15 +42,15 @@ ion-title.md {
     margin: 20px 18px 15px 18px;
 }
 .modal-toolbar {
-    margin-top: 18px;
-    margin-bottom: 20px;
+    margin: 20px 0;
+    padding: 0 15px;
 }
 .trash-icon {
     font-size: 60px;
-    color: #FA7268;
+    color: #E64037;
 }
 .delete_message {
-    font-family: Nunito Sans;
+    font-family: Open Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -60,18 +60,17 @@ ion-title.md {
     margin-bottom: 0;
 }
 .cancel-button {
-    width: 43.73%;
     height: 44px;
     --ion-toolbar-color: #D3D6D9;
     --background-activated: #c5c7c9;
     --background-focused: #c5c7c9;
     --background-hover: #c5c7c9;
     --border-radius: 8px;
-    margin: 0 10px;
     --box-shadow: none !important;
+    width:  100%;
 }
 .cancel-button-label {
-    font-family: Nunito Sans;
+    font-family: Open Sans;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -81,18 +80,17 @@ ion-title.md {
     text-transform: none;
 }
 .delete-button {
-    width: 43.73%;
     height: 44px;
-    --ion-toolbar-color: #FA7268;
+    --ion-toolbar-color: #E64037;
     --background-activated: #c5433a;
     --background-focused: #c5433a;
     --background-hover: #c5433a;
     --border-radius: 8px;
-    margin: 0 10px;
     --box-shadow: none !important;
+    width:  100%;
 }
 .delete-button-label {
-    font-family: Nunito Sans;
+    font-family: Open Sans;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -102,7 +100,7 @@ ion-title.md {
     text-transform: none;
 }
 .hotline-num {
-    font-family: Nunito Sans;
+    font-family: Open Sans;
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
@@ -113,9 +111,10 @@ ion-title.md {
 .feedback-textarea {
     border: 1px solid #D3D6D9;
     border-radius: 8px;
+    --background: #FBFBFB;
 }
 .feedback-textarea-placeholder {
-    font-family: Nunito Sans;
+    font-family: Open Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;

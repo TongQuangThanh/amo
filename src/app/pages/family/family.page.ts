@@ -78,7 +78,6 @@ export class FamilyPage implements OnInit {
     return listdata;
   }
   removeItem() {
-    console.log("deleted");
   }
   goToFamilyMemberDetail(event) {
     var user_id = "0";

@@ -1,0 +1,207 @@
+.no-scroll {
+  --overflow: hidden;
+}
+
+:host {
+  --super-tabs-toolbar-background: black;
+  --st-indicator-color: #E64037;
+  --st-indicator-width: 30px;
+  --ion-color-base: transparent;
+}
+
+.payment-history-header {
+  background-color: #E64037;
+  height: 160px;
+  min-height: 160px !important;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .back-button {
+    position: absolute;
+    left: 10px;
+    top: 60px;
+    .ion-back-button {
+      --icon-font-size: 22px;
+      margin-left: 0;
+      display: block;
+      width: 25px;
+    }
+  }
+  .header-title {
+    text-align: center;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    top: 57px;
+    font-size: 28px;
+    line-height: 41px;
+    color: #ffffff;
+  }
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 25px;
+    left: -1px;
+    right: -1px;
+    box-shadow: 0 30px 0 0 #ffffff;
+    height: 20px;
+    border-top-left-radius: 50px;
+    border-top-right-radius: 50px;
+  }
+  .super-tabs-content {
+    font-family: Open Sans;
+    width: 98%;
+    height: 55px;
+    position: absolute;
+    bottom: 0;
+    .super-tabs-toolbar {
+      --background: red;
+      --super-tabs-toolbar-background: #E64037;
+      .super-tab-button {
+        height: 35px;
+        --st-label-color-active: #ffffff;
+        --st-label-color-inactive: #fffefe8f;
+        padding: 0 5px;
+        min-width: 80px;
+        .tab-button-label {
+          font-size: 14px;
+          line-height: 15px;
+          display: flex;
+          align-items: center;
+          color: #ffffff;
+          opacity: 0.4;
+        }
+        .under_line {
+          width: 60px;
+          height: 2px;
+          margin-top: 5px;
+        }
+      }
+      .super-tab-button.active {
+        .tab-button-label {
+          color: #ffffff;
+          opacity: 1;
+        }
+        .under_line {
+          background: #ffffff;
+        }
+      }
+    }
+  }
+}
+.payment-history-content {
+  --background: rgba(249, 252, 255, 1);
+
+  .payment-card {
+    background: #ffffff;
+    box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    margin: 10px 15px;
+    .update-time {
+      font-size: 12px;
+      line-height: 20px;
+      color: #666666;
+      min-width: 70%;
+      margin-right: 0px;
+    }
+    .payment-title {
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 25px;
+      color: #221c1e;
+      margin-left: 20px;
+      margin-bottom: 5px;
+    }
+    .payment-card-item {
+      height: 30px;
+    }
+    .badge-status {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 10px;
+      color: #ffffff;
+      border-radius: 0px 8px;
+      width: 90px;
+      height: 20px;
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 0;
+    }
+    .badge-paid {
+      background: #33a54c;
+    }
+    .badge-unpaid {
+      background: #E64037;
+    }
+    .badge-pending {
+      background: #f2c94c;
+    }
+    .badge-outdate {
+      background: #e23a28;
+    }
+  }
+
+  .devider-line-detail-payment {
+    border: 1px dashed #e9e9e9;
+    margin-left: 15px;
+    margin-right: 15px;
+    &:after {
+      content: '';
+      position: absolute;
+      bottom: 43px;
+      left: -8px;
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      z-index: 99;
+      background:  rgb(0 0 0 / 10%);
+    }
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 43px;
+      right: -8px;
+      border-radius: 50%;
+      width: 16px;
+      height: 16px;
+      z-index: 99;
+      background:  rgb(0 0 0 / 10%);
+    }
+  }
+  .payment-money-item {
+    margin-top: 5px;
+    .money-title {
+      max-width: 55px;
+      margin-right: 0px;
+      font-size: 14px;
+      line-height: 20px;
+      color: #666666;
+      font-weight: 600;
+    }
+    .mone-number {
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 20px;
+      color: #E64037;
+      margin-right: 0px;
+    }
+    .btn-paid {
+      width: 100px;
+      height: 30px;
+      --background: linear-gradient(180deg, #ffc144 0%, #ee9a1c 100%);
+      border-radius: 8px;
+      font-size: 14px;
+      color: #ffffff;
+    }
+  }
+}
+.ion-padding {
+  padding: 0;
+}

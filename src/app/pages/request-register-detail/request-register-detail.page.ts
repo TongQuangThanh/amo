@@ -140,9 +140,6 @@ export class RequestRegisterDetailPage implements OnInit, AfterViewInit {
   updateSizeContent(){
     var self = this;
     setTimeout(() => {
-      // console.log(self.contentRequest);
-      // console.log(self.content);
-      // console.log(self.messageInput);
       self.heightScreen = self.messageInput.nativeElement.getBoundingClientRect().top - self.contentRequest.nativeElement.getBoundingClientRect().bottom - 2;
     }, 400);
   }
@@ -336,7 +333,6 @@ export class RequestRegisterDetailPage implements OnInit, AfterViewInit {
 
       this.apiService.uploadImage(payload)
       .subscribe(result => {
-        console.log(result);
         self.list_image_select = [];
         self.list_image_select.push(result);
         self.sendAttachmentImage();

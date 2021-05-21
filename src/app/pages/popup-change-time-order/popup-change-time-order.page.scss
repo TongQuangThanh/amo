@@ -1,0 +1,140 @@
+root {
+  --borderColor: gray;
+  --charShape: none;
+}
+ion-buttons.md {
+  margin-left: 0;
+}
+ion-title.md {
+  padding-inline-end: 0;
+}
+.content-wrap {
+  --background: rgba(33, 49, 63, 0);
+}
+.content-container {
+  position: fixed;
+  width: 100%;
+  height: auto;
+  bottom: 0;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  background: #ffffff;
+  display: block;
+  justify-content: end;
+}
+.header-item {
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  display: flex;
+  height: 60px;
+  border-bottom: 1px solid #f4f5f5;
+}
+.popup-title {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 28px;
+  text-align: center;
+  color: #21313f;
+}
+.modal-item {
+  margin: 20px 18px 15px 18px;
+}
+.modal-toolbar {
+  margin: 20px 0;
+  padding: 0 15px;
+  --padding-start: 0px;
+}
+.trash-icon {
+  font-size: 60px;
+  color: #E64037;
+}
+
+.change-time-button {
+  height: 44px;
+  --ion-toolbar-color: #E64037;
+  --background-activated: #c5433a;
+  --background-focused: #c5433a;
+  --background-hover: #c5433a;
+  --border-radius: 8px;
+  --box-shadow: none !important;
+  width: 100%;
+}
+.change-time-button-label {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #ffffff;
+  text-transform: none;
+}
+
+.margin-top-20 {
+  margin-top: 20px;
+}
+.margin-top-10 {
+  margin-top: 10px;
+}
+.margin-left-10 {
+  margin-left: 10px;
+}
+
+.item-time-select {
+  --padding-start: 15px;
+  --padding-end: 15px;
+  --inner-padding-end: 0px;
+  .item-time {
+    width: 100%;
+    background: #ffffff;
+    mix-blend-mode: normal;
+    border: 1px solid #d3d6d9;
+    box-sizing: border-box;
+    border-radius: 8px;
+    --padding-start: 5px;
+  }
+}
+
+.icon-home {
+  z-index: 999;
+  pointer-events: none;
+  margin-left: 17px;
+  position: absolute;
+}
+
+.icon-pulldown-down {
+  z-index: 999;
+  pointer-events: none;
+  position: absolute;
+  right: 15px;
+}
+
+.pulldown-1-placeholder {
+  position: absolute;
+  opacity: 0.5;
+  z-index: 999;
+  font-size: 12px;
+  margin-left: 50px;
+  top: 7px;
+  pointer-events: none;
+}
+
+.has-input-value .datetime-commom {
+  padding-top: 25px;
+  padding-bottom: 5px;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 16px;
+}
+.datetime-commom {
+  width: 100%;
+  max-width: 100%;
+  padding-left: 50px;
+  background: #fbfbfb;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-right: 17px;
+  height: 100%;
+}

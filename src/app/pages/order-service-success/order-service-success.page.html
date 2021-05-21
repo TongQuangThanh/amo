@@ -1,0 +1,17 @@
+<ion-content [scrollEvents]="false" slot="fixed" class="order-success-container no-scroll">
+  <ion-header class="ion-no-border order-success-header">
+    <ion-img class="icon-history" src="assets/icon/service-info/orderSuccess.svg"></ion-img>
+    <ion-label class="header-title">{{ 'ORDER_SERVICE_RESULT.order_message' | translate }}</ion-label>
+  </ion-header>
+  <div class="order-card-item">
+    {{ 'ORDER_SERVICE_RESULT.order_prompt' | translate }}
+  </div>
+  <div class="ion-item-back">
+    <ion-button class="default-button btn-default" (click)="goBackHistory()">
+      {{ 'ORDER_SERVICE_RESULT.order_btn_status' | translate }}
+    </ion-button>
+  </div>
+  <div class="order-link-item" (click)="goBack()">
+    {{ 'ORDER_SERVICE_RESULT.order_other_service' | translate }}
+  </div>
+</ion-content>

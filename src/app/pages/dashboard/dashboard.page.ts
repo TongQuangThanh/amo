@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from '../../services/api/api.service';
-import { NavParams } from '@ionic/angular';
+import { IonTabs, NavParams } from '@ionic/angular';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,50 +8,42 @@ import { NavParams } from '@ionic/angular';
   styleUrls: ['./dashboard.page.scss'],
 })
 export class DashboardPage implements OnInit {
-  screenID:string;
-  tabIconEnable: boolean= false;
-  iconSelected = "home";
+  screenID: string;
+  tabIconEnable: boolean = false;
+  iconSelected = 'home';
+  serviceSelected = false;
+  @ViewChild('tabs', { static: true }) tabs: IonTabs;
 
-  constructor(
-    private apiService: ApiService,
-    //private navParams: NavParams
-  ) {
-    this.screenID = "home";
+  constructor(private apiService: ApiService) {
+    this.screenID = 'home';
   }
 
-  ngOnInit() {
+  ngOnInit() {}
 
-  }
-
-  tabChanged(event){
-    console.log(event);
-  }
-
-  ionViewWillEnter() {
-    // this.authService.user().subscribe(
-    //   user => {
-    //     this.user = user;
-    //   }
-    // );
-  } 
-  
-  isTabIconActiveShown(){
-    return this.tabIconEnable;
-  }
-  
-  userRequestTab(screenID:string){
-    this.iconSelected = screenID
-    if(this.screenID != screenID){
-      this.screenID = screenID;
-      this.apiService.userClickStatistic(screenID)
-        .subscribe(result => {
-          console.log(result);
-      },
-      error => {
-        console.log(error)
-      });
+  tabChanged(event) {
+    if (event.tab == 'services') {
+      this.serviceSelected = true;
+    } else {
+      this.serviceSelected = false;
     }
   }
 
-  
+  isTabIconActiveShown() {
+    return this.tabIconEnable;
+  }
+
+  iconTabServiceClick() {
+    this.tabs.select('services');
+  }
+
+  userRequestTab(screenID: string) {
+    this.iconSelected = screenID;
+    if (this.screenID != screenID) {
+      this.screenID = screenID;
+      this.apiService.userClickStatistic(screenID).subscribe(
+        (result) => {},
+        (error) => {}
+      );
+    }
+  }
 }

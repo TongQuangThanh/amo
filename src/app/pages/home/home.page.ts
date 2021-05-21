@@ -7,8 +7,9 @@ import { UtilsService } from '../../utils/utils.service';
 import { LoadingService } from '../../services/loading/loading.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { Subscription } from 'rxjs';
-import { RouterModule, Routes, ActivatedRoute } from "@angular/router";
+import { RouterModule, Routes, ActivatedRoute } from '@angular/router';
 import { IonContent } from '@ionic/angular';
+import { timeout } from 'rxjs/operators';
 
 @Component({
   selector: 'app-home',
@@ -20,30 +21,29 @@ export class HomePage implements OnInit {
   imageDefault: string;
   heightScreen: number;
   // data
-  listNews: any;
+  firstDepartment = null;
   listArticles: any;
-  currentPage: number;
-  numberRecordOnPage: number;
-  currentPageNoti: number;
-  numberRecordOnPageNoti: number;
+  currentPage = 1;
+  numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
   userName: string;
   avatar: string;
   getPostSubscriber: Subscription;
   getArticleSubscriber: Subscription;
-  // popupThumbnail: string;
-  // popupButtonTitle: string;
-  // popupButtonStyle: any;
-  // popupButtonColor: string;
-  // popupLink: string;
-  // isShowPopup: boolean;
-  screenID:string;
-  tabIconEnable: boolean= false;
-  iconSelected = "";
+  screenID: string;
+  tabIconEnable: boolean = false;
+  iconSelected = '';
   showHeader: number;
   listPaymentBills: any;
   totalPayment: any;
   numberOfRecordPayment: any;
   idRecordPayment: any;
+  isWallet = false;
+  todatHours = new Date().getHours();
+  epayUserInfo = null;
+  listServiceCategory = [];
+
+  overDateBill = [];
+  isShowBill = true;
 
   constructor(
     private route: NavController,
@@ -52,220 +52,186 @@ export class HomePage implements OnInit {
     private apiService: ApiService,
     private navCtrl: NavController,
     private authService: AuthService,
-    private nativePageTransitions: NativePageTransitions) {
+    private nativePageTransitions: NativePageTransitions
+  ) {
     this.imageDefault = '../assets/common/no-thumbnail.png';
     platform.ready().then((readySource) => {
       this.heightScreen = platform.height() * 0.58 - 18;
     });
-    // this.popupThumbnail = "";
-    // this.popupButtonTitle = "";
-    // this.popupLink = "";
-    // this.isShowPopup = false;
-    // this.getConfigPopup();
     const profile = this.authService.getProfile();
     UtilsService.isAppOpen = true;
-    if(profile && this.userName != profile.displayName){
+    if (profile && this.userName != profile.displayName) {
       this.userName = profile.displayName;
-      
     }
-    if(profile && profile.avatar && profile.avatar != "" && this.avatar != profile.avatar){
+    if (profile && profile.avatar && profile.avatar != '' && this.avatar != profile.avatar) {
       this.avatar = profile.avatar;
-    }else{
-      this.avatar = '../assets/icon/avatar-default.svg';
+    } else {
+      this.avatar = '../assets/icon/avatar-default.png';
     }
-    this.apiService.userClickStatistic('home')
-      .subscribe(result => {
-        console.log(result)
-    },
-    error => {
-      console.log(error)
-    });
+    this.apiService.userClickStatistic('home').subscribe(
+      (result) => {},
+      (error) => {}
+    );
 
-    if(UtilsService.notificationNavigatorLink != ""){
+    if (UtilsService.notificationNavigatorLink != '') {
       this.navCtrl.navigateForward(UtilsService.notificationNavigatorLink);
-      UtilsService.notificationNavigatorLink = "";
+      UtilsService.notificationNavigatorLink = '';
     }
   }
 
   ngOnInit() {
     this.showHeader = 1;
-    const params = {
-      playerId: localStorage.getItem('playID')
-    };
-    this.apiService.settingNotification(params)
-      .subscribe(result => {
-        console.log(result)
-    },
-    error => {
-      console.log(error)
-    });
+    this.listArticles = [];
+    this.getArticles(this.currentPage, this.numberRecordOnPage, '', '', null, true);
+    this.getEpayUser();
+    this.getListUserApar();
+    this.getAllServiceSystem();
+    this.getPaymentLogs(1, 5, '', '', null, true);
   }
-  
-  ionViewWillEnter(){
-    this.listNews  = [];
-    this.currentPage = 1;
-    this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
-    this.listArticles  = [];
-    this.currentPageNoti = 1;
-    this.numberRecordOnPageNoti = ConstService.NUMBER_RECORD_NOTI_ON_PAGE;
-    this.getNews(this.currentPage, this.numberRecordOnPage, '', '', null, true);
-    this.getArticles(this.currentPageNoti, this.numberRecordOnPageNoti, '', '', null, true);
-    this.getPaymentLogs(1, 20, '', '', null, true);
+
+  ionViewWillEnter() {
+    this.epayUserInfo = this.apiService.getEpayUserStored();
   }
-  // getConfigPopup() {
-  //   const self = this;
-  //   this.apiService.getPopupConfig()
-  //     .subscribe(result => {
-  //       self.popupThumbnail = result.popupConfig.thumbnail;
-  //       self.popupButtonTitle = result.popupConfig.buttonTitle;
-  //       if(self.popupButtonTitle != null && self.popupButtonTitle.length > 0){
-  //         self.isShowPopup = true;
-  //       }
-  //       self.popupButtonColor= "color: red;";
-  //       self.popupButtonStyle = { '--background': result.popupConfig.buttonColor, 'color': result.popupConfig.textColor };
-  //       self.popupLink = result.popupConfig.link;
 
-  //   },
-  //   error => {
-  //   });
-  // }
-
-  getNews(page: number, limit: number, category: string, search: string, event: any, isRefresh: boolean) {
-    const self = this;
-    if (this.getPostSubscriber) {
-      this.getPostSubscriber.unsubscribe();
-    }
-    this.loading.present();
-    this.getPostSubscriber = this.apiService.getPosts(page, limit, category, search)
-      .subscribe(result => {
+  // Get bill: Copy paste từ payment.page.ts
+  getPaymentLogs(page: number, limit: number, category: string, search: string, event: any, isRefresh: boolean) {
+    this.apiService.getListPayment(page, limit, category, search, 'publish').subscribe(
+      (result) => {
         if (isRefresh) {
-          self.listNews = result.posts;
+          this.overDateBill = [];
+        }
+        if (!result.paymentBills || result.paymentBills.length == 0) {
+          return;
+        }
+        result.paymentBills.forEach((bill) => {
+          if (bill.payment) {
+            let today = new Date();
+            let endAt = new Date(bill.payment.endAt);
+            if (today > endAt && bill.status == 'publish') {
+              bill.status = 'outdate';
+            }
+            bill.inOutDays = this.getDiffDays(today, endAt);
+            this.overDateBill.push(bill);
+          }
+        });
+      },
+      (error) => {}
+    );
+  }
+  // ==========================
+
+  getEpayUser() {
+    this.apiService.getEpayUser().subscribe(
+      (result) => {
+        if (result && result.user_info) {
+          this.epayUserInfo = result;
         } else {
-          self.listNews = self.listNews.concat(result.posts);
+          this.epayUserInfo = null;
         }
-        if (event) {
-          event.target.complete();
-        }
-        self.loading.dismiss();
-    },
-    error => {
-      self.loading.dismiss();
-    });
+      },
+      (error) => {}
+    );
   }
 
   getArticles(page: number, limit: number, category: string, search: string, event: any, isRefresh: boolean) {
-    
     const self = this;
     if (this.getArticleSubscriber) {
       this.getArticleSubscriber.unsubscribe();
     }
     this.loading.present();
-    this.getArticleSubscriber = this.apiService.getListArticle(page, limit, category, search)
-      .subscribe(result => {
-        if (isRefresh) {
-          self.listArticles = result.articles;
-        } else {
-          self.listArticles = self.listArticles.concat(result.articles);
-        }
-        
+    this.getArticleSubscriber = this.apiService.getListArticle(1, 2, category, search).subscribe(
+      (result) => {
+        self.listArticles = result.articles;
         if (event) {
           event.target.complete();
         }
         self.loading.dismiss();
-    },
-    error => {
-      self.loading.dismiss();
-    });
+      },
+      (error) => {
+        self.loading.dismiss();
+      }
+    );
   }
 
-  loadData(event) {
-    this.currentPage++;
-    this.getNews(this.currentPage, this.numberRecordOnPage, '', '', event, false);
+  getListUserApar() {
+    this.apiService.getListUserApartment().subscribe(
+      (result) => {
+        if (!result || !result.userApartments || result.userApartments.length == 0) {
+          return;
+        }
+        this.firstDepartment = result.userApartments[0];
+      },
+      (error) => {}
+    );
+  }
+
+  getAllServiceSystem() {
+    const self = this;
+    this.apiService.getListShopHouseCateV2().subscribe(
+      (result) => {
+        if (result && result.shopCategories) {
+          self.listServiceCategory = result.shopCategories.slice(0, 3);
+        } else {
+          self.listServiceCategory = [];
+        }
+      },
+      (error) => {}
+    );
   }
 
   doRefresh(event) {
+    this.isShowBill = true;
     this.currentPage = 1;
-    this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
-    this.getNews(this.currentPage, this.numberRecordOnPage, '', '', event, true);
-  }
-
-  loadDataNoti(event) {
-    this.currentPageNoti++;
-    this.getArticles(this.currentPageNoti, this.numberRecordOnPageNoti, '', '', event, false);
-  }
-
-  doRefreshNoti(event) {
-    this.currentPageNoti = 1;
-    this.numberRecordOnPageNoti = ConstService.NUMBER_RECORD_ON_PAGE;
-    this.getArticles(this.currentPage, this.numberRecordOnPageNoti, '', '', event, true);
+    this.getArticles(this.currentPage, this.numberRecordOnPage, '', '', event, true);
+    this.getEpayUser();
+    this.getAllServiceSystem();
+    this.getPaymentLogs(1, 5, '', '', null, true);
   }
 
   detailPage(event) {
-    // this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
     this.navCtrl.navigateForward('/new-detail/' + event.currentTarget.id);
   }
   detailPageNoti(event) {
-    // this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
     this.navCtrl.navigateForward('/notification-detail/' + event.currentTarget.id);
   }
 
-  goToMyHome(){
+  goToMyHome() {
     this.navCtrl.navigateForward('/my-home');
   }
 
-  goToMyAccount(){
+  goToMyAccount() {
     this.navCtrl.navigateForward('/my-account');
   }
 
-  createRequest(){
+  createRequest() {
     this.navCtrl.navigateForward('/add-request');
   }
 
-  changeCarBooking(){
-    this.navCtrl.navigateForward('/call-the-car');
+  goToServices(service: any) {
+    this.navCtrl.navigateForward('/service-categories-list/' + service._id + '/' + service.title);
   }
 
-  changeReparing(){
-    this.navCtrl.navigateForward('/repair-service');
-  }
-  changeHelper(){
-    //this.navCtrl.navigateForward('/repair-service');
-    console.log('changeHelper')
+  changeOther() {
+    this.navCtrl.navigateForward('/dashboard/services');
   }
 
-  changeOther(){
-    this.navCtrl.navigateForward('dashboard/services');
-  }
-  
-  changePayment(){
+  changePayment() {
     if (this.numberOfRecordPayment == 1) {
       this.gotoPaymentDetailPage();
     } else {
-      this.navCtrl.navigateForward('dashboard/payment');
+      this.navCtrl.navigateForward('/dashboard/payment');
     }
   }
 
-  goToNotification(){
-    this.navCtrl.navigateForward('dashboard/notification');
-    this.iconSelected = "notification";
+  goToNotification() {
+    this.navCtrl.navigateForward('/dashboard/notification');
+    this.iconSelected = 'notification';
   }
 
-  goToNews(){
+  goToNews() {
     this.navCtrl.navigateForward('/news');
   }
 
-  onScroll(event) {
-    let position_y = document.getElementById('div-text-place').getClientRects()[0];
-    if(position_y && position_y.y && position_y.y < 25){
-      if (event.detail.currentY > 0) {
-        this.showHeader = 2;
-      } else {
-        this.showHeader = 1;
-      }
-    } else {
-      this.showHeader = 1;
-    }
-  }
   getStyleHeader(index) {
     if (index == this.showHeader) {
       return '';
@@ -277,73 +243,27 @@ export class HomePage implements OnInit {
   formatString(stringDate: string) {
     return UtilsService.formatString(stringDate);
   }
-  getPaymentLogs(page: number, limit: number, category: string, search: string, event: any, isRefresh: boolean) {
-    this.loading.present();
-    const self = this;
-    this.apiService.getListPayment(page, limit, category, search)
-      .subscribe(result => {
-        if (isRefresh) {
-          ///self.listPaymentBills = result.paymentBills;
-          const listPaymentNoNull = [];
-          for(let i=0;i<result.paymentBills.length;i++){
-            if(result.paymentBills[i].payment){
-              listPaymentNoNull.push(result.paymentBills[i]);
-            }
-          }
-          self.listPaymentBills = listPaymentNoNull;
-        } else {
-          //self.listPaymentBills = self.listPaymentBills.concat(result.paymentBills);
-          for(let i=0;i<result.paymentBills.length;i++){
-            if(result.paymentBills[i].payment){
-              self.listPaymentBills.push(result.paymentBills[i]);
-            }
-          }
-        }
-        
-        // console.log('paymentbill'+self.listPaymentBills)
-        if (event) {
-          event.target.complete();
-        }
-        self.loading.dismiss();
-        if(page == 1){
-          self.getTotalPayment();
-        }
-    },
-    error => {
-      self.loading.dismiss();
-    });
-  }
-  getTotalPayment() {
-    var self = this;
-    self.totalPayment = 0;
-    self.numberOfRecordPayment = 0;
-    // this.listPaymentBills.forEach(element => {
-    //   var dateCreatePayment = new Date(element.createdAt);
-    //   var currentDate = new Date();
-    //   var startMonth = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1, 0, 0, 0, 0);
-    //   var previous = new Date(startMonth.setMonth(startMonth.getMonth()-1));
 
-    //   if (element.status == 'publish' && (previous <= dateCreatePayment && dateCreatePayment <= currentDate)) {
-    //     self.totalPayment += element.total;
-    //     self.numberOfRecordPayment++;
-    //     self.idRecordPayment = element._id;
-    //   }
-    // });
-    if(this.listPaymentBills.length > 0){
-      self.totalPayment = this.listPaymentBills[0].total;
-    }
-  }
   formatMoney(stringValue) {
     let n = parseInt(stringValue);
-    if (n) {
-      return n.toFixed(0).replace(/./g, function(c, i, a) {
-        return i > 0 && c !== "," && (a.length - i) % 3 === 0 ? "." + c : c;
+    if (n || n == 0) {
+      return n.toFixed(0).replace(/./g, function (c, i, a) {
+        return i > 0 && c !== ',' && (a.length - i) % 3 === 0 ? '.' + c : c;
       });
     } else {
-      return "-";
+      return '-';
     }
   }
   gotoPaymentDetailPage() {
     this.navCtrl.navigateForward('/payment-infor/' + this.idRecordPayment);
+  }
+
+  registrationNavigate(route: string) {
+    this.navCtrl.navigateForward(route);
+  }
+
+  getDiffDays(startDate: Date, endDate: Date) {
+    const diffTime = Math.abs(endDate.getTime() - startDate.getTime());
+    return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   }
 }

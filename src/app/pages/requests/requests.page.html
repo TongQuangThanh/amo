@@ -1,163 +1,145 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar class="header-toolbar">
-    <ion-title class="header-title">{{ 'REQUEST.title' | translate }}</ion-title>
-  </ion-toolbar>
-</ion-header>
+<div class="request-background-color">
+  <ion-header class="ion-no-border request-ion-header bar bar-header">
+    <ion-label class="header-title">{{ 'REQUEST.title' | translate }}</ion-label>
+  </ion-header>
+</div>
 
-<ion-content>
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-      <ion-refresher-content
-      pullingText="{{ 'NOTIFICATION.pull_to_refresh' | translate }}"
-      refreshingSpinner="circles"
-      refreshingText="Refreshing...">
-      </ion-refresher-content>
-  </ion-refresher>
-  <super-tabs activeTabIndex="0" [config]="{ debug: true, sideMenu: 'left', allowElementScroll: true, nativeSmoothScroll: true }" class="super-tabs-content">
-    <super-tabs-toolbar no-border class="segment-toolbar">
-      <super-tab-button>
-        <ion-label class="super-tab-button-label">{{ 'REQUEST.tab_request' | translate }}</ion-label>
+<div class="request-category">
+  <ion-grid>
+    <ion-row class="ion-align-items-center">
+      <ion-col class="item-icon-col" (click)="registrationNavigate('/register-to-receive-goods')">
+        <ion-badge class="item-icon-content">
+          <img name="custom-archive" class="item-icon" src="assets/icon/request/delivery-box.svg" />
+        </ion-badge>
+        <ion-label class="item-label">{{ 'REGISTRATION_TYPE.receive' | translate }}</ion-label>
+      </ion-col>
+      <ion-col class="item-icon-col" (click)="registrationNavigate('/registration-guest')">
+        <ion-badge class="item-icon-content">
+          <img name="custom-archive" class="item-icon" src="assets/icon/request/user.svg" />
+        </ion-badge>
+        <ion-label class="item-label">{{ 'REGISTRATION_TYPE.guest' | translate }}</ion-label>
+      </ion-col>
+      <ion-col class="item-icon-col" (click)="registrationNavigate('/register-for-shipping')">
+        <ion-badge class="item-icon-content">
+          <img name="custom-archive" class="item-icon" src="assets/icon/request/cart.svg" />
+        </ion-badge>
+        <ion-label class="item-label">{{ 'REGISTRATION_TYPE.shipping' | translate }}</ion-label>
+      </ion-col>
+      <ion-col class="item-icon-col">
+        <ion-badge class="item-icon-content" (click)="registrationNavigate('/register-keep-vehicle')">
+          <img name="custom-archive" class="item-icon" src="assets/icon/request/sports-car.svg" />
+        </ion-badge>
+        <ion-label class="item-label">{{ 'REGISTRATION_TYPE.parking' | translate }}</ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+<div class="super-tabs-div">
+  <super-tabs
+    [activeTabIndex]="activeTabIndex"
+    [config]="{ sideMenu: 'left', allowElementScroll: true, nativeSmoothScroll: true }"
+    class="super-tabs-content request-background-color"
+    (tabChange)="onTabChange($event)"
+  >
+    <super-tabs-toolbar no-border class="segment-toolbar" slot="top" scrollable-padding="false">
+      <super-tab-button class="request-super-tab-button" id="tab_all">
+        <ion-label class="super-tab-button-label">{{ 'REQUEST.tab_all' | translate }}</ion-label>
       </super-tab-button>
-      <super-tab-button>
-        <ion-label class="super-tab-button-label">{{ 'REQUEST.tab_registration' | translate }}</ion-label>
+      <super-tab-button class="request-super-tab-button">
+        <ion-label class="super-tab-button-label">{{ 'REQUEST.status_new' | translate }}</ion-label>
+      </super-tab-button>
+      <super-tab-button class="request-super-tab-button">
+        <ion-label class="super-tab-button-label">{{ 'REQUEST.status_processing' | translate }}</ion-label>
+      </super-tab-button>
+      <super-tab-button class="request-super-tab-button">
+        <ion-label class="super-tab-button-label">{{ 'REQUEST.status_done' | translate }}</ion-label>
       </super-tab-button>
     </super-tabs-toolbar>
-  
-    <super-tabs-container>      
-      <super-tab>
-        <ion-list>
-          <ion-card *ngFor="let item of listRequestAll" (click)="detailPage($event)" id="{{item._id}}" class="request-card">
-            <ion-item lines="none">
-              <ion-badge slot="start" class="badge-lightred" *ngIf="item.status == 'new'">{{ 'REQUEST.status_new' | translate }}</ion-badge>
-              <ion-badge slot="start" class="badge-primary" *ngIf="item.status == 'processing'">{{ 'REQUEST.status_processing' | translate }}</ion-badge>
-              <ion-badge slot="start" class="badge-success" *ngIf="item.status == 'completed'">{{ 'REQUEST.status_done' | translate }}</ion-badge>
-              <ion-badge slot="start" class="badge-cancel" *ngIf="item.status == 'cancelled'">{{ 'REQUEST.status_cancelled' | translate }}</ion-badge>
-              <ion-label slot="end" class="update-time">{{formatString(item.updatedAt)}}</ion-label>
-            </ion-item>
-            <ion-text class="">
-              <p class="request-title">{{item.title}}</p>
-            </ion-text>
-          </ion-card>
-        </ion-list>
-        <ion-toolbar class="toolbar-button">
-          <!-- <ion-button class="add-button normal-button" (click)="addRequest()">
-            <ion-icon class="add-button-icon" name="add"></ion-icon>
-          </ion-button> -->
-          <ion-fab-button class="add-button normal-button" (click)="addRequest()">
-            <ion-icon name="add"></ion-icon>
-          </ion-fab-button>
-        </ion-toolbar>
-      </super-tab>
-      <super-tab>
-        <ion-list>
-          <ion-card *ngFor="let itemServiceLog of listRequestRegistion" (click)="detailRegisterPage($event)" id="{{itemServiceLog._id}}" class="request-card">
-            <ion-item lines="none">
-              <ion-badge slot="start" class="badge-lightred" *ngIf="itemServiceLog.status == 'new'">{{ 'REQUEST.status_new' | translate }}</ion-badge>
-              <ion-badge slot="start" class="badge-primary" *ngIf="itemServiceLog.status == 'processing'">{{ 'REQUEST.status_processing' | translate }}</ion-badge>
-              <ion-badge slot="start" class="badge-success" *ngIf="itemServiceLog.status == 'completed'">{{ 'REQUEST.status_done' | translate }}</ion-badge>
-              <ion-badge slot="start" class="badge-cancel" *ngIf="itemServiceLog.status == 'cancelled'">{{ 'REQUEST.status_cancelled' | translate }}</ion-badge>
-              <ion-label slot="end" class="update-time">{{formatString(itemServiceLog.updatedAt)}}</ion-label>
-            </ion-item>
-            <ion-text class="">
-              <p class="request-title">{{itemServiceLog.title}}</p>
-            </ion-text>
-          </ion-card>
-        </ion-list>
-        <ion-toolbar class="toolbar-button">
-          <!-- <ion-button class="lightblue-button normal-button" (click)="registrationTypeModal()">{{ 'REQUEST.btn_add_new_registration' | translate }}</ion-button>
-          <ion-button class="add-button normal-button" (click)="registrationTypeModal()">
-            <ion-icon class="add-button-icon" name="add"></ion-icon>
-          </ion-button> -->
-          <ion-fab-button class="add-button normal-button" (click)="registrationTypeModal()">
-            <ion-icon name="add"></ion-icon>
-          </ion-fab-button>
-        </ion-toolbar>
-      </super-tab>
+    <super-tabs-container>
+      <super-tab></super-tab>
     </super-tabs-container>
   </super-tabs>
+</div>
+
+<ion-content class="has-header request-background-color">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullMin="150">
+    <ion-refresher-content
+      pullingText="{{ 'NOTIFICATION.pull_to_refresh' | translate }}"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing..."
+    >
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-list class="request-background-color" *ngIf="activeTabIndex == 0">
+    <ion-card *ngFor="let item of listRequestAll" (click)="detailPage($event)" id="{{item._id}}" class="request-card">
+      <ion-item lines="none" class="request-card-item">
+        <ion-label slot="start" class="update-time">{{formatString(item.updatedAt)}}</ion-label>
+        <ion-badge slot="end" class="badge-status badge-danger" *ngIf="item.status == 'new'"
+          >{{ 'REQUEST.status_new' | translate }}</ion-badge
+        >
+        <ion-badge slot="end" class="badge-status badge-warning" *ngIf="item.status == 'processing'"
+          >{{ 'REQUEST.status_processing' | translate }}</ion-badge
+        >
+        <ion-badge slot="end" class="badge-status badge-success" *ngIf="item.status == 'completed'"
+          >{{ 'REQUEST.status_done' | translate }}</ion-badge
+        >
+        <ion-badge slot="end" class="badge-status badge-cancel" *ngIf="item.status == 'cancelled'"
+          >{{ 'REQUEST.status_cancelled' | translate }}</ion-badge
+        >
+      </ion-item>
+      <ion-text class="">
+        <p class="request-title">{{item.title}}</p>
+      </ion-text>
+    </ion-card>
+  </ion-list>
+  <ion-list class="request-background-color" *ngIf="activeTabIndex == 1">
+    <ion-card *ngFor="let item of listRequestNew" (click)="detailPage($event)" id="{{item._id}}" class="request-card">
+      <ion-item lines="none" class="request-card-item">
+        <ion-label slot="start" class="update-time">{{formatString(item.updatedAt)}}</ion-label>
+        <ion-badge slot="end" class="badge-status badge-danger">{{'REQUEST.status_new' | translate }}</ion-badge>
+      </ion-item>
+      <ion-text class="">
+        <p class="request-title">{{item.title}}</p>
+      </ion-text>
+    </ion-card>
+  </ion-list>
+  <ion-list class="request-background-color" *ngIf="activeTabIndex == 2">
+    <ion-card *ngFor="let item of listRequestProcessing" (click)="detailPage($event)" id="{{item._id}}" class="request-card">
+      <ion-item lines="none" class="request-card-item">
+        <ion-label slot="start" class="update-time">{{formatString(item.updatedAt)}}</ion-label>
+        <ion-badge slot="end" class="badge-status badge-warning">{{'REQUEST.status_processing' | translate }} </ion-badge>
+      </ion-item>
+      <ion-text class="">
+        <p class="request-title">{{item.title}}</p>
+      </ion-text>
+    </ion-card>
+  </ion-list>
+  <ion-list class="request-background-color" *ngIf="activeTabIndex == 3">
+    <ion-card *ngFor="let item of listRequestCompleted" (click)="detailPage($event)" id="{{item._id}}" class="request-card">
+      <ion-item lines="none" class="request-card-item">
+        <ion-label slot="start" class="update-time">{{formatString(item.updatedAt)}}</ion-label>
+        <ion-badge slot="end" class="badge-status badge-success">{{'REQUEST.status_done' | translate }}</ion-badge>
+      </ion-item>
+      <ion-text class="">
+        <p class="request-title">{{item.title}}</p>
+      </ion-text>
+    </ion-card>
+  </ion-list>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content
+      class="infinite-scroll"
+      loadingSpinner="bubbles"
+      loadingText="{{ 'REQUEST.loadding_more' | translate }}"
+    >
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+  <div class="bottom-frame-wrapper">
+    <div class="bottom-frame"></div>
+  </div>
 </ion-content>
-
-<!-- <ion-content>
-  <ion-segment [(ngModel)]="modeService">
-    <ion-segment-button checked class="button-tab-custom" value="All">
-      <ion-label class="margin-none">{{ 'REQUEST.tab_all' | translate }}</ion-label>
-    </ion-segment-button>
-    <ion-segment-button class="button-tab-custom" value="Registration">
-      <ion-label class="margin-none">{{ 'REQUEST.tab_registration' | translate }}</ion-label>
-    </ion-segment-button>
-  </ion-segment>
-  <section class="custom-tab" [style.height.px]="heightScreen">
-    <div [ngSwitch]="modeService" class="width-100">
-      <div *ngSwitchCase="'All'" class="width-100">
-      <ion-content class="list-request-content" [style.height.px]="heightScreenSub">
-        <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-            <ion-refresher-content
-            pullingIcon="arrow-dropdown"
-            pullingText="{{ 'REQUEST.pull_to_refresh' | translate }}"
-            refreshingSpinner="circles"
-            refreshingText="Refreshing...">
-            </ion-refresher-content>
-        </ion-refresher>
-        <ion-list class="list-view-custom">
-          <ion-item class="list-request-all-item" lines="none" *ngFor="let item of listRequestAll" (click)="detailPage($event)" id="{{item._id}}">
-            <ion-avatar slot="start" *ngIf="item.status == 'new'" class="margin-less">
-              <img src="../../../assets/request/Wait.png">
-              <ion-label class="avatar-done">{{ 'REQUEST.status_new' | translate }}</ion-label>
-            </ion-avatar>
-            <ion-avatar slot="start" *ngIf="item.status == 'cancelled'" class="margin-less">
-              <img src="../../../assets/request/Cancel.png">
-              <ion-label class="avatar-done">{{ 'REQUEST.status_cancelled' | translate }}</ion-label>
-            </ion-avatar>
-            <ion-avatar slot="start" *ngIf="item.status == 'processing'" class="margin-less">
-                <img src="../../../assets/request/Processing.png">
-                <ion-label class="avatar-done">{{ 'REQUEST.status_processing' | translate }}</ion-label>
-            </ion-avatar>
-            <ion-avatar slot="start" *ngIf="item.status == 'completed'" class="margin-less">
-                <img src="../../../assets/request/Done.png">
-                <ion-label class="avatar-done">{{ 'REQUEST.status_done' | translate }}</ion-label>
-            </ion-avatar>
-            <ion-label>
-              <ion-label class="title-request-all-item ion-text-wrap">{{item.title}}</ion-label>
-              <ion-label class="node-request-all-item">
-                <p class="ion-float-left">{{formatString(item.updatedAt)}}</p>
-              </ion-label>
-            </ion-label>
-          </ion-item>
-        </ion-list>
-        <ion-infinite-scroll threshold="50px" (ionInfinite)="loadData($event)">
-          <ion-infinite-scroll-content class="custom-infinite-scroll"
-            loadingSpinner="bubbles"
-            loadingText="{{ 'REQUEST.loadding_more' | translate }}">
-          </ion-infinite-scroll-content>
-        </ion-infinite-scroll>
-      </ion-content>
-      <section class="full-width function-section">
-          <ion-button expand="block" class="amo-button-custom" (click)="addRequest()">{{ 'REQUEST.btn_add_request' | translate }}</ion-button>
-        </section>
-    </div>
-    <div *ngSwitchCase="'Registration'" class="width-100">
-      <ion-list class="list-view-custom">
-          <ion-item class="list-request-all-item" lines="none" *ngFor="let itemServiceLog of listRequestRegistion">
-            <ion-card class="custom-card-avatar">
-              <img class="service-image-custom-avatar" src="../../../assets/request/Registion.png"/>
-              <ion-row class="ion-no-padding">
-                <ion-col class="ion-text-center service-text-avatart-custom avatar-done" >
-                  {{ 'REQUEST.status_done' | translate }}
-                </ion-col>
-              </ion-row>
-            </ion-card>
-            <ion-label class="item-content-custom">
-              <ion-label class="title-request-all-item ion-text-wrap">{{itemServiceLog.service.title}}</ion-label>
-              <ion-label class="node-request-all-item">
-                <p class="ion-float-left">{{itemServiceLog.createdAt}}</p>
-              </ion-label>
-            </ion-label>
-          </ion-item>
-        </ion-list>
-        <section class="full-width function-section">
-          <ion-button expand="block" class="amo-button-custom">{{ 'REQUEST.btn_add_new_registration' | translate }}</ion-button>
-        </section>
-      </div>
-    </div>
-  </section>
-</ion-content> -->
-
+<ion-toolbar class="toolbar-button">
+  <ion-fab-button color="danger" class="reflect-button" (click)="addRequest()">
+    <ion-icon name="custom-archive" class="reflect-icon" src="assets/icon/request/reflect.svg"></ion-icon>
+  </ion-fab-button>
+  <ion-label class="reflect-label">{{ 'REQUEST.reflect_lable' | translate }}</ion-label>
+</ion-toolbar>

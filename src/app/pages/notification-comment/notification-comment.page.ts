@@ -62,7 +62,6 @@ export class NotificationCommentPage implements OnInit{
           self.apartment = result.userApartments[0]._id;
         }
         self.loading.dismiss();
-        console.log(result.userApartments);
         self.getArticleComment(self.currentPage, self.numberRecordOnPage, self.articleID, '', null)
     },
     error => {

@@ -1,163 +1,52 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar class="header-toolbar">
-    <ion-buttons slot="start">
-      <ion-back-button text="" icon="arrow-back-outline"></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
+<ion-header class="ion-no-border payment-header">
+  <ion-button class="button-history" (click)="paymentHistoryClick()">
+    <img class="icon-history" src="assets/icon/payment/time-circle.svg" />
+    <ion-label class="label_history">{{ 'PAYMENT.label_history' | translate }}</ion-label>
+  </ion-button>
+  <ion-label class="header-sub-title">{{ 'PAYMENT.need_payment' | translate }}</ion-label>
+  <ion-label class="header-title">{{ formatMoney(totalPayment) }}đ</ion-label>
 </ion-header>
 
-<ion-content [scrollEvents]="false" class="no-scroll" slot="fixed">
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content
-    pullingIcon="arrow-dropdown"
-    pullingText="{{ 'PAYMENT.pull_to_refresh' | translate }}"
-    refreshingSpinner="circles"
-    refreshingText="Refreshing...">
+<ion-content class="has-header payment-container">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullMin="150">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="{{ 'PAYMENT.pull_to_refresh' | translate }}"
+      refreshingSpinner="circles" refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>
-  <div class="header-infor">
-    <div class="title-content">
-      <ion-chip class="title-chip">
-        <ion-label class="title-chip-label">{{ 'PAYMENT.title' | translate }}</ion-label>
-      </ion-chip>
-    </div>
-  </div>
-  <div class="amountPay-content">
-      <div class="function-content-button">
-          <div class="ion-float-left div-amountPay-content-big">
-              <ion-row class="content-item">
-                <ion-col class="col-label">
-                  <ion-label class="content-item-label">{{ 'PAYMENT.amount_to_pay' | translate }}</ion-label>
-                </ion-col>
-                <ion-col class="col-amount" size="auto">
-                  <ion-label class="amountPay-number ion-float-right">{{formatMoney(totalPayment)}} <span class="amountPay-unit">vnd</span></ion-label>
-                </ion-col>
-              </ion-row>
-          </div>
-      </div>
-  </div>
-  
-  <super-tabs activeTabIndex="0" [config]="{ debug: false, sideMenu: 'left', allowElementScroll: true, nativeSmoothScroll: true }" class="super-tabs-content">
-    <super-tabs-toolbar no-border class="segment-toolbar" slot="top" scrollable="true" scrollable-padding="false">
-      <super-tab-button *ngFor="let item of listDataConvert">
-        <ion-label class="super-tab-button-label">{{item.title}}</ion-label>
-      </super-tab-button>
-    </super-tabs-toolbar>
-    <super-tabs-container autoScrollTop>      
-      <super-tab class="ion-padding" *ngFor="let data_tabs of listDataConvert">
-        <ion-card class="segment-content-card" >
-          <ion-card-content class="segment-card-content" *ngFor="let item of data_tabs.data" (click)="detailPage($event)" id="{{item._id}}">
-            <ion-row>
-              <!-- <ion-col>
-                <ion-badge class="badge-primary" *ngIf="item.status == 'pending'">{{ 'PAYMENT.status_pending' | translate }}</ion-badge>
-                <ion-badge class="badge-lightred" *ngIf="item.status == 'publish'">{{ 'PAYMENT.badge_unpaid' | translate }}</ion-badge>
-                <ion-badge class="badge-success" *ngIf="item.status == 'completed'">{{ 'PAYMENT.status_done' | translate }}</ion-badge>
-                <ion-badge class="badge-lightred" *ngIf="item.status == 'outdate'">{{ 'PAYMENT.badge_outdate' | translate }}</ion-badge>
-              </ion-col> -->
-              <!-- <ion-col size="auto">
-                <ion-icon name="ellipsis-horizontal" class="ion-float-right"></ion-icon>
-              </ion-col> -->
-            </ion-row>
-            <ion-row>
-              <ion-col>
-                <ion-card-title class="segment-card-title">{{item.payment == null ? "N/A" : item.payment.title}}</ion-card-title>
-              </ion-col>
-              <ion-col size="auto">
-                <ion-label class="payment-fee ion-float-right">{{formatMoney(item.total)}}</ion-label>
-              </ion-col>
-            </ion-row>
-            <ion-row class="information-row">
-              <ion-col class="information-col">
-                <ion-list class="text-node information-node">
-                  <ion-card class="ion-float-left card-bottom">
-                    <span class="image-caption-big" class="card-bottom-label">{{formatString(item.updatedAt)}}</span>
-                    <!-- <ion-icon item-start name="custom-oval" class="card-bottom-icon custom-oval" src="assets/icon/custom-oval.svg"></ion-icon> -->
-                  </ion-card>
-                  <ion-card class="ion-float-left card-bottom margin-left-0">
-                    <span class="image-caption-big" class="card-bottom-label"> {{ formatMoney(item.paidAmount) }} </span>
-                  </ion-card>
-                  <ion-card class="ion-float-left card-bottom margin-left-0">
-                    <span class="image-caption-big" class="card-bottom-label"> {{ item.apartment.title }} </span>
-                  </ion-card>
-                  <ion-card class="ion-float-left card-bottom margin-left-0">
-                    <span class="image-caption-big" class="card-bottom-label"> {{ item.campaign.title }} </span>
-                  </ion-card>
-                </ion-list>
-              </ion-col>
-              <!-- <ion-col  size="auto" class="">
-                <ion-button class="btn-payment ion-float-right" *ngIf="item.status == 'publish'">{{ 'PAYMENT.pay_now' | translate }}</ion-button>
-              </ion-col> -->
-            </ion-row>
-          </ion-card-content>
-        </ion-card>
-      </super-tab>
-    </super-tabs-container>
-  </super-tabs>
- 
+  <ion-item lines="none" class="payment-list-title">
+    <ion-label>{{"PAYMENT.payment_list_title" | translate}}</ion-label>
+  </ion-item>
 
-  <!-- <div slot="fixed">
-    <div class="balance-content">
-      <div class="title-blance-content">
-        <p>{{ 'PAYMENT.amount_to_pay' | translate }}</p>
-      </div>
-      <div class="total-cash-blance-content">
-        <p>0</p>
-        <p class="total-cash-blance-content-unit">{{ 'PAYMENT.vnd' | translate }}</p>
-      </div>
-      <div class="clear-balance-rect">
-      </div>
-      <div class="function-content-button">
-        <div class="ion-float-left div-avatar-content-big" (click)="paymentNow()">
-            <img class="img-avatar-big" src="../../../assets/common/pay_now.png">
-          <ion-label class="image-caption-big">{{ 'PAYMENT.pay_now' | translate }}</ion-label>
-        </div>
-        <div class="ion-float-left div-avatar-content-big" (click)="paymentNow()">
-            <img class="img-avatar-big" src="../../../assets/common/topup.png">
-          <ion-label class="image-caption-big">{{ 'PAYMENT.top_up' | translate }}</ion-label>
-        </div>
-        <div class="ion-float-right div-avatar-content-big" (click)="paymentNow()">
-            <img class="img-avatar-big" src="../../../assets/common/request_icon.png">
-          <ion-label class="image-caption-big">{{ 'PAYMENT.complain' | translate }}</ion-label>
-        </div>
-      </div>
-    </div>
-    <ion-content class="list-payment-content" [style.height.px]="heightScreen">
-      <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-          <ion-refresher-content
-          pullingIcon="arrow-dropdown"
-          pullingText="{{ 'PAYMENT.pull_to_refresh' | translate }}"
-          refreshingSpinner="circles"
-          refreshingText="Refreshing...">
-          </ion-refresher-content>
-      </ion-refresher>
-      <ion-list class="list-view-custom">
-        <ion-item class="list-payment-item" lines="none" *ngFor="let item of listPaymentBills"
-          (click)="detailPage($event)" id="{{item._id}}">
-          <ion-avatar slot="start" *ngIf="item.status == 'publish'">
-            <img src="../../../assets/request/Wait.png">
-            <ion-label class="avatar-done">{{ 'PAYMENT.status_new' | translate }}</ion-label>
-          </ion-avatar>
-          <ion-avatar slot="start" *ngIf="item.status == 'pending'">
-            <img src="../../../assets/request/Processing.png">
-            <ion-label class="avatar-done">{{ 'PAYMENT.status_pending' | translate }}</ion-label>
-          </ion-avatar>
-          <ion-avatar slot="start" *ngIf="item.status == 'completed'">
-            <img src="../../../assets/request/Done.png">
-            <ion-label class="avatar-done">{{ 'PAYMENT.status_done' | translate }}</ion-label>
-          </ion-avatar>
-          <ion-label>
-            <ion-label class="title-payment-item">{{item.payment == null ? "N/A" : item.payment.title}}</ion-label>
-            <ion-label class="total-payment-item">{{formatMoney(item.total)}} vnd</ion-label>
-            <ion-label class="total-payment-item">{{item.apartment.title}}
-                - {{item.campaign.title}}</ion-label>
-            <ion-label class="node-payment-item">
-              <p class="ion-float-left">{{formatString(item.updatedAt)}}</p>
-              <ion-button slot="end" class="amo-button-custom button-pay-now ion-float-right" (click)="paymentClick($event)" id="{{item._id}}" *ngIf="item.status != 'completed'">{{ 'PAYMENT.pay_now' | translate }}</ion-button>
-            </ion-label>
+  <ion-list class="payment-ion-list" [style.height.px]="heightScreen">
+    <ion-card *ngFor="let item of listPaymentBills" (click)="detailPage(item._id)" class="payment-card">
+      <ion-item lines="none" class="payment-card-item">
+        <ng-container [ngSwitch]="item.status">
+          <ion-label slot="start" class="update-time" *ngSwitchCase="'publish'">
+            {{formatString(item.updatedAt)}} - {{ 'PAYMENT.paid_in_days' | translate: { inOutDays: item.inOutDays } }}
           </ion-label>
-        </ion-item>
-      </ion-list>
-      
-    </ion-content>
-  </div> -->
+          <ion-label slot="start" class="update-time" *ngSwitchCase="'outdate'">
+            {{formatString(item.updatedAt)}} - {{ 'PAYMENT.paid_out_days' | translate: { inOutDays: item.inOutDays } }}
+          </ion-label>
+          <ion-label slot="start" class="update-time" *ngSwitchDefault>{{formatString(item.updatedAt)}}</ion-label>
+        </ng-container>
+        <ion-badge class="badge-status badge-unpaid" *ngIf="item.status == 'publish'">{{ 'PAYMENT.badge_unpaid' | translate }}</ion-badge>
+        <ion-badge class="badge-status badge-outdate" *ngIf="item.status == 'outdate'">{{ 'PAYMENT.badge_outdate' | translate }}</ion-badge>
+      </ion-item>
+      <ion-text class="">
+        <p class="payment-title">{{item?.payment?.title}}</p>
+      </ion-text>
+      <div class="devider-line-payment"></div>
+
+      <ion-item lines="none" class="payment-money-item">
+        <ion-label fixed slot="start" class="money-title">{{"PAYMENT.number_money_label" | translate}} </ion-label>
+        <ion-label class="mone-number">{{formatMoney(item.total)}}đ</ion-label>
+        <ion-button class="btn-paid" slot="end">{{"PAYMENT.btn_paid_label" | translate}}</ion-button>
+      </ion-item>
+    </ion-card>
+  </ion-list>
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content class="custom-infinite-scroll" loadingSpinner="bubbles"
+      loadingText="{{ 'REQUEST.loadding_more' | translate }}">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>

@@ -41,6 +41,7 @@ export class AppComponent{
     private translateConfigService: TranslateConfigService
   ) {
     splashScreen.hide();
+    this.translateConfigService.setLanguageDefault()
     this.initializeApp();
     this.popupThumbnail = "";
     this.popupButtonTitle = "";
@@ -90,6 +91,9 @@ export class AppComponent{
     var resultColorString = 'rgb('+ colorRGB.r +', '+ colorRGB.g +', '+ colorRGB.b +')';
     return resultColorString;
   }
+
+  
+  
 
   addCountPopupConfigClick(){
     this.apiService.countUserPopupConfigClick(this.popupConfigId).subscribe(result => {

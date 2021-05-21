@@ -1,0 +1,15 @@
+<ion-content>
+  <div class="content-container">
+    <ion-item lines="none" class="header-item">
+      <ion-buttons slot="end" class="" (click)="closeModal()" class="btn-close-popup">
+        <ion-icon name="close"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <div style="height: 85vh;width: 100%;">
+      <iframe #iframePayment class='webPage' id="paymentIframe" style="height: 100% !important;" 
+      name= "eventsPage" [src]="urlPayment">
+      </iframe>
+    </div>
+  </div>
+
+</ion-content>

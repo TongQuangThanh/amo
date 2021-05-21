@@ -12,7 +12,7 @@ ion-title.md {
     --background: rgba(33,49,63,0);
 }
 .content-container {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: auto;
     bottom: 0;
@@ -21,7 +21,6 @@ ion-title.md {
     background: #ffffff;
     display: block;
     justify-content: end;
-    z-index: 9999;
 }
 .header-item {
     border-top-left-radius: 24px;
@@ -34,7 +33,7 @@ ion-title.md {
     height: 60px;
 }
 .popup-title {
-    font-family: Nunito Sans;
+    font-family: Open Sans;
     font-style: normal;
     font-weight: bold;
     font-size: 18px;
@@ -43,7 +42,7 @@ ion-title.md {
     color: #21313F;
 }
 .select-title {
-    font-family: Nunito Sans;
+    font-family: Open Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -62,7 +61,7 @@ ion-title.md {
     display: grid;
     align-items: center;
     text-align: center; 
-    font-family: Nunito Sans;
+    font-family: Open Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -96,7 +95,7 @@ ion-title.md {
     font-size: 20px;
 }
 .active {
-    color: #009AC9;
+    color: #E64037;
     font-size: 20px;
 }
 .btn-close {

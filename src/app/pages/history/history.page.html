@@ -1,97 +1,485 @@
-<ion-header class="ion-no-border">
-    <ion-toolbar>
-      <ion-title>{{ 'SERVICE_35.title' | translate }}</ion-title>
-      <ion-buttons slot="start">
-        <ion-back-button text="" icon="chevron-back"></ion-back-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-content>
-    <super-tabs class="class-super-tabs" activeTabIndex="0" [config]="{ debug: false, sideMenu: 'left', allowElementScroll: true, nativeSmoothScroll: true }">
-      <super-tabs-toolbar slot="top" scrollable="true" scrollable-padding="false">
-        <super-tab-button *ngFor="let object of data_history">
-          <ion-label class="">{{object.title}}</ion-label>
-        </super-tab-button>
-      </super-tabs-toolbar>
-      <super-tabs-container autoScrollTop>
-        <super-tab class="ion-padding hidden-overflow" *ngFor="let object of data_history">
-          <ion-list lines="full" class="ion-no-margin ion-no-padding">
-            <ion-grid class="ion-no-padding scroll-class line-bottom" *ngFor="let data of object.data" id="{{data.id}}">
-              <ion-row class="ion-no-padding">
-                <ion-col class="group-2-col-1 center-div" size="8">
-                  <ion-item lines="none" class="ion-no-padding">
-                    <div>
-                      <ion-label *ngIf="data.status == 'processing'" class="ion-label-1">{{ 'SERVICE_35.status_processing' | translate }}</ion-label>
-                      <ion-label *ngIf="data.status == 'accepted-provider'" class="ion-label-2">{{ 'SERVICE_35.status_accepted_provider' | translate }}</ion-label>
-                      <ion-label *ngIf="data.status == 'accepted-provider-groupon'" class="ion-label-2">{{ 'SERVICE_35.status_accepted_provider_grouppon' | translate }}</ion-label>
-                      <ion-label *ngIf="data.status == 'confirm-user'" class="ion-label-1">{{ 'SERVICE_35.status_wait_user_confirm' | translate }}</ion-label>
-                      <ion-label *ngIf="data.status == 'accepted-user'" class="ion-label-2">{{ 'SERVICE_35.status_accepted_user' | translate }}</ion-label>
-                      <ion-label *ngIf="data.status == 'finish'" class="ion-label-3">{{ 'SERVICE_35.status_finish' | translate }}</ion-label>
-                      <ion-label *ngIf="data.status == 'cancel-user'" class="ion-label-4">{{ 'SERVICE_35.status_cancel_user' | translate }}</ion-label>
-                      <ion-label *ngIf="data.status == 'cancel-provider'" class="ion-label-4">{{ 'SERVICE_35.status_cancel_provider' | translate }}</ion-label>
-                    </div>
-                    <div class="margin-left-10" *ngIf="data.userComplain != ''" (click)="showComplainText($event, data)">
-                      <ion-img src="../assets/icon/svg/complaint.svg" class="img-responsive" alt=""></ion-img>
-                    </div>
-                  </ion-item>
-                </ion-col>
-                <ion-col size="4" (click)="gotoHistoryDetail(data)">
-                  <ion-item class="group-1-text-star" *ngIf="data.status == 'finish' && data.text_rate != ''">
-                    <img class="group-1-icon-star" src="../assets/icon/svg/icon-star.svg"/>
-                    <ion-label class="class-label-rate">{{data.text_rate}}</ion-label>
-                  </ion-item>
-                </ion-col>
-              </ion-row>
-              <ion-row class="ion-no-padding" (click)="gotoHistoryDetail(data)">
-                <ion-col class="group-2-col-1" size="8">
-                  <div class="div-title-row-2-col-1">
-                    <ion-label class="font-weight-bold">{{data.title}}</ion-label>
-                  </div>
-                </ion-col>
-                <ion-col class="group-2-col-1" size="4">
-                  <div class="div-title-row-2-col-2">
-                    <ion-label class="font-weight-bold">{{data.money}}đ</ion-label>
-                  </div>
-                </ion-col>
-              </ion-row>
-              <ion-row *ngIf="data.name != ''" class="ion-no-padding user-order-inf margin-top-10" (click)="gotoHistoryDetail(data)">
-                <ion-col class="" size="12">
-                  <ion-item class="no-border">
-                    <ion-avatar class="avatar-class" slot="start">
-                      <img src="{{data.avatar}}">
-                    </ion-avatar>
-                    <ion-label class="label-name">{{data.name}}</ion-label>
-                  </ion-item>
-                </ion-col>
-              </ion-row>
-              <ion-row class="ion-no-padding">
-                <ion-col (click)="gotoHistoryDetail(data)" size="8" *ngIf="data.status == 'finish' || data.status == 'cancel-provider' || data.status == 'accepted-provider' || data.status == 'accepted-user'">
-                  <div class="div-col-1">
-                    <ion-label class="">{{ 'SERVICE_35.code_orders' | translate }} {{data.code_orders}}</ion-label>
-                  </div>
-                  <div class="div-col-2">
-                    <ion-label class="">{{data.date_time}}</ion-label>
-                  </div>
-                </ion-col>
-                <ion-col class="group-2-col-3" size="4" *ngIf="data.status == 'finish' || data.status == 'cancel-provider' || data.status == 'accepted-provider' || data.status == 'accepted-user'">
-                  <div class="div-button-chat" (click)="moveToChatToShopPage(data)">
-                    <img class="group-1-icon-star" src="../assets/icon/svg/button-chat.svg"/>
-                  </div>
-                </ion-col>
-                <ion-col (click)="gotoHistoryDetail(data)" size="12" *ngIf="data.status != 'finish' && data.status != 'cancel-provider' && data.status != 'accepted-provider' && data.status != 'accepted-user'">
-                  <div class="div-col-1">
-                    <ion-label class="">{{ 'SERVICE_35.code_orders' | translate }} {{data.code_orders}}</ion-label>
-                  </div>
-                  <div class="div-col-2">
-                    <ion-label class="">{{data.date_time}}</ion-label>
-                  </div>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </ion-list>
-        </super-tab>
-      </super-tabs-container>
-    </super-tabs>
-  </ion-content>
-  
+<ion-header class="ion-no-border payment-history-header">
+  <ion-buttons class="back-button">
+    <ion-back-button color="light" text="" icon="chevron-back" class="ion-back-button" (click)="goback()"></ion-back-button>
+  </ion-buttons>
+  <ion-label class="header-title">{{ 'SERVICE_35.title' | translate }}</ion-label>
+  <super-tabs [activeTabIndex]="activeTabIndex"
+    [config]="{ debug: false, sideMenu: 'left', allowElementScroll: true, nativeSmoothScroll: true }" class="super-tabs-content"
+    (tabChange)="onTabChange($event)">
+    <super-tabs-toolbar slot="top" scrollable="true" no-border scrollable-padding="false" class="super-tabs-toolbar">
+      <!-- tab_all_title -->
+      <super-tab-button class="super-tab-button">
+        <ion-label class="tab-button-label">{{ 'SERVICE_35.tab_all_title' | translate }}</ion-label>
+        <ion-label class="under_line"></ion-label>
+      </super-tab-button>
+      <!-- status_processing -->
+      <super-tab-button class="super-tab-button">
+        <ion-label class="tab-button-label">{{ 'SERVICE_35.status_processing' | translate }}</ion-label>
+        <ion-label class="under_line"></ion-label>
+      </super-tab-button>
+      <!-- status_accepted_provider -->
+      <super-tab-button class="super-tab-button">
+        <ion-label class="tab-button-label">{{ 'SERVICE_35.status_accepted_provider' | translate }}</ion-label>
+        <ion-label class="under_line"></ion-label>
+      </super-tab-button>
+      <!-- status_accepted_user -->
+      <super-tab-button class="super-tab-button">
+        <ion-label class="tab-button-label">{{ 'SERVICE_35.status_accepted_user' | translate }}</ion-label>
+        <ion-label class="under_line"></ion-label>
+      </super-tab-button>
+      <!-- status_finish -->
+      <super-tab-button class="super-tab-button">
+        <ion-label class="tab-button-label">{{ 'SERVICE_35.status_finish' | translate }}</ion-label>
+        <ion-label class="under_line"></ion-label>
+      </super-tab-button>
+      <!-- status_cancel_user -->
+      <super-tab-button class="super-tab-button">
+        <ion-label class="tab-button-label">{{ 'SERVICE_35.status_cancel_user' | translate }}</ion-label>
+        <ion-label class="under_line"></ion-label>
+      </super-tab-button>
+      <!-- status_cancel_provider -->
+      <super-tab-button class="super-tab-button">
+        <ion-label class="tab-button-label">{{ 'SERVICE_35.status_cancel_provider' | translate }}</ion-label>
+        <ion-label class="under_line"></ion-label>
+      </super-tab-button>
+    </super-tabs-toolbar>
+    <super-tabs-container>
+      <super-tab></super-tab>
+    </super-tabs-container>
+  </super-tabs>
+</ion-header>
+
+<ion-content [scrollEvents]="false" class=" payment-history-content" slot="fixed">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="{{ 'PAYMENT.pull_to_refresh' | translate }}"
+      refreshingSpinner="circles" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <!-- TAB ALL -->
+  <ion-list *ngIf="activeTabIndex == 0" class="history-ion-list">
+    <div *ngFor="let item of listHistory">
+      <ion-card class="payment-card"
+        (click)="item.showActions = !item.showActions && item.status !== 'cancel-user' && item.status !== 'cancel-provider'">
+        <ion-item lines="none" class="payment-card-item">
+          <ion-badge class="badge-status badge-processing" *ngIf="item.status == 'processing'">{{
+            'SERVICE_35.status_processing' |
+            translate }}
+          </ion-badge>
+          <ion-badge class="badge-status badge-accepted-provider" *ngIf="item.status == 'accepted-provider'">{{
+            'SERVICE_35.status_accepted_provider' |
+            translate }}
+          </ion-badge>
+          <ion-badge class="badge-status badge-accepted-user" *ngIf="item.status == 'accepted-user'">{{
+            'SERVICE_35.status_accepted_user' |
+            translate }}
+          </ion-badge>
+          <ion-badge class="badge-status badge-finish" *ngIf="item.status == 'finish'">{{ 'SERVICE_35.status_finish' |
+            translate }}
+          </ion-badge>
+          <ion-badge class="badge-status badge-cancel-user" *ngIf="item.status == 'cancel-user'">{{
+            'SERVICE_35.status_cancel_user' |
+            translate }}
+          </ion-badge>
+          <ion-badge class="badge-status badge-cancel-provider" *ngIf="item.status == 'cancel-provider'">{{
+            'SERVICE_35.status_cancel_provider' |
+            translate }}
+          </ion-badge>
+        </ion-item>
+        <ion-item lines="none" class="shop-header">
+          <img slot="start" class="shop-icon" [src]="item.icon" />
+          <ion-text class="payment-title">{{item?.title}}</ion-text>
+        </ion-item>
+        <ion-item lines="none" class="shop-item-address">
+          <ion-text class="shop-address">{{item?.address}}</ion-text>
+        </ion-item>
+        <div class="devider-line-detail-payment"></div>
+        <!-- List services -->
+        <ion-list>
+          <ion-item *ngFor="let service of item.listOrder" lines="none" class="payment-money-item">
+            <ion-label class="service-title item-text-wrap">{{ service.number }}x {{ service.shopProduct.title }}
+            </ion-label>
+            <ion-label class="service-price">{{ formatMoney(service.price * service.number) }}đ</ion-label>
+          </ion-item>
+        </ion-list>
+
+        <div class="devider-line-detail-payment"></div>
+        <ion-item lines="none" class="payment-money-item">
+          <ion-label fixed slot="start" class="money-title">
+            {{"SERVICE_35.total_cost" | translate}} ({{item.totalOrders}} {{"SERVICE_35.total_cost_service_title" | translate}}
+          </ion-label>
+          <ion-label class="mone-number">{{formatMoney(item.totalCost)}}đ</ion-label>
+        </ion-item>
+        <div class="button-expand">
+          <img *ngIf="item.status !== 'cancel-user' && item.status !== 'cancel-provider'"
+            src="{{!item.showActions ? '../assets/icon/market/down.svg' : '../assets/icon/market/up.svg'}}" />
+        </div>
+      </ion-card>
+
+      <!-- ACTION SECTION -->
+      <section class="full-width function-section shadow-section" *ngIf="item.showActions">
+        <div class="col-6 padding-right-5 padding-left-5" *ngIf="item.status == 'accepted-user' || item.status == 'accepted-provider'">
+          <ion-button expand="block" class="amo-button-custom-1 padding-0 font-weight-bold" (click)="changeScheduleOrderClick(item)">
+            {{ 'PAY_15.text_button_reschedule' | translate }}
+          </ion-button>
+        </div>
+        <div class="col-6 padding-right-5 padding-left-5" *ngIf="item.status == 'accepted-user' || item.status == 'accepted-provider'">
+          <ion-button expand="block" class="amo-button-custom-3 padding-0 font-weight-bold" (click)="moveToChatToShopPage(item)">
+            {{ 'PAY_15.text_button_contact' | translate }}
+          </ion-button>
+        </div>
+
+        <div class="col-12 padding-right-5 padding-left-5" *ngIf="item.status == 'processing'" (click)="eventButtonCancel(item._id)">
+          <ion-button expand="block" class="amo-button-custom-1 padding-0 font-weight-bold">{{
+            'PAY_15.text_button_cancel' | translate }}</ion-button>
+        </div>
+
+        <div class="col-6 padding-right-5 padding-left-5" *ngIf="item.status == 'finish'">
+          <ion-button expand="block" class="amo-button-custom-1 padding-0 font-weight-bold" (click)="ratingOrderClick(item._id)">
+            {{ 'PAY_15.label_rating' | translate }}
+          </ion-button>
+        </div>
+        <div class="col-6 padding-right-5 padding-left-5" *ngIf="item.status == 'finish'">
+          <ion-button expand="block" class="amo-button-custom-3 padding-0 font-weight-bold" (click)="paymentOrderClick(item._id)">
+            {{ 'PAY_15.text_button_payment' | translate }}
+          </ion-button>
+        </div>
+      </section>
+    </div>
+    <div class="not-found-order" *ngIf="!listHistory || listHistory.length == 0">
+      {{ 'PAY_15.not_found_order' | translate }}
+    </div>
+  </ion-list>
+  <!-- END TAB ALL -->
+
+  <!-- TAB PROCESSING -->
+  <ion-list *ngIf="activeTabIndex == 1" class="history-ion-list">
+    <div *ngFor="let item of listOrderProcessing">
+      <ion-card class="payment-card" (click)="item.showActions = !item.showActions">
+        <ion-item lines="none" class="payment-card-item">
+          <ion-badge class="badge-status badge-processing" *ngIf="item.status == 'processing'">{{
+            'SERVICE_35.status_processing' |
+            translate }}
+          </ion-badge>
+        </ion-item>
+        <ion-item lines="none" class="shop-header">
+          <img slot="start" class="shop-icon" [src]="item.icon" />
+          <ion-text class="payment-title">{{item?.title}}</ion-text>
+        </ion-item>
+        <ion-item lines="none" class="shop-item-address">
+          <ion-text class="shop-address">{{item?.address}}</ion-text>
+        </ion-item>
+        <div class="devider-line-detail-payment"></div>
+        <!-- List services -->
+        <ion-list>
+          <ion-item *ngFor="let service of item.listOrder" lines="none" class="payment-money-item">
+            <ion-label class="service-title item-text-wrap">{{ service.number }}x {{ service.shopProduct.title }}
+            </ion-label>
+            <ion-label class="service-price">{{ formatMoney(service.price * service.number) }}đ</ion-label>
+          </ion-item>
+        </ion-list>
+
+        <div class="devider-line-detail-payment"></div>
+        <ion-item lines="none" class="payment-money-item">
+          <ion-label fixed slot="start" class="money-title">
+            {{"SERVICE_35.total_cost" | translate}} ({{item.totalOrders}} {{"SERVICE_35.total_cost_service_title" | translate}}
+          </ion-label>
+          <ion-label class="mone-number">{{formatMoney(item.totalCost)}}đ</ion-label>
+        </ion-item>
+        <div class="button-expand">
+          <img *ngIf="item.status !== 'cancel-user' && item.status !== 'cancel-provider'"
+            src="{{!item.showActions ? '../assets/icon/market/down.svg' : '../assets/icon/market/up.svg'}}" />
+        </div>
+      </ion-card>
+
+      <!-- ACTION SECTION -->
+      <section class="full-width function-section shadow-section" *ngIf="item.showActions">
+        <div class="col-12 padding-right-5 padding-left-5" *ngIf="item.status == 'processing'" (click)="eventButtonCancel(item._id)">
+          <ion-button expand="block" class="amo-button-custom-1 padding-0 font-weight-bold">{{
+            'PAY_15.text_button_cancel' | translate }}</ion-button>
+        </div>
+      </section>
+    </div>
+    <div class="not-found-order" *ngIf="!listOrderProcessing || listOrderProcessing.length == 0">
+      {{ 'PAY_15.not_found_order' | translate }}
+    </div>
+  </ion-list>
+  <!-- END TAB PROCESSING -->
+
+  <!-- TAB ACCEPT PROVIDER -->
+  <ion-list *ngIf="activeTabIndex == 2" class="history-ion-list">
+    <div *ngFor="let item of listOrderAcceptedProvider">
+      <ion-card class="payment-card" (click)="item.showActions = !item.showActions">
+        <ion-item lines="none" class="payment-card-item">
+          <ion-badge class="badge-status badge-accepted-provider" *ngIf="item.status == 'accepted-provider'">{{
+            'SERVICE_35.status_accepted_provider' |
+            translate }}
+          </ion-badge>
+        </ion-item>
+        <ion-item lines="none" class="shop-header">
+          <img slot="start" class="shop-icon" [src]="item.icon" />
+          <ion-text class="payment-title">{{item?.title}}</ion-text>
+        </ion-item>
+        <ion-item lines="none" class="shop-item-address">
+          <ion-text class="shop-address">{{item?.address}}</ion-text>
+        </ion-item>
+        <div class="devider-line-detail-payment"></div>
+        <!-- List services -->
+        <ion-list>
+          <ion-item *ngFor="let service of item.listOrder" lines="none" class="payment-money-item">
+            <ion-label class="service-title item-text-wrap">{{ service.number }}x {{ service.shopProduct.title }}
+            </ion-label>
+            <ion-label class="service-price">{{ formatMoney(service.price * service.number) }}đ</ion-label>
+          </ion-item>
+        </ion-list>
+
+        <div class="devider-line-detail-payment"></div>
+        <ion-item lines="none" class="payment-money-item">
+          <ion-label fixed slot="start" class="money-title">
+            {{"SERVICE_35.total_cost" | translate}} ({{item.totalOrders}} {{"SERVICE_35.total_cost_service_title" | translate}}
+          </ion-label>
+          <ion-label class="mone-number">{{formatMoney(item.totalCost)}}đ</ion-label>
+        </ion-item>
+        <div class="button-expand">
+          <img *ngIf="item.status !== 'cancel-user' && item.status !== 'cancel-provider'"
+            src="{{!item.showActions ? '../assets/icon/market/down.svg' : '../assets/icon/market/up.svg'}}" />
+        </div>
+      </ion-card>
+
+      <!-- ACTION SECTION -->
+      <section class="full-width function-section shadow-section" *ngIf="item.showActions">
+        <div class="col-6 padding-right-5 padding-left-5" *ngIf="item.status == 'accepted-user' || item.status == 'accepted-provider'">
+          <ion-button expand="block" class="amo-button-custom-1 padding-0 font-weight-bold" (click)="changeScheduleOrderClick(item)">
+            {{ 'PAY_15.text_button_reschedule' | translate }}
+          </ion-button>
+        </div>
+        <div class="col-6 padding-right-5 padding-left-5" *ngIf="item.status == 'accepted-user' || item.status == 'accepted-provider'">
+          <ion-button expand="block" class="amo-button-custom-3 padding-0 font-weight-bold" (click)="moveToChatToShopPage(item)">
+            {{ 'PAY_15.text_button_contact' | translate }}
+          </ion-button>
+        </div>
+      </section>
+    </div>
+    <div class="not-found-order" *ngIf="!listOrderAcceptedProvider || listOrderAcceptedProvider.length == 0">
+      {{ 'PAY_15.not_found_order' | translate }}
+    </div>
+  </ion-list>
+  <!-- END TAB ACCEPT PROVIDER -->
+
+  <!-- TAB ACCEPT USER -->
+  <ion-list *ngIf="activeTabIndex == 3" class="history-ion-list">
+    <div *ngFor="let item of listOrderAcceptedUser">
+      <ion-card class="payment-card" (click)="item.showActions = !item.showActions">
+        <ion-item lines="none" class="payment-card-item">
+          <ion-badge class="badge-status badge-accepted-user" *ngIf="item.status == 'accepted-user'">{{
+            'SERVICE_35.status_accepted_user' |
+            translate }}
+          </ion-badge>
+        </ion-item>
+        <ion-item lines="none" class="shop-header">
+          <img slot="start" class="shop-icon" [src]="item.icon" />
+          <ion-text class="payment-title">{{item?.title}}</ion-text>
+        </ion-item>
+        <ion-item lines="none" class="shop-item-address">
+          <ion-text class="shop-address">{{item?.address}}</ion-text>
+        </ion-item>
+        <div class="devider-line-detail-payment"></div>
+        <!-- List services -->
+        <ion-list>
+          <ion-item *ngFor="let service of item.listOrder" lines="none" class="payment-money-item">
+            <ion-label class="service-title item-text-wrap">{{ service.number }}x {{ service.shopProduct.title }}
+            </ion-label>
+            <ion-label class="service-price">{{ formatMoney(service.price * service.number) }}đ</ion-label>
+          </ion-item>
+        </ion-list>
+
+        <div class="devider-line-detail-payment"></div>
+        <ion-item lines="none" class="payment-money-item">
+          <ion-label fixed slot="start" class="money-title">
+            {{"SERVICE_35.total_cost" | translate}} ({{item.totalOrders}} {{"SERVICE_35.total_cost_service_title" | translate}}
+          </ion-label>
+          <ion-label class="mone-number">{{formatMoney(item.totalCost)}}đ</ion-label>
+        </ion-item>
+        <div class="button-expand">
+          <img *ngIf="item.status !== 'cancel-user' && item.status !== 'cancel-provider'"
+            src="{{!item.showActions ? '../assets/icon/market/down.svg' : '../assets/icon/market/up.svg'}}" />
+        </div>
+      </ion-card>
+
+      <!-- ACTION SECTION -->
+      <section class="full-width function-section shadow-section" *ngIf="item.showActions">
+        <div class="col-6 padding-right-5 padding-left-5" *ngIf="item.status == 'accepted-user' || item.status == 'accepted-provider'">
+          <ion-button expand="block" class="amo-button-custom-1 padding-0 font-weight-bold" (click)="changeScheduleOrderClick(item)">
+            {{ 'PAY_15.text_button_reschedule' | translate }}
+          </ion-button>
+        </div>
+        <div class="col-6 padding-right-5 padding-left-5" *ngIf="item.status == 'accepted-user' || item.status == 'accepted-provider'">
+          <ion-button expand="block" class="amo-button-custom-3 padding-0 font-weight-bold" (click)="moveToChatToShopPage(item)">
+            {{ 'PAY_15.text_button_contact' | translate }}
+          </ion-button>
+        </div>
+      </section>
+    </div>
+    <div class="not-found-order" *ngIf="!listOrderAcceptedUser || listOrderAcceptedUser.length == 0">
+      {{ 'PAY_15.not_found_order' | translate }}
+    </div>
+  </ion-list>
+  <!-- END TAB ACCEPT USER -->
+
+  <!-- TAB FINISHED -->
+  <ion-list *ngIf="activeTabIndex == 4" class="history-ion-list">
+    <div *ngFor="let item of listOrderFinished">
+      <ion-card class="payment-card" (click)="item.showActions = !item.showActions">
+        <ion-item lines="none" class="payment-card-item">
+          <ion-badge class="badge-status badge-finish" *ngIf="item.status == 'finish'">{{ 'SERVICE_35.status_finish' |
+            translate }}
+          </ion-badge>
+        </ion-item>
+        <ion-item lines="none" class="shop-header">
+          <img slot="start" class="shop-icon" [src]="item.icon" />
+          <ion-text class="payment-title">{{item?.title}}</ion-text>
+        </ion-item>
+        <ion-item lines="none" class="shop-item-address">
+          <ion-text class="shop-address">{{item?.address}}</ion-text>
+        </ion-item>
+        <div class="devider-line-detail-payment"></div>
+        <!-- List services -->
+        <ion-list>
+          <ion-item *ngFor="let service of item.listOrder" lines="none" class="payment-money-item">
+            <ion-label class="service-title item-text-wrap">{{ service.number }}x {{ service.shopProduct.title }}
+            </ion-label>
+            <ion-label class="service-price">{{ formatMoney(service.price * service.number) }}đ</ion-label>
+          </ion-item>
+        </ion-list>
+
+        <div class="devider-line-detail-payment"></div>
+        <ion-item lines="none" class="payment-money-item">
+          <ion-label fixed slot="start" class="money-title">
+            {{"SERVICE_35.total_cost" | translate}} ({{item.totalOrders}} {{"SERVICE_35.total_cost_service_title" | translate}}
+          </ion-label>
+          <ion-label class="mone-number">{{formatMoney(item.totalCost)}}đ</ion-label>
+        </ion-item>
+        <div class="button-expand">
+          <img *ngIf="item.status !== 'cancel-user' && item.status !== 'cancel-provider'"
+            src="{{!item.showActions ? '../assets/icon/market/down.svg' : '../assets/icon/market/up.svg'}}" />
+        </div>
+      </ion-card>
+
+      <!-- ACTION SECTION -->
+      <section class="full-width function-section shadow-section" *ngIf="item.showActions">
+        <div class="col-6 padding-right-5 padding-left-5" *ngIf="item.status == 'finish'">
+          <ion-button expand="block" class="amo-button-custom-1 padding-0 font-weight-bold" (click)="ratingOrderClick(item._id)">
+            {{ 'PAY_15.label_rating' | translate }}
+          </ion-button>
+        </div>
+        <div class="col-6 padding-right-5 padding-left-5" *ngIf="item.status == 'finish'">
+          <ion-button expand="block" class="amo-button-custom-3 padding-0 font-weight-bold" (click)="paymentOrderClick(item._id)">
+            {{ 'PAY_15.text_button_payment' | translate }}
+          </ion-button>
+        </div>
+      </section>
+    </div>
+    <div class="not-found-order" *ngIf="!listOrderFinished || listOrderFinished.length == 0">
+      {{ 'PAY_15.not_found_order' | translate }}
+    </div>
+  </ion-list>
+  <!-- END TAB FINISHED -->
+
+  <!-- TAB CANCEL USER -->
+  <ion-list *ngIf="activeTabIndex == 5" class="history-ion-list">
+    <div *ngFor="let item of listCancelUser">
+      <ion-card class="payment-card" (click)="item.showActions = !item.showActions">
+        <ion-item lines="none" class="payment-card-item">
+          <ion-badge class="badge-status badge-cancel-user" *ngIf="item.status == 'cancel-user'">{{
+            'SERVICE_35.status_cancel_user' |
+            translate }}
+          </ion-badge>
+        </ion-item>
+        <ion-item lines="none" class="shop-header">
+          <img slot="start" class="shop-icon" [src]="item.icon" />
+          <ion-text class="payment-title">{{item?.title}}</ion-text>
+        </ion-item>
+        <ion-item lines="none" class="shop-item-address">
+          <ion-text class="shop-address">{{item?.address}}</ion-text>
+        </ion-item>
+        <div class="devider-line-detail-payment"></div>
+        <!-- List services -->
+        <ion-list>
+          <ion-item *ngFor="let service of item.listOrder" lines="none" class="payment-money-item">
+            <ion-label class="service-title item-text-wrap">{{ service.number }}x {{ service.shopProduct.title }}
+            </ion-label>
+            <ion-label class="service-price">{{ formatMoney(service.price * service.number) }}đ</ion-label>
+          </ion-item>
+        </ion-list>
+
+        <div class="devider-line-detail-payment"></div>
+        <ion-item lines="none" class="payment-money-item">
+          <ion-label fixed slot="start" class="money-title">
+            {{"SERVICE_35.total_cost" | translate}} ({{item.totalOrders}} {{"SERVICE_35.total_cost_service_title" | translate}}
+          </ion-label>
+          <ion-label class="mone-number">{{formatMoney(item.totalCost)}}đ</ion-label>
+        </ion-item>
+        <div class="button-expand">
+          <img *ngIf="item.status !== 'cancel-user' && item.status !== 'cancel-provider'"
+            src="{{!item.showActions ? '../assets/icon/market/down.svg' : '../assets/icon/market/up.svg'}}" />
+        </div>
+      </ion-card>
+    </div>
+    <div class="not-found-order" *ngIf="!listCancelUser || listCancelUser.length == 0">
+      {{ 'PAY_15.not_found_order' | translate }}
+    </div>
+  </ion-list>
+  <!-- END TAB CANCEL USER -->
+
+  <!-- TAB CANCEL PROVIDER -->
+  <ion-list *ngIf="activeTabIndex == 6" class="history-ion-list">
+    <div *ngFor="let item of listCancelProvider">
+      <ion-card class="payment-card" (click)="item.showActions = !item.showActions">
+        <ion-item lines="none" class="payment-card-item">
+          <ion-badge class="badge-status badge-cancel-provider" *ngIf="item.status == 'cancel-provider'">{{
+            'SERVICE_35.status_cancel_provider' |
+            translate }}
+          </ion-badge>
+        </ion-item>
+        <ion-item lines="none" class="shop-header">
+          <img slot="start" class="shop-icon" [src]="item.icon" />
+          <ion-text class="payment-title">{{item?.title}}</ion-text>
+        </ion-item>
+        <ion-item lines="none" class="shop-item-address">
+          <ion-text class="shop-address">{{item?.address}}</ion-text>
+        </ion-item>
+        <div class="devider-line-detail-payment"></div>
+        <!-- List services -->
+        <ion-list>
+          <ion-item *ngFor="let service of item.listOrder" lines="none" class="payment-money-item">
+            <ion-label class="service-title item-text-wrap">{{ service.number }}x {{ service.shopProduct.title }}
+            </ion-label>
+            <ion-label class="service-price">{{ formatMoney(service.price * service.number) }}đ</ion-label>
+          </ion-item>
+        </ion-list>
+
+        <div class="devider-line-detail-payment"></div>
+        <ion-item lines="none" class="payment-money-item">
+          <ion-label fixed slot="start" class="money-title">
+            {{"SERVICE_35.total_cost" | translate}} ({{item.totalOrders}} {{"SERVICE_35.total_cost_service_title" | translate}}
+          </ion-label>
+          <ion-label class="mone-number">{{formatMoney(item.totalCost)}}đ</ion-label>
+        </ion-item>
+        <div class="button-expand">
+          <img *ngIf="item.status !== 'cancel-user' && item.status !== 'cancel-provider'"
+            src="{{!item.showActions ? '../assets/icon/market/down.svg' : '../assets/icon/market/up.svg'}}" />
+        </div>
+      </ion-card>
+    </div>
+    <div class="not-found-order" *ngIf="!listCancelProvider || listCancelProvider.length == 0">
+      {{ 'PAY_15.not_found_order' | translate }}
+    </div>
+  </ion-list>
+  <!-- TAB END CANCEL PROVIDER -->
+
+  <!-- <ion-infinite-scroll threshold="150px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content class="custom-infinite-scroll" loadingSpinner="bubbles"
+      loadingText="{{ 'REQUEST.loadding_more' | translate }}">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll> -->
+</ion-content>

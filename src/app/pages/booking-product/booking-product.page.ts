@@ -145,7 +145,11 @@ export class BookingProductPage implements OnInit {
     this.apiService.getListUserApartment()
       .subscribe(result => {
         self.listDepartment = result.userApartments;
-        self.listDepartment.forEach(data =>{
+        self.listDepartment.forEach((data,index) =>{
+          if(index == 0) {
+            this.form_apartment_id = data.apartment._id;
+            this.form_apartment_class = 'has-input-value';
+          }
           self.listDepartmentByID[data.apartment._id] = data;
         });
         self.loading.dismiss()

@@ -7,11 +7,12 @@
       </ion-buttons>
     </ion-item>
     <ion-item class="modal-item feedback-textarea" lines="none">
-      <ion-textarea class="feedback-textarea-placeholder" rows="6" placeholder="{{ 'MY_ACCOUNT.feeback_placeholder' | translate }}" [(ngModel)]="message"></ion-textarea>
+      <ion-textarea class="feedback-textarea-placeholder" rows="5"
+        placeholder="{{ 'MY_ACCOUNT.feeback_placeholder' | translate }}" [(ngModel)]="message"></ion-textarea>
     </ion-item>
     <ion-toolbar lines="none" class="ion-text-center modal-toolbar">
-      <ion-button class="cancel-button" *ngIf="message == ''">
-        <ion-label class="cancel-button-label">{{ 'MY_ACCOUNT.send' | translate }}</ion-label>
+      <ion-button class="delete-button" *ngIf="message == ''">
+        <ion-label class="delete-button-label">{{ 'MY_ACCOUNT.send' | translate }}</ion-label>
       </ion-button>
       <ion-button class="delete-button" *ngIf="message != ''" (click)="sendFeedback()">
         <ion-label class="delete-button-label">{{ 'MY_ACCOUNT.send' | translate }}</ion-label>

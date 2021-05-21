@@ -1,19 +1,19 @@
-ion-toolbar{
+ion-toolbar {
     --border-width: 0px !important;
 }
 .ion-color-primary {
     --ion-color-base: #ffffff !important;
     --ion-color-base-rgb: var(--ion-color-primary-rgb, 56, 128, 255) !important;
-    --ion-color-contrast: #fa7268 !important;
+    --ion-color-contrast: #E64037 !important;
     --ion-color-contrast-rgb: var(--ion-color-primary-contrast-rgb, 255, 255, 255) !important;
     --ion-color-shade: var(--ion-color-primary-shade, #3171e0) !important;
     --ion-color-tint: var(--ion-color-primary-tint, #4c8dff) !important;
 }
-super-tab-button ion-label{
-    color: #7A838C;
+super-tab-button ion-label {
+    color: #7a838c;
     text-transform: unset;
 }
-super-tab-button.active ion-label{
+super-tab-button.active ion-label {
     color: #000000;
 }
 ion-content {
@@ -22,7 +22,7 @@ ion-content {
 ion-header {
     // margin-bottom: 20px;
 }
-.ion-list-class{
+.ion-list-class {
     padding-left: 17px;
     padding-right: 17px;
 }
@@ -35,9 +35,9 @@ ion-header {
 .margin-left-10 {
     margin-left: 10px;
 }
-ion-item{
+ion-item {
     --inner-padding-end: 0px;
-    --padding-start:0px
+    --padding-start: 0px;
 }
 
 .center-div {
@@ -48,9 +48,9 @@ ion-item{
 .line-bottom {
     padding-bottom: 25px;
     margin-bottom: 10px;
-    border-bottom: 1px solid #F4F5F5;
+    border-bottom: 1px solid #f4f5f5;
 }
-.col-1, 
+.col-1,
 .col-2,
 .col-3,
 .col-4,
@@ -67,12 +67,12 @@ ion-item{
 .line-bottom-10 {
     padding-bottom: 16px;
     margin-bottom: 16px;
-    border-bottom: 10px solid #F4F5F5;
+    border-bottom: 10px solid #f4f5f5;
 }
 .margin-top-15 {
     margin-top: 15px;
 }
-.function-section{
+.function-section {
     z-index: 999;
     bottom: 0px;
     width: 100%;
@@ -92,7 +92,7 @@ ion-item{
     max-height: 110px;
 }
 .div-text-area-1 {
-    border: 1px solid #D3D6D9;
+    border: 1px solid #d3d6d9;
     box-sizing: border-box;
     border-radius: 8px;
     height: fit-content;
@@ -118,7 +118,7 @@ ion-item{
     font-size: 16px;
     line-height: 24px;
 }
-.div-label-message-left{
+.div-label-message-left {
     background: #e9ebec;
     border-radius: 2px 8px 8px 8px;
     padding: 10px 10px;
@@ -131,12 +131,12 @@ ion-item{
     height: 100%;
     margin-right: 10px;
 }
-.div-avatar ion-avatar{
+.div-avatar ion-avatar {
     width: 30px;
     height: 30px;
 }
-.div-label-message-right{
-    background: #21313F;
+.div-label-message-right {
+    background: #21313f;
     border-radius: 8px 2px 8px 8px;
     padding: 10px 10px;
 }
@@ -146,11 +146,11 @@ ion-item{
     overflow: unset;
     font-size: 16px;
     line-height: 24px;
-    color: #FFFFFF;
+    color: #ffffff;
 }
 .div-button-1 {
     text-align: center;
-    background: #FFFFFF;
+    background: #ffffff;
     box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     // height: 150px;
@@ -159,15 +159,6 @@ ion-item{
 }
 .div-button-1 img {
     margin: 0 auto;
-}
-.div-1 {
-    text-align: center;
-    width: 70%;
-    margin: 0 auto;
-}
-.div-2 {
-    text-align: center;
-    width: 100%;
 }
 ion-icon {
     margin-left: calc(50% - 60px);
@@ -189,4 +180,67 @@ ion-searchbar {
 .ion-grid-class {
     padding-inline-start: var(--ion-grid-padding-xs, var(--ion-grid-padding, 9px));
     padding-inline-end: var(--ion-grid-padding-xs, var(--ion-grid-padding, 9px));
+}
+
+// update css
+
+.ion-no-border {
+    background-color: #E64037;
+    height: 100px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.back-button {
+    position: absolute;
+    top: 24px;
+    left: 5px;
+}
+
+.service-header-title {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 41px;
+    color: #ffffff;
+}
+
+.service-header-sub-title {
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 16px;
+    color: #ffffff;
+    margin-top: 10px;
+}
+
+.screen-content {
+    --background: #E64037;
+}
+
+.list-view-custom {
+    min-height: 100%;
+    border-radius: 20px 20px 0 0;
+    background-color: #ffffff;
+    padding-top: 10px;
+}
+
+.div-1 {
+    text-align: center;
+    margin: 0 auto;
+
+    img {
+        border-radius: 50%;
+        object-fit: cover;
+        width: 40px;
+    }
+}
+.div-2 {
+    text-align: center;
+    width: 100%;
 }

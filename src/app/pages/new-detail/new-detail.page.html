@@ -1,25 +1,26 @@
 <ion-header id="main-header-toolbar" class="ion-no-border" [ngStyle]="{'display': getStyleHeader(1)}">
   <ion-toolbar>
-    <ion-buttons slot="start" class="btn-header-back">
+    <ion-buttons slot="start" class="back-button">
       <ion-back-button id="" text="" icon="chevron-back"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-header id="sub-header-toolbar" class="ion-no-border w3-animate-top" [ngStyle]="{'display': getStyleHeader(2)}">
-  <ion-toolbar>
-    <ion-title>{{newTitle}}</ion-title>
+  <ion-toolbar class="header-splash">
+    <ion-item lines="none" style="margin-top: 10px;">
+      <ion-card-title class="ion-text-wrap content-two-line">{{newTitle}}</ion-card-title>
+    </ion-item>
     <ion-buttons slot="start" class="btn-header-back">
       <ion-back-button id="" text="" icon="chevron-back"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen [scrollEvents]="true" (ionScroll)="onScroll($event)">
-  <!-- <ion-img src="{{thumbnail}}"></ion-img> -->
-  <ion-img *ngIf="thumbnail != null" src="{{thumbnail}}"></ion-img>       
+  <ion-img *ngIf="thumbnail != null" src="{{thumbnail}}"></ion-img>
   <ion-img *ngIf="thumbnail == null" src="assets/common/no-thumbnail.png"></ion-img>
   <ion-card button class="custom-card margin-none">
-    <ion-item lines="none" style="margin-top: 10px;">
-        <ion-card-title class="ion-text-wrap content-two-line">{{newTitle}}</ion-card-title>
+    <ion-item lines="none" class="ion-item-title">
+      <ion-card-title class="ion-text-wrap content-two-line">{{newTitle}}</ion-card-title>
     </ion-item>
     <div id="content-news">
       <ion-list class="text-node information-node">
@@ -32,22 +33,55 @@
           <ion-icon item-start name="custom-oval" class="card-bottom-icon custom-oval" src="assets/icon/custom-oval.svg"></ion-icon>
         </ion-card>
         <ion-card class="ion-float-left padding-none card-bottom margin-left-0">
-          <ion-icon item-start name="eye-outline" class="card-bottom-icon"></ion-icon>
-          <span class="image-caption-big" class="card-bottom-label"> {{totalViewers}} </span>
+          <!-- <ion-icon item-start name="eye-outline" class="card-bottom-icon"></ion-icon> -->
+          <span class="image-caption-big" class="card-bottom-label"> {{totalViewers}}{{ 'NOTIFICATION.view' | translate }} </span>
         </ion-card>
       </ion-list>
     </div>
 
   </ion-card>
-  <p [innerHTML]="newContent" class="padding-left-right-card article-content" style="width: 100%;"></p>
+  <div class="line-break-content"></div>
+  <p [innerHTML]="newContent" class="article-content" style="width: 100%;"></p>
 </ion-content>
-<section class="full-width function-section" *ngIf="isDisplayButton == true" >
-  <ion-button expand="block" class="button-common button-common-active" (click)="orderService($event)">{{ buttonTitle == "" ? ('NEW_DETAIL.default_button_order' | translate) : buttonTitle }}</ion-button>
+<section class="full-width function-section" *ngIf="isDisplayButton == true">
+  <ion-button expand="block" class="button-common button-common-active" (click)="orderService($event)">{{ buttonTitle == "" ?
+    ('NEW_DETAIL.default_button_order' | translate) : buttonTitle }}</ion-button>
 </section>
 
-<!-- <ion-footer class="ion-no-border">
-  <ion-toolbar>
-    <button expand="block" fill="outline" class="comment-button">{{ 'NEW_DETAIL.btn_callToAction' | translate }}</button>
-  </ion-toolbar>
+<!-- <ion-footer class="ion-no-border footer-content share-info">
+  <ion-grid>
+    <ion-row>
+      <ion-col class="footer-grid-col" (click)="postLike()">
+        <ion-row>
+          <ion-col class="ion-col-img">
+            <ion-img src="/assets/icon/svg/news/like.svg" class="share-info-img"></ion-img>
+          </ion-col>
+          <ion-col>
+            <div class="ion-text-left">
+              <ion-label class="share-info-title" [ngClass]="{'liked': isLiked}">{{ 'NOTIFICATION.like_text' | translate }}</ion-label>
+            </div>
+            <div class="ion-text-left landing-text">
+              <ion-label class="share-info-text">120 {{ 'NOTIFICATION.liked' | translate }}</ion-label>
+            </div>
+          </ion-col>
+          <ion-col class="ion-col-break"></ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col class="footer-grid-col" (click)="shareInfoModal()">
+        <ion-row>
+          <ion-col class="ion-col-img">
+            <ion-img src="/assets/icon/svg/news/comment.svg" class="share-info-img"></ion-img>
+          </ion-col>
+          <ion-col>
+            <div class="ion-text-left">
+              <ion-label class="share-info-title">{{ 'NOTIFICATION.comment_text' | translate }}</ion-label>
+            </div>
+            <div class="ion-text-left landing-text">
+              <ion-label class="share-info-text">{{ commentsCount }} {{ 'NOTIFICATION.commented' | translate }}</ion-label>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-footer> -->
-

@@ -1,0 +1,89 @@
+.opacity-0 {
+  opacity: 0;
+}
+
+.register-wallet-header {
+  background-color: #E64037;
+  height: 155px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 200%/0 0 100px 100px;
+  .back-button {
+    position: absolute;
+    left: 10px;
+    top: 50px;
+    .ion-back-button {
+      --icon-font-size: 22px;
+      margin-left: 0;
+      width: 25px;
+    }
+  }
+  .header-title {
+    text-align: center;
+    font-family: Open Sans;
+    font-style: normal;
+    font-weight: bold;
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    top: 57px;
+    font-size: 28px;
+    line-height: 41px;
+    color: #ffffff;
+  }
+}
+.register-wallet-image {
+  z-index: 999;
+  .wallet-avatar {
+    position: absolute;
+    top: 65px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+}
+.register-wallet-content {
+  font-family: Open Sans;
+  --background: #f9fcff;
+  --padding-start: 15px;
+  --padding-end: 15px;
+  --padding-top: 100px;
+  .no-wallet-label {
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 22px;
+    text-align: center;
+    color: #221c1e;
+    width: 100%;
+  }
+  .description {
+    font-size: 14px;
+    line-height: 19px;
+    text-align: center;
+    color: #7b7b7b;
+  }
+  .button-send {
+    --background: #E64037 !important;
+    font-weight: 800;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    color: #ffffff !important;
+    margin-top: 60px;
+    margin-bottom: 10px;
+  }
+  .ion-item {
+    --background: #f9fcff;
+  }
+}
+
+.error-epay {
+  font-family: Open Sans;
+  width: 100%;
+  text-align: center;
+  color:  #E64037;
+  font-size: 14px;
+}

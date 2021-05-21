@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ApiService } from '../../services/api/api.service';
-import { NavController } from '@ionic/angular';
-import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
+import { IonContent, NavController } from '@ionic/angular';
+import { NativePageTransitions } from '@ionic-native/native-page-transitions/ngx';
 import { LoadingService } from '../../services/loading/loading.service';
-import { ConstService } from '../../utils/const.service'
-import { UtilsService } from '../../utils/utils.service'
+import { ConstService } from '../../utils/const.service';
+import { UtilsService } from '../../utils/utils.service';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -13,63 +13,94 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./notification.page.scss'],
 })
 export class NotificationPage implements OnInit {
-  listArticles: any;
-  currentPage: number;
-  numberRecordOnPage: number;
+  @ViewChild(IonContent, { static: false }) content: IonContent;
+  
+  listArticlesNew = [];
+  listArticlesNoti = [];
+  currentPageNew = 1;
+  currentPageNoti = 1;
+  isNews: number;
+  numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
   getArticleSubscriber: Subscription;
 
   constructor(
     private loading: LoadingService,
     private apiService: ApiService,
     private navCtrl: NavController,
-    private nativePageTransitions: NativePageTransitions) { }
+    private nativePageTransitions: NativePageTransitions
+  ) {}
+
   ngOnInit() {
-    // this.listArticles  = [];
-    // this.currentPage = 1;
-    // this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
-    // this.getArticles(this.currentPage, this.numberRecordOnPage, '', '', null);
+    this.isNews = 1;
+    this.getArticles(this.currentPageNew, this.numberRecordOnPage, '', '', null, true);
   }
 
-  ionViewWillEnter(){
-    this.listArticles  = [];
-    this.currentPage = 1;
-    this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
-    this.getArticles(this.currentPage, this.numberRecordOnPage, '', '', null, true);
-  }
+  ionViewWillEnter() {}
 
   getArticles(page: number, limit: number, category: string, search: string, event: any, isRefresh: boolean) {
-    
     const self = this;
     if (this.getArticleSubscriber) {
       this.getArticleSubscriber.unsubscribe();
     }
     this.loading.present();
-    this.getArticleSubscriber = this.apiService.getListArticle(page, limit, category, search)
-      .subscribe(result => {
-        if (isRefresh) {
-          self.listArticles = result.articles;
-        } else {
-          self.listArticles = self.listArticles.concat(result.articles);
+    if (this.isNews == 0) {
+      this.getArticleSubscriber = this.apiService.getListArticle(page, limit, category, search).subscribe(
+        (result) => {
+          if (isRefresh) {
+            self.listArticlesNoti = result.articles;
+          } else {
+            self.listArticlesNoti = self.listArticlesNoti.concat(result.articles);
+          }
+          if (event) {
+            event.target.complete();
+          }
+          self.loading.dismiss();
+        },
+        (error) => {
+          self.loading.dismiss();
         }
-        
-        if (event) {
-          event.target.complete();
+      );
+    } else {
+      this.getArticleSubscriber = this.apiService.getPosts(page, limit, category, search).subscribe(
+        (result) => {
+          if (isRefresh) {
+            self.listArticlesNew = result.posts;
+          } else {
+            self.listArticlesNew = self.listArticlesNew.concat(result.posts);
+          }
+          if (event) {
+            event.target.complete();
+          }
+          self.loading.dismiss();
+        },
+        (error) => {
+          self.loading.dismiss();
         }
-        self.loading.dismiss();
-    },
-    error => {
-      self.loading.dismiss();
-    });
+      );
+    }
   }
 
   loadData(event) {
-    this.currentPage++;
-    this.getArticles(this.currentPage, this.numberRecordOnPage, '', '', event, false);
+    if (this.isNews == 1) {
+      this.currentPageNew++;
+      this.getArticles(this.currentPageNew, this.numberRecordOnPage, '', '', event, false);
+    } else {
+      this.currentPageNoti++;
+      this.getArticles(this.currentPageNoti, this.numberRecordOnPage, '', '', event, false);
+    }
   }
 
-  detailPage(event) {
-    // this.nativePageTransitions.slide(ConstService.ANIMATION_OPTION_LEFT);
-    this.navCtrl.navigateForward('/notification-detail/' + event.currentTarget.id);
+  detailPage(data) {
+    if (this.isNews == 0) {
+      if(data?.survey) {
+        localStorage.setItem('survey_data_stored', JSON.stringify(data));
+        this.navCtrl.navigateForward(`/survey/${data._id}`);
+      } else {
+        this.navCtrl.navigateForward('/notification-detail/' + data._id);
+      }
+    } else {
+      this.navCtrl.navigateForward('/new-detail/' + data._id);
+    }
   }
 
   formatString(stringDate: string) {
@@ -77,9 +108,32 @@ export class NotificationPage implements OnInit {
   }
 
   doRefresh(event) {
-    this.currentPage = 1;
-    this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
-    this.getArticles(this.currentPage, this.numberRecordOnPage, '', '', event, true);
+    if (this.isNews == 1) {
+      this.currentPageNew = 1;
+      this.getArticles(this.currentPageNew, this.numberRecordOnPage, '', '', event, true);
+    } else {
+      this.currentPageNoti = 1;
+      this.getArticles(this.currentPageNoti, this.numberRecordOnPage, '', '', event, true);
+    }
   }
 
+  toNews(event) {
+    if(this.isNews != 1) {
+      this.content.scrollToTop();
+    }
+    this.isNews = 1;
+    if (!this.listArticlesNew || this.listArticlesNew.length == 0) {
+      this.getArticles(this.currentPageNew, this.numberRecordOnPage, '', '', null, true);
+    }
+  }
+
+  toNot(event) {
+    if(this.isNews != 0) {
+      this.content.scrollToTop();
+    }
+    this.isNews = 0;
+    if (!this.listArticlesNoti || this.listArticlesNoti.length == 0) {
+      this.getArticles(this.currentPageNoti, this.numberRecordOnPage, '', '', null, true);
+    }
+  }
 }

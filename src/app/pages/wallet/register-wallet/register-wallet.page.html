@@ -1,0 +1,24 @@
+<ion-header class="ion-no-border register-wallet-header">
+  <ion-buttons class="back-button">
+    <ion-back-button color="light" text="" icon="chevron-back" class="ion-back-button"></ion-back-button>
+  </ion-buttons>
+</ion-header>
+<div class="register-wallet-image">
+  <img  class="wallet-avatar" src="/assets/icon/wallet/frame.svg" />
+</div>
+
+<ion-content class="register-wallet-content">
+  <ion-item lines="none" class="ion-item">
+    <ion-text class="no-wallet-label">{{ 'WALLET.no_wallet_label' | translate }}</ion-text>
+  </ion-item>
+  <ion-item lines="none" class="ion-item">
+    <ion-text class="description">{{"EPAY.register_prompt" | translate}}</ion-text>
+  </ion-item>
+
+  <ion-button expand="block" class="button-common button-send btn-active" (click)="openWalletNow()">
+    <ion-label>{{ 'WALLET.btn_opend_wallet' | translate }}</ion-label>
+  </ion-button>
+  <ion-item lines="none" class="ion-item" *ngIf="registerError">
+    <ion-text class="error-epay">{{"EPAY.register_error" | translate}}</ion-text>
+  </ion-item>
+</ion-content>

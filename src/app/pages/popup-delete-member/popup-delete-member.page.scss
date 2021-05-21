@@ -30,10 +30,10 @@ root{
 }
 .trash-icon {
     font-size: 60px;
-    color: #FA7268;
+    color: #E64037;
 }
 .delete_message {
-    font-family: Nunito Sans;
+    font-family: Open Sans;
     font-style: normal;
     font-weight: normal;
     font-size: 16px;
@@ -43,7 +43,7 @@ root{
     margin-bottom: 0;
 }
 .cancel-button {
-    width: 43.73%;
+    width: 80%;
     height: 44px;
     --ion-toolbar-color: #D3D6D9;
     --background-activated: #c5c7c9;
@@ -54,7 +54,7 @@ root{
     --box-shadow: none !important;
 }
 .cancel-button-label {
-    font-family: Nunito Sans;
+    font-family: Open Sans;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -64,18 +64,18 @@ root{
     text-transform: none;
 }
 .delete-button {
-    width: 43.73%;
+    width: 80%;
     height: 44px;
-    --ion-toolbar-color: #FA7268;
+    --ion-toolbar-color: #E64037;
     --background-activated: #c5433a;
     --background-focused: #c5433a;
     --background-hover: #c5433a;
     --border-radius: 8px;
-    margin: 0 10px;
+    margin: 10px 10px;
     --box-shadow: none !important;
 }
 .delete-button-label {
-    font-family: Nunito Sans;
+    font-family: Open Sans;
     font-style: normal;
     font-weight: bold;
     font-size: 16px;
@@ -85,7 +85,7 @@ root{
     text-transform: none;
 }
 .hotline-num {
-    font-family: Nunito Sans;
+    font-family: Open Sans;
     font-style: normal;
     font-weight: bold;
     font-size: 18px;

@@ -1,29 +1,21 @@
-<ion-img class="image-page" src="/assets/common/amo_visual_bg.png"></ion-img>
-<ion-img class="image-page" src="/assets/common/amo_visual.png"></ion-img>
+<div class="image-logo">
+  <div class="center">
+    <ion-img src="/assets/icon/AMO_Logo_WhiteBgr.png" class="ion-align-self-end"></ion-img>
+  </div>   
+</div>
+
 <div class="landing-white-bg">
-  <div class="landing-text">
+  <div class="ion-text-center">
+    <ion-label class="label-text-title">{{ 'LANDING.content_text_title' | translate }}</ion-label>
+  </div>
+  <div class="ion-text-center landing-text">
     <ion-label class="label-text">{{ 'LANDING.content_text' | translate }}</ion-label>
   </div>
-
-  <div class="landing-input">
-    <ion-item class="input-item" lines="none" [ngClass]="!errorInputPhone ? '' : 'error-input'">
-      <ion-icon class="input-icon" name="custom-mobile" src="/assets/icon/custom-mobile.svg" slot="start"></ion-icon>
-      <ion-label class="input-floating-label" position="floating">{{ 'LANDING.phone_number_text' | translate }}</ion-label>
-      <ion-input class="input-text" [(ngModel)]="phoneNumber" type="tel" pattern="[0-9]"></ion-input>
-      <!-- <ion-icon class="clear-input" name="close-circle" slot="end"></ion-icon> -->
-    </ion-item>
-    <ion-label color="danger" class="ion-text-wrap" *ngIf="errorMessage != ''">{{errorMessage}}</ion-label>
-  </div>
-  
-  
-  <ion-toolbar class="bottom-toolbar clear-background">
-    <ion-button expand="block" class="" [ngClass]="!checkIsEnabled() ? 'button-common button-next' : 'button-common button-next button-common-active'" [disabled]="!checkIsEnabled()" (click)="ChangeLogin()">
-      <ion-label class="button-next-label">{{ 'LANDING.continue' | translate }}</ion-label>
-    </ion-button>
-    <ion-button expand="block" class="button-skip" (click)="SkipLogin()" routerDirection="forward">
-      <ion-label class="button-skip-label">{{ 'LANDING.skip' | translate }}</ion-label>
-      <ion-icon class="button-skip-icon" name="chevron-forward-outline"></ion-icon>
-    </ion-button>
-  </ion-toolbar>
-  
+  <ion-button expand="block" class="button-common button-next button-common-active" (click)="ChangeLogin()">
+    <ion-label class="button-next-label">{{ 'LANDING.login' | translate }}</ion-label>
+  </ion-button>
+  <ion-button expand="block" class="button-common button-next" (click)="SkipLogin()">
+    <ion-label class="button-skip-label">{{ 'LANDING.skip' | translate }}</ion-label>
+  </ion-button>
 </div>
+<ion-img class="image-footer" src="/assets/icon/splash-page.svg"></ion-img>

@@ -1,13 +1,44 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar class="header-toolbar">
-    <ion-buttons slot="start">
-      <ion-back-button text="" icon="chevron-back"></ion-back-button>
-    </ion-buttons>
-    <ion-title>{{requestTitle}}</ion-title>
-  </ion-toolbar>
+<ion-header class="ion-no-border request-header-detail">
+  <ion-buttons class="back-button">
+    <ion-back-button color="light" text="" icon="chevron-back" class="ion-back-button"></ion-back-button>
+  </ion-buttons>
 </ion-header>
-<ion-content>
-  <ion-card class="card-content">
+<ion-card class="request-card">
+  <ion-item lines="none" class="request-card-item">
+    <ion-label slot="start" class="update-time">{{formatString(detailRequest.updatedAt)}}</ion-label>
+    <ion-badge slot="end" class="badge-status badge-danger" *ngIf="detailRequest.status == 'new'">{{
+      'REQUEST.status_new' | translate }}</ion-badge>
+    <ion-badge slot="end" class="badge-status badge-warning" *ngIf="detailRequest.status == 'processing'">{{
+      'REQUEST.status_processing' | translate }}</ion-badge>
+    <ion-badge slot="end" class="badge-status badge-success" *ngIf="detailRequest.status == 'completed'">{{
+      'REQUEST.status_done' | translate }}</ion-badge>
+    <ion-badge slot="end" class="badge-status badge-cancel" *ngIf="detailRequest.status == 'cancelled'">{{
+      'REQUEST.status_cancelled' | translate }}</ion-badge>
+  </ion-item>
+  <ion-text class="">
+    <p class="request-title">{{detailRequest.title}}</p>
+  </ion-text>
+  <div class="devider-line-custom margin-top-10"></div>
+  <div class="detail-content-block" *ngIf="isExpand">
+    <ion-item lines="none" class="ion-item-block">
+      <ion-icon class="ion-icon" src="../assets/icon/request/home.svg"></ion-icon>
+      <ion-label class="ion-item-lable">{{detailRequest.apartment?.title + ' - ' + detailRequest.campaign?.title}}</ion-label>
+    </ion-item>
+    <ion-item lines="none" class="ion-item-block" *ngIf="detailRequest.category?.title">
+      <ion-icon class="ion-icon" src="../assets/icon/request/danger.svg"></ion-icon>
+      <ion-label class="ion-item-lable">{{detailRequest.category?.title}}</ion-label>
+    </ion-item>
+    <div class="ion-text">{{detailRequest.content}}</div>
+  </div>
+
+  <div class="button-expand" (click)="isExpand = !isExpand">
+    <ion-label class="expand-label">{{ (!isExpand ? 'REQUEST_DETAIL.display_info': 'REQUEST_DETAIL.collapse') | translate}}</ion-label>
+    <img [src]="!isExpand ? '../assets/icon/svg/Down.svg' : '../assets/icon/svg/up.svg'" />
+  </div>
+</ion-card>
+
+<ion-content class="request-detail-content">
+  <!-- <ion-card class="card-content">
     <ion-grid class="image-grid">
       <ion-row class="image-row">
         <ion-col class="image-col" size="12" *ngIf="listImage.length == 1">
@@ -39,13 +70,11 @@
     </ion-card-content>
   </ion-card>  
   <div class="devider-line"></div>
-  <ion-content #content class="list-chat-content" [style.height.px]="heightScreen">
-    <ion-label class="chat-title">{{ 'REQUEST_DETAIL.chat_title' | translate }}</ion-label>
+ -->
+  <ion-content #content class="list-chat-content">
     <div class="message-wrap">
-      <div *ngFor="let msg of msgList"
-            class="message"
-            [class.left]=" msg.createdBy && msg.createdBy._id !== currentUser._id "
-            [class.right]=" msg.createdBy && msg.createdBy._id === currentUser._id ">
+      <div *ngFor="let msg of msgList" class="message" [class.left]=" msg.createdBy && msg.createdBy._id !== currentUser._id "
+        [class.right]=" msg.createdBy && msg.createdBy._id === currentUser._id ">
         <img *ngIf="msg.createdBy" class="user-img" [src]="msg.createdBy.avatar" alt="" />
         <div class="msg-detail" *ngIf="msg.createdBy">
           <div class="msg-info">
@@ -55,7 +84,7 @@
             <p class="line-breaker">{{msg.content}}</p>
           </div>
           <div class="msg-content msg-images" *ngIf="msg.attachments && msg.attachments.length > 0">
-            <img *ngFor="let attachments of msg.attachments" class="" src="{{attachments.url}}"/>
+            <img *ngFor="let attachments of msg.attachments" class="" src="{{attachments.url}}" />
           </div>
         </div>
       </div>
@@ -64,14 +93,11 @@
 </ion-content>
 <ion-footer class="ion-no-border">
   <ion-item lines="none" class="add-comment-item">
-    <ion-icon name="image" slot="start" class="add-image-icon" (click)="selectImage()"></ion-icon>
-    <ion-textarea class="input-area" 
-      rows="1"  
-      auto-grow
-      placeholder="{{ 'REQUEST_DETAIL.place_holder_input' | translate }}"
-      [(ngModel)]="editorMsg"
-    >
-      <ion-icon name="paper-plane" class="icon-send icon-send-default" (click)="sendMsg()"></ion-icon>
+    <ion-icon [src]="'../assets/icon/request/camera.svg'" slot="start" class="add-image-icon" (click)="selectImage()"></ion-icon>
+    <ion-textarea class="input-area" rows="1" auto-grow placeholder="{{ 'REQUEST_DETAIL.place_holder_input' | translate }}"
+      [(ngModel)]="editorMsg">
+      <ion-icon [src]="editorMsg?.length > 0 ? '../assets/icon/request/send.svg' : '../assets/icon/request/send-gray.svg'"
+        class="icon-send icon-send-default" (click)="sendMsg()"></ion-icon>
     </ion-textarea>
   </ion-item>
 </ion-footer>

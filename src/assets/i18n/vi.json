@@ -1,21 +1,23 @@
 {
     "LANDING": {
-        "content_text": "Nhập số điện thoại của bạn để đăng nhập",
+        "content_text_title": "Tiện ích chung cư",
+        "content_text": "Tạo điều kiện thuận lợi, nâng cao chất lượng sống cho những cư dân chung cư tại Việt Nam",
         "phone_place_holder": "Nhập số điện thoại...",
         "phone_number_text": "Số điện thoại",
         "continue": "Tiếp tục",
-        "skip": "Bỏ qua để dùng thử"
+        "skip": "Tôi muốn trải nghiệm thử",
+        "login": "Đăng nhập bằng SĐT"
     },
-    "LOGIN":{
+    "LOGIN": {
         "title": "Đăng nhập",
-        "note_string" : "Nhập mật khẩu của bạn", 
+        "note_string": "Nhập mật khẩu của bạn",
         "placeholder_phone": "Số điện thoại",
         "placeholder_pass": "Mật khẩu",
         "button_login_label": "Đăng nhập",
         "forgot_pass_label": "Bạn quên mật khẩu?",
         "login_error": "Số điện thoại hoặc mật khẩu không đúng"
     },
-    "REGISTER" : {
+    "REGISTER": {
         "note_text_confirm": "Một tin nhắn văn bản gồm mã xác minh 4 chữ số đã được gửi đến số điện thoại của bạn",
         "forgot_password_note": "Một mã xác minh 4 chữ số đã được gửi đến số điện thoại của bạn, vui lòng kiểm tra tin nhắn",
         "note_view_apartment_code": "Mỗi căn hộ sẽ được cung cấp một mã số gồm 6 ký tự, mã số này là duy nhất vì mục đích an ninh. Nếu bạn chưa nhận được Mã căn hộ, vui lòng liên hệ với Ban Quản Lý để nhận được giúp đỡ hoặc bỏ qua bước này để dùng thử.",
@@ -23,20 +25,20 @@
         "skip": "Bỏ qua"
     },
     "ADD_REQUEST": {
-        "title": "Yêu cầu mới",
-        "apartment" : "Căn hộ",
-        "name" : "Tên đầy đủ",
-        "category" : "Danh mục",
+        "title": "Phản ánh",
+        "sub_title": "Điền thông tin dưới đây để gửi yêu cầu",
+        "apartment": "Căn hộ",
+        "name": "Tên đầy đủ",
+        "category": "Danh mục phản ánh",
         "title_request": "Tiêu đề",
-        "message_request": "Nội dung",
-        "btn_submit": "Gửi",
-        "message_add_request_sucess" : "Gửi yêu cầu thành công",
-        "message_add_request_fail" : "Gửi yêu cầu thất bại",
-        "add_image_label" : "Ảnh tình trạng (nếu có)"
+        "message_request": "Mô tả thông tin chi tiết",
+        "btn_submit": "Gửi yêu cầu",
+        "message_add_request_sucess": "Gửi yêu cầu thành công",
+        "message_add_request_fail": "Gửi yêu cầu thất bại",
+        "add_image_label": "Thêm ảnh mô tả",
+        "add_image_sub_label": "(Tối đa 5 ảnh)"
     },
-    "BILL_PAYMENT": {
-
-    },
+    "BILL_PAYMENT": {},
     "CHANGE_PASSWORD": {
         "title": "Đổi mật khẩu",
         "place_holder_old_password": "Mật khẩu hiện tại",
@@ -52,17 +54,18 @@
     "DASHBOARD": {
         "tab_home": "Trang chủ",
         "tab_notification": "Thông báo",
+        "tab_news": "Bảng tin",
         "tab_payment": "Thanh toán",
-        "tab_request": "Hộp thư",
-        "tab_service": "Tiện ích"
+        "tab_request": "Yêu cầu",
+        "tab_service": "Dịch vụ"
     },
-    "FORGOT_PASSWORD":{
+    "FORGOT_PASSWORD": {
         "forgot_password_note": "Nhập số điện thoại lấy mã xác nhận, tạo mật khẩu mới.",
         "title": "Quên mật khẩu",
         "btn_text_me": "Tiếp tục",
         "error_message": "Số điện thoại này chưa được đăng ký trên hệ thống!"
     },
-    "HOME":{
+    "HOME": {
         "title": "Home",
         "my_home": "Căn hộ",
         "amount_to_pay": "Chờ thanh toán",
@@ -81,9 +84,22 @@
         "book_car": "Gọi xe",
         "helper": "Giúp việc",
         "view_all": "Tất cả",
-        "top_notification": "Thông báo mới nhất"
+        "top_notification": "Thông báo mới nhất",
+        "hello_morning": "Chào buổi sáng",
+        "hello_afternoon": "Chào buổi chiều",
+        "hello_evening": "Chào buổi tối",
+        "home-service": "Dịch vụ gia đình",
+        "home-service-2": "AMO đã kết nối 3.000+ nhà cung cấp cho 50+ dịch vụ",
+        "no_wallet_title": "Ví AMOPay",
+        "wallet_money_title": "Số dư ví:",
+        "request_title": "Yêu cầu ban quản lý",
+        "not_department_message": "Chưa có dữ liệu",
+        "not_noti_message": "Không có cảnh báo mới",
+        "noti_btn_pay": "Thanh toán",
+        "noti_payment_message": "Có {{billCount}} hóa đơn đang chờ thanh toán: ",
+        "complain_title": "Phản Ánh"
     },
-    "MY_ACCOUNT":{
+    "MY_ACCOUNT": {
         "title": "Tài khoản",
         "btn_save": "Lưu",
         "male": "Nam",
@@ -98,7 +114,7 @@
         "btn_log_out": "Đăng xuất",
         "message_update_sucess": "Cập nhật thông tin thành công",
         "message_update_fail": "Cập nhật thông tin thất bại",
-        "language":"Ngôn ngữ",
+        "language": "Ngôn ngữ",
         "app_notification": "Thông báo ứng dụng",
         "change_password": "Đổi mật khẩu",
         "app_infomation": "Thông tin ứng dụng",
@@ -110,17 +126,18 @@
         "vn": "Tiếng Việt",
         "en": "Tiếng Anh",
         "hotline_message": "Số điện thoại đường dây nóng",
-        "copy_num": "Sao chép",
+        "copy_num": "Sao chép số",
         "call": "Gọi điện",
-        "send": "Gửi",
+        "send": "Gửi góp ý",
         "feeback_placeholder": "Viết góp ý cho chúng tôi...",
         "logout_message": "Bạn có chắc chắn muốn đăng xuất khỏi tài khoản AMO?",
         "btn_cancel": "Huỷ",
-        "feedback_success": "Góp ý của bạn đã được gửi đến ban quản lý tòa nhà"
+        "feedback_success": "Góp ý của bạn đã được gửi đến ban quản lý tòa nhà",
+        "btn_edit": "Sửa"
     },
     "MY_ACCOUNT_DETAIL": {
         "title": "Thông tin tài khoản",
-        "name": "Tên",
+        "name": "Tên thành viên",
         "email": "Email",
         "DOB": "Ngày sinh",
         "gender": "Giới tính",
@@ -128,8 +145,9 @@
         "male": "Nam",
         "female": "Nữ"
     },
-    "MY_HOME":{
-        "title": "Căn hộ",
+    "MY_HOME": {
+        "title": "Danh sách căn hộ",
+        "subtitle": "Chọn 1 căn hộ đại diện để sử dụng các dịch vụ",
         "activeCode": "Mã căn hộ",
         "user_category": "Vai trò",
         "area": "Diện tích",
@@ -140,7 +158,7 @@
         "button_add": "Thêm căn hộ",
         "message_copy": "Đã sao chép"
     },
-    "MY_HOME_DETAIL":{
+    "MY_HOME_DETAIL": {
         "title": "Chi tiết căn hộ",
         "active_code": "Mã căn hộ",
         "room": "Căn hộ",
@@ -165,20 +183,23 @@
         "btn_reset_code": "Đặt lại mã căn hộ",
         "apartment_owner_name": "Tên chủ hộ",
         "apartment_owner_email": "Email chủ hộ",
-        "delete": "Xóa",
+        "delete": "Xóa thành viên",
         "exit": "Thoát",
+        "delete_member": "Xóa thành viên",
+        "exit_delete_member": "Tôi sẽ suy nghĩ lại",
         "btn_add_member": "Thêm thành viên",
         "btn_add_vehicle": "Thêm phương tiện",
-        "delete_message": "Bạn chắc chắn muốn xóa thành viên? Việc này sẽ xóa tất cả dữ liệu bạn đã thiết lập.",
+        "delete_message": "Bạn chắc chắn muốn xóa thành viên.",
         "delete_vehicle_message": "Bạn chắc chắn muốn xóa phương tiện? Việc này sẽ xóa tất cả dữ liệu bạn đã thiết lập.",
         "male": "Nam",
-        "female": "Nữ"
+        "female": "Nữ",
+        "owner": "Chủ hộ"
     },
-    "NEW_DETAIL":{
+    "NEW_DETAIL": {
         "default_button_order": "Đặt dịch vụ",
-        "btn_callToAction" : "Call to action"
+        "btn_callToAction": "Call to action"
     },
-    "NEW_PASSWORD":{
+    "NEW_PASSWORD": {
         "title": "Đổi mật khẩu",
         "place_holder_new_password": "Mật khẩu mới",
         "place_holder_confirm_password": "Nhập lại mật khẩu mới",
@@ -189,43 +210,49 @@
         "error_length_confirm_password_message": "Vui lòng nhập mật khẩu xác nhận ít nhất 8 ký tự",
         "error_not_match_password_message": "Mật khẩu mới và mật khẩu xác nhận không khớp"
     },
-    "REGISTER_PASSWORD":{
+    "REGISTER_PASSWORD": {
         "title": "Mật khẩu",
         "place_holder_new_password": "Mật khẩu mới",
         "place_holder_confirm_password": "Nhập lại mật khẩu mới",
         "btn_change_pass": "Lưu",
         "password_note": "Lưu ý: Mật khẩu phải bao gồm ít nhất 8 kí tự"
     },
-    "NOTIFICATION":{
+    "NOTIFICATION": {
         "title": "Thông báo",
         "pull_to_refresh": "Kéo xuống để làm mới",
-        "loadding_more": "Đang tải dữ liệu..."
+        "loadding_more": "Đang tải dữ liệu...",
+        "readed": "người xem",
+        "like_text": "Thích bài viết",
+        "liked": "lượt thích",
+        "comment_text": "Bình luận",
+        "commented": "bình luận",
+        "view": " người xem"
     },
-    "NOTIFICATION_DETAIL":{
+    "NOTIFICATION_DETAIL": {
         "btn_comment": "Thêm bình luận"
     },
-    "NOTIFICATION_COMMENT":{
+    "NOTIFICATION_COMMENT": {
         "title": "Bình Luận",
         "place_holder_input": "Viết bình luận...",
         "pull_to_refresh": "Kéo xuống để làm mới",
         "loadding_more": "Đang tải dữ liệu...",
-        "msg_apartment_not_correct" : "Bạn không có thông tin căn hộ",
-        "reply" : "Trả lời",
-        "reply_label" : "Đang trả lời",
-        "cancel_label" : "Hủy"
+        "msg_apartment_not_correct": "Bạn không có thông tin căn hộ",
+        "reply": "Trả lời",
+        "reply_label": "Đang trả lời",
+        "cancel_label": "Hủy"
     },
-    "NOTIFICATION_POLL" : {
-        "title" : "Khảo sát cư dân về các vấn đề ...",
-        "continue" : "Tiếp tục",
-        "back" : "Quay lại", 
-        "send" : "Gửi"
+    "NOTIFICATION_POLL": {
+        "title": "Khảo sát cư dân về các vấn đề ...",
+        "continue": "Tiếp tục",
+        "back": "Quay lại",
+        "send": "Gửi"
     },
-    "PAYMENT_COMMENT":{
+    "PAYMENT_COMMENT": {
         "title": "Khiếu nại",
         "bql": "BQL Tòa nhà",
         "place_holder_input": "Nhập tin nhắn..."
     },
-    "ORDER_SERVICE":{
+    "ORDER_SERVICE": {
         "title": "Đặt dịch vụ",
         "apartment": "Căn hộ",
         "placeholder_apartment": "Căn hộ",
@@ -235,11 +262,11 @@
         "time_order": "Thời gian",
         "message": "Ghi chú",
         "btn_order": "Đặt",
-        "msg_order_success" :"Đặt dịch vụ thành công",
-        "msg_order_fail" :"Đặt dịch vụ thất bại"
+        "msg_order_success": "Đặt dịch vụ thành công",
+        "msg_order_fail": "Đặt dịch vụ thất bại"
     },
-    "PAYMENT":{
-        "title": "Thanh toán",
+    "PAYMENT": {
+        "title": "Lịch sử hóa đơn",
         "amount_to_pay": "Số tiền cần thanh toán",
         "vnd": "vnd",
         "pay_now": "Thanh toán",
@@ -256,15 +283,22 @@
         "service_fee": "Phí dịch vụ",
         "management_fee": "Phí quản lý",
         "badge_outdate": "Quá hạn",
-        "badge_paid": "Đã t.toán",
-        "badge_unpaid": "Chưa t.toán",
+        "badge_paid": "Đã thanh toán",
+        "badge_unpaid": "Chưa thanh toán",
         "badge_sent": "Đã gửi",
         "transfer": "Chuyển khoản",
-        "cash": "Tiền mặt"
+        "cash": "Tiền mặt",
+        "need_payment": "Số tiền cần thanh toán",
+        "payment_list_title": "Danh sách hoá đơn chưa thanh toán",
+        "number_money_label": "Số tiền:",
+        "btn_paid_label": "Thanh toán",
+        "label_history": "Lịch sử",
+        "paid_out_days": "Quá hạn {{inOutDays}} ngày",
+        "paid_in_days": "Còn {{inOutDays}} ngày hết hạn"
     },
-    "PAYMENT_INFOR":{
+    "PAYMENT_INFOR": {
         "title": "Thông tin hóa đơn",
-        "payment_date": "Hạn thanh toán",
+        "payment_date": "Thời gian thanh toán",
         "total": "Tổng số",
         "bank_name": "Ngân hàng",
         "bank_account_holder": "Chủ tài khoản",
@@ -275,7 +309,7 @@
         "badge_outdate": "Quá hạn",
         "badge_paid": "Đã t.toán",
         "badge_sent": "Đã gửi",
-        "complain":"Khiếu nại",
+        "complain": "Khiếu nại",
         "pay_now": "Thanh toán",
         "electricity_fee": "Tiền điện",
         "water_fee": "Tiền nước",
@@ -285,59 +319,86 @@
         "payment_online": "Online",
         "payment_transfer": "Ch.khoản",
         "payment_cash": "Tiền mặt",
-        "btn_copy" : "Sao chép",
-        "payment_cash_message" : "Vui lòng thanh toán phí dịch vụ trước ngày:",
-        "payment_online_message" : "",
-        "payment_transfer_message" : "Quý cư dân vui lòng thanh toán phí dịch vụ qua tài khoản ngân hàng BQL với nội dung như sau:",
-        "payment_transfer_subtitle" : "Tên căn hộ _ Phí dịch vụ tháng...",
-        "bank_account_management" : "Số tài khoản Ban quản lý",
-        "select_wallet" : "Chọn ví",
-        "btn_continue" : "Tiếp tục",
-        "payment_success_message" : "Thanh toán thành công",
-        "payment_another" : "Thanh toán hóa đơn khác",
-        "payment_appartment" : "Căn hộ"
+        "btn_copy": "Sao chép",
+        "payment_cash_message": "Vui lòng thanh toán phí dịch vụ tại sảnh của tòa nhà từ ngày:",
+        "payment_cash_title": "Thanh toán bằng tiền mặt",
+        "payment_online_message": "",
+        "payment_transfer_title": "Thanh toán chuyển khoản",
+        "payment_transfer_message": "Vui lòng thanh toán phí dịch vụ qua tài khoản ngân hàng BQL với nội dung như sau: (Tên căn hộ _ Phí dịch vụ tháng...)",
+        "payment_transfer_subtitle": "Tên căn hộ _ Phí dịch vụ tháng...",
+        "bank_account_management": "Số tài khoản BQL",
+        "select_wallet": "Chọn ví",
+        "btn_continue": "Tiếp tục",
+        "payment_success_message": "Thanh toán thành công",
+        "payment_another": "Thanh toán hóa đơn khác",
+        "payment_confirm_title": "Xác nhận",
+        "payment_confirm_booking": "Xác nhận đơn hàng",
+        "payment_confirm_sub_title": "Vui lòng kiểm tra kỹ thông tin giao dịch",
+        "payment_confirm_detail_title": "Chi tiết giao dịch:",
+        "payment_confirm_total": "Tổng: ",
+        "payment_confirm_total_money": "Tổng tiền ",
+        "payment_confirm_promotion": "Khuyến mại: ",
+        "payment_confirm_amount": "Số tiền: ",
+        "payment_wallet_title": "Ví AMOPAY",
+        "payment_wallet_change": "Thay đổi",
+        "payment_wallet_insufficient": "Số dư không đủ",
+        "payment_wallet_not_register": "Ví chưa đăng ký/kích hoạt",
+        "modal_change_title": "Chọn phương thức thanh toán",
+        "modal_change_other": "Thêm thẻ ngân hàng khác",
+        "modal_change_vietcombank": "Vietcombank",
+        "modal_change_ref": "Thẻ đã liên kết",
+        "modal_change_account_number": "Qua STK: ",
+        "modal_change_cash": "Tiền mặt",
+        "modal_change_selected": "Đang chọn",
+        "message_copy": "Đã sao chép",
+        "payment_confirm_time_receive": "Thời gian lấy đồ",
+        "payment_confirm_btn_send": "Xác nhận đặt dịch vụ",
+        "alert_comming_soon": "Chức năng đang phát triển"
     },
-    "PINCODE_PASSWORD":{
+    "PINCODE_PASSWORD": {
         "pincode_note": "Một tin nhắn văn bản gồm mã xác minh 4 chữ số đã được gửi đến số điện thoại của bạn",
         "btn_resend_code": "Gửi lại mã",
         "btn_cancel": "Huỷ",
         "wrong_code": "Mã xác nhận sai, vui lòng nhập lại.",
-        "timecounter" : "Mã còn hiệu lực trong : "
+        "timecounter": "Mã còn hiệu lực trong : "
     },
-    "APARTMENT_CODE_REGISTER":{
-        "title" : "Mã căn hộ",
+    "APARTMENT_CODE_REGISTER": {
+        "title": "Mã căn hộ",
         "apartmentcode_note": "Mỗi căn hộ sẽ có một mã riêng gồm 6 ký tự. Nếu bạn chưa nhận được mã, vui lòng liên hệ Ban quản lý tòa nhà để được hỗ trợ. Hoặc quét mã QR Code dưới sảnh tòa nhà.",
         "btn_cancel": "Huỷ",
         "wrong_code": "Mã căn hộ chưa chính xác. Vui lòng nhập lại.",
-        "btn_done" : "Xong"
+        "btn_done": "Xong"
     },
-    "REQUEST_DETAIL":{
+    "REQUEST_DETAIL": {
         "title": "Chi tiết yêu cầu",
-        "place_holder_input": "Nhập tin nhắn...",
-        "chat_title" : "Xử lý yêu cầu",
-        "read_more" : "Xem thêm"
+        "place_holder_input": "Trả lời BQL...",
+        "chat_title": "Xử lý yêu cầu",
+        "read_more": "Xem thêm",
+        "display_info": "Xem thông tin",
+        "collapse": "Thu gọn"
     },
-    "REQUEST":{
-        "title": "Hộp thư",
+    "REQUEST": {
+        "title": "Yêu cầu BQL",
         "tab_all": "Tất cả",
         "tab_registration": "Đăng ký",
-        "status_new": "Mới",
+        "status_new": "Chưa xử lý",
         "status_cancelled": "Huỷ",
-        "status_processing": "Đang thực hiện",
-        "status_done": "Hoàn thành",
+        "status_processing": "Đang xử lý",
+        "status_done": "Đã xử lý",
         "pull_to_refresh": "Kéo xuống để làm mới",
         "loadding_more": "Đang tải dữ liệu...",
         "btn_add_request": "Tạo yêu cầu mới",
         "btn_add_new_registration": "Đăng ký mới",
-        "tab_request": "Yêu cầu"
+        "tab_request": "Yêu cầu",
+        "reflect_lable": "Bạn có phản ánh?"
     },
-    "SERVICE_DETAIL":{
+    "SERVICE_DETAIL": {
         "btn_order": "Đặt hàng"
     },
-    "SERVICE_LIST_BY_CATEGORY":{
+    "SERVICE_LIST_BY_CATEGORY": {
         "title": "Danh sách dịch vụ"
     },
-    "SERVICE":{
+    "SERVICE": {
         "title": "Tiện ích",
         "tab_all": "Tất cả",
         "tab_history": "Lịch sử",
@@ -345,7 +406,7 @@
         "order_date": "Ngày đặt",
         "status": "Tình trạng"
     },
-    "SETTING":{
+    "SETTING": {
         "title": "Cài đặt",
         "language": "Ngôn ngữ",
         "vn": "Tiếng Việt",
@@ -355,7 +416,7 @@
         "subversion": "Bản build"
     },
     "COMMON": {
-        "maintain" : "Chức năng đang bảo trì",
+        "maintain": "Chức năng đang bảo trì",
         "information": "Thông báo",
         "complain": "Khiếu nại",
         "message_success": "Thành công!",
@@ -366,19 +427,19 @@
         "message_finish_success": "Hoàn thành đơn hàng!",
         "message_cancel_success": "Hủy đơn hàng thành công!",
         "message_complain_success": "Khiếu nại của bạn đã được gửi đến nhà cung cấp!",
-        "form_select_image_title" : "Chọn nguồn hình ảnh",
-        "form_select_image_library" : "Tải từ thư viện",
-        "form_select_image_camera" : "Sử dụng máy ảnh",
-        "form_select_image_cancel" : "Hủy bỏ"
+        "form_select_image_title": "Chọn nguồn hình ảnh",
+        "form_select_image_library": "Tải từ thư viện",
+        "form_select_image_camera": "Sử dụng máy ảnh",
+        "form_select_image_cancel": "Hủy bỏ"
     },
-    "APARTMENT_FAMILY":{
+    "APARTMENT_FAMILY": {
         "title": "Thành viên gia đình",
         "title_age": "Tuổi",
         "btn_add_new": "Thêm thành viên",
         "btn_edit": "Sửa",
         "btn_delete": "Xóa"
     },
-    "FAMILY_DETAIL":{
+    "FAMILY_DETAIL": {
         "title": "Tải khoản của tôi",
         "btn_save": "Lưu",
         "male": "Nam",
@@ -393,7 +454,6 @@
         "btn_log_out": "Đăng xuất",
         "message_update_sucess": "Cập nhật thông tin thành công",
         "message_update_fail": "Cập nhật thông tin thất bại",
-
         "me": "Tôi",
         "father": "Bố",
         "mother": "Mẹ",
@@ -410,9 +470,10 @@
         "placeholder_phone": "Số điện thoại"
     },
     "INBOX_24": {
-        "title": "Đăng ký chuyển đồ",
+        "title": "Chuyển đồ",
+        "sub_title": "Điền thông tin dưới đây để gửi yêu cầu",
         "apartment_placeHolder_1": "Căn hộ",
-        "apartment_placeHolder_2": "Chọn căn hộ",
+        "apartment_placeHolder_2": "Căn hộ",
         "transfer_income": "Chuyển vào",
         "transfer_outcome": "Chuyển ra",
         "datetime_start_placeHolder": "Thời gian bắt đầu",
@@ -422,15 +483,16 @@
         "product_number_title": "Số lượng hàng hóa",
         "btn_add_product": "Thêm hàng hóa",
         "note_placeHolder": "Ghi chú...",
-        "button_send": "Gửi"
+        "inf_product_placeHolder": "Mô tả thông tin chi tiết hàng hóa...",
+        "button_send": "Gửi yêu cầu"
     },
     "INBOX_29": {
-        "title": "Đăng ký nhận đồ hộ",
+        "title": "Nhận đồ hộ",
+        "sub_title": "Điền thông tin dưới đây để gửi yêu cầu",
         "apartment_placeHolder_1": "Căn hộ",
-        "apartment_placeHolder_2": "Chọn căn hộ",
+        "apartment_placeHolder_2": "Căn hộ",
         "inf_product_placeHolder": "Thông tin hàng hóa...",
-        "date_time_placeHolder": "Thời gian nhận hàng",
-        "title_area_select_image": "Ảnh hàng hóa (nếu có)",
+        "date_time_placeHolder": "Thời gian lấy đồ",
         "checkbox_support_payment": "Thanh toán giúp",
         "input_payment_placeHolder_1": "Nhập số tiền...",
         "input_payment_placeHolder_2": "Số tiền",
@@ -439,61 +501,74 @@
         "checkbox_money_tip": "Tip cho nhân viên lễ tân",
         "select_other": "Khác...",
         "note_placeHolder": "Ghi chú...",
-        "button_send": "Gửi",
+        "button_send": "Gửi yêu cầu",
         "popup_header_title": "Tiền tip",
-        "popup_button_save": "Ok"
+        "popup_button_save": "Ok",
+        "add_image_label": "Thêm ảnh mô tả",
+        "add_image_sub_label": "(Tối đa 5 ảnh)"
     },
     "INBOX_31": {
-        "title": "Đăng ký gửi xe",
+        "title": "Gửi xe",
         "title_tabs_register": "Đăng ký mới",
         "title_tabs_cancel_registration": "Hủy phương tiện",
         "apartment_label": "Căn hộ",
-        "apartment_placeHolder": "Chọn căn hộ",
-        "fullname_placeHolder":"Tên đầy đủ",
-        "vehicle_title": "Phương tiện",
-        "vehicle_placeHolder":"Chọn phương tiện",
-        "vehicle_label":"Loại phương tiện",
-        "vehicle_option_car":"Ô tô",
-        "vehicle_option_motobike":"Xe máy",
-        "vehicle_option_bike":"Xe đạp",
-        "vehicle_option_orther":"Phương tiện khác",
+        "apartment_placeHolder": "Căn hộ",
+        "fullname_placeHolder": "Tên đầy đủ",
+        "vehicle_title": "Thông tin phương tiện",
+        "vehicle_placeHolder": "Chọn phương tiện",
+        "vehicle_label": "Loại phương tiện",
+        "vehicle_option_car": "Ô tô",
+        "vehicle_option_motobike": "Xe máy",
+        "vehicle_option_bike": "Xe đạp",
+        "vehicle_option_orther": "Phương tiện khác",
         "type_vihicle_placeHolder": "Hãng xe",
         "model_vihicle_placeHolder": "Model",
         "license_plates_placeHolder": "Biển kiểm soát",
-        "datetime_placeHolder":"Thời gian gửi",
-        "area_image_title": "Chụp giấy đăng ký xe (rõ ràng 2 mặt, sắc nét)",
+        "datetime_placeHolder": "Thời gian gửi",
+        "area_image_title": "Chụp giấy đăng ký xe",
         "list_vehicel_title": "Các phương tiện",
         "textarea_note": "Ghi chú...",
-        "button_send": "Gửi"
+        "button_send": "Gửi yêu cầu",
+        "image_before_label": "Chụp mặt trước",
+        "image_after_label": "Chụp mặt sau"
     },
     "SEVICE_NEW": {
-        "title" : "Tiện ích",
-        "label_history" : "Lịch sử",
-        "label_management" : "Quản lý",
+        "title": "Tiện ích",
+        "title_service": "Dịch vụ",
+        "sub_title": "AMO đã kết nối 3.000+ NCC cho 50+ dịch vụ",
+        "label_history": "Lịch sử",
+        "label_management": "Quản lý",
         "resident_market_title": "Chợ cư dân",
-        "see_more_labe": "Xem thêm",
-        "resident_market_label_1" : "Mở gian hàng của bạn",
-        "resident_market_label_2" : "Kinh doanh mọi lúc mọi nơi, không mất phí",
-        "resident_market_btn_create" : "Đăng ký ngay"
+        "see_more_labe": "Xem tất cả",
+        "resident_market_label_1": "Mở gian hàng của bạn",
+        "resident_market_label_2": "Kinh doanh mọi lúc mọi nơi, không mất phí",
+        "resident_market_btn_create": "Mở ngay"
+    },
+    "SEVICE_CATEGORY": {
+        "sub_title": "Vui lòng chọn 1 loại dịch vụ trước khi chọn NCC"
     },
     "INBOX_36": {
-        "title" : "Dịch vụ xe",
-        "label_history" : "Mở gian hàng"
+        "title": "Dịch vụ xe",
+        "label_history": "Mở gian hàng"
     },
     "SERVICE_12": {
-        "title" : "Dịch vụ đặt xe Caro",
+        "title": "Dịch vụ đặt xe Caro",
         "textbox_1_placeHolder_1": "Nhập điểm đến",
         "textbox_1_placeHolder_2": "Điểm đến",
         "textbox_2_placeHolder_1": "Nhập điểm đi",
         "textbox_2_placeHolder_2": "Điểm đi"
     },
     "INBOX_19": {
-        "title" : "Chợ cư dân",
-        "label_history" : "Mở gian hàng"
+        "title": "Chợ cư dân",
+        "label_history": "Mở gian hàng của bạn"
     },
     "INBOX_21": {
-        "title" : "Mở gian hàng",
-        "label_history" : "Mở gian hàng",
+        "title": "Mở gian hàng",
+        "label_history": "Mở gian hàng",
+        "apartment_placeHolder_1": "Chọn Căn hộ",
+        "apartment_placeHolder_2": "Căn hộ",
+        "group_cate_placeHolder_1": "Chọn nhóm loại hình",
+        "group_cate_placeHolder_2": "Nhóm loại hình gian hàng",
         "pulldown_1_placeHolder_1": "Chọn loại hình",
         "pulldown_1_placeHolder_2": "Loại hình gian hàng",
         "textbox_1_placeHolder_1": "Nhập tên gian hàng",
@@ -504,23 +579,26 @@
         "popup_text_2": "Tiếp tục mua sắm"
     },
     "SEVICE_29": {
-        "title" : "",
-        "group_3_label" : "Chọn tất cả",
-        "button_send": "Tiếp tục"
+        "title": "",
+        "group_3_label": "Chọn tất cả",
+        "button_send": "Đặt dịch vụ",
+        "rate": " đánh giá"
     },
     "SEVICE_05": {
         "title": "Sản phẩm",
         "payment_methods_title": "Phương thức thanh toán",
-        "detail_title": "Chi tiết",
+        "detail_title": "Thông tin thêm",
         "payment_methods_transfer": "Ch.Khoản",
         "payment_methods_cash": "Tiền mặt",
         "textbox_1_placeHolder_1": "Số điện thoại người nhận",
         "phone_number_placeHolder_2": "Số điện thoai",
         "apartment_placeHolder_1": "Căn hộ",
-        "apartment_placeHolder_2": "Chọn căn hộ",
+        "apartment_placeHolder_2": "Căn hộ",
         "datetime_placeHolder": "Thời gian đến",
         "note_placeHolder": "Ghi chú...",
-        "popup_text_information": "Đơn hàng của bạn đã được tiếp nhận\nShop sẽ sớm liên lạc lại với bạn",
+        "popup_text_information": "Đơn hàng của bạn đã được chuyển đến NCC. Vui lòng theo dõi trạng thái của đơn hàng",
+        "popup_booking_success": "Đặt dịch vụ thành công",
+        "tracking_status": "Theo dõi trạng thái",
         "order_another_service": "Đặt dịch vụ khác",
         "total_money": "Tổng tiền",
         "button_send": "Đặt dịch vụ"
@@ -534,7 +612,7 @@
         "phone_number_placeHolder_1": "Số điện thoại người nhận",
         "phone_number_placeHolder_2": "Số điện thoai",
         "apartment_placeHolder_1": "Căn hộ",
-        "apartment_placeHolder_2": "Chọn căn hộ",
+        "apartment_placeHolder_2": "Căn hộ",
         "datetime_placeHolder": "Thời gian đến",
         "note_placeHolder": "Ghi chú...",
         "popup_text_information": "Đơn hàng của bạn đã được tiếp nhận\nShop sẽ sớm liên lạc lại với bạn",
@@ -543,50 +621,52 @@
         "button_send": "Đặt dịch vụ"
     },
     "SERVICE_35": {
-        "title" : "Lịch sử",
+        "title": "Lịch sử",
         "tab_all_title": "Tất cả",
-        "status_processing" : "Đang xử lý",
-        "status_accepted_provider" : "Đang giao hàng",
-        "status_accepted_provider_grouppon" : "Đã được xác nhận",
-        "status_wait_user_confirm" : "Đang chờ bạn confirm",
-        "status_accepted_user" : "Đang giao hàng",
-        "status_finish" : "Hoàn thành",
-        "status_cancel_user" : "Bạn đã hủy đơn",
-        "status_cancel_provider" : "Nhà cung cấp hủy",
-        "code_orders" : "Mã đơn hàng:"
+        "status_processing": "Đang xử lý",
+        "status_accepted_provider": "Đã tiếp nhận",
+        "status_accepted_provider_grouppon": "Đã được xác nhận",
+        "status_wait_user_confirm": "Đang chờ bạn confirm",
+        "status_accepted_user": "Đang giao hàng",
+        "status_finish": "Hoàn thành",
+        "status_cancel_user": "Ng/dùng hủy",
+        "status_cancel_provider": "NCC cấp hủy",
+        "code_orders": "Mã đơn hàng:",
+        "total_cost": "Tổng tiền",
+        "total_cost_service_title": "dịch vụ)"
     },
     "SERVICE_45": {
-        "title" : "Quản lý đơn hàng",
+        "title": "Quản lý đơn hàng",
         "tab_all_title": "Tất cả",
         "tab_processing_title": "Chưa xử lý",
         "tab_groupon_title": "Đơn hàng groupon",
         "tab_accepted_title": "Giao hàng",
         "tab_finish_title": "Hoàn thành",
         "tab_cancel_title": "Đơn hàng đã hủy",
-        "status_processing" : "Chưa xử lý",
-        "status_accepted_provider" : "Có thể giao hàng",
-        "status_accepted_provider_groupon" : "Đã xác nhận đơn",
-        "status_confirm_user" : "Chờ khách hàng confirm",
-        "status_accepted_user" : "Có thể giao hàng",
-        "status_finish" : "Hoàn thành",
-        "status_cancel_user" : "Khách hàng hủy",
-        "status_cancel_provider" : "Nhà cung cấp hủy",
-        "code_orders" : "Mã đơn hàng:",
-        "order_address" : "Đ/c đặt",
-        "label_product" : "Sản phẩm"
+        "status_processing": "Chưa xử lý",
+        "status_accepted_provider": "Có thể giao hàng",
+        "status_accepted_provider_groupon": "Đã xác nhận đơn",
+        "status_confirm_user": "Chờ khách hàng confirm",
+        "status_accepted_user": "Có thể giao hàng",
+        "status_finish": "Hoàn thành",
+        "status_cancel_user": "Khách hàng hủy",
+        "status_cancel_provider": "Nhà cung cấp hủy",
+        "code_orders": "Mã đơn hàng:",
+        "order_address": "Đ/c đặt",
+        "label_product": "Sản phẩm"
     },
     "SERVICE_46": {
-        "title" : "Quản lý đơn hàng",
-        "status_processing" : "Chưa xử lý",
-        "status_accepted_provider" : "Có thể giao hàng",
-        "status_accepted_provider_groupon" : "Đã xác nhận đơn",
-        "status_confirm_user" : "Chờ khách hàng confirm",
-        "status_accepted_user" : "Có thể giao hàng",
-        "status_finish" : "Hoàn thành",
-        "status_cancel_user" : "Khách hàng hủy",
-        "status_cancel_provider" : "Nhà cung cấp hủy",
-        "order_address" : "Đ/c đặt",
-        "label_product" : "Sản phẩm",
+        "title": "Quản lý đơn hàng",
+        "status_processing": "Chưa xử lý",
+        "status_accepted_provider": "Có thể giao hàng",
+        "status_accepted_provider_groupon": "Đã xác nhận đơn",
+        "status_confirm_user": "Chờ khách hàng confirm",
+        "status_accepted_user": "Có thể giao hàng",
+        "status_finish": "Hoàn thành",
+        "status_cancel_user": "Khách hàng hủy",
+        "status_cancel_provider": "Nhà cung cấp hủy",
+        "order_address": "Đ/c đặt",
+        "label_product": "Sản phẩm",
         "label_supplier_name": "Nhà cung cấp",
         "label_code_order": "Mã đơn hàng",
         "label_time": "Thời gian",
@@ -603,15 +683,15 @@
         "note_placeHolder": "Ghi chú"
     },
     "PAY_15": {
-        "title" : "",
-        "status_processing" : "Đang xử lý",
-        "status_accepted_provider" : "Đang giao hàng",
-        "status_accepted_provider_grouppon" : "Đã được xác nhận",
-        "status_wait_user_confirm" : "Đang chờ bạn confirm",
-        "status_accepted_user" : "Đang giao hàng",
-        "status_finish" : "Hoàn thành",
-        "status_cancel_user" : "Bạn đã hủy đơn",
-        "status_cancel_provider" : "Nhà cung cấp hủy",
+        "title": "",
+        "status_processing": "Đang xử lý",
+        "status_accepted_provider": "Đang giao hàng",
+        "status_accepted_provider_grouppon": "Đã được xác nhận",
+        "status_wait_user_confirm": "Đang chờ bạn confirm",
+        "status_accepted_user": "Đang giao hàng",
+        "status_finish": "Hoàn thành",
+        "status_cancel_user": "Bạn đã hủy đơn",
+        "status_cancel_provider": "Nhà cung cấp hủy",
         "label_supplier_name": "Nhà cung cấp",
         "label_code_order": "Mã đơn hàng",
         "label_time": "Thời gian",
@@ -622,10 +702,14 @@
         "text_button_complain": "Khiếu nại",
         "text_button_chat": "Chat",
         "text_button_confirm": "Confirm",
-        "text_button_cancel": "Hủy",
+        "text_button_cancel": "Hủy dịch vụ",
         "text_button_send_feedback": "Gửi phản hồi",
         "label_title_complain": "Gửi khiếu nại",
-        "label_complain": "Nội dung khiếu nại"
+        "label_complain": "Nội dung khiếu nại",
+        "text_button_reschedule": "Đổi lịch hẹn",
+        "text_button_contact": "Liên lạc",
+        "text_button_payment": "Thanh toán",
+        "not_found_order": "Không tìm thấy đơn hàng"
     },
     "SEVICE_10": {
         "title": "",
@@ -645,8 +729,8 @@
         "button_9": "Sửa chữa nội thất"
     },
     "NOTI_6": {
-        "title" : "",
-        "group_3_label" : "Chọn tất cả",
+        "title": "",
+        "group_3_label": "Chọn tất cả",
         "button_send": "Tiếp tục"
     },
     "INBOX_56": {
@@ -661,7 +745,7 @@
         "textbox_1_placeHolder_1": "Số điện thoại người nhận",
         "textbox_1_placeHolder_2": "Số điện thoai",
         "pulldown_1_placeHolder_1": "Căn hộ",
-        "pulldown_1_placeHolder_2": "Chọn căn hộ",
+        "pulldown_1_placeHolder_2": "Căn hộ",
         "pulldown_2_placeHolder_1": "Thời gian đến",
         "pulldown_3_placeHolder_1": "Thời gian kết thúc",
         "textarea_placeHolder_2": "Ghi chú...",
@@ -670,84 +754,182 @@
         "total_money": "Tổng tiền",
         "button_send": "Đặt hàng"
     },
-    "TERMS" : {
-        "title": "Quy chế hoạt động, điều khoản"
+    "TERMS": {
+        "title": "Quy chế hoạt động"
     },
-    "GUIDELINE" : {
+    "GUIDELINE": {
         "title": "Hướng dẫn sử dụng"
     },
-    "ADD_HOME" : {
+    "ADD_HOME": {
         "title": "Thêm mới căn hộ",
         "placeholder_activeCode": "Mã căn hộ",
-        "btn_done": "Xong",
-        "message": "Nhập mã căn hộ của bạn để thêm mới 1 căn hộ mới cần quản lý"
+        "btn_done": "Thêm mới",
+        "message": "Nhập mã căn hộ của bạn để thêm căn hộ mới"
     },
-    "ADD_HOME_MEMBER" : {
+    "ADD_HOME_MEMBER": {
         "title": "Thêm thành viên",
         "placeholder_name": "Tên thành viên",
         "placeholder_relationship": "Quan hệ với chủ hộ",
         "placeholder_memberID": "Số chứng minh thư/căn cước",
-        "placeholder_DOB" : "Ngày sinh",
-        "placeholder_gender" : "Giới tính",
+        "placeholder_DOB": "Ngày sinh",
+        "placeholder_gender": "Giới tính",
         "male": "Nam",
         "female": "Nữ",
-        "btn_add": "Thêm",
-        "wife" : "Vợ",
-        "husband" : "Chồng",
+        "btn_add": "Thêm thành viên",
+        "wife": "Vợ",
+        "husband": "Chồng",
         "son": "Con trai",
         "daughter": "Con gái",
         "father": "Bố",
         "mother": "Mẹ",
         "brother": "Anh",
         "sister": "Chị",
-        "relative" : "Họ hàng",
+        "relative": "Họ hàng",
         "housemaid": "Giúp việc",
-        "friend" : "Bạn",
-        "guest" : "Khách thuê"
+        "friend": "Bạn",
+        "guest": "Khách thuê"
     },
-    "ADD_HOME_VEHICLE" : {
-        "title" : "Thêm phương tiện"
+    "ADD_HOME_VEHICLE": {
+        "title": "Thêm phương tiện"
     },
-    "NEWS" : {
-        "title" : "Tin tức"
+    "NEWS": {
+        "title": "Tin tức",
+        "top": "Bảng tin"
     },
-    "REGISTRATION_TYPE" : {
-        "title" : "Đăng ký mới",
-        "parking" : "Gửi xe",
-        "guest" : "Khách thăm",
-        "receive" : "Nhận đồ hộ",
-        "shipping" : "Chuyển đồ"
+    "REGISTRATION_TYPE": {
+        "title": "Đăng ký mới",
+        "parking": "Gửi Xe",
+        "guest": "Khách Thăm",
+        "receive": "Nhận Đồ Hộ",
+        "shipping": "Chuyển Đồ"
     },
-    "REGISTRATION_GUEST" : {
-        "title" : "Đăng kí khách đến thăm",
-        "apartment" : "Căn hộ",
-        "apartment_placeholder" : "Chọn căn hộ",
-        "arrival_time" : "Thời gian đến",
-        "guest_quantity" : "Số lượng khách đến thăm",
-        "guest_name" : "Tên khách thăm",
-        "guest_ID" : "Số chứng minh thư",
-        "note" : "Ghi chú...",
-        "btn_send" : "Gửi",
-        "select_apartment_title" : "Chọn căn hộ",
-        "send_success_message" : "Đăng ký của bạn đã được gửi đi. Vui lòng kiểm tra phản hồi ở tab Đăng ký",
-        "back_registration_tab" : "Về trang đăng ký",
-        "popup_text_information" : "Đăng ký của bạn đã được gửi đi."
+    "REGISTRATION_GUEST": {
+        "title": "Khách thăm",
+        "sub_title": "Điền thông tin dưới đây để gửi yêu cầu",
+        "apartment": "Căn hộ",
+        "apartment_placeholder": "Căn hộ",
+        "arrival_time": "Thời gian đến",
+        "guest_quantity": "Số lượng khách đến thăm",
+        "guest_name": "Tên khách thăm (người đại diện)",
+        "guest_ID": "Số chứng minh thư",
+        "note": "Ghi chú...",
+        "btn_send": "Gửi yêu cầu",
+        "select_apartment_title": "Căn hộ",
+        "send_success_message": "Đăng ký của bạn đã được gửi đi. Vui lòng kiểm tra phản hồi ở tab Đăng ký",
+        "back_registration_tab": "Về trang đăng ký",
+        "popup_text_information": "Đăng ký của bạn đã được gửi đi."
     },
-    "REGISTRATION_PARKING" : {
-        "title" : "Đăng kí gửi xe",
-        "status_processed" : "Đã xử lý",
-        "status_unprocess" : "Chưa xử lý",
-        "apartment" : "Căn hộ",
-        "name" : "Tên đầy đủ",
-        "vehicle" : "Phương tiện",
-        "vehicle_type" : "Loại phương tiện",
-        "vehicle_branch" : "Hãng xe",
-        "vehicle_model" : "Model",
-        "vehicle_numberID" : "Biển kiểm soát",
-        "parking_time" : "Thời gian gửi",
-        "vehicle_register_label" : "Chụp giấy đăng kí xe (rõ ràng 2 mặt, sắc nét)"
+    "REGISTRATION_PARKING": {
+        "title": "Đăng kí gửi xe",
+        "status_processed": "Đã xử lý",
+        "status_unprocess": "Chưa xử lý",
+        "apartment": "Căn hộ",
+        "name": "Tên đầy đủ",
+        "vehicle": "Phương tiện",
+        "vehicle_type": "Loại phương tiện",
+        "vehicle_branch": "Hãng xe",
+        "vehicle_model": "Model",
+        "vehicle_numberID": "Biển kiểm soát",
+        "parking_time": "Thời gian gửi",
+        "vehicle_register_label": "Chụp giấy đăng kí xe (rõ ràng 2 mặt, sắc nét)"
     },
-    "BOOKING_PRODUCT" : {
-        "title" : "Mua chung nhận khuyến mại"
+    "BOOKING_PRODUCT": {
+        "title": "Mua chung nhận khuyến mại"
+    },
+    "WALLET": {
+        "no_wallet_label": "Bạn chưa mở ví AMOPay?",
+        "btn_opend_wallet": "Mở ví AMOPay ngay"
+    },
+    "PAYMENT_PINCODE": {
+        "pincode_note": "Nhập mã giao dịch để xác nhận hoàn thành quá trình thanh toán",
+        "btn_resend_code": "Lấy lại mã",
+        "wrong_code": "Mã xác nhận sai, vui lòng nhập lại.",
+        "timecounter": "Mã còn hiệu lực trong : "
+    },
+    "PAYMENT_RESULT": {
+        "success_title": "Thanh Toán Thành Công",
+        "success_resource": "Ngồn thanh toán: ",
+        "success_time": "Thời gian: ",
+        "success_code": "Mã giao dịch: ",
+        "success_content": "Nội dung: ",
+        "success_back_btn": "Quay về màn hình chính",
+        "fail_title": "Thanh toán thất bại",
+        "fail_error": "Có lỗi đã xả ra trong quá trình xử lý, chúng tôi rất xin lỗi vì sự cố này!",
+        "fail_redo_btn": "Thực hiện lại",
+        "fail_back_home": "Quay về màn hình chính"
+    },
+    "TIME_AGO": {
+        "seconds": "giây",
+        "a_minute": "1 phút trước",
+        "a_minute_from": "1 phút sau",
+        "minutes": "phút",
+        "a_hour_ago": "1 giờ trước",
+        "a_hour_from": "1 giờ sau",
+        "hours": "giờ",
+        "yesterday": "Hôm qua",
+        "tomorrow": "Ngày mai",
+        "days": "ngày",
+        "last_week": "Tuần trước",
+        "next_week": "Tuần sau",
+        "weeks": "tuần",
+        "last_month": "Tháng trước",
+        "next_month": "Tháng sau",
+        "months": "tháng",
+        "last_year": "Năm trước",
+        "next_year": "Năm sau",
+        "years": "năm",
+        "last_century": "Thế kỷ trước",
+        "next_century": "Thế kỷ sau",
+        "centuries": "thế kỷ",
+        "ago": "trước",
+        "just_now": "Vừa xong",
+        "from_now": "sau"
+    },
+    "SHOP_HOUSE": {
+        "service": "Dịch vụ",
+        "supplier": "Thông tin",
+        "rating": "Đánh giá",
+        "about_shop": "Giới thiệu nhà cung cấp",
+        "open": "Đang mở",
+        "close": "Đang đóng cửa",
+        "to": "đến",
+        "not_found_data": "Gian hàng chưa có dịch vụ"
+    },
+    "SHOP_BY_CATE": {
+        "supplier_highlight": "Nhà cung cấp nổi bật",
+        "no_service": "Chưa có dịch vụ nào được cung cấp",
+        "rating": "đánh giá",
+        "setup": "lượt đặt",
+        "cheapest_price": "Giá rẻ nhất",
+        "highest_rate": "Đánh giá cao nhất",
+        "most_popular": "Ưa chuộng nhất",
+        "promotion": "Khuyến mại",
+        "price_from": "Giá từ"
+    },
+    "EPAY": {
+        "register_error": "Đăng ký AMOPay thất bại. Vui lòng thử lại!",
+        "register_prompt": "Sau khi đăng ký/kích hoạt thành công, vui lòng làm mới lại trang chủ"
+    },
+    "ORDER_SERVICE_RESULT": {
+        "order_message": "Đặt dịch vụ thành công!",
+        "order_prompt": "Đơn hàng của bạn đã được chuyển đến NCC. Vui lòng theo dõi trạng thái của đơn hàng.",
+        "order_btn_status": "Theo dõi trạng thái",
+        "order_other_service": "Đặt dịch vụ khác"
+    },
+    "RATING_SHOP": {
+        "title": "Đánh giá dịch vụ",
+        "note_placeHolder": "Viết phản hồi",
+        "btn_send": "Gửi đánh giá"
+    },
+    "CHANGE_TIME_DELIVER_ORDER": {
+        "title": "Đổi lịch hẹn",
+        "time_placeHolder": "Thời gian lấy đồ",
+        "btn_send": "Gửi yêu cầu",
+        "success_alert": "Thay đổi lịch hẹn thành công",
+        "error_alert": "Thay đổi lịch hẹn thất bại"
+    },
+    "SURVEY": {
+        "error_chexbox": "Vui lòng chọn ít nhất một giá trị",
+        "detail_lable": "Xem chi tiết khảo sát"
     }
 }

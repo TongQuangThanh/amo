@@ -1,87 +1,64 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar class="header-toolbar">
-    <ion-buttons slot="start">
-        <ion-back-button text="" icon="chevron-back"></ion-back-button>
-    </ion-buttons>
-    <ion-title>{{ 'MY_ACCOUNT_DETAIL.title' | translate }}</ion-title>
-    <ion-button slot="end" class="button-save" (click)="updateAccount()">
-        <ion-icon slot="start" name="custom-save" class="icon-save" src="/assets/icon/custom-save.svg"></ion-icon>
-        <ion-label class="button-save-label">{{ 'MY_ACCOUNT_DETAIL.btn_save' | translate }}</ion-label>
-    </ion-button>
-  </ion-toolbar>
+<ion-header class="ion-no-border account-detail-header">
+  <ion-buttons class="back-button">
+    <ion-back-button color="light" text="" icon="chevron-back" class="ion-back-button"></ion-back-button>
+  </ion-buttons>
+  <ion-label class="header-title">{{ 'MY_ACCOUNT_DETAIL.title' | translate }}</ion-label>
 </ion-header>
+<div class="my-account-avatar">
+  <ion-avatar class="account-avatar" (click)="selectImage()">
+    <img src="{{avatar}}" />
+  </ion-avatar>
+  <ion-icon class="icon-camera" name="camera"></ion-icon>
+</div>
 
-<ion-content>
-  <div class="avatar" (click)="selectImage()">
-    <ion-avatar class="account-avatar">
-      <img src="{{avatar}}"/>
-      <!-- <img src="/assets/common/img_test_2.jpg"/> -->
-    </ion-avatar>
-    <div>
-      <div class="change-avatar">
-        <img src="/assets/common/avatar-Ellipse.png"/>
-      </div>
-      <div class="change-avatar icon-bottom">
-        <ion-icon class="icon-camera" name="camera"></ion-icon>
-      </div>
-    </div>    
-  </div>
-  
-  <div class="account-info">
-    <ion-item class="input-item" lines="none">
-      <ion-icon class="input-icon" name="custom-user" src="/assets/icon/custom-user.svg" slot="start"></ion-icon>
-      <ion-label class="input-floating-label" position="floating">{{ 'MY_ACCOUNT_DETAIL.name' | translate }}</ion-label>
-      <ion-input class="input-text" type="text" name="userName" value="{{displayName}}"></ion-input>
-      <!-- <ion-icon class="clear-input check-valid" name="checkmark-circle" slot="end"></ion-icon> -->
-    </ion-item>
-    <ion-item class="input-item" lines="none">
-      <ion-icon class="input-icon" name="custom-mail" src="/assets/icon/custom-mail.svg" slot="start"></ion-icon>
-      <ion-label class="input-floating-label" position="floating">{{ 'MY_ACCOUNT_DETAIL.email' | translate }}</ion-label>
-      <ion-input class="input-text" type="text" name="userEmail" value="{{email}}"></ion-input>
-      <!-- <ion-icon class="clear-input check-valid" name="checkmark-circle" slot="end"></ion-icon> -->
-    </ion-item>
+<ion-content class="account-detail-content">
+  <ion-item class="input-item" lines="none">
+    <ion-icon class="input-icon" name="custom-user" src="/assets/icon/account/user.svg" slot="start"></ion-icon>
+    <ion-label class="input-floating-label" position="floating">{{ 'MY_ACCOUNT_DETAIL.name' | translate }}</ion-label>
+    <ion-input class="input-text" type="text" name="userName" [(ngModel)]="displayName"></ion-input>
+  </ion-item>
+  <ion-item class="input-item" lines="none">
+    <ion-icon class="input-icon" name="custom-mail" src="/assets/icon/account/user-mail.svg" slot="start"></ion-icon>
+    <ion-label class="input-floating-label" position="floating">{{ 'MY_ACCOUNT_DETAIL.email' | translate }}</ion-label>
+    <ion-input class="input-text" type="text" name="userEmail" [(ngModel)]="email"></ion-input>
+  </ion-item>
 
-    <ion-row>
-      <!-- <ion-col class="no-padding padding-right-10" size="5">
-        <ion-item class="input-item" lines="none">
-          <ion-icon class="input-icon" name="flag-vn" src="/assets/icon/flag-vn.svg" slot="start"></ion-icon>
-          <ion-input class="input-text no-floating-label" type="text" name="region" value="+84"></ion-input>
-        </ion-item>
-      </ion-col> -->
-      <ion-col class="no-padding padding-right-10" size="5">
-        <ion-item class="input-item" lines="none">
-          <ion-icon class="input-icon" name="flag-vn" src="{{avatarCountry}}" slot="start"></ion-icon>
-          <ion-label class="label-phone-code">+{{formPhoneCode}}</ion-label>
-          <ion-select (ionChange)="onChangeCountry()" class="input-text select-text opacity-0" value="male" [(ngModel)]="countryAlpha2">
-            <ion-select-option *ngFor="let object of listCountry" value="{{object.alpha2}}">{{object.name}}</ion-select-option>
-          </ion-select>
-          <!-- <ion-input class="input-text no-floating-label" type="text" name="region" value="+84"></ion-input> -->
-        </ion-item>
-      </ion-col>
-      <ion-col class="no-padding padding-left-10">
-        <ion-item lines="none" class="input-item">
-          <ion-input class="input-text no-floating-label" type="number" value="{{phone}}"></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col class="no-padding padding-right-10" size="6">
-        <ion-item class="input-item" lines="none">
-          <ion-icon class="input-icon" name="custom-gift" src="/assets/icon/custom-gift.svg" slot="start"></ion-icon>
-          <ion-label class="input-floating-label" position="floating">{{ 'MY_ACCOUNT_DETAIL.DOB' | translate }}</ion-label>
-          <ion-datetime class="input-text input-text-50" displayFormat="DD/MM/YYYY" value="{{dateOfBirth}}"></ion-datetime>
-        </ion-item>
-      </ion-col>
-      <ion-col class="no-padding padding-left-10">
-        <ion-item class="input-item" lines="none">
-          <ion-icon class="input-gender" name="custom-gift" src="/assets/icon/custom-gender.svg" slot="start"></ion-icon>
-          <ion-label class="input-floating-label" position="floating">{{ 'MY_ACCOUNT_DETAIL.gender' | translate }}</ion-label>
-          <ion-select class="input-text select-text" value="{{gender}}" >
-            <ion-select-option value="female">{{ 'MY_ACCOUNT_DETAIL.female' | translate }}</ion-select-option>
-            <ion-select-option value="male">{{ 'MY_ACCOUNT_DETAIL.male' | translate }}</ion-select-option>
-          </ion-select>
-        </ion-item>        
-      </ion-col>
-    </ion-row>
-  </div>
+  <ion-row>
+    <ion-col class="no-padding padding-right-10" size="5">
+      <ion-item class="input-item" lines="none">
+        <ion-icon class="input-icon" name="flag-vn" src="{{avatarCountry}}" slot="start"></ion-icon>
+        <ion-label class="label-phone-code">+{{formPhoneCode}}</ion-label>
+        <ion-select (ionChange)="onChangeCountry()" class="input-text select-text opacity-0" value="male" [(ngModel)]="countryAlpha2">
+          <ion-select-option *ngFor="let object of listCountry" value="{{object.alpha2}}">{{object.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+    <ion-col class="no-padding padding-left-10">
+      <ion-item lines="none" class="input-item">
+        <ion-input class="input-text no-floating-label" type="number"  [(ngModel)]="phone"></ion-input>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-col class="no-padding padding-right-10" size="6">
+      <ion-item class="input-item" lines="none">
+        <ion-icon class="input-icon" name="custom-gift" src="/assets/icon/account/birthday.svg" slot="start"></ion-icon>
+        <ion-label class="input-floating-label" position="floating">{{ 'MY_ACCOUNT_DETAIL.DOB' | translate }}</ion-label>
+        <ion-datetime class="input-text input-text-50" [(ngModel)]="dateOfBirth" displayFormat="DD/MM/YYYY"></ion-datetime>
+      </ion-item>
+    </ion-col>
+    <ion-col class="no-padding padding-left-10" size="6">
+      <ion-item class="input-item" lines="none">
+        <ion-icon class="input-icon" name="custom-gift" src="/assets/icon/account/gender.svg" slot="start"></ion-icon>
+        <ion-label class="input-floating-label" position="floating">{{ 'MY_ACCOUNT_DETAIL.gender' | translate }}</ion-label>
+        <ion-select class="input-text select-text" [(ngModel)]="gender">
+          <ion-select-option value="female">{{ 'MY_ACCOUNT_DETAIL.female' | translate }}</ion-select-option>
+          <ion-select-option value="male">{{ 'MY_ACCOUNT_DETAIL.male' | translate }}</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+  <ion-button expand="block" class="button-common button-send btn-active" (click)="updateAccount()">
+    <ion-label>{{ 'MY_ACCOUNT_DETAIL.btn_save' | translate }}</ion-label>
+  </ion-button>
 </ion-content>

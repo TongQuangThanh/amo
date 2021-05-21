@@ -21,8 +21,8 @@ export class RegisterToReceiveGoodsPage implements OnInit {
   check_box_2: boolean;
   tip_value: any;
   show_popup_tip: any;
-  form_apartment_id:any;
-  form_apartment_class:any;
+  form_apartment_id: any;
+  form_apartment_class: any;
   form_money_tip_value: any;
   form_money_tip: any;
   form_money_tip_class: any;
@@ -33,10 +33,10 @@ export class RegisterToReceiveGoodsPage implements OnInit {
   list_image_1: any;
   number_of_image: any;
   flag_show_all_image: any;
-  form_note: any;
+  // form_note: any;
   form_date_time: any;
   form_date_time_class: any;
-  
+
   constructor(
     public modalController: ModalController,
     private camera: Camera,
@@ -47,7 +47,7 @@ export class RegisterToReceiveGoodsPage implements OnInit {
     private apiService: ApiService,
     private translate: TranslateService,
     private alertService: AlertService
-  ) { 
+  ) {
     platform.ready().then((readySource) => {
       this.heightScreen = platform.height() * 0.58 - 18;
     });
@@ -55,45 +55,43 @@ export class RegisterToReceiveGoodsPage implements OnInit {
 
   ngOnInit() {
     this.listDepartmentByID = {};
-    this.receiverInfor = "";
+    this.receiverInfor = '';
     this.getListApartment();
     this.check_box_1 = false;
     this.check_box_2 = false;
     this.tip_value = 1;
     this.show_popup_tip = false;
-    this.form_apartment_id = "";
-    this.form_apartment_class = "";
-    this.form_money_payment = "";
-    this.form_money_payment_class = "";
-    this.form_money_tip = "";
-    this.form_money_tip_value = "";
-    this.form_money_tip_class = "";
+    this.form_apartment_id = '';
+    this.form_apartment_class = '';
+    this.form_money_payment = '';
+    this.form_money_payment_class = '';
+    this.form_money_tip = '';
+    this.form_money_tip_value = '';
+    this.form_money_tip_class = '';
     this.list_image = [];
     this.flag_show_all_image = false;
-    this.form_note = "";
-    this.form_date_time = "";
-    this.form_date_time_class = "";
-    
+    // this.form_note = "";
+    this.form_date_time = '';
+    this.form_date_time_class = '';
+
     this.breakListImage();
   }
   breakListImage() {
-    var self = this; 
+    var self = this;
     var index = 0;
     this.list_image_1 = [];
     this.number_of_image = self.list_image.length;
-    for(var i = 0; i < self.number_of_image; i++) {
+    for (var i = 0; i < self.number_of_image; i++) {
       self.list_image[i].index = index;
       index++;
       if (index < 5) {
-        self.list_image_1.push(
-          self.list_image[i]
-        );
+        self.list_image_1.push(self.list_image[i]);
       }
     }
   }
   deleteImageToList(index) {
     var self = this;
-    this.list_image.forEach(element => {
+    this.list_image.forEach((element) => {
       if (element.index == index) {
         self.list_image.splice(index, 1);
       }
@@ -106,7 +104,7 @@ export class RegisterToReceiveGoodsPage implements OnInit {
   eventButtonClosePopupImage() {
     this.flag_show_all_image = false;
   }
-  ionChangePulldown1(event){
+  ionChangePulldown1(event) {
     if (this.form_apartment_id != '') {
       this.form_apartment_class = 'has-input-value';
     } else {
@@ -128,25 +126,30 @@ export class RegisterToReceiveGoodsPage implements OnInit {
     }
   }
 
-  getListApartment(){
+  getListApartment() {
     var self = this;
     this.loading.present();
-    this.apiService.getListUserApartment()
-      .subscribe(result => {
+    this.apiService.getListUserApartment().subscribe(
+      (result) => {
         self.listDepartment = result.userApartments;
-        self.listDepartment.forEach(data =>{
+        self.listDepartment.forEach((data, index) => {
+          if(index == 0) {
+            this.form_apartment_id = data.apartment._id;
+            this.form_apartment_class = 'has-input-value';
+          }
           self.listDepartmentByID[data.apartment._id] = data;
         });
-        self.loading.dismiss()
-    },
-    error => { 
-      self.loading.dismiss();
-    });
+        self.loading.dismiss();
+      },
+      (error) => {
+        self.loading.dismiss();
+      }
+    );
   }
-  ionChangeCheckBox1(){
+  ionChangeCheckBox1() {
     this.check_box_1 = !this.check_box_1;
   }
-  ionChangeCheckBox2(){
+  ionChangeCheckBox2() {
     this.check_box_2 = !this.check_box_2;
   }
   selectTip(value) {
@@ -156,27 +159,27 @@ export class RegisterToReceiveGoodsPage implements OnInit {
     this.tip_value = value;
     this.show_popup_tip = true;
   }
-  eventButtonClosePopup(){
+  eventButtonClosePopup() {
     this.show_popup_tip = false;
   }
-  eventButtonSavePopup(){
+  eventButtonSavePopup() {
     this.show_popup_tip = false;
     this.form_money_tip_value = this.form_money_tip;
   }
-  ionChangeDateTime(event){
-    if (this.form_date_time != "") {
+  ionChangeDateTime(event) {
+    if (this.form_date_time != '') {
       this.form_date_time_class = 'has-input-value';
     } else {
-      this.form_date_time_class = "";
+      this.form_date_time_class = '';
     }
   }
   convertListImage() {
     var self = this;
-    for(var i=0;i<self.list_image_select.length;i++){
+    for (var i = 0; i < self.list_image_select.length; i++) {
       self.list_image.push({
-        index:0, 
+        index: 0,
         src: self.list_image_select[i].media.url,
-        media: self.list_image_select[i].media
+        media: self.list_image_select[i].media,
       });
     }
     self.list_image_select = [];
@@ -197,34 +200,34 @@ export class RegisterToReceiveGoodsPage implements OnInit {
       tip_value = this.form_money_tip_value;
     }
     let list_attachment = [];
-    self.list_image.forEach(image => {
+    self.list_image.forEach((image) => {
       list_attachment.push(image.media);
-    })
+    });
     const params = {
       // category: "",
       title: this.translate.instant('INBOX_29.title'),
-      content: this.form_note,
+      content: this.receiverInfor,
       campaign: dataApartment.campaign._id,
       apartment: this.form_apartment_id,
       // createdBy: "",
       attachments: list_attachment,
-      type: "receiver",
+      type: 'receiver',
       receiverInfor: this.receiverInfor,
       receiverPaymentHelps: this.check_box_1 == false ? 'notPayment' : 'payment',
       receiverPaymentHelpsValue: this.check_box_1 == true ? this.form_money_payment : 0,
       receiverPaymentTip: this.check_box_2 == false ? 'notPayment' : 'payment',
       receiverPaymentTipValue: this.check_box_2 == true ? tip_value : 0,
-      receiverDate: this.form_date_time
+      receiverDate: this.form_date_time,
     };
 
     this.loading.present();
-    this.apiService.addFeedbackNew(params)
-      .subscribe(result => {
+    this.apiService.addFeedbackNew(params).subscribe(
+      (result) => {
         self.loading.dismiss();
         self.alertService.presentToast(this.translate.instant('ADD_REQUEST.message_add_request_sucess'));
         self.navCtrl.back();
       },
-      error => {
+      (error) => {
         self.loading.dismiss();
         self.alertService.presentToast(this.translate.instant('ADD_REQUEST.message_add_request_fail'));
       }
@@ -235,32 +238,33 @@ export class RegisterToReceiveGoodsPage implements OnInit {
   async selectImage() {
     const actionSheet = await this.actionSheetController.create({
       header: this.translate.instant('COMMON.form_select_image_title'),
-      buttons: [{
-        text: this.translate.instant('COMMON.form_select_image_library'),
-        handler: () => {
-          this.checkPicturePermission(this.camera.PictureSourceType.PHOTOLIBRARY);
-        }
-      },
-      {
-        text: this.translate.instant('COMMON.form_select_image_camera'),
-        handler: () => {
-          this.checkPicturePermission(this.camera.PictureSourceType.CAMERA);
-        }
-      },
-      {
-        text: this.translate.instant('COMMON.form_select_image_cancel'),
-        role: 'cancel'
-      }
-      ]
+      buttons: [
+        {
+          text: this.translate.instant('COMMON.form_select_image_library'),
+          handler: () => {
+            this.checkPicturePermission(this.camera.PictureSourceType.PHOTOLIBRARY);
+          },
+        },
+        {
+          text: this.translate.instant('COMMON.form_select_image_camera'),
+          handler: () => {
+            this.checkPicturePermission(this.camera.PictureSourceType.CAMERA);
+          },
+        },
+        {
+          text: this.translate.instant('COMMON.form_select_image_cancel'),
+          role: 'cancel',
+        },
+      ],
     });
     await actionSheet.present();
   }
 
-  checkPicturePermission(sourceType : PictureSourceType) {
+  checkPicturePermission(sourceType: PictureSourceType) {
     this.pickImage(sourceType);
   }
 
-  blobToFile = (theBlob: Blob, fileName:string): any => {
+  blobToFile = (theBlob: Blob, fileName: string): any => {
     var b: any = theBlob;
     //A Blob() is almost a File() - it's just missing the two properties below which we will add
     b.lastModifiedDate = new Date();
@@ -268,7 +272,7 @@ export class RegisterToReceiveGoodsPage implements OnInit {
 
     //Cast to a File() type
     return theBlob;
-  }
+  };
 
   pickImage(sourceType) {
     var self = this;
@@ -281,30 +285,32 @@ export class RegisterToReceiveGoodsPage implements OnInit {
       targetWidth: 800,
       targetHeight: 800,
       correctOrientation: true,
-    }
-    
-    this.camera.getPicture(options).then((imageData) => {
-      const base64Define = 'data:image/jpeg;base64,';
-      var binaryBlob = this.convertBase64ToBlob(base64Define+imageData);
-      const date = new Date().valueOf();
-      const formData = new FormData();
-      var fileName = "amoapp" + date + ".jpg";
-      var myFile = self.blobToFile(binaryBlob, fileName);
-      const payload = new FormData();
-      payload.append('media', binaryBlob, fileName);
-      
-      this.apiService.uploadImage(payload)
-      .subscribe(result => {
-        console.log(result);
-        self.list_image_select.push(result);
-        self.convertListImage();
+    };
+
+    this.camera.getPicture(options).then(
+      (imageData) => {
+        const base64Define = 'data:image/jpeg;base64,';
+        var binaryBlob = this.convertBase64ToBlob(base64Define + imageData);
+        const date = new Date().valueOf();
+        const formData = new FormData();
+        var fileName = 'amoapp' + date + '.jpg';
+        var myFile = self.blobToFile(binaryBlob, fileName);
+        const payload = new FormData();
+        payload.append('media', binaryBlob, fileName);
+
+        this.apiService.uploadImage(payload).subscribe(
+          (result) => {
+            self.list_image_select.push(result);
+            self.convertListImage();
+          },
+          (error) => {}
+        );
       },
-        error => {
-      });
-    }, (err) => {
-      // Handle error
-      // alert(err);
-    });
+      (err) => {
+        // Handle error
+        // alert(err);
+      }
+    );
   }
 
   private convertBase64ToBlob(base64: string) {
@@ -337,20 +343,21 @@ export class RegisterToReceiveGoodsPage implements OnInit {
       mime,
       extension,
       meta,
-      rawBase64
+      rawBase64,
     };
   }
   checkActiveButton() {
-    if (this.form_apartment_id == '' 
-      || this.receiverInfor == ''
-      || this.form_note == ''
-      || this.form_date_time == ''
-      || (this.check_box_1 == true && this.form_money_payment == '') 
-      || (this.check_box_2 == true && this.tip_value == 4 && this.form_money_tip_value == '')
+    if (
+      this.form_apartment_id == '' ||
+      this.receiverInfor == '' ||
+      // || this.form_note == ''
+      this.form_date_time == '' ||
+      (this.check_box_1 == true && this.form_money_payment == '') ||
+      (this.check_box_2 == true && this.tip_value == 4 && this.form_money_tip_value == '')
     ) {
-      return 'button-inactive'
+      return 'button-inactive';
     } else {
-      return "button-active";
+      return 'button-active';
     }
   }
 }

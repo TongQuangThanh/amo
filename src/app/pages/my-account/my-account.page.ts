@@ -28,15 +28,15 @@ export class MyAccountPage implements OnInit {
   // phone: string;
   email: string;
   timeOrder: any;
-  sex:any;
+  sex: any;
   nationality: any;
   dateOfBirth: any;
   personalLiscence: any;
-  avatar:any;
+  avatar: any;
   // listCountries:any;
   userName: string;
   phone: string;
-  selectedLanguage:string;
+  selectedLanguage: string;
 
   constructor(
     public modalController: ModalController,
@@ -49,11 +49,11 @@ export class MyAccountPage implements OnInit {
     public actionSheetController: ActionSheetController,
     private translateConfigService: TranslateConfigService,
     private iab: InAppBrowser
-  ) { 
+  ) {
     // this.listCountries = ConstService.LIST_COUNTRIES;
     this.selectedLanguage = this.translateConfigService.getDefaultLanguage();
     const profile = this.authService.getProfile();
-    if(profile && this.userName != profile.displayName){
+    if (profile && this.userName != profile.displayName) {
       this.userName = profile.displayName;
       this.phone = profile.phone;
     }
@@ -65,13 +65,13 @@ export class MyAccountPage implements OnInit {
       buttons: [{
         text: this.translate.instant('MY_ACCOUNT.vn'),
         icon: this.selectedLanguage === 'vi' ? 'checkmark-circle' : '',
-        cssClass : this.selectedLanguage === 'vi' ? 'select-language-btn selected-btn' : 'select-language-btn',
+        cssClass: this.selectedLanguage === 'vi' ? 'select-language-btn selected-btn' : 'select-language-btn',
         handler: () => {
-          this.languageChanged('vi');          
+          this.languageChanged('vi');
         }
       }, {
         text: this.translate.instant('MY_ACCOUNT.en'),
-        cssClass : this.selectedLanguage === 'en' ? 'select-language-btn selected-btn' : 'select-language-btn',
+        cssClass: this.selectedLanguage === 'en' ? 'select-language-btn selected-btn' : 'select-language-btn',
         icon: this.selectedLanguage === 'en' ? 'checkmark-circle' : '',
         handler: () => {
           this.languageChanged('en');
@@ -85,7 +85,7 @@ export class MyAccountPage implements OnInit {
     this.getUserProfile();
   }
 
-  getUserProfile(){
+  getUserProfile() {
     var self = this;
     this.loading.present();
     this.apiService.getUserProfile()
@@ -96,15 +96,15 @@ export class MyAccountPage implements OnInit {
         self.nationality = result.profile.nationality;
         self.dateOfBirth = result.profile.dateOfBirth;
         self.personalLiscence = result.profile.personalLiscence;
-        self.avatar = result.profile.avatar != null ? result.profile.avatar : '../assets/icon/avatar-red.svg';
+        self.avatar = result.profile.avatar != null ? result.profile.avatar : '../assets/icon/avatar-default.png';
         self.loading.dismiss()
-    },
-    error => {
-      self.loading.dismiss();
-    });
+      },
+        error => {
+          self.loading.dismiss();
+        });
   }
 
-  updateAccount(){
+  updateAccount() {
     var self = this;
     const params = {
       email: self.email,
@@ -119,52 +119,52 @@ export class MyAccountPage implements OnInit {
         localStorage.setItem('profile', JSON.stringify(result.profile));
         self.loading.dismiss()
         self.alertService.presentToast(this.translate.instant('MY_ACCOUNT.message_update_sucess'));
-    },
-    error => {
-      self.loading.dismiss();
-      self.alertService.presentToast(this.translate.instant('MY_ACCOUNT.message_update_fail'));
-    });
+      },
+        error => {
+          self.loading.dismiss();
+          self.alertService.presentToast(this.translate.instant('MY_ACCOUNT.message_update_fail'));
+        });
   }
 
-  changeToSetting(){
+  changeToSetting() {
     this.navCtrl.navigateForward('/setting');
   }
 
-  callHelpCenter(){
+  callHelpCenter() {
     this.alertService.presentToast(this.translate.instant('COMMON.maintain'));
   }
 
-  logout(){
+  logout() {
     this.authService.logout();
     this.navCtrl.navigateRoot('/landing');
   }
 
-  languageChanged(language:string){
+  languageChanged(language: string) {
     this.selectedLanguage = language;
     this.translateConfigService.setLanguage(this.selectedLanguage);
     localStorage.setItem('lang', language);
   }
 
-  changeToMyAccountDetail(){
+  changeToMyAccountDetail() {
     this.navCtrl.navigateForward('/my-account-detail');
   }
 
-  changePassword(){
+  changePassword() {
     this.navCtrl.navigateForward('/change-password');
   }
 
-  changeToTerms(){
-    const browser = this.iab.create("https://amoapp.com.vn/dieu-khoan-su-dung/",'_system', 'location=yes, enableviewportscale=yes');
-    browser.show();
-    // this.navCtrl.navigateForward('/terms');
+  changeToTerms() {
+    // const browser = this.iab.create("https://amoapp.com.vn/dieu-khoan-su-dung/",'_system', 'location=yes, enableviewportscale=yes');
+    // browser.show();
+    this.navCtrl.navigateForward('/terms');
   }
 
-  changeToGuideline(){
-    const browser = this.iab.create("https://amoapp.com.vn/vestibulum-rutrum-mi-nec-elementum/",'_system', 'location=yes, enableviewportscale=yes');
+  changeToGuideline() {
+    const browser = this.iab.create("https://amoapp.com.vn/chinh-sach-bao-mat/", '_system', 'location=yes, enableviewportscale=yes');
     browser.show();
     // this.navCtrl.navigateForward('/guideline');
   }
-  openToRateApp(){
+  openToRateApp() {
     const browser = this.iab.create("http://onelink.to/umn6f2", "_system", "location=yes, enableviewportscale=yes");
     browser.show();
   }
@@ -193,11 +193,10 @@ export class MyAccountPage implements OnInit {
     return await modal.present();
   }
 
-  async changeLanguageModal() {
+  async changePasswordModal() {
     const modal = await this.modalController.create({
       component: PopupChangeLanguagePage,
-      cssClass: 'changepass-page-custom',
-      backdropDismiss: true,
+      cssClass: 'changepass-page-custom'
     });
     return await modal.present();
   }

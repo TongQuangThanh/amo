@@ -165,7 +165,6 @@ export class PincodeRegisterPage {
     this.loading.present();
     this.apiService.confirmRegisterCode(this.phoneNumber, pinCodeValue)
       .subscribe(result => {
-        console.log(result);
         self.isError = false;
         self.loading.dismiss();
         self.finishPinCode(pinCodeValue);

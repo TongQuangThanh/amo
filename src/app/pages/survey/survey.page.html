@@ -1,0 +1,61 @@
+<ion-content class="no-scroll survey-wrapper" slot="fixed">
+    <ion-header class="survey-header">
+        <ion-buttons class="back-button">
+            <ion-back-button color="light" text="" icon="chevron-back" class="ion-back-button"></ion-back-button>
+        </ion-buttons>
+        <ion-label class="header-title"></ion-label>
+        <ion-label></ion-label>
+    </ion-header>
+
+    <div class="survey-title-wrapper">
+        <ion-label class="survey-title">{{surveyData?.title}}</ion-label>
+        <ion-label class="survey-sub-title">{{surveyData?.excerpt}}</ion-label>
+        <ion-label class="survey-detail-link" (click)="surveyDetailClick()">{{'SURVEY.detail_lable' | translate}}</ion-label>
+    </div>
+
+    <div class="survey-content">
+        <div class="question-wrapper {{currentStep != i ? 'survey-padding-bottom' : ''}}" *ngFor="let question of survey; let i = index">
+            <div class="question-order" *ngIf="currentStep < i || currentStep === i">{{ i+1 }}</div>
+            <div class="question-order" *ngIf="currentStep > i">
+                <ion-icon name="checkmark"></ion-icon>
+            </div>
+            <div class="question">
+                <!-- question -->
+                <ion-label class="question-title">{{ question.question }}</ion-label>
+                <div class="answer-block" *ngIf="currentStep == i">
+                    <!-- single type -->
+                    <ion-list class="list-anwers" *ngIf="question.question_type == '0'">
+                        <ion-radio-group value="biff" [value]="question.answer" (ionChange) = "question.answer = $event.detail.value">
+                            <ion-item class="answer-item" lines="none" *ngFor="let answer of question.answer_option">
+                                <ion-label class="answer-label">{{ answer }}</ion-label>
+                                <ion-radio mode='md' slot="start" color="light" [value]="answer"></ion-radio>
+                            </ion-item>
+                        </ion-radio-group>
+                    </ion-list>
+                    <!-- multiple type -->
+                    <ion-list class="list-anwers" *ngIf="question.question_type == '1'">
+                        <ion-item class="answer-item" lines="none" *ngFor="let answer of question.answer_option">
+                            <ion-label class="answer-label">{{answer.value}}</ion-label>
+                            <ion-checkbox mode="md" slot="start" color="light" class="survey-checkbox" [(ngModel)]="answer.isChecked">
+                            </ion-checkbox>
+                        </ion-item>
+                    </ion-list>
+                    <!-- text type -->
+                    <ion-textarea class="answer-textarea" placeholder="Viết ý kiến" autoGrow="true" *ngIf="question.question_type == '2'"
+                        [(ngModel)]="question.answer">
+                    </ion-textarea>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="navigation-block" [ngClass]="{'single-button': currentStep == 0}">
+        <ion-button color="light" shape="round" (click)="changeStep('prev')" class="navigation-btn" *ngIf="currentStep > 0">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+        </ion-button>
+        <ion-button color="light" shape="round" (click)="changeStep('next')" class="navigation-btn">
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+        </ion-button>
+    </div>
+</ion-content>

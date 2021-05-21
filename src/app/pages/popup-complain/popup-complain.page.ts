@@ -20,7 +20,8 @@ import { TranslateService } from '@ngx-translate/core';
 export class PopupComplainPage implements OnInit {
   selectedLanguage:string;
   @ViewChild('content') content: any;
-
+  @ViewChild("chat_input") inputField: ElementRef;
+  
   data_chat: any;
   list_image_select: any;
   flag_user: any;
@@ -51,7 +52,7 @@ export class PopupComplainPage implements OnInit {
       var self = this;
       platform.ready().then((readySource) => {
         self.widthListScreen = platform.width() * 0.8;
-        self.heightScreen = platform.height() * 0.63;
+        self.heightScreen = platform.height() * 0.55;
         self.defineHeightScreen = this.heightScreen;
       });
       UtilsService.requestDetailComponentShare = this;
@@ -78,6 +79,7 @@ export class PopupComplainPage implements OnInit {
     const self = this;
     this.apiService.getListPaymentComment(this.paymentBillID)
       .subscribe(result => {
+        self.loading.dismiss();
         self.listPaymentComment = result.paymentComments;
         self.listPaymentComment.forEach(product => {
           let type = 'left';
@@ -88,7 +90,7 @@ export class PopupComplainPage implements OnInit {
             product.attachments.forEach(attachments => {
               let object = {
                 type: type, 
-                avatar: product.createdBy.avatar, 
+                avatar: product.createdBy.avatar || '../assets/icon/avatar-default.png', 
                 message: "", 
                 images: attachments.url
               }
@@ -97,15 +99,13 @@ export class PopupComplainPage implements OnInit {
           } else {
             let object = {
               type: type, 
-              avatar: product.createdBy.avatar, 
+              avatar: product.createdBy.avatar || '../assets/icon/avatar-default.png', 
               message: product.content, 
               images: ""
             }
             self.data_chat.push(object);
           }
         });
-
-        self.loading.dismiss();
         self.scrollToBottom();
     },
     error => {
@@ -150,7 +150,7 @@ export class PopupComplainPage implements OnInit {
       this.flag_user = message.type;
       return 'margin-top-20';
     } else {
-      return 'no-name';
+      return '';
     }
   }
 
@@ -248,7 +248,6 @@ export class PopupComplainPage implements OnInit {
       
       this.apiService.uploadImage(payload)
       .subscribe(result => {
-        console.log(result);
         self.list_image_select = [];
         self.list_image_select.push(result);
         self.eventSendImage();

@@ -1,4 +1,4 @@
-import { environment} from '../../environments/environment';
+import { environment } from '../../environments/environment';
 
 export const EnvService = {
   register: environment.base + '/auth/register',
@@ -39,7 +39,7 @@ export const EnvService = {
   serviceLog: environment.base + '/service-log',
   services: environment.base + '/service?',
   serviceDetail: environment.base + '/service/',
-  
+
   // getVersion: Platform.OS === 'ios' ? '/public/app-version/ios' : '/public/app-version/android',
   feedback_addFile: environment.base + '/media',
   getBanner: environment.base + '/banner',
@@ -73,10 +73,10 @@ export const EnvService = {
   postRequestShopProduct: environment.base + '/request-shop-product',
   getOrderHistory: environment.base + '/order-history',
   getOrderHistoryById: environment.base + '/order-history/id',
-  putOrderHistoryRateStarUser: environment.base + '/order-history/rate-star-user',
-  putOrderHistoryRateStarShop: environment.base + '/order-history/rate-star-shop',
-  putOrderHistoryCancelUser: environment.base + '/order-history/cancel-user',
-  putOrderHistoryCancelProvider: environment.base + '/order-history/cancel-provider',
+  putOrderHistoryRateStarUser: environment.base + '/order-history-v2/rate-star-user',
+  putOrderHistoryRateStarShop: environment.base + '/order-history-v2/rate-star-shop',
+  putOrderHistoryCancelUser: environment.base + '/order-history-v2/cancel-user',
+  putOrderHistoryCancelProvider: environment.base + '/order-history-v2/cancel-provider',
   getServiceLog: environment.base + '/service-log',
   getServiceLogById: environment.base + '/service-log/id',
   orderHistoryComment: environment.base + '/order-history-comment',
@@ -90,6 +90,56 @@ export const EnvService = {
   apartmentMember: environment.base + '/apartment/member',
   apartmentVehicle: environment.base + '/apartment/vehicle',
   userComment: environment.base + '/user-comment',
-  
-};
 
+  // API ví điện tử
+  registerEpay: environment.base + '/epay-service/register-epay',
+  getEpayUser: environment.base + '/epay-service/get-epay-user',
+  epayRechargeUrl: environment.base + '/epay-service/epay-recharge-url',
+  epaypayment: environment.base + '/epay-service/epay-payment',
+  epayPageApproved: environment.base + '/epay-service/epay-page-approved',
+
+  // post like { "statusLike": "like" } status: 'like' | 'unlike' | 'none'
+  postLike: environment.base + '/post-like/',
+  addPostComment: environment.base + '/post-comment/',
+  addPostCommentReply: environment.base + '/post-reply/',
+
+  // article like { "statusLike": "like" } status: 'like' | 'unlike' | 'none'
+  articleLike: environment.base + '/article-like/',
+  sendArticleReply: environment.base + '/article-reply/',
+
+  // ========================== Service shop V2 API's ===================================== //
+  // Shop house category list
+  shopHouseCategoryV2: environment.base + '/shop-house-category-v2',
+  // Shop house sub categories list
+  shopHouseSubCategpryV2: environment.base + '/shop-house-sub-category-v2', // + :id
+  // List shops by sub category
+  shopHouseV2: environment.base + '/shop-house-v2',
+  // List product of shop
+  productShopV2: environment.base + '/shop-product-v2',
+  // List tag of shop
+  tagShopV2: environment.base + '/shop-house-tag-v2',
+  // search shop by tags , cate
+  searchShop: environment.base + '/shop-house-v2/search',
+  // get, set comment shop
+  commentShopV2: environment.base + '/shop-product-comment-v2',
+  // reply comment shop
+  replycommentShopV2: environment.base + '/shop-product-reply-v2',
+
+  //  order shop v2
+  orderShopV2: environment.base + '/order-history-v2',
+  // get evaluations of Shop
+  getEvaluationShopV2: environment.base + '/order-history-v2/order-history-evaluation',
+  //get shop of user
+  userShopTopData: environment.base + '/shop-house-v2/top/data',
+
+  // get, set comment order
+  commentOrderV2: environment.base + '/order-history-comment-v2',
+  // reply comment shop
+  replycommentOrderV2: environment.base + '/order-history-reply-v2',
+  // change time delivery
+  changeTimeDeliveryOrder: environment.base + '/order-history-v2/change-time-delivery',
+  // promotion code banner
+  promotionCodeBanner: environment.base + '/promotion-code-v2/banner',
+  // post survey
+  postSurvey: environment.base + '/article/survey',
+};

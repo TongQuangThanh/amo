@@ -1,100 +1,216 @@
-.header-title {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 26px;
-    line-height: 40px;
-    color: #21313F;
-    height: 40px;
+.request-background-color {
+  background: #f9fcff !important;
 }
-ion-toolbar ion-title.md {
-    padding-inline-start: 16px;
-}
-ion-toolbar ion-title.ios {
-    padding-inline-start: 0;
-}
-.margin-none {
-    margin: 0;
-}
-.request-card {
-    box-shadow: 0px 10px 30px rgba(33, 49, 63, 0.1);
-    border-radius: 10px;
-    margin-bottom: 20px;
-}
-.request-title {
-    margin: 0 16px 16px 16px;
-    font-family: Nunito Sans;
+.request-ion-header {
+  font-family: Open Sans;
+  width: 100%;
+  height: 150px;
+  left: 0px;
+  top: 0px;
+  background: #E64037;
+  border-radius: 200%/0 0 50px 50px;
+  margin-bottom: 30px;
+
+  .header-title {
+    position: absolute;
+    left: 15px;
+    right: 147px;
+    top: 44px;
+    font-family: Open Sans;
     font-style: normal;
     font-weight: bold;
-    font-size: 16px;
-    line-height: 24px;
-    color: #21313F;
+    font-size: 28px;
+    line-height: 41px;
+    display: flex;
+    align-items: center;
+
+    color: #ffffff;
+    background: #E64037;
+    width: 100%;
+  }
+}
+
+.request-category {
+  font-family: Open Sans;
+  position: absolute;
+  height: 78px;
+  left: 15px;
+  right: 15px;
+  top: 98px;
+  background: #ffffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+
+  .item-icon-col {
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    padding: 0;
+
+    .item-icon-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background: #fbe7e5;
+      border-radius: 8px;
+      --padding-start: 0px;
+      --padding-end: 0px;
+
+      .item-icon {
+        width: 20px;
+        height: 20px;
+      }
+    }
+    .item-label {
+      font-style: normal;
+      font-weight: 600;
+      font-size: 12px;
+      line-height: 21px;
+    }
+  }
+}
+
+.super-tabs-div {
+  width: 100%;
+  height: 40px;
 }
 // custom super-tab
-:host {  
-    --super-tabs-toolbar-background: black;
-    --st-indicator-color: #FA7268;
-    --st-indicator-width: 10px;
-    --ion-color-base: transparent;
+:host {
+  --st-indicator-color: #E64037;
+  --st-indicator-width: 10px;
+  --ion-color-base: transparent;
+  --st-label-color-active: #E64037;
+  --st-label-color-inactive: #a7a4a5;
 }
 .segment-toolbar {
-    border-bottom: 1px solid #F4F5F5;
-    box-shadow: 0px 10px 30px rgba(33, 49, 63, 0.1);
-    background: transparent;
+  background: transparent;
+  margin-bottom: 15px;
 }
-.button-tab-custom {
-    border-radius: 0;
-    box-shadow: none;
+
+.request-super-tab-button {
+  padding: 0 10px;
+  height: 35px;
 }
 .super-tab-button-label {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    text-transform: none !important;
-    font-size: 16px;
-    line-height: 24px;
-    text-align: center;
-    color: #7A838C;
+  text-transform: none !important;
+  font-size: 14px;
+  line-height: 15px;
+  display: flex;
+  align-items: center;
 }
 .update-time {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 14px;
-    line-height: 20px;
-    text-align: right;
-    color: #7A838C;
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 20px;
+  color: #666666;
 }
 
 .toolbar-button {
-    position: sticky;
-    bottom: 0;
-    --background: transparent;
-}
-.add-button {
-    --background: #009AC9;
-    --ion-toolbar-color: #009AC9;
-    --background-activated: #048ab3;
-    --background-focused: #048ab3;
-    --background-hover: #048ab3;
-    opacity: 0.8;
-    margin: 14px 10px;
-    --box-shadow: 0px 10px 30px rgba(33, 49, 63, 0.1);
-    --color: #ffffff;
-    
-}
-.add-button-icon {
-    font-family: Nunito Sans;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 40px;
-    //line-height: 24px;
-    text-align: center;
-    text-transform: none;
-}
-.normal-button {
-    width: 60px;
-    height: 60px;
+  position: absolute;
+  bottom: 40px;
+  --background: transparent;
+  right: 0;
+  width: 170px;
+
+  .reflect-button {
+    width: 40px;
+    height: 40px;
     --border-radius: 50%;
     float: right;
+    margin-right: 15px;
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    transform: translate(0%, -50%);
+    z-index: 99;
+    .reflect-icon {
+      width: 22px;
+      height: 22px;
+    }
+  }
+  .reflect-label {
+    padding: 2px 29px 2px 11px;
+    line-height: 40px;
+    float: right;
+    color: #E64037;
+    margin-right: 5px;
+    font-size: 12px;
+    border-radius: 20px;
+    background-color: #fbeae8;
+    width: 143px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    right: 0%;
+    transform: translate(-15%, -50%);
+  }
+}
+
+.request-card {
+  background: #ffffff;
+  box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  margin: 10px 15px;
+  .request-title {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 22px;
+    color: #221c1e;
+    margin-left: 20px;
+  }
+  .request-card-item {
+    height: 35px;
+  }
+  .badge-status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+    color: #ffffff;
+    border-radius: 0px 8px;
+    width: 80px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+  }
+  .badge-danger {
+    background: #E64037;
+  }
+  .badge-warning {
+    background: #f2c94c;
+  }
+  .badge-success {
+    background: #33a54c;
+  }
+  .badge-cancel {
+    background: #d3d6d9;
+  }
+}
+.custom-infinite-scroll {
+  --color: #E64037;
+  background: #f9fcff !important;
+}
+.footer-content{
+  background: #f9fcff !important;
+}
+
+.bottom-frame {
+  width: 100%;
+  height: 100px;
+  background-image: url('/assets/common/frame.png');
+}
+
+.infinite-scroll, .bottom-frame-wrapper {
+  background: #f9fcff;
 }

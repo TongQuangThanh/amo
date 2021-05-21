@@ -1,130 +1,93 @@
 <ion-header id="main-header-toolbar" class="ion-no-border" [ngStyle]="{'display': getStyleHeader(1)}">
   <ion-toolbar>
-    <ion-buttons slot="start" class="btn-header-back">
+    <ion-buttons slot="start" class="back-button">
       <ion-back-button id="" text="" icon="chevron-back"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-header id="sub-header-toolbar" class="ion-no-border w3-animate-top" [ngStyle]="{'display': getStyleHeader(2)}">
-  <ion-toolbar>
-    <ion-title>{{articleTitle}}</ion-title>
+  <ion-toolbar class="header-splash">
+    <ion-item lines="none" style="margin-top: 10px;">
+      <ion-card-title class="ion-text-wrap content-two-line">{{articleTitle}}</ion-card-title>
+    </ion-item>
     <ion-buttons slot="start" class="btn-header-back">
       <ion-back-button id="" text="" icon="chevron-back"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 <ion-content fullscreen [style.height.px]="heightScreen" [scrollEvents]="true" (ionScroll)="onScroll($event)">
-  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-      <ion-fab-button (click)="showListComment()">
-        <ion-icon name="chatboxes"></ion-icon>
-      </ion-fab-button>
-  </ion-fab> -->
-  <ion-img *ngIf="thumbnail != null" src="{{thumbnail}}"></ion-img>       
-  <ion-img *ngIf="thumbnail == null" src="assets/common/no-thumbnail.png"></ion-img>  
+  <ion-img *ngIf="thumbnail != null" src="{{thumbnail}}"></ion-img>
+  <ion-img *ngIf="thumbnail == null" src="assets/common/no-thumbnail.png"></ion-img>
   <ion-card button class="custom-card margin-none">
-      <ion-item lines="none" style="margin-top: 10px;">
-          <ion-card-title class="ion-text-wrap content-two-line">{{articleTitle}}</ion-card-title>
-      </ion-item>
-
-      <div class="" id="content-noti">
-        <ion-list class="text-node information-node">
-          <ion-card class="ion-float-left padding-none card-bottom">
-            <span class="image-caption-big" class="card-bottom-label"> {{formatString(createdAt)}} </span>
-            <ion-icon item-start name="custom-oval" class="card-bottom-icon custom-oval" src="assets/icon/custom-oval.svg"></ion-icon>
-          </ion-card>
-          <ion-card class="ion-float-left padding-none card-bottom margin-left-0">
-            <span class="image-caption-big" class="card-bottom-label"> {{createBy}} </span>
-            <ion-icon item-start name="custom-oval" class="card-bottom-icon custom-oval" src="assets/icon/custom-oval.svg"></ion-icon>
-          </ion-card>
-          <ion-card class="ion-float-left padding-none card-bottom margin-left-0">
-            <ion-icon item-start name="eye-outline" class="card-bottom-icon"></ion-icon>
-            <span class="image-caption-big" class="card-bottom-label"> {{readsCount}} </span>
-            <ion-icon item-start name="custom-oval" class="card-bottom-icon custom-oval" src="assets/icon/custom-oval.svg"></ion-icon>
-          </ion-card>
-          <ion-card class="ion-float-left padding-none card-bottom margin-left-0">
-            <ion-icon item-start name="custom-share" class="card-bottom-icon" src="assets/icon/custom-share.svg"></ion-icon>
-              <span class="image-caption-big" class="card-bottom-label"> {{sharesCount}} </span>
-          </ion-card>
-        </ion-list>
-      </div>
-
-      <div class="clear-both attachments-div">
-        <ion-list class="text-node attachments-node">
-          <ion-card *ngFor="let item of attachments" id="{{item._id}}" class="ion-float-left padding-none attachments-card" (click)="detailAttachment($event)">
-            <ion-label class="attachments-text"><ion-icon name="custom-attach-active" class="attachments-icon" src="assets/icon/custom-attach-active.svg"></ion-icon>{{item.fileName}}</ion-label>
-          </ion-card>
-        </ion-list>
-      </div>
-          
-  </ion-card>
-  
-  <p [innerHTML]="articleContent" class="padding-left-right-card full-width article-content"></p>
-
-  <ion-list class="list-chat-content">
-    <div class="message-wrap" *ngFor="let item of listArticlesComment.reverse()">      
-      <div class="message left">
-        <img class="user-img" *ngIf="item.createdBy" src="{{item.createdBy.avatar}}"/>
-        <img class="user-img" *ngIf="!item.createdBy" src="../assets/icon/avatar-default.png"/>
-        <div class="msg-detail">
-          <ion-grid class="msg-grid">
-            <ion-row>
-              <div class="msg-info">
-                <p *ngIf="item.createdBy">{{item.createdBy.displayName}}</p>
-              </div>
-            </ion-row>
-            <ion-row>
-              <div class="msg-content">
-                <p [innerHTML]="convertText(item.content)" ></p>
-              </div>
-            </ion-row>
-            <ion-row>
-              <div class="msg-time">
-                <p><span class="msg-time-label">{{formatString(item.createdAt)}}</span> <span class="btn-reply" (click)="replyComment()">{{ 'NOTIFICATION_COMMENT.reply' | translate }}</span></p>
-              </div>
-            </ion-row>
-          </ion-grid>
-        </div>
-      </div>
-      <div class="message left reply" *ngFor="let itemRep of item.replies.reverse()">
-        <img class="user-img" *ngIf="itemRep.createdBy" src="{{itemRep.createdBy.avatar}}"/>
-        <img class="user-img" *ngIf="!itemRep.createdBy" src="../assets/icon/avatar-default.png"/>
-        <div class="msg-detail">
-          <ion-grid class="msg-grid">
-            <ion-row>
-              <div class="msg-info">
-                <p>{{itemRep.createdBy.displayName}}</p>
-              </div>
-            </ion-row>
-            <ion-row>
-              <div class="msg-content">
-                <p [innerHTML]="convertText(itemRep.content)" ></p>
-              </div>
-            </ion-row>
-            <ion-row>
-              <div class="msg-time">
-                <p><span class="msg-time-label">{{formatString(itemRep.createdAt)}}</span> <span class="btn-reply" (click)="replyComment()">{{ 'NOTIFICATION_COMMENT.reply' | translate }}</span></p>
-              </div>
-            </ion-row>
-          </ion-grid>
-        </div>
-      </div>
+    <ion-item lines="none" class="ion-item-title">
+      <ion-card-title class="ion-text-wrap content-two-line">{{articleTitle}}</ion-card-title>
+    </ion-item>
+    <div class="" id="content-noti">
+      <ion-list class="text-node information-node">
+        <ion-card class="ion-float-left padding-none card-bottom">
+          <span class="image-caption-big" class="card-bottom-label"> {{formatString(createdAt)}} </span>
+          <ion-icon item-start name="custom-oval" class="card-bottom-icon custom-oval" src="assets/icon/custom-oval.svg"></ion-icon>
+        </ion-card>
+        <ion-card class="ion-float-left padding-none card-bottom margin-left-0">
+          <span class="image-caption-big" class="card-bottom-label"> {{createBy | slice:0:14}} </span>
+          <ion-icon item-start name="custom-oval" class="card-bottom-icon custom-oval" src="assets/icon/custom-oval.svg"></ion-icon>
+        </ion-card>
+        <ion-card class="ion-float-left padding-none card-bottom margin-left-0">
+          <!-- <ion-icon item-start name="eye-outline" class="card-bottom-icon"></ion-icon> -->
+          <span class="image-caption-big" class="card-bottom-label"> {{readsCount}} {{ 'NOTIFICATION.readed' | translate }}</span>
+        </ion-card>
+      </ion-list>
     </div>
-  </ion-list>
+    <div class="clear-both attachments-div" *ngIf="attachments && attachments.length > 0">
+      <ion-list class="text-node attachments-node">
+        <ion-card *ngFor="let item of attachments" id="{{item._id}}" class="ion-float-left padding-none attachments-card"
+          (click)="detailAttachment($event)">
+          <ion-label class="attachments-text">
+            <ion-icon name="custom-attach-active" class="attachments-icon" src="assets/icon/custom-attach-active.svg"></ion-icon>
+            {{item.fileName}}
+          </ion-label>
+        </ion-card>
+      </ion-list>
+    </div>
+  </ion-card>
+  <div class="line-break-content"></div>
+  <p [innerHTML]="articleContent" class="full-width article-content"></p>
 </ion-content>
 
-<ion-footer class="ion-no-border footer-content">
-  <ion-item id="reply-item" lines="none" class="reply-item" style="display: none;">
-    <ion-label class="reply-label">{{ 'NOTIFICATION_COMMENT.reply_label' | translate }} <span class="reply-name"> {{createBy}}</span></ion-label>
-    <ion-label class="cancel-label" (click)="cancelReplyComment()">{{ 'NOTIFICATION_COMMENT.cancel_label' | translate }} </ion-label>  
-  </ion-item>
-  <ion-item lines="none" class="add-comment-item">
-    <!-- <ion-icon name="image" slot="start" class="add-image-icon"></ion-icon> -->
-    <ion-textarea #comment_input class="input-area" 
-      rows="1"  
-      auto-grow
-      [(ngModel)]="editorMsg"
-      placeholder="{{ 'REQUEST_DETAIL.place_holder_input' | translate }}">
-      <ion-icon name="paper-plane" class="icon-send icon-send-default" (click)="sendMsg()"></ion-icon>
-    </ion-textarea>    
-  </ion-item>
+<ion-footer class="ion-no-border footer-content share-info">
+  <ion-grid>
+    <ion-row>
+      <ion-col class="footer-grid-col" (click)="postLike()">
+        <ion-row>
+          <ion-col class="ion-col-img">
+            <ion-img src="/assets/icon/svg/news/like.svg" class="share-info-img"></ion-img>
+          </ion-col>
+          <ion-col>
+            <div class="ion-text-left">
+              <ion-label class="share-info-title" [ngClass]="{'liked': isLiked}">{{ 'NOTIFICATION.like_text' | translate }}</ion-label>
+            </div>
+            <div class="ion-text-left landing-text">
+              <ion-label class="share-info-text">{{likesCount}} {{ 'NOTIFICATION.liked' | translate }}</ion-label>
+            </div>
+          </ion-col>
+          <ion-col class="ion-col-break"></ion-col>
+        </ion-row>
+      </ion-col>
+      <ion-col class="footer-grid-col" (click)="commentNotificationModal()">
+        <ion-row>
+          <ion-col class="ion-col-img">
+            <ion-img src="/assets/icon/svg/news/comment.svg" class="share-info-img"></ion-img>
+          </ion-col>
+          <ion-col>
+            <div class="ion-text-left">
+              <ion-label class="share-info-title">{{ 'NOTIFICATION.comment_text' | translate }}</ion-label>
+            </div>
+            <div class="ion-text-left landing-text">
+              <ion-label class="share-info-text">{{ commentsCount }} {{ 'NOTIFICATION.commented' | translate }}</ion-label>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-footer>

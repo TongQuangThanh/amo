@@ -7,6 +7,7 @@ import { ModalController } from '@ionic/angular';
 import { ActivatedRoute } from '@angular/router';
 import { ConstService } from '../../utils/const.service';
 import { Subscription } from 'rxjs';
+import { BookingShopHousePage } from '../booking-shop-house/booking-shop-house.page';
 
 @Component({
   selector: 'app-repair-service',
@@ -46,12 +47,11 @@ export class RepairServicePage implements OnInit {
     this.category_name = category_name;
     this.isItemAvailable = false;
     this.search_value = "";
-  }
-  ionViewWillEnter(){
     this.currentPage = 1;
     this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
     this.getDataUserShopByCategory(this.currentPage, this.numberRecordOnPage, '', null, true);
   }
+  ionViewWillEnter(){}
   getDataUserShopByCategory(page: number, limit: number, search: string, event: any, isRefresh: boolean) {
     const self = this;
     if (isRefresh) {
@@ -126,10 +126,18 @@ export class RepairServicePage implements OnInit {
       if (self.data_shop_house['group_2'].length > 0) {
         self.data_shop_house['group_2'][0]['data'][0].number = 1;
         localStorage.setItem('data-shop-house', JSON.stringify(self.data_shop_house));
-        self.navCtrl.navigateForward('/booking-shop-house');
+        this.goToPageBookingShopHouse();
       }
     });
   }
+  async goToPageBookingShopHouse() {
+    const modal = await this.modalController.create({
+      component: BookingShopHousePage,
+      cssClass: 'booking-shop-house-modal-css'
+    });
+    return await modal.present();
+  }
+
   getShopProducts(objectShop, callBack) {
     const self = this;
     this.data_shop_house = {};

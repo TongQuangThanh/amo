@@ -68,7 +68,8 @@ export class LandingPage implements OnInit {
   }
 
   ChangeLogin() {
-    this.navCtrl.navigateForward('/login/' + this.phoneNumber);
+    //this.navCtrl.navigateForward('/login/' + this.phoneNumber);
+    this.navCtrl.navigateForward('/login/');
   }
 
   sendSMS(){

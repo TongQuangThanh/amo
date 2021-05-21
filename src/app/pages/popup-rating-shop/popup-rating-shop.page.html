@@ -1,0 +1,55 @@
+<ion-content class="content-wrap">
+  <div class="content-container">
+    <ion-item lines="none" class="header-item ion-no-padding">
+      <ion-title class="popup-title">{{ 'RATING_SHOP.title' | translate }}</ion-title>
+      <ion-buttons slot="end" (click)="closeModal()" class="btn-close-popup">
+        <ion-icon name="close"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-list lines="full" class="ion-no-margin ion-no-padding margin-top-10">
+      <ion-grid class="ion-no-padding">
+        <ion-row class="ion-no-padding padding-0 margin-top-10">
+          <ion-item lines="none" class="width-100 group_stars_rate">
+            <ion-item lines="none" class="width-20">
+              <ion-img src="../assets/icon/svg/stars_rating.svg" class="img-responsive" alt=""></ion-img>
+              <ion-img *ngIf="rating_value_popup > 7" src="../assets/icon/svg/stars_rating_fullsize.svg" class="img-responsive position-image-rate" alt=""></ion-img>
+            </ion-item>
+            <ion-item lines="none" class="width-20">
+              <ion-img src="../assets/icon/svg/stars_rating.svg" class="img-responsive" alt=""></ion-img>
+              <ion-img *ngIf="rating_value_popup > 27" src="../assets/icon/svg/stars_rating_fullsize.svg" class="img-responsive position-image-rate" alt=""></ion-img>
+            </ion-item>
+            <ion-item lines="none" class="width-20">
+              <ion-img src="../assets/icon/svg/stars_rating.svg" class="img-responsive" alt=""></ion-img>
+              <ion-img *ngIf="rating_value_popup > 47" src="../assets/icon/svg/stars_rating_fullsize.svg" class="img-responsive position-image-rate" alt=""></ion-img>
+            </ion-item>
+            <ion-item lines="none" class="width-20">
+              <ion-img src="../assets/icon/svg/stars_rating.svg" class="img-responsive" alt=""></ion-img>
+              <ion-img *ngIf="rating_value_popup > 67" src="../assets/icon/svg/stars_rating_fullsize.svg" class="img-responsive position-image-rate" alt=""></ion-img>
+            </ion-item>
+            <ion-item lines="none" class="width-20">
+              <ion-img src="../assets/icon/svg/stars_rating.svg" class="img-responsive" alt=""></ion-img>
+              <ion-img *ngIf="rating_value_popup > 87" src="../assets/icon/svg/stars_rating_fullsize.svg" class="img-responsive position-image-rate" alt=""></ion-img>
+            </ion-item>
+          </ion-item>
+          <ion-item lines="none" class="ion-item-range">
+            <ion-range color="danger" pin="true" [(ngModel)]="rating_value_popup"></ion-range>
+          </ion-item>
+        </ion-row>
+      </ion-grid>
+  </ion-list>
+    <ion-item class="modal-item feedback-textarea" lines="none">
+      <ion-textarea class="feedback-textarea-placeholder" rows="4"
+        placeholder="{{ 'RATING_SHOP.note_placeHolder' | translate }}" [(ngModel)]="message"></ion-textarea>
+    </ion-item>
+    <ion-toolbar lines="none" class="ion-text-center modal-toolbar">
+      <ion-button class="delete-button"  *ngIf="rating_value_popup < 8 
+      || (rating_value_popup >= 8 && rating_value_popup < 68 && message == '')">
+        <ion-label class="delete-button-label">{{ 'RATING_SHOP.btn_send' | translate }}</ion-label>
+      </ion-button>
+      <ion-button class="delete-button" *ngIf="rating_value_popup >= 68 
+        || (rating_value_popup >= 8 && rating_value_popup < 68 && message != '')"  (click)="eventSendRating()">
+        <ion-label class="delete-button-label">{{ 'RATING_SHOP.btn_send' | translate }}</ion-label>
+      </ion-button>
+    </ion-toolbar>
+  </div>
+</ion-content>

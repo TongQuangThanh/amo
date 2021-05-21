@@ -1,43 +1,43 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar class="header-toolbar">
-    <ion-title>{{ 'MY_HOME.title' | translate }}</ion-title>
-    <ion-buttons slot="start">
-      <ion-back-button text="" icon="chevron-back"></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
+
+<ion-header class="ion-no-border my-home-header">
+  <ion-buttons class="back-button">
+    <ion-back-button color="light" text="" icon="chevron-back" class="ion-back-button"></ion-back-button>
+  </ion-buttons>
+  <ion-label class="header-title">{{ 'MY_HOME.title' | translate }}</ion-label>
+  <ion-label class="header-sub-title">{{ 'MY_HOME.subtitle' | translate }}</ion-label>
+  <div class="header-radius"></div>
 </ion-header>
 
-<ion-content>
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button class="add-button normal-button" (click)="addNewHome()">
-      <ion-icon name="add"></ion-icon>
-    </ion-fab-button>
-  </ion-fab>
+<ion-content class="main-content">
   <ion-list class="list-content">
     <ion-card class="card-content" *ngFor="let item of listDepartment; let i = index" (click)="detailPage($event)" id="{{item._id}}">
       <ion-text class="number-watermark ion-float-right">
         <h1 class="number-watermark-text">{{i <= 9 ? "0"+ (i +1): (i+1)}}</h1>
       </ion-text>
       <ion-card-header>
-        <ion-card-title class="home-title">{{item.apartment.title + ' - ' + item.campaign.title}}</ion-card-title>
+        <ion-item lines="none" class="hotline-item">
+          <ion-card-title class="home-title">{{item.apartment.title + ' - ' + item.campaign.title}}</ion-card-title>
+          <ion-button class="modify-icon" expand="block" fill="clear" shape="round">
+            <img src="../assets/icon/svg/modify.svg"/>
+          </ion-button>
+        </ion-item>
       </ion-card-header>
       <ion-card-content class="home-content">
         <ion-label class="home-address">{{item.campaign.address}}</ion-label>
         <ion-item lines="none" class="hotline-item">
           <ion-label class="hotline-title">{{ 'MY_HOME.hotline_label' | translate }}</ion-label>
           <ion-button slot="end" class="hotline-number clear-background" (click)="buildingManagementPhoneModal($event, item.campaign.phone)">
-            <ion-icon class="hotline-icon" name="call-outline"></ion-icon>
+            <ion-icon class="hotline-icon" src="assets/icon/home/calling.svg"></ion-icon>
             {{item.campaign.phone}}
           </ion-button>
         </ion-item>
       </ion-card-content>
     </ion-card>
+    <ion-card class="add-new-button" (click)="addNewHome()">
+      <div class="add-new-icon" >
+        <div class="margin-top-20"><img src="../assets/icon/add.svg"/></div>
+        <div><ion-label class="add-new-label">{{ 'MY_HOME.button_add' | translate }}</ion-label></div>
+      </div>
+    </ion-card>
   </ion-list>
 </ion-content>
-<!-- <ion-footer class="ion-no-border">
-  <ion-toolbar lines="none" class="ion-text-center">
-    <ion-button class="add-button" (click)="addNewHome()">
-      <ion-label class="add-button-label">{{ 'MY_HOME.button_add' | translate }}</ion-label>
-    </ion-button>
-  </ion-toolbar>
-</ion-footer> -->
