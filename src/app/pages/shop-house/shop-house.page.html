@@ -1,15 +1,31 @@
-<ion-header>
-
+<ion-header id="main-header-toolbar" class="ion-no-border" [ngStyle]="{'display': getStyleHeader(1)}">
+  <ion-toolbar>
+      <ion-buttons class="back-button">
+          <ion-back-button class="back-btn" color="light" text="" icon="chevron-back"></ion-back-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-header id="sub-header-toolbar" class="ion-no-border w3-animate-top seccon-header"
+  [ngStyle]="{'display': getStyleHeader(2)}">
+  <ion-toolbar class="header-splash">
+      <ion-item lines="none">
+          <div class="logo-wrapper" slot="start">
+              <img class="shop-logo-2" src="{{shopInfoData?.thumbnail}}" />
+          </div>
+          <ion-card-title class="ion-text-wrap content-two-line header-title">{{shopInfoData?.title}}</ion-card-title>
+      </ion-item>
+      <ion-buttons slot="start" class="btn-header-back">
+          <ion-back-button id="" text="" icon="chevron-back"></ion-back-button>
+      </ion-buttons>
+  </ion-toolbar>
 </ion-header>
 
+
 <ion-content id="content_page" #content [scrollEvents]="true" (ionScroll)="onScroll($event)">
-  <ion-buttons class="back-button">
-    <ion-back-button class="back-btn" color="light" text="" icon="chevron-back"></ion-back-button>
-  </ion-buttons>
   <ion-item lines="none" class="ion-no-padding">
     <img class="image-page" src="{{shopInfoData?.logo ? shopInfoData?.logo : shopInfoData?.thumbnail}}" />
   </ion-item>
-  <div class="group-1-logo" *ngIf="shopInfoData">
+  <div class="group-1-logo" id="shop_info" *ngIf="shopInfoData">
     <div class="logo-wrapper">
       <img class="shop-logo" src="{{shopInfoData?.thumbnail}}" />
     </div>

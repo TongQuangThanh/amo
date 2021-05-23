@@ -94,7 +94,7 @@
 <ion-footer class="ion-no-border">
   <ion-item lines="none" class="add-comment-item">
     <ion-icon [src]="'../assets/icon/request/camera.svg'" slot="start" class="add-image-icon" (click)="selectImage()"></ion-icon>
-    <ion-textarea class="input-area" rows="1" auto-grow placeholder="{{ 'REQUEST_DETAIL.place_holder_input' | translate }}"
+    <ion-textarea class="input-area" rows="1" auto-grow (ionFocus)="isExpand = false" placeholder="{{ 'REQUEST_DETAIL.place_holder_input' | translate }}"
       [(ngModel)]="editorMsg">
       <ion-icon [src]="editorMsg?.length > 0 ? '../assets/icon/request/send.svg' : '../assets/icon/request/send-gray.svg'"
         class="icon-send icon-send-default" (click)="sendMsg()"></ion-icon>

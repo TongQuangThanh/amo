@@ -9,6 +9,7 @@ ion-item {
 }
 ion-header {
   position: fixed;
+  padding-top: 30px;
 }
 .button-back-custom {
   width: 32px;
@@ -532,12 +533,11 @@ super-tab-button {
 //  =====================================================================================
 
 .group-1-logo {
-  position: sticky;
-  top: 0px;
-  z-index: 99999;
+  position: absolute;
+  top: 180px;
+  z-index: 2;
   left: 0;
   right: 0;
-  bottom: 0;
   display: flex;
   background: #fff;
   border-radius: 20px 20px 0 0;
@@ -637,7 +637,7 @@ super-tab-button {
 
 .ion-discount-meter-wrapper {
   padding: 0 15px;
-  margin-top: 5px;
+  margin-top: 85px;
   height: 134px;
   .discount-slider {
     height: 100%;
@@ -985,9 +985,6 @@ super-tab-button {
 }
 
 .back-button {
-  position: absolute;
-  top: 45px;
-  left: 5px;
 
   .back-btn {
     display: block;
@@ -1018,4 +1015,35 @@ super-tab-button {
   height: 50px;
   object-fit: cover;
   border-radius: 8px;
+}
+
+
+.shop-logo-2 {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-left: 10px;
+}
+
+.seccon-header {
+  padding-top: 0;
+  -webkit-animation: animatetop 0.5s;
+  animation: animatetop 0.5s;
+  z-index: 999999;
+}
+
+.header-splash {
+  border-bottom: 0.5px solid #c4c4c4;
+  --background: #fff;
+  --padding-top: 20px;
+}
+
+.header-title {
+  font-family: Open Sans;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  color: #221c1e;
 }

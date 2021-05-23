@@ -18,7 +18,7 @@
 			<img class="icon-wallet" src="../assets/icon/home/wallet.svg" />
 			<ion-label class="no_wallet_title">{{ 'HOME.no_wallet_title' | translate }}</ion-label>
 		</ion-button>
-		<ion-button class="button-wallet" *ngIf="epayUserInfo">
+		<ion-button class="button-wallet" *ngIf="epayUserInfo" (click)="showToast()">
 			<img class="icon-wallet" src="../assets/icon/home/wallet.svg" />
 			<ion-label class="wallet_money_title">{{ 'HOME.wallet_money_title' | translate }}</ion-label>
 			<ion-label class="wallet_money">{{formatMoney(epayUserInfo?.user_info?.balance)}}đ</ion-label>

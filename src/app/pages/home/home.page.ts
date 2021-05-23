@@ -1,5 +1,5 @@
 import { Directive, Input, Component, OnInit, ViewChild } from '@angular/core';
-import { Platform, NavController } from '@ionic/angular';
+import { Platform, NavController, ToastController } from '@ionic/angular';
 import { ApiService } from '../../services/api/api.service';
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
 import { ConstService } from '../../utils/const.service';
@@ -52,7 +52,8 @@ export class HomePage implements OnInit {
     private apiService: ApiService,
     private navCtrl: NavController,
     private authService: AuthService,
-    private nativePageTransitions: NativePageTransitions
+    private nativePageTransitions: NativePageTransitions,
+    public toastController: ToastController
   ) {
     this.imageDefault = '../assets/common/no-thumbnail.png';
     platform.ready().then((readySource) => {
@@ -265,5 +266,15 @@ export class HomePage implements OnInit {
   getDiffDays(startDate: Date, endDate: Date) {
     const diffTime = Math.abs(endDate.getTime() - startDate.getTime());
     return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  }
+
+  async showToast() {
+    const toast = await this.toastController.create({
+      message: 'Sắp ra mắt',
+      position: 'top',
+      color: 'dark',
+      duration: 2000
+    });
+    toast.present();
   }
 }
