@@ -326,9 +326,9 @@ export class ShopHousePage implements OnInit {
     return convert2;
   }
   onScroll(event) {
-    if (document.getElementById('div-element-place')) {
-      let position_y = document.getElementById('div-element-place').getClientRects()[0];
-      if (position_y['y'] > 50) {
+    if (document.getElementById('shop_info')) {
+      let position_y = document.getElementById('shop_info').getClientRects()[0];
+      if (position_y['y'] > 10) {
         this.slideToIndex(0);
         this.showHeader = 1;
       } else {
@@ -344,9 +344,9 @@ export class ShopHousePage implements OnInit {
       let position_y_product = document.getElementById('group-data-product').getClientRects()[0];
       this.position_product = position_y_product['y'];
     }
-    if (!this.is_click_button) {
-      this.checkActiveTabs(event);
-    }
+    // if (!this.is_click_button) {
+    //   this.checkActiveTabs(event);
+    // }
   }
   checkActiveTabs(event) {
     var self = this;

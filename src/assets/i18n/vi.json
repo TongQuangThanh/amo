@@ -815,8 +815,9 @@
         "note": "Ghi chú...",
         "btn_send": "Gửi yêu cầu",
         "select_apartment_title": "Căn hộ",
-        "send_success_message": "Đăng ký của bạn đã được gửi đi. Vui lòng kiểm tra phản hồi ở tab Đăng ký",
+        "send_success_message": "Yêu cầu đã được gửi đi. Vui lòng theo dõi tình trạng trong mục Yêu cầu",
         "back_registration_tab": "Về trang đăng ký",
+        "close": "Đóng",
         "popup_text_information": "Đăng ký của bạn đã được gửi đi."
     },
     "REGISTRATION_PARKING": {
