@@ -14,6 +14,9 @@ export class LoadingService {
     this.isLoading = true;
     return await this.loadingController.create({
       duration: 5000,
+      spinner: null,
+      message: '<img src="assets/icon/spinner/spinner.gif" />',
+      cssClass: 'custom-loading-css'
     }).then(a => {
       a.present().then(() => {
         console.log('presented');

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController, NavParams } from '@ionic/angular';
+import { ModalController, NavController, NavParams } from '@ionic/angular';
 import { TranslateConfigService } from '../../translate-config.service';
 
 @Component({
@@ -13,6 +13,7 @@ export class PopupRegistrationSuccessPage implements OnInit {
   constructor(
     private translateConfigService: TranslateConfigService,
     private modalController: ModalController,
+    private navCtrl: NavController,
   ) {
     this.selectedLanguage = this.translateConfigService.getDefaultLanguage();
   }
@@ -22,6 +23,7 @@ export class PopupRegistrationSuccessPage implements OnInit {
 
   closeModal() {
     this.modalController.dismiss();
+    this.navCtrl.back();
   }
 
 }

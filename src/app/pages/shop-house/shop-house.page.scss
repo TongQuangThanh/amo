@@ -996,6 +996,16 @@ super-tab-button {
     padding-right: 5px;
   }
 }
+.back-button-second {
+  width: 40px;
+  .back-btn-second {
+    display: block;
+    width: 40px;
+    height: 40px;
+    color: black !important;
+    margin-left: 0;
+  }
+}
 
 .col-data-money {
   font-family: Open Sans;
@@ -1026,17 +1036,24 @@ super-tab-button {
   margin-left: 10px;
 }
 
-.seccon-header {
+.second-header {
   padding-top: 0;
   -webkit-animation: animatetop 0.5s;
   animation: animatetop 0.5s;
   z-index: 999999;
+  .logo-wrapper {
+    margin-inline: 0px 10px !important;
+  }
+  .ion-item-second {
+    min-height: 38px !important;
+  }
 }
 
 .header-splash {
   border-bottom: 0.5px solid #c4c4c4;
   --background: #fff;
-  --padding-top: 20px;
+  --padding-top: 15px;
+  --padding-bottom: 5px;
 }
 
 .header-title {

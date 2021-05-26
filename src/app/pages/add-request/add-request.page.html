@@ -52,17 +52,19 @@
         <ion-col class="ion-col-class" *ngFor="let image of list_image_1" size="4" size-md>
           <ion-item lines="none" class="ion-item-for-image">
             <img class="image-class" src="{{image.src}}" />
+            <button type="button" *ngIf="number_of_image <= 4 || image.index < 3" class="close-image-icon" (click)="deleteImageToList(image.index)">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </ion-item>
-          <button type="button" class="close-image-icon" (click)="deleteImageToList(image.index)">
-            <span aria-hidden="true">&times;</span>
-          </button>
           <div *ngIf="number_of_image > 4 && image.index == 3" class="mask-multiple-image" (click)="showAllImage()">
             <label>+{{number_of_image - 4}}</label>
           </div>
         </ion-col>
         <ion-col class="ion-col-class" size="4" size-md>
-          <ion-item lines="none" class="ion-item-for-image" (click)="selectImage()">
-            <img class="image-class" src="../assets/icon/add-item.png" />
+          <ion-item lines="none" class="ion-item-for-image ion-item-image-add" (click)="selectImage()">
+            <div class="image-add-item">
+              <img class="image-class" src="../assets/icon/request/add-image.svg" />
+            </div>
           </ion-item>
         </ion-col>
       </ion-row>
@@ -82,4 +84,43 @@
     *ngIf="checkActiveButton()">
     <ion-label>{{ 'ADD_REQUEST.btn_submit' | translate }}</ion-label>
   </ion-button>
+
+  <div *ngIf="flag_show_all_image == true" class="modal-backdrop fade show"></div>
+  <div *ngIf="flag_show_all_image == true" class="modal popup-show-full-image" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="eventButtonClosePopupImage()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <div class="div-header-title">
+            <!-- <label>{{ 'INBOX_29.popup_header_title' | translate }}</label> -->
+          </div>
+        </div>
+        <div class="modal-body">
+          <ion-item lines="none" class="area-show-image" id="area-show-image">
+            <ion-grid>
+              <ion-row>
+                <ion-col class="ion-col-class" *ngFor="let image of list_image" size="4" size-md>
+                  <ion-item lines="none" class="ion-item-for-image">
+                    <img class="image-class" src="{{image.src}}" />
+                    <button type="button" class="close-image-icon" (click)="deleteImageToList(image.index)">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </ion-item>
+                </ion-col>
+                <ion-col class="ion-col-class" size="4" size-md>
+                  <ion-item lines="none" class="ion-item-for-image ion-item-image-add" (click)="selectImage()">
+                    <div class="image-add-item">
+                      <img class="image-class" src="../assets/icon/request/add-image.svg" />
+                    </div>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </ion-item>
+        </div>
+      </div>
+    </div>
+  </div>
 </ion-content>

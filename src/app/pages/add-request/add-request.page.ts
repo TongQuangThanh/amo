@@ -10,6 +10,7 @@ import { TranslateService } from '@ngx-translate/core';
 // import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 
 import { PopupSelectApartmentPage } from '../popup-select-apartment/popup-select-apartment.page';
+import { PopupRegistrationSuccessPage } from '../popup-registration-success/popup-registration-success.page';
 
 @Component({
   selector: 'app-add-request',
@@ -105,7 +106,9 @@ export class AddRequestPage implements OnInit {
   showAllImage() {
     this.flag_show_all_image = true;
   }
-
+  eventButtonClosePopupImage() {
+    this.flag_show_all_image = false;
+  }
   getFeedbackCategory(apartmentID: string) {
     var self = this;
     this.loading.present();
@@ -201,13 +204,16 @@ export class AddRequestPage implements OnInit {
         var myFile = self.blobToFile(binaryBlob, fileName);
         const payload = new FormData();
         payload.append('media', binaryBlob, fileName);
-
+        this.loading.present();
         this.apiService.uploadImage(payload).subscribe(
           (result) => {
+            self.loading.dismiss();
             self.list_image_select.push(result);
             self.convertListImage();
           },
-          (error) => {}
+          (error) => {
+            self.loading.dismiss();
+          }
         );
       },
       (err) => {
@@ -332,8 +338,9 @@ export class AddRequestPage implements OnInit {
     this.apiService.addFeedbackNew(params)
       .subscribe(result => {
         self.loading.dismiss();
-        self.alertService.presentToast(this.translate.instant('ADD_REQUEST.message_add_request_sucess'));
-        self.navCtrl.back();
+        // self.alertService.presentToast(this.translate.instant('ADD_REQUEST.message_add_request_sucess'));
+        // self.navCtrl.back();
+        this.registrationSuccessModal();
       },
       error => {
         self.loading.dismiss();
@@ -341,30 +348,14 @@ export class AddRequestPage implements OnInit {
       }
     );
   }
-
-  // async selectApartmentModal() {
-  //   var self = this;
-  //   const modal = await this.modalController.create({
-  //     component: PopupSelectApartmentPage,
-  //     componentProps: {
-  //       idApartment: self.departmentID
-  //     },
-  //     cssClass: 'popupSelectApartment-page-custom'
-  //   });
-  //   modal.onDidDismiss().then((dataReturned:any) => {
-  //     if (dataReturned && dataReturned.data) {
-  //       const dataReturnedResult = JSON.parse(dataReturned.data);
-  //       this.departmentID = dataReturnedResult.id;
-  //       this.departmentName = dataReturnedResult.name;
-  //       this.getFeedbackCategory(this.departmentID);
-  //       this.form_type = "";
-  //       this.form_type_class = "";
-  //       // self.formRelationship = dataReturnedResult.value;
-  //       // self.formRelationshipName = dataReturnedResult.name;
-  //     }
-  //   });
-  //   return await modal.present();
-  // }
+  async registrationSuccessModal() {
+    const modal = await this.modalController.create({
+      component: PopupRegistrationSuccessPage,
+      componentProps: {
+      }
+    });
+    return await modal.present();
+  }
 
   ionChangePulldownDepartment(event) {
     if (this.departmentID != '') {

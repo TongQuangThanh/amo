@@ -619,14 +619,14 @@ ion-content {
     right: -5px;
     top: 50px;
     font-weight: 600;
-    width: 135px;
+    width: 128px;
     height: 32px;
     --background: #ffffff;
     --border-radius: 100px 0px 0px 100px;
     z-index: 999;
     .icon-wallet {
       position: absolute;
-      left: -5px;
+      left: -6px;
       right: 0;
     }
     .no_wallet_title {
@@ -648,6 +648,7 @@ ion-content {
       display: flex;
       align-items: center;
       color: #7b7b7b;
+      font-weight: normal;
     }
     .wallet_money {
       position: absolute;

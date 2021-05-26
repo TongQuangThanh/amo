@@ -329,12 +329,12 @@ export class ShopHousePage implements OnInit {
     if (document.getElementById('shop_info')) {
       let position_y = document.getElementById('shop_info').getClientRects()[0];
       if (position_y['y'] > 10) {
-        this.slideToIndex(0);
+        // this.slideToIndex(0);
         this.showHeader = 1;
       } else {
         if (this.showHeader == 1) {
           this.showHeader = 2;
-          this.slideToIndex(0);
+          // this.slideToIndex(0);
         } else {
           this.showHeader = 2;
         }

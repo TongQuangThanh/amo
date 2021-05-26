@@ -729,3 +729,13 @@ ion-content {
     display: none;
   }
 }
+ion-loading.custom-loading-css {
+  .loading-wrapper {
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  img {
+    width: 80px;
+    height: 80px;
+  }
+}

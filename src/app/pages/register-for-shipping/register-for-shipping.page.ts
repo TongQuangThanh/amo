@@ -7,6 +7,7 @@ import { DatePipe } from '@angular/common';
 import { TranslateService } from '@ngx-translate/core';
 import { AlertService } from '../../services/alert/alert.service';
 import { Camera, CameraOptions, PictureSourceType } from '@ionic-native/Camera/ngx';
+import { PopupRegistrationSuccessPage } from '../popup-registration-success/popup-registration-success.page';
 
 @Component({
   selector: 'app-register-for-shipping',
@@ -190,14 +191,23 @@ export class RegisterForShippingPage implements OnInit {
     this.apiService.addFeedbackNew(params).subscribe(
       (result) => {
         self.loading.dismiss();
-        self.alertService.presentToast(this.translate.instant('ADD_REQUEST.message_add_request_sucess'));
-        self.navCtrl.back();
+        // self.alertService.presentToast(this.translate.instant('ADD_REQUEST.message_add_request_sucess'));
+        // self.navCtrl.back();
+        this.registrationSuccessModal();
       },
       (error) => {
         self.loading.dismiss();
         self.alertService.presentToast(this.translate.instant('ADD_REQUEST.message_add_request_fail'));
       }
     );
+  }
+  async registrationSuccessModal() {
+    const modal = await this.modalController.create({
+      component: PopupRegistrationSuccessPage,
+      componentProps: {
+      }
+    });
+    return await modal.present();
   }
   checkActiveButton() {
     var self = this;
@@ -311,13 +321,16 @@ export class RegisterForShippingPage implements OnInit {
         var myFile = self.blobToFile(binaryBlob, fileName);
         const payload = new FormData();
         payload.append('media', binaryBlob, fileName);
-
+        this.loading.present();
         this.apiService.uploadImage(payload).subscribe(
           (result) => {
+            self.loading.dismiss();
             self.list_image_select.push(result);
             self.convertListImage();
           },
-          (error) => {}
+          (error) => {
+            self.loading.dismiss();
+          }
         );
       },
       (err) => {}
