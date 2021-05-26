@@ -6,6 +6,7 @@ import { LoadingService } from '../../services/loading/loading.service';
 import { ModalController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AlertService } from '../../services/alert/alert.service';
+import { PopupRegistrationSuccessPage } from '../popup-registration-success/popup-registration-success.page';
 
 @Component({
   selector: 'app-register-keep-vehicle',
@@ -132,14 +133,23 @@ export class RegisterKeepVehiclePage implements OnInit {
     this.apiService.addFeedbackNew(params).subscribe(
       (result) => {
         self.loading.dismiss();
-        self.alertService.presentToast(this.translate.instant('ADD_REQUEST.message_add_request_sucess'));
-        self.navCtrl.back();
+        // self.alertService.presentToast(this.translate.instant('ADD_REQUEST.message_add_request_sucess'));
+        // self.navCtrl.back();
+        this.registrationSuccessModal();
       },
       (error) => {
         self.loading.dismiss();
         self.alertService.presentToast(this.translate.instant('ADD_REQUEST.message_add_request_fail'));
       }
     );
+  }
+  async registrationSuccessModal() {
+    const modal = await this.modalController.create({
+      component: PopupRegistrationSuccessPage,
+      componentProps: {
+      }
+    });
+    return await modal.present();
   }
 
   eventButtonRemoveVehicles() {
