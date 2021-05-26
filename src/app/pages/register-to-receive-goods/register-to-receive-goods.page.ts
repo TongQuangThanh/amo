@@ -297,13 +297,16 @@ export class RegisterToReceiveGoodsPage implements OnInit {
         var myFile = self.blobToFile(binaryBlob, fileName);
         const payload = new FormData();
         payload.append('media', binaryBlob, fileName);
-
+        this.loading.present();
         this.apiService.uploadImage(payload).subscribe(
           (result) => {
+            self.loading.dismiss();
             self.list_image_select.push(result);
             self.convertListImage();
           },
-          (error) => {}
+          (error) => {
+            self.loading.dismiss();
+          }
         );
       },
       (err) => {

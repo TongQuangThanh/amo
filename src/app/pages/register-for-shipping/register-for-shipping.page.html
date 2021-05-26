@@ -122,8 +122,10 @@
             </div>
           </ion-col>
           <ion-col class="ion-col-class" size="4" size-md>
-            <ion-item lines="none" class="ion-item-for-image" (click)="selectImage()">
-              <img class="image-class" src="../assets/icon/svg/add-item.svg" />
+            <ion-item lines="none" class="ion-item-for-image ion-item-image-add" (click)="selectImage()">
+              <div class="image-add-item">
+                <img class="image-class" src="../assets/icon/request/add-image.svg" />
+              </div>
             </ion-item>
           </ion-col>
         </ion-row>
@@ -159,7 +161,7 @@
           <ion-item lines="none" class="area-show-image" id="area-show-image">
             <ion-grid>
               <ion-row>
-                <ion-col class="ion-col-class" *ngFor="let image of list_image" size="6" size-md>
+                <ion-col class="ion-col-class" *ngFor="let image of list_image" size="4" size-md>
                   <ion-item lines="none" class="ion-item-for-image">
                     <img class="image-class" src="{{image.src}}" />
                   </ion-item>
@@ -167,9 +169,11 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </ion-col>
-                <ion-col class="ion-col-class" size="6" size-md>
-                  <ion-item lines="none" class="ion-item-for-image" (click)="selectImage()">
-                    <img class="image-class icon-add-image" src="../assets/icon/svg/add-item.svg" />
+                <ion-col class="ion-col-class" size="4" size-md>
+                  <ion-item lines="none" class="ion-item-for-image ion-item-image-add" (click)="selectImage()">
+                    <div class="image-add-item">
+                      <img class="image-class" src="../assets/icon/request/add-image.svg" />
+                    </div>
                   </ion-item>
                 </ion-col>
               </ion-row>

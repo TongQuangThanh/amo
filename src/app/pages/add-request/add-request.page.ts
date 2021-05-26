@@ -105,7 +105,9 @@ export class AddRequestPage implements OnInit {
   showAllImage() {
     this.flag_show_all_image = true;
   }
-
+  eventButtonClosePopupImage() {
+    this.flag_show_all_image = false;
+  }
   getFeedbackCategory(apartmentID: string) {
     var self = this;
     this.loading.present();
@@ -201,13 +203,16 @@ export class AddRequestPage implements OnInit {
         var myFile = self.blobToFile(binaryBlob, fileName);
         const payload = new FormData();
         payload.append('media', binaryBlob, fileName);
-
+        this.loading.present();
         this.apiService.uploadImage(payload).subscribe(
           (result) => {
+            self.loading.dismiss();
             self.list_image_select.push(result);
             self.convertListImage();
           },
-          (error) => {}
+          (error) => {
+            self.loading.dismiss();
+          }
         );
       },
       (err) => {
