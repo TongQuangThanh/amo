@@ -1,5 +1,5 @@
 import { Directive, Input, Component, OnInit, ViewChild } from '@angular/core';
-import { Platform, NavController, ToastController } from '@ionic/angular';
+import { Platform, NavController, ToastController, AlertController } from '@ionic/angular';
 import { ApiService } from '../../services/api/api.service';
 import { NativePageTransitions, NativeTransitionOptions } from '@ionic-native/native-page-transitions/ngx';
 import { ConstService } from '../../utils/const.service';
@@ -10,6 +10,7 @@ import { Subscription } from 'rxjs';
 import { RouterModule, Routes, ActivatedRoute } from '@angular/router';
 import { IonContent } from '@ionic/angular';
 import { timeout } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-home',
@@ -53,7 +54,9 @@ export class HomePage implements OnInit {
     private navCtrl: NavController,
     private authService: AuthService,
     private nativePageTransitions: NativePageTransitions,
-    public toastController: ToastController
+    public toastController: ToastController,
+    private translate: TranslateService,
+    private alertController: AlertController,
   ) {
     this.imageDefault = '../assets/common/no-thumbnail.png';
     platform.ready().then((readySource) => {
@@ -260,7 +263,8 @@ export class HomePage implements OnInit {
   }
 
   registrationNavigate(route: string) {
-    this.navCtrl.navigateForward(route);
+    this.presentAlert();
+    // this.navCtrl.navigateForward(route);
   }
 
   getDiffDays(startDate: Date, endDate: Date) {
@@ -268,13 +272,14 @@ export class HomePage implements OnInit {
     return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   }
 
-  async showToast() {
-    const toast = await this.toastController.create({
-      message: 'Sắp ra mắt',
-      position: 'top',
-      color: 'dark',
-      duration: 2000
+  async presentAlert() {
+    var self = this;
+    const alert = await this.alertController.create({
+      cssClass: 'comming-soon-payment-class',
+      header: self.translate.instant('COMMON.information'),
+      message: this.translate.instant('PAYMENT_INFOR.alert_comming_soon'),
+      buttons: ['OK']
     });
-    toast.present();
+    await alert.present();
   }
 }
