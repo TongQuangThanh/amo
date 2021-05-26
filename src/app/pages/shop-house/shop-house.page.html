@@ -5,7 +5,7 @@
       </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-header id="sub-header-toolbar" class="ion-no-border w3-animate-top seccon-header"
+<ion-header id="sub-header-toolbar" class="ion-no-border w3-animate-top second-header"
   [ngStyle]="{'display': getStyleHeader(2)}">
   <ion-toolbar class="header-splash">
       <ion-item lines="none">
@@ -14,8 +14,8 @@
           </div>
           <ion-card-title class="ion-text-wrap content-two-line header-title">{{shopInfoData?.title}}</ion-card-title>
       </ion-item>
-      <ion-buttons slot="start" class="btn-header-back">
-          <ion-back-button id="" text="" icon="chevron-back"></ion-back-button>
+      <ion-buttons class="back-button-second" slot="start">
+          <ion-back-button class="back-btn-second" text="" icon="chevron-back"></ion-back-button>
       </ion-buttons>
   </ion-toolbar>
 </ion-header>
