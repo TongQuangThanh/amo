@@ -1044,12 +1044,16 @@ super-tab-button {
   .logo-wrapper {
     margin-inline: 0px 10px !important;
   }
+  .ion-item-second {
+    min-height: 38px !important;
+  }
 }
 
 .header-splash {
   border-bottom: 0.5px solid #c4c4c4;
   --background: #fff;
-  --padding-top: 25px;
+  --padding-top: 15px;
+  --padding-bottom: 5px;
 }
 
 .header-title {
