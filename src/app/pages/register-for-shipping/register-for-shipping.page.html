@@ -113,10 +113,10 @@
           <ion-col class="ion-col-class" *ngFor="let image of list_image_1" size="4" size-md>
             <ion-item lines="none" class="ion-item-for-image">
               <img class="image-class" src="{{image.src}}" />
+              <button type="button" *ngIf="number_of_image <= 4 || image.index < 3" class="close-image-icon" (click)="deleteImageToList(image.index)">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </ion-item>
-            <button type="button" class="close-image-icon" (click)="deleteImageToList(image.index)">
-              <span aria-hidden="true">&times;</span>
-            </button>
             <div *ngIf="number_of_image > 4 && image.index == 3" class="mask-multiple-image" (click)="showAllImage()">
               <label>+{{number_of_image - 4}}</label>
             </div>
@@ -164,10 +164,10 @@
                 <ion-col class="ion-col-class" *ngFor="let image of list_image" size="4" size-md>
                   <ion-item lines="none" class="ion-item-for-image">
                     <img class="image-class" src="{{image.src}}" />
+                    <button type="button" class="close-image-icon" (click)="deleteImageToList(image.index)">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
                   </ion-item>
-                  <button type="button" class="close-image-icon" (click)="deleteImageToList(image.index)">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
                 </ion-col>
                 <ion-col class="ion-col-class" size="4" size-md>
                   <ion-item lines="none" class="ion-item-for-image ion-item-image-add" (click)="selectImage()">
