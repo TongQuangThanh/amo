@@ -62,7 +62,7 @@
 </div>
 
 <ion-content class="has-header request-background-color">
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullMin="150">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullMin="100">
     <ion-refresher-content pullingIcon="circles" refreshingSpinner="" refreshingText=""></ion-refresher-content>
   </ion-refresher>
   <ion-list class="request-background-color" *ngIf="activeTabIndex == 0">
