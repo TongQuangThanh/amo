@@ -154,9 +154,9 @@ export class MyAccountPage implements OnInit {
   }
 
   changeToTerms() {
-    // const browser = this.iab.create("https://amoapp.com.vn/dieu-khoan-su-dung/",'_system', 'location=yes, enableviewportscale=yes');
-    // browser.show();
-    this.navCtrl.navigateForward('/terms');
+    const browser = this.iab.create("https://amoapp.com.vn/dieu-khoan-su-dung/",'_system', 'location=yes, enableviewportscale=yes');
+    browser.show();
+    // this.navCtrl.navigateForward('/terms');
   }
 
   changeToGuideline() {

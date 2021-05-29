@@ -1,22 +1,21 @@
 <ion-header id="main-header-toolbar" class="ion-no-border" [ngStyle]="{'display': getStyleHeader(1)}">
   <ion-toolbar>
-      <ion-buttons class="back-button">
-          <ion-back-button class="back-btn" color="light" text="" icon="chevron-back"></ion-back-button>
-      </ion-buttons>
+    <ion-buttons class="back-button">
+      <ion-back-button class="back-btn" color="light" text="" icon="chevron-back"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
-<ion-header id="sub-header-toolbar" class="ion-no-border w3-animate-top second-header"
-  [ngStyle]="{'display': getStyleHeader(2)}">
+<ion-header id="sub-header-toolbar" class="ion-no-border w3-animate-top second-header" [ngStyle]="{'display': getStyleHeader(2)}">
   <ion-toolbar class="header-splash">
-      <ion-item lines="none" class="ion-item-second">
-          <div class="logo-wrapper" slot="start">
-              <img class="shop-logo-2" src="{{shopInfoData?.thumbnail}}" />
-          </div>
-          <ion-card-title class="ion-text-wrap content-two-line header-title">{{shopInfoData?.title}}</ion-card-title>
-      </ion-item>
-      <ion-buttons class="back-button-second" slot="start">
-          <ion-back-button class="back-btn-second" text="" icon="chevron-back"></ion-back-button>
-      </ion-buttons>
+    <ion-item lines="none" class="ion-item-second">
+      <div class="logo-wrapper" slot="start">
+        <img class="shop-logo-2" src="{{shopInfoData?.thumbnail}}" />
+      </div>
+      <ion-card-title class="ion-text-wrap content-two-line header-title">{{shopInfoData?.title}}</ion-card-title>
+    </ion-item>
+    <ion-buttons class="back-button-second" slot="start">
+      <ion-back-button class="back-btn-second" text="" icon="chevron-back"></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
@@ -45,7 +44,8 @@
     </div>
   </div>
 
-  <div class="ion-discount-meter-wrapper {{(shopInfoData?.attachments && shopInfoData.attachments.length > 0) ? '' : 'ion-discount-height' }}">
+  <div
+    class="ion-discount-meter-wrapper {{(shopInfoData?.attachments && shopInfoData.attachments.length > 0) ? '' : 'ion-discount-height' }}">
     <ion-slides pager="false" [options]="slideOpts" class="discount-slider"
       *ngIf="shopInfoData?.attachments && shopInfoData.attachments.length > 0">
       <ion-slide *ngFor="let item of shopInfoData.attachments">
@@ -54,60 +54,7 @@
     </ion-slides>
   </div>
 
-  <!-- <ion-slides [options]="slideOpts" class="margin-top-10" *ngIf="data_shop_house.group_1.length > 0">
-    <ion-slide *ngFor="let object of data_shop_house.group_1">
-      <ion-item lines="none" class="ion-no-padding" id="{{object._id}}" (click)="eventClickGroupPon(object)">
-        <ion-img *ngIf="object.background_image != ''" src="{{object.background_image}}" class="img-responsive" alt="">
-        </ion-img>
-        <div *ngIf="object.background_image == ''" class="div-promotion-code">
-          <ion-grid class="ion-grid-class">
-            <ion-row class="">
-              <ion-col class="ion-col-class padding-0 padding-right-5" size="3">
-                <ion-img src="{{object.thumbnail}}" class="img-responsive" alt=""></ion-img>
-              </ion-col>
-              <ion-col class="ion-col-class padding-top-10 padding-left-10 padding-right-10" size="9">
-                <div class="row col-12 promotion-code-1">
-                  <div class="col-8">
-                    <ion-label>{{object.title}}</ion-label>
-                  </div>
-                  <div class="col-4">
-                    <ion-label>{{object.money}}đ</ion-label>
-                  </div>
-                </div>
-                <div class="col-12">
-                  <ion-label class="promotion-code-2">{{object.detail}}</ion-label>
-                </div>
-              </ion-col>
-            </ion-row>
-            <ion-row class="padding-bottom-10 padding-left-10 padding-right-10">
-              <ion-col class="ion-col-class" size="12">
-                <div class="col-12 promotion-code-3">
-                  <img src="../assets/icon/svg/people.svg" class="item-1" alt="" />
-                  <ion-label class="item-2">{{object.actual_order}}</ion-label>
-                </div>
-                <div class="col-12">
-                  <div class="range-1" [ngStyle]="{'width': getStyleRange1(object._id)[0]}"></div>
-                  <div class="range-2"></div>
-                </div>
-                <div class="row col-12">
-                  <div class="promotion-code-4">{{object.moc_1}}</div>
-                  <div class="promotion-code-5" [ngStyle]="{'left': getStyleRange1(object._id)[1]}">{{object.moc_2}}
-                  </div>
-                  <div class="promotion-code-6">{{object.moc_3}}</div>
-                </div>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </div>
-        <div *ngIf="object.deadline != ''" class="group-1-deadline">
-          <ion-label>{{object.deadline}}</ion-label>
-        </div>
-      </ion-item>
-    </ion-slide>
-  </ion-slides> -->
-
-
-  <super-tabs (tabChange)="tabChange($event)">
+  <super-tabs (tabChange)="tabChange($event)" class="super-tabs-shop-shouse">
     <super-tabs-toolbar slot="top">
       <super-tab-button class="super-tab-button">
         <ion-label>{{ 'SHOP_HOUSE.service' | translate }}</ion-label>
@@ -119,187 +66,136 @@
         <ion-label>{{ 'SHOP_HOUSE.rating' | translate }}</ion-label>
       </super-tab-button>
     </super-tabs-toolbar>
-    <super-tabs-container autoScrollTop="true">
-      <!-- TAB DICH VU -->
-      <super-tab>
-        <!-- <ion-content [scrollY]="false"> -->
-        <div id="group-data-product" class="group-data" *ngIf="data_shop_house.group_2.length > 0">
-          <ion-grid class="ion-no-padding pading-ion-grid padding-top-20 padding-bottom-20 {{getClassLabelProduct(object)}}"
-            *ngFor="let object of data_shop_house.group_2" id="{{object.id_tab}}">
-            <ion-row class="title-shop-product">
-              <ion-label class="serviec-title">{{object.title}}</ion-label>
-            </ion-row>
-            <ion-row class="row-data-product" *ngFor="let data of object.data">
-              <!-- <ion-col class="ion-col-class group-2-col-1" size="3">
-                <div class="div-logo">
-                  <ion-img src="{{data.image}}"></ion-img>
-                  <div *ngIf="data.text_note != '' && data.type_note == 1" class="note-1">
-                    <ion-label>{{data.text_note}}</ion-label>
-                  </div>
-                  <div *ngIf="data.text_note != '' && data.type_note == 2" class="note-2">
-                    <ion-label>{{data.text_note}}</ion-label>
-                  </div>
-                </div>
-              </ion-col> -->
-              <ion-col class="item ion-col-class group-2-col-1" size="12">
-                <div class="row div-title-col-2">
-                  <div class="col-12">
-                    <ion-label class="white-space-normal">{{data.title}}</ion-label>
-                  </div>
-                </div>
-                <div class="div-note-col-2">
-                  <ion-label class="white-space-normal">{{data.note}}</ion-label>
-                </div>
-              </ion-col>
-              <ion-col size="12">
-                <ion-row>
-                  <ion-col size="7" class="col-data-money">
-                    <ion-label class="font-weight-bold white-space-normal">{{data.money}}đ</ion-label>
-                  </ion-col>
-                  <ion-col class="group-1-button-change-number" size="5">
-                    <img class="icon-button-3" src="../assets/common/minus.svg" (click)="downNumberProduct_1(object.id_tab, data._id)"
-                      [ngClass]="{'disabled': data.number === 0}" />
-                    <label class="group-1-label-1 font-weight-bold">{{data.number}}</label>
-                    <img class="icon-button-3" src="../assets/common/plus.svg" (click)="upNumberProduct_1(object.id_tab, data._id)" />
-                  </ion-col>
-                </ion-row>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </div>
-        <div *ngIf="data_shop_house.group_2.length == 0" class="not-found-service">
-          {{ 'SHOP_HOUSE.not_found_data' | translate }}
-        </div>
-        <!-- <div *ngIf="flag_show_hide_popup == true" class="modal-backdrop fade show"></div>
-        <div *ngIf="flag_show_hide_popup == true" class="modal" tabindex="-1" role="dialog">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <div class="div-header-title">
-                  <ion-label class="title font-weight-bold">{{data_shop_house.text_title}}</ion-label>
-                  <div class="group-1-text-place">
-                    <div class="group-1-icon-place">
-                      <ion-img src="../assets/icon/svg/icon-place.svg"></ion-img>
-                    </div>
-                    <div>
-                      <ion-label class="white-space-normal">{{data_shop_house.text_place}}</ion-label>
-                    </div>
-                  </div>
-                </div>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="eventButtonClosePopup()">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div class="modal-body">
-                <div class="row col-12">
-                  <div class="row col-12 margin-bottom-15">
-                    <ion-label class="title font-weight-bold">Giờ hoạt động</ion-label>
-                  </div>
-                  <div class="row col-12 margin-bottom-15 padding-left-25">
-                    <ion-label class="white-space-normal">{{data_shop_house.time_open}}</ion-label>
-                  </div>
-                </div>
+    <super-tabs-container autoScrollTop="false"></super-tabs-container>
+  </super-tabs>
+  <!-- TAB DICH VU -->
+  <div *ngIf="currentTab == 0" class="super-tabs-content">
+    <!-- <ion-content [scrollY]="false"> -->
+    <div class="group-data" *ngIf="data_shop_house.group_2.length > 0">
+      <ion-grid class="ion-no-padding pading-ion-grid padding-top-20 padding-bottom-10" *ngFor="let object of data_shop_house.group_2"
+        id="{{object.id_tab}}">
+        <ion-row class="title-shop-product">
+          <ion-label class="serviec-title">{{object.title}}</ion-label>
+        </ion-row>
+        <ion-row class="row-data-product" *ngFor="let data of object.data">
+          <ion-col class="item ion-col-class group-2-col-1" size="12">
+            <div class="row div-title-col-2">
+              <div class="col-12">
+                <ion-label class="white-space-normal">{{data.title}}</ion-label>
               </div>
             </div>
+            <div class="div-note-col-2">
+              <ion-label class="white-space-normal">{{data.note}}</ion-label>
+            </div>
+          </ion-col>
+          <ion-col size="12">
+            <ion-row>
+              <ion-col size="7" class="col-data-money">
+                <ion-label class="font-weight-bold white-space-normal">{{data.money}}đ</ion-label>
+              </ion-col>
+              <ion-col class="group-1-button-change-number" size="5">
+                <img class="icon-button-3" src="../assets/common/minus.svg" (click)="downNumberProduct_1(object.id_tab, data._id)"
+                  [ngClass]="{'disabled': data.number === 0}" />
+                <label class="group-1-label-1 font-weight-bold">{{data.number}}</label>
+                <img class="icon-button-3" src="../assets/common/plus.svg" (click)="upNumberProduct_1(object.id_tab, data._id)" />
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+    <div *ngIf="data_shop_house.group_2.length == 0" class="not-found-service">
+      {{ 'SHOP_HOUSE.not_found_data' | translate }}
+    </div>
+    <!-- </ion-content> -->
+  </div>
+  <!-- END TAP DICH VU -->
+
+  <!-- TAB THONG TIN -->
+  <div *ngIf="currentTab == 1" class="super-tabs-content">
+    <!-- <ion-content [scrollY]="false"> -->
+    <ion-grid class="ion-no-padding pading-ion-grid padding-top-20 padding-bottom-20">
+      <ion-row class="service-general-infos">
+        <div class="info-icon">
+          <ion-img src="assets/icon/service-info/phone.svg"></ion-img>
+        </div>
+        <ion-label class="info-label">{{ shopInfoData?.phone }}</ion-label>
+      </ion-row>
+      <ion-row class="service-general-infos">
+        <div class="info-icon">
+          <ion-img src="assets/icon/service-info/map-pin.svg"></ion-img>
+        </div>
+        <ion-label class="info-label">{{ shopInfoData?.address }}</ion-label>
+      </ion-row>
+      <ion-row>
+        <div class="open-time-dropdown">
+          <div class="open-time-item-active" (click)="shopOpenTimeExpand = !shopOpenTimeExpand">
+            {{(shopOpenTime ? shopOpenTime : 'SHOP_HOUSE.close') | translate}}
+            <img src="assets/icon/service-info/down.svg" *ngIf="!shopOpenTimeExpand">
+            <img src="assets/icon/service-info/down.svg" *ngIf="shopOpenTimeExpand" class="icon-up">
           </div>
-        </div> -->
-        <!-- </ion-content> -->
-      </super-tab>
-      <!-- END TAP DICH VU -->
+          <div class="open-time-expand" *ngIf="shopOpenTimeExpand">
+            <div class="{{item.isOpen ?  'open-time-item-active' : 'open-time-item'}}" *ngFor="let item of shopOpenList">
+              {{item.display}}</div>
+          </div>
+        </div>
+      </ion-row>
+      <ion-row class="title-shop-product service-intro">
+        <ion-label class="serviec-title">{{'SHOP_HOUSE.about_shop' | translate}}</ion-label>
+      </ion-row>
+      <ion-row class="service-intro-text">
+        <ion-label>
+          {{shopInfoData?.content}}
 
-      <!-- TAB THONG TIN -->
-      <super-tab>
-        <ion-content [scrollY]="false">
-          <ion-grid class="ion-no-padding pading-ion-grid padding-top-20 padding-bottom-20">
+        </ion-label>
+      </ion-row>
+    </ion-grid>
+    <!-- </ion-content> -->
+  </div>
+  <!-- END TAB THONG TIN -->
 
-            <ion-row class="service-general-infos">
-              <div class="info-icon">
-                <ion-img src="assets/icon/service-info/phone.svg"></ion-img>
+  <!-- TAB DANH GIA -->
+  <div *ngIf="currentTab == 2" class="super-tabs-content">
+    <!-- <ion-content [scrollY]="false"> -->
+    <ion-grid class="ion-no-padding pading-ion-grid padding-top-20 padding-bottom-20">
+      <ion-row>
+        <div class="average-rating-wrapper">
+          <div class="average-rating-score">
+            {{shopInfoData?.stars}}
+            <div class="average-rating-star">
+              <ion-img src="assets/icon/service-info/star.svg"></ion-img>
+            </div>
+          </div>
+          <ion-label class="total-rating-text"> {{shopInfoData?.numberEvaluation}} {{ 'SEVICE_29.rate' | translate }}</ion-label>
+        </div>
+      </ion-row>
+      <ion-row class="user-rating-wrapper">
+        <ion-list class="user-rating-list">
+          <ion-item *ngFor="let rating of listRatingShop">
+            <div class="user-rating-item">
+              <div class="user-rating-avatar">
+                <ion-img src="{{rating?.createdBy?.avatar ? rating.createdBy.avatar : 'assets/icon/service-info/user.png'}}">
+                </ion-img>
               </div>
-              <ion-label class="info-label">{{ shopInfoData?.phone }}</ion-label>
-            </ion-row>
-
-            <ion-row class="service-general-infos">
-              <div class="info-icon">
-                <ion-img src="assets/icon/service-info/map-pin.svg"></ion-img>
+              <div class="user-rating-comment-wrapper">
+                <ion-label class="user-name">{{rating?.createdBy?.displayName}}</ion-label>
+                <ion-label class="user-comment">{{rating?.userComment}}</ion-label>
               </div>
-              <ion-label class="info-label">{{ shopInfoData?.address }}</ion-label>
-            </ion-row>
-
-            <ion-row>
-              <div class="open-time-dropdown">
-                <div class="open-time-item-active" (click)="shopOpenTimeExpand = !shopOpenTimeExpand">
-                  {{(shopOpenTime ? shopOpenTime : 'SHOP_HOUSE.close') | translate}}
-                  <img src="assets/icon/service-info/down.svg" *ngIf="!shopOpenTimeExpand">
-                  <img src="assets/icon/service-info/down.svg" *ngIf="shopOpenTimeExpand" class="icon-up">
-                </div>
-                <div class="open-time-expand" *ngIf="shopOpenTimeExpand">
-                  <div class="{{item.isOpen ?  'open-time-item-active' : 'open-time-item'}}" *ngFor="let item of shopOpenList">{{item.display}}</div>
-                </div>
+              <div class="user-rating">
+                <div class="rating-value">{{rating?.starsProvider}}</div>
+                <ion-img class="rating-star-img" src="assets/icon/service-info/star.svg"></ion-img>
               </div>
-            </ion-row>
-
-            <ion-row class="title-shop-product service-intro">
-              <ion-label class="serviec-title">{{'SHOP_HOUSE.about_shop' | translate}}</ion-label>
-            </ion-row>
-
-            <ion-row class="service-intro-text">
-              <ion-label>
-                {{shopInfoData?.content}}
-              </ion-label>
-            </ion-row>
-
-          </ion-grid>
-        </ion-content>
-      </super-tab>
-      <!-- END TAB THONG TIN -->
-
-      <!-- TAB DANH GIA -->
-      <super-tab>
-        <ion-content [scrollY]="false">
-          <ion-grid class="ion-no-padding pading-ion-grid padding-top-20 padding-bottom-20">
-            <ion-row>
-              <div class="average-rating-wrapper">
-                <div class="average-rating-score">
-                 {{shopInfoData?.stars}}
-                  <div class="average-rating-star">
-                    <ion-img src="assets/icon/service-info/star.svg"></ion-img>
-                  </div>
-                </div>
-                <ion-label class="total-rating-text"> {{shopInfoData?.numberEvaluation}} {{ 'SEVICE_29.rate' | translate }}</ion-label>
-              </div>
-            </ion-row>
-
-            <ion-row class="user-rating-wrapper">
-              <ion-list class="user-rating-list">
-                <ion-item *ngFor="let rating of listRatingShop">
-                  <div class="user-rating-item">
-                    <div class="user-rating-avatar">
-                      <ion-img src="{{rating?.createdBy?.avatar ? rating.createdBy.avatar : 'assets/icon/service-info/user.png'}}"></ion-img>
-                    </div>
-                    <div class="user-rating-comment-wrapper">
-                      <ion-label class="user-name">{{rating?.createdBy?.displayName}}</ion-label>
-                      <ion-label class="user-comment">{{rating?.userComment}}</ion-label>
-                    </div>
-                    <div class="user-rating">
-                      <div class="rating-value">{{rating?.starsProvider}}</div>
-                      <ion-img class="rating-star-img" src="assets/icon/service-info/star.svg"></ion-img>
-                    </div>
-                  </div>
-                </ion-item>
-              </ion-list>
-            </ion-row>
-
-          </ion-grid>
-        </ion-content>
-      </super-tab>
-      <!-- END TAB DANH GIA -->
-    </super-tabs-container>
-  </super-tabs>
+            </div>
+          </ion-item>
+        </ion-list>
+      </ion-row>
+    </ion-grid>
+    <!-- </ion-content> -->
+  </div>
+  <!-- END TAB DANH GIA -->
   <ion-infinite-scroll threshold="50px" (ionInfinite)="loadData($event)" *ngIf="currentTab == 2">
-    <ion-infinite-scroll-content class="custom-infinite-scroll"
-    loadingSpinner="bubbles"
-    loadingText="{{ 'HOME.loadding_more' | translate }}">
+    <ion-infinite-scroll-content class="custom-infinite-scroll" loadingSpinner="bubbles"
+      loadingText="{{ 'HOME.loadding_more' | translate }}">
     </ion-infinite-scroll-content>
   </ion-infinite-scroll>
 </ion-content>

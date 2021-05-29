@@ -14,7 +14,7 @@
 				<ion-label class="avatar-content-title">{{userName}}</ion-label>
 			</div>
 		</ion-buttons>
-		<ion-button class="button-wallet" *ngIf="!epayUserInfo" (click)="registrationNavigate('register-wallet')">
+		<ion-button class="button-wallet" *ngIf="!epayUserInfo" (click)="presentAlert()">
 			<img class="icon-wallet" src="../assets/icon/home/wallet.svg" />
 			<ion-label class="no_wallet_title">{{ 'HOME.no_wallet_title' | translate }}</ion-label>
 		</ion-button>

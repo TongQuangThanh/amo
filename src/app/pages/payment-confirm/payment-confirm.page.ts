@@ -53,8 +53,6 @@ export class PaymentConfirmPage implements OnInit {
     this.loading.present();
     this.apiService.getPaymentDetail(paymentID).subscribe(
       (result) => {
-        console.log(result);
-
         self.totalCash = result.paymentBill.total;
         self.titlePage = result.paymentBill.payment.title;
         self.paymentStartAt = result.paymentBill.payment.paymentStartAt;

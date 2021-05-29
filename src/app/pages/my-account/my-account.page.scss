@@ -194,6 +194,7 @@ ion-toolbar {
 
 .my-account-content {
   font-family: Open Sans;
+  background: #f9fcff;
   --background: #f9fcff;
   --padding-start: 15px;
   --padding-end: 15px;
@@ -264,7 +265,7 @@ ion-toolbar {
     }
   }
   .version-item-content {
-    --background: unset;
+    --background: #f9fcff;
     --padding-top: 30px;
     .version-label {
       font-family: Open Sans;
