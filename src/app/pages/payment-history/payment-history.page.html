@@ -36,9 +36,7 @@
 
 <ion-content [scrollEvents]="false" class=" payment-history-content" slot="fixed">
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullMin="150">
-    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="{{ 'PAYMENT.pull_to_refresh' | translate }}"
-      refreshingSpinner="circles" refreshingText="Refreshing...">
-    </ion-refresher-content>
+    <ion-refresher-content pullingIcon="circles" refreshingSpinner="" refreshingText=""></ion-refresher-content>
   </ion-refresher>
 
   <ion-list *ngIf="activeTabIndex == 0">

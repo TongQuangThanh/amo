@@ -22,12 +22,7 @@
     </div>
     <ion-content class="list-home-content" [style.height.px]="heightScreen">
       <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-          <ion-refresher-content
-          pullingIcon="arrow-dropdown"
-          pullingText="{{ 'NOTIFICATION_COMMENT.pull_to_refresh' | translate }}"
-          refreshingSpinner="circles"
-          refreshingText="Refreshing...">
-          </ion-refresher-content>
+        <ion-refresher-content pullingIcon="circles" refreshingSpinner="" refreshingText=""></ion-refresher-content>
       </ion-refresher>
       <ion-list class="list-chat-content">
         <div class="message-wrap">

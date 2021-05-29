@@ -56,9 +56,7 @@
 
 <ion-content #content [style.height.px]="heightScreen" [scrollEvents]="true" class="home-page">
 	<ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-		<ion-refresher-content pullingText="{{ 'NOTIFICATION.pull_to_refresh' | translate }}" refreshingSpinner="circles"
-			refreshingText="Refreshing...">
-		</ion-refresher-content>
+		<ion-refresher-content pullingIcon="circles" refreshingSpinner="" refreshingText=""></ion-refresher-content>
 	</ion-refresher>
 
 	<div class="request-category">
