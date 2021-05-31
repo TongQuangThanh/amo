@@ -263,8 +263,7 @@ export class HomePage implements OnInit {
   }
 
   registrationNavigate(route: string) {
-    this.presentAlert();
-    // this.navCtrl.navigateForward(route);
+    this.navCtrl.navigateForward(route);
   }
 
   getDiffDays(startDate: Date, endDate: Date) {

@@ -366,8 +366,11 @@ ion-toolbar {
   padding: 15px;
   display: flex;
   flex-direction: column;
-  margin-bottom: 90px;
+  margin-bottom: 0px;
   padding-top: 44px;
+}
+.header-margin-bottom {
+  margin-bottom: 90px;
 }
 
 .service-header-title {

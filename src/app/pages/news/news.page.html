@@ -9,11 +9,7 @@
 
 <ion-content>
   <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-      <ion-refresher-content
-      pullingText="{{ 'NOTIFICATION.pull_to_refresh' | translate }}"
-      refreshingSpinner="circles"
-      refreshingText="Refreshing...">
-      </ion-refresher-content>
+    <ion-refresher-content pullingIcon="circles" refreshingSpinner="" refreshingText=""></ion-refresher-content>
   </ion-refresher>
   <ion-list>
     <ion-card class="info-card" button *ngFor="let item of listPosts" (click)="detailPage($event)" id="{{item._id}}">

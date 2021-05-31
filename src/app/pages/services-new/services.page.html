@@ -1,4 +1,4 @@
-<ion-header class="ion-no-border">
+<ion-header class="ion-no-border {{listPromotionCodeBanner && listPromotionCodeBanner.length > 0 ? 'header-margin-bottom' : ''}}">
   <ion-label class="service-header-title">{{ 'SEVICE_NEW.title_service' | translate }}</ion-label>
   <ion-label class="service-header-sub-title">{{ 'SEVICE_NEW.sub_title' | translate }}</ion-label>
 
@@ -7,7 +7,7 @@
     <ion-label class="font-weight-bold">{{ 'SEVICE_NEW.label_history' | translate }}</ion-label>
   </button>
 
-  <div class="header-slider-wrapper">
+  <div class="header-slider-wrapper" *ngIf="listPromotionCodeBanner && listPromotionCodeBanner.length > 0">
     <ion-slides pager="true" [options]="slideOpts" class="header-slider">
       <ion-slide *ngFor="let item of listPromotionCodeBanner">
         <img src="{{item?.thumbnail}}" />

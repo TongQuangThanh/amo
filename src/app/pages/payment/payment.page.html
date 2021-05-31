@@ -8,10 +8,8 @@
 </ion-header>
 
 <ion-content class="has-header payment-container">
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullMin="150">
-    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="{{ 'PAYMENT.pull_to_refresh' | translate }}"
-      refreshingSpinner="circles" refreshingText="Refreshing...">
-    </ion-refresher-content>
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" pullMin="100">
+    <ion-refresher-content pullingIcon="circles" refreshingSpinner="" refreshingText=""></ion-refresher-content>
   </ion-refresher>
   <ion-item lines="none" class="payment-list-title">
     <ion-label>{{"PAYMENT.payment_list_title" | translate}}</ion-label>
