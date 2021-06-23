@@ -104,26 +104,31 @@ export class ShopHousePage implements OnInit {
           this.shopInfoData.address = ConstService.ADDRESS_AMO;
         } else {
           this.shopInfoData.phone = this.shopInfoData?.apartment?.campaign.phone ? this.shopInfoData.apartment.campaign.phone : '';
-          this.shopInfoData.address = this.shopInfoData?.apartment?.title + ' - ' + this.shopInfoData?.apartment?.campaign?.title;
+          this.shopInfoData.address = this.shopInfoData?.apartment ? (this.shopInfoData?.apartment?.title + ' - ' + this.shopInfoData?.apartment?.campaign?.title) : '';
         }
         this.shopInfoData.content = this.shopInfoData.content.replace(/(<([^>]+)>)/gi, '');
         this.data_shop_house['shopInfo'] = this.shopInfoData;
-        const timeOpenDetail = this.shopInfoData.timeOpenDetail ? JSON.parse(this.shopInfoData.timeOpenDetail) : [];
-        this.shopOpenList = timeOpenDetail.map((item, index) => {
-          item.id = index + 1;
-          if (this.checkOpenShop(item.start, item.end)) {
-            item.display = `${this.translate.instant('SHOP_HOUSE.open')} - ${item.start} ${this.translate.instant('SHOP_HOUSE.to')} ${
-              item.end
-            }`;
-            item.isOpen = true;
-            this.shopOpenTime = item.display;
-            return item;
-          } else {
-            item.display = `${item.start} ${this.translate.instant('SHOP_HOUSE.to')} ${item.end}`;
-            item.isOpen = false;
-            return item;
-          }
-        });
+        try {
+          const timeOpenDetail =  JSON.parse(this.shopInfoData.timeOpenDetail);
+          this.shopOpenList = timeOpenDetail.map((item, index) => {
+            item.id = index + 1;
+            if (this.checkOpenShop(item.start, item.end)) {
+              item.display = `${this.translate.instant('SHOP_HOUSE.open')} - ${item.start} ${this.translate.instant('SHOP_HOUSE.to')} ${
+                item.end
+              }`;
+              item.isOpen = true;
+              this.shopOpenTime = item.display;
+              return item;
+            } else {
+              item.display = `${item.start} ${this.translate.instant('SHOP_HOUSE.to')} ${item.end}`;
+              item.isOpen = false;
+              return item;
+            }
+          });
+        } catch(e) {
+          this.shopOpenTime = `${this.translate.instant('SHOP_HOUSE.open_not_time')} ${this.shopInfoData.timeOpenDetail}`;
+        }
+
       },
       (error) => {}
     );

@@ -580,6 +580,10 @@ export class ApiService {
     return this.http.post(EnvService.articleLike + articleId, { statusLike }).pipe(map((results) => results));
   }
 
+  getBanner(): Observable<any> {
+    return this.http.get(EnvService.getBanner, {}).pipe(map((results) => results));
+  }
+
   // ========================== Service shop V2 API's ===================================== //
   // Shop house category list
   getListShopHouseCateV2(): Observable<any> {
