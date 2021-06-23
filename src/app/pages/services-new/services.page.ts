@@ -45,11 +45,14 @@ export class ServicesPage implements OnInit {
     });
   }
   slideOpts = {
+    loop: true,
     initialSlide: 0,
     slidesPerView: 0.99,
     centeredSlides: true,
     spaceBetween: 0,
-    autoplay: true,
+    autoplay: {
+      disableOnInteraction: false,
+    },
     pagination: {
       el: ".swiper-pagination",
       type: "bullets",
@@ -57,13 +60,17 @@ export class ServicesPage implements OnInit {
     }
   };
   slideOpts_1 = {
+    loop: true,
     initialSlide: 0,
     slidesPerView: 1.4,
     centeredSlides: false,
     spaceBetween: 0,
-    autoplay: true,
+    autoplay: {
+      disableOnInteraction: false,
+    },
   };
   slideOpts_2 = {
+    loop: true,
     initialSlide: 0,
     slidesPerView: 1.1,
     centeredSlides: true,

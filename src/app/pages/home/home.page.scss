@@ -989,6 +989,7 @@ ion-content {
 
 .function-list {
   margin-top: 20px;
+  height: 100%;
 }
 
 .function-content {
@@ -998,13 +999,6 @@ ion-content {
   top: 245px;
 
   z-index: 1;
-}
-
-.banner-content {
-  img {
-    margin-top: 40px;
-    width: 100%;
-  }
 }
 
 .footer-content {
@@ -1037,4 +1031,39 @@ ion-content {
   width: 100%;
   bottom: -20px;
   position: fixed;
+}
+// .banner-content {
+//   img {
+//     margin-top: 40px;
+//     width: 100%;
+//   }
+// }
+.banner-content {
+  margin-top: 35px;
+  .header-slider {
+    height: 100%;
+    border-radius: 15px;
+    .swiper-slide > img {
+      width: 100%;
+      height: 100%;
+      border-radius: 15px;
+      object-fit: unset !important;
+    }
+    ::ng-deep .swiper-wrapper {
+      height: 160px !important;
+    }
+    ::ng-deep .swiper-pagination {
+      bottom: 0px;
+      .swiper-pagination-bullet {
+        width: 10.3px;
+        height: 3px;
+        background: #221c1e80;
+        border-radius: 6px;
+        margin: 0 1.1px;
+      }
+      .swiper-pagination-bullet-active {
+        background: #E64037;
+      }
+    }
+  }
 }

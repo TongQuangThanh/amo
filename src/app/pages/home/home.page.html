@@ -126,8 +126,12 @@
 			</div>
 		</div>
 
-		<div class="banner-content">
-			<img src="../../../assets/images/banner.jpg" />
+		<div class="banner-content" *ngIf="listBanner && listBanner.length > 0">
+			<ion-slides pager="false" [options]="slideOpts" class="header-slider">
+				<ion-slide *ngFor="let item of listBanner">
+					<img src="{{item?.media?.url}}"/>
+				</ion-slide>
+			</ion-slides>
 		</div>
 
 		<ion-footer class="footer-content">

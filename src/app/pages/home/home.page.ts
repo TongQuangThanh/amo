@@ -45,6 +45,24 @@ export class HomePage implements OnInit {
 
   overDateBill = [];
   isShowBill = true;
+  listBanner = [];
+
+  slideOpts = {
+    loop: true,
+    initialSlide: 0,
+    slidesPerView: 0.99,
+    centeredSlides: true,
+    spaceBetween: 0,
+    autoplay: {
+      disableOnInteraction: false,
+    },
+    delay: 5000,
+    pagination: {
+      el: ".swiper-pagination",
+      type: "bullets",
+      clickable: true
+    }
+  };
 
   constructor(
     private route: NavController,
@@ -91,6 +109,7 @@ export class HomePage implements OnInit {
     this.getListUserApar();
     this.getAllServiceSystem();
     this.getPaymentLogs(1, 5, '', '', null, true);
+    this.getBanner();
   }
 
   ionViewWillEnter() {
@@ -136,6 +155,19 @@ export class HomePage implements OnInit {
       (error) => {}
     );
   }
+
+  getBanner() {
+    this.apiService.getBanner().subscribe(
+      (result) => {
+        if(!result || !result.banners) {
+          return;
+        }
+       this.listBanner = result.banners;
+      },
+      (error) => {}
+    );
+  }
+
 
   getArticles(page: number, limit: number, category: string, search: string, event: any, isRefresh: boolean) {
     const self = this;
@@ -190,6 +222,7 @@ export class HomePage implements OnInit {
     this.getEpayUser();
     this.getAllServiceSystem();
     this.getPaymentLogs(1, 5, '', '', null, true);
+    this.getBanner();
   }
 
   detailPage(event) {

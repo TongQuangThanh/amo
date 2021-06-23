@@ -891,7 +891,8 @@
         "open": "Open",
         "close": "Close",
         "to": "to",
-        "not_found_data": "The booth has no service"
+        "not_found_data": "The booth has no service",
+        "open_not_time": "Open"
     },
     "SHOP_BY_CATE": {
         "supplier_highlight": "Supplier highlights",
