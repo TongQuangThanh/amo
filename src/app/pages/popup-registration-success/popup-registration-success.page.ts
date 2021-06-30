@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationExtras } from '@angular/router';
 import { ModalController, NavController, NavParams } from '@ionic/angular';
 import { TranslateConfigService } from '../../translate-config.service';
 
@@ -23,7 +24,12 @@ export class PopupRegistrationSuccessPage implements OnInit {
 
   closeModal() {
     this.modalController.dismiss();
-    this.navCtrl.back();
+    const navigationState : NavigationExtras = {
+      state: {
+        isReload: true
+      },
+    };
+    this.navCtrl.navigateForward(['/dashboard/requests'], navigationState);
   }
 
 }
