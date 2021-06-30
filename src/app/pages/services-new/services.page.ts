@@ -70,7 +70,6 @@ export class ServicesPage implements OnInit {
     },
   };
   slideOpts_2 = {
-    loop: true,
     initialSlide: 0,
     slidesPerView: 1.1,
     centeredSlides: true,

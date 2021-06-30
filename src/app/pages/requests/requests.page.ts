@@ -9,6 +9,7 @@ import { Subscription } from 'rxjs';
 import { ModalController } from '@ionic/angular';
 
 import { PopupRegistrationTypePage } from '../popup-registration-type/popup-registration-type.page';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-requests',
@@ -37,7 +38,9 @@ export class RequestsPage implements OnInit {
     private apiService: ApiService,
     private navCtrl: NavController,
     private platform: Platform,
-    private nativePageTransitions: NativePageTransitions
+    private nativePageTransitions: NativePageTransitions,
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     const self = this;
     platform.ready().then((readySource) => {
@@ -49,7 +52,22 @@ export class RequestsPage implements OnInit {
   ngOnInit() {
     this.modeService = 'All';
     this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
-    this.getListRequestRegister(this.currentPageAll, this.numberRecordOnPage, '', '', null, true);
+    this.route.queryParams.subscribe((params) => {
+      const stateData = this.router.getCurrentNavigation().extras.state;
+      if(stateData && stateData.isReload) {
+        this.activeTabIndex = 0;
+        this.doRefresh(null);
+        setTimeout(() => {
+          let element: HTMLElement = document.getElementById('tab_all') as HTMLElement;
+          if(element){
+            element.click();
+          }
+        });
+      } else {
+        this.getListRequestRegister(this.currentPageAll, this.numberRecordOnPage, '', '', null, true); 
+      }
+    });
+    
   }
 
   ionViewWillEnter() {}
