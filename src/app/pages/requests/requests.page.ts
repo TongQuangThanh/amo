@@ -18,6 +18,11 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class RequestsPage implements OnInit {
   modeService: string = 'All';
+  // listApartment = [];
+  isSettingRequestReceiver = false;
+  isSettingRequestVisitors = false;
+  isSettingRequestTranferGood = false;
+  isSettingRequestParking = false;
   listRequestAll = [];
   listRequestNew = [];
   listRequestProcessing = [];
@@ -50,13 +55,14 @@ export class RequestsPage implements OnInit {
   }
 
   ngOnInit() {
+    var self = this;
     this.modeService = 'All';
     this.numberRecordOnPage = ConstService.NUMBER_RECORD_ON_PAGE;
     this.route.queryParams.subscribe((params) => {
       const stateData = this.router.getCurrentNavigation().extras.state;
       if(stateData && stateData.isReload) {
-        this.activeTabIndex = 0;
-        this.doRefresh(null);
+        self.activeTabIndex = 0;
+        self.doRefresh(null);
         setTimeout(() => {
           let element: HTMLElement = document.getElementById('tab_all') as HTMLElement;
           if(element){
@@ -64,7 +70,25 @@ export class RequestsPage implements OnInit {
           }
         });
       } else {
-        this.getListRequestRegister(this.currentPageAll, this.numberRecordOnPage, '', '', null, true); 
+        self.apiService.getListUserApartment().subscribe(
+          (result) => {
+            for(var i=0;i<result.userApartments.length;i++){
+              if(result.userApartments[i].campaign.settingRequestReceiver == "active"){
+                self.isSettingRequestReceiver = true;
+              }
+              if(result.userApartments[i].campaign.settingRequestVisitors == "active"){
+                self.isSettingRequestVisitors = true;
+              }
+              if(result.userApartments[i].campaign.settingRequestTranferGood == "active"){
+                self.isSettingRequestTranferGood = true;
+              }
+              if(result.userApartments[i].campaign.settingRequestParking == "active"){
+                self.isSettingRequestParking = true;
+              }
+            }
+            self.getListRequestRegister(self.currentPageAll, self.numberRecordOnPage, '', '', null, true); 
+        });
+        
       }
     });
     

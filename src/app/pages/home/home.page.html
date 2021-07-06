@@ -60,7 +60,7 @@
 	</ion-refresher>
 
 	<div class="request-category">
-		<div class="notification-overdue-bill" *ngIf="overDateBill.length > 0 && isShowBill">
+		<!-- <div class="notification-overdue-bill" *ngIf="overDateBill.length > 0 && isShowBill">
 			<div class="noti-detail">
 				<ion-label class="noti-total-bill"> {{ 'HOME.noti_payment_message' | translate: { billCount: overDateBill.length} }} </ion-label>
 				<div class="noti-bill-item" *ngFor="let bill of overDateBill; let idx = index">
@@ -78,7 +78,7 @@
 				<img src="../../../assets/icon/close-noti-bill-icon.png" class="close-icon">
 			</div>
 		</div>
-		<div class="notifi-not-overdue-bill" *ngIf="!overDateBill || overDateBill.length == 0 || !isShowBill"></div>
+		<div class="notifi-not-overdue-bill" *ngIf="!overDateBill || overDateBill.length == 0 || !isShowBill"></div> -->
 		
 		<ion-label class="request-category-title">{{ 'HOME.request_title' | translate }}</ion-label>
 		<ion-grid class="request-categories-wrapper">

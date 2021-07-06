@@ -23,9 +23,11 @@ export class PaymentInforPage implements OnInit {
   paymentID: string;
   managementFeeEnable: any;
   paymentStatus: any;
+  settingPaymentMode: any;
   paymentType: any;
   paymentCategoryCash: any;
   paymentUpdateAt = '';
+  appartment: any;
   constructor(
     public modalController: ModalController,
     private loading: LoadingService,
@@ -53,6 +55,8 @@ export class PaymentInforPage implements OnInit {
         self.paymentEndAt = result.paymentBill.payment.paymentEndAt;
         self.listPaymentContent = result.paymentBill.content;
         self.paymentStatus = result.paymentBill.status;
+        self.settingPaymentMode = result.paymentBill.campaign.settingPaymentMode;
+        self.appartment = result.paymentBill.apartment.title + " " + result.paymentBill.campaign.title;
         this.paymentUpdateAt = result.paymentBill.updatedAt;
         let today = new Date();
         let endAt = new Date(result.paymentBill.payment.paymentEndAt);

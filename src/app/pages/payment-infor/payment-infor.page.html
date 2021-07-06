@@ -4,7 +4,7 @@
   </ion-buttons>
 </ion-header>
 <ion-card class="payment-card">
-  <ion-item lines="none" class="payment-card-item">
+  <ion-item lines="none" class="payment-card-item" *ngIf="settingPaymentMode == 'active'">
     <ion-label slot="start" class="update-time">{{formatString(paymentUpdateAt)}}</ion-label>
     <ion-badge class="badge-status badge-paid" *ngIf="paymentStatus == 'completed'">{{ 'PAYMENT.badge_paid' | translate }}
     </ion-badge>
@@ -16,7 +16,7 @@
     </ion-badge>
   </ion-item>
   <ion-text class="">
-    <p class="payment-title">{{titlePage}}</p>
+    <p class="payment-title">{{titlePage}} - {{appartment}}</p>
   </ion-text>
   <div class="devider-line-info-payment"></div>
   <ion-item lines="none" class="payment-money-item">
@@ -55,7 +55,7 @@
         <label class="basic-label transfer" for="payment_transfer">{{ 'PAYMENT_INFOR.payment_transfer' | translate }}</label>
       </ion-item>
     </section> -->
-    <ion-button class="amo-button btn-default" *ngIf="paymentStatus == 'publish' || paymentStatus == 'outdate'" (click)="goPaymentConfirm()">{{ 'PAYMENT_INFOR.pay_now' |
+    <ion-button class="amo-button btn-default" *ngIf="(paymentStatus == 'publish' || paymentStatus == 'outdate')" (click)="goPaymentConfirm()">{{ 'PAYMENT_INFOR.pay_now' |
       translate }}</ion-button>
     <ion-button class="default-button btn-default" (click)="paymentComplainModal()">{{ 'PAYMENT_INFOR.complain' | translate }}</ion-button>
   </ion-toolbar>

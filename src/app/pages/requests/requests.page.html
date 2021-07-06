@@ -7,26 +7,26 @@
 <div class="request-category">
   <ion-grid>
     <ion-row class="ion-align-items-center">
-      <ion-col class="item-icon-col" (click)="registrationNavigate('/register-to-receive-goods')">
+      <ion-col [ngClass]="!isSettingRequestReceiver ? 'item-icon-col disabled' : 'item-icon-col'" (click)="registrationNavigate('/register-to-receive-goods')">
         <ion-badge class="item-icon-content">
           <img name="custom-archive" class="item-icon" src="assets/icon/request/delivery-box.svg" />
         </ion-badge>
         <ion-label class="item-label">{{ 'REGISTRATION_TYPE.receive' | translate }}</ion-label>
       </ion-col>
-      <ion-col class="item-icon-col" (click)="registrationNavigate('/registration-guest')">
+      <ion-col [ngClass]="!isSettingRequestVisitors ? 'item-icon-col disabled' : 'item-icon-col'" (click)="registrationNavigate('/registration-guest')">
         <ion-badge class="item-icon-content">
           <img name="custom-archive" class="item-icon" src="assets/icon/request/user.svg" />
         </ion-badge>
         <ion-label class="item-label">{{ 'REGISTRATION_TYPE.guest' | translate }}</ion-label>
       </ion-col>
-      <ion-col class="item-icon-col" (click)="registrationNavigate('/register-for-shipping')">
+      <ion-col [ngClass]="!isSettingRequestTranferGood ? 'item-icon-col disabled' : 'item-icon-col'" (click)="registrationNavigate('/register-for-shipping')">
         <ion-badge class="item-icon-content">
           <img name="custom-archive" class="item-icon" src="assets/icon/request/cart.svg" />
         </ion-badge>
         <ion-label class="item-label">{{ 'REGISTRATION_TYPE.shipping' | translate }}</ion-label>
       </ion-col>
-      <ion-col class="item-icon-col">
-        <ion-badge class="item-icon-content" (click)="registrationNavigate('/register-keep-vehicle')">
+      <ion-col [ngClass]="!isSettingRequestParking ? 'item-icon-col disabled' : 'item-icon-col'" (click)="registrationNavigate('/register-keep-vehicle')">
+        <ion-badge class="item-icon-content" >
           <img name="custom-archive" class="item-icon" src="assets/icon/request/sports-car.svg" />
         </ion-badge>
         <ion-label class="item-label">{{ 'REGISTRATION_TYPE.parking' | translate }}</ion-label>

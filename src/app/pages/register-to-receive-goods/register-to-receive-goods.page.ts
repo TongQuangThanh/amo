@@ -132,7 +132,14 @@ export class RegisterToReceiveGoodsPage implements OnInit {
     this.loading.present();
     this.apiService.getListUserApartment().subscribe(
       (result) => {
-        self.listDepartment = result.userApartments;
+        self.listDepartment = []
+        for(var i =0;i<result.userApartments.length;i++){
+          if(result.userApartments[i].campaign.settingRequestReceiver == "active"){
+            self.listDepartment.push(result.userApartments[i]);
+          }
+        }
+
+        // self.listDepartment = result.userApartments;
         self.listDepartment.forEach((data, index) => {
           if(index == 0) {
             this.form_apartment_id = data.apartment._id;

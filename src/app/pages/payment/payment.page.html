@@ -1,10 +1,13 @@
 <ion-header class="ion-no-border payment-header">
-  <ion-button class="button-history" (click)="paymentHistoryClick()">
+  <ion-button class="button-history" (click)="paymentHistoryClick()" *ngIf="listPaymentBills.length > 0 && listPaymentBills[0].campaign.settingPaymentMode == 'active'">
     <img class="icon-history" src="assets/icon/payment/time-circle.svg" />
     <ion-label class="label_history">{{ 'PAYMENT.label_history' | translate }}</ion-label>
   </ion-button>
-  <ion-label class="header-sub-title">{{ 'PAYMENT.need_payment' | translate }}</ion-label>
-  <ion-label class="header-title">{{ formatMoney(totalPayment) }}đ</ion-label>
+  <ion-label class="header-sub-title" *ngIf="listPaymentBills.length > 0 && listPaymentBills[0].campaign.settingPaymentMode == 'active'">{{ 'PAYMENT.need_payment' | translate }}</ion-label>
+  <ion-label class="header-sub-title" *ngIf="listPaymentBills.length > 0 && listPaymentBills[0].campaign.settingPaymentMode != 'active'">{{ 'PAYMENT.need_payment_inactive' | translate }}</ion-label>
+  <ion-label class="header-sub-title" *ngIf="listPaymentBills.length == 0">{{ 'PAYMENT.need_payment_no_pay' | translate }}</ion-label>
+  <ion-label class="header-title" *ngIf="listPaymentBills.length > 0 && listPaymentBills[0].campaign.settingPaymentMode == 'active'">{{ formatMoney(totalPayment) }}đ</ion-label>
+  <ion-label class="header-title" *ngIf="listPaymentBills.length > 0 && listPaymentBills[0].campaign.settingPaymentMode != 'active'">{{ formatMoney(listPaymentBills[0].total) }}đ</ion-label>
 </ion-header>
 
 <ion-content class="has-header payment-container">
@@ -12,13 +15,14 @@
     <ion-refresher-content pullingIcon="circles" refreshingSpinner="" refreshingText=""></ion-refresher-content>
   </ion-refresher>
   <ion-item lines="none" class="payment-list-title">
-    <ion-label>{{"PAYMENT.payment_list_title" | translate}}</ion-label>
+    <ion-label *ngIf="listPaymentBills.length > 0 && listPaymentBills[0].campaign.settingPaymentMode == 'active'">{{"PAYMENT.payment_list_title" | translate}}</ion-label>
+    <ion-label *ngIf="listPaymentBills.length > 0 && listPaymentBills[0].campaign.settingPaymentMode != 'active'">{{"PAYMENT.payment_list_title_inactive" | translate}}</ion-label>
   </ion-item>
 
   <ion-list class="payment-ion-list" [style.height.px]="heightScreen">
     <ion-card *ngFor="let item of listPaymentBills" (click)="detailPage(item._id)" class="payment-card">
       <ion-item lines="none" class="payment-card-item">
-        <ng-container [ngSwitch]="item.status">
+        <ng-container [ngSwitch]="item.status" *ngIf="item?.campaign.settingPaymentMode == 'active'">
           <ion-label slot="start" class="update-time" *ngSwitchCase="'publish'">
             {{formatString(item.updatedAt)}} - {{ 'PAYMENT.paid_in_days' | translate: { inOutDays: item.inOutDays } }}
           </ion-label>
@@ -27,18 +31,21 @@
           </ion-label>
           <ion-label slot="start" class="update-time" *ngSwitchDefault>{{formatString(item.updatedAt)}}</ion-label>
         </ng-container>
-        <ion-badge class="badge-status badge-unpaid" *ngIf="item.status == 'publish'">{{ 'PAYMENT.badge_unpaid' | translate }}</ion-badge>
-        <ion-badge class="badge-status badge-outdate" *ngIf="item.status == 'outdate'">{{ 'PAYMENT.badge_outdate' | translate }}</ion-badge>
+        <ng-container *ngIf="item?.campaign.settingPaymentMode != 'active'">
+          <ion-label slot="start" class="update-time">{{formatString(item.updatedAt)}}</ion-label>
+        </ng-container>
+        <ion-badge class="badge-status badge-unpaid" *ngIf="item.status == 'publish' && item?.campaign.settingPaymentMode == 'active'">{{ 'PAYMENT.badge_unpaid' | translate }}</ion-badge>
+        <ion-badge class="badge-status badge-outdate" *ngIf="item.status == 'outdate' && item?.campaign.settingPaymentMode == 'active'">{{ 'PAYMENT.badge_outdate' | translate }}</ion-badge>
       </ion-item>
       <ion-text class="">
-        <p class="payment-title">{{item?.payment?.title}}</p>
+        <p class="payment-title">{{item?.payment?.title}} - {{item?.apartment.title}} {{item?.campaign.title}}</p>
       </ion-text>
       <div class="devider-line-payment"></div>
 
       <ion-item lines="none" class="payment-money-item">
         <ion-label fixed slot="start" class="money-title">{{"PAYMENT.number_money_label" | translate}} </ion-label>
         <ion-label class="mone-number">{{formatMoney(item.total)}}đ</ion-label>
-        <ion-button class="btn-paid" slot="end">{{"PAYMENT.btn_paid_label" | translate}}</ion-button>
+        <ion-button class="btn-paid" slot="end" *ngIf="item?.campaign.settingPaymentMode == 'active'">{{"PAYMENT.btn_paid_label" | translate}}</ion-button>
       </ion-item>
     </ion-card>
   </ion-list>

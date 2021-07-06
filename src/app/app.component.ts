@@ -180,6 +180,13 @@ export class AppComponent{
           self.navCtrl.navigateForward('/request-detail/' + openResult.notification.payload.additionalData.feedback);
         }else if(openResult.notification.payload.additionalData.type == "feedback"){
           self.navCtrl.navigateForward('/request-detail/' + openResult.notification.payload.additionalData._id);
+        }else if(openResult.notification.payload.additionalData.type == "feedbacknewReply" && 
+          self.router.url == "/request-detail/" + openResult.notification.payload.additionalData.feedback){
+          UtilsService.requestDetailComponentShare.getListMessage(openResult.notification.payload.additionalData.feedback, true);
+        }else if(openResult.notification.payload.additionalData.type == "feedbacknewReply"){
+          self.navCtrl.navigateForward('/request-detail/' + openResult.notification.payload.additionalData.feedback);
+        }else if(openResult.notification.payload.additionalData.type == "feedbacknew"){
+          self.navCtrl.navigateForward('/request-detail/' + openResult.notification.payload.additionalData._id);
         }else if(openResult.notification.payload.additionalData.type == "article"){
           self.navCtrl.navigateForward('/notification-detail/' + openResult.notification.payload.additionalData._id);
         }else if(openResult.notification.payload.additionalData.type == "articleComment"){
