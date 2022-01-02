@@ -14,8 +14,8 @@
     "updateIOS": "ionic cordova prepare ios --prod --release",
     "buildAndroid": "ionic cordova build android --prod --release",
     "buildIOS": "ionic cordova build ios --prod --release",
-    "codePushAndroid": "appcenter codepush release-cordova -a amtechcom.dev/AMO_v4_android -d Production",
-    "codePushIOS": "appcenter codepush release-cordova -a amtechcom.dev/AMO_v4_ios -d Production"
+    "codePushAndroid": "appcenter codepush release-cordova -m -a amtechcom.dev/AMO_v4_android -d Production",
+    "codePushIOS": "appcenter codepush release-cordova -m -a amtechcom.dev/AMO_v4_ios -d Production"
   },
   "private": true,
   "dependencies": {

@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { LoadingService } from '../../../services/loading/loading.service';
+import { ApiService } from '../../../services/api/api.service';
 
 @Component({
   selector: 'app-login',
@@ -24,6 +25,7 @@ export class LoginPage implements OnInit {
     private navCtrl: NavController,
     private route: ActivatedRoute,
     private loading: LoadingService,
+    private apiService: ApiService,
   ) { 
   }
   
@@ -58,6 +60,14 @@ export class LoginPage implements OnInit {
       data => {
        if (data) {
         self.errorMessage = '';
+        var userId = localStorage.getItem('playID');
+        if(userId && userId.length > 0){
+          self.apiService.settingNotification({
+            playerId: userId
+          }).subscribe(result => {
+            console.log("done " + userId)
+          })
+        }
         this.navCtrl.navigateRoot('/dashboard/home');
        }
       },

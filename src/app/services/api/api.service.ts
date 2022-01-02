@@ -500,6 +500,15 @@ export class ApiService {
     return this.http.post(EnvService.paymentLog, params).pipe(map((results) => results));
   }
 
+  getPayTheBillHistory(paymentBill): Observable<any> {
+    const params = new HttpParams().set('paymentBill', paymentBill).set('_v', new Date().getTime().toString());
+    return this.http
+      .get(EnvService.paymentLog, {
+        params,
+      })
+      .pipe(map((results) => results));
+  }
+
   postUserComment(params: any): Observable<any> {
     return this.http.post(EnvService.userComment, params).pipe(map((results) => results));
   }

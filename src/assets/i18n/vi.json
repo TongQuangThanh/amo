@@ -302,6 +302,7 @@
     "PAYMENT_INFOR": {
         "title": "Thông tin hóa đơn",
         "payment_date": "Thời gian thanh toán",
+        "payment_history_title": "Lịch sử thanh toán",
         "total": "Tổng số",
         "bank_name": "Ngân hàng",
         "bank_account_holder": "Chủ tài khoản",

@@ -7,6 +7,7 @@ import { ApiService } from '../../services/api/api.service';
 import { LoadingService } from '../../services/loading/loading.service';
 import { UtilsService } from '../../utils/utils.service';
 import { PopupShareInfoPage } from '../popup-share-info/popup-share-info.page';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-notification-detail',
@@ -15,7 +16,7 @@ import { PopupShareInfoPage } from '../popup-share-info/popup-share-info.page';
 })
 export class NotificationDetailPage implements OnInit {
   heightScreen: number;
-  O;
+  // O;
   articleTitle: string;
   articleContent: string;
   thumbnail: string;
@@ -36,6 +37,7 @@ export class NotificationDetailPage implements OnInit {
   constructor(
     private iab: InAppBrowser,
     private loading: LoadingService,
+    private sanitizer: DomSanitizer,
     private apiService: ApiService,
     private navCtrl: NavController,
     private route: ActivatedRoute,
@@ -74,7 +76,7 @@ export class NotificationDetailPage implements OnInit {
       (result) => {
         const article =  result.article;
         self.articleTitle = article.title;
-        self.articleContent = article.content;
+        self.articleContent = self.sanitizer.bypassSecurityTrustHtml(article.content) as string;;
         self.thumbnail = article.thumbnail;
         self.attachments = article.attachments;
         self.readsCount = article.readsCount;

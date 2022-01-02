@@ -19,6 +19,22 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script>
+    document.onclick = function (e) {
+      e = e || window.event;
+      var element = e.target || e.srcElement;
+
+      if (element.tagName == 'A') {
+          window.open(element.href, '_system', 'location=yes', 'zoom=no');
+          return false;
+      }
+
+      if ((element.tagName == 'STRONG' || element.tagName == 'I') && e.srcElement.parentElement.href) {
+        window.open(e.srcElement.parentElement.href, '_system', 'location=yes', 'zoom=no');
+        return false;
+      }
+    };
+  </script>
 </head>
 
 <body class="mat-typography">

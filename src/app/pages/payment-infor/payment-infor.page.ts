@@ -17,6 +17,7 @@ export class PaymentInforPage implements OnInit {
   titlePage: string;
   totalCash: number;
   listPaymentContent: any;
+  listPaymentHistoryContent: any;
   paymentStartAt: string;
   paymentEndAt: string;
   paymentCategoryTranfer: any;
@@ -38,6 +39,7 @@ export class PaymentInforPage implements OnInit {
   ngOnInit() {
     this.paymentID = this.route.snapshot.paramMap.get('id');
     this.listPaymentContent = [];
+    this.listPaymentHistoryContent = [];
     this.paymentType = 'cash';
     this.getPaymentDetail(this.paymentID);
   }
@@ -65,6 +67,14 @@ export class PaymentInforPage implements OnInit {
         }
         self.managementFeeEnable = new Array(self.listPaymentContent.length).fill(false);
         self.loading.dismiss();
+        self.loading.present();
+        self.apiService.getPayTheBillHistory(paymentID).subscribe(
+          (resultHistory) => {
+            self.listPaymentHistoryContent = resultHistory.paymentLogs;
+          },
+          (errorHistory) => {
+            self.loading.dismiss();
+          })
       },
       (error) => {
         self.loading.dismiss();

@@ -16,6 +16,14 @@ export class DashboardPage implements OnInit {
 
   constructor(private apiService: ApiService) {
     this.screenID = 'home';
+    var userId = localStorage.getItem('playID');
+    if(userId && userId.length > 0){
+      this.apiService.settingNotification({
+        playerId: userId
+      }).subscribe(result => {
+        console.log("done " + userId)
+      })
+    }
   }
 
   ngOnInit() {}

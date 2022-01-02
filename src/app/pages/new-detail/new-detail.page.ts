@@ -20,7 +20,7 @@ export class NewDetailPage implements OnInit {
   newID: string;
   newTitle: string;
   newContent: any;
-  createAt: string;
+  updatedAt: string;
   createdBy: string;
   thumbnail: string;
   totalViewers: number;
@@ -79,7 +79,7 @@ export class NewDetailPage implements OnInit {
         self.newTitle = result.post.title;
         self.newContent = self.sanitizer.bypassSecurityTrustHtml(result.post.content) as string;
         self.thumbnail = result.post.thumbnail;
-        self.createAt = result.post.createAt;
+        self.updatedAt = result.post.updatedAt;
         self.createdBy = result.post.createdBy.displayName;
         self.totalViewers = result.post.totalViewers;
         self.buttonTitle = result.post.titleButton;

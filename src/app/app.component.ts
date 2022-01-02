@@ -182,9 +182,9 @@ export class AppComponent{
           self.navCtrl.navigateForward('/request-detail/' + openResult.notification.payload.additionalData._id);
         }else if(openResult.notification.payload.additionalData.type == "feedbacknewReply" && 
           self.router.url == "/request-detail/" + openResult.notification.payload.additionalData.feedback){
-          UtilsService.requestDetailComponentShare.getListMessage(openResult.notification.payload.additionalData.feedback, true);
+          UtilsService.requestDetailComponentShare.getListMessage(openResult.notification.payload.additionalData.feedbacknew, true);
         }else if(openResult.notification.payload.additionalData.type == "feedbacknewReply"){
-          self.navCtrl.navigateForward('/request-detail/' + openResult.notification.payload.additionalData.feedback);
+          self.navCtrl.navigateForward('/request-detail/' + openResult.notification.payload.additionalData.feedbacknew);
         }else if(openResult.notification.payload.additionalData.type == "feedbacknew"){
           self.navCtrl.navigateForward('/request-detail/' + openResult.notification.payload.additionalData._id);
         }else if(openResult.notification.payload.additionalData.type == "article"){
@@ -212,10 +212,15 @@ export class AppComponent{
             openResult.notification.payload.additionalData.popupConfig_id != ""){
               self.addCountUserClick(openResult.notification.payload.additionalData.popupConfig_id);
           }
+          
           UtilsService.notificationNavigatorLink = '/service-detail/' + openResult.notification.payload.additionalData._id;
         }else if(openResult.notification.payload.additionalData.type == "feedbackReply"){
           UtilsService.notificationNavigatorLink = '/request-detail/' + openResult.notification.payload.additionalData.feedback;
         }else if(openResult.notification.payload.additionalData.type == "feedback"){
+          UtilsService.notificationNavigatorLink = '/request-detail/' + openResult.notification.payload.additionalData._id;
+        }else if(openResult.notification.payload.additionalData.type == "feedbacknewReply"){
+          UtilsService.notificationNavigatorLink = '/request-detail/' + openResult.notification.payload.additionalData.feedbacknew;
+        }else if(openResult.notification.payload.additionalData.type == "feedbacknew"){
           UtilsService.notificationNavigatorLink = '/request-detail/' + openResult.notification.payload.additionalData._id;
         }else if(openResult.notification.payload.additionalData.type == "article"){
           UtilsService.notificationNavigatorLink = '/notification-detail/' + openResult.notification.payload.additionalData._id;
@@ -238,9 +243,13 @@ export class AppComponent{
     });
     this.oneSignal.endInit();
     this.oneSignal.getIds().then((id) => {
-      console.log("onesign id:");
-      console.log(id);
       localStorage.setItem('playID', id.userId);
+      console.log(id);
+      self.apiService.settingNotification({
+        playerId: id.userId
+      }).subscribe(result => {
+        console.log("done " + id.userId)
+      })
     });
   }
 }

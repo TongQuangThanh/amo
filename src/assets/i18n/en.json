@@ -302,6 +302,7 @@
     "PAYMENT_INFOR": {
         "title": "Payment information",
         "payment_date": "Due date",
+        "payment_history_title": "Paymented History",
         "total": "Amount",
         "bank_name": "Bank Name",
         "bank_account_holder": "Bank Account Holder",
