@@ -342,6 +342,7 @@
         "payment_confirm_total": "Total: ",
         "payment_confirm_total_money": "Total money ",
         "payment_confirm_promotion": "Promotion: ",
+        "payment_paidAmount": "Paid Amount: ",
         "payment_confirm_amount": "Amount: ",
         "payment_wallet_title": "AMOPAY wallet",
         "payment_wallet_change": "Change",

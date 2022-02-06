@@ -342,6 +342,7 @@
         "payment_confirm_total": "Tổng: ",
         "payment_confirm_total_money": "Tổng tiền ",
         "payment_confirm_promotion": "Khuyến mại: ",
+        "payment_paidAmount": "Đã thanh toán: ",
         "payment_confirm_amount": "Số tiền: ",
         "payment_wallet_title": "Ví AMOPAY",
         "payment_wallet_change": "Thay đổi",

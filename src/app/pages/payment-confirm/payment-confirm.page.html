@@ -34,15 +34,37 @@
         <ion-label class="fee-detail">{{"PAYMENT_INFOR.payment_confirm_promotion" | translate}}</ion-label>
         <ion-label class="promotion-value ion-float-right">{{formatMoney(promotionMoney)}}đ </ion-label>
       </ion-item>
+      <ion-item lines="none" class="fee-item ion-no-padding">
+        <ion-label class="fee-detail">{{"PAYMENT_INFOR.payment_paidAmount" | translate}}</ion-label>
+        <ion-label class="promotion-value ion-float-right">{{formatMoney(paidAmount)}}đ </ion-label>
+      </ion-item>
       <div class="devider-line-confirm-item"></div>
       <ion-item lines="none" class="fee-item ion-no-padding">
         <ion-label class="fee-detail">{{"PAYMENT_INFOR.payment_confirm_total" | translate}}</ion-label>
-        <ion-label class="amount-number ion-float-right">{{formatMoney(totalCash - promotionMoney)}}đ </ion-label>
+        <ion-label class="amount-number ion-float-right">{{formatMoney(totalCash - promotionMoney - paidAmount)}}đ </ion-label>
       </ion-item>
     </ion-list>
   </section>
-
+  <section class="section-content margin-top-10">
+    <ion-item lines="none" class="fee-item ion-no-padding" style="margin: 0 15px; ">
+      <ion-icon [src]="'../assets/icon/payment/credit-card.svg'" class="icon-parking"></ion-icon>
+      <ion-label class="fee-title">{{ 'PAYMENT_INFOR.payment_method' | translate }}</ion-label>
+    </ion-item>
+    <ion-radio-group [(ngModel)]="paymentType">
+      <ion-item>
+        <ion-label class="fee-title">{{ 'PAYMENT_INFOR.payment_cash' | translate }}</ion-label>
+        <ion-radio slot="start" color="success" value="payment_cash"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label class="fee-title">{{ 'PAYMENT_INFOR.payment_transfer' | translate }}</ion-label>
+        <ion-radio slot="start" color="success" value="payment_transfer"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </section>
   <ion-toolbar class="ion-toolbar-payment">
+    <ion-button class="amo-button btn-default" (click)="openPayment()" *ngIf="(totalCash - promotionMoney - paidAmount) > 0">{{'PAYMENT_INFOR.pay_now' | translate }}</ion-button>
+  </ion-toolbar>
+  <!-- <ion-toolbar class="ion-toolbar-payment">
     <ion-item lines="none" class="payment-funtion" *ngIf="paymentSelected">
       <ion-icon [src]="'../assets/icon/payment/wallet.svg'" class="wallet-icon"></ion-icon>
       <ion-label class="wallet-title">{{paymentSelected.name}}</ion-label>
@@ -62,5 +84,5 @@
     </ion-item>
     <ion-button class="amo-button btn-default" (click)="openPayment()" *ngIf="paymentSelected && paymentSelected.money >= (totalCash - promotionMoney)">{{'PAYMENT_INFOR.pay_now' | translate }}</ion-button>
     <ion-button class="btn-default btn-pay-not-active" *ngIf="!paymentSelected || paymentSelected.money < (totalCash - promotionMoney)">{{'PAYMENT_INFOR.pay_now' | translate }}</ion-button>
-  </ion-toolbar>
+  </ion-toolbar> -->
 </ion-content>

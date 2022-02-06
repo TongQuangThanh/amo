@@ -25,7 +25,7 @@ export class PaymentInforPage implements OnInit {
   managementFeeEnable: any;
   paymentStatus: any;
   settingPaymentMode: any;
-  paymentType: any;
+  // paymentType: any = "payment_cash";
   paymentCategoryCash: any;
   paymentUpdateAt = '';
   appartment: any;
@@ -40,7 +40,7 @@ export class PaymentInforPage implements OnInit {
     this.paymentID = this.route.snapshot.paramMap.get('id');
     this.listPaymentContent = [];
     this.listPaymentHistoryContent = [];
-    this.paymentType = 'cash';
+    // this.paymentType = 'payment_cash';
     this.getPaymentDetail(this.paymentID);
   }
 
@@ -50,6 +50,10 @@ export class PaymentInforPage implements OnInit {
     this.apiService.getPaymentDetail(paymentID).subscribe(
       (result) => {
         self.totalCash = result.paymentBill.total;
+        self.totalCash = self.totalCash - result.paymentBill.paidAmount;
+        if(self.totalCash < 0){
+          self.totalCash = 0;
+        }
         self.titlePage = result.paymentBill.payment.title;
         self.paymentStartAt = result.paymentBill.payment.paymentStartAt;
         self.paymentCategoryTranfer = result.paymentBill.category.transfer;

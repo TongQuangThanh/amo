@@ -105,7 +105,7 @@ export class HomePage implements OnInit {
     this.showHeader = 1;
     this.listArticles = [];
     this.getArticles(this.currentPage, this.numberRecordOnPage, '', '', null, true);
-    this.getEpayUser();
+    // this.getEpayUser();
     this.getListUserApar();
     this.getAllServiceSystem();
     this.getPaymentLogs(1, 5, '', '', null, true);
@@ -113,7 +113,7 @@ export class HomePage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.epayUserInfo = this.apiService.getEpayUserStored();
+    // this.epayUserInfo = this.apiService.getEpayUserStored();
   }
 
   // Get bill: Copy paste từ payment.page.ts
@@ -143,18 +143,18 @@ export class HomePage implements OnInit {
   }
   // ==========================
 
-  getEpayUser() {
-    this.apiService.getEpayUser().subscribe(
-      (result) => {
-        if (result && result.user_info) {
-          this.epayUserInfo = result;
-        } else {
-          this.epayUserInfo = null;
-        }
-      },
-      (error) => {}
-    );
-  }
+  // getEpayUser() {
+  //   this.apiService.getEpayUser().subscribe(
+  //     (result) => {
+  //       if (result && result.user_info) {
+  //         this.epayUserInfo = result;
+  //       } else {
+  //         this.epayUserInfo = null;
+  //       }
+  //     },
+  //     (error) => {}
+  //   );
+  // }
 
   getBanner() {
     this.apiService.getBanner().subscribe(
@@ -219,7 +219,7 @@ export class HomePage implements OnInit {
     this.isShowBill = true;
     this.currentPage = 1;
     this.getArticles(this.currentPage, this.numberRecordOnPage, '', '', event, true);
-    this.getEpayUser();
+    // this.getEpayUser();
     this.getAllServiceSystem();
     this.getPaymentLogs(1, 5, '', '', null, true);
     this.getBanner();

@@ -7,6 +7,7 @@ import { ModalController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { PopupPaymentFunctionPage } from '../popup-payment-function/popup-payment-function.page';
 import { PopupIframePaymentPage } from '../popup-iframe-payment/popup-iframe-payment.page';
+import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
 @Component({
   selector: 'app-payment-confirm',
@@ -17,12 +18,13 @@ export class PaymentConfirmPage implements OnInit {
   paymentMethodList = [];
   titlePage: string;
   totalCash: number;
+  paidAmount: number;
   listPaymentContent: any;
   paymentStartAt: string;
   paymentEndAt: string;
   paymentID: string;
   paymentStatus: any;
-  paymentType: any;
+  paymentType: any = "payment_cash";
   paymentUpdateAt = '';
   paymentCategory = null;
   paymentSelected = null;
@@ -38,14 +40,15 @@ export class PaymentConfirmPage implements OnInit {
     private route: ActivatedRoute,
     private translate: TranslateService,
     private alertController: AlertController,
+    private iab: InAppBrowser
   ) {}
   ngOnInit() {
-    this.epayUserInfo = this.apiService.getEpayUserStored();
+    // this.epayUserInfo = this.apiService.getEpayUserStored();
     this.paymentID = this.route.snapshot.paramMap.get('id');
     this.listPaymentContent = [];
-    this.paymentType = 'cash';
+    this.paymentType = 'payment_cash';
     this.getPaymentDetail(this.paymentID);
-    this.dumyPaymentMethod();
+    // this.dumyPaymentMethod();
   }
 
   getPaymentDetail(paymentID: string) {
@@ -54,6 +57,7 @@ export class PaymentConfirmPage implements OnInit {
     this.apiService.getPaymentDetail(paymentID).subscribe(
       (result) => {
         self.totalCash = result.paymentBill.total;
+        self.paidAmount = result.paymentBill.paidAmount;
         self.titlePage = result.paymentBill.payment.title;
         self.paymentStartAt = result.paymentBill.payment.paymentStartAt;
         self.paymentCategory = result.paymentBill.category;
@@ -132,38 +136,61 @@ export class PaymentConfirmPage implements OnInit {
   }
 
   openPayment() {
-    this.presentAlert(this.translate.instant('PAYMENT_INFOR.alert_comming_soon'));
-    // var self = this;
+    // this.presentAlert(this.translate.instant('PAYMENT_INFOR.alert_comming_soon'));
+    var self = this;
     // this.apiService.epaypayment(this.totalCash).subscribe((result) => {
     //   console.log(result);
     //   this.urlPayment = result.url;
     //   this.payTheBill();
     // });
+    if(this.paymentType == 'payment_cash'){
+      this.changePaymentModal();
+    }else{
+      this.loading.present();
+      this.apiService.momoPayment(this.totalCash - this.promotionMoney - this.paidAmount).subscribe((result) => {
+        self.loading.dismiss();
+        if(result.resultCode == 0){
+          self.openURLAccuracyEpay(result.deeplink);
+        }else{
+          self.navCtrl.navigateForward('/payment-fail');
+        }
+        // this.urlPayment = result.url;
+        // this.payTheBill();
+      },
+      (error) => {
+        self.loading.dismiss();
+      });
+    }
   }
 
-  dumyPaymentMethod() {
-    this.paymentMethodList = [];
-    this.epayUserInfo = this.apiService.getEpayUserStored();
-    if (!this.epayUserInfo) {
-      return;
-    }
-    this.paymentMethodList = [
-      {
-        key: 1,
-        name: this.translate.instant('PAYMENT_INFOR.payment_wallet_title'),
-        content: this.formatMoney(this.epayUserInfo.user_info.balance) + 'đ',
-        money: this.epayUserInfo.user_info.balance,
-        isSelected: true,
-      },
-      // {
-      //   key: 2,
-      //   name: this.translate.instant('PAYMENT_INFOR.modal_change_vietcombank'),
-      //   content: this.translate.instant('PAYMENT_INFOR.modal_change_ref'),
-      //   isSelected: false,
-      // },
-    ];
-    this.paymentSelected = this.paymentMethodList[0];
+  openURLAccuracyEpay(url: string){
+    const browser = this.iab.create(url ,'_system', 'location=yes, enableviewportscale=yes');
+    browser.show();
   }
+
+  // dumyPaymentMethod() {
+  //   this.paymentMethodList = [];
+  //   this.epayUserInfo = this.apiService.getEpayUserStored();
+  //   if (!this.epayUserInfo) {
+  //     return;
+  //   }
+  //   this.paymentMethodList = [
+  //     {
+  //       key: 1,
+  //       name: this.translate.instant('PAYMENT_INFOR.payment_wallet_title'),
+  //       content: this.formatMoney(this.epayUserInfo.user_info.balance) + 'đ',
+  //       money: this.epayUserInfo.user_info.balance,
+  //       isSelected: true,
+  //     },
+  //     // {
+  //     //   key: 2,
+  //     //   name: this.translate.instant('PAYMENT_INFOR.modal_change_vietcombank'),
+  //     //   content: this.translate.instant('PAYMENT_INFOR.modal_change_ref'),
+  //     //   isSelected: false,
+  //     // },
+  //   ];
+  //   this.paymentSelected = this.paymentMethodList[0];
+  // }
 
   async presentAlert(message) {
     var self = this;

@@ -97,6 +97,7 @@ export const EnvService = {
   epayRechargeUrl: environment.base + '/epay-service/epay-recharge-url',
   epaypayment: environment.base + '/epay-service/epay-payment',
   epayPageApproved: environment.base + '/epay-service/epay-page-approved',
+  momoPayment : environment.base + '/momo-payment/payment',
 
   // post like { "statusLike": "like" } status: 'like' | 'unlike' | 'none'
   postLike: environment.base + '/post-like/',

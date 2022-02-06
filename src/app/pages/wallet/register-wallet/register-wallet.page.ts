@@ -27,17 +27,17 @@ export class RegisterWalletPage implements OnInit {
   openWalletNow() {
     this.registerError = false;
     this.loading.present();
-    this.apiService.registerEpay().subscribe(
-      (result) => {
-        this.openURLAccuracyEpay(result.url);
-        this.loading.dismiss();
-        this.navCtrl.back();
-      },
-      (error) => {
-        this.registerError = true;
-        this.loading.dismiss();
-      }
-    );
+    // this.apiService.registerEpay().subscribe(
+    //   (result) => {
+    //     this.openURLAccuracyEpay(result.url);
+    //     this.loading.dismiss();
+    //     this.navCtrl.back();
+    //   },
+    //   (error) => {
+    //     this.registerError = true;
+    //     this.loading.dismiss();
+    //   }
+    // );
   }
 
   

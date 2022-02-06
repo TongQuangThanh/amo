@@ -1,5 +1,5 @@
 <ion-header class="ion-no-border payment-header">
-  <ion-button class="button-history" (click)="paymentHistoryClick()" *ngIf="listPaymentBills.length > 0 && listPaymentBills[0].campaign.settingPaymentMode == 'active'">
+  <ion-button class="button-history" (click)="paymentHistoryClick()">
     <img class="icon-history" src="assets/icon/payment/time-circle.svg" />
     <ion-label class="label_history">{{ 'PAYMENT.label_history' | translate }}</ion-label>
   </ion-button>

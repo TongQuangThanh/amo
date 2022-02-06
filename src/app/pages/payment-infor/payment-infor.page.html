@@ -68,14 +68,8 @@
   </section>
 
   <ion-toolbar class="ion-toolbar-payment">
-    <!-- <section class="margin-top-10 plan cf" *ngIf="paymentStatus == 'publish' || paymentStatus == 'outdate'">
-      <ion-item lines="none">
-        <input type="radio" name="radio1" id="payment_cash" value="payment_cash" checked (click)="paymentCashModal()">
-        <label class="premium-label cash" for="payment_cash">{{ 'PAYMENT_INFOR.payment_cash' | translate }}</label>
-        <input type="radio" name="radio1" id="payment_transfer" value="payment_transfer" (click)="paymentTransferModal()">
-        <label class="basic-label transfer" for="payment_transfer">{{ 'PAYMENT_INFOR.payment_transfer' | translate }}</label>
-      </ion-item>
-    </section> -->
+    <section class="margin-top-10 plan cf" *ngIf="paymentStatus == 'publish' || paymentStatus == 'outdate'">
+    </section>
     <ion-button class="amo-button btn-default" *ngIf="(paymentStatus == 'publish' || paymentStatus == 'outdate')" (click)="goPaymentConfirm()">{{ 'PAYMENT_INFOR.pay_now' |
       translate }}</ion-button>
     <ion-button class="default-button btn-default" (click)="paymentComplainModal()">{{ 'PAYMENT_INFOR.complain' | translate }}</ion-button>

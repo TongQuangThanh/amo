@@ -519,58 +519,66 @@ export class ApiService {
 
   // ==================  api  ví điện tử ============================
   // đăng kí thông tin mapping account
-  registerEpay(): Observable<any> {
-    return this.http.post(EnvService.registerEpay, {}).pipe(map((results) => results));
-  }
+  // registerEpay(): Observable<any> {
+  //   return this.http.post(EnvService.registerEpay, {}).pipe(map((results) => results));
+  // }
   // lay thong tin tai khoan
-  getEpayUser(): Observable<any> {
-    return this.http.post(EnvService.getEpayUser, {}).pipe(
-      tap(async (result) => {
-        if (result && result.user_info) {
-          this.setEpayUserStored(result);
-        } else {
-          this.setEpayUserStored('');
-        }
-        return result;
-      })
-    );
-  }
+  // getEpayUser(): Observable<any> {
+  //   return this.http.post(EnvService.getEpayUser, {}).pipe(
+  //     tap(async (result) => {
+  //       if (result && result.user_info) {
+  //         this.setEpayUserStored(result);
+  //       } else {
+  //         this.setEpayUserStored('');
+  //       }
+  //       return result;
+  //     })
+  //   );
+  // }
 
   // nap tien vao tk ( cần liên kết tk ngân hang để nạp tiên)
-  epayRechargeUrl(amount: number): Observable<any> {
-    const params = {
-      amount: amount,
-    };
-    return this.http.post(EnvService.epayRechargeUrl, params).pipe(map((results) => results));
-  }
+  // epayRechargeUrl(amount: number): Observable<any> {
+  //   const params = {
+  //     amount: amount,
+  //   };
+  //   return this.http.post(EnvService.epayRechargeUrl, params).pipe(map((results) => results));
+  // }
+
+  // // thanh toan tiền
+  // epaypayment(amount: number): Observable<any> {
+  //   const params = {
+  //     amount: amount,
+  //   };
+  //   return this.http.post(EnvService.epaypayment, params).pipe(map((results) => results));
+  // }
+
+  // // xac nhan hoặc hủy thanh toan tiền : 1: xác nhận thanh toán, -1: hủy thanh toán
+  // epayPageApproved(status: number, transId: string): Observable<any> {
+  //   const params = {
+  //     confirm_stt: status,
+  //     trans_id: transId,
+  //   };
+  //   return this.http.post(EnvService.epayPageApproved, params).pipe(map((results) => results));
+  // }
+
+  // getEpayUserStored() {
+  //   const epayUser = localStorage.getItem('epay-user-stored');
+  //   if (!epayUser) {
+  //     return null;
+  //   }
+  //   return JSON.parse(epayUser);
+  // }
+
+  // setEpayUserStored(data) {
+  //   localStorage.setItem('epay-user-stored', JSON.stringify(data || ''));
+  // }
 
   // thanh toan tiền
-  epaypayment(amount: number): Observable<any> {
+  momoPayment(amount: number): Observable<any> {
     const params = {
       amount: amount,
     };
-    return this.http.post(EnvService.epaypayment, params).pipe(map((results) => results));
-  }
-
-  // xac nhan hoặc hủy thanh toan tiền : 1: xác nhận thanh toán, -1: hủy thanh toán
-  epayPageApproved(status: number, transId: string): Observable<any> {
-    const params = {
-      confirm_stt: status,
-      trans_id: transId,
-    };
-    return this.http.post(EnvService.epayPageApproved, params).pipe(map((results) => results));
-  }
-
-  getEpayUserStored() {
-    const epayUser = localStorage.getItem('epay-user-stored');
-    if (!epayUser) {
-      return null;
-    }
-    return JSON.parse(epayUser);
-  }
-
-  setEpayUserStored(data) {
-    localStorage.setItem('epay-user-stored', JSON.stringify(data || ''));
+    return this.http.post(EnvService.momoPayment, params).pipe(map((results) => results));
   }
 
   postPostLike(postId, statusLike): Observable<any> {
