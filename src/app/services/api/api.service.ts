@@ -632,6 +632,11 @@ export class ApiService {
   registerShopV2(params: any): Observable<any> {
     return this.http.post(EnvService.shopHouseV2, params).pipe(map((results) => results));
   }
+
+  // request house sale
+  requestHouseSaleV2(params: any): Observable<any> {
+    return this.http.post(EnvService.requestHouseSaleV2, params).pipe(map((results) => results));
+  }
   // get tag of shop
   getTagsOfShopV2(): Observable<any> {
     return this.http.get(EnvService.tagShopV2).pipe(map((results) => results));

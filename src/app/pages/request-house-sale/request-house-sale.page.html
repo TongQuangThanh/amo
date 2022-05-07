@@ -1,0 +1,67 @@
+<ion-header class="ion-no-border create-market-header">
+  <ion-buttons class="back-button">
+    <ion-back-button color="light" text="" icon="chevron-back" class="ion-back-button"></ion-back-button>
+  </ion-buttons>
+  <ion-label class="header-title">{{ 'INBOX_22.title' | translate }}</ion-label>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="full" class="ion-no-margin ion-no-padding margin-top-10">
+
+    <ion-item lines="none" class="margin-top-10">
+      <ion-item lines="none" class="item-common">
+        <img class="icon-pulldown-left" src="../assets/icon/request/home.svg" />
+        <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg" />
+        <label *ngIf="apartmentId != ''" class="pulldown-customize-placeholder">{{ 'INBOX_22.apartment_placeHolder_2' | translate
+          }}</label>
+        <div class="width-100 {{apartmentIdClass}}">
+          <ion-select class="pulldown-customize" placeholder="{{ 'INBOX_22.apartment_placeHolder_1' | translate }}"
+            interface="action-sheet" name="apartmentId" [(ngModel)]="apartmentId" (ionChange)="ionChangeApartment($event)">
+            <ion-select-option *ngFor="let item of listApartment" value="{{item.apartmentId}}">{{item.apartmentTitle}}</ion-select-option>
+          </ion-select>
+        </div>
+      </ion-item>
+    </ion-item>
+
+    <ion-item lines="none" class="margin-top-15">
+      <ion-item lines="none" class="item-common">
+        <img class="icon-pulldown-left" src="../assets/icon/market/Category.svg" />
+        <img class="icon-pulldown-down" src="../assets/icon/svg/Down.svg" />
+        <label *ngIf="form_type != ''" class="pulldown-customize-placeholder">{{ 'INBOX_22.pulldown_1_placeHolder_2' | translate }}</label>
+        <div class="width-100 {{form_type_class}}">
+          <ion-select class="pulldown-customize" placeholder="{{ 'INBOX_22.pulldown_1_placeHolder_1' | translate }}"
+            interface="action-sheet" name="form_type" [(ngModel)]="form_type" (ionChange)="ionChangePulldown1($event)">
+            <ion-select-option value="sale">{{ 'INBOX_22.sale' | translate }}</ion-select-option>
+            <ion-select-option value="lease">{{ 'INBOX_22.lease' | translate }}</ion-select-option>
+          </ion-select>
+        </div>
+      </ion-item>
+    </ion-item>
+    <ion-item lines="none" class="margin-top-15">
+      <ion-item lines="none" class="item-common">
+        <img class="icon-text-box-active" src="../assets/icon/market/Marketplace.svg" />
+        <label *ngIf="form_price != '' && form_type == 'sale'" class="text-box-placeholder">{{ 'INBOX_22.textbox_1_price_1' | translate }}</label>
+        <label *ngIf="form_price != '' && form_type != 'sale'" class="text-box-placeholder">{{ 'INBOX_22.textbox_1_price_2' | translate }}</label>
+        <div class="width-100 {{form_price_class}}">
+          <ion-input type="tel" class="text-box-1" *ngIf="form_type == 'sale'" placeholder="{{ 'INBOX_22.textbox_1_price_1' | translate }}"
+            value="{{form_price}}" (ionChange)="ionChangeTextBox1()" [(ngModel)]="form_price" (change)="changeValue($event)">
+          </ion-input>
+          <ion-input type="tel" class="text-box-1" *ngIf="form_type != 'sale'" placeholder="{{ 'INBOX_22.textbox_1_price_2' | translate }}"
+            value="{{form_price}}" (ionChange)="ionChangeTextBox1()" [(ngModel)]="form_price" (change)="changeValue($event)">
+          </ion-input>
+        </div>
+      </ion-item>
+    </ion-item>
+    <ion-item lines="none" class="margin-top-15">
+      <ion-item lines="none" class="item-common">
+        <ion-textarea class="text-area-1" rows="4" cols="20" placeholder="{{ 'INBOX_22.textarea_placeHolder_1' | translate }}"
+          [(ngModel)]="form_note"></ion-textarea>
+      </ion-item>
+    </ion-item>
+    <section class="full-width function-section">
+      <ion-button (click)="eventButtonSend()" expand="block" class="amo-button-custom padding-0 {{disable_button_send}}">{{
+        'INBOX_22.button_send' | translate }}</ion-button>
+    </section>
+  </ion-list>
+
+</ion-content>

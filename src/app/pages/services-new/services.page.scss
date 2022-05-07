@@ -462,7 +462,8 @@ ion-toolbar {
   padding: 10px 15px;
 
   .resident-market-info-block {
-    width: calc((100% / 3 * 2));
+    // width: calc((100% / 3 * 2));
+    width: 100%;
     text-align: left;
   }
 }

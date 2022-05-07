@@ -1,0 +1,23 @@
+
+  <!-- <ion-backdrop></ion-backdrop> -->
+<ion-content class="modal-content-wrap">
+  <div class="modal-content-container">
+    <ion-item lines="none" class="header-item">
+      <ion-buttons slot="start" class="" (click)="closeModal()" class="btn-close-popup">
+        <ion-icon name="close"></ion-icon>
+      </ion-buttons>
+    </ion-item>
+    <ion-list lines="full" class="ion-no-margin ion-no-padding margin-top-10">
+      <ion-item lines="none" class="popup-ion-item" id="area-show-image">
+        <img class="" src="../assets/icon/svg/Outline.svg"/>
+      </ion-item>
+      <ion-item lines="none" class="popup-ion-item" id="area-show-image">
+        <ion-label class="popup-text-1">{{ 'INBOX_22.popup_text_1' | translate }}</ion-label>
+      </ion-item>
+      <!-- (click)="eventButtonClosePopup()" -->
+      <ion-item lines="none" class="popup-ion-item" id="area-show-image" (click)="closeModal()">
+        <ion-label class="popup-text-2">{{ 'INBOX_22.popup_text_2' | translate }}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

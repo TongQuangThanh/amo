@@ -7,9 +7,10 @@
       </ion-buttons>
     </ion-item>
     <ion-toolbar lines="none" class="modal-title">
-      <ion-label>{{'PAYMENT_INFOR.modal_change_title' | translate}}</ion-label>
+      <!-- <ion-label>{{'PAYMENT_INFOR.modal_change_title' | translate}}</ion-label> -->
+      <ion-button class="amo-button btn-default" (click)="acceptPayment()">{{'PAYMENT_INFOR.confirm' | translate }}</ion-button>
     </ion-toolbar>
-    <ng-container *ngFor="let item of paymentMethodList">
+    <!-- <ng-container *ngFor="let item of paymentMethodList">
       <ion-item lines="none" class="ion-no-padding modal-ion-item {{item.isSelected ? 'modal-ion-item-active' : ''}}"
         (click)="changeBanksMethod(item.key)">
         <ion-icon [src]="'../assets/icon/payment/wallet.svg'" class="item-icon"></ion-icon>
@@ -20,10 +21,10 @@
           {{"PAYMENT_INFOR.modal_change_selected" | translate}}
         </ion-label>
       </ion-item>
-    </ng-container>
-    <ion-label class="other-bank">{{"PAYMENT_INFOR.modal_change_other" | translate}}</ion-label>
+    </ng-container> -->
+    <!-- <ion-label class="other-bank">{{"PAYMENT_INFOR.modal_change_other" | translate}}</ion-label> -->
 
-    <ion-card class="ion-no-padding modal-card-item">
+    <ion-card class="ion-no-padding modal-card-item" *ngIf="paymentType == 'payment_transfer' && paymentCate?.transfer">
       <ion-item lines="none" class="card-ion-item">
         <ion-icon [src]="'../assets/icon/payment/money2.svg'" class="card-item-icon" slot="start"></ion-icon>
         <ion-label class="card-item-title">
@@ -35,7 +36,19 @@
         <p class="card-item-sub-title">{{paymentCate?.transfer?.bankAccountHolder}} - {{paymentCate?.transfer?.bankName}}</p>
       </ion-text>
     </ion-card>
-    <ion-card class="ion-no-padding modal-card-item">
+    <ion-card class="ion-no-padding modal-card-item" *ngIf="paymentType == 'payment_transfer' && paymentCate?.transfer1">
+      <ion-item lines="none" class="card-ion-item">
+        <ion-icon [src]="'../assets/icon/payment/money2.svg'" class="card-item-icon" slot="start"></ion-icon>
+        <ion-label class="card-item-title">
+          {{"PAYMENT_INFOR.modal_change_account_number" | translate}}{{paymentCate?.transfer1?.bankAccountNumber}}
+        </ion-label>
+        <ion-icon [src]="'../assets/icon/payment/copy.svg'" class="card-icon-copy" (click)="copyBankNumber1()"></ion-icon>
+      </ion-item>
+      <ion-text>
+        <p class="card-item-sub-title">{{paymentCate?.transfer1?.bankAccountHolder}} - {{paymentCate?.transfer1?.bankName}}</p>
+      </ion-text>
+    </ion-card>
+    <ion-card class="ion-no-padding modal-card-item" *ngIf="paymentType == 'payment_cash'">
       <ion-item lines="none" class="card-ion-item">
         <ion-icon [src]="'../assets/icon/payment/money1.svg'" class="card-item-icon" slot="start"></ion-icon>
         <ion-label class="card-item-title">{{"PAYMENT_INFOR.modal_change_cash" | translate}}</ion-label>

@@ -6,6 +6,7 @@ import { LoadingService } from '../../services/loading/loading.service';
 import { ModalController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { PopupPaymentFunctionPage } from '../popup-payment-function/popup-payment-function.page';
+import { PopupPaymentSuccessPage } from '../popup-payment-success/popup-payment-success.page';
 import { PopupIframePaymentPage } from '../popup-iframe-payment/popup-iframe-payment.page';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 
@@ -97,21 +98,35 @@ export class PaymentConfirmPage implements OnInit {
     this.navCtrl.navigateForward('/payment-comment/' + this.paymentID);
   }
 
-  async changePaymentModal() {
+  async changePaymentModal(paymentType) {
+    const self = this;
     const modalChangePayemt = await this.modalController.create({
       component: PopupPaymentFunctionPage,
       componentProps: {
         paymentCate: this.paymentCategory,
         paymentMethodList: this.paymentMethodList,
+        paymentType: paymentType
       },
     });
     modalChangePayemt.onDidDismiss().then((result: any) => {
-      if (result || result.data) {
-        this.paymentSelected = result.data.paymentSelected;
+      if (result && result.data && result.data.confirm) {
+        // self.paymentSelected = result.data.paymentSelected;
+        self.payTheBillOnlineOrCash(result.data.paymentSelected);
       }
     });
     return await modalChangePayemt.present();
   }
+
+  async paymentSuccessShow() {
+    const self = this;
+    const popupPaymentSuccessPage = await this.modalController.create({
+      component: PopupPaymentSuccessPage,
+      componentProps: {
+      },
+    });
+    return await popupPaymentSuccessPage.present();
+  }
+  
 
   async payTheBill() {
     const modalPay = await this.modalController.create({
@@ -135,6 +150,28 @@ export class PaymentConfirmPage implements OnInit {
     return await modalPay.present();
   }
 
+  payTheBillOnlineOrCash(paymentSelected) {
+    this.loading.present();
+    const self = this;
+    const params = {
+      bill: this.paymentID,
+      type: paymentSelected,
+      bank: "",
+      amount: this.totalCash,
+      note: ""
+    }
+    this.apiService.postPayTheBill(params)
+      .subscribe(result => {
+        self.loading.dismiss();
+        self.paymentSuccessShow();
+        // self.navCtrl.navigateForward('/popup-payment-success');
+    },
+    error => {
+      self.loading.dismiss();
+      // self.navCtrl.navigateForward('/payment-fail');
+    });
+  }
+
   openPayment() {
     // this.presentAlert(this.translate.instant('PAYMENT_INFOR.alert_comming_soon'));
     var self = this;
@@ -144,7 +181,9 @@ export class PaymentConfirmPage implements OnInit {
     //   this.payTheBill();
     // });
     if(this.paymentType == 'payment_cash'){
-      this.changePaymentModal();
+      this.changePaymentModal(this.paymentType);
+    }else if(this.paymentType == 'payment_transfer'){
+      this.changePaymentModal(this.paymentType);
     }else{
       this.loading.present();
       this.apiService.momoPayment(this.totalCash - this.promotionMoney - this.paidAmount).subscribe((result) => {

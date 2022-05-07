@@ -115,6 +115,7 @@ export const EnvService = {
   shopHouseSubCategpryV2: environment.base + '/shop-house-sub-category-v2', // + :id
   // List shops by sub category
   shopHouseV2: environment.base + '/shop-house-v2',
+  requestHouseSaleV2: environment.base + '/request-house-sale',
   // List product of shop
   productShopV2: environment.base + '/shop-product-v2',
   // List tag of shop

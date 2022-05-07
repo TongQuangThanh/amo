@@ -13,6 +13,7 @@ import { TranslateConfigService } from 'src/app/translate-config.service';
 export class PopupPaymentFunctionPage implements OnInit {
   paymentMethodList = [];
   paymentCate: any;
+  paymentType: any;
 
   constructor(
     private modalController: ModalController,
@@ -28,6 +29,7 @@ export class PopupPaymentFunctionPage implements OnInit {
   ngOnInit() {
     this.paymentCate = this.navParams.data.paymentCate;
     this.paymentMethodList = this.navParams.data.paymentMethodList || [];
+    this.paymentType = this.navParams.data.paymentType;
   }
 
   changeBanksMethod(id: number) {
@@ -39,13 +41,33 @@ export class PopupPaymentFunctionPage implements OnInit {
       }
     });
   }
+  
 
   closeModal() {
-    this.modalController.dismiss({ paymentSelected: this.paymentMethodList.find(item => item.isSelected == true) });
+    this.modalController.dismiss({ });
+  }
+
+  acceptPayment() {
+    let paymentType = "cash";
+    if(this.paymentType == 'payment_transfer'){
+      paymentType = "transfer"
+    }else if(this.paymentType == 'payment_online'){
+      paymentType = "online"
+    }
+
+    this.modalController.dismiss({ 
+      paymentSelected: paymentType,
+      confirm: "ok"
+    });
   }
 
   copyBankNumber() {
     this.clipboard.copy(this.paymentCate?.transfer?.bankAccountNumber || '');
+    this.alertService.presentToast(this.translate.instant('PAYMENT_INFOR.message_copy'));
+  }
+
+  copyBankNumber1() {
+    this.clipboard.copy(this.paymentCate?.transfer1?.bankAccountNumber || '');
     this.alertService.presentToast(this.translate.instant('PAYMENT_INFOR.message_copy'));
   }
 

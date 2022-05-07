@@ -103,8 +103,8 @@
   </ion-grid>
   <ion-grid class="group-2-style">
     <ion-row class="">
-      <ion-col class="group-2-label-1 ion-align-self-start" size="6">
-        <ion-label class="font-weight-bold">{{ 'SEVICE_NEW.resident_market_title' | translate }}</ion-label>
+      <ion-col class="group-2-label-1 ion-align-self-start" size="12">
+        <ion-label class="font-weight-bold">{{ 'SEVICE_NEW.request_house_sale_title' | translate }}</ion-label>
       </ion-col>
       <ion-col class="font-weight-bold group-2-label-2 ion-align-self-end" size="6" (click)="moveResidentMarketPage()">
         <ion-label *ngIf="list_data_silde_2.length != 0">{{ 'SEVICE_NEW.see_more_labe' | translate }}</ion-label>
@@ -148,13 +148,24 @@
 
   <ion-slides [options]="slideOpts_2" class="margin-bottom-20 margin-top-10">
     <ion-slide>
-      <ion-item lines="none" class="ion-no-padding width-100">
+      <!-- <ion-item lines="none" class="ion-no-padding width-100">
         <div class="resident-market-no-data">
           <div class="resident-market-info-block">
             <ion-label class="ion-label-1">{{ 'SEVICE_NEW.resident_market_label_1' | translate }}</ion-label>
             <ion-label class="ion-label-2">{{ 'SEVICE_NEW.resident_market_label_2' | translate }}</ion-label>
             <button class="" (click)="moveCreateShopHouse()">
               <ion-label class="font-weight-bold">{{ 'SEVICE_NEW.resident_market_btn_create' | translate }}</ion-label>
+            </button>
+          </div>
+        </div>
+      </ion-item> -->
+      <ion-item lines="none" class="ion-no-padding width-100">
+        <div class="resident-market-no-data">
+          <div class="resident-market-info-block">
+            <ion-label class="ion-label-1">{{ 'SEVICE_NEW.house_sale_label_1' | translate }}</ion-label>
+            <ion-label class="ion-label-2">{{ 'SEVICE_NEW.house_sale_label_2' | translate }}</ion-label>
+            <button class="" (click)="moveRequestHouseSale()">
+              <ion-label class="font-weight-bold">{{ 'SEVICE_NEW.house_sale_btn_create' | translate }}</ion-label>
             </button>
           </div>
           <div class="resident-market-image-block">

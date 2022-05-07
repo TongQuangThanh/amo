@@ -172,6 +172,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/create-shop-house/create-shop-house.module').then(m => m.CreateShopHousePageModule)
   },
   {
+    path: 'request-house-sale',
+    loadChildren: () => import('./pages/request-house-sale/request-house-sale.module').then(m => m.RequestHouseSalePageModule)
+  },
+  {
     path: 'shop-house/:id',
     loadChildren: () => import('./pages/shop-house/shop-house.module').then(m => m.ShopHousePageModule)
   },
@@ -270,7 +274,11 @@ const routes: Routes = [
     loadChildren: () => import('./pages/popup-logout/popup-logout.module').then(m => m.PopupLogoutPageModule)
   },
   {
-    path: 'popup-open-market',
+    path: 'popup-request-house-sale-success',
+    loadChildren: () => import('./pages/popup-request-house-sale-success/popup-request-house-sale-success.module').then(m => m.PopupRequestHouseSaleSuccessPageModule)
+  },
+  {
+    path: 'popup-request-house-sale',
     loadChildren: () => import('./pages/popup-open-market/popup-open-market.module').then(m => m.PopupOpenMarketPageModule)
   },
   {
@@ -383,7 +391,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/popup-iframe-payment/popup-iframe-payment.module').then(m => m.PopupPincodePaymentPageModule)
   },
   {
-    path: 'payment-success',
+    path: 'payment-success/:paymentID',
     loadChildren: () => import('./pages/payment-success/payment-success.module').then(m => m.PaymentSuccessPageModule)
   },
   {

@@ -225,6 +225,10 @@ export class ServicesPage implements OnInit {
   moveCreateShopHouse() {
     this.navCtrl.navigateForward('/create-shop-house');
   }
+
+  moveRequestHouseSale() {
+    this.navCtrl.navigateForward('/request-house-sale');
+  }
   moveManagementOrderPage() {
     this.navCtrl.navigateForward('/management-order');
   }

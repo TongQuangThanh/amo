@@ -315,6 +315,7 @@
         "badge_sent": "Đã gửi",
         "complain": "Khiếu nại",
         "pay_now": "Thanh toán",
+        "confirm": "Xác nhận",
         "electricity_fee": "Tiền điện",
         "water_fee": "Tiền nước",
         "service_fee": "Phí dịch vụ",
@@ -544,10 +545,14 @@
         "label_history": "Lịch sử",
         "label_management": "Quản lý",
         "resident_market_title": "Chợ cư dân",
+        "request_house_sale_title": "Bán hoặc cho thuê",
         "see_more_labe": "Xem tất cả",
-        "resident_market_label_1": "Mở gian hàng của bạn",
-        "resident_market_label_2": "Kinh doanh mọi lúc mọi nơi, không mất phí",
-        "resident_market_btn_create": "Mở ngay"
+        "resident_market_label_1": "Mở gian hàng",
+        "resident_market_label_2": "Kinh doanh mọi lúc mọi nơi",
+        "resident_market_btn_create": "Mở ngay",
+        "house_sale_btn_create": "Đăng kí ngay",
+        "house_sale_label_1": "Đăng tin miễn phí",
+        "house_sale_label_2": "Đăng kí bán căn hộ"
     },
     "SEVICE_CATEGORY": {
         "sub_title": "Vui lòng chọn 1 loại dịch vụ trước khi chọn NCC"
@@ -581,7 +586,23 @@
         "textarea_placeHolder_1": "Ghi chú...",
         "button_send": "Gửi yêu cầu",
         "popup_text_1": "Yêu cầu mở gian hàng của bạn đã được tiếp nhận. Vui lòng chờ phản hồi.",
-        "popup_text_2": "Tiếp tục mua sắm"
+        "popup_text_2": "Đến dịch vụ"
+    },
+    "INBOX_22": {
+        "title": "Bán/cho thuê căn hộ",
+        "label_history": "Bán/cho thuê căn hộ",
+        "apartment_placeHolder_1": "Lựa chọn căn hộ",
+        "apartment_placeHolder_2": "Căn hộ",
+        "pulldown_1_placeHolder_1": "Lựa chọn bán/cho thuê",
+        "pulldown_1_placeHolder_2": "bán/cho thuê",
+        "textbox_1_price_1": "Giá bán căn hộ (vnd)",
+        "textbox_1_price_2": "Giá cho thuê (vnd)/tháng",
+        "textarea_placeHolder_1": "Ghi chú...",
+        "button_send": "Gửi yêu cầu",
+        "popup_text_1": "Yêu cầu bán nhà của bạn đã được tiếp nhận. Vui lòng chờ phản hồi.",
+        "popup_text_2": "Tiếp tục mua sắm",
+        "sale": "Bán",
+        "lease": "Cho Thuê"
     },
     "SEVICE_29": {
         "title": "",
