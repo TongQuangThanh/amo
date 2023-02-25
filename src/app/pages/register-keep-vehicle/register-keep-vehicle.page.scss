@@ -4,7 +4,7 @@ ion-toolbar {
 .ion-color-primary {
   --ion-color-base: #ffffff !important;
   --ion-color-base-rgb: var(--ion-color-primary-rgb, 56, 128, 255) !important;
-  --ion-color-contrast: #E64037 !important;
+  --ion-color-contrast: #FFC144 !important;
   --ion-color-contrast-rgb: var(--ion-color-primary-contrast-rgb, 255, 255, 255) !important;
   --ion-color-shade: var(--ion-color-primary-shade, #3171e0) !important;
   --ion-color-tint: var(--ion-color-primary-tint, #4c8dff) !important;
@@ -344,7 +344,7 @@ ion-checkbox::part(container) {
 
 // new css =========================
 .ion-no-border {
-  background-color: #E64037;
+  background-color: #FFC144;
   height: 195px;
   padding: 15px;
   display: flex;
@@ -395,7 +395,7 @@ ion-checkbox::part(container) {
     z-index: 999;
     top: 107px;
     --background: red;
-    --super-tabs-toolbar-background: #E64037;
+    --super-tabs-toolbar-background: #FFC144;
     .super-tab-button {
       height: 30px;
       --st-label-color-active: #ffffff;

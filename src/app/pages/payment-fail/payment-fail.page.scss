@@ -12,7 +12,7 @@
 
 .payment-fail-container {
   font-family: Open Sans;
-  --background: #E64037;
+  --background: #FFC144;
   .icon-fail {
     width: 194px;
     height: 180px;
@@ -20,11 +20,11 @@
     margin-top: 100px;
   }
   .payment-fail-card {
-    --background: #E64037;
+    --background: #FFC144;
     box-shadow: unset;
     border-radius: unset;
     .payment-card-item {
-      --background: #E64037;
+      --background: #FFC144;
     }
     .payment-fail-title {
       font-weight: bold;
@@ -43,7 +43,7 @@
   .fail-redo-btn {
     --background: #ffffff;
     --border-radius: 10px;
-    --color: #E64037;
+    --color: #FFC144;
   }
   .go-back-home {
     font-size: 16px;

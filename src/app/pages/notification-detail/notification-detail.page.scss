@@ -186,10 +186,10 @@ ion-footer > ion-toolbar {
   text-align: center;
 }
 .comment-button {
-  background: #E64037;
-  --background-focused: #E64037;
-  --background-hover: #E64037;
-  --background: #E64037;
+  background: #FFC144;
+  --background-focused: #FFC144;
+  --background-hover: #FFC144;
+  --background: #FFC144;
   --background-activated: #c5433a;
   mix-blend-mode: normal;
   border-radius: 5px;
@@ -404,7 +404,7 @@ ion-item.item-has-focus {
     color: #666666;
 
     &.liked {
-      color: #e64037;
+      color: #FFC144;
     }
   }
   &-text {

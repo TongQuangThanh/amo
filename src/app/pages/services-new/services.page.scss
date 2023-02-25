@@ -101,7 +101,7 @@ ion-toolbar {
     position: absolute;
     bottom: 1px;
     left: 5px;
-    border-bottom: 2px solid #e64037;
+    border-bottom: 2px solid #FFC144;
     width: 30px;
   }
 }
@@ -112,7 +112,7 @@ ion-toolbar {
   font-size: 12px;
   line-height: 16px;
   text-align: right;
-  color: #e64037;
+  color: #FFC144;
 }
 .note-1 {
   position: absolute;
@@ -360,7 +360,7 @@ ion-toolbar {
 // update theme css
 
 .ion-no-border {
-  background-color: #e64037;
+  background-color: #FFC144;
   height: 156px;
   border-radius: 200%/0 0 40px 40px;
   padding: 15px;
@@ -437,7 +437,7 @@ ion-toolbar {
         margin: 0 1.1px;
       }
       .swiper-pagination-bullet-active {
-        background: #E64037;
+        background: #FFC144;
       }
     }
   }

@@ -56,29 +56,30 @@ export class LoginPage implements OnInit {
   login() {
     var self = this;
     this.loading.present();
-    this.authService.login(this.phone, this.password).subscribe(
-      data => {
-       if (data) {
-        self.errorMessage = '';
-        var userId = localStorage.getItem('playID');
-        if(userId && userId.length > 0){
-          self.apiService.settingNotification({
-            playerId: userId
-          }).subscribe(result => {
-            console.log("done " + userId)
-          })
-        }
-        this.navCtrl.navigateRoot('/dashboard/home');
-       }
-      },
-      (error:any) => {
-        self.errorMessage = error.error.message;
-        self.loading.dismiss();
-      },
-      () => {
-        self.loading.dismiss();
-      }
-    );
+    this.navCtrl.navigateRoot('/dashboard/home');
+    // this.authService.login(this.phone, this.password).subscribe(
+    //   data => {
+    //    if (data) {
+    //     self.errorMessage = '';
+    //     var userId = localStorage.getItem('playID');
+    //     if(userId && userId.length > 0){
+    //       self.apiService.settingNotification({
+    //         playerId: userId
+    //       }).subscribe(result => {
+    //         console.log("done " + userId)
+    //       })
+    //     }
+    //     this.navCtrl.navigateRoot('/dashboard/home');
+    //    }
+    //   },
+    //   (error:any) => {
+    //     self.errorMessage = error.error.message;
+    //     self.loading.dismiss();
+    //   },
+    //   () => {
+    //     self.loading.dismiss();
+    //   }
+    // );
   }
 
   changeToForgotPass(){

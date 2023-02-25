@@ -297,7 +297,7 @@ ion-checkbox {
 }
 .button-active {
   background: #fbfbfb;
-  border: 2px solid #E64037;
+  border: 2px solid #FFC144;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
@@ -710,7 +710,7 @@ ion-checkbox {
     background: #33a54c;
   }
   .badge-unpaid {
-    background: #E64037;
+    background: #FFC144;
   }
   .badge-pending {
     background: #f2c94c;
@@ -759,7 +759,7 @@ ion-checkbox {
       font-weight: bold;
       font-size: 20px;
       line-height: 20px;
-      color: #E64037;
+      color: #FFC144;
       margin-right: 0px;
     }
     .btn-paid {
@@ -809,7 +809,7 @@ ion-checkbox {
         font-size: 16px;
         line-height: 24px;
         text-align: right;
-        color: #E64037;
+        color: #FFC144;
         margin-right: 0px;
       }
       .amount-number-total {
@@ -936,7 +936,7 @@ ion-checkbox {
         right: 0;
         font-size: 14px;
         line-height: 24px;
-        color: #E64037;
+        color: #FFC144;
       }
     }
   }
@@ -1005,7 +1005,7 @@ ion-checkbox {
           line-height: 20px;
           display: flex;
           justify-content: flex-end;
-          color: #E64037;
+          color: #FFC144;
         }
         .col-total-title {
           margin-top: 10px;
@@ -1027,7 +1027,7 @@ ion-checkbox {
           .payment-confirm-total-money {
             font-weight: bold;
             font-size: 20px;
-            color: #E64037;
+            color: #FFC144;
           }
         }
         .devider-line-info-payment {
@@ -1086,7 +1086,7 @@ ion-checkbox {
         font-size: 14px;
         display: flex;
         align-items: center;
-        color: #E64037;
+        color: #FFC144;
       }
       .group-1-button-change-number {
         font-family: Open Sans;
@@ -1122,7 +1122,7 @@ ion-checkbox {
           content: '';
           height: 2px;
           width: 30px;
-          background: #E64037;
+          background: #FFC144;
           position: absolute;
           bottom: -3px;
           left: 0;
@@ -1245,7 +1245,7 @@ ion-checkbox {
     height: 100%;
     .modal-content {
       border-radius: 0px 0px 0px 0px;
-      background-color: #E64037;
+      background-color: #FFC144;
       height: 100%;
       padding-top: 110px;
       .modal-body {

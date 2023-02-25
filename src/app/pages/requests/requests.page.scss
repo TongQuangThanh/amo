@@ -10,7 +10,7 @@
   height: 150px;
   left: 0px;
   top: 0px;
-  background: #E64037;
+  background: #FFC144;
   border-radius: 200%/0 0 50px 50px;
   margin-bottom: 30px;
 
@@ -28,7 +28,7 @@
     align-items: center;
 
     color: #ffffff;
-    background: #E64037;
+    background: #FFC144;
     width: 100%;
   }
 }
@@ -84,10 +84,10 @@
 }
 // custom super-tab
 :host {
-  --st-indicator-color: #E64037;
+  --st-indicator-color: #FFC144;
   --st-indicator-width: 10px;
   --ion-color-base: transparent;
-  --st-label-color-active: #E64037;
+  --st-label-color-active: #FFC144;
   --st-label-color-inactive: #a7a4a5;
 }
 .segment-toolbar {
@@ -142,7 +142,7 @@
     padding: 2px 29px 2px 11px;
     line-height: 40px;
     float: right;
-    color: #E64037;
+    color: #FFC144;
     margin-right: 5px;
     font-size: 12px;
     border-radius: 20px;
@@ -188,7 +188,7 @@
     margin: 0;
   }
   .badge-danger {
-    background: #E64037;
+    background: #FFC144;
   }
   .badge-warning {
     background: #f2c94c;
@@ -201,7 +201,7 @@
   }
 }
 .custom-infinite-scroll {
-  --color: #E64037;
+  --color: #FFC144;
   background: #f9fcff !important;
 }
 .footer-content{

@@ -23,7 +23,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardPageModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'forgot-password',
@@ -40,112 +40,112 @@ const routes: Routes = [
   {
     path: 'notification',
     loadChildren: () => import('./pages/notification/notification.module').then(m => m.NotificationPageModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'notification-detail/:id',
     loadChildren: () => import('./pages/notification-detail/notification-detail.module').then(m => m.NotificationDetailPageModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'notification-comment/:id',
     loadChildren: () => import('./pages/notification-comment/notification-comment.module').then(m => m.NotificationCommentPageModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'service-categories-list/:categoryId/:categoryName',
     loadChildren: () => import('./pages/service-categories-list/service-categories-list.module').then(m => m.ServiceCategoriesListPageModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'service-list-by-category/:id',
     loadChildren: () => import('./pages/service-list-by-category/service-list-by-category.module').then(m => m.ServiceListByCategoryPageModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'new-detail/:id',
     loadChildren: () => import('./pages/new-detail/new-detail.module').then(m => m.NewDetailPageModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'payment-infor/:id',
     loadChildren: () => import('./pages/payment-infor/payment-infor.module').then(m => m.PaymentInforPageModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'payment-comment/:id',
     loadChildren: () => import('./pages/payment-comment/payment-comment.module').then(m => m.PaymentCommentPageModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'payment-confirm/:id',
     loadChildren: () => import('./pages/payment-confirm/payment-confirm.module').then(m => m.PaymentConfirmPageModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'request-detail/:id',
     loadChildren: () => import('./pages/request-detail/request-detail.module').then(m => m.RequestDetailPageModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'request-register-detail/:id',
     loadChildren: () => import('./pages/request-register-detail/request-register-detail.module').then(m => m.RequestRegisterDetailPageModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'service-detail/:id',
     loadChildren: () => import('./pages/service-detail/service-detail.module').then(m => m.ServiceDetailPageModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'order-service/:id',
     loadChildren: () => import('./pages/order-service/order-service.module').then(m => m.OrderServicePageModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'add-request',
     loadChildren: () => import('./pages/add-request/add-request.module').then(m => m.AddRequestPageModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'bill-payment/:id',
     loadChildren: () => import('./pages/bill-payment/bill-payment.module').then(m => m.BillPaymentPageModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'my-home',
     loadChildren: () => import('./pages/my-home/my-home.module').then(m => m.MyHomePageModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'my-home-detail/:id',
     loadChildren: () => import('./pages/my-home-detail/my-home-detail.module').then(m => m.MyHomeDetailPageModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'my-account',
     loadChildren: () => import('./pages/my-account/my-account.module').then(m => m.MyAccountPageModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'setting',
     loadChildren: () => import('./pages/setting/setting.module').then(m => m.SettingPageModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'change-password',
     loadChildren: () => import('./pages/change-password/change-password.module').then(m => m.ChangePasswordPageModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'family/:id',
     loadChildren: () => import('./pages/family/family.module').then(m => m.FamilyPageModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'family-detail/:apartment_id/:user_id',
     loadChildren: () => import('./pages/family-detail/family-detail.module').then(m => m.FamilyDetailPageModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'register-to-receive-goods',
@@ -230,12 +230,12 @@ const routes: Routes = [
   {
     path: 'payment',
     loadChildren: () => import('./pages/payment/payment.module').then(m => m.PaymentPageModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'payment-history',
     loadChildren: () => import('./pages/payment-history/payment-history.module').then(m => m.PaymentHistoryPageModule),
-    canActivate: [AuthGuard]
+    // canActivate: [AuthGuard]
   },
   {
     path: 'order-shop-history',

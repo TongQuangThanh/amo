@@ -82,7 +82,7 @@
   line-height: 100%;
   text-align: center;
   text-decoration-line: underline;
-  color: #E64037;
+  color: #FFC144;
 }
 .padding-content {
   padding-top: 50px;
@@ -114,7 +114,7 @@
 .login-input {
   margin-top: 20px;
   ion-item.input-item.item-has-focus {
-    border: 1px solid#E64037;
+    border: 1px solid#FFC144;
     box-sizing: border-box;
     box-shadow: 0px 2px 10px rgba(234, 122, 110, 0.25);
   }
@@ -132,14 +132,14 @@
 }
 
 .button-common-active {
-  --ion-toolbar-color: #E64037;
+  --ion-toolbar-color: #FFC144;
   --background-focused: #df594f;
   --background-hover: #df594f;
   --background-activated: #df594f;
 }
 
 .login-header {
-  background: #E64037;
+  background: #FFC144;
   color: #fff;
   padding: 54px 15px 25px 15px;
   border-radius: 0 0 20px 20px;

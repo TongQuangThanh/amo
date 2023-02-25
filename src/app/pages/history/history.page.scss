@@ -4,13 +4,13 @@
 
 :host {
   --super-tabs-toolbar-background: black;
-  --st-indicator-color: #e64037;
+  --st-indicator-color: #FFC144;
   --st-indicator-width: 30px;
   --ion-color-base: transparent;
 }
 
 .payment-history-header {
-  background-color: #e64037;
+  background-color: #FFC144;
   height: 160px;
   min-height: 160px !important;
   padding: 15px;
@@ -62,7 +62,7 @@
     bottom: 0;
     .super-tabs-toolbar {
       --background: red;
-      --super-tabs-toolbar-background: #e64037;
+      --super-tabs-toolbar-background: #FFC144;
       .super-tab-button {
         height: 35px;
         --st-label-color-active: #ffffff;
@@ -144,7 +144,7 @@
       background: #33a54c;
     }
     .badge-unpaid {
-      background: #e64037;
+      background: #FFC144;
     }
     .badge-pending {
       background: #f2c94c;
@@ -200,7 +200,7 @@
       font-weight: bold;
       font-size: 20px;
       line-height: 20px;
-      color: #e64037;
+      color: #FFC144;
       margin-right: 0px;
       min-width: 90px;
       text-align: right;
@@ -220,7 +220,7 @@
       font-weight: bold;
       font-size: 14px;
       line-height: 20px;
-      color: #e64037;
+      color: #FFC144;
       margin-right: 0px;
       max-width: 30%;
       text-align: right;
@@ -284,10 +284,10 @@
   background-color: #33a54c;
 }
 .badge-cancel-user {
-  background-color: #e64037;
+  background-color: #FFC144;
 }
 .badge-cancel-provider {
-  background-color: #e64037;
+  background-color: #FFC144;
 }
 
 .button-expand {
@@ -339,9 +339,9 @@
   font-size: 16px;
 }
 .amo-button-custom-3 {
-  --background: #E64037;
+  --background: #FFC144;
   text-transform: none;
-  --background-activated: #E64037;
+  --background-activated: #FFC144;
   border-radius: 5px;
   padding: 0px 16px 0px 8px;
   --border-radius: 8px;

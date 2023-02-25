@@ -5,11 +5,11 @@
 </g>
 <defs>
 <linearGradient id="paint0_linear" x1="9.85722" y1="0" x2="9.85722" y2="9.63406" gradientUnits="userSpaceOnUse">
-<stop stop-color="#E64037"/>
+<stop stop-color="#FFC144"/>
 <stop offset="1" stop-color="#E23A28"/>
 </linearGradient>
 <linearGradient id="paint1_linear" x1="9.98364" y1="9.66077" x2="9.98364" y2="20.0001" gradientUnits="userSpaceOnUse">
-<stop stop-color="#E64037"/>
+<stop stop-color="#FFC144"/>
 <stop offset="1" stop-color="#E23A28"/>
 </linearGradient>
 <clipPath id="clip0">

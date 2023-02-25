@@ -1,10 +1,10 @@
 .survey-wrapper {
-    --background: #E64037;
+    --background: #FFC144;
     color: #fff;
 }
 
 .ion-no-border {
-    background-color: #E64037;
+    background-color: #FFC144;
     height: 185px;
     display: flex;
     flex-direction: column;
@@ -33,7 +33,7 @@
 }
 
 .survey-header {
-    background-color: #E64037;
+    background-color: #FFC144;
     height: 70px;
     padding: 15px;
     display: flex;
@@ -60,7 +60,7 @@
     display: flex;
     flex-direction: column;
     padding: 0 15px 20px 15px;
-    background-color: #E64037;
+    background-color: #FFC144;
     border-bottom: 1px dashed rgba(255, 255, 255, 0.4);
 
     .survey-title {
@@ -128,7 +128,7 @@
         .survey-checkbox {
             --border-color: #FFFFFF;
             --background: transparent;
-            --checkmark-color: #E64037;
+            --checkmark-color: #FFC144;
         }
     }
 
@@ -141,7 +141,7 @@
 
 .survey-content {
     padding: 0 15px;
-    background-color: #E64037;
+    background-color: #FFC144;
     padding-bottom: 100px;
     overflow: scroll;
     height: calc(100% - 240px);
@@ -158,7 +158,7 @@
     }
 
     .answer-item {
-        --background: #E64037;
+        --background: #FFC144;
 
         .answer-label {
             font-family: Open Sans;
@@ -189,7 +189,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    background-color: #E64037;
+    background-color: #FFC144;
     position: fixed;
     bottom: 0;
     left: 0;

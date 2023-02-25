@@ -34,7 +34,7 @@
 
 .payment-confirm-header {
   font-family: Open Sans;
-  background-color: #e64037;
+  background-color: #FFC144;
   height: 165px;
   padding: 15px;
   display: flex;
@@ -138,7 +138,7 @@
     background: #33a54c;
   }
   .badge-unpaid {
-    background: #e64037;
+    background: #FFC144;
   }
   .badge-pending {
     background: #f2c94c;
@@ -187,7 +187,7 @@
       font-weight: bold;
       font-size: 20px;
       line-height: 20px;
-      color: #e64037;
+      color: #FFC144;
       margin-right: 0px;
     }
     .btn-paid {
@@ -236,7 +236,7 @@
         font-size: 16px;
         line-height: 24px;
         text-align: right;
-        color: #e64037;
+        color: #FFC144;
         margin-right: 0px;
       }
       .amount-number-total {
@@ -371,7 +371,7 @@
         right: 0;
         font-size: 14px;
         line-height: 24px;
-        color: #e64037;
+        color: #FFC144;
       }
     }
   }

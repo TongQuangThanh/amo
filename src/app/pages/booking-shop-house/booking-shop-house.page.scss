@@ -289,7 +289,7 @@ ion-checkbox {
 }
 .button-active {
   background: #fbfbfb;
-  border: 1px solid #e64037;
+  border: 1px solid #FFC144;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
@@ -564,7 +564,7 @@ ion-checkbox {
 .payment-confirm-header {
   font-family: Open Sans;
   background-color: #ffffff;
-  // background-color: #e64037;
+  // background-color: #FFC144;
   height: 60px;
   padding: 15px;
   display: flex;
@@ -675,7 +675,7 @@ ion-checkbox {
     background: #33a54c;
   }
   .badge-unpaid {
-    background: #e64037;
+    background: #FFC144;
   }
   .badge-pending {
     background: #f2c94c;
@@ -724,7 +724,7 @@ ion-checkbox {
       font-weight: bold;
       font-size: 20px;
       line-height: 20px;
-      color: #e64037;
+      color: #FFC144;
       margin-right: 0px;
     }
     .btn-paid {
@@ -772,7 +772,7 @@ ion-checkbox {
       .payment-confirm-total-money {
         font-weight: bold;
         font-size: 20px;
-        color: #e64037;
+        color: #FFC144;
       }
     }
   }
@@ -813,7 +813,7 @@ ion-checkbox {
         font-size: 16px;
         line-height: 24px;
         text-align: right;
-        color: #e64037;
+        color: #FFC144;
         margin-right: 0px;
       }
       .amount-number-total {
@@ -940,7 +940,7 @@ ion-checkbox {
         right: 0;
         font-size: 14px;
         line-height: 24px;
-        color: #e64037;
+        color: #FFC144;
       }
     }
   }
@@ -952,7 +952,7 @@ ion-checkbox {
     font-size: 14px;
     display: flex;
     align-items: center;
-    color: #e64037;
+    color: #FFC144;
   }
   .group-1-button-change-number {
     font-family: Open Sans;
@@ -987,7 +987,7 @@ ion-checkbox {
         content: "";
         height: 2px;
         width: 30px;
-        background: #e64037;
+        background: #FFC144;
         position: absolute;
         bottom: -3px;
         left: 0;

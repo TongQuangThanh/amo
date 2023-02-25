@@ -158,7 +158,7 @@ super-tab-button.active ion-label {
 
   text-align: center;
 
-  color: #E64037;
+  color: #FFC144;
 }
 
 .avatar-paying {
@@ -218,7 +218,7 @@ super-tab-button.active ion-label {
   top: 0%;
   width: 100%;
   height: 20%;
-  background: #E64037;
+  background: #FFC144;
 }
 .title-content {
   position: absolute;
@@ -412,10 +412,10 @@ ion-item.item-top {
   color: #7a838c;
 }
 .btn-payment {
-  --background: #E64037;
+  --background: #FFC144;
   text-transform: none;
-  --background-focused: #E64037;
-  --background-hover: #E64037;
+  --background-focused: #FFC144;
+  --background-hover: #FFC144;
   --background-activated: #ca5149;
   --border-radius: 4px;
   font-size: 14px;
@@ -456,7 +456,7 @@ ion-col {
 }
 :host {
   --super-tabs-toolbar-background: black;
-  --st-indicator-color: #E64037;
+  --st-indicator-color: #FFC144;
   --st-indicator-width: 30px;
   --ion-color-base: transparent;
 }
@@ -478,7 +478,7 @@ ion-col {
 // new css =========================
 .payment-header {
   font-family: Open Sans;
-  background-color: #E64037;
+  background-color: #FFC144;
   height: 156px;
   padding: 15px;
   display: flex;
@@ -547,7 +547,7 @@ ion-col {
       position: absolute;
       bottom: 10px;
       left: 20px;
-      border-bottom: 2px solid #E64037;
+      border-bottom: 2px solid #FFC144;
       width: 30px;
       z-index: 99;
     }
@@ -597,7 +597,7 @@ ion-col {
         background: #33a54c;
       }
       .badge-unpaid {
-        background: #E64037;
+        background: #FFC144;
       }
       .badge-pending {
         background: #f2c94c;
@@ -648,7 +648,7 @@ ion-col {
         font-weight: bold;
         font-size: 20px;
         line-height: 20px;
-        color: #E64037;
+        color: #FFC144;
         margin-right: 0px;
       }
       .btn-paid {
