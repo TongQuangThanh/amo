@@ -1,6 +1,14 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
   module.exports = [
     {
+      "id": "call-number.CallNumber",
+      "file": "plugins/call-number/www/CallNumber.js",
+      "pluginId": "call-number",
+      "clobbers": [
+        "call"
+      ]
+    },
+    {
       "id": "code-push.AcquisitionManager",
       "file": "plugins/code-push/script/acquisition-sdk.js",
       "pluginId": "code-push",
@@ -496,25 +504,10 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
       "clobbers": [
         "plugins.imagePicker"
       ]
-    },
-    {
-      "id": "mx.ferreyra.callnumber.CallNumber",
-      "file": "plugins/mx.ferreyra.callnumber/www/CallNumber.js",
-      "pluginId": "mx.ferreyra.callnumber",
-      "clobbers": [
-        "call"
-      ]
-    },
-    {
-      "id": "onesignal-cordova-plugin.OneSignal",
-      "file": "plugins/onesignal-cordova-plugin/www/OneSignal.js",
-      "pluginId": "onesignal-cordova-plugin",
-      "clobbers": [
-        "OneSignal"
-      ]
     }
   ];
   module.exports.metadata = {
+    "call-number": "0.0.2",
     "code-push": "3.0.1",
     "com.telerik.plugins.nativepagetransitions": "0.6.5",
     "cordova-clipboard": "1.3.0",
@@ -524,7 +517,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-dialogs": "2.0.2",
     "cordova-plugin-device": "2.0.3",
     "cordova-plugin-zip": "3.1.0",
-    "cordova-plugin-code-push": "1.13.1",
+    "cordova-plugin-code-push": "2.0.0",
     "cordova-plugin-file-transfer": "1.7.1",
     "cordova-plugin-geolocation": "4.0.2",
     "cordova-plugin-inappbrowser": "3.2.0",
@@ -534,8 +527,6 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
     "cordova-plugin-splashscreen": "5.0.4",
     "cordova-plugin-statusbar": "2.4.3",
     "cordova-plugin-telerik-imagepicker": "2.3.3",
-    "cordova-plugin-whitelist": "1.3.4",
-    "mx.ferreyra.callnumber": "0.0.2",
-    "onesignal-cordova-plugin": "2.11.2"
+    "cordova-plugin-whitelist": "1.3.3"
   };
 });

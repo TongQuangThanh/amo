@@ -1,7 +1,7 @@
 {
     "android": {
         "debug": {
-            "keystore": "/Users/NamCD/Documents/FreeLance/anhmo-mobile-new/platforms/android/anhmo.jks",
+            "keystore": "anhmo-android.keystore",
             "storePassword": "thuannguyen",
             "alias": "AnhMo",
             "password" : "thuannguyen",
@@ -9,7 +9,7 @@
             "packageType": "apk"
         },
         "release": {
-            "keystore": "/Users/NamCD/Documents/FreeLance/anhmo-mobile-new/platforms/android/anhmo.jks",
+            "keystore": "anhmo-android.keystore",
             "storePassword": "thuannguyen",
             "alias": "AnhMo",
             "password" : "thuannguyen",
