@@ -45,9 +45,9 @@
 }
 
 .button-common-active {
-  --background-focused: #FFC144;
-  --background-hover: #FFC144;
-  --background: #FFC144;
+  --background-focused: #333333;
+  --background-hover: #333333;
+  --background: #333333;
 }
 
 .button-common {
@@ -89,10 +89,10 @@
 .amo-button {
   // width: 43.73%;
   height: 44px;
-  --ion-toolbar-color: #FFC144;
-  --background-activated: #c5433a;
-  --background-focused: #c5433a;
-  --background-hover: #c5433a;
+  --ion-toolbar-color: #333333;
+  --background-activated: #f3f3f3;
+  --background-focused: #f3f3f3;
+  --background-hover: #f3f3f3;
   --border-radius: 8px;
   margin: 0 10px;
   --box-shadow: none !important;
@@ -168,7 +168,7 @@ iframe {
 }
 
 .amo-button-custom {
-  --background: #FFC144;
+  --background: #333333;
   text-transform: none;
   --background-activated: rgba(250, 114, 104, 0.5);
   border-radius: 8px;
@@ -187,7 +187,7 @@ iframe {
   border-radius: 10px;
   --border-radius: 10px;
   padding: 0px 16px 0px 16px;
-  color: #FFC144;
+  color: #333333;
   .button-native {
     border-radius: 10px;
     --border-radius: 10px;
@@ -311,7 +311,7 @@ ion-back-button {
   font-size: 12px;
   line-height: 18px;
   text-align: center;
-  color: #FFC144;
+  color: #333333;
 }
 .badge-paid {
   background: rgba(81, 210, 181, 0.2);
@@ -347,7 +347,7 @@ ion-back-button {
   font-size: 12px;
   line-height: 18px;
   text-align: center;
-  color: #FFC144;
+  color: #333333;
 }
 .badge-primary {
   background: rgba(0, 154, 201, 0.2);
@@ -401,7 +401,7 @@ ion-back-button {
 }
 .check-unvalid {
   font-size: 18px;
-  color: #FFC144;
+  color: #333333;
 }
 .check-success {
   font-size: 18px;

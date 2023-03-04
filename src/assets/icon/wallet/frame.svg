@@ -175,8 +175,8 @@
 <stop offset="1" stop-color="white"/>
 </linearGradient>
 <linearGradient id="paint4_linear" x1="98" y1="32" x2="98" y2="50" gradientUnits="userSpaceOnUse">
-<stop stop-color="#EA7A6E"/>
-<stop offset="1" stop-color="#E23A28"/>
+<stop stop-color="#807c7c"/>
+<stop offset="1" stop-color="#c7c3c3"/>
 </linearGradient>
 <clipPath id="clip0">
 <rect width="250" height="170" fill="white"/>
