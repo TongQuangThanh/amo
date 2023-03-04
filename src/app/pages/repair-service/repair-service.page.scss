@@ -4,7 +4,7 @@ ion-toolbar {
 .ion-color-primary {
     --ion-color-base: #ffffff !important;
     --ion-color-base-rgb: var(--ion-color-primary-rgb, 56, 128, 255) !important;
-    --ion-color-contrast: #FFC144 !important;
+    --ion-color-contrast: #333333 !important;
     --ion-color-contrast-rgb: var(--ion-color-primary-contrast-rgb, 255, 255, 255) !important;
     --ion-color-shade: var(--ion-color-primary-shade, #3171e0) !important;
     --ion-color-tint: var(--ion-color-primary-tint, #4c8dff) !important;
@@ -185,7 +185,7 @@ ion-searchbar {
 // update css
 
 .ion-no-border {
-    background-color: #FFC144;
+    background-color: #333333;
     height: 100px;
     padding: 15px;
     display: flex;
@@ -220,7 +220,7 @@ ion-searchbar {
 }
 
 .screen-content {
-    --background: #FFC144;
+    --background: #333333;
 }
 
 .list-view-custom {

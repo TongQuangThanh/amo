@@ -52,7 +52,7 @@
       opacity: 0.6;
     }
     .active {
-      background: #FFC144;
+      background: #333333;
       border-radius: 20px;
       opacity: 1;
       color: #F9FCFF;
@@ -66,7 +66,7 @@
   }
 }
 .ion-no-border {
-  background-color: #FFC144;
+  background-color: #333333;
   height: 156px;
   border-radius: 200%/0 0 150px 150px;
   padding: 15px;
@@ -104,9 +104,9 @@
     opacity: 0.6;
   }
   ion-segment-button.segment-button-checked {
-    background: #FFC144 !important;
+    background: #333333 !important;
     --indicator-color: none !important;
-    --background: #FFC144 !important;
+    --background: #333333 !important;
     color: #ffffff;
     opacity: 1;
     border-bottom: 1px solid white;

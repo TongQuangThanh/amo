@@ -34,7 +34,7 @@
 
 .payment-confirm-header {
   font-family: Open Sans;
-  background-color: #FFC144;
+  background-color: #333333;
   height: 165px;
   padding: 15px;
   display: flex;
@@ -138,13 +138,13 @@
     background: #33a54c;
   }
   .badge-unpaid {
-    background: #FFC144;
+    background: #333333;
   }
   .badge-pending {
     background: #f2c94c;
   }
   .badge-outdate {
-    background: #e23a28;
+    background: #c7c3c3;
   }
   .devider-line-info-payment {
     border: 1px dashed #e9e9e9;
@@ -187,13 +187,13 @@
       font-weight: bold;
       font-size: 20px;
       line-height: 20px;
-      color: #FFC144;
+      color: #333333;
       margin-right: 0px;
     }
     .btn-paid {
       width: 100px;
       height: 30px;
-      --background: linear-gradient(180deg, #ffc144 0%, #ee9a1c 100%);
+      --background: linear-gradient(180deg, #333333 0%, #dedddc 100%);
       border-radius: 8px;
       font-size: 14px;
       color: #ffffff;
@@ -236,7 +236,7 @@
         font-size: 16px;
         line-height: 24px;
         text-align: right;
-        color: #FFC144;
+        color: #333333;
         margin-right: 0px;
       }
       .amount-number-total {
@@ -371,7 +371,7 @@
         right: 0;
         font-size: 14px;
         line-height: 24px;
-        color: #FFC144;
+        color: #333333;
       }
     }
   }

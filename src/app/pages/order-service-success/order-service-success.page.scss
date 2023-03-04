@@ -12,7 +12,7 @@
 
 .order-success-header {
   font-family: Open Sans;
-  background-color: #FFC144;
+  background-color: #333333;
   padding: 0 15px;
   display: flex;
   flex-direction: column;
@@ -32,7 +32,7 @@
 .order-success-container {
   font-family: Open Sans;
   font-style: normal;
-  --background: #FFC144;
+  --background: #333333;
   border-radius: 12px;
   margin: 0px 15px;
 
@@ -63,7 +63,7 @@
       height: 50px;
       font-size: 16px;
       text-align: center;
-      color: #FFC144;
+      color: #333333;
       margin: 0;
       border-radius: 10px;
       --background: #ffffff;

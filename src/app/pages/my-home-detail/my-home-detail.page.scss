@@ -1,5 +1,5 @@
 .my-home-detail-header {
-  background-color: #FFC144;
+  background-color: #333333;
   height: 200px;
   padding: 15px;
   display: flex;
@@ -50,7 +50,7 @@
     z-index: 999;
     top: 107px;
     --background: red;
-    --super-tabs-toolbar-background: #FFC144;
+    --super-tabs-toolbar-background: #333333;
     .super-tab-button {
       height: 30px;
       --st-label-color-active: #ffffff;
@@ -97,7 +97,7 @@ ion-toolbar {
 // custom super-tab
 :host {
   --super-tabs-toolbar-background: black;
-  --st-indicator-color: #FFC144;
+  --st-indicator-color: #333333;
   --st-indicator-width: 30px;
   --ion-color-base: transparent;
 }
@@ -216,7 +216,7 @@ ion-toolbar {
   font-size: 16px;
   line-height: 24px;
   text-align: center;
-  color: #FFC144;
+  color: #333333;
 }
 .add-button-apa {
   --background-focused: #bee6f3;
@@ -261,7 +261,7 @@ ion-toolbar {
   font-size: 16px;
   line-height: 24px;
   text-align: center;
-  color: #FFC144;
+  color: #333333;
 }
 .border-left {
   border-left: 1px solid #f4f5f5;

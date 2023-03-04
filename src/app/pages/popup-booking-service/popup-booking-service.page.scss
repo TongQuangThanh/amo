@@ -297,7 +297,7 @@ ion-checkbox {
 }
 .button-active {
   background: #fbfbfb;
-  border: 2px solid #FFC144;
+  border: 2px solid #333333;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
@@ -710,13 +710,13 @@ ion-checkbox {
     background: #33a54c;
   }
   .badge-unpaid {
-    background: #FFC144;
+    background: #333333;
   }
   .badge-pending {
     background: #f2c94c;
   }
   .badge-outdate {
-    background: #e23a28;
+    background: #c7c3c3;
   }
   .devider-line-info-payment {
     border: 1px dashed #e9e9e9;
@@ -759,13 +759,13 @@ ion-checkbox {
       font-weight: bold;
       font-size: 20px;
       line-height: 20px;
-      color: #FFC144;
+      color: #333333;
       margin-right: 0px;
     }
     .btn-paid {
       width: 100px;
       height: 30px;
-      --background: linear-gradient(180deg, #ffc144 0%, #ee9a1c 100%);
+      --background: linear-gradient(180deg, #333333 0%, #dedddc 100%);
       border-radius: 8px;
       font-size: 14px;
       color: #ffffff;
@@ -809,7 +809,7 @@ ion-checkbox {
         font-size: 16px;
         line-height: 24px;
         text-align: right;
-        color: #FFC144;
+        color: #333333;
         margin-right: 0px;
       }
       .amount-number-total {
@@ -936,7 +936,7 @@ ion-checkbox {
         right: 0;
         font-size: 14px;
         line-height: 24px;
-        color: #FFC144;
+        color: #333333;
       }
     }
   }
@@ -1005,7 +1005,7 @@ ion-checkbox {
           line-height: 20px;
           display: flex;
           justify-content: flex-end;
-          color: #FFC144;
+          color: #333333;
         }
         .col-total-title {
           margin-top: 10px;
@@ -1027,7 +1027,7 @@ ion-checkbox {
           .payment-confirm-total-money {
             font-weight: bold;
             font-size: 20px;
-            color: #FFC144;
+            color: #333333;
           }
         }
         .devider-line-info-payment {
@@ -1086,7 +1086,7 @@ ion-checkbox {
         font-size: 14px;
         display: flex;
         align-items: center;
-        color: #FFC144;
+        color: #333333;
       }
       .group-1-button-change-number {
         font-family: Open Sans;
@@ -1122,7 +1122,7 @@ ion-checkbox {
           content: '';
           height: 2px;
           width: 30px;
-          background: #FFC144;
+          background: #333333;
           position: absolute;
           bottom: -3px;
           left: 0;
@@ -1245,7 +1245,7 @@ ion-checkbox {
     height: 100%;
     .modal-content {
       border-radius: 0px 0px 0px 0px;
-      background-color: #FFC144;
+      background-color: #333333;
       height: 100%;
       padding-top: 110px;
       .modal-body {

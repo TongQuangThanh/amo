@@ -4,10 +4,10 @@
   top: 0%;
   width: 100%;
   height: 17%;
-  background: #FFC144;
+  background: #333333;
 }
 .header-toolbar {
-  --background: #FFC144;
+  --background: #333333;
   --min-height: 100px;
   margin: 0;
 }
@@ -272,7 +272,7 @@ ion-content {
   font-size: 16px;
   line-height: 19px;
   text-align: left;
-  color: #FFC144;
+  color: #333333;
 }
 
 .balance-content {
@@ -373,7 +373,7 @@ ion-content {
   font-weight: bold;
   font-size: 18px;
   line-height: 28px;
-  color: #FFC144;
+  color: #333333;
   padding-left: 16px;
 }
 .amountPay-unit {
@@ -458,7 +458,7 @@ ion-content {
 
 // custom header small
 .sub-header-toolbar {
-  background: #FFC144;
+  background: #333333;
   height: 30px;
   margin: 0;
 }
@@ -515,7 +515,7 @@ ion-content {
 }
 
 .custom-infinite-scroll {
-  --color: #FFC144;
+  --color: #333333;
 }
 
 .w3-animate-top {
@@ -563,7 +563,7 @@ ion-content {
 // ================================================================================
 
 .ion-no-border {
-  background-color: #FFC144;
+  background-color: #333333;
   height: 156px;
   border-radius: 200%/0 0 40px 40px;
   padding: 15px;
@@ -638,7 +638,7 @@ ion-content {
       line-height: 12px;
       display: flex;
       align-items: center;
-      color: #FFC144;
+      color: #333333;
     }
     .wallet_money_title {
       position: absolute;
@@ -720,7 +720,7 @@ ion-content {
       font-weight: bold;
       font-size: 14px;
       line-height: 19px;
-      color: #FFC144;
+      color: #333333;
     }
 
     .header-text-2 {
@@ -799,7 +799,7 @@ ion-content {
       justify-content: center;
       width: 40px;
       height: 40px;
-      background: #fbe7e5;
+      background: #f3f3f3;
       border-radius: 8px;
       .item-icon {
         width: 20px;
@@ -819,7 +819,7 @@ ion-content {
     max-height: 85px;
     width: 100%;
     position: relative;
-    border-color: 1px solid #FFC144;
+    border-color: 1px solid #333333;
     margin-bottom: 30px;
     background-image: url("../../../assets/icon/noti-bill-img.png");
     background-size: 100% 100%;
@@ -871,7 +871,7 @@ ion-content {
       .button-pay {
         min-width: 75px;
         border-radius: 4px;
-        background: linear-gradient(180deg, #FFC144 0%, #e23a28 100%);
+        background: linear-gradient(180deg, #333333 0%, #c7c3c3 100%);
         font-family: Open Sans;
         font-style: normal;
         font-weight: bold;
@@ -920,7 +920,7 @@ ion-content {
     content: "";
     height: 2px;
     width: 30px;
-    background: #FFC144;
+    background: #333333;
     position: absolute;
     bottom: 4px;
     left: 0;
@@ -954,7 +954,7 @@ ion-content {
     content: "";
     height: 2px;
     width: 30px;
-    background: #FFC144;
+    background: #333333;
     position: absolute;
     top: 100%;
     left: 0;
@@ -1062,7 +1062,7 @@ ion-content {
         margin: 0 1.1px;
       }
       .swiper-pagination-bullet-active {
-        background: #FFC144;
+        background: #333333;
       }
     }
   }

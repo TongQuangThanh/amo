@@ -26,7 +26,7 @@ ion-header {
 .ion-color-primary {
   --ion-color-base: #ffffff !important;
   --ion-color-base-rgb: var(--ion-color-primary-rgb, 56, 128, 255) !important;
-  --ion-color-contrast: #FFC144 !important;
+  --ion-color-contrast: #333333 !important;
   --ion-color-contrast-rgb: var(--ion-color-primary-contrast-rgb, 255, 255, 255) !important;
   --ion-color-shade: var(--ion-color-primary-shade, #3171e0) !important;
   --ion-color-tint: var(--ion-color-primary-tint, #4c8dff) !important;
@@ -43,7 +43,7 @@ super-tab-button ion-label {
   opacity: 0.4;
 }
 super-tab-button.active ion-label {
-  color: #FFC144;
+  color: #333333;
   opacity: 1;
 }
 super-tabs-toolbar::after {
@@ -660,7 +660,7 @@ super-tab-button {
 
 .discount-meter {
   width: 100%;
-  background: linear-gradient(180deg, #ffc144 0%, #ee9a1c 100%);
+  background: linear-gradient(180deg, #333333 0%, #dedddc 100%);
   box-shadow: 0px 10px 30px rgba(33, 49, 63, 0.1);
   border-radius: 15px;
   padding: 10px 15px;
@@ -773,7 +773,7 @@ super-tab-button {
     content: '';
     height: 2px;
     width: 30px;
-    background: #FFC144;
+    background: #333333;
     position: absolute;
     bottom: 0;
     left: 0;
@@ -1014,7 +1014,7 @@ super-tab-button {
   font-size: 14px;
   display: flex;
   align-items: center;
-  color: #FFC144;
+  color: #333333;
 }
 .super-tab-button {
   padding: 0;

@@ -4,13 +4,13 @@
 
 :host {
   --super-tabs-toolbar-background: black;
-  --st-indicator-color: #FFC144;
+  --st-indicator-color: #333333;
   --st-indicator-width: 30px;
   --ion-color-base: transparent;
 }
 
 .payment-history-header {
-  background-color: #FFC144;
+  background-color: #333333;
   height: 160px;
   min-height: 160px !important;
   padding: 15px;
@@ -61,7 +61,7 @@
     bottom: 0;
     .super-tabs-toolbar {
       --background: red;
-      --super-tabs-toolbar-background: #FFC144;
+      --super-tabs-toolbar-background: #333333;
       .super-tab-button {
         height: 35px;
         --st-label-color-active: #ffffff;
@@ -140,13 +140,13 @@
       background: #33a54c;
     }
     .badge-unpaid {
-      background: #FFC144;
+      background: #333333;
     }
     .badge-pending {
       background: #f2c94c;
     }
     .badge-outdate {
-      background: #e23a28;
+      background: #c7c3c3;
     }
   }
 
@@ -191,13 +191,13 @@
       font-weight: bold;
       font-size: 20px;
       line-height: 20px;
-      color: #FFC144;
+      color: #333333;
       margin-right: 0px;
     }
     .btn-paid {
       width: 100px;
       height: 30px;
-      --background: linear-gradient(180deg, #ffc144 0%, #ee9a1c 100%);
+      --background: linear-gradient(180deg, #333333 0%, #dedddc 100%);
       border-radius: 8px;
       font-size: 14px;
       color: #ffffff;

@@ -158,7 +158,7 @@ super-tab-button.active ion-label {
 
   text-align: center;
 
-  color: #FFC144;
+  color: #333333;
 }
 
 .avatar-paying {
@@ -218,7 +218,7 @@ super-tab-button.active ion-label {
   top: 0%;
   width: 100%;
   height: 20%;
-  background: #FFC144;
+  background: #333333;
 }
 .title-content {
   position: absolute;
@@ -412,10 +412,10 @@ ion-item.item-top {
   color: #7a838c;
 }
 .btn-payment {
-  --background: #FFC144;
+  --background: #333333;
   text-transform: none;
-  --background-focused: #FFC144;
-  --background-hover: #FFC144;
+  --background-focused: #333333;
+  --background-hover: #333333;
   --background-activated: #ca5149;
   --border-radius: 4px;
   font-size: 14px;
@@ -456,7 +456,7 @@ ion-col {
 }
 :host {
   --super-tabs-toolbar-background: black;
-  --st-indicator-color: #FFC144;
+  --st-indicator-color: #333333;
   --st-indicator-width: 30px;
   --ion-color-base: transparent;
 }
@@ -478,7 +478,7 @@ ion-col {
 // new css =========================
 .payment-header {
   font-family: Open Sans;
-  background-color: #FFC144;
+  background-color: #333333;
   height: 156px;
   padding: 15px;
   display: flex;
@@ -547,7 +547,7 @@ ion-col {
       position: absolute;
       bottom: 10px;
       left: 20px;
-      border-bottom: 2px solid #FFC144;
+      border-bottom: 2px solid #333333;
       width: 30px;
       z-index: 99;
     }
@@ -597,13 +597,13 @@ ion-col {
         background: #33a54c;
       }
       .badge-unpaid {
-        background: #FFC144;
+        background: #333333;
       }
       .badge-pending {
         background: #f2c94c;
       }
       .badge-outdate {
-        background: #e23a28;
+        background: #c7c3c3;
       }
     }
 
@@ -648,13 +648,13 @@ ion-col {
         font-weight: bold;
         font-size: 20px;
         line-height: 20px;
-        color: #FFC144;
+        color: #333333;
         margin-right: 0px;
       }
       .btn-paid {
         width: 100px;
         height: 30px;
-        --background: linear-gradient(180deg, #ffc144 0%, #ee9a1c 100%);
+        --background: linear-gradient(180deg, #333333 0%, #dedddc 100%);
         border-radius: 8px;
         font-size: 14px;
         color: #ffffff;

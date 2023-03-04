@@ -4,7 +4,7 @@
 .survey-complete {
     height: 100%;
     width: 100%;
-    background: #FFC144;
+    background: #333333;
     color: #fff;
     display: flex;
     flex-direction: column;
@@ -23,7 +23,7 @@
     }
 
     .back-button {
-        --color: #FFC144;
+        --color: #333333;
         --border-radius: 10px;
         font-family: Open Sans;
         font-style: normal;

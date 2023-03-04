@@ -101,7 +101,7 @@ ion-toolbar {
     position: absolute;
     bottom: 1px;
     left: 5px;
-    border-bottom: 2px solid #FFC144;
+    border-bottom: 2px solid #333333;
     width: 30px;
   }
 }
@@ -112,7 +112,7 @@ ion-toolbar {
   font-size: 12px;
   line-height: 16px;
   text-align: right;
-  color: #FFC144;
+  color: #333333;
 }
 .note-1 {
   position: absolute;
@@ -360,7 +360,7 @@ ion-toolbar {
 // update theme css
 
 .ion-no-border {
-  background-color: #FFC144;
+  background-color: #333333;
   height: 156px;
   border-radius: 200%/0 0 40px 40px;
   padding: 15px;
@@ -437,7 +437,7 @@ ion-toolbar {
         margin: 0 1.1px;
       }
       .swiper-pagination-bullet-active {
-        background: #FFC144;
+        background: #333333;
       }
     }
   }
@@ -490,7 +490,7 @@ ion-toolbar {
 }
 
 .resident-market-no-data button {
-  background: linear-gradient(180deg, #ffc144 0%, #ee9a1c 100%);
+  background: linear-gradient(180deg, #333333 0%, #dedddc 100%);
   border-radius: 8px;
   padding: 5px 10px;
   color: #ffffff;

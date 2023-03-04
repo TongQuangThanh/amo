@@ -70,7 +70,7 @@ ion-toolbar {
 
   text-align: center;
 
-  color: #FFC144;
+  color: #333333;
 }
 
 .avatar-content {
@@ -129,7 +129,7 @@ ion-toolbar {
 // new css =========================
 
 .my-account-header {
-  background-color: #FFC144;
+  background-color: #333333;
   height: 235px;
   padding: 15px;
   display: flex;
@@ -210,7 +210,7 @@ ion-toolbar {
       position: absolute;
       top: 20px;
       left: 0;
-      border-bottom: 2px solid #FFC144;
+      border-bottom: 2px solid #333333;
       width: 30px;
     }
   }
@@ -231,7 +231,7 @@ ion-toolbar {
     }
     .setting-item-toggle {
       --background: #e6e6e6;
-      --background-checked: #FFC144;
+      --background-checked: #333333;
       --handle-background: #ffffff;
       --handle-background-checked: #ffffff;
       height: 30px;
@@ -287,14 +287,14 @@ ion-toolbar {
       text-align: right;
       font-size: 16px;
       line-height: 24px;
-      color: #FFC144;
+      color: #333333;
       height: 35px;
     }
     .logout-icon {
       display: flex;
       align-items: center;
       font-size: 20px;
-      color: #FFC144;
+      color: #333333;
       margin-right: 10px;
     }
   }

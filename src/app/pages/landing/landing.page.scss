@@ -41,7 +41,7 @@
     font-size: 22px;
     line-height: 36px;
     text-align: center;
-    color: #FFC144;
+    color: #333333;
 }
 .label-text {
     font-family: Open Sans;
@@ -89,10 +89,10 @@
     color: #FFFFFF;
 }
 .button-common-active {
-    --ion-toolbar-color: #FFC144;
-    --background-focused: #df594f;
+    --ion-toolbar-color: #333333;
+    --background-focused:#807c7c;
     --background-hover:#df594f;
-    --background-activated: #df594f;
+    --background-activated:#807c7c;
 }
 // .bottom-toolbar {
 //     // position: fixed;
@@ -130,7 +130,7 @@
     --background-activated: transparent;
 }
 .error-input {
-    border: 1px solid #FFC144;
+    border: 1px solid #333333;
 }
 .clear-input {
     color: #FFFFFF;

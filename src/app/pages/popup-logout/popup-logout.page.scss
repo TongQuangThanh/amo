@@ -30,7 +30,7 @@ root{
 }
 .modal-icon {
     font-size: 60px;
-    color: #FFC144;
+    color: #333333;
 }
 .delete_message {
     font-family: Open Sans;
@@ -66,10 +66,10 @@ root{
 .delete-button {
     width: 40%;
     height: 44px;
-    --ion-toolbar-color: #FFC144;
-    --background-activated: #c5433a;
-    --background-focused: #c5433a;
-    --background-hover: #c5433a;
+    --ion-toolbar-color: #333333;
+    --background-activated: #f3f3f3;
+    --background-focused: #f3f3f3;
+    --background-hover: #f3f3f3;
     --border-radius: 8px;
     margin: 0 10px;
     --box-shadow: none !important;

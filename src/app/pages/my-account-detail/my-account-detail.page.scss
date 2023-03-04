@@ -4,7 +4,7 @@ ion-button.md {
   }
 }
 .error-input {
-  border: 1px solid #FFC144;
+  border: 1px solid #333333;
 }
 
 .error-message {
@@ -14,7 +14,7 @@ ion-button.md {
   font-size: 14px;
   line-height: 19px;
   /* identical to box height */
-  color: #FFC144;
+  color: #333333;
 }
 .account-back-button {
   margin-left: 10px !important;
@@ -48,7 +48,7 @@ ion-button.md {
   color: #009ac9;
 }
 .check-unvalid {
-  color: #FFC144;
+  color: #333333;
 }
 .check-success {
   color: #51d2b5;
@@ -120,7 +120,7 @@ ion-button.md {
 
 // new css =========================
 .account-detail-header {
-  background-color: #FFC144;
+  background-color: #333333;
   height: 155px;
   padding: 15px;
   display: flex;
@@ -175,7 +175,7 @@ ion-button.md {
   }
   .icon-camera {
     font-size: 24px;
-    color: #FFC144;
+    color: #333333;
     position: absolute;
     left: 0;
     right: 0;
@@ -207,7 +207,7 @@ ion-button.md {
     }
   }
   .button-send {
-    --background: #FFC144 !important;
+    --background: #333333 !important;
     font-weight: 800;
     font-size: 16px;
     line-height: 24px;
